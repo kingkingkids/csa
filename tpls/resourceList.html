@@ -4,26 +4,8 @@
     </ion-header-bar>
     <ion-content>
         <ul class="list">
-            <li class="item">
-                第一期
-            </li>
-            <li class="item">
-                期刊。。。。。
-            </li>
-            <li class="item">
-                期刊。。。。。
-            </li>
-            <li class="item">
-                期刊。。。。。
-            </li>
-            <li class="item">
-                期刊。。。。。
-            </li>
-            <li class="item">
-                期刊。。。。。
-            </li>
-            <li class="item">
-                期刊。。。。。
+            <li class="item" ng-repeat="res in resourceList">
+                <div>{{res.displayName}}</div>
             </li>
         </ul>
     </ion-content>
