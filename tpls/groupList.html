@@ -5,7 +5,7 @@
     <ion-content>
         <ul class="list">
             <li class="item" ng-repeat="group in groupList">
-                <div ng-if="group.type == 'group'" ui-sref="tabs.resourceList({groupId:group.id,parentId:group.id})">
+                <div ng-if="group.type == 'group'" ui-sref="tabs.resourceList({parentId:-group.id})">
                     {{group.displayName}}
                 </div>
                 <div ng-if="group.type == 'category'" ng-click="navToJournal(group.id)">{{group.displayName}}</div>

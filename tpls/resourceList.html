@@ -5,7 +5,8 @@
     <ion-content>
         <ul class="list">
             <li class="item" ng-repeat="res in resourceList">
-                <div>{{res.displayName}}</div>
+                <div ng-if="res.type == 1" ui-sref="tabs.resourceList({parentId:res.id})">{{res.displayName}}</div>
+                <div ng-if="res.type == 2">{{res.displayName}}</div>
             </li>
         </ul>
     </ion-content>

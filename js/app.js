@@ -72,7 +72,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule',
                 }
             }
         }).state('tabs.resourceList', {
-            url: '/resourceList/:groupId/:parentId',
+            url: '/resourceList/:parentId',
             views: {
                 'home-tab': {
                     templateUrl: "tpls/resourceList.html",
