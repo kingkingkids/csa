@@ -5,15 +5,15 @@ angular.module("GroupListModule", ["httpRequest"])
 
 
     .controller("GroupListController", ["$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams",
-        function ($scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) {
+        ($scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
 
             $scope.groupList = [];
-            console.log($stateParams);
+
             $scope.loadGroups = function () {
                 sendRequest("/group/trees.action", "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId,
-                    function (data, status, headers, config) {
-                        console.log(data);
-                        $scope.groupList = data.children;
+                    (data, status, headers, config)=> {
+                        var {children} = data;
+                        $scope.groupList = children;
                     })
             }
             $scope.loadGroups();
