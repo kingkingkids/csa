@@ -14,3 +14,8 @@ require("./controllers/accountController.js");
 require("./controllers/mainController.js");
 require("./controllers/homeController.js");
 require("./controllers/groupListController.js");
+require("./controllers/resourceListController.js");
+
+
+
+

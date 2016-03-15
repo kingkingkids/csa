@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule', 'MainModule', 'HomeModule', 'GroupListModule'])
+angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule'])
     .config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
         if (ionic.Platform.isAndroid()) {
@@ -64,7 +64,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule',
                 }
             }
         }).state('tabs.groupList', {
-            url: '/groupList?{groupId}',
+            url: '/groupList/:groupId',
             views: {
                 'home-tab': {
                     templateUrl: "tpls/groupList.html",
@@ -72,11 +72,11 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule',
                 }
             }
         }).state('tabs.resourceList', {
-            url: '/resourceList?{parentId}',
+            url: '/resourceList/:groupId/:parentId',
             views: {
                 'home-tab': {
                     templateUrl: "tpls/resourceList.html",
-                    controller:"ResourceListController"
+                    controller: "ResourceListController"
                 }
             }
         });
@@ -86,6 +86,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule',
         //配置项
         $rootScope.config = {
             sitePath: "http://localhost/csaProxy",
+            currentGroupId: 0,
             journalID: 374 //期刊ID
         }
         $ionicPlatform.ready(function () {
