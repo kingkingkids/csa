@@ -14,8 +14,5 @@ angular.module("global", [])
         };
     }).factory("Common", function () {
     return {
-        hello: function () {
-            alert(13);
-        }
     }
 });

@@ -8,7 +8,8 @@ angular.module("GroupListModule", ["httpRequest"])
         ($scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
 
             $scope.groupList = [];
-
+            console.log($stateParams);
+            $scope.title = $stateParams.title;
             $scope.loadGroups = function () {
                 sendRequest("/group/trees.action", "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId,
                     (data, status, headers, config)=> {

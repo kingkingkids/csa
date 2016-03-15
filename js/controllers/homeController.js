@@ -12,12 +12,8 @@ angular.module("HomeModule", ["httpRequest"])
                     $state.go('tabs.resourceList');
                 })
             }
-            $rootScope.navToJournal = (_id)=> {
-                console.log(_id);
-                if (_id == undefined) {
-                    _id = $rootScope.config.journalID;
-                }
-                $state.go('tabs.groupList', {groupId: _id});
+            $rootScope.goToList = (_id, title)=> {
+                $state.go('tabs.groupList', {groupId: _id, title: title});
             }
         }
     ]);

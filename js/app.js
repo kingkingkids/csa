@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule'])
+angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule'])
     .config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-        $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
+        $ionicConfigProvider.navBar.alignTitle('center');//覆盖默认Android的标题居左的设计
         if (ionic.Platform.isAndroid()) {
             //$ionicConfigProvider.scrolling.jsScrolling(true);
             $ionicConfigProvider.views.transition('none');
@@ -60,11 +60,11 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule',
             views: {
                 'personal-tab': {
                     templateUrl: "tpls/personal.html",
-                    controller: "AccountController"
+                    controller: "personalController"
                 }
             }
         }).state('tabs.groupList', {
-            url: '/groupList/:groupId',
+            url: '/groupList/:groupId/:title',
             views: {
                 'home-tab': {
                     templateUrl: "tpls/groupList.html",
@@ -72,7 +72,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'AccountModule',
                 }
             }
         }).state('tabs.resourceList', {
-            url: '/resourceList/:parentId',
+            url: '/resourceList/:parentId/:title',
             views: {
                 'home-tab': {
                     templateUrl: "tpls/resourceList.html",

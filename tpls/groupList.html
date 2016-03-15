@@ -1,11 +1,14 @@
-<ion-view view-title="期刊">
-    <ion-header-bar align-title="left">
-        <h1 class="title">期刊</h1>
-    </ion-header-bar>
+<ion-view view-title="{{title}}">
+    <ion-nav-bar>
+        <ion-nav-back-button>
+            返回
+        </ion-nav-back-button>
+    </ion-nav-bar>
     <ion-content>
         <ul class="list">
             <li class="item" ng-repeat="group in groupList">
-                <div ng-if="group.type == 'group'" ui-sref="tabs.resourceList({parentId:-group.id})">
+                <div ng-if="group.type == 'group'"
+                     ui-sref="tabs.resourceList({parentId:-group.id,title:group.displayName})">
                     {{group.displayName}}
                 </div>
                 <div ng-if="group.type == 'category'" ng-click="navToJournal(group.id)">{{group.displayName}}</div>

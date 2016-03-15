@@ -1,10 +1,13 @@
 <ion-view view-title="口腔信息云">
-  <ion-header-bar align-title="left">
-    <h1 class="title">LOGO</h1>
-  </ion-header-bar>
+  <ion-nav-title>
+    Logo口腔信息云
+  </ion-nav-title>
+  <!--<ion-header-bar align-title="left">-->
+    <!--<h1 class="title">LOGO</h1>-->
+  <!--</ion-header-bar>-->
   <ion-content>
     <div class="row">
-      <div class="col" ng-click="navToJournal()">期刊</div>
+      <div class="col" ng-click="goToList(config.journalID,'期刊')">期刊</div>
       <div class="col">图书</div>
     </div>
     <div class="row">

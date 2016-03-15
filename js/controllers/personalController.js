@@ -1,9 +1,9 @@
 /**
  * Created by dcampus2011 on 16/1/29.
  */
-angular.module("AccountModule",["httpRequest"])
+angular.module("personalModule",["httpRequest"])
 
-    .controller("AccountController" ,["$scope","global.staticInfo","httpRequest.sendRequest","$state","$ionicPopup",
+    .controller("personalController" ,["$scope","global.staticInfo","httpRequest.sendRequest","$state","$ionicPopup",
         function ($scope,staticInfo,sendRequest,$state,$ionicPopup) {
             $scope.accountInfo={};
             $scope.getAccount=function(){

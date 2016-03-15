@@ -1,11 +1,13 @@
-<ion-view view-title="期刊A">
-    <ion-header-bar align-title="left">
-        <h1 class="title">期刊A</h1>
-    </ion-header-bar>
+<ion-view view-title="{{title}}">
+    <ion-nav-back-button>
+        返回
+    </ion-nav-back-button>
     <ion-content>
         <ul class="list">
             <li class="item" ng-repeat="res in resourceList">
-                <div ng-if="res.type == 1" ui-sref="tabs.resourceList({parentId:res.id})">{{res.displayName}}</div>
+                <div ng-if="res.type == 1" ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
+                    {{res.displayName}}
+                </div>
                 <div ng-if="res.type == 2">{{res.displayName}}</div>
             </li>
         </ul>
