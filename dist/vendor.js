@@ -25893,6 +25893,10 @@
 	    $urlRouterProvider.otherwise('/login');
 	}]).run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
 	    //配置项
+	    $rootScope.path = {
+	        trees: "/group/trees.action" //获取分类
+	        , getResources: "/group/getResources.action" // 获取柜子资源
+	    };
 	    $rootScope.config = {
 	        sitePath: "http://localhost/csaProxy",
 	        currentGroupId: 0,
@@ -26126,13 +26130,13 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
-	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", ["$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
+	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", ["$rootScope", "$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
 
 	    $scope.groupList = [];
 	    console.log($stateParams);
 	    $scope.title = $stateParams.title;
 	    $scope.loadGroups = function () {
-	        sendRequest("/group/trees.action", "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId, (data, status, headers, config) => {
+	        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId, (data, status, headers, config) => {
 	            var { children } = data;
 	            $scope.groupList = children;
 	        });
@@ -26147,11 +26151,11 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
-	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ["$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
+	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ["$rootScope", "$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
 	    $scope.resourceList = [];
 	    $scope.title = $stateParams.title;
 	    $scope.loadGroups = () => {
-	        sendRequest("/group/getResources.action", "type=all&limit=100&start=0&parentId=" + $stateParams.parentId, (data, status, headers, config) => {
+	        sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId, (data, status, headers, config) => {
 	            $scope.resourceList = data.resources;
 	        });
 	    };
