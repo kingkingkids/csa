@@ -84,6 +84,10 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
     }])
     .run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
         //配置项
+        $rootScope.path = {
+            trees: "/group/trees.action"//获取分类
+            ,getResources:"/group/getResources.action"// 获取柜子资源
+        }
         $rootScope.config = {
             sitePath: "http://localhost/csaProxy",
             currentGroupId: 0,
