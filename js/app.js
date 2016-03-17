@@ -47,7 +47,9 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                     views: {
                         'favorite-tab': {
                             templateUrl: "tpls/favorite.html",
-                            controller: "favController"
+                            controller: "favController",
+                            controllerAs: 'vm'
+
                         }
                     }
                 }).state('tabs.info', {

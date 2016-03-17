@@ -25857,7 +25857,9 @@
 	        views: {
 	            'favorite-tab': {
 	                templateUrl: "tpls/favorite.html",
-	                controller: "favController"
+	                controller: "favController",
+	                controllerAs: 'vm'
+
 	            }
 	        }
 	    }).state('tabs.info', {
@@ -25935,13 +25937,13 @@
 	/**
 	 * Created by dcampus2011 on 15/8/24.
 	 */
-	angular.module("global", []).factory("global.currentInfo", function () {
+	angular.module("global", []).factory("global.currentInfo", currentInfo);
+
+	function currentInfo() {
 	    return {
 	        userName: ""
 	    };
-	}).factory("Common", function () {
-	    return {};
-	});
+	}
 
 /***/ },
 /* 16 */
@@ -25987,6 +25989,37 @@
 	    };
 	});
 
+	sendRequest.$inject = ["$http", "httpRequest.errorManage", "$rootScope"];
+
+	function sendRequest($http, errorManage, $rootScope) {
+	    return function (action, paramData, successFunc, errorFunc) {
+	        var req = {
+	            method: 'POST',
+	            url: $rootScope.config.sitePath + action,
+	            headers: {
+	                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+	            }
+	        };
+	        if (typeof paramData === 'string') {
+	            req.data = paramData;
+	        } else {
+	            req.params = paramData || {};
+	        }
+
+	        return $http(req).success(function (data, status, headers, config) {
+	            if (successFunc) {
+	                successFunc(data, status, headers, config);
+	            }
+	        }).error(function (data, status, headers, config) {
+	            if (errorFunc) {
+	                errorFunc(data, status, headers, config);
+	            } else {
+	                errorManage(status, data);
+	            }
+	        });
+	    };
+	}
+
 /***/ },
 /* 17 */
 /***/ function(module, exports) {
@@ -26016,6 +26049,7 @@
 	        }
 	    };
 	}]);
+	function keepAlive() {}
 
 /***/ },
 /* 18 */
@@ -26024,16 +26058,19 @@
 	/**
 	 * Created by dcampus2011 on 16/1/26.
 	 */
-	angular.module("LoginModule", ["httpRequest"]).controller("LoginController", ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", function ($rootScope, $scope, sendRequest, $state) {
+	angular.module("LoginModule", ["httpRequest"]).controller("LoginController", LoginController);
+
+	LoginController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state"];
+
+	function LoginController($rootScope, $scope, sendRequest, $state) {
 	    $scope.login = function () {
-	        //                var paramsStr="account="+$scope.loginInfo.username+"&password="+$scope.loginInfo.password;
-	        var paramsObj = {
+	        let paramsObj = {
 	            "account": $scope.loginInfo.username,
 	            "password": encodeURIComponent($scope.loginInfo.password)
 	        };
-	        sendRequest($rootScope.path.authenticate, paramsObj, function (data, status, headers, config) {
-	            var paramsStr = "memberId=" + data.members[0].id;
-	            sendRequest($rootScope.path.selectMember, paramsStr, function (data, status, headers, config) {
+	        sendRequest($rootScope.path.authenticate, paramsObj, function (data) {
+	            let paramsStr = "memberId=" + data.members[0].id;
+	            sendRequest($rootScope.path.selectMember, paramsStr, function (data) {
 	                $state.go("tabs.home");
 	            });
 	        });
@@ -26041,7 +26078,7 @@
 	    $scope.loginInfo = {};
 	    $scope.loginInfo.username = "";
 	    $scope.loginInfo.password = "";
-	}]);
+	}
 
 /***/ },
 /* 19 */
@@ -26050,10 +26087,14 @@
 	/**
 	 * Created by dcampus2011 on 16/1/29.
 	 */
-	angular.module("personalModule", ["httpRequest"]).controller("personalController", ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", function ($rootScope, $scope, sendRequest, $state, $ionicPopup) {
+	angular.module("personalModule", ["httpRequest"]).controller("personalController", personalController);
+
+	personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup"];
+
+	function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup) {
 	    $scope.accountInfo = {};
 	    $scope.getAccount = function () {
-	        sendRequest("/user/getAccount.action", null, function (data, status, headers, config) {
+	        sendRequest("/user/getAccount.action", null, (data, status, headers, config) => {
 	            $scope.accountInfo.account = data.account;
 	            $scope.accountInfo.name = data.name;
 	            $scope.accountInfo.company = data.company;
@@ -26063,8 +26104,8 @@
 	        });
 	    };
 
-	    $scope.modifyAccount = function () {
-	        var paramsObj = {
+	    $scope.modifyAccount = () => {
+	        let paramsObj = {
 	            "account": $scope.accountInfo.account,
 	            "name": $scope.accountInfo.name,
 	            "company": $scope.accountInfo.company,
@@ -26072,8 +26113,8 @@
 	            "position": $scope.accountInfo.position,
 	            "email": $scope.accountInfo.email
 	        };
-	        sendRequest($rootScope.path.modifyAccount, paramsObj, function (data, status, headers, config) {
-	            var alertPopup = $ionicPopup.alert({
+	        sendRequest($rootScope.path.modifyAccount, paramsObj, (data, status, headers, config) => {
+	            let alertPopup = $ionicPopup.alert({
 	                title: '修改账号信息',
 	                template: '修改成功！'
 	            });
@@ -26081,7 +26122,7 @@
 	    };
 
 	    $scope.getAccount();
-	}]);
+	}
 
 /***/ },
 /* 20 */
@@ -26090,7 +26131,11 @@
 	/**
 	 * Created by dcampus2011 on 16/2/17.
 	 */
-	angular.module("MainModule", ["httpRequest", "keepAlive"]).controller("MainController", ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive", function ($scope, currentInfo, sendRequest, $state, keepAlive) {
+	angular.module("MainModule", ["httpRequest", "keepAlive"]).controller("MainController", MainController);
+
+	MainController.$inject = ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive"];
+
+	function MainController($scope, currentInfo, sendRequest, $state, keepAlive) {
 	    $scope.onTabSelected = function () {
 	        $scope.$broadcast("loadFavEvent"); //重载一次收藏列表
 	    };
@@ -26108,7 +26153,7 @@
 	        });
 	    };
 	    $scope.getStatus();
-	}]);
+	}
 
 /***/ },
 /* 21 */
@@ -26118,7 +26163,11 @@
 	 * Created by dcampus2011 on 16/2/17.
 	 */
 
-	angular.module("HomeModule", ["httpRequest"]).controller("HomeController", ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$timeout", "$rootScope", ($scope, currentInfo, sendRequest, $state, $timeout, $rootScope) => {
+	angular.module("HomeModule", ["httpRequest"]).controller("HomeController", HomeController);
+
+	HomeController.$inject = ["$scope", "$state", "$timeout", "$rootScope"];
+
+	function HomeController($scope, $state, $timeout, $rootScope) {
 	    $scope.goFar = () => {
 	        console.log("goFar");
 	        $state.go('tabs.groupList');
@@ -26129,7 +26178,7 @@
 	    $rootScope.goToList = (_id, title) => {
 	        $state.go('tabs.groupList', { groupId: _id, title: title });
 	    };
-	}]);
+	}
 
 /***/ },
 /* 22 */
@@ -26138,19 +26187,22 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
-	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, currentInfo, sendRequest, $state, $stateParams) => {
+	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", GroupListController);
 
+	GroupListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams"];
+
+	function GroupListController($rootScope, $scope, sendRequest, $stateParams) {
 	    $scope.groupList = [];
 	    console.log($stateParams);
 	    $scope.title = $stateParams.title;
 	    $scope.loadGroups = function () {
-	        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId, (data, status, headers, config) => {
+	        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId, data => {
 	            var { children } = data;
 	            $scope.groupList = children;
 	        });
 	    };
 	    $scope.loadGroups();
-	}]);
+	}
 
 /***/ },
 /* 23 */
@@ -26159,18 +26211,19 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
-	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", "$timeout", "$ionicNavBarDelegate", "$ionicPopup", ($rootScope, $scope, currentInfo, sendRequest, $state, $stateParams, $timeout, $ionicNavBarDelegate, $ionicPopup) => {
-
+	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
+	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup"];
+	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup) {
 	    $scope.resourceList = [];
 	    $scope.title = $stateParams.title;
 	    $scope.init = function () {
 	        $scope.func.loadGroups();
-	        $scope.onHold = function () {
+	        $scope.onHold = () => {
 	            $scope.func.showPopup(arguments);
 	        };
 	    };
 	    $scope.func = {
-	        loadGroups: () => {
+	        loadGroups: function () {
 	            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId, (data, status, headers, config) => {
 	                $scope.resourceList = data.resources;
 	            });
@@ -26179,7 +26232,7 @@
 	            $scope.data = {};
 	            let id = arguments.length && arguments[0];
 	            // An elaborate, custom popup
-	            var popup = $ionicPopup.show({
+	            let popup = $ionicPopup.show({
 	                template: '',
 	                title: '收藏资源',
 	                subTitle: '',
@@ -26187,7 +26240,7 @@
 	                buttons: [{ text: '返回' }, {
 	                    text: '<b>收藏</b>',
 	                    type: 'button-positive',
-	                    onTap: function (e) {
+	                    onTap: e => {
 	                        return id[0];
 	                    }
 	                }]
@@ -26195,7 +26248,7 @@
 	            popup.then(id => {
 	                if (id != undefined) {
 	                    let paramsObj = { "type": "resource", "id": id };
-	                    sendRequest($rootScope.path.addWatch, paramsObj, function (data, status, headers, config) {
+	                    sendRequest($rootScope.path.addWatch, paramsObj, (data, status, headers, config) => {
 	                        if (data.success) {
 	                            console.log("收藏成功");
 	                        }
@@ -26205,7 +26258,7 @@
 	        }
 	    };
 	    $scope.init();
-	}]);
+	}
 
 /***/ },
 /* 24 */
@@ -26214,21 +26267,26 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
+	angular.module("favModule", ["httpRequest"]).controller("favController", favController);
 
-	angular.module("favModule", ["httpRequest"]).controller("favController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, currentInfo, sendRequest, $state, $stateParams) => {
-	    $scope.func = {
+	favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest"];
+
+	function favController($rootScope, $scope, sendRequest) {
+	    let vm = this;
+	    vm.title = 123;
+	    vm.func = {
 	        loadFavList: function () {
 	            let paramsObj = { "type": "resource" };
-	            sendRequest($rootScope.path.getWatches, paramsObj, (data, status, headers, config) => {
-	                $scope.watchesList = data.watches;
+	            sendRequest($rootScope.path.getWatches, paramsObj, data => {
+	                vm.watchesList = data.watches;
 	            });
 	        }
 	    };
-	    $scope.func.loadFavList();
+	    vm.func.loadFavList();
 	    $scope.$on("loadFavEvent", function () {
-	        $scope.func.loadFavList();
+	        vm.func.loadFavList();
 	    });
-	}]);
+	}
 
 /***/ }
 /******/ ]);
