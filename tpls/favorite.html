@@ -1,50 +1,14 @@
 <ion-view view-title="收藏">
-  <ion-header-bar align-title="left">
-    <h1 class="title">收藏</h1>
-  </ion-header-bar>
-  <ion-content>
-    <ul class="list">
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
-      <li class="item">
-        收藏。。。。。
-      </li>
+    <ion-header-bar align-title="left">
+        <h1 class="title">收藏</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ul class="list">
+            <li class="item" collection-repeat="watch in watchesList">
+                {{watch.displayName}}
+            </li>
 
-    </ul>
-  </ion-content>
+        </ul>
+    </ion-content>
 </ion-view>
 

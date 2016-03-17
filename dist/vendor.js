@@ -68,6 +68,7 @@
 	__webpack_require__(21); //首页控制器
 	__webpack_require__(22); //柜子列表控制器
 	__webpack_require__(23); //资源列表控制器
+	__webpack_require__(24); //资源列表控制器
 
 /***/ },
 /* 2 */
@@ -25818,8 +25819,8 @@
 	// angular.module is a global place for creating, registering and retrieving Angular modules
 	// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 	// the 2nd parameter is an array of 'requires'
-	angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule']).config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-	    $ionicConfigProvider.navBar.alignTitle('center'); //覆盖默认Android的标题居左的设计
+	angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule']).config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+	    $ionicConfigProvider.navBar.alignTitle('left'); //覆盖默认Android的标题居左的设计
 	    if (ionic.Platform.isAndroid()) {
 	        //$ionicConfigProvider.scrolling.jsScrolling(true);
 	        $ionicConfigProvider.views.transition('none');
@@ -25855,7 +25856,8 @@
 	        url: '/favorite',
 	        views: {
 	            'favorite-tab': {
-	                templateUrl: "tpls/favorite.html"
+	                templateUrl: "tpls/favorite.html",
+	                controller: "favController"
 	            }
 	        }
 	    }).state('tabs.info', {
@@ -25892,16 +25894,23 @@
 	    });
 	    $urlRouterProvider.otherwise('/login');
 	}]).run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
-	    //配置项
+	    /**接口路径**/
 	    $rootScope.path = {
-	        trees: "/group/trees.action" //获取分类
+	        authenticate: "/login/authenticate.action" //用户登录
+	        , selectMember: "/login/selectMember.action" //选择马甲
+	        , trees: "/group/trees.action" //获取分类
 	        , getResources: "/group/getResources.action" // 获取柜子资源
+	        , modifyAccount: "/user/modifyAccount.action" //获取用户修改信息
+	        , addWatch: "/user/addWatch.action" //收藏
+	        , getWatches: "/user/getWatches.action" //收藏列表
 	    };
+	    /**基本配置**/
 	    $rootScope.config = {
-	        sitePath: "http://localhost/csaProxy",
+	        sitePath: "http://localhost/csaProxy", //地址
 	        currentGroupId: 0,
 	        journalID: 374 //期刊ID
 	    };
+
 	    $ionicPlatform.ready(function () {
 	        if (window.cordova && window.cordova.plugins.Keyboard) {
 	            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -25926,12 +25935,7 @@
 	/**
 	 * Created by dcampus2011 on 15/8/24.
 	 */
-	angular.module("global", []).factory("global.staticInfo", function () {
-	    return {
-	        sitePath: "http://localhost/csaProxy",
-	        journaryCategoryId: 371
-	    };
-	}).factory("global.currentInfo", function () {
+	angular.module("global", []).factory("global.currentInfo", function () {
 	    return {
 	        userName: ""
 	    };
@@ -26020,19 +26024,20 @@
 	/**
 	 * Created by dcampus2011 on 16/1/26.
 	 */
-	angular.module("LoginModule", ["httpRequest"]).controller("LoginController", ["$scope", "global.staticInfo", "httpRequest.sendRequest", "$state", function ($scope, staticInfo, sendRequest, $state) {
+	angular.module("LoginModule", ["httpRequest"]).controller("LoginController", ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", function ($rootScope, $scope, sendRequest, $state) {
 	    $scope.login = function () {
-
 	        //                var paramsStr="account="+$scope.loginInfo.username+"&password="+$scope.loginInfo.password;
-	        var paramsObj = { "account": $scope.loginInfo.username, "password": $scope.loginInfo.password };
-	        sendRequest("/login/authenticate.action", paramsObj, function (data, status, headers, config) {
+	        var paramsObj = {
+	            "account": $scope.loginInfo.username,
+	            "password": encodeURIComponent($scope.loginInfo.password)
+	        };
+	        sendRequest($rootScope.path.authenticate, paramsObj, function (data, status, headers, config) {
 	            var paramsStr = "memberId=" + data.members[0].id;
-	            sendRequest("/login/selectMember.action", paramsStr, function (data, status, headers, config) {
+	            sendRequest($rootScope.path.selectMember, paramsStr, function (data, status, headers, config) {
 	                $state.go("tabs.home");
 	            });
 	        });
 	    };
-
 	    $scope.loginInfo = {};
 	    $scope.loginInfo.username = "";
 	    $scope.loginInfo.password = "";
@@ -26045,7 +26050,7 @@
 	/**
 	 * Created by dcampus2011 on 16/1/29.
 	 */
-	angular.module("personalModule", ["httpRequest"]).controller("personalController", ["$scope", "global.staticInfo", "httpRequest.sendRequest", "$state", "$ionicPopup", function ($scope, staticInfo, sendRequest, $state, $ionicPopup) {
+	angular.module("personalModule", ["httpRequest"]).controller("personalController", ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", function ($rootScope, $scope, sendRequest, $state, $ionicPopup) {
 	    $scope.accountInfo = {};
 	    $scope.getAccount = function () {
 	        sendRequest("/user/getAccount.action", null, function (data, status, headers, config) {
@@ -26067,7 +26072,7 @@
 	            "position": $scope.accountInfo.position,
 	            "email": $scope.accountInfo.email
 	        };
-	        sendRequest("/user/modifyAccount.action", paramsObj, function (data, status, headers, config) {
+	        sendRequest($rootScope.path.modifyAccount, paramsObj, function (data, status, headers, config) {
 	            var alertPopup = $ionicPopup.alert({
 	                title: '修改账号信息',
 	                template: '修改成功！'
@@ -26085,7 +26090,10 @@
 	/**
 	 * Created by dcampus2011 on 16/2/17.
 	 */
-	angular.module("MainModule", ["httpRequest", "keepAlive"]).controller("MainController", ["$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive", function ($scope, staticInfo, currentInfo, sendRequest, $state, keepAlive) {
+	angular.module("MainModule", ["httpRequest", "keepAlive"]).controller("MainController", ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive", function ($scope, currentInfo, sendRequest, $state, keepAlive) {
+	    $scope.onTabSelected = function () {
+	        $scope.$broadcast("loadFavEvent"); //重载一次收藏列表
+	    };
 	    $scope.getStatus = function () {
 	        sendRequest("/user/status.action", null, function (data, status, headers, config) {
 	            if (data.status == "login") {
@@ -26110,7 +26118,7 @@
 	 * Created by dcampus2011 on 16/2/17.
 	 */
 
-	angular.module("HomeModule", ["httpRequest"]).controller("HomeController", ["$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$timeout", "$rootScope", ($scope, staticInfo, currentInfo, sendRequest, $state, $timeout, $rootScope) => {
+	angular.module("HomeModule", ["httpRequest"]).controller("HomeController", ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$timeout", "$rootScope", ($scope, currentInfo, sendRequest, $state, $timeout, $rootScope) => {
 	    $scope.goFar = () => {
 	        console.log("goFar");
 	        $state.go('tabs.groupList');
@@ -26130,7 +26138,7 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
-	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", ["$rootScope", "$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
+	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, currentInfo, sendRequest, $state, $stateParams) => {
 
 	    $scope.groupList = [];
 	    console.log($stateParams);
@@ -26151,15 +26159,75 @@
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
-	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ["$rootScope", "$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
+	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", "$timeout", "$ionicNavBarDelegate", "$ionicPopup", ($rootScope, $scope, currentInfo, sendRequest, $state, $stateParams, $timeout, $ionicNavBarDelegate, $ionicPopup) => {
+
 	    $scope.resourceList = [];
 	    $scope.title = $stateParams.title;
-	    $scope.loadGroups = () => {
-	        sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId, (data, status, headers, config) => {
-	            $scope.resourceList = data.resources;
-	        });
+	    $scope.init = function () {
+	        $scope.func.loadGroups();
+	        $scope.onHold = function () {
+	            $scope.func.showPopup(arguments);
+	        };
 	    };
-	    $scope.loadGroups();
+	    $scope.func = {
+	        loadGroups: () => {
+	            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId, (data, status, headers, config) => {
+	                $scope.resourceList = data.resources;
+	            });
+	        },
+	        showPopup: function () {
+	            $scope.data = {};
+	            let id = arguments.length && arguments[0];
+	            // An elaborate, custom popup
+	            var popup = $ionicPopup.show({
+	                template: '',
+	                title: '收藏资源',
+	                subTitle: '',
+	                scope: $scope,
+	                buttons: [{ text: '返回' }, {
+	                    text: '<b>收藏</b>',
+	                    type: 'button-positive',
+	                    onTap: function (e) {
+	                        return id[0];
+	                    }
+	                }]
+	            });
+	            popup.then(id => {
+	                if (id != undefined) {
+	                    let paramsObj = { "type": "resource", "id": id };
+	                    sendRequest($rootScope.path.addWatch, paramsObj, function (data, status, headers, config) {
+	                        if (data.success) {
+	                            console.log("收藏成功");
+	                        }
+	                    });
+	                }
+	            });
+	        }
+	    };
+	    $scope.init();
+	}]);
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by dcampus2011 on 16/2/26.
+	 */
+
+	angular.module("favModule", ["httpRequest"]).controller("favController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams", ($rootScope, $scope, currentInfo, sendRequest, $state, $stateParams) => {
+	    $scope.func = {
+	        loadFavList: function () {
+	            let paramsObj = { "type": "resource" };
+	            sendRequest($rootScope.path.getWatches, paramsObj, (data, status, headers, config) => {
+	                $scope.watchesList = data.watches;
+	            });
+	        }
+	    };
+	    $scope.func.loadFavList();
+	    $scope.$on("loadFavEvent", function () {
+	        $scope.func.loadFavList();
+	    });
 	}]);
 
 /***/ }

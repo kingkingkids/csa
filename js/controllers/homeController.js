@@ -3,8 +3,8 @@
  */
 
 angular.module("HomeModule", ["httpRequest"])
-    .controller("HomeController", ["$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$timeout", "$rootScope",
-        ($scope, staticInfo, currentInfo, sendRequest, $state, $timeout, $rootScope) => {
+    .controller("HomeController", ["$scope","global.currentInfo", "httpRequest.sendRequest", "$state", "$timeout", "$rootScope",
+        ($scope,  currentInfo, sendRequest, $state, $timeout, $rootScope) => {
             $scope.goFar = ()=> {
                 console.log("goFar");
                 $state.go('tabs.groupList');

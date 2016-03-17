@@ -4,8 +4,8 @@
 angular.module("GroupListModule", ["httpRequest"])
 
 
-    .controller("GroupListController", ["$rootScope", "$scope", "global.staticInfo", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams",
-        ($rootScope, $scope, staticInfo, currentInfo, sendRequest, $state, $stateParams) => {
+    .controller("GroupListController", ["$rootScope", "$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "$stateParams",
+        ($rootScope, $scope,  currentInfo, sendRequest, $state, $stateParams) => {
 
             $scope.groupList = [];
             console.log($stateParams);
@@ -18,5 +18,8 @@ angular.module("GroupListModule", ["httpRequest"])
                     })
             }
             $scope.loadGroups();
+
+
+
         }
     ]);
