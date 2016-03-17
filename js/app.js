@@ -83,13 +83,17 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
         $urlRouterProvider.otherwise('/login');
     }])
     .run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
-        //配置项
+        /**接口路径**/
         $rootScope.path = {
-            trees: "/group/trees.action"//获取分类
-            ,getResources:"/group/getResources.action"// 获取柜子资源
+            authenticate: "/login/authenticate.action"//用户登录
+            , selectMember: "/login/selectMember.action"//选择马甲
+            , trees: "/group/trees.action"//获取分类
+            , getResources: "/group/getResources.action"// 获取柜子资源
+            , modifyAccount: "/user/modifyAccount.action"//获取用户修改信息
         }
+        /**基本配置**/
         $rootScope.config = {
-            sitePath: "http://localhost/csaProxy",
+            sitePath: "http://localhost/csaProxy",//地址
             currentGroupId: 0,
             journalID: 374 //期刊ID
         }
