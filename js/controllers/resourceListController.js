@@ -10,20 +10,20 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
     $scope.title = $stateParams.title;
     $scope.init = function () {
         $scope.func.loadGroups();
-        $scope.onHold = ()=> {
-            $scope.func.showPopup(arguments);
+        $scope.onHold = (id)=> {
+            $scope.func.showPopup(id);
         }
     }
     $scope.func = {
         loadGroups: function () {
-            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId,
-                (data, status, headers, config) => {
-                    $scope.resourceList = data.resources;
-                });
+            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId).success(function (data) {
+                $scope.resourceList = data.resources;
+
+            });
         },
-        showPopup: function () {
+        showPopup: function (id) {
             $scope.data = {};
-            let id = arguments.length && arguments[0];
+
             // An elaborate, custom popup
             let popup = $ionicPopup.show({
                 template: '',
@@ -36,20 +36,21 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
                         text: '<b>收藏</b>',
                         type: 'button-positive',
                         onTap: (e)=> {
-                            return id[0];
+
+                            return id;
                         }
                     }
                 ]
             });
             popup.then((id)=> {
                 if (id != undefined) {
-                    let paramsObj = {"type": "resource", "id": id}
-                    sendRequest($rootScope.path.addWatch, paramsObj,
-                        (data, status, headers, config)=> {
-                            if (data.success) {
-                                console.log("收藏成功");
-                            }
-                        });
+                    let paramsObj = {"type": "resource", "id": id};
+                    sendRequest($rootScope.path.addWatch, paramsObj).success(function (data) {
+                        if (data.success) {
+                            console.log("收藏成功");
+                        }
+                    });
+
                 }
             });
         }

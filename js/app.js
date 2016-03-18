@@ -18,7 +18,8 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                     views: {
                         "wrap": {
                             templateUrl: "tpls/login.html",
-                            controller: "LoginController"
+                            controller: "LoginController",
+                            controllerAs: "vm"
                         }
                     }
                 })
@@ -29,7 +30,8 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                     views: {
                         "wrap": {
                             templateUrl: "tpls/tabs.html",
-                            controller: "MainController"
+                            controller: "MainController",
+                            controllerAs: "vm"
                         }
                     }
                 })
@@ -38,7 +40,8 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                     views: {
                         'home-tab': {
                             templateUrl: "tpls/home.html",
-                            controller: "HomeController"
+                            controller: "HomeController",
+                            controllerAs: "vm"
                         }
                     }
                 })
@@ -64,7 +67,8 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                 views: {
                     'personal-tab': {
                         templateUrl: "tpls/personal.html",
-                        controller: "personalController"
+                        controller: "personalController",
+                        controllerAs: 'vm'
                     }
                 }
             }).state('tabs.groupList', {
@@ -72,7 +76,8 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                 views: {
                     'home-tab': {
                         templateUrl: "tpls/groupList.html",
-                        controller: "GroupListController"
+                        controller: "GroupListController",
+                        controllerAs: 'vm'
                     }
                 }
             }).state('tabs.resourceList', {
@@ -96,6 +101,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
             , modifyAccount: "/user/modifyAccount.action"//获取用户修改信息
             , addWatch: "/user/addWatch.action"//收藏
             , getWatches: "/user/getWatches.action"//收藏列表
+            , getAccount: "/user/getAccount.action"//获取账号
         }
         /**基本配置**/
         $rootScope.config = {

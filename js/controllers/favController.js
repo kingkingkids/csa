@@ -9,14 +9,12 @@ favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest"];
 
 function favController($rootScope, $scope, sendRequest) {
     let vm = this;
-    vm.title = 123;
     vm.func = {
         loadFavList: function () {
             let paramsObj = {"type": "resource"}
-            sendRequest($rootScope.path.getWatches, paramsObj,
-                (data) => {
-                    vm.watchesList = data.watches;
-                });
+            sendRequest($rootScope.path.getWatches, paramsObj).success(function(data){
+                vm.watchesList = data.watches;
+            });
         }
     }
     vm.func.loadFavList();

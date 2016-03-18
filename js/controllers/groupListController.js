@@ -5,18 +5,19 @@ angular
     .module("GroupListModule", ["httpRequest"])
     .controller("GroupListController", GroupListController);
 
-GroupListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams"];
+GroupListController.$inject = ["$rootScope", "httpRequest.sendRequest", "$stateParams"];
 
-function GroupListController($rootScope, $scope, sendRequest, $stateParams) {
-    $scope.groupList = [];
-    console.log($stateParams);
-    $scope.title = $stateParams.title;
-    $scope.loadGroups = function () {
-        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId,
-            (data)=> {
-                var {children} = data;
-                $scope.groupList = children;
-            })
+function GroupListController($rootScope, sendRequest, $stateParams) {
+    let vm = this;
+    vm.groupList = [];
+    vm.title = $stateParams.title;
+    vm.loadGroups = ()=> {
+        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId)
+            .success(function (data) {
+                console.log(data);
+                let {children} = data;
+                vm.groupList = children;
+            });
     }
-    $scope.loadGroups();
+    vm.loadGroups();
 }

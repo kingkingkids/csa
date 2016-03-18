@@ -25831,7 +25831,8 @@
 	        views: {
 	            "wrap": {
 	                templateUrl: "tpls/login.html",
-	                controller: "LoginController"
+	                controller: "LoginController",
+	                controllerAs: "vm"
 	            }
 	        }
 	    }).state('tabs', {
@@ -25841,7 +25842,8 @@
 	        views: {
 	            "wrap": {
 	                templateUrl: "tpls/tabs.html",
-	                controller: "MainController"
+	                controller: "MainController",
+	                controllerAs: "vm"
 	            }
 	        }
 	    }).state('tabs.home', {
@@ -25849,7 +25851,8 @@
 	        views: {
 	            'home-tab': {
 	                templateUrl: "tpls/home.html",
-	                controller: "HomeController"
+	                controller: "HomeController",
+	                controllerAs: "vm"
 	            }
 	        }
 	    }).state('tabs.favorite', {
@@ -25874,7 +25877,8 @@
 	        views: {
 	            'personal-tab': {
 	                templateUrl: "tpls/personal.html",
-	                controller: "personalController"
+	                controller: "personalController",
+	                controllerAs: 'vm'
 	            }
 	        }
 	    }).state('tabs.groupList', {
@@ -25882,7 +25886,8 @@
 	        views: {
 	            'home-tab': {
 	                templateUrl: "tpls/groupList.html",
-	                controller: "GroupListController"
+	                controller: "GroupListController",
+	                controllerAs: 'vm'
 	            }
 	        }
 	    }).state('tabs.resourceList', {
@@ -25905,6 +25910,7 @@
 	        , modifyAccount: "/user/modifyAccount.action" //获取用户修改信息
 	        , addWatch: "/user/addWatch.action" //收藏
 	        , getWatches: "/user/getWatches.action" //收藏列表
+	        , getAccount: "/user/getAccount.action" //获取账号
 	    };
 	    /**基本配置**/
 	    $rootScope.config = {
@@ -25952,8 +25958,13 @@
 	/**
 	 * Created by dcampus2011 on 16/1/26.
 	 */
-	angular.module("httpRequest", []).factory("httpRequest.sendRequest", ["$http", "httpRequest.errorManage", "$rootScope", function ($http, errorManage, $rootScope) {
-	    return function (action, paramData, successFunc, errorFunc) {
+	angular.module("httpRequest", []).factory("httpRequest.sendRequest", sendRequest).factory("httpRequest.errorManage", errorManage);
+
+	sendRequest.$inject = ["$http", "httpRequest.errorManage", "$rootScope", "$q"];
+	errorManage.$inject = [];
+
+	function sendRequest($http, errorManage, $rootScope) {
+	    return function (action, paramData) {
 	        var req = {
 	            method: 'POST',
 	            url: $rootScope.config.sitePath + action,
@@ -25966,57 +25977,18 @@
 	        } else {
 	            req.params = paramData || {};
 	        }
-
-	        return $http(req).success(function (data, status, headers, config) {
-	            if (successFunc) {
-	                successFunc(data, status, headers, config);
-	            }
-	        }).error(function (data, status, headers, config) {
-	            if (errorFunc) {
-	                errorFunc(data, status, headers, config);
-	            } else {
-	                errorManage(status, data);
-	            }
+	        return $http(req).success(function (data, status, headers, config) {}).error(function (data, status, headers, config) {
+	            errorManage(data);
 	        });
 	    };
-	}]).factory("httpRequest.errorManage", function () {
+	}
+	function errorManage() {
 	    return function (status, data) {
 	        if (status == 500) {
 	            alert(data.detail);
 	        } else {
 	            alert("其他错误");
 	        }
-	    };
-	});
-
-	sendRequest.$inject = ["$http", "httpRequest.errorManage", "$rootScope"];
-
-	function sendRequest($http, errorManage, $rootScope) {
-	    return function (action, paramData, successFunc, errorFunc) {
-	        var req = {
-	            method: 'POST',
-	            url: $rootScope.config.sitePath + action,
-	            headers: {
-	                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-	            }
-	        };
-	        if (typeof paramData === 'string') {
-	            req.data = paramData;
-	        } else {
-	            req.params = paramData || {};
-	        }
-
-	        return $http(req).success(function (data, status, headers, config) {
-	            if (successFunc) {
-	                successFunc(data, status, headers, config);
-	            }
-	        }).error(function (data, status, headers, config) {
-	            if (errorFunc) {
-	                errorFunc(data, status, headers, config);
-	            } else {
-	                errorManage(status, data);
-	            }
-	        });
 	    };
 	}
 
@@ -26034,7 +26006,6 @@
 	    };
 	    var promise;
 	    var t = 5 * 60 * 1000;
-
 	    return {
 	        start: function () {
 	            if (!promise) {
@@ -26049,7 +26020,6 @@
 	        }
 	    };
 	}]);
-	function keepAlive() {}
 
 /***/ },
 /* 18 */
@@ -26060,24 +26030,32 @@
 	 */
 	angular.module("LoginModule", ["httpRequest"]).controller("LoginController", LoginController);
 
-	LoginController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state"];
+	LoginController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$q"];
 
-	function LoginController($rootScope, $scope, sendRequest, $state) {
-	    $scope.login = function () {
+	function LoginController($rootScope, $scope, sendRequest, $state, $q) {
+	    let vm = this;
+	    vm.login = function () {
 	        let paramsObj = {
-	            "account": $scope.loginInfo.username,
-	            "password": encodeURIComponent($scope.loginInfo.password)
+	            "account": vm.loginInfo.username,
+	            "password": encodeURIComponent(vm.loginInfo.password)
 	        };
-	        sendRequest($rootScope.path.authenticate, paramsObj, function (data) {
+	        sendRequest($rootScope.path.authenticate, paramsObj).success(function (data) {
 	            let paramsStr = "memberId=" + data.members[0].id;
-	            sendRequest($rootScope.path.selectMember, paramsStr, function (data) {
+	            sendRequest($rootScope.path.selectMember, paramsStr).success(function (data) {
 	                $state.go("tabs.home");
 	            });
 	        });
+	        //sendRequest($rootScope.path.authenticate, paramsObj).success(function (data) {
+	        //    let paramsStr = "memberId=" + data.members[0].id;
+	        //
+	        //    sendRequest($rootScope.path.selectMember, paramsStr).success(function (data) {
+	        //        $state.go("tabs.home");
+	        //    });
+	        //});
 	    };
-	    $scope.loginInfo = {};
-	    $scope.loginInfo.username = "";
-	    $scope.loginInfo.password = "";
+	    vm.loginInfo = {};
+	    vm.loginInfo.username = "";
+	    vm.loginInfo.password = "";
 	}
 
 /***/ },
@@ -26092,36 +26070,40 @@
 	personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup"];
 
 	function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup) {
-	    $scope.accountInfo = {};
-	    $scope.getAccount = function () {
-	        sendRequest("/user/getAccount.action", null, (data, status, headers, config) => {
-	            $scope.accountInfo.account = data.account;
-	            $scope.accountInfo.name = data.name;
-	            $scope.accountInfo.company = data.company;
-	            $scope.accountInfo.department = data.department;
-	            $scope.accountInfo.position = data.position;
-	            $scope.accountInfo.email = data.email;
+	    let vm = this;
+	    vm.accountInfo = {};
+	    vm.getAccount = () => {
+	        sendRequest($rootScope.path.getAccount, null).success(function (data) {
+
+	            let { account, company, department, email, im, mobile, name, phone, position } = data;
+	            vm.accountInfo = {
+	                account: account,
+	                name: name,
+	                company: company,
+	                department: department,
+	                mobile: mobile,
+	                email: email
+	            };
 	        });
 	    };
-
-	    $scope.modifyAccount = () => {
+	    vm.modifyAccount = () => {
+	        let _info = vm.accountInfo;
 	        let paramsObj = {
-	            "account": $scope.accountInfo.account,
-	            "name": $scope.accountInfo.name,
-	            "company": $scope.accountInfo.company,
-	            "department": $scope.accountInfo.department,
-	            "position": $scope.accountInfo.position,
-	            "email": $scope.accountInfo.email
+	            "account": _info.account,
+	            "name": _info.name,
+	            "company": _info.company,
+	            "department": _info.department,
+	            "mobile": _info.mobile,
+	            "email": _info.email
 	        };
-	        sendRequest($rootScope.path.modifyAccount, paramsObj, (data, status, headers, config) => {
+	        sendRequest($rootScope.path.modifyAccount, paramsObj).success(function (data) {
 	            let alertPopup = $ionicPopup.alert({
 	                title: '修改账号信息',
-	                template: '修改成功！'
+	                template: '保存成功！'
 	            });
 	        });
 	    };
-
-	    $scope.getAccount();
+	    vm.getAccount();
 	}
 
 /***/ },
@@ -26136,10 +26118,11 @@
 	MainController.$inject = ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive"];
 
 	function MainController($scope, currentInfo, sendRequest, $state, keepAlive) {
-	    $scope.onTabSelected = function () {
+	    let vm = this;
+	    vm.onTabSelected = function () {
 	        $scope.$broadcast("loadFavEvent"); //重载一次收藏列表
 	    };
-	    $scope.getStatus = function () {
+	    vm.getStatus = function () {
 	        sendRequest("/user/status.action", null, function (data, status, headers, config) {
 	            if (data.status == "login") {
 	                currentInfo.account = data.account;
@@ -26152,7 +26135,7 @@
 	            }
 	        });
 	    };
-	    $scope.getStatus();
+	    vm.getStatus();
 	}
 
 /***/ },
@@ -26165,11 +26148,11 @@
 
 	angular.module("HomeModule", ["httpRequest"]).controller("HomeController", HomeController);
 
-	HomeController.$inject = ["$scope", "$state", "$timeout", "$rootScope"];
+	HomeController.$inject = ["$state", "$timeout", "$rootScope"];
 
-	function HomeController($scope, $state, $timeout, $rootScope) {
-	    $scope.goFar = () => {
-	        console.log("goFar");
+	function HomeController($state, $timeout, $rootScope) {
+	    let vm = this;
+	    vm.goFar = () => {
 	        $state.go('tabs.groupList');
 	        $timeout(() => {
 	            $state.go('tabs.resourceList');
@@ -26189,19 +26172,20 @@
 	 */
 	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", GroupListController);
 
-	GroupListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams"];
+	GroupListController.$inject = ["$rootScope", "httpRequest.sendRequest", "$stateParams"];
 
-	function GroupListController($rootScope, $scope, sendRequest, $stateParams) {
-	    $scope.groupList = [];
-	    console.log($stateParams);
-	    $scope.title = $stateParams.title;
-	    $scope.loadGroups = function () {
-	        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId, data => {
-	            var { children } = data;
-	            $scope.groupList = children;
+	function GroupListController($rootScope, sendRequest, $stateParams) {
+	    let vm = this;
+	    vm.groupList = [];
+	    vm.title = $stateParams.title;
+	    vm.loadGroups = () => {
+	        sendRequest($rootScope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + $stateParams.groupId).success(function (data) {
+	            console.log(data);
+	            let { children } = data;
+	            vm.groupList = children;
 	        });
 	    };
-	    $scope.loadGroups();
+	    vm.loadGroups();
 	}
 
 /***/ },
@@ -26218,19 +26202,19 @@
 	    $scope.title = $stateParams.title;
 	    $scope.init = function () {
 	        $scope.func.loadGroups();
-	        $scope.onHold = () => {
-	            $scope.func.showPopup(arguments);
+	        $scope.onHold = id => {
+	            $scope.func.showPopup(id);
 	        };
 	    };
 	    $scope.func = {
 	        loadGroups: function () {
-	            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId, (data, status, headers, config) => {
+	            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId).success(function (data) {
 	                $scope.resourceList = data.resources;
 	            });
 	        },
-	        showPopup: function () {
+	        showPopup: function (id) {
 	            $scope.data = {};
-	            let id = arguments.length && arguments[0];
+
 	            // An elaborate, custom popup
 	            let popup = $ionicPopup.show({
 	                template: '',
@@ -26241,14 +26225,15 @@
 	                    text: '<b>收藏</b>',
 	                    type: 'button-positive',
 	                    onTap: e => {
-	                        return id[0];
+
+	                        return id;
 	                    }
 	                }]
 	            });
 	            popup.then(id => {
 	                if (id != undefined) {
 	                    let paramsObj = { "type": "resource", "id": id };
-	                    sendRequest($rootScope.path.addWatch, paramsObj, (data, status, headers, config) => {
+	                    sendRequest($rootScope.path.addWatch, paramsObj).success(function (data) {
 	                        if (data.success) {
 	                            console.log("收藏成功");
 	                        }
@@ -26273,11 +26258,10 @@
 
 	function favController($rootScope, $scope, sendRequest) {
 	    let vm = this;
-	    vm.title = 123;
 	    vm.func = {
 	        loadFavList: function () {
 	            let paramsObj = { "type": "resource" };
-	            sendRequest($rootScope.path.getWatches, paramsObj, data => {
+	            sendRequest($rootScope.path.getWatches, paramsObj).success(function (data) {
 	                vm.watchesList = data.watches;
 	            });
 	        }

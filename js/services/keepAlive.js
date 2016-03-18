@@ -15,7 +15,6 @@ angular.module("keepAlive", [])
         }
         var promise;
         var t = 5 * 60 * 1000;
-
         return {
             start: function () {
                 if (!promise) {
@@ -30,6 +29,3 @@ angular.module("keepAlive", [])
             }
         }
     }]);
-function keepAlive() {
-
-}

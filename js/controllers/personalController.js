@@ -8,36 +8,42 @@ angular
 personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup"];
 
 function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup) {
-    $scope.accountInfo = {};
-    $scope.getAccount = function () {
-        sendRequest("/user/getAccount.action", null,
-            (data, status, headers, config) => {
-                $scope.accountInfo.account = data.account;
-                $scope.accountInfo.name = data.name;
-                $scope.accountInfo.company = data.company;
-                $scope.accountInfo.department = data.department;
-                $scope.accountInfo.position = data.position;
-                $scope.accountInfo.email = data.email;
-            })
-    }
+    let vm = this;
+    vm.accountInfo = {};
+    vm.getAccount = ()=> {
+        sendRequest($rootScope.path.getAccount, null).success(function(data){
 
-    $scope.modifyAccount = ()=> {
+            let {account,company,department,email,im,mobile,name,phone,position} = data;
+            vm.accountInfo = {
+                account: account,
+                name: name,
+                company: company,
+                department: department,
+                mobile: mobile,
+                email: email
+            }
+
+        });
+
+
+    }
+    vm.modifyAccount = ()=> {
+        let _info = vm.accountInfo;
         let paramsObj = {
-            "account": $scope.accountInfo.account,
-            "name": $scope.accountInfo.name,
-            "company": $scope.accountInfo.company,
-            "department": $scope.accountInfo.department,
-            "position": $scope.accountInfo.position,
-            "email": $scope.accountInfo.email
+            "account": _info.account,
+            "name": _info.name,
+            "company": _info.company,
+            "department": _info.department,
+            "mobile": _info.mobile,
+            "email": _info.email
         };
-        sendRequest($rootScope.path.modifyAccount, paramsObj,
-            (data, status, headers, config)=> {
-                let alertPopup = $ionicPopup.alert({
-                    title: '修改账号信息',
-                    template: '修改成功！'
-                });
-            })
-    }
+        sendRequest($rootScope.path.modifyAccount, paramsObj).success(function(data){
+            let alertPopup = $ionicPopup.alert({
+                title: '修改账号信息',
+                template: '保存成功！'
+            });
+        });
 
-    $scope.getAccount();
+    }
+    vm.getAccount();
 }

@@ -6,11 +6,11 @@ angular
     .module("HomeModule", ["httpRequest"])
     .controller("HomeController", HomeController);
 
-HomeController.$inject = ["$scope", "$state", "$timeout", "$rootScope"];
+HomeController.$inject = ["$state", "$timeout", "$rootScope"];
 
-function HomeController($scope, $state, $timeout, $rootScope) {
-    $scope.goFar = ()=> {
-        console.log("goFar");
+function HomeController($state, $timeout, $rootScope) {
+    let vm = this;
+    vm.goFar = ()=> {
         $state.go('tabs.groupList');
         $timeout(()=> {
             $state.go('tabs.resourceList');
@@ -19,4 +19,5 @@ function HomeController($scope, $state, $timeout, $rootScope) {
     $rootScope.goToList = (_id, title)=> {
         $state.go('tabs.groupList', {groupId: _id, title: title});
     }
+
 }

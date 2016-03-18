@@ -8,10 +8,11 @@ angular
 MainController.$inject = ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive"];
 
 function MainController($scope, currentInfo, sendRequest, $state, keepAlive) {
-    $scope.onTabSelected = function () {
+    let vm = this;
+    vm.onTabSelected = function () {
         $scope.$broadcast("loadFavEvent");//重载一次收藏列表
     }
-    $scope.getStatus = function () {
+    vm.getStatus = function () {
         sendRequest("/user/status.action", null,
             function (data, status, headers, config) {
                 if (data.status == "login") {
@@ -25,5 +26,5 @@ function MainController($scope, currentInfo, sendRequest, $state, keepAlive) {
                 }
             });
     };
-    $scope.getStatus();
+    vm.getStatus();
 }
