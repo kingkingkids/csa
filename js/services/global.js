@@ -4,9 +4,9 @@
 angular
     .module("global", [])
     .factory("global.currentInfo", currentInfo);
-
 function currentInfo() {
     return {
         userName: ""
+        , isAnouymus: false
     };
 }

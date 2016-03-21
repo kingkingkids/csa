@@ -10,6 +10,15 @@ HomeController.$inject = ["$state", "$timeout", "$rootScope"];
 
 function HomeController($state, $timeout, $rootScope) {
     let vm = this;
+    let collect = {
+        goFar: ()=> {
+            $state.go('tabs.groupList');
+            $timeout(()=> {
+                $state.go('tabs.resourceList');
+            });
+        }
+    }
+    this.collect = collect;
     vm.goFar = ()=> {
         $state.go('tabs.groupList');
         $timeout(()=> {

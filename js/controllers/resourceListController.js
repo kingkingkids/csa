@@ -4,26 +4,25 @@
 angular.module("ResourceListModule", ["httpRequest"])
     .controller("ResourceListController", ResourceListController);
 ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest",
-    "$stateParams", "$ionicPopup"];
-function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup) {
-    $scope.resourceList = [];
-    $scope.title = $stateParams.title;
-    $scope.init = function () {
-        $scope.func.loadGroups();
-        $scope.onHold = (id)=> {
-            $scope.func.showPopup(id);
+    "$stateParams", "$ionicPopup", "request.fav", "request.resources"];
+function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources) {
+    var vm = this;
+    vm.resourceList = [];
+    vm.title = $stateParams.title;
+    vm.init = function () {
+        vm.func.loadGroups();
+        vm.onHold = (id)=> {
+            vm.func.showPopup(id);
         }
     }
-    $scope.func = {
+    vm.func = {
         loadGroups: function () {
-            sendRequest($rootScope.path.getResources, "type=all&limit=100&start=0&parentId=" + $stateParams.parentId).success(function (data) {
-                $scope.resourceList = data.resources;
-
+            resources.getList($stateParams.parentId).then((res)=> {
+                vm.resourceList = res.data.resources;
             });
         },
         showPopup: function (id) {
-            $scope.data = {};
-
+            vm.data = {};
             // An elaborate, custom popup
             let popup = $ionicPopup.show({
                 template: '',
@@ -44,9 +43,8 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
             });
             popup.then((id)=> {
                 if (id != undefined) {
-                    let paramsObj = {"type": "resource", "id": id};
-                    sendRequest($rootScope.path.addWatch, paramsObj).success(function (data) {
-                        if (data.success) {
+                    fav.addFav(id).then((res)=> {
+                        if (res.data.success) {
                             console.log("收藏成功");
                         }
                     });
@@ -55,5 +53,5 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
             });
         }
     }
-    $scope.init();
+    vm.init();
 }

@@ -5,20 +5,19 @@ angular
     .module("favModule", ["httpRequest"])
     .controller("favController", favController);
 
-favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest"];
+favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "request.fav"];
 
-function favController($rootScope, $scope, sendRequest) {
-    let vm = this;
-    vm.func = {
-        loadFavList: function () {
-            let paramsObj = {"type": "resource"}
-            sendRequest($rootScope.path.getWatches, paramsObj).success(function(data){
-                vm.watchesList = data.watches;
+function favController($rootScope, $scope, sendRequest, fav) {
+    let collect = {
+        loadFavList: ()=> {
+            fav.getList().then((res)=> {
+                this.watchesList = res.data.watches;
             });
         }
     }
-    vm.func.loadFavList();
-    $scope.$on("loadFavEvent", function () {
-        vm.func.loadFavList();
+    collect.loadFavList();
+    $scope.$on("loadFavEvent", ()=> {
+        collect.loadFavList();
     });
+   // this.func = func;//exports
 }

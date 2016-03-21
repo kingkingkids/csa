@@ -4,8 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-    'favModule']).config(["$stateProvider", "$urlRouterProvider",
-        "$ionicConfigProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    'favModule', 'request.doHttpRequest', 'appInterceptor']).config(["$stateProvider", "$urlRouterProvider",
+        "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+            $httpProvider.interceptors.push('appInterceptor');
             $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
             if (ionic.Platform.isAndroid()) {
                 //$ionicConfigProvider.scrolling.jsScrolling(true);
@@ -85,7 +86,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                 views: {
                     'home-tab': {
                         templateUrl: "tpls/resourceList.html",
-                        controller: "ResourceListController"
+                        controller: "ResourceListController",
                     }
                 }
             });
@@ -102,6 +103,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
             , addWatch: "/user/addWatch.action"//收藏
             , getWatches: "/user/getWatches.action"//收藏列表
             , getAccount: "/user/getAccount.action"//获取账号
+            , getStatus: "/user/status.action"
         }
         /**基本配置**/
         $rootScope.config = {

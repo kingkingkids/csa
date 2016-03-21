@@ -8,6 +8,12 @@ angular
 MainController.$inject = ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive"];
 
 function MainController($scope, currentInfo, sendRequest, $state, keepAlive) {
+    /**接收到由appInterceptor过来的事件**/
+    $scope.$on("tpls.login", function () {
+        if (currentInfo.isAnouymus) {
+            $state.go("tabs.home");//如果当前已经登录，则回跳到登录页
+        }
+    });
     let vm = this;
     vm.onTabSelected = function () {
         $scope.$broadcast("loadFavEvent");//重载一次收藏列表

@@ -1,7 +1,7 @@
 <ion-view view-title="">
     <ion-nav-bar>
         <ion-nav-title>
-            {{title}}
+            {{vm.title}}
         </ion-nav-title>
         <ion-nav-back-button>
             返回
@@ -9,7 +9,7 @@
     </ion-nav-bar>
     <ion-content>
         <ul class="list">
-            <li class="item" ng-repeat="res in resourceList" on-hold="onHold(res.id)">
+            <li class="item" ng-repeat="res in vm.resourceList" on-hold="vm.onHold(res.id)">
                 <div ng-if="res.type == 1"
                      ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
                     {{res.displayName}}

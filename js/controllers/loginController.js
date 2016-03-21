@@ -5,31 +5,31 @@ angular
     .module("LoginModule", ["httpRequest"])
     .controller("LoginController", LoginController);
 
-LoginController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$q"];
+LoginController.$inject = ["$state", "request.account"];
 
-function LoginController($rootScope, $scope, sendRequest, $state, $q) {
-    let vm = this;
-    vm.login = function () {
-        let paramsObj = {
-            "account": vm.loginInfo.username,
-            "password": encodeURIComponent(vm.loginInfo.password)
-        };
-        sendRequest($rootScope.path.authenticate, paramsObj).success(function (data) {
-            let paramsStr = "memberId=" + data.members[0].id;
-            sendRequest($rootScope.path.selectMember, paramsStr).success(function (data) {
-                $state.go("tabs.home");
+function LoginController($state, account) {
+    let collect = {
+        login: ()=> {
+            let paramsObj = {
+                "account": this.loginInfo.username,
+                "password": encodeURIComponent(this.loginInfo.password)
+            };
+            account.doLogin(paramsObj).then((res)=> {
+                let paramsStr = "memberId=" + res.data.members[0].id;
+                account.selectMember(paramsStr).then((res)=> {
+
+                    $state.go("tabs.home");
+                    paramsStr = null;
+                });
+                paramsObj = null;
+
             });
-        });
-        //sendRequest($rootScope.path.authenticate, paramsObj).success(function (data) {
-        //    let paramsStr = "memberId=" + data.members[0].id;
-        //
-        //    sendRequest($rootScope.path.selectMember, paramsStr).success(function (data) {
-        //        $state.go("tabs.home");
-        //    });
-        //});
-
-    };
-    vm.loginInfo = {};
-    vm.loginInfo.username = "";
-    vm.loginInfo.password = "";
+        }
+    }
+    let loginInfo = {
+        username: "",
+        password: ""
+    }
+    this.loginInfo = loginInfo;
+    this.collect = collect;
 }

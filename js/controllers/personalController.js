@@ -5,15 +5,14 @@ angular
     .module("personalModule", ["httpRequest"])
     .controller("personalController", personalController);
 
-personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup"];
+personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", "request.account"];
 
-function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup) {
+function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup, account) {
     let vm = this;
     vm.accountInfo = {};
     vm.getAccount = ()=> {
-        sendRequest($rootScope.path.getAccount, null).success(function(data){
-
-            let {account,company,department,email,im,mobile,name,phone,position} = data;
+        account.getAccount().then((res)=>{
+            let {account,company,department,email,im,mobile,name,phone,position} = res.data;
             vm.accountInfo = {
                 account: account,
                 name: name,
@@ -22,8 +21,8 @@ function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup
                 mobile: mobile,
                 email: email
             }
-
         });
+
 
 
     }
@@ -37,7 +36,7 @@ function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup
             "mobile": _info.mobile,
             "email": _info.email
         };
-        sendRequest($rootScope.path.modifyAccount, paramsObj).success(function(data){
+        sendRequest($rootScope.path.modifyAccount, paramsObj).success(function (data) {
             let alertPopup = $ionicPopup.alert({
                 title: '修改账号信息',
                 template: '保存成功！'

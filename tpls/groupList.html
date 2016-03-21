@@ -1,4 +1,4 @@
-<ion-view view-title="{{vm.title}}">
+<ion-view view-title="{{vm.collect.title}}">
     <ion-nav-bar>
         <ion-nav-back-button>
             返回
@@ -6,7 +6,7 @@
     </ion-nav-bar>
     <ion-content>
         <ul class="list">
-            <li class="item" collection-repeat="group in vm.groupList">
+            <li class="item" collection-repeat="group in vm.collect.groupList">
                 <div ng-if="group.type == 'group'"
                      ui-sref="tabs.resourceList({parentId:-group.id,title:group.displayName})">
                     {{group.displayName}}
