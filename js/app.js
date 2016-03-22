@@ -87,6 +87,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                     'home-tab': {
                         templateUrl: "tpls/resourceList.html",
                         controller: "ResourceListController",
+                        controllerAs: "vm"
                     }
                 }
             });
@@ -104,6 +105,7 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
             , getWatches: "/user/getWatches.action"//收藏列表
             , getAccount: "/user/getAccount.action"//获取账号
             , getStatus: "/user/status.action"
+            , keepAlive: "/user/alive.action"
         }
         /**基本配置**/
         $rootScope.config = {

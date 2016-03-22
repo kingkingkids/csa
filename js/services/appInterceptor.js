@@ -8,6 +8,9 @@ function appInterceptor($q, $rootScope) {
     return {
         // optional method
         'request': function (config) {
+            if (config.url == "tpls/login.html") {
+                $rootScope.$broadcast("interceptor.login");//如果当前模板是login.html,则返回一个广播
+            }
             return config;
         },
 
@@ -22,9 +25,6 @@ function appInterceptor($q, $rootScope) {
         'response': function (response) {
             //console.log(response);
             // do something on success
-            if (response.config.url == "tpls/login.html") {
-                $rootScope.$broadcast("tpls.login");//如果当前模板是login.html,则返回一个广播事件
-            }
             return response;
         },
 

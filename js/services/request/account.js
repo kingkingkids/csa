@@ -1,5 +1,5 @@
-account.$inject = ["httpRequest.sendRequest", "$rootScope", "global.currentInfo"];
-function account(send, scope, currentInfo) {
+account.$inject = ["httpRequest.sendRequest", "$rootScope", "global.currentInfo", "$interval"];
+function account(send, scope, currentInfo, interval) {
     return {
         doLogin: function (paramsObj) {
             return send(scope.path.authenticate, paramsObj).success(()=> {
@@ -15,6 +15,22 @@ function account(send, scope, currentInfo) {
         },
         getStatus: function () {
             return send(scope.path.getStatus);
+        },
+        keepAlive: {
+            promise: null,
+            start: function () {
+                if (!this.promise) {
+                    this.promise = interval(()=> {
+                        send(scope.path.keepAlive);
+                    }, 5 * 1000 * 60);
+                }
+            },
+            stop: function () {
+                if (this.promise) {
+                    interval.cancel(this.promise);
+                    this.promise = null;
+                }
+            }
         }
     }
 }

@@ -25898,7 +25898,8 @@
 	        views: {
 	            'home-tab': {
 	                templateUrl: "tpls/resourceList.html",
-	                controller: "ResourceListController"
+	                controller: "ResourceListController",
+	                controllerAs: "vm"
 	            }
 	        }
 	    });
@@ -25914,7 +25915,8 @@
 	        , addWatch: "/user/addWatch.action" //收藏
 	        , getWatches: "/user/getWatches.action" //收藏列表
 	        , getAccount: "/user/getAccount.action" //获取账号
-	        , getStatus: "/user/status.action"
+	        , getStatus: "/user/status.action",
+	        keepAlive: "/user/alive.action"
 	    };
 	    /**基本配置**/
 	    $rootScope.config = {
@@ -25964,12 +25966,12 @@
 	 */
 	angular.module("httpRequest", []).factory("httpRequest.sendRequest", sendRequest).factory("httpRequest.errorManage", errorManage);
 	sendRequest.$inject = ["$http", "httpRequest.errorManage", "$rootScope"];
-	errorManage.$inject = ["$state", "global.currentInfo"];
-	function sendRequest($http, errorManage, $rootScope) {
+	errorManage.$inject = ["$state", "global.currentInfo", "$rootScope"];
+	function sendRequest($http, errorManage, scope) {
 	    return function (action, paramData) {
 	        var req = {
 	            method: 'POST',
-	            url: $rootScope.config.sitePath + action,
+	            url: scope.config.sitePath + action,
 	            headers: {
 	                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 	            }
@@ -25979,20 +25981,19 @@
 	        } else {
 	            req.params = paramData || {};
 	        }
-	        return $http(req).success(function (data, status, headers, config) {}).error(function (data, status, headers, config) {
+	        return $http(req).success(function () {}).error(function (data) {
 	            errorManage(data);
 	        });
 	    };
 	}
-	function errorManage(state, currentInfo) {
-	    return function (status, data) {
+	function errorManage(state, currentInfo, scope) {
+	    return function (status) {
 	        /**当拦截器拦截到错误代码是480，则会跳到登录页，并设置登录状态为false**/
 	        if (status.code == 480) {
-	            currentInfo.isAnouymus = false;
-	            state.go("login");
+	            scope.$broadcast("status.logout"); //如果错误码是480，则表示所有请求超时
 	        } else {
-	            console.log("其他错误");
-	        }
+	                console.log("其他错误");
+	            }
 	    };
 	}
 
@@ -26009,11 +26010,12 @@
 	keepAlive.$inject = ["httpRequest.sendRequest", "$interval"];
 
 	function keepAlive(sendRequest, $interval) {
+
 	    var keepAlive = function () {
 	        sendRequest("/user/alive.action", "", function (data, status, headers, config) {}, function (data, status, headers, config) {});
 	    };
 	    var promise;
-	    var t = 5 * 60 * 1000;
+	    var t = 5;
 	    return {
 	        start: function () {
 	            if (!promise) {
@@ -26042,6 +26044,9 @@
 	    return {
 	        // optional method
 	        'request': function (config) {
+	            if (config.url == "tpls/login.html") {
+	                $rootScope.$broadcast("interceptor.login"); //如果当前模板是login.html,则返回一个广播
+	            }
 	            return config;
 	        },
 
@@ -26055,9 +26060,6 @@
 	        'response': function (response) {
 	            //console.log(response);
 	            // do something on success
-	            if (response.config.url == "tpls/login.html") {
-	                $rootScope.$broadcast("tpls.login"); //如果当前模板是login.html,则返回一个广播事件
-	            }
 	            return response;
 	        },
 
@@ -26137,8 +26139,8 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	account.$inject = ["httpRequest.sendRequest", "$rootScope", "global.currentInfo"];
-	function account(send, scope, currentInfo) {
+	account.$inject = ["httpRequest.sendRequest", "$rootScope", "global.currentInfo", "$interval"];
+	function account(send, scope, currentInfo, interval) {
 	    return {
 	        doLogin: function (paramsObj) {
 	            return send(scope.path.authenticate, paramsObj).success(() => {
@@ -26154,6 +26156,22 @@
 	        },
 	        getStatus: function () {
 	            return send(scope.path.getStatus);
+	        },
+	        keepAlive: {
+	            promise: null,
+	            start: function () {
+	                if (!this.promise) {
+	                    this.promise = interval(() => {
+	                        send(scope.path.keepAlive);
+	                    }, 5 * 1000 * 60);
+	                }
+	            },
+	            stop: function () {
+	                if (this.promise) {
+	                    interval.cancel(this.promise);
+	                    this.promise = null;
+	                }
+	            }
 	        }
 	    };
 	}
@@ -26250,35 +26268,33 @@
 	/**
 	 * Created by dcampus2011 on 16/2/17.
 	 */
-	angular.module("MainModule", ["httpRequest", "keepAlive"]).controller("MainController", MainController);
+	angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
-	MainController.$inject = ["$scope", "global.currentInfo", "httpRequest.sendRequest", "$state", "keepAlive"];
+	MainController.$inject = ["$rootScope", "$scope", "global.currentInfo", "$state", "request.account"];
 
-	function MainController($scope, currentInfo, sendRequest, $state, keepAlive) {
-	    /**接收到由appInterceptor过来的事件**/
-	    $scope.$on("tpls.login", function () {
+	function MainController(root, scope, currentInfo, state, account) {
+	    /**接收到由appInterceptor过来的事件,当加载到登录页时的判断**/
+	    root.$on("interceptor.login", function () {
 	        if (currentInfo.isAnouymus) {
-	            $state.go("tabs.home"); //如果当前已经登录，则回跳到登录页
+	            state.go("tabs.home"); //如果当前已经登录，则回跳到首页
 	        }
 	    });
-	    let vm = this;
-	    vm.onTabSelected = function () {
-	        $scope.$broadcast("loadFavEvent"); //重载一次收藏列表
+	    /**接收到由httpRequest传过来的事件,退出时调用**/
+	    root.$on("status.logout", function () {
+	        state.go("login"); //返回登录页
+	        currentInfo.isAnouymus = false; //当前登录状态为false
+	        account.keepAlive.stop(); //停止keepAlive调用
+	    });
+	    let collect = {
+	        init: function () {
+	            account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
+	        },
+	        onTabSelected: () => {
+	            scope.$broadcast("loadFavEvent"); //重载一次收藏列表
+	        }
 	    };
-	    vm.getStatus = function () {
-	        sendRequest("/user/status.action", null, function (data, status, headers, config) {
-	            if (data.status == "login") {
-	                currentInfo.account = data.account;
-	                currentInfo.userName = data.name;
-	                currentInfo.personGroupId = data.personGroupId;
-	                keepAlive.start();
-	            } else {
-	                $state.go("login");
-	                keepAlive.stop();
-	            }
-	        });
-	    };
-	    vm.getStatus();
+	    collect.init();
+	    this.collect = collect; //外部调用
 	}
 
 /***/ },
