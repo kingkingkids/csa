@@ -1,13 +1,15 @@
-account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant"];
-function account(send, scope, interval, $ionicModal, $q, constant) {
-
+account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session"];
+function account(send, scope, interval, $ionicModal, $q, constant, session) {
     return {
         doLogin: function (paramsObj) {
             let defered = $q.defer();
-
             send(constant.path.authenticate, paramsObj).then((res)=> {
                 let paramsStr = "memberId=" + res.data.members[0].id;
                 this.selectMember(paramsStr).then((res)=> {
+                    this.getStatus().then(res=> {
+                        let {account,isAdmin,memberId,name,personGroupId,status} = res.data;
+                        session.setSession({account, isAdmin, memberId, name, personGroupId, status});//设置应用session
+                    })
                     defered.resolve(res);
                 });
             });
@@ -49,9 +51,13 @@ function account(send, scope, interval, $ionicModal, $q, constant) {
                 this.getStatus().then((res)=> {
                     if (res.data.status == "guest") {
                         scope.loginModal.show();
+                        session.removeSession();
                     }
                 });
             });
+        },
+        logout: function () {
+            return send(constant.path.logout);
         }
     }
 }

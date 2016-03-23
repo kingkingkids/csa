@@ -70,6 +70,7 @@
 	__webpack_require__(27); //柜子列表控制器
 	__webpack_require__(28); //资源列表控制器
 	__webpack_require__(29); //资源列表控制器
+	__webpack_require__(30); //资源列表控制器
 
 /***/ },
 /* 2 */
@@ -483,7 +484,7 @@
 
 
 	// module
-	exports.push([module.id, ".viewFrame {\r\n  width: 100%;\r\n  height: 100%; }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "body {\r\n  font-size: 12px; }\r\n\r\n.viewFrame {\r\n  width: 100%;\r\n  height: 100%; }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -25820,8 +25821,8 @@
 	// angular.module is a global place for creating, registering and retrieving Angular modules
 	// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 	// the 2nd parameter is an array of 'requires'
-	angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule', 'request.doHttpRequest', 'appInterceptor']).config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
-	    $httpProvider.interceptors.push('appInterceptor');
+	angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule']).config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+	    //$httpProvider.interceptors.push('appInterceptor');
 	    $ionicConfigProvider.navBar.alignTitle('left'); //覆盖默认Android的标题居左的设计
 	    if (ionic.Platform.isAndroid()) {
 	        //$ionicConfigProvider.scrolling.jsScrolling(true);
@@ -25881,6 +25882,16 @@
 	                templateUrl: "tpls/personal.html",
 	                controller: "personalController",
 	                controllerAs: 'vm'
+	            }
+	        }
+	    }).state('tabs.edit', {
+	        url: '/personal/edit/:type',
+	        views: {
+	            'personal-tab': {
+	                templateUrl: "tpls/personalEdit.html",
+	                controller: "editController",
+	                controllerAs: "vm"
+
 	            }
 	        }
 	    }).state('tabs.groupList', {
@@ -25949,7 +25960,8 @@
 	        , getAccount: "/user/getAccount.action" //获取账号
 	        , getStatus: "/user/status.action",
 	        keepAlive: "/user/alive.action",
-	        downloadResource: "/group/downloadResource.action"
+	        downloadResource: "/group/downloadResource.action",
+	        logout: "/login/logout.action"
 	    },
 	    config: {
 	        sitePath: "http://localhost/csaProxy", //地址
@@ -25966,7 +25978,7 @@
 	            return JSON.parse(localStorage.session);
 	        },
 	        removeSession: function () {
-	            localStorage.session = undefined;
+	            localStorage.clear(localStorage.session);
 	        }
 	    };
 	}
@@ -26004,7 +26016,7 @@
 	    return function (status) {
 	        /**当拦截器拦截到错误代码是480，则会跳到登录页，并设置登录状态为false**/
 	        if (status.code == 480) {
-	            scope.$broadcast("status.logout"); //如果错误码是480，则表示所有请求超时
+	            scope.$broadcast("status:logout"); //如果错误码是480，则表示所有请求超时
 	        } else {
 	                console.log("其他错误");
 	            }
@@ -26017,6 +26029,7 @@
 
 	/**
 	 * Created by dcampus on 2016/3/21.
+	 * 拦截器
 	 */
 	angular.module("appInterceptor", []).factory("appInterceptor", appInterceptor);
 	appInterceptor.$inject = ["$q", "$rootScope"];
@@ -26119,16 +26132,18 @@
 /* 22 */
 /***/ function(module, exports) {
 
-	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant"];
-	function account(send, scope, interval, $ionicModal, $q, constant) {
-
+	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session"];
+	function account(send, scope, interval, $ionicModal, $q, constant, session) {
 	    return {
 	        doLogin: function (paramsObj) {
 	            let defered = $q.defer();
-
 	            send(constant.path.authenticate, paramsObj).then(res => {
 	                let paramsStr = "memberId=" + res.data.members[0].id;
 	                this.selectMember(paramsStr).then(res => {
+	                    this.getStatus().then(res => {
+	                        let { account, isAdmin, memberId, name, personGroupId, status } = res.data;
+	                        session.setSession({ account, isAdmin, memberId, name, personGroupId, status }); //设置应用session
+	                    });
 	                    defered.resolve(res);
 	                });
 	            });
@@ -26170,9 +26185,13 @@
 	                this.getStatus().then(res => {
 	                    if (res.data.status == "guest") {
 	                        scope.loginModal.show();
+	                        session.removeSession();
 	                    }
 	                });
 	            });
+	        },
+	        logout: function () {
+	            return send(constant.path.logout);
 	        }
 	    };
 	}
@@ -26187,9 +26206,9 @@
 	 */
 	angular.module("LoginModule", ["httpRequest"]).controller("LoginController", LoginController);
 
-	LoginController.$inject = ["$state", "request.account"];
+	LoginController.$inject = ["$state", "request.account", "global.session"];
 
-	function LoginController($state, account) {
+	function LoginController($state, account, session) {
 	    let collect = {
 	        login: () => {
 	            let paramsObj = {
@@ -26199,7 +26218,6 @@
 	            account.doLogin(paramsObj).then(res => {
 	                let paramsStr = "memberId=" + res.data.members[0].id;
 	                account.selectMember(paramsStr).then(res => {
-
 	                    $state.go("tabs.home");
 	                    paramsStr = null;
 	                });
@@ -26224,42 +26242,35 @@
 	 */
 	angular.module("personalModule", ["httpRequest"]).controller("personalController", personalController);
 
-	personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", "request.account"];
+	personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", "request.account", "global.session"];
 
-	function personalController($rootScope, $scope, sendRequest, $state, $ionicPopup, account) {
-	    let vm = this;
-	    vm.accountInfo = {};
-	    vm.getAccount = () => {
-	        account.getAccount().then(res => {
-	            let { account, company, department, email, im, mobile, name, phone, position } = res.data;
-	            vm.accountInfo = {
-	                account: account,
-	                name: name,
-	                company: company,
-	                department: department,
-	                mobile: mobile,
-	                email: email
-	            };
-	        });
-	    };
-	    vm.modifyAccount = () => {
-	        let _info = vm.accountInfo;
-	        let paramsObj = {
-	            "account": _info.account,
-	            "name": _info.name,
-	            "company": _info.company,
-	            "department": _info.department,
-	            "mobile": _info.mobile,
-	            "email": _info.email
-	        };
-	        sendRequest($rootScope.path.modifyAccount, paramsObj).success(function (data) {
-	            let alertPopup = $ionicPopup.alert({
-	                title: '修改账号信息',
-	                template: '保存成功！'
+	function personalController(root, scope, sendRequest, $state, $ionicPopup, account, session) {
+	    let accountInfo = {};
+
+	    let collect = {
+	        getAccount: () => {
+	            account.getAccount().then(res => {
+	                let { account, company, department, email, im, mobile, name, phone, position } = res.data;
+	                this.accountInfo = {
+	                    account: account,
+	                    name: name,
+	                    company: company,
+	                    department: department,
+	                    mobile: mobile,
+	                    email: email
+	                };
 	            });
-	        });
+	        },
+	        logout: function () {
+	            account.logout().then(res => {
+	                $state.go("tabs.home");
+	                root.$emit("event:logout");
+	                session.removeSession();
+	            });
+	        }
 	    };
-	    vm.getAccount();
+	    collect.getAccount();
+	    this.collect = collect;
 	}
 
 /***/ },
@@ -26271,22 +26282,17 @@
 	 */
 	angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
-	MainController.$inject = ["$rootScope", "$scope", "global.currentInfo", "$state", "request.account", "$ionicModal"];
+	MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session"];
 
-	function MainController(root, scope, currentInfo, state, account, $ionicModal) {
-	    /**接收到由appInterceptor过来的事件,当加载到登录页时的判断**/
-	    root.$on("interceptor.login", function () {
-	        if (currentInfo.isAnouymus) {
-	            state.go("tabs.home"); //如果当前已经登录，则回跳到首页
-	        }
-	    });
+	function MainController(root, scope, state, account, session) {
 	    /**接收到由httpRequest传过来的事件,退出时调用**/
-	    root.$on("status.logout", () => {
-	        //state.go("login");//返回登录页
+	    root.$on("status:logout", () => {
 	        this.collect.loginModal.show();
-	        state.go("tabs.home");
-	        currentInfo.isAnouymus = false; //当前登录状态为false
 	        account.keepAlive.stop(); //停止keepAlive调用
+	        session.removeSession();
+	    });
+	    root.$on("event:logout", () => {
+	        this.collect.loginModal.show();
 	    });
 	    account.loginModal(scope); //判断是否登录,否则显示登录窗口
 	    let collect = {
@@ -26385,8 +26391,8 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce"];
-	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce) {
+	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant"];
+	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant) {
 
 	    let collect = {
 	        resourceList: [],
@@ -26438,8 +26444,8 @@
 	        },
 	        openModal: function (id, title) {
 	            this.modalTitle = title;
-	            //this.frameSrc = "http://211.66.86.101:8080" + $rootScope.path.downloadResource + "?disposition=inline&id=" + id;
-	            this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
+	            this.frameSrc = $sce.trustAsResourceUrl("http://211.66.86.101:8080" + constant.path.downloadResource + "?disposition=inline&id=" + id);
+	            //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
 	            $scope.modal.show();
 	        },
 	        hideModal: function () {
@@ -26474,6 +26480,67 @@
 	        collect.loadFavList();
 	    });
 	    // this.func = func;//exports
+	}
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by dcampus on 2016/3/23.
+	 */
+	angular.module("editModule", []).controller("editController", editController);
+
+	editController.$inject = ['request.account', "$stateParams"];
+
+	function editController(account, $stateParams) {
+	    account.getAccount().then(res => {
+	        let { account, company, department, email, mobile, name } = res.data;
+	        this.name = name;
+	        this.company = company;
+	        this.department = department;
+	        this.email = email;
+	        this.mobile = mobile;
+	    });
+	    let collect = {
+	        isName: false,
+	        isCompany: false,
+	        isEmail: false,
+	        isMobile: false,
+	        isPassword: false,
+	        isDepartment: false,
+	        title: "",
+	        showLabel: function () {
+	            switch ($stateParams.type) {
+	                case "name":
+	                    this.isName = true;
+	                    this.title = "姓名";
+	                    break;
+	                case "company":
+	                    this.isCompany = true;
+	                    this.title = "公司";
+	                    break;
+	                case "email":
+	                    this.isEmail = true;
+	                    this.title = "邮箱";
+	                    break;
+	                case "mobile":
+	                    this.isMobile = true;
+	                    this.title = "手机";
+	                    break;
+	                case "password":
+	                    this.isPassword = true;
+	                    this.title = "密码";
+	                    break;
+	                case "department":
+	                    this.isDepartment = true;
+	                    this.title = "部门";
+	                    break;
+	            }
+	        }
+	    };
+	    collect.showLabel();
+	    this.collect = collect;
 	}
 
 /***/ }

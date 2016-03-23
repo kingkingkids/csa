@@ -1,5 +1,6 @@
 /**
  * Created by dcampus on 2016/3/21.
+ * 拦截器
  */
 angular.module("appInterceptor", [])
     .factory("appInterceptor", appInterceptor);

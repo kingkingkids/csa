@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-    'favModule', 'request.doHttpRequest', 'appInterceptor']).config(["$stateProvider", "$urlRouterProvider",
+    'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule']).config(["$stateProvider", "$urlRouterProvider",
         "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
-            $httpProvider.interceptors.push('appInterceptor');
+            //$httpProvider.interceptors.push('appInterceptor');
             $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
             if (ionic.Platform.isAndroid()) {
                 //$ionicConfigProvider.scrolling.jsScrolling(true);
@@ -70,6 +70,16 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                         templateUrl: "tpls/personal.html",
                         controller: "personalController",
                         controllerAs: 'vm'
+                    }
+                }
+            }).state('tabs.edit', {
+                url: '/personal/edit/:type',
+                views: {
+                    'personal-tab': {
+                        templateUrl: "tpls/personalEdit.html",
+                        controller: "editController",
+                        controllerAs: "vm"
+
                     }
                 }
             }).state('tabs.groupList', {

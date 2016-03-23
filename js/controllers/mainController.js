@@ -5,22 +5,17 @@ angular
     .module("MainModule", ["httpRequest"])
     .controller("MainController", MainController);
 
-MainController.$inject = ["$rootScope", "$scope", "global.currentInfo", "$state", "request.account", "$ionicModal"];
+MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session"];
 
-function MainController(root, scope, currentInfo, state, account, $ionicModal) {
-    /**接收到由appInterceptor过来的事件,当加载到登录页时的判断**/
-    root.$on("interceptor.login", function () {
-        if (currentInfo.isAnouymus) {
-            state.go("tabs.home");//如果当前已经登录，则回跳到首页
-        }
-    });
+function MainController(root, scope, state, account, session) {
     /**接收到由httpRequest传过来的事件,退出时调用**/
-    root.$on("status.logout", ()=> {
-        //state.go("login");//返回登录页
+    root.$on("status:logout", ()=> {
         this.collect.loginModal.show();
-        state.go("tabs.home");
-        currentInfo.isAnouymus = false;//当前登录状态为false
         account.keepAlive.stop();//停止keepAlive调用
+        session.removeSession();
+    });
+    root.$on("event:logout", ()=> {
+        this.collect.loginModal.show();
     });
     account.loginModal(scope);//判断是否登录,否则显示登录窗口
     let collect = {

@@ -5,9 +5,9 @@ angular
     .module("LoginModule", ["httpRequest"])
     .controller("LoginController", LoginController);
 
-LoginController.$inject = ["$state", "request.account"];
+LoginController.$inject = ["$state", "request.account", "global.session"];
 
-function LoginController($state, account) {
+function LoginController($state, account, session) {
     let collect = {
         login: ()=> {
             let paramsObj = {
@@ -17,7 +17,6 @@ function LoginController($state, account) {
             account.doLogin(paramsObj).then((res)=> {
                 let paramsStr = "memberId=" + res.data.members[0].id;
                 account.selectMember(paramsStr).then((res)=> {
-
                     $state.go("tabs.home");
                     paramsStr = null;
                 });

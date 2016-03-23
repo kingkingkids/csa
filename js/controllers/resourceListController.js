@@ -4,8 +4,8 @@
 angular.module("ResourceListModule", ["httpRequest"])
     .controller("ResourceListController", ResourceListController);
 ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest",
-    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce"];
-function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce) {
+    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant"];
+function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant) {
 
     let collect = {
         resourceList: [],
@@ -61,8 +61,8 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
         },
         openModal: function (id, title) {
             this.modalTitle = title;
-            //this.frameSrc = "http://211.66.86.101:8080" + $rootScope.path.downloadResource + "?disposition=inline&id=" + id;
-            this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
+            this.frameSrc = $sce.trustAsResourceUrl("http://211.66.86.101:8080" + constant.path.downloadResource + "?disposition=inline&id=" + id);
+            //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
             $scope.modal.show();
         },
         hideModal: function () {

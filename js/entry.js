@@ -17,6 +17,8 @@ require("./controllers/homeController.js");//首页控制器
 require("./controllers/groupListController.js");//柜子列表控制器
 require("./controllers/resourceListController.js");//资源列表控制器
 require("./controllers/favController.js");//资源列表控制器
+require("./controllers/editController.js");//资源列表控制器
+
 
 
 

@@ -18,6 +18,7 @@ angular
             , getStatus: "/user/status.action"
             , keepAlive: "/user/alive.action"
             , downloadResource: "/group/downloadResource.action"
+            , logout: "/login/logout.action"
         },
         config: {
             sitePath: "http://localhost/csaProxy",//地址
@@ -34,7 +35,7 @@ function session() {
             return JSON.parse(localStorage.session);
         },
         removeSession: function () {
-            localStorage.session = undefined;
+            localStorage.clear(localStorage.session);
         }
     }
 }

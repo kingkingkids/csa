@@ -1,0 +1,49 @@
+<ion-view view-title="{{vm.collect.title}}">
+    <ion-nav-bar>
+        <ion-nav-back-button>
+            返回
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button" ng-click="vm.collect.save()">
+                保存
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <label class="item item-input" ng-show="vm.collect.isName">
+                <input type="text" placeholder="用户名" value="{{vm.name}}">
+            </label>
+            <label class="item item-input" ng-show="vm.collect.isCompany">
+                <input type="text" placeholder=" 公司" value="{{vm.company}}">
+            </label>
+            <label class="item item-input" ng-show="vm.collect.isDepartment">
+                <input type="text" placeholder=" 部门" value="{{vm.department}}">
+            </label>
+            <label class="item item-input" ng-show="vm.collect.isMobile">
+                <input type="text" placeholder=" 手机" value="{{vm.mobile}}">
+            </label>
+            <!--<div class="item item-input">-->
+
+            <!--当前邮箱：{{vm.email}}-->
+            <!--</div>-->
+            <div ng-show="vm.collect.isEmail">
+                <label class="item item-input">
+                    <input type="text" placeholder="请填写邮箱">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="确认邮箱">
+                </label>
+            </div>
+            <div ng-show="vm.collect.isPassword">
+                <label class="item item-input">
+                    <input type="password" placeholder="请填写密码">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="确认密码">
+                </label>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
