@@ -91,22 +91,10 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                     }
                 }
             });
-            $urlRouterProvider.otherwise('/login');
+            $urlRouterProvider.otherwise('/tabs/home');
         }])
     .run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
-        /**接口路径**/
-        $rootScope.path = {
-            authenticate: "/login/authenticate.action"//用户登录
-            , selectMember: "/login/selectMember.action"//选择马甲
-            , trees: "/group/trees.action"//获取分类
-            , getResources: "/group/getResources.action"// 获取柜子资源
-            , modifyAccount: "/user/modifyAccount.action"//获取用户修改信息
-            , addWatch: "/user/addWatch.action"//收藏
-            , getWatches: "/user/getWatches.action"//收藏列表
-            , getAccount: "/user/getAccount.action"//获取账号
-            , getStatus: "/user/status.action"
-            , keepAlive: "/user/alive.action"
-        }
+
         /**基本配置**/
         $rootScope.config = {
             sitePath: "http://localhost/csaProxy",//地址

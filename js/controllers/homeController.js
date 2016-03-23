@@ -6,27 +6,20 @@ angular
     .module("HomeModule", ["httpRequest"])
     .controller("HomeController", HomeController);
 
-HomeController.$inject = ["$state", "$timeout", "$rootScope"];
+HomeController.$inject = ["$state", "$timeout", "global.constant"];
 
-function HomeController($state, $timeout, $rootScope) {
-    let vm = this;
+function HomeController($state, $timeout, constant) {
     let collect = {
+        journalID: constant.config.journalID,
         goFar: ()=> {
             $state.go('tabs.groupList');
             $timeout(()=> {
                 $state.go('tabs.resourceList');
             });
+        },
+        goToList: function (_id, title) {
+            $state.go('tabs.groupList', {groupId: _id, title: title});
         }
     }
     this.collect = collect;
-    vm.goFar = ()=> {
-        $state.go('tabs.groupList');
-        $timeout(()=> {
-            $state.go('tabs.resourceList');
-        })
-    }
-    $rootScope.goToList = (_id, title)=> {
-        $state.go('tabs.groupList', {groupId: _id, title: title});
-    }
-
 }

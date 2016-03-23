@@ -1,15 +1,15 @@
-fav.$inject = ["httpRequest.sendRequest", "$rootScope"];
+fav.$inject = ["httpRequest.sendRequest",  "global.constant"];
 
-function fav(send, scope) {
+function fav(send,  constant) {
     return {
         /** 获取收藏列表**/
         getList: function () {
-            return send(scope.path.getWatches, {"type": "resource"});
+            return send(constant.path.getWatches, {"type": "resource"});
         },
         /**添加收藏**/
         addFav: function (id) {
             let paramsObj = {"type": "resource", "id": id};
-            return send(scope.path.addWatch, paramsObj);
+            return send(constant.path.addWatch, paramsObj);
         }
     };
 }

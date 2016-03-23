@@ -1,8 +1,8 @@
-group.$inject = ["httpRequest.sendRequest", "$rootScope"];
-function group(send, scope) {
+group.$inject = ["httpRequest.sendRequest", "global.constant"];
+function group(send, constant) {
     return {
         getList: function (id) {
-            return send(scope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + id);
+            return send(constant.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + id);
         }
     }
 }

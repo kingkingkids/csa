@@ -8,7 +8,6 @@ require("../lib/ionic/js/ionic.bundle.js");
 require("./app.js");
 require("./services/global.js");
 require("./services/httpRequest.js");
-require("./services/keepAlive.js");
 require("./services/appInterceptor.js");
 require("./services/request/doHttpRequest.js");
 require("./controllers/loginController.js");

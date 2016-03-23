@@ -1,7 +1,7 @@
 <ion-view view-title="">
     <ion-nav-bar>
         <ion-nav-title>
-            {{vm.title}}
+            {{vm.collect.title}}
         </ion-nav-title>
         <ion-nav-back-button>
             返回
@@ -9,12 +9,13 @@
     </ion-nav-bar>
     <ion-content>
         <ul class="list">
-            <li class="item" ng-repeat="res in vm.resourceList" on-hold="vm.onHold(res.id)">
+            <li class="item" ng-repeat="res in vm.collect.resourceList" on-hold="vm.collect.onHold(res.id)">
                 <div ng-if="res.type == 1"
                      ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
                     {{res.displayName}}
                 </div>
-                <div ng-if="res.type == 2">{{res.displayName}}</div>
+                <div ng-if="res.type == 2" ng-click="vm.collect.openModal(res.id,res.displayName)">{{res.displayName}}
+                </div>
             </li>
         </ul>
     </ion-content>

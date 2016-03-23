@@ -1,0 +1,15 @@
+<ion-modal-view>
+    <ion-header-bar align-title="left" class="bar-positive">
+        <div class="buttons">
+            <button class="button" ng-click="vm.collect.hideModal()">返回</button>
+        </div>
+        <h1 class="title">{{vm.collect.modalTitle}}</h1>
+        <div class="buttons">
+            <button class="button">...</button>
+        </div>
+    </ion-header-bar>
+    <ion-content overflow-scroll="true">
+        <iframe ng-src="{{vm.collect.frameSrc}}" class="viewFrame">
+        </iframe>
+    </ion-content>
+</ion-modal-view>

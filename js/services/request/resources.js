@@ -1,9 +1,9 @@
-resources.$inject = ["httpRequest.sendRequest", "$rootScope"];
+resources.$inject = ["httpRequest.sendRequest", "global.constant"];
 
-function resources(send, scope) {
+function resources(send, constant) {
     return {
         getList: function (id) {
-            return send(scope.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
+            return send(constant.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
         }
     }
 }

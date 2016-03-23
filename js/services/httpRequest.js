@@ -5,13 +5,13 @@ angular
     .module("httpRequest", [])
     .factory("httpRequest.sendRequest", sendRequest)
     .factory("httpRequest.errorManage", errorManage);
-sendRequest.$inject = ["$http", "httpRequest.errorManage", "$rootScope"];
-errorManage.$inject = ["$state", "global.currentInfo", "$rootScope"];
-function sendRequest($http, errorManage, scope) {
+sendRequest.$inject = ["$http", "httpRequest.errorManage", "global.constant"];
+errorManage.$inject = ["$rootScope"];
+function sendRequest($http, errorManage, constant) {
     return function (action, paramData) {
         var req = {
             method: 'POST',
-            url: scope.config.sitePath + action,
+            url: constant.config.sitePath + action,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
@@ -30,7 +30,7 @@ function sendRequest($http, errorManage, scope) {
             });
     }
 }
-function errorManage(state, currentInfo, scope) {
+function errorManage(scope) {
     return function (status) {
         /**当拦截器拦截到错误代码是480，则会跳到登录页，并设置登录状态为false**/
         if (status.code == 480) {

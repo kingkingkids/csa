@@ -63,14 +63,13 @@
 	__webpack_require__(16);
 	__webpack_require__(17);
 	__webpack_require__(18);
-	__webpack_require__(19);
-	__webpack_require__(24);
-	__webpack_require__(25); //个人设置
-	__webpack_require__(26); //tab主控制器
-	__webpack_require__(27); //首页控制器
-	__webpack_require__(28); //柜子列表控制器
+	__webpack_require__(23);
+	__webpack_require__(24); //个人设置
+	__webpack_require__(25); //tab主控制器
+	__webpack_require__(26); //首页控制器
+	__webpack_require__(27); //柜子列表控制器
+	__webpack_require__(28); //资源列表控制器
 	__webpack_require__(29); //资源列表控制器
-	__webpack_require__(30); //资源列表控制器
 
 /***/ },
 /* 2 */
@@ -484,7 +483,7 @@
 
 
 	// module
-	exports.push([module.id, "/* Empty. Add your own CSS if you like */\n", ""]);
+	exports.push([module.id, ".viewFrame {\r\n  width: 100%;\r\n  height: 100%; }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -25903,21 +25902,9 @@
 	            }
 	        }
 	    });
-	    $urlRouterProvider.otherwise('/login');
+	    $urlRouterProvider.otherwise('/tabs/home');
 	}]).run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
-	    /**接口路径**/
-	    $rootScope.path = {
-	        authenticate: "/login/authenticate.action" //用户登录
-	        , selectMember: "/login/selectMember.action" //选择马甲
-	        , trees: "/group/trees.action" //获取分类
-	        , getResources: "/group/getResources.action" // 获取柜子资源
-	        , modifyAccount: "/user/modifyAccount.action" //获取用户修改信息
-	        , addWatch: "/user/addWatch.action" //收藏
-	        , getWatches: "/user/getWatches.action" //收藏列表
-	        , getAccount: "/user/getAccount.action" //获取账号
-	        , getStatus: "/user/status.action",
-	        keepAlive: "/user/alive.action"
-	    };
+
 	    /**基本配置**/
 	    $rootScope.config = {
 	        sitePath: "http://localhost/csaProxy", //地址
@@ -25949,11 +25936,38 @@
 	/**
 	 * Created by dcampus2011 on 15/8/24.
 	 */
-	angular.module("global", []).factory("global.currentInfo", currentInfo);
-	function currentInfo() {
+
+	angular.module("global", []).factory("global.session", session).constant("global.constant", {
+	    path: {
+	        authenticate: "/login/authenticate.action" //用户登录
+	        , selectMember: "/login/selectMember.action" //选择马甲
+	        , trees: "/group/trees.action" //获取分类
+	        , getResources: "/group/getResources.action" // 获取柜子资源
+	        , modifyAccount: "/user/modifyAccount.action" //获取用户修改信息
+	        , addWatch: "/user/addWatch.action" //收藏
+	        , getWatches: "/user/getWatches.action" //收藏列表
+	        , getAccount: "/user/getAccount.action" //获取账号
+	        , getStatus: "/user/status.action",
+	        keepAlive: "/user/alive.action",
+	        downloadResource: "/group/downloadResource.action"
+	    },
+	    config: {
+	        sitePath: "http://localhost/csaProxy", //地址
+	        currentGroupId: 0,
+	        journalID: 374 //期刊ID
+	    }
+	});
+	function session() {
 	    return {
-	        userName: "",
-	        isAnouymus: false
+	        setSession: function (paramObj) {
+	            localStorage.session = JSON.stringify(paramObj);
+	        },
+	        getSession: function () {
+	            return JSON.parse(localStorage.session);
+	        },
+	        removeSession: function () {
+	            localStorage.session = undefined;
+	        }
 	    };
 	}
 
@@ -25965,13 +25979,13 @@
 	 * Created by dcampus2011 on 16/1/26.
 	 */
 	angular.module("httpRequest", []).factory("httpRequest.sendRequest", sendRequest).factory("httpRequest.errorManage", errorManage);
-	sendRequest.$inject = ["$http", "httpRequest.errorManage", "$rootScope"];
-	errorManage.$inject = ["$state", "global.currentInfo", "$rootScope"];
-	function sendRequest($http, errorManage, scope) {
+	sendRequest.$inject = ["$http", "httpRequest.errorManage", "global.constant"];
+	errorManage.$inject = ["$rootScope"];
+	function sendRequest($http, errorManage, constant) {
 	    return function (action, paramData) {
 	        var req = {
 	            method: 'POST',
-	            url: scope.config.sitePath + action,
+	            url: constant.config.sitePath + action,
 	            headers: {
 	                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 	            }
@@ -25986,7 +26000,7 @@
 	        });
 	    };
 	}
-	function errorManage(state, currentInfo, scope) {
+	function errorManage(scope) {
 	    return function (status) {
 	        /**当拦截器拦截到错误代码是480，则会跳到登录页，并设置登录状态为false**/
 	        if (status.code == 480) {
@@ -25999,40 +26013,6 @@
 
 /***/ },
 /* 17 */
-/***/ function(module, exports) {
-
-	/**
-	 * Created by dcampus2011 on 15/9/11.
-	 */
-
-	angular.module("keepAlive", []).factory("keepAlive", keepAlive);
-
-	keepAlive.$inject = ["httpRequest.sendRequest", "$interval"];
-
-	function keepAlive(sendRequest, $interval) {
-
-	    var keepAlive = function () {
-	        sendRequest("/user/alive.action", "", function (data, status, headers, config) {}, function (data, status, headers, config) {});
-	    };
-	    var promise;
-	    var t = 5;
-	    return {
-	        start: function () {
-	            if (!promise) {
-	                promise = $interval(keepAlive, t);
-	            }
-	        },
-	        stop: function () {
-	            if (promise) {
-	                $interval.cancel(promise);
-	                promise = null;
-	            }
-	        }
-	    };
-	}
-
-/***/ },
-/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -26072,97 +26052,104 @@
 	}
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by dcampus2011 on 15/8/24.
 	 */
-	let group = __webpack_require__(20),
-	    resources = __webpack_require__(21),
-	    fav = __webpack_require__(22),
-	    account = __webpack_require__(23);
+	let group = __webpack_require__(19),
+	    resources = __webpack_require__(20),
+	    fav = __webpack_require__(21),
+	    account = __webpack_require__(22);
 
 	angular.module("request.doHttpRequest", []).factory("request.group", group).factory("request.resources", resources).factory("request.fav", fav).factory("request.account", account);
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
-	group.$inject = ["httpRequest.sendRequest", "$rootScope"];
-	function group(send, scope) {
+	group.$inject = ["httpRequest.sendRequest", "global.constant"];
+	function group(send, constant) {
 	    return {
 	        getList: function (id) {
-	            return send(scope.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + id);
+	            return send(constant.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + id);
 	        }
 	    };
 	}
 	module.exports = group;
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports) {
 
-	resources.$inject = ["httpRequest.sendRequest", "$rootScope"];
+	resources.$inject = ["httpRequest.sendRequest", "global.constant"];
 
-	function resources(send, scope) {
+	function resources(send, constant) {
 	    return {
 	        getList: function (id) {
-	            return send(scope.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
+	            return send(constant.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
 	        }
 	    };
 	}
 	module.exports = resources;
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports) {
 
-	fav.$inject = ["httpRequest.sendRequest", "$rootScope"];
+	fav.$inject = ["httpRequest.sendRequest", "global.constant"];
 
-	function fav(send, scope) {
+	function fav(send, constant) {
 	    return {
 	        /** 获取收藏列表**/
 	        getList: function () {
-	            return send(scope.path.getWatches, { "type": "resource" });
+	            return send(constant.path.getWatches, { "type": "resource" });
 	        },
 	        /**添加收藏**/
 	        addFav: function (id) {
 	            let paramsObj = { "type": "resource", "id": id };
-	            return send(scope.path.addWatch, paramsObj);
+	            return send(constant.path.addWatch, paramsObj);
 	        }
 	    };
 	}
 	module.exports = fav;
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports) {
 
-	account.$inject = ["httpRequest.sendRequest", "$rootScope", "global.currentInfo", "$interval"];
-	function account(send, scope, currentInfo, interval) {
+	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant"];
+	function account(send, scope, interval, $ionicModal, $q, constant) {
+
 	    return {
 	        doLogin: function (paramsObj) {
-	            return send(scope.path.authenticate, paramsObj).success(() => {
-	                currentInfo.isAnouymus = true;
+	            let defered = $q.defer();
+
+	            send(constant.path.authenticate, paramsObj).then(res => {
+	                let paramsStr = "memberId=" + res.data.members[0].id;
+	                this.selectMember(paramsStr).then(res => {
+	                    defered.resolve(res);
+	                });
 	            });
+	            return defered.promise;
 	        },
 	        selectMember: function (paramsStr) {
-	            return send(scope.path.selectMember, paramsStr);
+	            return send(constant.path.selectMember, paramsStr);
 	        },
 	        /**获取用户信息**/
 	        getAccount: function () {
-	            return send(scope.path.getAccount, null);
+	            return send(constant.path.getAccount, null);
 	        },
 	        getStatus: function () {
-	            return send(scope.path.getStatus);
+	            return send(constant.path.getStatus);
 	        },
 	        keepAlive: {
 	            promise: null,
 	            start: function () {
 	                if (!this.promise) {
 	                    this.promise = interval(() => {
-	                        send(scope.path.keepAlive);
+	                        send(constant.path.keepAlive);
 	                    }, 5 * 1000 * 60);
 	                }
 	            },
@@ -26172,13 +26159,27 @@
 	                    this.promise = null;
 	                }
 	            }
+	        },
+	        loginModal: function (scope) {
+	            $ionicModal.fromTemplateUrl("./tpls/modal/login.html", {
+	                scope: scope,
+	                animation: 'slide-in-up',
+	                hardwareBackButtonClose: false
+	            }).then(modal => {
+	                scope.loginModal = modal;
+	                this.getStatus().then(res => {
+	                    if (res.data.status == "guest") {
+	                        scope.loginModal.show();
+	                    }
+	                });
+	            });
 	        }
 	    };
 	}
 	module.exports = account;
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports) {
 
 	/**
@@ -26215,7 +26216,7 @@
 	}
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/**
@@ -26262,7 +26263,7 @@
 	}
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/**
@@ -26270,9 +26271,9 @@
 	 */
 	angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
-	MainController.$inject = ["$rootScope", "$scope", "global.currentInfo", "$state", "request.account"];
+	MainController.$inject = ["$rootScope", "$scope", "global.currentInfo", "$state", "request.account", "$ionicModal"];
 
-	function MainController(root, scope, currentInfo, state, account) {
+	function MainController(root, scope, currentInfo, state, account, $ionicModal) {
 	    /**接收到由appInterceptor过来的事件,当加载到登录页时的判断**/
 	    root.$on("interceptor.login", function () {
 	        if (currentInfo.isAnouymus) {
@@ -26280,25 +26281,50 @@
 	        }
 	    });
 	    /**接收到由httpRequest传过来的事件,退出时调用**/
-	    root.$on("status.logout", function () {
-	        state.go("login"); //返回登录页
+	    root.$on("status.logout", () => {
+	        //state.go("login");//返回登录页
+	        this.collect.loginModal.show();
+	        state.go("tabs.home");
 	        currentInfo.isAnouymus = false; //当前登录状态为false
 	        account.keepAlive.stop(); //停止keepAlive调用
 	    });
+	    account.loginModal(scope); //判断是否登录,否则显示登录窗口
 	    let collect = {
 	        init: function () {
 	            account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
 	        },
 	        onTabSelected: () => {
 	            scope.$broadcast("loadFavEvent"); //重载一次收藏列表
+	        },
+	        loginModal: {
+	            show: function () {
+	                scope.loginModal.show();
+	            },
+	            hide: function () {
+	                scope.loginModal.hide();
+	            }
+	        },
+	        login: () => {
+	            let paramsObj = {
+	                "account": this.loginInfo.username,
+	                "password": encodeURIComponent(this.loginInfo.password)
+	            };
+	            account.doLogin(paramsObj).then(res => {
+	                this.collect.loginModal.hide();
+	            });
 	        }
+	    };
+	    let loginInfo = {
+	        username: null,
+	        password: null
 	    };
 	    collect.init();
 	    this.collect = collect; //外部调用
+	    this.loginInfo = loginInfo;
 	}
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/**
@@ -26307,32 +26333,26 @@
 
 	angular.module("HomeModule", ["httpRequest"]).controller("HomeController", HomeController);
 
-	HomeController.$inject = ["$state", "$timeout", "$rootScope"];
+	HomeController.$inject = ["$state", "$timeout", "global.constant"];
 
-	function HomeController($state, $timeout, $rootScope) {
-	    let vm = this;
+	function HomeController($state, $timeout, constant) {
 	    let collect = {
+	        journalID: constant.config.journalID,
 	        goFar: () => {
 	            $state.go('tabs.groupList');
 	            $timeout(() => {
 	                $state.go('tabs.resourceList');
 	            });
+	        },
+	        goToList: function (_id, title) {
+	            $state.go('tabs.groupList', { groupId: _id, title: title });
 	        }
 	    };
 	    this.collect = collect;
-	    vm.goFar = () => {
-	        $state.go('tabs.groupList');
-	        $timeout(() => {
-	            $state.go('tabs.resourceList');
-	        });
-	    };
-	    $rootScope.goToList = (_id, title) => {
-	        $state.go('tabs.groupList', { groupId: _id, title: title });
-	    };
 	}
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/**
@@ -26358,32 +26378,40 @@
 	}
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources"];
-	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources) {
-	    var vm = this;
-	    vm.resourceList = [];
-	    vm.title = $stateParams.title;
-	    vm.init = function () {
-	        vm.func.loadGroups();
-	        vm.onHold = id => {
-	            vm.func.showPopup(id);
-	        };
-	    };
-	    vm.func = {
-	        loadGroups: function () {
-	            resources.getList($stateParams.parentId).then(res => {
-	                vm.resourceList = res.data.resources;
+	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce"];
+	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce) {
+
+	    let collect = {
+	        resourceList: [],
+	        title: $stateParams.title,
+	        modalTitle: "",
+	        frameSrc: "",
+	        init: function () {
+	            this.loadGroups();
+	            this.onHold = id => {
+	                this.showPopup(id);
+	            };
+	            $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+	                scope: $scope,
+	                animation: 'slide-in-up',
+	                hardwareBackButtonClose: false
+	            }).then(modal => {
+	                $scope.modal = modal;
 	            });
 	        },
-	        showPopup: function (id) {
-	            vm.data = {};
+	        loadGroups: function () {
+	            resources.getList($stateParams.parentId).then(res => {
+	                this.resourceList = res.data.resources;
+	            });
+	        },
+	        showPopup: function () {
 	            // An elaborate, custom popup
 	            let popup = $ionicPopup.show({
 	                template: '',
@@ -26394,7 +26422,6 @@
 	                    text: '<b>收藏</b>',
 	                    type: 'button-positive',
 	                    onTap: e => {
-
 	                        return id;
 	                    }
 	                }]
@@ -26408,13 +26435,23 @@
 	                    });
 	                }
 	            });
+	        },
+	        openModal: function (id, title) {
+	            this.modalTitle = title;
+	            //this.frameSrc = "http://211.66.86.101:8080" + $rootScope.path.downloadResource + "?disposition=inline&id=" + id;
+	            this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
+	            $scope.modal.show();
+	        },
+	        hideModal: function () {
+	            $scope.modal.hide();
 	        }
 	    };
-	    vm.init();
+	    collect.init();
+	    this.collect = collect;
 	}
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports) {
 
 	/**

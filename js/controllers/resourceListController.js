@@ -4,25 +4,33 @@
 angular.module("ResourceListModule", ["httpRequest"])
     .controller("ResourceListController", ResourceListController);
 ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest",
-    "$stateParams", "$ionicPopup", "request.fav", "request.resources"];
-function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources) {
-    var vm = this;
-    vm.resourceList = [];
-    vm.title = $stateParams.title;
-    vm.init = function () {
-        vm.func.loadGroups();
-        vm.onHold = (id)=> {
-            vm.func.showPopup(id);
-        }
-    }
-    vm.func = {
-        loadGroups: function () {
-            resources.getList($stateParams.parentId).then((res)=> {
-                vm.resourceList = res.data.resources;
+    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce"];
+function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce) {
+
+    let collect = {
+        resourceList: [],
+        title: $stateParams.title,
+        modalTitle: "",
+        frameSrc: "",
+        init: function () {
+            this.loadGroups();
+            this.onHold = (id)=> {
+                this.showPopup(id);
+            };
+            $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+                scope: $scope,
+                animation: 'slide-in-up',
+                hardwareBackButtonClose: false
+            }).then((modal)=> {
+                $scope.modal = modal;
             });
         },
-        showPopup: function (id) {
-            vm.data = {};
+        loadGroups: function () {
+            resources.getList($stateParams.parentId).then((res)=> {
+                this.resourceList = res.data.resources;
+            });
+        },
+        showPopup: function () {
             // An elaborate, custom popup
             let popup = $ionicPopup.show({
                 template: '',
@@ -35,7 +43,6 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
                         text: '<b>收藏</b>',
                         type: 'button-positive',
                         onTap: (e)=> {
-
                             return id;
                         }
                     }
@@ -51,7 +58,17 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
 
                 }
             });
+        },
+        openModal: function (id, title) {
+            this.modalTitle = title;
+            //this.frameSrc = "http://211.66.86.101:8080" + $rootScope.path.downloadResource + "?disposition=inline&id=" + id;
+            this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
+            $scope.modal.show();
+        },
+        hideModal: function () {
+            $scope.modal.hide();
         }
     }
-    vm.init();
+    collect.init();
+    this.collect = collect;
 }
