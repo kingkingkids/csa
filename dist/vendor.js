@@ -51,26 +51,29 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+
 	/**
 	 * Created by ASUS on 2016/1/22.
 	 */
 	__webpack_require__(2);
 	__webpack_require__(11);
 	__webpack_require__(13);
-	//require("../lib/angularjs/1.4.0/angular-cookies.min.js");
-	__webpack_require__(14);
+	global.pdf2htmlEX = __webpack_require__(14);
 	__webpack_require__(15);
 	__webpack_require__(16);
 	__webpack_require__(17);
 	__webpack_require__(18);
-	__webpack_require__(23);
-	__webpack_require__(24); //个人设置
-	__webpack_require__(25); //tab主控制器
-	__webpack_require__(26); //首页控制器
-	__webpack_require__(27); //柜子列表控制器
-	__webpack_require__(28); //资源列表控制器
+	__webpack_require__(19);
+	__webpack_require__(24);
+	__webpack_require__(25); //个人设置
+	__webpack_require__(26); //tab主控制器
+	__webpack_require__(27); //首页控制器
+	__webpack_require__(28); //柜子列表控制器
 	__webpack_require__(29); //资源列表控制器
 	__webpack_require__(30); //资源列表控制器
+	__webpack_require__(31); //资源列表控制器
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 2 */
@@ -121,15 +124,15 @@
 		Author Tobias Koppers @sokra
 	*/
 	// css base code, injected by the css-loader
-	module.exports = function () {
+	module.exports = function() {
 		var list = [];
 
 		// return the list of modules as css string
 		list.toString = function toString() {
 			var result = [];
-			for (var i = 0; i < this.length; i++) {
+			for(var i = 0; i < this.length; i++) {
 				var item = this[i];
-				if (item[2]) {
+				if(item[2]) {
 					result.push("@media " + item[2] + "{" + item[1] + "}");
 				} else {
 					result.push(item[1]);
@@ -139,23 +142,25 @@
 		};
 
 		// import a list of modules into the list
-		list.i = function (modules, mediaQuery) {
-			if (typeof modules === "string") modules = [[null, modules, ""]];
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
 			var alreadyImportedModules = {};
-			for (var i = 0; i < this.length; i++) {
+			for(var i = 0; i < this.length; i++) {
 				var id = this[i][0];
-				if (typeof id === "number") alreadyImportedModules[id] = true;
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
 			}
-			for (i = 0; i < modules.length; i++) {
+			for(i = 0; i < modules.length; i++) {
 				var item = modules[i];
 				// skip already imported module
 				// this implementation is not 100% perfect for weird media query combinations
 				//  when a module is imported multiple times with different media queries.
 				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if (mediaQuery && !item[2]) {
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
 						item[2] = mediaQuery;
-					} else if (mediaQuery) {
+					} else if(mediaQuery) {
 						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
 					}
 					list.push(item);
@@ -164,6 +169,7 @@
 		};
 		return list;
 	};
+
 
 /***/ },
 /* 5 */
@@ -484,7 +490,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\r\n  font-size: 12px; }\r\n\r\n.viewFrame {\r\n  width: 100%;\r\n  height: 100%; }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, ".viewFrame {\r\n  width: 100%;\r\n  height: 100%;\r\n  -webkit-overflow-scrolling: touch !important;\r\n  overflow: scroll !important; }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -493,7 +499,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	/*!
+	'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;}; /*!
 	 * ionic.bundle.js is a concatenation of:
 	 * ionic.js, angular.js, angular-animate.js,
 	 * angular-sanitize.js, angular-ui-router.js,
@@ -536,7 +542,7 @@
 	// The requestAnimationFrame polyfill
 	// Put it on window just to preserve its context
 	// without having to use .call
-	window._rAF=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(callback){window.setTimeout(callback,16);};}();var cancelAnimationFrame=window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.webkitCancelRequestAnimationFrame; /**
+	window._rAF=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(callback){window.setTimeout(callback,16);};}();var _cancelAnimationFrame=window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.webkitCancelRequestAnimationFrame; /**
 	  * @ngdoc utility
 	  * @name ionic.DomUtil
 	  * @module ionic
@@ -548,7 +554,7 @@
 	     * @description Calls [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame), or a polyfill if not available.
 	     * @param {function} callback The function to call when the next frame
 	     * happens.
-	     */requestAnimationFrame:function(cb){return window._rAF(cb);},cancelAnimationFrame:function(requestId){cancelAnimationFrame(requestId);}, /**
+	     */requestAnimationFrame:function requestAnimationFrame(cb){return window._rAF(cb);},cancelAnimationFrame:function cancelAnimationFrame(requestId){_cancelAnimationFrame(requestId);}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#animationFrameThrottle
 	     * @alias ionic.animationFrameThrottle
@@ -562,7 +568,7 @@
 	     * @returns {function} A function which will then call the passed in callback.
 	     * The passed in callback will receive the context the returned function is
 	     * called with.
-	     */animationFrameThrottle:function(cb){var args,isQueued,context;return function(){args=arguments;context=this;if(!isQueued){isQueued=true;ionic.requestAnimationFrame(function(){cb.apply(context,args);isQueued=false;});}};},contains:function(parentNode,otherNode){var current=otherNode;while(current){if(current===parentNode)return true;current=current.parentNode;}}, /**
+	     */animationFrameThrottle:function animationFrameThrottle(cb){var args,isQueued,context;return function(){args=arguments;context=this;if(!isQueued){isQueued=true;ionic.requestAnimationFrame(function(){cb.apply(context,args);isQueued=false;});}};},contains:function contains(parentNode,otherNode){var current=otherNode;while(current){if(current===parentNode)return true;current=current.parentNode;}}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#getPositionInParent
 	     * @description
@@ -571,14 +577,14 @@
 	     * @returns {object} A position object with the following properties:
 	     *   - `{number}` `left` The left offset of the element.
 	     *   - `{number}` `top` The top offset of the element.
-	     */getPositionInParent:function(el){return {left:el.offsetLeft,top:el.offsetTop};},getOffsetTop:function(el){var curtop=0;if(el.offsetParent){do {curtop+=el.offsetTop;el=el.offsetParent;}while(el);return curtop;}}, /**
+	     */getPositionInParent:function getPositionInParent(el){return {left:el.offsetLeft,top:el.offsetTop};},getOffsetTop:function getOffsetTop(el){var curtop=0;if(el.offsetParent){do {curtop+=el.offsetTop;el=el.offsetParent;}while(el);return curtop;}}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#ready
 	     * @description
 	     * Call a function when the DOM is ready, or if it is already ready
 	     * call the function immediately.
 	     * @param {function} callback The function to be called.
-	     */ready:function(cb){if(isDomReady){ionic.requestAnimationFrame(cb);}else {readyCallbacks.push(cb);}}, /**
+	     */ready:function ready(cb){if(isDomReady){ionic.requestAnimationFrame(cb);}else {readyCallbacks.push(cb);}}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#getTextBounds
 	     * @description
@@ -591,7 +597,7 @@
 	     *   - `{number}` `bottom` The bottom position of the textNode.
 	     *   - `{number}` `width` The width of the textNode.
 	     *   - `{number}` `height` The height of the textNode.
-	     */getTextBounds:function(textNode){if(document.createRange){var range=document.createRange();range.selectNodeContents(textNode);if(range.getBoundingClientRect){var rect=range.getBoundingClientRect();if(rect){var sx=window.scrollX;var sy=window.scrollY;return {top:rect.top+sy,left:rect.left+sx,right:rect.left+sx+rect.width,bottom:rect.top+sy+rect.height,width:rect.width,height:rect.height};}}}return null;}, /**
+	     */getTextBounds:function getTextBounds(textNode){if(document.createRange){var range=document.createRange();range.selectNodeContents(textNode);if(range.getBoundingClientRect){var rect=range.getBoundingClientRect();if(rect){var sx=window.scrollX;var sy=window.scrollY;return {top:rect.top+sy,left:rect.left+sx,right:rect.left+sx+rect.width,bottom:rect.top+sy+rect.height,width:rect.width,height:rect.height};}}}return null;}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#getChildIndex
 	     * @description
@@ -600,23 +606,23 @@
 	     * @param {DOMElement} element The element to find the index of.
 	     * @param {string} type The nodeName to match children of element against.
 	     * @returns {number} The index, or -1, of a child with nodeName matching type.
-	     */getChildIndex:function(element,type){if(type){var ch=element.parentNode.children;var c;for(var i=0,k=0,j=ch.length;i<j;i++){c=ch[i];if(c.nodeName&&c.nodeName.toLowerCase()==type){if(c==element){return k;}k++;}}}return Array.prototype.slice.call(element.parentNode.children).indexOf(element);}, /**
+	     */getChildIndex:function getChildIndex(element,type){if(type){var ch=element.parentNode.children;var c;for(var i=0,k=0,j=ch.length;i<j;i++){c=ch[i];if(c.nodeName&&c.nodeName.toLowerCase()==type){if(c==element){return k;}k++;}}}return Array.prototype.slice.call(element.parentNode.children).indexOf(element);}, /**
 	     * @private
-	     */swapNodes:function(src,dest){dest.parentNode.insertBefore(src,dest);},elementIsDescendant:function(el,parent,stopAt){var current=el;do {if(current===parent)return true;current=current.parentNode;}while(current&&current!==stopAt);return false;}, /**
+	     */swapNodes:function swapNodes(src,dest){dest.parentNode.insertBefore(src,dest);},elementIsDescendant:function elementIsDescendant(el,parent,stopAt){var current=el;do {if(current===parent)return true;current=current.parentNode;}while(current&&current!==stopAt);return false;}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#getParentWithClass
 	     * @param {DOMElement} element
 	     * @param {string} className
 	     * @returns {DOMElement} The closest parent of element matching the
 	     * className, or null.
-	     */getParentWithClass:function(e,className,depth){depth=depth||10;while(e.parentNode&&depth--){if(e.parentNode.classList&&e.parentNode.classList.contains(className)){return e.parentNode;}e=e.parentNode;}return null;}, /**
+	     */getParentWithClass:function getParentWithClass(e,className,depth){depth=depth||10;while(e.parentNode&&depth--){if(e.parentNode.classList&&e.parentNode.classList.contains(className)){return e.parentNode;}e=e.parentNode;}return null;}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#getParentOrSelfWithClass
 	     * @param {DOMElement} element
 	     * @param {string} className
 	     * @returns {DOMElement} The closest parent or self matching the
 	     * className, or null.
-	     */getParentOrSelfWithClass:function(e,className,depth){depth=depth||10;while(e&&depth--){if(e.classList&&e.classList.contains(className)){return e;}e=e.parentNode;}return null;}, /**
+	     */getParentOrSelfWithClass:function getParentOrSelfWithClass(e,className,depth){depth=depth||10;while(e&&depth--){if(e.classList&&e.classList.contains(className)){return e;}e=e.parentNode;}return null;}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#rectContains
 	     * @param {number} x
@@ -627,13 +633,13 @@
 	     * @param {number} y2
 	     * @returns {boolean} Whether {x,y} fits within the rectangle defined by
 	     * {x1,y1,x2,y2}.
-	     */rectContains:function(x,y,x1,y1,x2,y2){if(x<x1||x>x2)return false;if(y<y1||y>y2)return false;return true;}, /**
+	     */rectContains:function rectContains(x,y,x1,y1,x2,y2){if(x<x1||x>x2)return false;if(y<y1||y>y2)return false;return true;}, /**
 	     * @ngdoc method
 	     * @name ionic.DomUtil#blurAll
 	     * @description
 	     * Blurs any currently focused input element
 	     * @returns {DOMElement} The element blurred or null
-	     */blurAll:function(){if(document.activeElement&&document.activeElement!=document.body){document.activeElement.blur();return document.activeElement;}return null;},cachedAttr:function(ele,key,value){ele=ele&&ele.length&&ele[0]||ele;if(ele&&ele.setAttribute){var dataKey='$attr-'+key;if(arguments.length>2){if(ele[dataKey]!==value){ele.setAttribute(key,value);ele[dataKey]=value;}}else if(typeof ele[dataKey]=='undefined'){ele[dataKey]=ele.getAttribute(key);}return ele[dataKey];}},cachedStyles:function(ele,styles){ele=ele&&ele.length&&ele[0]||ele;if(ele&&ele.style){for(var prop in styles){if(ele['$style-'+prop]!==styles[prop]){ele.style[prop]=ele['$style-'+prop]=styles[prop];}}}}}; //Shortcuts
+	     */blurAll:function blurAll(){if(document.activeElement&&document.activeElement!=document.body){document.activeElement.blur();return document.activeElement;}return null;},cachedAttr:function cachedAttr(ele,key,value){ele=ele&&ele.length&&ele[0]||ele;if(ele&&ele.setAttribute){var dataKey='$attr-'+key;if(arguments.length>2){if(ele[dataKey]!==value){ele.setAttribute(key,value);ele[dataKey]=value;}}else if(typeof ele[dataKey]=='undefined'){ele[dataKey]=ele.getAttribute(key);}return ele[dataKey];}},cachedStyles:function cachedStyles(ele,styles){ele=ele&&ele.length&&ele[0]||ele;if(ele&&ele.style){for(var prop in styles){if(ele['$style-'+prop]!==styles[prop]){ele.style[prop]=ele['$style-'+prop]=styles[prop];}}}}}; //Shortcuts
 	ionic.requestAnimationFrame=ionic.DomUtil.requestAnimationFrame;ionic.cancelAnimationFrame=ionic.DomUtil.cancelAnimationFrame;ionic.animationFrameThrottle=ionic.DomUtil.animationFrameThrottle;})(window,document,ionic); /**
 	 * ion-events.js
 	 *
@@ -645,7 +651,7 @@
 	 *
 	 * Portions lovingly adapted from github.com/maker/ratchet and github.com/alexgibson/tap.js - thanks guys!
 	 */(function(ionic){ // Custom event polyfill
-	ionic.CustomEvent=function(){if(typeof window.CustomEvent==='function')return CustomEvent;var customEvent=function(event,params){var evt;params=params||{bubbles:false,cancelable:false,detail:undefined};try{evt=document.createEvent("CustomEvent");evt.initCustomEvent(event,params.bubbles,params.cancelable,params.detail);}catch(error){ // fallback for browsers that don't support createEvent('CustomEvent')
+	ionic.CustomEvent=function(){if(typeof window.CustomEvent==='function')return CustomEvent;var customEvent=function customEvent(event,params){var evt;params=params||{bubbles:false,cancelable:false,detail:undefined};try{evt=document.createEvent("CustomEvent");evt.initCustomEvent(event,params.bubbles,params.cancelable,params.detail);}catch(error){ // fallback for browsers that don't support createEvent('CustomEvent')
 	evt=document.createEvent("Event");for(var param in params){evt[param]=params[param];}evt.initEvent(event,params.bubbles,params.cancelable);}return evt;};customEvent.prototype=window.Event.prototype;return customEvent;}(); /**
 	   * @ngdoc utility
 	   * @name ionic.EventController
@@ -660,7 +666,7 @@
 	     * @param {boolean=} bubbles Whether the event should bubble up the DOM.
 	     * @param {boolean=} cancelable Whether the event should be cancelable.
 	     */ // Trigger a new event
-	trigger:function(eventType,data,bubbles,cancelable){var event=new ionic.CustomEvent(eventType,{detail:data,bubbles:!!bubbles,cancelable:!!cancelable}); // Make sure to trigger the event on the given target, or dispatch it from
+	trigger:function trigger(eventType,data,bubbles,cancelable){var event=new ionic.CustomEvent(eventType,{detail:data,bubbles:!!bubbles,cancelable:!!cancelable}); // Make sure to trigger the event on the given target, or dispatch it from
 	// the window if we don't have an event target
 	data&&data.target&&data.target.dispatchEvent&&data.target.dispatchEvent(event)||window.dispatchEvent(event);}, /**
 	     * @ngdoc method
@@ -670,7 +676,7 @@
 	     * @param {string} type The event to listen for.
 	     * @param {function} callback The listener to be called.
 	     * @param {DOMElement} element The element to listen for the event on.
-	     */on:function(type,callback,element){var e=element||window; // Bind a gesture if it's a virtual event
+	     */on:function on(type,callback,element){var e=element||window; // Bind a gesture if it's a virtual event
 	for(var i=0,j=this.VIRTUALIZED_EVENTS.length;i<j;i++){if(type==this.VIRTUALIZED_EVENTS[i]){var gesture=new ionic.Gesture(element);gesture.on(type,callback);return gesture;}} // Otherwise bind a normal event
 	e.addEventListener(type,callback);}, /**
 	     * @ngdoc method
@@ -680,7 +686,7 @@
 	     * @param {string} type
 	     * @param {function} callback
 	     * @param {DOMElement} element
-	     */off:function(type,callback,element){element.removeEventListener(type,callback);}, /**
+	     */off:function off(type,callback,element){element.removeEventListener(type,callback);}, /**
 	     * @ngdoc method
 	     * @name ionic.EventController#onGesture
 	     * @alias ionic.onGesture
@@ -699,7 +705,7 @@
 	     * @param {DOMElement} element The angular element to listen for the event on.
 	     * @param {object} options object.
 	     * @returns {ionic.Gesture} The gesture object (use this to remove the gesture later on).
-	     */onGesture:function(type,callback,element,options){var gesture=new ionic.Gesture(element,options);gesture.on(type,callback);return gesture;}, /**
+	     */onGesture:function onGesture(type,callback,element,options){var gesture=new ionic.Gesture(element,options);gesture.on(type,callback);return gesture;}, /**
 	     * @ngdoc method
 	     * @name ionic.EventController#offGesture
 	     * @alias ionic.offGesture
@@ -708,7 +714,7 @@
 	     * @param {string} eventType The gesture event to remove the listener for.
 	     * @param {function(e)} callback The listener to remove.
 
-	     */offGesture:function(gesture,type,callback){gesture&&gesture.off(type,callback);},handlePopState:function(){}}; // Map some convenient top-level functions for event handling
+	     */offGesture:function offGesture(gesture,type,callback){gesture&&gesture.off(type,callback);},handlePopState:function handlePopState(){}}; // Map some convenient top-level functions for event handling
 	ionic.on=function(){ionic.EventController.on.apply(ionic.EventController,arguments);};ionic.off=function(){ionic.EventController.off.apply(ionic.EventController,arguments);};ionic.trigger=ionic.EventController.trigger; //function() { ionic.EventController.trigger.apply(ionic.EventController.trigger, arguments); };
 	ionic.onGesture=function(){return ionic.EventController.onGesture.apply(ionic.EventController.onGesture,arguments);};ionic.offGesture=function(){return ionic.EventController.offGesture.apply(ionic.EventController.offGesture,arguments);};})(window.ionic); /* eslint camelcase:0 */ /**
 	  * Simple gesture controllers with some common gestures that emit
@@ -799,7 +805,7 @@
 	     * @param   {HTMLElement}   element
 	     * @param   {String}        type
 	     * @param   {Function}      handler
-	     */bindDom:function(element,type,handler){var types=type.split(' ');for(var t=0;t<types.length;t++){element.addEventListener(types[t],handler,false);}}, /**
+	     */bindDom:function bindDom(element,type,handler){var types=type.split(' ');for(var t=0;t<types.length;t++){element.addEventListener(types[t],handler,false);}}, /**
 	     * touch events with mouse fallback
 	     * @param   {HTMLElement}   element
 	     * @param   {String}        eventType        like ionic.Gestures.EVENT_MOVE
@@ -851,33 +857,33 @@
 	var pointerType=ionic.Gestures.POINTER_TOUCH;if(ev.type.match(/mouse/)||ionic.Gestures.PointerEvent.matchType(ionic.Gestures.POINTER_MOUSE,ev)){pointerType=ionic.Gestures.POINTER_MOUSE;}return {center:ionic.Gestures.utils.getCenter(touches),timeStamp:new Date().getTime(),target:ev.target,touches:touches,eventType:eventType,pointerType:pointerType,srcEvent:ev, /**
 	         * prevent the browser default actions
 	         * mostly used to disable scrolling of the browser
-	         */preventDefault:function(){if(this.srcEvent.preventManipulation){this.srcEvent.preventManipulation();}if(this.srcEvent.preventDefault){ // this.srcEvent.preventDefault();
+	         */preventDefault:function preventDefault(){if(this.srcEvent.preventManipulation){this.srcEvent.preventManipulation();}if(this.srcEvent.preventDefault){ // this.srcEvent.preventDefault();
 	}}, /**
 	         * stop bubbling the event up to its parents
-	         */stopPropagation:function(){this.srcEvent.stopPropagation();}, /**
+	         */stopPropagation:function stopPropagation(){this.srcEvent.stopPropagation();}, /**
 	         * immediately stop gesture detection
 	         * might be useful after a swipe was detected
 	         * @return {*}
-	         */stopDetect:function(){return ionic.Gestures.detection.stopDetect();}};}};ionic.Gestures.PointerEvent={ /**
+	         */stopDetect:function stopDetect(){return ionic.Gestures.detection.stopDetect();}};}};ionic.Gestures.PointerEvent={ /**
 	     * holds all pointers
 	     * type {Object}
 	     */pointers:{}, /**
 	     * get a list of pointers
 	     * @returns {Array}     touchlist
-	     */getTouchList:function(){var self=this;var touchlist=[]; // we can use forEach since pointerEvents only is in IE10
+	     */getTouchList:function getTouchList(){var self=this;var touchlist=[]; // we can use forEach since pointerEvents only is in IE10
 	Object.keys(self.pointers).sort().forEach(function(id){touchlist.push(self.pointers[id]);});return touchlist;}, /**
 	     * update the position of a pointer
 	     * @param   {String}   type             ionic.Gestures.EVENT_END
 	     * @param   {Object}   pointerEvent
-	     */updatePointer:function(type,pointerEvent){if(type==ionic.Gestures.EVENT_END){this.pointers={};}else {pointerEvent.identifier=pointerEvent.pointerId;this.pointers[pointerEvent.pointerId]=pointerEvent;}return Object.keys(this.pointers).length;}, /**
+	     */updatePointer:function updatePointer(type,pointerEvent){if(type==ionic.Gestures.EVENT_END){this.pointers={};}else {pointerEvent.identifier=pointerEvent.pointerId;this.pointers[pointerEvent.pointerId]=pointerEvent;}return Object.keys(this.pointers).length;}, /**
 	     * check if ev matches pointertype
 	     * @param   {String}        pointerType     ionic.Gestures.POINTER_MOUSE
 	     * @param   {PointerEvent}  ev
-	     */matchType:function(pointerType,ev){if(!ev.pointerType){return false;}var types={};types[ionic.Gestures.POINTER_MOUSE]=ev.pointerType==ev.MSPOINTER_TYPE_MOUSE||ev.pointerType==ionic.Gestures.POINTER_MOUSE;types[ionic.Gestures.POINTER_TOUCH]=ev.pointerType==ev.MSPOINTER_TYPE_TOUCH||ev.pointerType==ionic.Gestures.POINTER_TOUCH;types[ionic.Gestures.POINTER_PEN]=ev.pointerType==ev.MSPOINTER_TYPE_PEN||ev.pointerType==ionic.Gestures.POINTER_PEN;return types[pointerType];}, /**
+	     */matchType:function matchType(pointerType,ev){if(!ev.pointerType){return false;}var types={};types[ionic.Gestures.POINTER_MOUSE]=ev.pointerType==ev.MSPOINTER_TYPE_MOUSE||ev.pointerType==ionic.Gestures.POINTER_MOUSE;types[ionic.Gestures.POINTER_TOUCH]=ev.pointerType==ev.MSPOINTER_TYPE_TOUCH||ev.pointerType==ionic.Gestures.POINTER_TOUCH;types[ionic.Gestures.POINTER_PEN]=ev.pointerType==ev.MSPOINTER_TYPE_PEN||ev.pointerType==ionic.Gestures.POINTER_PEN;return types[pointerType];}, /**
 	     * get events
-	     */getEvents:function(){return ['pointerdown MSPointerDown','pointermove MSPointerMove','pointerup pointercancel MSPointerUp MSPointerCancel'];}, /**
+	     */getEvents:function getEvents(){return ['pointerdown MSPointerDown','pointermove MSPointerMove','pointerup pointercancel MSPointerUp MSPointerCancel'];}, /**
 	     * reset the list
-	     */reset:function(){this.pointers={};}};ionic.Gestures.utils={ /**
+	     */reset:function reset(){this.pointers={};}};ionic.Gestures.utils={ /**
 	     * extend method,
 	     * also used for cloning when dest is an empty object
 	     * @param   {Object}    dest
@@ -890,7 +896,7 @@
 	     * @param   {HTMLElement}   node
 	     * @param   {HTMLElement}   parent
 	     * @returns {boolean}       has_parent
-	     */hasParent:function(node,parent){while(node){if(node==parent){return true;}node=node.parentNode;}return false;}, /**
+	     */hasParent:function hasParent(node,parent){while(node){if(node==parent){return true;}node=node.parentNode;}return false;}, /**
 	     * get the center of all the touches
 	     * @param   {Array}     touches
 	     * @returns {Object}    center
@@ -1255,12 +1261,12 @@
 	     * Please remember that Cordova features (Camera, FileSystem, etc) still
 	     * will not work in a web browser.
 	     * @param {function} callback The function to call.
-	     */ready:function(cb){ // run through tasks to complete now that the device is ready
+	     */ready:function ready(cb){ // run through tasks to complete now that the device is ready
 	if(self.isReady){cb();}else { // the platform isn't ready yet, add it to this array
 	// which will be called once the platform is ready
 	readyCallbacks.push(cb);}}, /**
 	     * @private
-	     */detect:function(){self._checkPlatforms();requestAnimationFrame(function(){ // only add to the body class if we got platform info
+	     */detect:function detect(){self._checkPlatforms();requestAnimationFrame(function(){ // only add to the body class if we got platform info
 	for(var i=0;i<self.platforms.length;i++){document.body.classList.add('platform-'+self.platforms[i]);}});}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#setGrade
@@ -1268,68 +1274,68 @@
 	     * (most css features enabled), 'c' is the worst.  By default, sets the grade
 	     * depending on the current device.
 	     * @param {string} grade The new grade to set.
-	     */setGrade:function(grade){var oldGrade=self.grade;self.grade=grade;requestAnimationFrame(function(){if(oldGrade){document.body.classList.remove('grade-'+oldGrade);}document.body.classList.add('grade-'+grade);});}, /**
+	     */setGrade:function setGrade(grade){var oldGrade=self.grade;self.grade=grade;requestAnimationFrame(function(){if(oldGrade){document.body.classList.remove('grade-'+oldGrade);}document.body.classList.add('grade-'+grade);});}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#device
 	     * @description Return the current device (given by cordova).
 	     * @returns {object} The device object.
-	     */device:function(){return window.device||{};},_checkPlatforms:function(){self.platforms=[];var grade='a';if(self.isWebView()){self.platforms.push('webview');if(!(!window.cordova&&!window.PhoneGap&&!window.phonegap)){self.platforms.push('cordova');}else if(window.forge){self.platforms.push('trigger');}}else {self.platforms.push('browser');}if(self.isIPad())self.platforms.push('ipad');var platform=self.platform();if(platform){self.platforms.push(platform);var version=self.version();if(version){var v=version.toString();if(v.indexOf('.')>0){v=v.replace('.','_');}else {v+='_0';}self.platforms.push(platform+v.split('_')[0]);self.platforms.push(platform+v);if(self.isAndroid()&&version<4.4){grade=version<4?'c':'b';}else if(self.isWindowsPhone()){grade='b';}}}self.setGrade(grade);}, /**
+	     */device:function device(){return window.device||{};},_checkPlatforms:function _checkPlatforms(){self.platforms=[];var grade='a';if(self.isWebView()){self.platforms.push('webview');if(!(!window.cordova&&!window.PhoneGap&&!window.phonegap)){self.platforms.push('cordova');}else if(window.forge){self.platforms.push('trigger');}}else {self.platforms.push('browser');}if(self.isIPad())self.platforms.push('ipad');var platform=self.platform();if(platform){self.platforms.push(platform);var version=self.version();if(version){var v=version.toString();if(v.indexOf('.')>0){v=v.replace('.','_');}else {v+='_0';}self.platforms.push(platform+v.split('_')[0]);self.platforms.push(platform+v);if(self.isAndroid()&&version<4.4){grade=version<4?'c':'b';}else if(self.isWindowsPhone()){grade='b';}}}self.setGrade(grade);}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#isWebView
 	     * @returns {boolean} Check if we are running within a WebView (such as Cordova).
-	     */isWebView:function(){return !(!window.cordova&&!window.PhoneGap&&!window.phonegap&&!window.forge);}, /**
+	     */isWebView:function isWebView(){return !(!window.cordova&&!window.PhoneGap&&!window.phonegap&&!window.forge);}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#isIPad
 	     * @returns {boolean} Whether we are running on iPad.
-	     */isIPad:function(){if(/iPad/i.test(self.navigator.platform)){return true;}return (/iPad/i.test(self.ua));}, /**
+	     */isIPad:function isIPad(){if(/iPad/i.test(self.navigator.platform)){return true;}return (/iPad/i.test(self.ua));}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#isIOS
 	     * @returns {boolean} Whether we are running on iOS.
-	     */isIOS:function(){return self.is(IOS);}, /**
+	     */isIOS:function isIOS(){return self.is(IOS);}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#isAndroid
 	     * @returns {boolean} Whether we are running on Android.
-	     */isAndroid:function(){return self.is(ANDROID);}, /**
+	     */isAndroid:function isAndroid(){return self.is(ANDROID);}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#isWindowsPhone
 	     * @returns {boolean} Whether we are running on Windows Phone.
-	     */isWindowsPhone:function(){return self.is(WINDOWS_PHONE);}, /**
+	     */isWindowsPhone:function isWindowsPhone(){return self.is(WINDOWS_PHONE);}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#isEdge
 	     * @returns {boolean} Whether we are running on MS Edge/Windows 10 (inc. Phone)
-	     */isEdge:function(){return self.is(EDGE);},isCrosswalk:function(){return self.is(CROSSWALK);}, /**
+	     */isEdge:function isEdge(){return self.is(EDGE);},isCrosswalk:function isCrosswalk(){return self.is(CROSSWALK);}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#platform
 	     * @returns {string} The name of the current platform.
-	     */platform:function(){ // singleton to get the platform name
+	     */platform:function platform(){ // singleton to get the platform name
 	if(platformName===null)self.setPlatform(self.device().platform);return platformName;}, /**
 	     * @private
-	     */setPlatform:function(n){if(typeof n!='undefined'&&n!==null&&n.length){platformName=n.toLowerCase();}else if(getParameterByName('ionicplatform')){platformName=getParameterByName('ionicplatform');}else if(self.ua.indexOf('Edge')>-1){platformName=EDGE;}else if(self.ua.indexOf('Windows Phone')>-1){platformName=WINDOWS_PHONE;}else if(self.ua.indexOf('Android')>0){platformName=ANDROID;}else if(/iPhone|iPad|iPod/.test(self.ua)){platformName=IOS;}else {platformName=self.navigator.platform&&navigator.platform.toLowerCase().split(' ')[0]||'';}}, /**
+	     */setPlatform:function setPlatform(n){if(typeof n!='undefined'&&n!==null&&n.length){platformName=n.toLowerCase();}else if(getParameterByName('ionicplatform')){platformName=getParameterByName('ionicplatform');}else if(self.ua.indexOf('Edge')>-1){platformName=EDGE;}else if(self.ua.indexOf('Windows Phone')>-1){platformName=WINDOWS_PHONE;}else if(self.ua.indexOf('Android')>0){platformName=ANDROID;}else if(/iPhone|iPad|iPod/.test(self.ua)){platformName=IOS;}else {platformName=self.navigator.platform&&navigator.platform.toLowerCase().split(' ')[0]||'';}}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#version
 	     * @returns {number} The version of the current device platform.
-	     */version:function(){ // singleton to get the platform version
+	     */version:function version(){ // singleton to get the platform version
 	if(platformVersion===null)self.setVersion(self.device().version);return platformVersion;}, /**
 	     * @private
-	     */setVersion:function(v){if(typeof v!='undefined'&&v!==null){v=v.split('.');v=parseFloat(v[0]+'.'+(v.length>1?v[1]:0));if(!isNaN(v)){platformVersion=v;return;}}platformVersion=0; // fallback to user-agent checking
+	     */setVersion:function setVersion(v){if(typeof v!='undefined'&&v!==null){v=v.split('.');v=parseFloat(v[0]+'.'+(v.length>1?v[1]:0));if(!isNaN(v)){platformVersion=v;return;}}platformVersion=0; // fallback to user-agent checking
 	var pName=self.platform();var versionMatch={'android':/Android (\d+).(\d+)?/,'ios':/OS (\d+)_(\d+)?/,'windowsphone':/Windows Phone (\d+).(\d+)?/};if(versionMatch[pName]){v=self.ua.match(versionMatch[pName]);if(v&&v.length>2){platformVersion=parseFloat(v[1]+'.'+v[2]);}}}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#is
 	     * @param {string} Platform name.
 	     * @returns {boolean} Whether the platform name provided is detected.
-	     */is:function(type){type=type.toLowerCase(); // check if it has an array of platforms
+	     */is:function is(type){type=type.toLowerCase(); // check if it has an array of platforms
 	if(self.platforms){for(var x=0;x<self.platforms.length;x++){if(self.platforms[x]===type)return true;}} // exact match
 	var pName=self.platform();if(pName){return pName===type.toLowerCase();} // A quick hack for to check userAgent
 	return self.ua.toLowerCase().indexOf(type)>=0;}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#exitApp
 	     * @description Exit the app.
-	     */exitApp:function(){self.ready(function(){navigator.app&&navigator.app.exitApp&&navigator.app.exitApp();});}, /**
+	     */exitApp:function exitApp(){self.ready(function(){navigator.app&&navigator.app.exitApp&&navigator.app.exitApp();});}, /**
 	     * @ngdoc method
 	     * @name ionic.Platform#showStatusBar
 	     * @description Shows or hides the device status bar (in Cordova). Requires `cordova plugin add org.apache.cordova.statusbar`
 	     * @param {boolean} shouldShow Whether or not to show the status bar.
-	     */showStatusBar:function(val){ // Only useful when run within cordova
+	     */showStatusBar:function showStatusBar(val){ // Only useful when run within cordova
 	self._showStatusBar=val;self.ready(function(){ // run this only when or if the platform (cordova) is ready
 	requestAnimationFrame(function(){if(self._showStatusBar){ // they do not want it to be full screen
 	window.StatusBar&&window.StatusBar.show();document.body.classList.remove('status-bar-hide');}else { // it should be full screen
@@ -1340,7 +1346,7 @@
 	     * Sets whether the app is fullscreen or not (in Cordova).
 	     * @param {boolean=} showFullScreen Whether or not to set the app to fullscreen. Defaults to true. Requires `cordova plugin add org.apache.cordova.statusbar`
 	     * @param {boolean=} showStatusBar Whether or not to show the device's status bar. Defaults to false.
-	     */fullScreen:function(showFullScreen,showStatusBar){ // showFullScreen: default is true if no param provided
+	     */fullScreen:function fullScreen(showFullScreen,showStatusBar){ // showFullScreen: default is true if no param provided
 	self.isFullScreen=showFullScreen!==false; // add/remove the fullscreen classname to the body
 	ionic.DomUtil.ready(function(){ // run this only when or if the DOM is ready
 	requestAnimationFrame(function(){if(self.isFullScreen){document.body.classList.add('fullscreen');}else {document.body.classList.remove('fullscreen');}}); // showStatusBar: default is false if no param provided
@@ -1364,7 +1370,7 @@
 	ionic.CSS.TRANSITION_DURATION=(isWebkit?'-webkit-':'')+'transition-duration'; // To be sure transitionend works everywhere, include *both* the webkit and non-webkit events
 	ionic.CSS.TRANSITIONEND=(isWebkit?'webkitTransitionEnd ':'')+'transitionend';})();(function(){var touchStartEvent='touchstart';var touchMoveEvent='touchmove';var touchEndEvent='touchend';var touchCancelEvent='touchcancel';if(window.navigator.pointerEnabled){touchStartEvent='pointerdown';touchMoveEvent='pointermove';touchEndEvent='pointerup';touchCancelEvent='pointercancel';}else if(window.navigator.msPointerEnabled){touchStartEvent='MSPointerDown';touchMoveEvent='MSPointerMove';touchEndEvent='MSPointerUp';touchCancelEvent='MSPointerCancel';}ionic.EVENTS.touchstart=touchStartEvent;ionic.EVENTS.touchmove=touchMoveEvent;ionic.EVENTS.touchend=touchEndEvent;ionic.EVENTS.touchcancel=touchCancelEvent;})(); // classList polyfill for them older Androids
 	// https://gist.github.com/devongovett/1381839
-	if(!("classList" in document.documentElement)&&Object.defineProperty&&typeof HTMLElement!=='undefined'){Object.defineProperty(HTMLElement.prototype,'classList',{get:function(){var self=this;function update(fn){return function(){var x,classes=self.className.split(/\s+/);for(x=0;x<arguments.length;x++){fn(classes,classes.indexOf(arguments[x]),arguments[x]);}self.className=classes.join(" ");};}return {add:update(function(classes,index,value){~index||classes.push(value);}),remove:update(function(classes,index){~index&&classes.splice(index,1);}),toggle:update(function(classes,index,value){~index?classes.splice(index,1):classes.push(value);}),contains:function(value){return !! ~self.className.split(/\s+/).indexOf(value);},item:function(i){return self.className.split(/\s+/)[i]||null;}};}});}})(document,ionic); /**
+	if(!("classList" in document.documentElement)&&Object.defineProperty&&typeof HTMLElement!=='undefined'){Object.defineProperty(HTMLElement.prototype,'classList',{get:function get(){var self=this;function update(fn){return function(){var x,classes=self.className.split(/\s+/);for(x=0;x<arguments.length;x++){fn(classes,classes.indexOf(arguments[x]),arguments[x]);}self.className=classes.join(" ");};}return {add:update(function(classes,index,value){~index||classes.push(value);}),remove:update(function(classes,index){~index&&classes.splice(index,1);}),toggle:update(function(classes,index,value){~index?classes.splice(index,1):classes.push(value);}),contains:function contains(value){return !! ~self.className.split(/\s+/).indexOf(value);},item:function item(i){return self.className.split(/\s+/)[i]||null;}};}});}})(document,ionic); /**
 	 * @ngdoc page
 	 * @name tap
 	 * @module ionic
@@ -1435,14 +1441,14 @@
 	var tapEnabledTouchEvents;var tapMouseResetTimer;var tapPointerMoved;var tapPointerStart;var tapTouchFocusedInput;var tapLastTouchTarget;var tapTouchMoveListener='touchmove'; // how much the coordinates can be off between start/end, but still a click
 	var TAP_RELEASE_TOLERANCE=12; // default tolerance
 	var TAP_RELEASE_BUTTON_TOLERANCE=50; // button elements should have a larger tolerance
-	var tapEventListeners={'click':tapClickGateKeeper,'mousedown':tapMouseDown,'mouseup':tapMouseUp,'mousemove':tapMouseMove,'touchstart':tapTouchStart,'touchend':tapTouchEnd,'touchcancel':tapTouchCancel,'touchmove':tapTouchMove,'pointerdown':tapTouchStart,'pointerup':tapTouchEnd,'pointercancel':tapTouchCancel,'pointermove':tapTouchMove,'MSPointerDown':tapTouchStart,'MSPointerUp':tapTouchEnd,'MSPointerCancel':tapTouchCancel,'MSPointerMove':tapTouchMove,'focusin':tapFocusIn,'focusout':tapFocusOut};ionic.tap={register:function(ele){tapDoc=ele;tapEventListener('click',true,true);tapEventListener('mouseup');tapEventListener('mousedown');if(window.navigator.pointerEnabled){tapEventListener('pointerdown');tapEventListener('pointerup');tapEventListener('pointercancel');tapTouchMoveListener='pointermove';}else if(window.navigator.msPointerEnabled){tapEventListener('MSPointerDown');tapEventListener('MSPointerUp');tapEventListener('MSPointerCancel');tapTouchMoveListener='MSPointerMove';}else {tapEventListener('touchstart');tapEventListener('touchend');tapEventListener('touchcancel');}tapEventListener('focusin');tapEventListener('focusout');return function(){for(var type in tapEventListeners){tapEventListener(type,false);}tapDoc=null;tapActiveEle=null;tapEnabledTouchEvents=false;tapPointerMoved=false;tapPointerStart=null;};},ignoreScrollStart:function(e){return e.defaultPrevented|| // defaultPrevented has been assigned by another component handling the event
+	var tapEventListeners={'click':tapClickGateKeeper,'mousedown':tapMouseDown,'mouseup':tapMouseUp,'mousemove':tapMouseMove,'touchstart':tapTouchStart,'touchend':tapTouchEnd,'touchcancel':tapTouchCancel,'touchmove':tapTouchMove,'pointerdown':tapTouchStart,'pointerup':tapTouchEnd,'pointercancel':tapTouchCancel,'pointermove':tapTouchMove,'MSPointerDown':tapTouchStart,'MSPointerUp':tapTouchEnd,'MSPointerCancel':tapTouchCancel,'MSPointerMove':tapTouchMove,'focusin':tapFocusIn,'focusout':tapFocusOut};ionic.tap={register:function register(ele){tapDoc=ele;tapEventListener('click',true,true);tapEventListener('mouseup');tapEventListener('mousedown');if(window.navigator.pointerEnabled){tapEventListener('pointerdown');tapEventListener('pointerup');tapEventListener('pointercancel');tapTouchMoveListener='pointermove';}else if(window.navigator.msPointerEnabled){tapEventListener('MSPointerDown');tapEventListener('MSPointerUp');tapEventListener('MSPointerCancel');tapTouchMoveListener='MSPointerMove';}else {tapEventListener('touchstart');tapEventListener('touchend');tapEventListener('touchcancel');}tapEventListener('focusin');tapEventListener('focusout');return function(){for(var type in tapEventListeners){tapEventListener(type,false);}tapDoc=null;tapActiveEle=null;tapEnabledTouchEvents=false;tapPointerMoved=false;tapPointerStart=null;};},ignoreScrollStart:function ignoreScrollStart(e){return e.defaultPrevented|| // defaultPrevented has been assigned by another component handling the event
 	/^(file|range)$/i.test(e.target.type)||(e.target.dataset?e.target.dataset.preventScroll:e.target.getAttribute('data-prevent-scroll'))=='true'|| // manually set within an elements attributes
 	!!/^(object|embed)$/i.test(e.target.tagName)|| // flash/movie/object touches should not try to scroll
 	ionic.tap.isElementTapDisabled(e.target); // check if this element, or an ancestor, has `data-tap-disabled` attribute
-	},isTextInput:function(ele){return !!ele&&(ele.tagName=='TEXTAREA'||ele.contentEditable==='true'||ele.tagName=='INPUT'&&!/^(radio|checkbox|range|file|submit|reset|color|image|button)$/i.test(ele.type));},isDateInput:function(ele){return !!ele&&ele.tagName=='INPUT'&&/^(date|time|datetime-local|month|week)$/i.test(ele.type);},isVideo:function(ele){return !!ele&&ele.tagName=='VIDEO';},isKeyboardElement:function(ele){if(!ionic.Platform.isIOS()||ionic.Platform.isIPad()){return ionic.tap.isTextInput(ele)&&!ionic.tap.isDateInput(ele);}else {return ionic.tap.isTextInput(ele)||!!ele&&ele.tagName=="SELECT";}},isLabelWithTextInput:function(ele){var container=tapContainingElement(ele,false);return !!container&&ionic.tap.isTextInput(tapTargetElement(container));},containsOrIsTextInput:function(ele){return ionic.tap.isTextInput(ele)||ionic.tap.isLabelWithTextInput(ele);},cloneFocusedInput:function(container){if(ionic.tap.hasCheckedClone)return;ionic.tap.hasCheckedClone=true;ionic.requestAnimationFrame(function(){var focusInput=container.querySelector(':focus');if(ionic.tap.isTextInput(focusInput)&&!ionic.tap.isDateInput(focusInput)){var clonedInput=focusInput.cloneNode(true);clonedInput.value=focusInput.value;clonedInput.classList.add('cloned-text-input');clonedInput.readOnly=true;if(focusInput.isContentEditable){clonedInput.contentEditable=focusInput.contentEditable;clonedInput.innerHTML=focusInput.innerHTML;}focusInput.parentElement.insertBefore(clonedInput,focusInput);focusInput.classList.add('previous-input-focus');clonedInput.scrollTop=focusInput.scrollTop;}});},hasCheckedClone:false,removeClonedInputs:function(container){ionic.tap.hasCheckedClone=false;ionic.requestAnimationFrame(function(){var clonedInputs=container.querySelectorAll('.cloned-text-input');var previousInputFocus=container.querySelectorAll('.previous-input-focus');var x;for(x=0;x<clonedInputs.length;x++){clonedInputs[x].parentElement.removeChild(clonedInputs[x]);}for(x=0;x<previousInputFocus.length;x++){previousInputFocus[x].classList.remove('previous-input-focus');previousInputFocus[x].style.top='';if(ionic.keyboard.isOpen&&!ionic.keyboard.isClosing)previousInputFocus[x].focus();}});},requiresNativeClick:function(ele){if(ionic.Platform.isWindowsPhone()&&(ele.tagName=='A'||ele.tagName=='BUTTON'||ele.hasAttribute('ng-click')||ele.tagName=='INPUT'&&(ele.type=='button'||ele.type=='submit'))){return true; //Windows Phone edge case, prevent ng-click (and similar) events from firing twice on this platform
-	}if(!ele||ele.disabled||/^(file|range)$/i.test(ele.type)||/^(object|video)$/i.test(ele.tagName)||ionic.tap.isLabelContainingFileInput(ele)){return true;}return ionic.tap.isElementTapDisabled(ele);},isLabelContainingFileInput:function(ele){var lbl=tapContainingElement(ele);if(lbl.tagName!=='LABEL')return false;var fileInput=lbl.querySelector('input[type=file]');if(fileInput&&fileInput.disabled===false)return true;return false;},isElementTapDisabled:function(ele){if(ele&&ele.nodeType===1){var element=ele;while(element){if((element.dataset?element.dataset.tapDisabled:element.getAttribute&&element.getAttribute('data-tap-disabled'))=='true'){return true;}element=element.parentElement;}}return false;},setTolerance:function(releaseTolerance,releaseButtonTolerance){TAP_RELEASE_TOLERANCE=releaseTolerance;TAP_RELEASE_BUTTON_TOLERANCE=releaseButtonTolerance;},cancelClick:function(){ // used to cancel any simulated clicks which may happen on a touchend/mouseup
+	},isTextInput:function isTextInput(ele){return !!ele&&(ele.tagName=='TEXTAREA'||ele.contentEditable==='true'||ele.tagName=='INPUT'&&!/^(radio|checkbox|range|file|submit|reset|color|image|button)$/i.test(ele.type));},isDateInput:function isDateInput(ele){return !!ele&&ele.tagName=='INPUT'&&/^(date|time|datetime-local|month|week)$/i.test(ele.type);},isVideo:function isVideo(ele){return !!ele&&ele.tagName=='VIDEO';},isKeyboardElement:function isKeyboardElement(ele){if(!ionic.Platform.isIOS()||ionic.Platform.isIPad()){return ionic.tap.isTextInput(ele)&&!ionic.tap.isDateInput(ele);}else {return ionic.tap.isTextInput(ele)||!!ele&&ele.tagName=="SELECT";}},isLabelWithTextInput:function isLabelWithTextInput(ele){var container=tapContainingElement(ele,false);return !!container&&ionic.tap.isTextInput(tapTargetElement(container));},containsOrIsTextInput:function containsOrIsTextInput(ele){return ionic.tap.isTextInput(ele)||ionic.tap.isLabelWithTextInput(ele);},cloneFocusedInput:function cloneFocusedInput(container){if(ionic.tap.hasCheckedClone)return;ionic.tap.hasCheckedClone=true;ionic.requestAnimationFrame(function(){var focusInput=container.querySelector(':focus');if(ionic.tap.isTextInput(focusInput)&&!ionic.tap.isDateInput(focusInput)){var clonedInput=focusInput.cloneNode(true);clonedInput.value=focusInput.value;clonedInput.classList.add('cloned-text-input');clonedInput.readOnly=true;if(focusInput.isContentEditable){clonedInput.contentEditable=focusInput.contentEditable;clonedInput.innerHTML=focusInput.innerHTML;}focusInput.parentElement.insertBefore(clonedInput,focusInput);focusInput.classList.add('previous-input-focus');clonedInput.scrollTop=focusInput.scrollTop;}});},hasCheckedClone:false,removeClonedInputs:function removeClonedInputs(container){ionic.tap.hasCheckedClone=false;ionic.requestAnimationFrame(function(){var clonedInputs=container.querySelectorAll('.cloned-text-input');var previousInputFocus=container.querySelectorAll('.previous-input-focus');var x;for(x=0;x<clonedInputs.length;x++){clonedInputs[x].parentElement.removeChild(clonedInputs[x]);}for(x=0;x<previousInputFocus.length;x++){previousInputFocus[x].classList.remove('previous-input-focus');previousInputFocus[x].style.top='';if(ionic.keyboard.isOpen&&!ionic.keyboard.isClosing)previousInputFocus[x].focus();}});},requiresNativeClick:function requiresNativeClick(ele){if(ionic.Platform.isWindowsPhone()&&(ele.tagName=='A'||ele.tagName=='BUTTON'||ele.hasAttribute('ng-click')||ele.tagName=='INPUT'&&(ele.type=='button'||ele.type=='submit'))){return true; //Windows Phone edge case, prevent ng-click (and similar) events from firing twice on this platform
+	}if(!ele||ele.disabled||/^(file|range)$/i.test(ele.type)||/^(object|video)$/i.test(ele.tagName)||ionic.tap.isLabelContainingFileInput(ele)){return true;}return ionic.tap.isElementTapDisabled(ele);},isLabelContainingFileInput:function isLabelContainingFileInput(ele){var lbl=tapContainingElement(ele);if(lbl.tagName!=='LABEL')return false;var fileInput=lbl.querySelector('input[type=file]');if(fileInput&&fileInput.disabled===false)return true;return false;},isElementTapDisabled:function isElementTapDisabled(ele){if(ele&&ele.nodeType===1){var element=ele;while(element){if((element.dataset?element.dataset.tapDisabled:element.getAttribute&&element.getAttribute('data-tap-disabled'))=='true'){return true;}element=element.parentElement;}}return false;},setTolerance:function setTolerance(releaseTolerance,releaseButtonTolerance){TAP_RELEASE_TOLERANCE=releaseTolerance;TAP_RELEASE_BUTTON_TOLERANCE=releaseButtonTolerance;},cancelClick:function cancelClick(){ // used to cancel any simulated clicks which may happen on a touchend/mouseup
 	// gestures uses this method within its tap and hold events
-	tapPointerMoved=true;},pointerCoord:function(event){ // This method can get coordinates for both a mouse click
+	tapPointerMoved=true;},pointerCoord:function pointerCoord(event){ // This method can get coordinates for both a mouse click
 	// or a touch depending on the given event
 	var c={x:0,y:0};if(event){var touches=event.touches&&event.touches.length?event.touches:[event];var e=event.changedTouches&&event.changedTouches[0]||touches[0];if(e){c.x=e.clientX||e.pageX||0;c.y=e.clientY||e.pageY||0;}}return c;}};function tapEventListener(type,enable,useCapture){if(enable!==false){tapDoc.addEventListener(type,tapEventListeners[type],useCapture);}else {tapDoc.removeEventListener(type,tapEventListeners[type]);}}function tapClick(e){ // simulate a normal click by running the element's click method then focus on it
 	var container=tapContainingElement(e.target);var ele=tapTargetElement(container);if(ionic.tap.requiresNativeClick(ele)||tapPointerMoved)return false;var c=ionic.tap.pointerCoord(e); //console.log('tapClick', e.type, ele.tagName, '('+c.x+','+c.y+')');
@@ -1490,12 +1496,12 @@
 	if(!ng||ng&&!ng.scenario){ionic.tap.register(document);}});(function(document,ionic){'use strict';var queueElements={}; // elements that should get an active state in XX milliseconds
 	var activeElements={}; // elements that are currently active
 	var keyId=0; // a counter for unique keys for the above ojects
-	var ACTIVATED_CLASS='activated';ionic.activator={start:function(e){var hitX=ionic.tap.pointerCoord(e).x;if(hitX>0&&hitX<30){return;} // when an element is touched/clicked, it climbs up a few
+	var ACTIVATED_CLASS='activated';ionic.activator={start:function start(e){var hitX=ionic.tap.pointerCoord(e).x;if(hitX>0&&hitX<30){return;} // when an element is touched/clicked, it climbs up a few
 	// parents to see if it is an .item or .button element
 	ionic.requestAnimationFrame(function(){if(ionic.scroll&&ionic.scroll.isScrolling||ionic.tap.requiresNativeClick(e.target))return;var ele=e.target;var eleToActivate;for(var x=0;x<6;x++){if(!ele||ele.nodeType!==1)break;if(eleToActivate&&ele.classList&&ele.classList.contains('item')){eleToActivate=ele;break;}if(ele.tagName=='A'||ele.tagName=='BUTTON'||ele.hasAttribute('ng-click')){eleToActivate=ele;break;}if(ele.classList.contains('button')){eleToActivate=ele;break;} // no sense climbing past these
 	if(ele.tagName=='ION-CONTENT'||ele.classList&&ele.classList.contains('pane')||ele.tagName=='BODY'){break;}ele=ele.parentElement;}if(eleToActivate){ // queue that this element should be set to active
 	queueElements[keyId]=eleToActivate; // on the next frame, set the queued elements to active
-	ionic.requestAnimationFrame(activateElements);keyId=keyId>29?0:keyId+1;}});},end:function(){ // clear out any active/queued elements after XX milliseconds
+	ionic.requestAnimationFrame(activateElements);keyId=keyId>29?0:keyId+1;}});},end:function end(){ // clear out any active/queued elements after XX milliseconds
 	setTimeout(clear,200);}};function clear(){ // clear out any elements that are queued to be set to active
 	queueElements={}; // in the next frame, remove the active class from all active elements
 	ionic.requestAnimationFrame(deactivateElements);}function activateElements(){ // activate all elements in the queue
@@ -1503,37 +1509,37 @@
 	   * Various utilities used throughout Ionic
 	   *
 	   * Some of these are adopted from underscore.js and backbone.js, both also MIT licensed.
-	   */ionic.Utils={arrayMove:function(arr,oldIndex,newIndex){if(newIndex>=arr.length){var k=newIndex-arr.length;while(k--+1){arr.push(undefined);}}arr.splice(newIndex,0,arr.splice(oldIndex,1)[0]);return arr;}, /**
+	   */ionic.Utils={arrayMove:function arrayMove(arr,oldIndex,newIndex){if(newIndex>=arr.length){var k=newIndex-arr.length;while(k--+1){arr.push(undefined);}}arr.splice(newIndex,0,arr.splice(oldIndex,1)[0]);return arr;}, /**
 	     * Return a function that will be called with the given context
-	     */proxy:function(func,context){var args=Array.prototype.slice.call(arguments,2);return function(){return func.apply(context,args.concat(Array.prototype.slice.call(arguments)));};}, /**
+	     */proxy:function proxy(func,context){var args=Array.prototype.slice.call(arguments,2);return function(){return func.apply(context,args.concat(Array.prototype.slice.call(arguments)));};}, /**
 	     * Only call a function once in the given interval.
 	     *
 	     * @param func {Function} the function to call
 	     * @param wait {int} how long to wait before/after to allow function calls
 	     * @param immediate {boolean} whether to call immediately or after the wait interval
-	     */debounce:function(func,wait,immediate){var timeout,args,context,timestamp,result;return function(){context=this;args=arguments;timestamp=new Date();var later=function(){var last=new Date()-timestamp;if(last<wait){timeout=setTimeout(later,wait-last);}else {timeout=null;if(!immediate)result=func.apply(context,args);}};var callNow=immediate&&!timeout;if(!timeout){timeout=setTimeout(later,wait);}if(callNow)result=func.apply(context,args);return result;};}, /**
+	     */debounce:function debounce(func,wait,immediate){var timeout,args,context,timestamp,result;return function(){context=this;args=arguments;timestamp=new Date();var later=function later(){var last=new Date()-timestamp;if(last<wait){timeout=setTimeout(later,wait-last);}else {timeout=null;if(!immediate)result=func.apply(context,args);}};var callNow=immediate&&!timeout;if(!timeout){timeout=setTimeout(later,wait);}if(callNow)result=func.apply(context,args);return result;};}, /**
 	     * Throttle the given fun, only allowing it to be
 	     * called at most every `wait` ms.
-	     */throttle:function(func,wait,options){var context,args,result;var timeout=null;var previous=0;options||(options={});var later=function(){previous=options.leading===false?0:Date.now();timeout=null;result=func.apply(context,args);};return function(){var now=Date.now();if(!previous&&options.leading===false)previous=now;var remaining=wait-(now-previous);context=this;args=arguments;if(remaining<=0){clearTimeout(timeout);timeout=null;previous=now;result=func.apply(context,args);}else if(!timeout&&options.trailing!==false){timeout=setTimeout(later,remaining);}return result;};}, // Borrowed from Backbone.js's extend
+	     */throttle:function throttle(func,wait,options){var context,args,result;var timeout=null;var previous=0;options||(options={});var later=function later(){previous=options.leading===false?0:Date.now();timeout=null;result=func.apply(context,args);};return function(){var now=Date.now();if(!previous&&options.leading===false)previous=now;var remaining=wait-(now-previous);context=this;args=arguments;if(remaining<=0){clearTimeout(timeout);timeout=null;previous=now;result=func.apply(context,args);}else if(!timeout&&options.trailing!==false){timeout=setTimeout(later,remaining);}return result;};}, // Borrowed from Backbone.js's extend
 	// Helper function to correctly set up the prototype chain, for subclasses.
 	// Similar to `goog.inherits`, but uses a hash of prototype properties and
 	// class properties to be extended.
-	inherit:function(protoProps,staticProps){var parent=this;var child; // The constructor function for the new subclass is either defined by you
+	inherit:function inherit(protoProps,staticProps){var parent=this;var child; // The constructor function for the new subclass is either defined by you
 	// (the "constructor" property in your `extend` definition), or defaulted
 	// by us to simply call the parent's constructor.
-	if(protoProps&&protoProps.hasOwnProperty('constructor')){child=protoProps.constructor;}else {child=function(){return parent.apply(this,arguments);};} // Add static properties to the constructor function, if supplied.
+	if(protoProps&&protoProps.hasOwnProperty('constructor')){child=protoProps.constructor;}else {child=function child(){return parent.apply(this,arguments);};} // Add static properties to the constructor function, if supplied.
 	ionic.extend(child,parent,staticProps); // Set the prototype chain to inherit from `parent`, without calling
 	// `parent`'s constructor function.
-	var Surrogate=function(){this.constructor=child;};Surrogate.prototype=parent.prototype;child.prototype=new Surrogate(); // Add prototype properties (instance properties) to the subclass,
+	var Surrogate=function Surrogate(){this.constructor=child;};Surrogate.prototype=parent.prototype;child.prototype=new Surrogate(); // Add prototype properties (instance properties) to the subclass,
 	// if supplied.
 	if(protoProps)ionic.extend(child.prototype,protoProps); // Set a convenience property in case the parent's prototype is needed
 	// later.
 	child.__super__=parent.prototype;return child;}, // Extend adapted from Underscore.js
-	extend:function(obj){var args=Array.prototype.slice.call(arguments,1);for(var i=0;i<args.length;i++){var source=args[i];if(source){for(var prop in source){obj[prop]=source[prop];}}}return obj;},nextUid:function(){return 'ion'+nextId++;},disconnectScope:function disconnectScope(scope){if(!scope)return;if(scope.$root===scope){return; // we can't disconnect the root node;
+	extend:function extend(obj){var args=Array.prototype.slice.call(arguments,1);for(var i=0;i<args.length;i++){var source=args[i];if(source){for(var prop in source){obj[prop]=source[prop];}}}return obj;},nextUid:function nextUid(){return 'ion'+nextId++;},disconnectScope:function disconnectScope(scope){if(!scope)return;if(scope.$root===scope){return; // we can't disconnect the root node;
 	}var parent=scope.$parent;scope.$$disconnected=true;scope.$broadcast('$ionic.disconnectScope',scope); // See Scope.$destroy
 	if(parent.$$childHead===scope){parent.$$childHead=scope.$$nextSibling;}if(parent.$$childTail===scope){parent.$$childTail=scope.$$prevSibling;}if(scope.$$prevSibling){scope.$$prevSibling.$$nextSibling=scope.$$nextSibling;}if(scope.$$nextSibling){scope.$$nextSibling.$$prevSibling=scope.$$prevSibling;}scope.$$nextSibling=scope.$$prevSibling=null;},reconnectScope:function reconnectScope(scope){if(!scope)return;if(scope.$root===scope){return; // we can't disconnect the root node;
 	}if(!scope.$$disconnected){return;}var parent=scope.$parent;scope.$$disconnected=false;scope.$broadcast('$ionic.reconnectScope',scope); // See Scope.$new for this logic...
-	scope.$$prevSibling=parent.$$childTail;if(parent.$$childHead){parent.$$childTail.$$nextSibling=scope;parent.$$childTail=scope;}else {parent.$$childHead=parent.$$childTail=scope;}},isScopeDisconnected:function(scope){var climbScope=scope;while(climbScope){if(climbScope.$$disconnected)return true;climbScope=climbScope.$parent;}return false;}}; // Bind a few of the most useful functions to the ionic scope
+	scope.$$prevSibling=parent.$$childTail;if(parent.$$childHead){parent.$$childTail.$$nextSibling=scope;parent.$$childTail=scope;}else {parent.$$childHead=parent.$$childTail=scope;}},isScopeDisconnected:function isScopeDisconnected(scope){var climbScope=scope;while(climbScope){if(climbScope.$$disconnected)return true;climbScope=climbScope.$parent;}return false;}}; // Bind a few of the most useful functions to the ionic scope
 	ionic.inherit=ionic.Utils.inherit;ionic.extend=ionic.Utils.extend;ionic.throttle=ionic.Utils.throttle;ionic.proxy=ionic.Utils.proxy;ionic.debounce=ionic.Utils.debounce;})(window.ionic); /**
 	 * @ngdoc page
 	 * @name keyboard
@@ -1661,15 +1667,15 @@
 	   * Whether the keyboard event listeners have been added or not
 	   */isInitialized:false, /**
 	   * Hide the keyboard, if it is open.
-	   */hide:function(){if(keyboardHasPlugin()){cordova.plugins.Keyboard.close();}keyboardActiveElement&&keyboardActiveElement.blur();}, /**
+	   */hide:function hide(){if(keyboardHasPlugin()){cordova.plugins.Keyboard.close();}keyboardActiveElement&&keyboardActiveElement.blur();}, /**
 	   * An alias for cordova.plugins.Keyboard.show(). If the keyboard plugin
 	   * is installed, show the keyboard.
-	   */show:function(){if(keyboardHasPlugin()){cordova.plugins.Keyboard.show();}}, /**
+	   */show:function show(){if(keyboardHasPlugin()){cordova.plugins.Keyboard.show();}}, /**
 	   * Remove all keyboard related event listeners, effectively disabling Ionic's
 	   * keyboard adjustments.
-	   */disable:function(){if(keyboardHasPlugin()){window.removeEventListener('native.keyboardshow',debouncedKeyboardNativeShow);window.removeEventListener('native.keyboardhide',keyboardFocusOut);}else {document.body.removeEventListener('focusout',keyboardFocusOut);}document.body.removeEventListener('ionic.focusin',debouncedKeyboardFocusIn);document.body.removeEventListener('focusin',debouncedKeyboardFocusIn);window.removeEventListener('orientationchange',keyboardOrientationChange);if(window.navigator.msPointerEnabled){document.removeEventListener("MSPointerDown",keyboardInit);}else {document.removeEventListener('touchstart',keyboardInit);}ionic.keyboard.isInitialized=false;}, /**
+	   */disable:function disable(){if(keyboardHasPlugin()){window.removeEventListener('native.keyboardshow',debouncedKeyboardNativeShow);window.removeEventListener('native.keyboardhide',keyboardFocusOut);}else {document.body.removeEventListener('focusout',keyboardFocusOut);}document.body.removeEventListener('ionic.focusin',debouncedKeyboardFocusIn);document.body.removeEventListener('focusin',debouncedKeyboardFocusIn);window.removeEventListener('orientationchange',keyboardOrientationChange);if(window.navigator.msPointerEnabled){document.removeEventListener("MSPointerDown",keyboardInit);}else {document.removeEventListener('touchstart',keyboardInit);}ionic.keyboard.isInitialized=false;}, /**
 	   * Alias for keyboardInit, initialize all keyboard related event listeners.
-	   */enable:function(){keyboardInit();}}; // Initialize the viewport height (after ionic.keyboard.height has been
+	   */enable:function enable(){keyboardInit();}}; // Initialize the viewport height (after ionic.keyboard.height has been
 	// defined).
 	keyboardCurrentViewportHeight=getViewportHeight(); /* Event handlers */ /* ------------------------------------------------------------------------- */ /**
 	 * Event handler for first touch event, initializes all event listeners
@@ -1838,7 +1844,7 @@
 	// try it again in a lil bit to play it safe
 	setTimeout(keyboardInitViewportHeight,999); // only initialize the adjustments for the virtual keyboard
 	// if a touchstart event happens
-	if(window.navigator.msPointerEnabled){document.addEventListener("MSPointerDown",keyboardInit,false);}else {document.addEventListener('touchstart',keyboardInit,false);}});var viewportTag;var viewportProperties={};ionic.viewport={orientation:function(){ // 0 = Portrait
+	if(window.navigator.msPointerEnabled){document.addEventListener("MSPointerDown",keyboardInit,false);}else {document.addEventListener('touchstart',keyboardInit,false);}});var viewportTag;var viewportProperties={};ionic.viewport={orientation:function orientation(){ // 0 = Portrait
 	// 90 = Landscape
 	// not using window.orientation because each device has a different implementation
 	return window.innerWidth>window.innerHeight?90:0;}};function viewportLoadTag(){var x;for(x=0;x<document.head.children.length;x++){if(document.head.children[x].name=='viewport'){viewportTag=document.head.children[x];break;}}if(viewportTag){var props=viewportTag.content.toLowerCase().replace(/\s+/g,'').split(',');var keyValue;for(x=0;x<props.length;x++){if(props[x]){keyValue=props[x].split('=');viewportProperties[keyValue[0]]=keyValue.length>1?keyValue[1]:'_';}}viewportUpdate();}}function viewportUpdate(){ // unit tests in viewport.unit.js
@@ -1862,7 +1868,7 @@
 	if(version<7){ // iPhone <= 6.1 Browser
 	// if height was set it needs to get removed with this hack for <= 6.1
 	if(initHeight)viewportProperties.height='0';}}} // only update the viewport tag if there was a change
-	if(initWidth!==viewportProperties.width||initHeight!==viewportProperties.height){viewportTagUpdate();}}function viewportTagUpdate(){var key,props=[];for(key in viewportProperties){if(viewportProperties[key]){props.push(key+(viewportProperties[key]=='_'?'':'='+viewportProperties[key]));}}viewportTag.content=props.join(', ');}ionic.Platform.ready(function(){viewportLoadTag();window.addEventListener("orientationchange",function(){setTimeout(viewportUpdate,1000);},false);});(function(ionic){'use strict';ionic.views.View=function(){this.initialize.apply(this,arguments);};ionic.views.View.inherit=ionic.inherit;ionic.extend(ionic.views.View.prototype,{initialize:function(){}});})(window.ionic); /*
+	if(initWidth!==viewportProperties.width||initHeight!==viewportProperties.height){viewportTagUpdate();}}function viewportTagUpdate(){var key,props=[];for(key in viewportProperties){if(viewportProperties[key]){props.push(key+(viewportProperties[key]=='_'?'':'='+viewportProperties[key]));}}viewportTag.content=props.join(', ');}ionic.Platform.ready(function(){viewportLoadTag();window.addEventListener("orientationchange",function(){setTimeout(viewportUpdate,1000);},false);});(function(ionic){'use strict';ionic.views.View=function(){this.initialize.apply(this,arguments);};ionic.views.View.inherit=ionic.inherit;ionic.extend(ionic.views.View.prototype,{initialize:function initialize(){}});})(window.ionic); /*
 	 * Scroller
 	 * http://github.com/zynga/scroller
 	 *
@@ -1899,12 +1905,12 @@
 	     *
 	     * @param id {Integer} Unique animation ID
 	     * @return {Boolean} Whether the animation was stopped (aka, was running before)
-	     */stop:function(id){var cleared=running[id]!=null;if(cleared){running[id]=null;}return cleared;}, /**
+	     */stop:function stop(id){var cleared=running[id]!=null;if(cleared){running[id]=null;}return cleared;}, /**
 	     * Whether the given animation is still running.
 	     *
 	     * @param id {Integer} Unique animation ID
 	     * @return {Boolean} Whether the animation is still running
-	     */isRunning:function(id){return running[id]!=null;}, /**
+	     */isRunning:function isRunning(id){return running[id]!=null;}, /**
 	     * Start the animation.
 	     *
 	     * @param stepCallback {Function} Pointer to function which is executed on every step.
@@ -1919,9 +1925,9 @@
 	     * @param root {Element} Render root, when available. Used for internal
 	     *   usage of requestAnimationFrame.
 	     * @return {Integer} Identifier of animation. Can be used to stop it any time.
-	     */start:function(stepCallback,verifyCallback,completedCallback,duration,easingMethod,root){var start=time();var lastFrame=start;var percent=0;var dropCounter=0;var id=counter++;if(!root){root=document.body;} // Compacting running db automatically every few new animations
+	     */start:function start(stepCallback,verifyCallback,completedCallback,duration,easingMethod,root){var start=time();var lastFrame=start;var percent=0;var dropCounter=0;var id=counter++;if(!root){root=document.body;} // Compacting running db automatically every few new animations
 	if(id%20===0){var newRunning={};for(var usedId in running){newRunning[usedId]=true;}running=newRunning;} // This is the internal step method which is called every few milliseconds
-	var step=function(virtual){ // Normalize virtual value
+	var step=function step(virtual){ // Normalize virtual value
 	var render=virtual!==true; // Get current time
 	var now=time(); // Verification is executed before next animation step
 	if(!running[id]||verifyCallback&&!verifyCallback(id)){running[id]=null;completedCallback&&completedCallback(desiredFrames-dropCounter/((now-start)/millisecondsPerSecond),id,false);return;} // For the current rendering to apply let's update omitted steps in memory.
@@ -1943,27 +1949,27 @@
 	 * http://unify-project.org
 	 * Copyright 2011, Deutsche Telekom AG
 	 * License: MIT + Apache (V2)
-	 */(function(ionic){var NOOP=function(){}; // Easing Equations (c) 2003 Robert Penner, all rights reserved.
+	 */(function(ionic){var NOOP=function NOOP(){}; // Easing Equations (c) 2003 Robert Penner, all rights reserved.
 	// Open source under the BSD License.
 	/**
 	   * @param pos {Number} position between 0 (start of effect) and 1 (end of effect)
-	  **/var easeOutCubic=function(pos){return Math.pow(pos-1,3)+1;}; /**
+	  **/var easeOutCubic=function easeOutCubic(pos){return Math.pow(pos-1,3)+1;}; /**
 	   * @param pos {Number} position between 0 (start of effect) and 1 (end of effect)
-	  **/var easeInOutCubic=function(pos){if((pos/=0.5)<1){return 0.5*Math.pow(pos,3);}return 0.5*(Math.pow(pos-2,3)+2);}; /**
+	  **/var easeInOutCubic=function easeInOutCubic(pos){if((pos/=0.5)<1){return 0.5*Math.pow(pos,3);}return 0.5*(Math.pow(pos-2,3)+2);}; /**
 	 * ionic.views.Scroll
 	 * A powerful scroll view with support for bouncing, pull to refresh, and paging.
 	 * @param   {Object}        options options for the scroll view
 	 * @class A scroll view system
 	 * @memberof ionic.views
-	 */ionic.views.Scroll=ionic.views.View.inherit({initialize:function(options){var self=this;self.__container=options.el;self.__content=options.el.firstElementChild; //Remove any scrollTop attached to these elements; they are virtual scroll now
+	 */ionic.views.Scroll=ionic.views.View.inherit({initialize:function initialize(options){var self=this;self.__container=options.el;self.__content=options.el.firstElementChild; //Remove any scrollTop attached to these elements; they are virtual scroll now
 	//This also stops on-load-scroll-to-window.location.hash that the browser does
 	setTimeout(function(){if(self.__container&&self.__content){self.__container.scrollTop=0;self.__content.scrollTop=0;}});self.options={ /** Disable scrolling on x-axis by default */scrollingX:false,scrollbarX:true, /** Enable scrolling on y-axis */scrollingY:true,scrollbarY:true,startX:0,startY:0, /** The amount to dampen mousewheel events */wheelDampen:6, /** The minimum size the scrollbars scale to while scrolling */minScrollbarSizeX:5,minScrollbarSizeY:5, /** Scrollbar fading after scrolling */scrollbarsFade:true,scrollbarFadeDelay:300, /** The initial fade delay when the pane is resized or initialized */scrollbarResizeFadeDelay:1000, /** Enable animations for deceleration, snap back, zooming and scrolling */animating:true, /** duration for animations triggered by scrollTo/zoomTo */animationDuration:250, /** The velocity required to make the scroll view "slide" after touchend */decelVelocityThreshold:4, /** The velocity required to make the scroll view "slide" after touchend when using paging */decelVelocityThresholdPaging:4, /** Enable bouncing (content can be slowly moved outside and jumps back after releasing) */bouncing:true, /** Enable locking to the main axis if user moves only slightly on one of them at start */locking:true, /** Enable pagination mode (switching between full page content panes) */paging:false, /** Enable snapping of content to a configured pixel grid */snapping:false, /** Enable zooming of content via API, fingers and mouse wheel */zooming:false, /** Minimum zoom level */minZoom:0.5, /** Maximum zoom level */maxZoom:3, /** Multiply or decrease scrolling speed **/speedMultiplier:1,deceleration:0.97, /** Whether to prevent default on a scroll operation to capture drag events **/preventDefault:false, /** Callback that is fired on the later of touch end or deceleration end,
 	        provided that another scrolling action has not begun. Used to know
 	        when to fade out a scrollbar. */scrollingComplete:NOOP, /** This configures the amount of change applied to deceleration when reaching boundaries  **/penetrationDeceleration:0.03, /** This configures the amount of change applied to acceleration when reaching boundaries  **/penetrationAcceleration:0.08, // The ms interval for triggering scroll events
-	scrollEventInterval:10,freeze:false,getContentWidth:function(){return Math.max(self.__content.scrollWidth,self.__content.offsetWidth);},getContentHeight:function(){return Math.max(self.__content.scrollHeight,self.__content.offsetHeight+self.__content.offsetTop*2);}};for(var key in options){self.options[key]=options[key];}self.hintResize=ionic.debounce(function(){self.resize();},1000,true);self.onScroll=function(){if(!ionic.scroll.isScrolling){setTimeout(self.setScrollStart,50);}else {clearTimeout(self.scrollTimer);self.scrollTimer=setTimeout(self.setScrollStop,80);}};self.freeze=function(shouldFreeze){if(arguments.length){self.options.freeze=shouldFreeze;}return self.options.freeze;}; // We can just use the standard freeze pop in our mouth
+	scrollEventInterval:10,freeze:false,getContentWidth:function getContentWidth(){return Math.max(self.__content.scrollWidth,self.__content.offsetWidth);},getContentHeight:function getContentHeight(){return Math.max(self.__content.scrollHeight,self.__content.offsetHeight+self.__content.offsetTop*2);}};for(var key in options){self.options[key]=options[key];}self.hintResize=ionic.debounce(function(){self.resize();},1000,true);self.onScroll=function(){if(!ionic.scroll.isScrolling){setTimeout(self.setScrollStart,50);}else {clearTimeout(self.scrollTimer);self.scrollTimer=setTimeout(self.setScrollStop,80);}};self.freeze=function(shouldFreeze){if(arguments.length){self.options.freeze=shouldFreeze;}return self.options.freeze;}; // We can just use the standard freeze pop in our mouth
 	self.freezeShut=self.freeze;self.setScrollStart=function(){ionic.scroll.isScrolling=Math.abs(ionic.scroll.lastTop-self.__scrollTop)>1;clearTimeout(self.scrollTimer);self.scrollTimer=setTimeout(self.setScrollStop,80);};self.setScrollStop=function(){ionic.scroll.isScrolling=false;ionic.scroll.lastTop=self.__scrollTop;};self.triggerScrollEvent=ionic.throttle(function(){self.onScroll();ionic.trigger('scroll',{scrollTop:self.__scrollTop,scrollLeft:self.__scrollLeft,target:self.__container});},self.options.scrollEventInterval);self.triggerScrollEndEvent=function(){ionic.trigger('scrollend',{scrollTop:self.__scrollTop,scrollLeft:self.__scrollLeft,target:self.__container});};self.__scrollLeft=self.options.startX;self.__scrollTop=self.options.startY; // Get the render update function, initialize event handlers,
 	// and calculate the size of the scroll container
-	self.__callback=self.getRenderFn();self.__initEventHandlers();self.__createScrollbars();},run:function(){this.resize(); // Fade them out
+	self.__callback=self.getRenderFn();self.__initEventHandlers();self.__createScrollbars();},run:function run(){this.resize(); // Fade them out
 	this.__fadeScrollbars('out',this.options.scrollbarResizeFadeDelay);}, /*
 	  ---------------------------------------------------------------------------
 	    INTERNAL FIELDS :: STATUS
@@ -1992,7 +1998,7 @@
 	  ---------------------------------------------------------------------------
 	    INTERNAL FIELDS :: DECELERATION SUPPORT
 	  ---------------------------------------------------------------------------
-	  */ /** Minimum left scroll position during deceleration */__minDecelerationScrollLeft:null, /** Minimum top scroll position during deceleration */__minDecelerationScrollTop:null, /** Maximum left scroll position during deceleration */__maxDecelerationScrollLeft:null, /** Maximum top scroll position during deceleration */__maxDecelerationScrollTop:null, /** Current factor to modify horizontal scroll position with on every step */__decelerationVelocityX:null, /** Current factor to modify vertical scroll position with on every step */__decelerationVelocityY:null, /** the browser-specific property to use for transforms */__transformProperty:null,__perspectiveProperty:null, /** scrollbar indicators */__indicatorX:null,__indicatorY:null, /** Timeout for scrollbar fading */__scrollbarFadeTimeout:null, /** whether we've tried to wait for size already */__didWaitForSize:null,__sizerTimeout:null,__initEventHandlers:function(){var self=this; // Event Handler
+	  */ /** Minimum left scroll position during deceleration */__minDecelerationScrollLeft:null, /** Minimum top scroll position during deceleration */__minDecelerationScrollTop:null, /** Maximum left scroll position during deceleration */__maxDecelerationScrollLeft:null, /** Maximum top scroll position during deceleration */__maxDecelerationScrollTop:null, /** Current factor to modify horizontal scroll position with on every step */__decelerationVelocityX:null, /** Current factor to modify vertical scroll position with on every step */__decelerationVelocityY:null, /** the browser-specific property to use for transforms */__transformProperty:null,__perspectiveProperty:null, /** scrollbar indicators */__indicatorX:null,__indicatorY:null, /** Timeout for scrollbar fading */__scrollbarFadeTimeout:null, /** whether we've tried to wait for size already */__didWaitForSize:null,__sizerTimeout:null,__initEventHandlers:function __initEventHandlers(){var self=this; // Event Handler
 	var container=self.__container; // save height when scroll view is shrunk so we don't need to reflow
 	var scrollViewOffsetHeight; /**
 	     * Shrink the scroll view when the keyboard is up if necessary and if the
@@ -2066,11 +2072,11 @@
 	container.addEventListener("touchstart",self.touchStart,false);if(self.options.preventDefault)container.addEventListener("touchmove",self.touchMoveBubble,false);document.addEventListener("touchmove",self.touchMove,false);document.addEventListener("touchend",self.touchEnd,false);document.addEventListener("touchcancel",self.touchEnd,false);document.addEventListener("wheel",self.mouseWheel,false);}else if(window.navigator.pointerEnabled){ // Pointer Events
 	container.addEventListener("pointerdown",self.touchStart,false);if(self.options.preventDefault)container.addEventListener("pointermove",self.touchMoveBubble,false);document.addEventListener("pointermove",self.touchMove,false);document.addEventListener("pointerup",self.touchEnd,false);document.addEventListener("pointercancel",self.touchEnd,false);document.addEventListener("wheel",self.mouseWheel,false);}else if(window.navigator.msPointerEnabled){ // IE10, WP8 (Pointer Events)
 	container.addEventListener("MSPointerDown",self.touchStart,false);if(self.options.preventDefault)container.addEventListener("MSPointerMove",self.touchMoveBubble,false);document.addEventListener("MSPointerMove",self.touchMove,false);document.addEventListener("MSPointerUp",self.touchEnd,false);document.addEventListener("MSPointerCancel",self.touchEnd,false);document.addEventListener("wheel",self.mouseWheel,false);}else { // Mouse Events
-	var mousedown=false;self.mouseDown=function(e){if(ionic.tap.ignoreScrollStart(e)||e.target.tagName==='SELECT'){return;}self.doTouchStart(getEventTouches(e),e.timeStamp);if(!ionic.tap.isTextInput(e.target)){e.preventDefault();}mousedown=true;};self.mouseMove=function(e){if(self.options.freeze||!mousedown||!mousedown&&e.defaultPrevented){return;}self.doTouchMove(getEventTouches(e),e.timeStamp);mousedown=true;};self.mouseMoveBubble=function(e){if(mousedown&&self.options.preventDefault){e.preventDefault();}};self.mouseUp=function(e){if(!mousedown){return;}self.doTouchEnd(e,e.timeStamp);mousedown=false;};container.addEventListener("mousedown",self.mouseDown,false);if(self.options.preventDefault)container.addEventListener("mousemove",self.mouseMoveBubble,false);document.addEventListener("mousemove",self.mouseMove,false);document.addEventListener("mouseup",self.mouseUp,false);document.addEventListener('mousewheel',self.mouseWheel,false);document.addEventListener('wheel',self.mouseWheel,false);}},__cleanup:function(){var self=this;var container=self.__container;container.removeEventListener('touchstart',self.touchStart);container.removeEventListener('touchmove',self.touchMoveBubble);document.removeEventListener('touchmove',self.touchMove);document.removeEventListener('touchend',self.touchEnd);document.removeEventListener('touchcancel',self.touchEnd);container.removeEventListener("pointerdown",self.touchStart);container.removeEventListener("pointermove",self.touchMoveBubble);document.removeEventListener("pointermove",self.touchMove);document.removeEventListener("pointerup",self.touchEnd);document.removeEventListener("pointercancel",self.touchEnd);container.removeEventListener("MSPointerDown",self.touchStart);container.removeEventListener("MSPointerMove",self.touchMoveBubble);document.removeEventListener("MSPointerMove",self.touchMove);document.removeEventListener("MSPointerUp",self.touchEnd);document.removeEventListener("MSPointerCancel",self.touchEnd);container.removeEventListener("mousedown",self.mouseDown);container.removeEventListener("mousemove",self.mouseMoveBubble);document.removeEventListener("mousemove",self.mouseMove);document.removeEventListener("mouseup",self.mouseUp);document.removeEventListener('mousewheel',self.mouseWheel);document.removeEventListener('wheel',self.mouseWheel);container.removeEventListener('scrollChildIntoView',self.scrollChildIntoView);document.removeEventListener('resetScrollView',self.resetScrollView);ionic.tap.removeClonedInputs(container,self);delete self.__container;delete self.__content;delete self.__indicatorX;delete self.__indicatorY;delete self.options.el;self.__callback=self.scrollChildIntoView=self.resetScrollView=NOOP;self.mouseMove=self.mouseDown=self.mouseUp=self.mouseWheel=self.touchStart=self.touchMove=self.touchEnd=self.touchCancel=NOOP;self.resize=self.scrollTo=self.zoomTo=self.__scrollingComplete=NOOP;container=null;}, /** Create a scroll bar div with the given direction **/__createScrollbar:function(direction){var bar=document.createElement('div'),indicator=document.createElement('div');indicator.className='scroll-bar-indicator scroll-bar-fade-out';if(direction=='h'){bar.className='scroll-bar scroll-bar-h';}else {bar.className='scroll-bar scroll-bar-v';}bar.appendChild(indicator);return bar;},__createScrollbars:function(){var self=this;var indicatorX,indicatorY;if(self.options.scrollingX){indicatorX={el:self.__createScrollbar('h'),sizeRatio:1};indicatorX.indicator=indicatorX.el.children[0];if(self.options.scrollbarX){self.__container.appendChild(indicatorX.el);}self.__indicatorX=indicatorX;}if(self.options.scrollingY){indicatorY={el:self.__createScrollbar('v'),sizeRatio:1};indicatorY.indicator=indicatorY.el.children[0];if(self.options.scrollbarY){self.__container.appendChild(indicatorY.el);}self.__indicatorY=indicatorY;}},__resizeScrollbars:function(){var self=this; // Update horiz bar
+	var mousedown=false;self.mouseDown=function(e){if(ionic.tap.ignoreScrollStart(e)||e.target.tagName==='SELECT'){return;}self.doTouchStart(getEventTouches(e),e.timeStamp);if(!ionic.tap.isTextInput(e.target)){e.preventDefault();}mousedown=true;};self.mouseMove=function(e){if(self.options.freeze||!mousedown||!mousedown&&e.defaultPrevented){return;}self.doTouchMove(getEventTouches(e),e.timeStamp);mousedown=true;};self.mouseMoveBubble=function(e){if(mousedown&&self.options.preventDefault){e.preventDefault();}};self.mouseUp=function(e){if(!mousedown){return;}self.doTouchEnd(e,e.timeStamp);mousedown=false;};container.addEventListener("mousedown",self.mouseDown,false);if(self.options.preventDefault)container.addEventListener("mousemove",self.mouseMoveBubble,false);document.addEventListener("mousemove",self.mouseMove,false);document.addEventListener("mouseup",self.mouseUp,false);document.addEventListener('mousewheel',self.mouseWheel,false);document.addEventListener('wheel',self.mouseWheel,false);}},__cleanup:function __cleanup(){var self=this;var container=self.__container;container.removeEventListener('touchstart',self.touchStart);container.removeEventListener('touchmove',self.touchMoveBubble);document.removeEventListener('touchmove',self.touchMove);document.removeEventListener('touchend',self.touchEnd);document.removeEventListener('touchcancel',self.touchEnd);container.removeEventListener("pointerdown",self.touchStart);container.removeEventListener("pointermove",self.touchMoveBubble);document.removeEventListener("pointermove",self.touchMove);document.removeEventListener("pointerup",self.touchEnd);document.removeEventListener("pointercancel",self.touchEnd);container.removeEventListener("MSPointerDown",self.touchStart);container.removeEventListener("MSPointerMove",self.touchMoveBubble);document.removeEventListener("MSPointerMove",self.touchMove);document.removeEventListener("MSPointerUp",self.touchEnd);document.removeEventListener("MSPointerCancel",self.touchEnd);container.removeEventListener("mousedown",self.mouseDown);container.removeEventListener("mousemove",self.mouseMoveBubble);document.removeEventListener("mousemove",self.mouseMove);document.removeEventListener("mouseup",self.mouseUp);document.removeEventListener('mousewheel',self.mouseWheel);document.removeEventListener('wheel',self.mouseWheel);container.removeEventListener('scrollChildIntoView',self.scrollChildIntoView);document.removeEventListener('resetScrollView',self.resetScrollView);ionic.tap.removeClonedInputs(container,self);delete self.__container;delete self.__content;delete self.__indicatorX;delete self.__indicatorY;delete self.options.el;self.__callback=self.scrollChildIntoView=self.resetScrollView=NOOP;self.mouseMove=self.mouseDown=self.mouseUp=self.mouseWheel=self.touchStart=self.touchMove=self.touchEnd=self.touchCancel=NOOP;self.resize=self.scrollTo=self.zoomTo=self.__scrollingComplete=NOOP;container=null;}, /** Create a scroll bar div with the given direction **/__createScrollbar:function __createScrollbar(direction){var bar=document.createElement('div'),indicator=document.createElement('div');indicator.className='scroll-bar-indicator scroll-bar-fade-out';if(direction=='h'){bar.className='scroll-bar scroll-bar-h';}else {bar.className='scroll-bar scroll-bar-v';}bar.appendChild(indicator);return bar;},__createScrollbars:function __createScrollbars(){var self=this;var indicatorX,indicatorY;if(self.options.scrollingX){indicatorX={el:self.__createScrollbar('h'),sizeRatio:1};indicatorX.indicator=indicatorX.el.children[0];if(self.options.scrollbarX){self.__container.appendChild(indicatorX.el);}self.__indicatorX=indicatorX;}if(self.options.scrollingY){indicatorY={el:self.__createScrollbar('v'),sizeRatio:1};indicatorY.indicator=indicatorY.el.children[0];if(self.options.scrollbarY){self.__container.appendChild(indicatorY.el);}self.__indicatorY=indicatorY;}},__resizeScrollbars:function __resizeScrollbars(){var self=this; // Update horiz bar
 	if(self.__indicatorX){var width=Math.max(Math.round(self.__clientWidth*self.__clientWidth/self.__contentWidth),20);if(width>self.__contentWidth){width=0;}if(width!==self.__indicatorX.size){ionic.requestAnimationFrame(function(){self.__indicatorX.indicator.style.width=width+'px';});}self.__indicatorX.size=width;self.__indicatorX.minScale=self.options.minScrollbarSizeX/width;self.__indicatorX.maxPos=self.__clientWidth-width;self.__indicatorX.sizeRatio=self.__maxScrollLeft?self.__indicatorX.maxPos/self.__maxScrollLeft:1;} // Update vert bar
 	if(self.__indicatorY){var height=Math.max(Math.round(self.__clientHeight*self.__clientHeight/self.__contentHeight),20);if(height>self.__contentHeight){height=0;}if(height!==self.__indicatorY.size){ionic.requestAnimationFrame(function(){self.__indicatorY&&(self.__indicatorY.indicator.style.height=height+'px');});}self.__indicatorY.size=height;self.__indicatorY.minScale=self.options.minScrollbarSizeY/height;self.__indicatorY.maxPos=self.__clientHeight-height;self.__indicatorY.sizeRatio=self.__maxScrollTop?self.__indicatorY.maxPos/self.__maxScrollTop:1;}}, /**
 	   * Move and scale the scrollbars as the page scrolls.
-	   */__repositionScrollbars:function(){var self=this,heightScale,widthScale,widthDiff,heightDiff,x,y,xstop=0,ystop=0;if(self.__indicatorX){ // Handle the X scrollbar
+	   */__repositionScrollbars:function __repositionScrollbars(){var self=this,heightScale,widthScale,widthDiff,heightDiff,x,y,xstop=0,ystop=0;if(self.__indicatorX){ // Handle the X scrollbar
 	// Don't go all the way to the right if we have a vertical scrollbar as well
 	if(self.__indicatorY)xstop=10;x=Math.round(self.__indicatorX.sizeRatio*self.__scrollLeft)||0; // The the difference between the last content X position, and our overscrolled one
 	widthDiff=self.__scrollLeft-(self.__maxScrollLeft-xstop);if(self.__scrollLeft<0){widthScale=Math.max(self.__indicatorX.minScale,(self.__indicatorX.size-Math.abs(self.__scrollLeft))/self.__indicatorX.size); // Stay at left
@@ -2084,13 +2090,13 @@
 	if(self.__indicatorY.originProp!=='center top'){self.__indicatorY.indicator.style[self.__transformOriginProperty]='center top';self.__indicatorY.originProp='center top';}}else if(heightDiff>0){heightScale=Math.max(self.__indicatorY.minScale,(self.__indicatorY.size-heightDiff)/self.__indicatorY.size); // Stay at bottom of scrollable viewport
 	y=self.__indicatorY.maxPos-ystop; // Make sure scale is transformed from the center/bottom origin point
 	if(self.__indicatorY.originProp!=='center bottom'){self.__indicatorY.indicator.style[self.__transformOriginProperty]='center bottom';self.__indicatorY.originProp='center bottom';}}else { // Normal motion
-	y=Math.min(self.__maxScrollTop,Math.max(0,y));heightScale=1;}var translate3dY='translate3d(0,'+y+'px, 0) scaleY('+heightScale+')';if(self.__indicatorY.transformProp!==translate3dY){self.__indicatorY.indicator.style[self.__transformProperty]=translate3dY;self.__indicatorY.transformProp=translate3dY;}}},__fadeScrollbars:function(direction,delay){var self=this;if(!self.options.scrollbarsFade){return;}var className='scroll-bar-fade-out';if(self.options.scrollbarsFade===true){clearTimeout(self.__scrollbarFadeTimeout);if(direction=='in'){if(self.__indicatorX){self.__indicatorX.indicator.classList.remove(className);}if(self.__indicatorY){self.__indicatorY.indicator.classList.remove(className);}}else {self.__scrollbarFadeTimeout=setTimeout(function(){if(self.__indicatorX){self.__indicatorX.indicator.classList.add(className);}if(self.__indicatorY){self.__indicatorY.indicator.classList.add(className);}},delay||self.options.scrollbarFadeDelay);}}},__scrollingComplete:function(){this.options.scrollingComplete();ionic.tap.removeClonedInputs(this.__container,this);this.__fadeScrollbars('out');},resize:function(continueScrolling){var self=this;if(!self.__container||!self.options)return; // Update Scroller dimensions for changed content
+	y=Math.min(self.__maxScrollTop,Math.max(0,y));heightScale=1;}var translate3dY='translate3d(0,'+y+'px, 0) scaleY('+heightScale+')';if(self.__indicatorY.transformProp!==translate3dY){self.__indicatorY.indicator.style[self.__transformProperty]=translate3dY;self.__indicatorY.transformProp=translate3dY;}}},__fadeScrollbars:function __fadeScrollbars(direction,delay){var self=this;if(!self.options.scrollbarsFade){return;}var className='scroll-bar-fade-out';if(self.options.scrollbarsFade===true){clearTimeout(self.__scrollbarFadeTimeout);if(direction=='in'){if(self.__indicatorX){self.__indicatorX.indicator.classList.remove(className);}if(self.__indicatorY){self.__indicatorY.indicator.classList.remove(className);}}else {self.__scrollbarFadeTimeout=setTimeout(function(){if(self.__indicatorX){self.__indicatorX.indicator.classList.add(className);}if(self.__indicatorY){self.__indicatorY.indicator.classList.add(className);}},delay||self.options.scrollbarFadeDelay);}}},__scrollingComplete:function __scrollingComplete(){this.options.scrollingComplete();ionic.tap.removeClonedInputs(this.__container,this);this.__fadeScrollbars('out');},resize:function resize(continueScrolling){var self=this;if(!self.__container||!self.options)return; // Update Scroller dimensions for changed content
 	// Add padding to bottom of content
 	self.setDimensions(self.__container.clientWidth,self.__container.clientHeight,self.options.getContentWidth(),self.options.getContentHeight(),continueScrolling);}, /*
 	  ---------------------------------------------------------------------------
 	    PUBLIC API
 	  ---------------------------------------------------------------------------
-	  */getRenderFn:function(){var self=this;var content=self.__content;var docStyle=document.documentElement.style;var engine;if('MozAppearance' in docStyle){engine='gecko';}else if('WebkitAppearance' in docStyle){engine='webkit';}else if(typeof navigator.cpuClass==='string'){engine='trident';}var vendorPrefix={trident:'ms',gecko:'Moz',webkit:'Webkit',presto:'O'}[engine];var helperElem=document.createElement("div");var undef;var perspectiveProperty=vendorPrefix+"Perspective";var transformProperty=vendorPrefix+"Transform";var transformOriginProperty=vendorPrefix+'TransformOrigin';self.__perspectiveProperty=transformProperty;self.__transformProperty=transformProperty;self.__transformOriginProperty=transformOriginProperty;if(helperElem.style[perspectiveProperty]!==undef){return function(left,top,zoom,wasResize){var translate3d='translate3d('+-left+'px,'+-top+'px,0) scale('+zoom+')';if(translate3d!==self.contentTransform){content.style[transformProperty]=translate3d;self.contentTransform=translate3d;}self.__repositionScrollbars();if(!wasResize){self.triggerScrollEvent();}};}else if(helperElem.style[transformProperty]!==undef){return function(left,top,zoom,wasResize){content.style[transformProperty]='translate('+-left+'px,'+-top+'px) scale('+zoom+')';self.__repositionScrollbars();if(!wasResize){self.triggerScrollEvent();}};}else {return function(left,top,zoom,wasResize){content.style.marginLeft=left?-left/zoom+'px':'';content.style.marginTop=top?-top/zoom+'px':'';content.style.zoom=zoom||'';self.__repositionScrollbars();if(!wasResize){self.triggerScrollEvent();}};}}, /**
+	  */getRenderFn:function getRenderFn(){var self=this;var content=self.__content;var docStyle=document.documentElement.style;var engine;if('MozAppearance' in docStyle){engine='gecko';}else if('WebkitAppearance' in docStyle){engine='webkit';}else if(typeof navigator.cpuClass==='string'){engine='trident';}var vendorPrefix={trident:'ms',gecko:'Moz',webkit:'Webkit',presto:'O'}[engine];var helperElem=document.createElement("div");var undef;var perspectiveProperty=vendorPrefix+"Perspective";var transformProperty=vendorPrefix+"Transform";var transformOriginProperty=vendorPrefix+'TransformOrigin';self.__perspectiveProperty=transformProperty;self.__transformProperty=transformProperty;self.__transformOriginProperty=transformOriginProperty;if(helperElem.style[perspectiveProperty]!==undef){return function(left,top,zoom,wasResize){var translate3d='translate3d('+-left+'px,'+-top+'px,0) scale('+zoom+')';if(translate3d!==self.contentTransform){content.style[transformProperty]=translate3d;self.contentTransform=translate3d;}self.__repositionScrollbars();if(!wasResize){self.triggerScrollEvent();}};}else if(helperElem.style[transformProperty]!==undef){return function(left,top,zoom,wasResize){content.style[transformProperty]='translate('+-left+'px,'+-top+'px) scale('+zoom+')';self.__repositionScrollbars();if(!wasResize){self.triggerScrollEvent();}};}else {return function(left,top,zoom,wasResize){content.style.marginLeft=left?-left/zoom+'px':'';content.style.marginTop=top?-top/zoom+'px':'';content.style.zoom=zoom||'';self.__repositionScrollbars();if(!wasResize){self.triggerScrollEvent();}};}}, /**
 	   * Configures the dimensions of the client (outer) and content (inner) elements.
 	   * Requires the available space for the outer element and the outer size of the inner element.
 	   * All values which are falsy (null or zero etc.) are ignored and the old value is kept.
@@ -2099,7 +2105,7 @@
 	   * @param clientHeight {Integer} Inner height of outer element
 	   * @param contentWidth {Integer} Outer width of inner element
 	   * @param contentHeight {Integer} Outer height of inner element
-	   */setDimensions:function(clientWidth,clientHeight,contentWidth,contentHeight,continueScrolling){var self=this;if(!clientWidth&&!clientHeight&&!contentWidth&&!contentHeight){ // this scrollview isn't rendered, don't bother
+	   */setDimensions:function setDimensions(clientWidth,clientHeight,contentWidth,contentHeight,continueScrolling){var self=this;if(!clientWidth&&!clientHeight&&!contentWidth&&!contentHeight){ // this scrollview isn't rendered, don't bother
 	return;} // Only update values which are defined
 	if(clientWidth===+clientWidth){self.__clientWidth=clientWidth;}if(clientHeight===+clientHeight){self.__clientHeight=clientHeight;}if(contentWidth===+contentWidth){self.__contentWidth=contentWidth;}if(contentHeight===+contentHeight){self.__contentHeight=contentHeight;} // Refresh maximums
 	self.__computeScrollMax();self.__resizeScrollbars(); // Refresh scroll position
@@ -2108,12 +2114,12 @@
 	   *
 	   * @param left {Integer} Left position of outer element
 	   * @param top {Integer} Top position of outer element
-	   */setPosition:function(left,top){this.__clientLeft=left||0;this.__clientTop=top||0;}, /**
+	   */setPosition:function setPosition(left,top){this.__clientLeft=left||0;this.__clientTop=top||0;}, /**
 	   * Configures the snapping (when snapping is active)
 	   *
 	   * @param width {Integer} Snapping width
 	   * @param height {Integer} Snapping height
-	   */setSnapSize:function(width,height){this.__snapWidth=width;this.__snapHeight=height;}, /**
+	   */setSnapSize:function setSnapSize(width,height){this.__snapWidth=width;this.__snapHeight=height;}, /**
 	   * Activates pull-to-refresh. A special zone on the top of the list to start a list refresh whenever
 	   * the user event is released during visibility of this zone. This was introduced by some apps on iOS like
 	   * the official Twitter client.
@@ -2126,22 +2132,22 @@
 	   * @param hideCallback {Function} Callback to execute when the refresher should be hidden. This is for hiding the refresher when it's behind the nav bar.
 	   * @param tailCallback {Function} Callback to execute just before the refresher returns to it's original state. This is for zooming out the refresher.
 	   * @param pullProgressCallback Callback to state the progress while pulling to refresh
-	   */activatePullToRefresh:function(height,refresherMethods){var self=this;self.__refreshHeight=height;self.__refreshActivate=function(){ionic.requestAnimationFrame(refresherMethods.activate);};self.__refreshDeactivate=function(){ionic.requestAnimationFrame(refresherMethods.deactivate);};self.__refreshStart=function(){ionic.requestAnimationFrame(refresherMethods.start);};self.__refreshShow=function(){ionic.requestAnimationFrame(refresherMethods.show);};self.__refreshHide=function(){ionic.requestAnimationFrame(refresherMethods.hide);};self.__refreshTail=function(){ionic.requestAnimationFrame(refresherMethods.tail);};self.__refreshTailTime=100;self.__minSpinTime=600;}, /**
+	   */activatePullToRefresh:function activatePullToRefresh(height,refresherMethods){var self=this;self.__refreshHeight=height;self.__refreshActivate=function(){ionic.requestAnimationFrame(refresherMethods.activate);};self.__refreshDeactivate=function(){ionic.requestAnimationFrame(refresherMethods.deactivate);};self.__refreshStart=function(){ionic.requestAnimationFrame(refresherMethods.start);};self.__refreshShow=function(){ionic.requestAnimationFrame(refresherMethods.show);};self.__refreshHide=function(){ionic.requestAnimationFrame(refresherMethods.hide);};self.__refreshTail=function(){ionic.requestAnimationFrame(refresherMethods.tail);};self.__refreshTailTime=100;self.__minSpinTime=600;}, /**
 	   * Starts pull-to-refresh manually.
-	   */triggerPullToRefresh:function(){ // Use publish instead of scrollTo to allow scrolling to out of boundary position
+	   */triggerPullToRefresh:function triggerPullToRefresh(){ // Use publish instead of scrollTo to allow scrolling to out of boundary position
 	// We don't need to normalize scrollLeft, zoomLevel, etc. here because we only y-scrolling when pull-to-refresh is enabled
 	this.__publish(this.__scrollLeft,-this.__refreshHeight,this.__zoomLevel,true);var d=new Date();this.refreshStartTime=d.getTime();if(this.__refreshStart){this.__refreshStart();}}, /**
 	   * Signalizes that pull-to-refresh is finished.
-	   */finishPullToRefresh:function(){var self=this; // delay to make sure the spinner has a chance to spin for a split second before it's dismissed
+	   */finishPullToRefresh:function finishPullToRefresh(){var self=this; // delay to make sure the spinner has a chance to spin for a split second before it's dismissed
 	var d=new Date();var delay=0;if(self.refreshStartTime+self.__minSpinTime>d.getTime()){delay=self.refreshStartTime+self.__minSpinTime-d.getTime();}setTimeout(function(){if(self.__refreshTail){self.__refreshTail();}setTimeout(function(){self.__refreshActive=false;if(self.__refreshDeactivate){self.__refreshDeactivate();}if(self.__refreshHide){self.__refreshHide();}self.scrollTo(self.__scrollLeft,self.__scrollTop,true);},self.__refreshTailTime);},delay);}, /**
 	   * Returns the scroll position and zooming values
 	   *
 	   * @return {Map} `left` and `top` scroll position and `zoom` level
-	   */getValues:function(){return {left:this.__scrollLeft,top:this.__scrollTop,zoom:this.__zoomLevel};}, /**
+	   */getValues:function getValues(){return {left:this.__scrollLeft,top:this.__scrollTop,zoom:this.__zoomLevel};}, /**
 	   * Returns the maximum scroll values
 	   *
 	   * @return {Map} `left` and `top` maximum scroll values
-	   */getScrollMax:function(){return {left:this.__maxScrollLeft,top:this.__maxScrollTop};}, /**
+	   */getScrollMax:function getScrollMax(){return {left:this.__maxScrollLeft,top:this.__maxScrollTop};}, /**
 	   * Zooms to the given level. Supports optional animation. Zooms
 	   * the center when no coordinates are given.
 	   *
@@ -2149,7 +2155,7 @@
 	   * @param animate {Boolean} Whether to use animation
 	   * @param originLeft {Number} Zoom in at given left coordinate
 	   * @param originTop {Number} Zoom in at given top coordinate
-	   */zoomTo:function(level,animate,originLeft,originTop){var self=this;if(!self.options.zooming){throw new Error("Zooming is not enabled!");} // Stop deceleration
+	   */zoomTo:function zoomTo(level,animate,originLeft,originTop){var self=this;if(!self.options.zooming){throw new Error("Zooming is not enabled!");} // Stop deceleration
 	if(self.__isDecelerating){zyngaCore.effect.Animate.stop(self.__isDecelerating);self.__isDecelerating=false;}var oldLevel=self.__zoomLevel; // Normalize input origin to center of viewport if not defined
 	if(originLeft==null){originLeft=self.__clientWidth/2;}if(originTop==null){originTop=self.__clientHeight/2;} // Limit level according to configuration
 	level=Math.max(Math.min(level,self.options.maxZoom),self.options.minZoom); // Recompute maximum values while temporary tweaking maximum scroll ranges
@@ -2164,14 +2170,14 @@
 	   * @param animate {Boolean} Whether to use animation
 	   * @param originLeft {Number} Zoom in at given left coordinate
 	   * @param originTop {Number} Zoom in at given top coordinate
-	   */zoomBy:function(factor,animate,originLeft,originTop){this.zoomTo(this.__zoomLevel*factor,animate,originLeft,originTop);}, /**
+	   */zoomBy:function zoomBy(factor,animate,originLeft,originTop){this.zoomTo(this.__zoomLevel*factor,animate,originLeft,originTop);}, /**
 	   * Scrolls to the given position. Respect limitations and snapping automatically.
 	   *
 	   * @param left {Number} Horizontal scroll position, keeps current if value is <code>null</code>
 	   * @param top {Number} Vertical scroll position, keeps current if value is <code>null</code>
 	   * @param animate {Boolean} Whether the scrolling should happen using an animation
 	   * @param zoom {Number} Zoom level to go to
-	   */scrollTo:function(left,top,animate,zoom,wasResize){var self=this; // Stop deceleration
+	   */scrollTo:function scrollTo(left,top,animate,zoom,wasResize){var self=this; // Stop deceleration
 	if(self.__isDecelerating){zyngaCore.effect.Animate.stop(self.__isDecelerating);self.__isDecelerating=false;} // Correct coordinates based on new zoom level
 	if(zoom!=null&&zoom!==self.__zoomLevel){if(!self.options.zooming){throw new Error("Zooming is not enabled!");}left*=zoom;top*=zoom; // Recompute maximum values while temporary tweaking maximum scroll ranges
 	self.__computeScrollMax(zoom);}else { // Keep zoom when not defined
@@ -2185,15 +2191,15 @@
 	   * @param left {Number} Scroll x-axis by given offset
 	   * @param top {Number} Scroll y-axis by given offset
 	   * @param animate {Boolean} Whether to animate the given change
-	   */scrollBy:function(left,top,animate){var self=this;var startLeft=self.__isAnimating?self.__scheduledLeft:self.__scrollLeft;var startTop=self.__isAnimating?self.__scheduledTop:self.__scrollTop;self.scrollTo(startLeft+(left||0),startTop+(top||0),animate);}, /*
+	   */scrollBy:function scrollBy(left,top,animate){var self=this;var startLeft=self.__isAnimating?self.__scheduledLeft:self.__scrollLeft;var startTop=self.__isAnimating?self.__scheduledTop:self.__scrollTop;self.scrollTo(startLeft+(left||0),startTop+(top||0),animate);}, /*
 	  ---------------------------------------------------------------------------
 	    EVENT CALLBACKS
 	  ---------------------------------------------------------------------------
 	  */ /**
 	   * Mouse wheel handler for zooming support
-	   */doMouseZoom:function(wheelDelta,timeStamp,pageX,pageY){var change=wheelDelta>0?0.97:1.03;return this.zoomTo(this.__zoomLevel*change,false,pageX-this.__clientLeft,pageY-this.__clientTop);}, /**
+	   */doMouseZoom:function doMouseZoom(wheelDelta,timeStamp,pageX,pageY){var change=wheelDelta>0?0.97:1.03;return this.zoomTo(this.__zoomLevel*change,false,pageX-this.__clientLeft,pageY-this.__clientTop);}, /**
 	   * Touch start handler for scrolling support
-	   */doTouchStart:function(touches,timeStamp){var self=this; // remember if the deceleration was just stopped
+	   */doTouchStart:function doTouchStart(touches,timeStamp){var self=this; // remember if the deceleration was just stopped
 	self.__decStopped=!!(self.__isDecelerating||self.__isAnimating);self.hintResize();if(timeStamp instanceof Date){timeStamp=timeStamp.valueOf();}if(typeof timeStamp!=="number"){timeStamp=Date.now();} // Reset interruptedAnimation flag
 	self.__interruptedAnimation=true; // Stop deceleration
 	if(self.__isDecelerating){zyngaCore.effect.Animate.stop(self.__isDecelerating);self.__isDecelerating=false;self.__interruptedAnimation=true;} // Stop animation
@@ -2212,7 +2218,7 @@
 	self.__isSingleTouch=isSingleTouch; // Clearing data structure
 	self.__positions=[];}, /**
 	   * Touch move handler for scrolling support
-	   */doTouchMove:function(touches,timeStamp,scale){if(timeStamp instanceof Date){timeStamp=timeStamp.valueOf();}if(typeof timeStamp!=="number"){timeStamp=Date.now();}var self=this; // Ignore event when tracking is not enabled (event might be outside of element)
+	   */doTouchMove:function doTouchMove(touches,timeStamp,scale){if(timeStamp instanceof Date){timeStamp=timeStamp.valueOf();}if(typeof timeStamp!=="number"){timeStamp=Date.now();}var self=this; // Ignore event when tracking is not enabled (event might be outside of element)
 	if(!self.__isTracking){return;}var currentTouchLeft,currentTouchTop; // Compute move based around of center of fingers
 	if(touches.length===2){currentTouchLeft=Math.abs(touches[0].pageX+touches[1].pageX)/2;currentTouchTop=Math.abs(touches[0].pageY+touches[1].pageY)/2; // Calculate scale when not present and only when touches are used
 	if(!scale&&self.options.zooming){scale=self.__getScale(self.__initialTouches,touches);}}else {currentTouchLeft=touches[0].pageX;currentTouchTop=touches[0].pageY;}var positions=self.__positions; // Are we already is dragging mode?
@@ -2238,7 +2244,7 @@
 	}else {var minimumTrackingForScroll=self.options.locking?3:0;var minimumTrackingForDrag=5;var distanceX=Math.abs(currentTouchLeft-self.__initialTouchLeft);var distanceY=Math.abs(currentTouchTop-self.__initialTouchTop);self.__enableScrollX=self.options.scrollingX&&distanceX>=minimumTrackingForScroll;self.__enableScrollY=self.options.scrollingY&&distanceY>=minimumTrackingForScroll;positions.push(self.__scrollLeft,self.__scrollTop,timeStamp);self.__isDragging=(self.__enableScrollX||self.__enableScrollY)&&(distanceX>=minimumTrackingForDrag||distanceY>=minimumTrackingForDrag);if(self.__isDragging){self.__interruptedAnimation=false;self.__fadeScrollbars('in');}} // Update last touch positions and time stamp for next event
 	self.__lastTouchLeft=currentTouchLeft;self.__lastTouchTop=currentTouchTop;self.__lastTouchMove=timeStamp;self.__lastScale=scale;}, /**
 	   * Touch end handler for scrolling support
-	   */doTouchEnd:function(e,timeStamp){if(timeStamp instanceof Date){timeStamp=timeStamp.valueOf();}if(typeof timeStamp!=="number"){timeStamp=Date.now();}var self=this; // Ignore event when tracking is not enabled (no touchstart event on element)
+	   */doTouchEnd:function doTouchEnd(e,timeStamp){if(timeStamp instanceof Date){timeStamp=timeStamp.valueOf();}if(typeof timeStamp!=="number"){timeStamp=Date.now();}var self=this; // Ignore event when tracking is not enabled (no touchstart event on element)
 	// This is required as this listener ('touchmove') sits on the document and not on the element itself.
 	if(!self.__isTracking){return;} // Not touching anymore (when two finger hit the screen there are two touch end events)
 	self.__isTracking=false; // Be sure to reset the dragging flag now. Here we also detect whether
@@ -2278,38 +2284,38 @@
 	   * @param left {Number} Left scroll position
 	   * @param top {Number} Top scroll position
 	   * @param animate {Boolean} Whether animation should be used to move to the new coordinates
-	   */__publish:function(left,top,zoom,animate,wasResize){var self=this; // Remember whether we had an animation, then we try to continue based on the current "drive" of the animation
+	   */__publish:function __publish(left,top,zoom,animate,wasResize){var self=this; // Remember whether we had an animation, then we try to continue based on the current "drive" of the animation
 	var wasAnimating=self.__isAnimating;if(wasAnimating){zyngaCore.effect.Animate.stop(wasAnimating);self.__isAnimating=false;}if(animate&&self.options.animating){ // Keep scheduled positions for scrollBy/zoomBy functionality
-	self.__scheduledLeft=left;self.__scheduledTop=top;self.__scheduledZoom=zoom;var oldLeft=self.__scrollLeft;var oldTop=self.__scrollTop;var oldZoom=self.__zoomLevel;var diffLeft=left-oldLeft;var diffTop=top-oldTop;var diffZoom=zoom-oldZoom;var step=function(percent,now,render){if(render){self.__scrollLeft=oldLeft+diffLeft*percent;self.__scrollTop=oldTop+diffTop*percent;self.__zoomLevel=oldZoom+diffZoom*percent; // Push values out
-	if(self.__callback){self.__callback(self.__scrollLeft,self.__scrollTop,self.__zoomLevel,wasResize);}}};var verify=function(id){return self.__isAnimating===id;};var completed=function(renderedFramesPerSecond,animationId,wasFinished){if(animationId===self.__isAnimating){self.__isAnimating=false;}if(self.__didDecelerationComplete||wasFinished){self.__scrollingComplete();}if(self.options.zooming){self.__computeScrollMax();}}; // When continuing based on previous animation we choose an ease-out animation instead of ease-in-out
+	self.__scheduledLeft=left;self.__scheduledTop=top;self.__scheduledZoom=zoom;var oldLeft=self.__scrollLeft;var oldTop=self.__scrollTop;var oldZoom=self.__zoomLevel;var diffLeft=left-oldLeft;var diffTop=top-oldTop;var diffZoom=zoom-oldZoom;var step=function step(percent,now,render){if(render){self.__scrollLeft=oldLeft+diffLeft*percent;self.__scrollTop=oldTop+diffTop*percent;self.__zoomLevel=oldZoom+diffZoom*percent; // Push values out
+	if(self.__callback){self.__callback(self.__scrollLeft,self.__scrollTop,self.__zoomLevel,wasResize);}}};var verify=function verify(id){return self.__isAnimating===id;};var completed=function completed(renderedFramesPerSecond,animationId,wasFinished){if(animationId===self.__isAnimating){self.__isAnimating=false;}if(self.__didDecelerationComplete||wasFinished){self.__scrollingComplete();}if(self.options.zooming){self.__computeScrollMax();}}; // When continuing based on previous animation we choose an ease-out animation instead of ease-in-out
 	self.__isAnimating=zyngaCore.effect.Animate.start(step,verify,completed,self.options.animationDuration,wasAnimating?easeOutCubic:easeInOutCubic);}else {self.__scheduledLeft=self.__scrollLeft=left;self.__scheduledTop=self.__scrollTop=top;self.__scheduledZoom=self.__zoomLevel=zoom; // Push values out
 	if(self.__callback){self.__callback(left,top,zoom,wasResize);} // Fix max scroll ranges
 	if(self.options.zooming){self.__computeScrollMax();}}}, /**
 	   * Recomputes scroll minimum values based on client dimensions and content dimensions.
-	   */__computeScrollMax:function(zoomLevel){var self=this;if(zoomLevel==null){zoomLevel=self.__zoomLevel;}self.__maxScrollLeft=Math.max(self.__contentWidth*zoomLevel-self.__clientWidth,0);self.__maxScrollTop=Math.max(self.__contentHeight*zoomLevel-self.__clientHeight,0);if(!self.__didWaitForSize&&!self.__maxScrollLeft&&!self.__maxScrollTop){self.__didWaitForSize=true;self.__waitForSize();}}, /**
+	   */__computeScrollMax:function __computeScrollMax(zoomLevel){var self=this;if(zoomLevel==null){zoomLevel=self.__zoomLevel;}self.__maxScrollLeft=Math.max(self.__contentWidth*zoomLevel-self.__clientWidth,0);self.__maxScrollTop=Math.max(self.__contentHeight*zoomLevel-self.__clientHeight,0);if(!self.__didWaitForSize&&!self.__maxScrollLeft&&!self.__maxScrollTop){self.__didWaitForSize=true;self.__waitForSize();}}, /**
 	   * If the scroll view isn't sized correctly on start, wait until we have at least some size
-	   */__waitForSize:function(){var self=this;clearTimeout(self.__sizerTimeout);var sizer=function(){self.resize(true);};sizer();self.__sizerTimeout=setTimeout(sizer,500);}, /*
+	   */__waitForSize:function __waitForSize(){var self=this;clearTimeout(self.__sizerTimeout);var sizer=function sizer(){self.resize(true);};sizer();self.__sizerTimeout=setTimeout(sizer,500);}, /*
 	  ---------------------------------------------------------------------------
 	    ANIMATION (DECELERATION) SUPPORT
 	  ---------------------------------------------------------------------------
 	  */ /**
 	   * Called when a touch sequence end and the speed of the finger was high enough
 	   * to switch into deceleration mode.
-	   */__startDeceleration:function(){var self=this;if(self.options.paging){var scrollLeft=Math.max(Math.min(self.__scrollLeft,self.__maxScrollLeft),0);var scrollTop=Math.max(Math.min(self.__scrollTop,self.__maxScrollTop),0);var clientWidth=self.__clientWidth;var clientHeight=self.__clientHeight; // We limit deceleration not to the min/max values of the allowed range, but to the size of the visible client area.
+	   */__startDeceleration:function __startDeceleration(){var self=this;if(self.options.paging){var scrollLeft=Math.max(Math.min(self.__scrollLeft,self.__maxScrollLeft),0);var scrollTop=Math.max(Math.min(self.__scrollTop,self.__maxScrollTop),0);var clientWidth=self.__clientWidth;var clientHeight=self.__clientHeight; // We limit deceleration not to the min/max values of the allowed range, but to the size of the visible client area.
 	// Each page should have exactly the size of the client area.
 	self.__minDecelerationScrollLeft=Math.floor(scrollLeft/clientWidth)*clientWidth;self.__minDecelerationScrollTop=Math.floor(scrollTop/clientHeight)*clientHeight;self.__maxDecelerationScrollLeft=Math.ceil(scrollLeft/clientWidth)*clientWidth;self.__maxDecelerationScrollTop=Math.ceil(scrollTop/clientHeight)*clientHeight;}else {self.__minDecelerationScrollLeft=0;self.__minDecelerationScrollTop=0;self.__maxDecelerationScrollLeft=self.__maxScrollLeft;self.__maxDecelerationScrollTop=self.__maxScrollTop;if(self.__refreshActive)self.__minDecelerationScrollTop=self.__refreshHeight*-1;} // Wrap class method
-	var step=function(percent,now,render){self.__stepThroughDeceleration(render);}; // How much velocity is required to keep the deceleration running
+	var step=function step(percent,now,render){self.__stepThroughDeceleration(render);}; // How much velocity is required to keep the deceleration running
 	self.__minVelocityToKeepDecelerating=self.options.snapping?4:0.1; // Detect whether it's still worth to continue animating steps
 	// If we are already slow enough to not being user perceivable anymore, we stop the whole process here.
-	var verify=function(){var shouldContinue=Math.abs(self.__decelerationVelocityX)>=self.__minVelocityToKeepDecelerating||Math.abs(self.__decelerationVelocityY)>=self.__minVelocityToKeepDecelerating;if(!shouldContinue){self.__didDecelerationComplete=true; //Make sure the scroll values are within the boundaries after a bounce,
+	var verify=function verify(){var shouldContinue=Math.abs(self.__decelerationVelocityX)>=self.__minVelocityToKeepDecelerating||Math.abs(self.__decelerationVelocityY)>=self.__minVelocityToKeepDecelerating;if(!shouldContinue){self.__didDecelerationComplete=true; //Make sure the scroll values are within the boundaries after a bounce,
 	//not below 0 or above maximum
-	if(self.options.bouncing&&!self.__refreshActive){self.scrollTo(Math.min(Math.max(self.__scrollLeft,0),self.__maxScrollLeft),Math.min(Math.max(self.__scrollTop,0),self.__maxScrollTop),self.__refreshActive);}}return shouldContinue;};var completed=function(){self.__isDecelerating=false;if(self.__didDecelerationComplete){self.__scrollingComplete();} // Animate to grid when snapping is active, otherwise just fix out-of-boundary positions
+	if(self.options.bouncing&&!self.__refreshActive){self.scrollTo(Math.min(Math.max(self.__scrollLeft,0),self.__maxScrollLeft),Math.min(Math.max(self.__scrollTop,0),self.__maxScrollTop),self.__refreshActive);}}return shouldContinue;};var completed=function completed(){self.__isDecelerating=false;if(self.__didDecelerationComplete){self.__scrollingComplete();} // Animate to grid when snapping is active, otherwise just fix out-of-boundary positions
 	if(self.options.paging){self.scrollTo(self.__scrollLeft,self.__scrollTop,self.options.snapping);}}; // Start animation and switch on flag
 	self.__isDecelerating=zyngaCore.effect.Animate.start(step,verify,completed);}, /**
 	   * Called on every step of the animation
 	   *
 	   * @param inMemory {Boolean} Whether to not render the current step, but keep it in memory only. Used internally only!
-	   */__stepThroughDeceleration:function(render){var self=this; //
+	   */__stepThroughDeceleration:function __stepThroughDeceleration(render){var self=this; //
 	// COMPUTE NEXT SCROLL POSITION
 	//
 	// Add deceleration to scroll position
@@ -2348,26 +2354,26 @@
 	   * @param   {Array}     end
 	   * @returns {Number}    scale
 	   */__getScale:function getScale(start,end){ // need two fingers...
-	if(start.length>=2&&end.length>=2){return this.__getDistance(end[0],end[1])/this.__getDistance(start[0],start[1]);}return 1;}});ionic.scroll={isScrolling:false,lastTop:0};})(ionic);(function(ionic){var NOOP=function(){};var deprecated=function(name){void 0;};ionic.views.ScrollNative=ionic.views.View.inherit({initialize:function(options){var self=this;self.__container=self.el=options.el;self.__content=options.el.firstElementChild; // Whether scrolling is frozen or not
-	self.__frozen=false;self.isNative=true;self.__scrollTop=self.el.scrollTop;self.__scrollLeft=self.el.scrollLeft;self.__clientHeight=self.__content.clientHeight;self.__clientWidth=self.__content.clientWidth;self.__maxScrollTop=Math.max(self.__contentHeight-self.__clientHeight,0);self.__maxScrollLeft=Math.max(self.__contentWidth-self.__clientWidth,0);if(options.startY>=0||options.startX>=0){ionic.requestAnimationFrame(function(){self.el.scrollTop=options.startY||0;self.el.scrollLeft=options.startX||0;self.__scrollTop=self.el.scrollTop;self.__scrollLeft=self.el.scrollLeft;});}self.options={freeze:false,getContentWidth:function(){return Math.max(self.__content.scrollWidth,self.__content.offsetWidth);},getContentHeight:function(){return Math.max(self.__content.scrollHeight,self.__content.offsetHeight+self.__content.offsetTop*2);}};for(var key in options){self.options[key]=options[key];} /**
+	if(start.length>=2&&end.length>=2){return this.__getDistance(end[0],end[1])/this.__getDistance(start[0],start[1]);}return 1;}});ionic.scroll={isScrolling:false,lastTop:0};})(ionic);(function(ionic){var NOOP=function NOOP(){};var deprecated=function deprecated(name){void 0;};ionic.views.ScrollNative=ionic.views.View.inherit({initialize:function initialize(options){var self=this;self.__container=self.el=options.el;self.__content=options.el.firstElementChild; // Whether scrolling is frozen or not
+	self.__frozen=false;self.isNative=true;self.__scrollTop=self.el.scrollTop;self.__scrollLeft=self.el.scrollLeft;self.__clientHeight=self.__content.clientHeight;self.__clientWidth=self.__content.clientWidth;self.__maxScrollTop=Math.max(self.__contentHeight-self.__clientHeight,0);self.__maxScrollLeft=Math.max(self.__contentWidth-self.__clientWidth,0);if(options.startY>=0||options.startX>=0){ionic.requestAnimationFrame(function(){self.el.scrollTop=options.startY||0;self.el.scrollLeft=options.startX||0;self.__scrollTop=self.el.scrollTop;self.__scrollLeft=self.el.scrollLeft;});}self.options={freeze:false,getContentWidth:function getContentWidth(){return Math.max(self.__content.scrollWidth,self.__content.offsetWidth);},getContentHeight:function getContentHeight(){return Math.max(self.__content.scrollHeight,self.__content.offsetHeight+self.__content.offsetTop*2);}};for(var key in options){self.options[key]=options[key];} /**
 	       * Sets isScrolling to true, and automatically deactivates if not called again in 80ms.
 	       */self.onScroll=function(){if(!ionic.scroll.isScrolling){ionic.scroll.isScrolling=true;}clearTimeout(self.scrollTimer);self.scrollTimer=setTimeout(function(){ionic.scroll.isScrolling=false;},80);};self.freeze=function(shouldFreeze){self.__frozen=shouldFreeze;}; // A more powerful freeze pop that dominates all other freeze pops
-	self.freezeShut=function(shouldFreezeShut){self.__frozenShut=shouldFreezeShut;};self.__initEventHandlers();}, /**  Methods not used in native scrolling */__callback:function(){deprecated('__callback');},zoomTo:function(){deprecated('zoomTo');},zoomBy:function(){deprecated('zoomBy');},activatePullToRefresh:function(){deprecated('activatePullToRefresh');}, /**
+	self.freezeShut=function(shouldFreezeShut){self.__frozenShut=shouldFreezeShut;};self.__initEventHandlers();}, /**  Methods not used in native scrolling */__callback:function __callback(){deprecated('__callback');},zoomTo:function zoomTo(){deprecated('zoomTo');},zoomBy:function zoomBy(){deprecated('zoomBy');},activatePullToRefresh:function activatePullToRefresh(){deprecated('activatePullToRefresh');}, /**
 	     * Returns the scroll position and zooming values
 	     *
 	     * @return {Map} `left` and `top` scroll position and `zoom` level
-	     */resize:function(continueScrolling){var self=this;if(!self.__container||!self.options)return; // Update Scroller dimensions for changed content
+	     */resize:function resize(continueScrolling){var self=this;if(!self.__container||!self.options)return; // Update Scroller dimensions for changed content
 	// Add padding to bottom of content
 	self.setDimensions(self.__container.clientWidth,self.__container.clientHeight,self.options.getContentWidth(),self.options.getContentHeight(),continueScrolling);}, /**
 	     * Initialize the scrollview
 	     * In native scrolling, this only means we need to gather size information
-	     */run:function(){this.resize();}, /**
+	     */run:function run(){this.resize();}, /**
 	     * Returns the scroll position and zooming values
 	     *
 	     * @return {Map} `left` and `top` scroll position and `zoom` level
-	     */getValues:function(){var self=this;self.update();return {left:self.__scrollLeft,top:self.__scrollTop,zoom:1};}, /**
+	     */getValues:function getValues(){var self=this;self.update();return {left:self.__scrollLeft,top:self.__scrollTop,zoom:1};}, /**
 	     * Updates the __scrollLeft and __scrollTop values to el's current value
-	     */update:function(){var self=this;self.__scrollLeft=self.el.scrollLeft;self.__scrollTop=self.el.scrollTop;}, /**
+	     */update:function update(){var self=this;self.__scrollLeft=self.el.scrollLeft;self.__scrollTop=self.el.scrollTop;}, /**
 	     * Configures the dimensions of the client (outer) and content (inner) elements.
 	     * Requires the available space for the outer element and the outer size of the inner element.
 	     * All values which are falsy (null or zero etc.) are ignored and the old value is kept.
@@ -2376,27 +2382,27 @@
 	     * @param clientHeight {Integer} Inner height of outer element
 	     * @param contentWidth {Integer} Outer width of inner element
 	     * @param contentHeight {Integer} Outer height of inner element
-	     */setDimensions:function(clientWidth,clientHeight,contentWidth,contentHeight){var self=this;if(!clientWidth&&!clientHeight&&!contentWidth&&!contentHeight){ // this scrollview isn't rendered, don't bother
+	     */setDimensions:function setDimensions(clientWidth,clientHeight,contentWidth,contentHeight){var self=this;if(!clientWidth&&!clientHeight&&!contentWidth&&!contentHeight){ // this scrollview isn't rendered, don't bother
 	return;} // Only update values which are defined
 	if(clientWidth===+clientWidth){self.__clientWidth=clientWidth;}if(clientHeight===+clientHeight){self.__clientHeight=clientHeight;}if(contentWidth===+contentWidth){self.__contentWidth=contentWidth;}if(contentHeight===+contentHeight){self.__contentHeight=contentHeight;} // Refresh maximums
 	self.__computeScrollMax();}, /**
 	     * Returns the maximum scroll values
 	     *
 	     * @return {Map} `left` and `top` maximum scroll values
-	     */getScrollMax:function(){return {left:this.__maxScrollLeft,top:this.__maxScrollTop};}, /**
+	     */getScrollMax:function getScrollMax(){return {left:this.__maxScrollLeft,top:this.__maxScrollTop};}, /**
 	     * Scrolls by the given amount in px.
 	     *
 	     * @param left {Number} Horizontal scroll position, keeps current if value is <code>null</code>
 	     * @param top {Number} Vertical scroll position, keeps current if value is <code>null</code>
 	     * @param animate {Boolean} Whether the scrolling should happen using an animation
-	     */scrollBy:function(left,top,animate){var self=this; // update scroll vars before refferencing them
+	     */scrollBy:function scrollBy(left,top,animate){var self=this; // update scroll vars before refferencing them
 	self.update();var startLeft=self.__isAnimating?self.__scheduledLeft:self.__scrollLeft;var startTop=self.__isAnimating?self.__scheduledTop:self.__scrollTop;self.scrollTo(startLeft+(left||0),startTop+(top||0),animate);}, /**
 	     * Scrolls to the given position in px.
 	     *
 	     * @param left {Number} Horizontal scroll position, keeps current if value is <code>null</code>
 	     * @param top {Number} Vertical scroll position, keeps current if value is <code>null</code>
 	     * @param animate {Boolean} Whether the scrolling should happen using an animation
-	     */scrollTo:function(left,top,animate){var self=this;if(!animate){self.el.scrollTop=top;self.el.scrollLeft=left;self.resize();return;}var oldOverflowX=self.el.style.overflowX;var oldOverflowY=self.el.style.overflowY;clearTimeout(self.__scrollToCleanupTimeout);self.__scrollToCleanupTimeout=setTimeout(function(){self.el.style.overflowX=oldOverflowX;self.el.style.overflowY=oldOverflowY;},500);self.el.style.overflowY='hidden';self.el.style.overflowX='hidden';animateScroll(top,left);function animateScroll(Y,X){ // scroll animation loop w/ easing
+	     */scrollTo:function scrollTo(left,top,animate){var self=this;if(!animate){self.el.scrollTop=top;self.el.scrollLeft=left;self.resize();return;}var oldOverflowX=self.el.style.overflowX;var oldOverflowY=self.el.style.overflowY;clearTimeout(self.__scrollToCleanupTimeout);self.__scrollToCleanupTimeout=setTimeout(function(){self.el.style.overflowX=oldOverflowX;self.el.style.overflowY=oldOverflowY;},500);self.el.style.overflowY='hidden';self.el.style.overflowX='hidden';animateScroll(top,left);function animateScroll(Y,X){ // scroll animation loop w/ easing
 	// credit https://gist.github.com/dezinezync/5487119
 	var start=Date.now(),duration=250, //milliseconds
 	fromY=self.el.scrollTop,fromX=self.el.scrollLeft;if(fromY===Y&&fromX===X){self.el.style.overflowX=oldOverflowX;self.el.style.overflowY=oldOverflowY;self.resize();return; /* Prevent scrolling to the Y point if already there */} // decelerating to zero velocity
@@ -2411,9 +2417,9 @@
 	     ---------------------------------------------------------------------------
 	     */ /**
 	     * If the scroll view isn't sized correctly on start, wait until we have at least some size
-	     */__waitForSize:function(){var self=this;clearTimeout(self.__sizerTimeout);var sizer=function(){self.resize(true);};sizer();self.__sizerTimeout=setTimeout(sizer,500);}, /**
+	     */__waitForSize:function __waitForSize(){var self=this;clearTimeout(self.__sizerTimeout);var sizer=function sizer(){self.resize(true);};sizer();self.__sizerTimeout=setTimeout(sizer,500);}, /**
 	     * Recomputes scroll minimum values based on client dimensions and content dimensions.
-	     */__computeScrollMax:function(){var self=this;self.__maxScrollLeft=Math.max(self.__contentWidth-self.__clientWidth,0);self.__maxScrollTop=Math.max(self.__contentHeight-self.__clientHeight,0);if(!self.__didWaitForSize&&!self.__maxScrollLeft&&!self.__maxScrollTop){self.__didWaitForSize=true;self.__waitForSize();}},__initEventHandlers:function(){var self=this; // Event Handler
+	     */__computeScrollMax:function __computeScrollMax(){var self=this;self.__maxScrollLeft=Math.max(self.__contentWidth-self.__clientWidth,0);self.__maxScrollTop=Math.max(self.__contentHeight-self.__clientHeight,0);if(!self.__didWaitForSize&&!self.__maxScrollLeft&&!self.__maxScrollTop){self.__didWaitForSize=true;self.__waitForSize();}},__initEventHandlers:function __initEventHandlers(){var self=this; // Event Handler
 	var container=self.__container; // save height when scroll view is shrunk so we don't need to reflow
 	var scrollViewOffsetHeight;var lastKeyboardHeight; /**
 	       * Shrink the scroll view when the keyboard is up if necessary and if the
@@ -2528,7 +2534,7 @@
 	// input and returning to a previously resized scroll view in an ion-content.
 	// Since we can only resize scroll views that are currently visible, just resize
 	// the current scroll view when the keyboard is closed.
-	document.addEventListener('resetScrollView',self.resetScrollView);},__cleanup:function(){var self=this;var container=self.__container;container.removeEventListener('resetScrollView',self.resetScrollView);container.removeEventListener('scroll',self.onScroll);container.removeEventListener('scrollChildIntoView',self.scrollChildIntoView);container.removeEventListener('resetScrollView',self.resetScrollView);container.removeEventListener(ionic.EVENTS.touchstart,self.handleTouchMove);container.removeEventListener(ionic.EVENTS.touchmove,self.handleTouchMove);ionic.tap.removeClonedInputs(container,self);delete self.__container;delete self.__content;delete self.__indicatorX;delete self.__indicatorY;delete self.options.el;self.resize=self.scrollTo=self.onScroll=self.resetScrollView=NOOP;self.scrollChildIntoView=NOOP;container=null;}});})(ionic);(function(ionic){'use strict';var ITEM_CLASS='item';var ITEM_CONTENT_CLASS='item-content';var ITEM_SLIDING_CLASS='item-sliding';var ITEM_OPTIONS_CLASS='item-options';var ITEM_PLACEHOLDER_CLASS='item-placeholder';var ITEM_REORDERING_CLASS='item-reordering';var ITEM_REORDER_BTN_CLASS='item-reorder';var DragOp=function(){};DragOp.prototype={start:function(){},drag:function(){},end:function(){},isSameItem:function(){return false;}};var SlideDrag=function(opts){this.dragThresholdX=opts.dragThresholdX||10;this.el=opts.el;this.item=opts.item;this.canSwipe=opts.canSwipe;};SlideDrag.prototype=new DragOp();SlideDrag.prototype.start=function(e){var content,buttons,offsetX,buttonsWidth;if(!this.canSwipe()){return;}if(e.target.classList.contains(ITEM_CONTENT_CLASS)){content=e.target;}else if(e.target.classList.contains(ITEM_CLASS)){content=e.target.querySelector('.'+ITEM_CONTENT_CLASS);}else {content=ionic.DomUtil.getParentWithClass(e.target,ITEM_CONTENT_CLASS);} // If we don't have a content area as one of our children (or ourselves), skip
+	document.addEventListener('resetScrollView',self.resetScrollView);},__cleanup:function __cleanup(){var self=this;var container=self.__container;container.removeEventListener('resetScrollView',self.resetScrollView);container.removeEventListener('scroll',self.onScroll);container.removeEventListener('scrollChildIntoView',self.scrollChildIntoView);container.removeEventListener('resetScrollView',self.resetScrollView);container.removeEventListener(ionic.EVENTS.touchstart,self.handleTouchMove);container.removeEventListener(ionic.EVENTS.touchmove,self.handleTouchMove);ionic.tap.removeClonedInputs(container,self);delete self.__container;delete self.__content;delete self.__indicatorX;delete self.__indicatorY;delete self.options.el;self.resize=self.scrollTo=self.onScroll=self.resetScrollView=NOOP;self.scrollChildIntoView=NOOP;container=null;}});})(ionic);(function(ionic){'use strict';var ITEM_CLASS='item';var ITEM_CONTENT_CLASS='item-content';var ITEM_SLIDING_CLASS='item-sliding';var ITEM_OPTIONS_CLASS='item-options';var ITEM_PLACEHOLDER_CLASS='item-placeholder';var ITEM_REORDERING_CLASS='item-reordering';var ITEM_REORDER_BTN_CLASS='item-reorder';var DragOp=function DragOp(){};DragOp.prototype={start:function start(){},drag:function drag(){},end:function end(){},isSameItem:function isSameItem(){return false;}};var SlideDrag=function SlideDrag(opts){this.dragThresholdX=opts.dragThresholdX||10;this.el=opts.el;this.item=opts.item;this.canSwipe=opts.canSwipe;};SlideDrag.prototype=new DragOp();SlideDrag.prototype.start=function(e){var content,buttons,offsetX,buttonsWidth;if(!this.canSwipe()){return;}if(e.target.classList.contains(ITEM_CONTENT_CLASS)){content=e.target;}else if(e.target.classList.contains(ITEM_CLASS)){content=e.target.querySelector('.'+ITEM_CONTENT_CLASS);}else {content=ionic.DomUtil.getParentWithClass(e.target,ITEM_CONTENT_CLASS);} // If we don't have a content area as one of our children (or ourselves), skip
 	if(!content){return;} // Make sure we aren't animating as we slide
 	content.classList.remove(ITEM_SLIDING_CLASS); // Grab the starting X point for the item (for example, so we can tell whether it is open or closed to start)
 	offsetX=parseFloat(content.style[ionic.CSS.TRANSFORM].replace('translate3d(','').split(',')[0])||0; // Grab the buttons
@@ -2548,7 +2554,7 @@
 	if(e.gesture.deltaX>-(self._currentDrag.buttonsWidth/2)){ // If we are going left but too slow, or going right, go back to resting
 	if(e.gesture.direction=="left"&&Math.abs(e.gesture.velocityX)<0.3){restingPoint=0;}else if(e.gesture.direction=="right"){restingPoint=0;}}ionic.requestAnimationFrame(function(){if(restingPoint===0){self._currentDrag.content.style[ionic.CSS.TRANSFORM]='';var buttons=self._currentDrag.buttons;setTimeout(function(){buttons&&buttons.classList.add('invisible');},250);}else {self._currentDrag.content.style[ionic.CSS.TRANSFORM]='translate3d('+restingPoint+'px,0,0)';}self._currentDrag.content.style[ionic.CSS.TRANSITION]=''; // Kill the current drag
 	if(!self._lastDrag){self._lastDrag={};}ionic.extend(self._lastDrag,self._currentDrag);if(self._currentDrag){self._currentDrag.buttons=null;self._currentDrag.content=null;}self._currentDrag=null; // We are done, notify caller
-	doneCallback&&doneCallback();});};var ReorderDrag=function(opts){var self=this;self.dragThresholdY=opts.dragThresholdY||0;self.onReorder=opts.onReorder;self.listEl=opts.listEl;self.el=self.item=opts.el;self.scrollEl=opts.scrollEl;self.scrollView=opts.scrollView; // Get the True Top of the list el http://www.quirksmode.org/js/findpos.html
+	doneCallback&&doneCallback();});};var ReorderDrag=function ReorderDrag(opts){var self=this;self.dragThresholdY=opts.dragThresholdY||0;self.onReorder=opts.onReorder;self.listEl=opts.listEl;self.el=self.item=opts.el;self.scrollEl=opts.scrollEl;self.scrollView=opts.scrollView; // Get the True Top of the list el http://www.quirksmode.org/js/findpos.html
 	self.listElTrueTop=0;if(self.listEl.offsetParent){var obj=self.listEl;do {self.listElTrueTop+=obj.offsetTop;obj=obj.offsetParent;}while(obj);}};ReorderDrag.prototype=new DragOp();ReorderDrag.prototype._moveElement=function(e){var y=e.gesture.center.pageY+this.scrollView.getValues().top-this._currentDrag.elementHeight/2-this.listElTrueTop;this.el.style[ionic.CSS.TRANSFORM]='translate3d(0, '+y+'px, 0)';};ReorderDrag.prototype.deregister=function(){this.listEl=this.el=this.scrollEl=this.scrollView=null;};ReorderDrag.prototype.start=function(e){var startIndex=ionic.DomUtil.getChildIndex(this.el,this.el.nodeName.toLowerCase());var elementHeight=this.el.scrollHeight;var placeholder=this.el.cloneNode(true);placeholder.classList.add(ITEM_PLACEHOLDER_CLASS);this.el.parentNode.insertBefore(placeholder,this.el);this.el.classList.add(ITEM_REORDERING_CLASS);this._currentDrag={elementHeight:elementHeight,startIndex:startIndex,placeholder:placeholder,scrollHeight:scroll,list:placeholder.parentNode};this._moveElement(e);};ReorderDrag.prototype.drag=ionic.animationFrameThrottle(function(e){ // We really aren't dragging
 	var self=this;if(!this._currentDrag){return;}var scrollY=0;var pageY=e.gesture.center.pageY;var offset=this.listElTrueTop; //If we have a scrollView, check scroll boundaries for dragged element and scroll if necessary
 	if(this.scrollView){var container=this.scrollView.__container;scrollY=this.scrollView.getValues().top;var containerTop=container.offsetTop;var pixelsPastTop=containerTop-pageY+this._currentDrag.elementHeight/2;var pixelsPastBottom=pageY+this._currentDrag.elementHeight/2-containerTop-container.offsetHeight;if(e.gesture.deltaY<0&&pixelsPastTop>0&&scrollY>0){this.scrollView.scrollBy(null,-pixelsPastTop); //Trigger another drag so the scrolling keeps going
@@ -2561,18 +2567,18 @@
 	this.el.classList.remove(ITEM_REORDERING_CLASS);this.el.style[ionic.CSS.TRANSFORM]='';placeholder.parentNode.insertBefore(this.el,placeholder);placeholder.parentNode.removeChild(placeholder);this.onReorder&&this.onReorder(this.el,this._currentDrag.startIndex,finalIndex);this._currentDrag={placeholder:null,content:null};this._currentDrag=null;doneCallback&&doneCallback();}; /**
 	   * The ListView handles a list of items. It will process drag animations, edit mode,
 	   * and other operations that are common on mobile lists or table views.
-	   */ionic.views.ListView=ionic.views.View.inherit({initialize:function(opts){var self=this;opts=ionic.extend({onReorder:function(){},virtualRemoveThreshold:-200,virtualAddThreshold:200,canSwipe:function(){return true;}},opts);ionic.extend(self,opts);if(!self.itemHeight&&self.listEl){self.itemHeight=self.listEl.children[0]&&parseInt(self.listEl.children[0].style.height,10);}self.onRefresh=opts.onRefresh||function(){};self.onRefreshOpening=opts.onRefreshOpening||function(){};self.onRefreshHolding=opts.onRefreshHolding||function(){};var gestureOpts={}; // don't prevent native scrolling
+	   */ionic.views.ListView=ionic.views.View.inherit({initialize:function initialize(opts){var self=this;opts=ionic.extend({onReorder:function onReorder(){},virtualRemoveThreshold:-200,virtualAddThreshold:200,canSwipe:function canSwipe(){return true;}},opts);ionic.extend(self,opts);if(!self.itemHeight&&self.listEl){self.itemHeight=self.listEl.children[0]&&parseInt(self.listEl.children[0].style.height,10);}self.onRefresh=opts.onRefresh||function(){};self.onRefreshOpening=opts.onRefreshOpening||function(){};self.onRefreshHolding=opts.onRefreshHolding||function(){};var gestureOpts={}; // don't prevent native scrolling
 	if(ionic.DomUtil.getParentOrSelfWithClass(self.el,'overflow-scroll')){gestureOpts.prevent_default_directions=['left','right'];}window.ionic.onGesture('release',function(e){self._handleEndDrag(e);},self.el,gestureOpts);window.ionic.onGesture('drag',function(e){self._handleDrag(e);},self.el,gestureOpts); // Start the drag states
 	self._initDrag();}, /**
 	     * Be sure to cleanup references.
-	     */deregister:function(){this.el=this.listEl=this.scrollEl=this.scrollView=null; // ensure no scrolls have been left frozen
+	     */deregister:function deregister(){this.el=this.listEl=this.scrollEl=this.scrollView=null; // ensure no scrolls have been left frozen
 	if(this.isScrollFreeze){self.scrollView.freeze(false);}}, /**
 	     * Called to tell the list to stop refreshing. This is useful
 	     * if you are refreshing the list and are done with refreshing.
-	     */stopRefreshing:function(){var refresher=this.el.querySelector('.list-refresher');refresher.style.height='0';}, /**
+	     */stopRefreshing:function stopRefreshing(){var refresher=this.el.querySelector('.list-refresher');refresher.style.height='0';}, /**
 	     * If we scrolled and have virtual mode enabled, compute the window
 	     * of active elements in order to figure out the viewport to render.
-	     */didScroll:function(e){var self=this;if(self.isVirtual){var itemHeight=self.itemHeight; // Grab the total height of the list
+	     */didScroll:function didScroll(e){var self=this;if(self.isVirtual){var itemHeight=self.itemHeight; // Grab the total height of the list
 	var scrollHeight=e.target.scrollHeight; // Get the viewport height
 	var viewportHeight=self.el.parentNode.offsetHeight; // High water is the pixel position of the first element to include (everything before
 	// that will be removed)
@@ -2581,40 +2587,40 @@
 	var lowWater=Math.min(scrollHeight,Math.abs(e.scrollTop)+viewportHeight+self.virtualAddThreshold); // Get the first and last elements in the list based on how many can fit
 	// between the pixel range of lowWater and highWater
 	var first=parseInt(Math.abs(highWater/itemHeight),10);var last=parseInt(Math.abs(lowWater/itemHeight),10); // Get the items we need to remove
-	self._virtualItemsToRemove=Array.prototype.slice.call(self.listEl.children,0,first);self.renderViewport&&self.renderViewport(highWater,lowWater,first,last);}},didStopScrolling:function(){if(this.isVirtual){for(var i=0;i<this._virtualItemsToRemove.length;i++){ //el.parentNode.removeChild(el);
+	self._virtualItemsToRemove=Array.prototype.slice.call(self.listEl.children,0,first);self.renderViewport&&self.renderViewport(highWater,lowWater,first,last);}},didStopScrolling:function didStopScrolling(){if(this.isVirtual){for(var i=0;i<this._virtualItemsToRemove.length;i++){ //el.parentNode.removeChild(el);
 	this.didHideItem&&this.didHideItem(i);} // Once scrolling stops, check if we need to remove old items
 	}}, /**
 	     * Clear any active drag effects on the list.
-	     */clearDragEffects:function(isInstant){if(this._lastDragOp){this._lastDragOp.clean&&this._lastDragOp.clean(isInstant);this._lastDragOp.deregister&&this._lastDragOp.deregister();this._lastDragOp=null;}},_initDrag:function(){ // Store the last one
+	     */clearDragEffects:function clearDragEffects(isInstant){if(this._lastDragOp){this._lastDragOp.clean&&this._lastDragOp.clean(isInstant);this._lastDragOp.deregister&&this._lastDragOp.deregister();this._lastDragOp=null;}},_initDrag:function _initDrag(){ // Store the last one
 	if(this._lastDragOp){this._lastDragOp.deregister&&this._lastDragOp.deregister();}this._lastDragOp=this._dragOp;this._dragOp=null;}, // Return the list item from the given target
-	_getItem:function(target){while(target){if(target.classList&&target.classList.contains(ITEM_CLASS)){return target;}target=target.parentNode;}return null;},_startDrag:function(e){var self=this;self._isDragging=false;var lastDragOp=self._lastDragOp;var item; // If we have an open SlideDrag and we're scrolling the list. Clear it.
+	_getItem:function _getItem(target){while(target){if(target.classList&&target.classList.contains(ITEM_CLASS)){return target;}target=target.parentNode;}return null;},_startDrag:function _startDrag(e){var self=this;self._isDragging=false;var lastDragOp=self._lastDragOp;var item; // If we have an open SlideDrag and we're scrolling the list. Clear it.
 	if(self._didDragUpOrDown&&lastDragOp instanceof SlideDrag){lastDragOp.clean&&lastDragOp.clean();} // Check if this is a reorder drag
-	if(ionic.DomUtil.getParentOrSelfWithClass(e.target,ITEM_REORDER_BTN_CLASS)&&(e.gesture.direction=='up'||e.gesture.direction=='down')){item=self._getItem(e.target);if(item){self._dragOp=new ReorderDrag({listEl:self.el,el:item,scrollEl:self.scrollEl,scrollView:self.scrollView,onReorder:function(el,start,end){self.onReorder&&self.onReorder(el,start,end);}});self._dragOp.start(e);e.preventDefault();}} // Or check if this is a swipe to the side drag
+	if(ionic.DomUtil.getParentOrSelfWithClass(e.target,ITEM_REORDER_BTN_CLASS)&&(e.gesture.direction=='up'||e.gesture.direction=='down')){item=self._getItem(e.target);if(item){self._dragOp=new ReorderDrag({listEl:self.el,el:item,scrollEl:self.scrollEl,scrollView:self.scrollView,onReorder:function onReorder(el,start,end){self.onReorder&&self.onReorder(el,start,end);}});self._dragOp.start(e);e.preventDefault();}} // Or check if this is a swipe to the side drag
 	else if(!self._didDragUpOrDown&&(e.gesture.direction=='left'||e.gesture.direction=='right')&&Math.abs(e.gesture.deltaX)>5){ // Make sure this is an item with buttons
 	item=self._getItem(e.target);if(item&&item.querySelector('.item-options')){self._dragOp=new SlideDrag({el:self.el,item:item,canSwipe:self.canSwipe});self._dragOp.start(e);e.preventDefault();self.isScrollFreeze=self.scrollView.freeze(true);}} // If we had a last drag operation and this is a new one on a different item, clean that last one
-	if(lastDragOp&&self._dragOp&&!self._dragOp.isSameItem(lastDragOp)&&e.defaultPrevented){lastDragOp.clean&&lastDragOp.clean();}},_handleEndDrag:function(e){var self=this;if(self.scrollView){self.isScrollFreeze=self.scrollView.freeze(false);}self._didDragUpOrDown=false;if(!self._dragOp){return;}self._dragOp.end(e,function(){self._initDrag();});}, /**
+	if(lastDragOp&&self._dragOp&&!self._dragOp.isSameItem(lastDragOp)&&e.defaultPrevented){lastDragOp.clean&&lastDragOp.clean();}},_handleEndDrag:function _handleEndDrag(e){var self=this;if(self.scrollView){self.isScrollFreeze=self.scrollView.freeze(false);}self._didDragUpOrDown=false;if(!self._dragOp){return;}self._dragOp.end(e,function(){self._initDrag();});}, /**
 	     * Process the drag event to move the item to the left or right.
-	     */_handleDrag:function(e){var self=this;if(Math.abs(e.gesture.deltaY)>5){self._didDragUpOrDown=true;} // If we get a drag event, make sure we aren't in another drag, then check if we should
+	     */_handleDrag:function _handleDrag(e){var self=this;if(Math.abs(e.gesture.deltaY)>5){self._didDragUpOrDown=true;} // If we get a drag event, make sure we aren't in another drag, then check if we should
 	// start one
 	if(!self.isDragging&&!self._dragOp){self._startDrag(e);} // No drag still, pass it up
-	if(!self._dragOp){return;}e.gesture.srcEvent.preventDefault();self._dragOp.drag(e);}});})(ionic);(function(ionic){'use strict';ionic.views.Modal=ionic.views.View.inherit({initialize:function(opts){opts=ionic.extend({focusFirstInput:false,unfocusOnHide:true,focusFirstDelay:600,backdropClickToClose:true,hardwareBackButtonClose:true},opts);ionic.extend(this,opts);this.el=opts.el;},show:function(){var self=this;if(self.focusFirstInput){ // Let any animations run first
-	window.setTimeout(function(){var input=self.el.querySelector('input, textarea');input&&input.focus&&input.focus();},self.focusFirstDelay);}},hide:function(){ // Unfocus all elements
+	if(!self._dragOp){return;}e.gesture.srcEvent.preventDefault();self._dragOp.drag(e);}});})(ionic);(function(ionic){'use strict';ionic.views.Modal=ionic.views.View.inherit({initialize:function initialize(opts){opts=ionic.extend({focusFirstInput:false,unfocusOnHide:true,focusFirstDelay:600,backdropClickToClose:true,hardwareBackButtonClose:true},opts);ionic.extend(this,opts);this.el=opts.el;},show:function show(){var self=this;if(self.focusFirstInput){ // Let any animations run first
+	window.setTimeout(function(){var input=self.el.querySelector('input, textarea');input&&input.focus&&input.focus();},self.focusFirstDelay);}},hide:function hide(){ // Unfocus all elements
 	if(this.unfocusOnHide){var inputs=this.el.querySelectorAll('input, textarea'); // Let any animations run first
 	window.setTimeout(function(){for(var i=0;i<inputs.length;i++){inputs[i].blur&&inputs[i].blur();}});}}});})(ionic);(function(ionic){'use strict'; /**
 	   * The side menu view handles one of the side menu's in a Side Menu Controller
 	   * configuration.
 	   * It takes a DOM reference to that side menu element.
-	   */ionic.views.SideMenu=ionic.views.View.inherit({initialize:function(opts){this.el=opts.el;this.isEnabled=typeof opts.isEnabled==='undefined'?true:opts.isEnabled;this.setWidth(opts.width);},getFullWidth:function(){return this.width;},setWidth:function(width){this.width=width;this.el.style.width=width+'px';},setIsEnabled:function(isEnabled){this.isEnabled=isEnabled;},bringUp:function(){if(this.el.style.zIndex!=='0'){this.el.style.zIndex='0';}},pushDown:function(){if(this.el.style.zIndex!=='-1'){this.el.style.zIndex='-1';}}});ionic.views.SideMenuContent=ionic.views.View.inherit({initialize:function(opts){ionic.extend(this,{animationClass:'menu-animated',onDrag:function(){},onEndDrag:function(){}},opts);ionic.onGesture('drag',ionic.proxy(this._onDrag,this),this.el);ionic.onGesture('release',ionic.proxy(this._onEndDrag,this),this.el);},_onDrag:function(e){this.onDrag&&this.onDrag(e);},_onEndDrag:function(e){this.onEndDrag&&this.onEndDrag(e);},disableAnimation:function(){this.el.classList.remove(this.animationClass);},enableAnimation:function(){this.el.classList.add(this.animationClass);},getTranslateX:function(){return parseFloat(this.el.style[ionic.CSS.TRANSFORM].replace('translate3d(','').split(',')[0]);},setTranslateX:ionic.animationFrameThrottle(function(x){this.el.style[ionic.CSS.TRANSFORM]='translate3d('+x+'px, 0, 0)';})});})(ionic); /*
+	   */ionic.views.SideMenu=ionic.views.View.inherit({initialize:function initialize(opts){this.el=opts.el;this.isEnabled=typeof opts.isEnabled==='undefined'?true:opts.isEnabled;this.setWidth(opts.width);},getFullWidth:function getFullWidth(){return this.width;},setWidth:function setWidth(width){this.width=width;this.el.style.width=width+'px';},setIsEnabled:function setIsEnabled(isEnabled){this.isEnabled=isEnabled;},bringUp:function bringUp(){if(this.el.style.zIndex!=='0'){this.el.style.zIndex='0';}},pushDown:function pushDown(){if(this.el.style.zIndex!=='-1'){this.el.style.zIndex='-1';}}});ionic.views.SideMenuContent=ionic.views.View.inherit({initialize:function initialize(opts){ionic.extend(this,{animationClass:'menu-animated',onDrag:function onDrag(){},onEndDrag:function onEndDrag(){}},opts);ionic.onGesture('drag',ionic.proxy(this._onDrag,this),this.el);ionic.onGesture('release',ionic.proxy(this._onEndDrag,this),this.el);},_onDrag:function _onDrag(e){this.onDrag&&this.onDrag(e);},_onEndDrag:function _onEndDrag(e){this.onEndDrag&&this.onEndDrag(e);},disableAnimation:function disableAnimation(){this.el.classList.remove(this.animationClass);},enableAnimation:function enableAnimation(){this.el.classList.add(this.animationClass);},getTranslateX:function getTranslateX(){return parseFloat(this.el.style[ionic.CSS.TRANSFORM].replace('translate3d(','').split(',')[0]);},setTranslateX:ionic.animationFrameThrottle(function(x){this.el.style[ionic.CSS.TRANSFORM]='translate3d('+x+'px, 0, 0)';})});})(ionic); /*
 	 * Adapted from Swipe.js 2.0
 	 *
 	 * Brad Birdsall
 	 * Copyright 2013, MIT License
 	 *
-	*/(function(ionic){'use strict';ionic.views.Slider=ionic.views.View.inherit({initialize:function(options){var slider=this;var touchStartEvent,touchMoveEvent,touchEndEvent;if(window.navigator.pointerEnabled){touchStartEvent='pointerdown';touchMoveEvent='pointermove';touchEndEvent='pointerup';}else if(window.navigator.msPointerEnabled){touchStartEvent='MSPointerDown';touchMoveEvent='MSPointerMove';touchEndEvent='MSPointerUp';}else {touchStartEvent='touchstart';touchMoveEvent='touchmove';touchEndEvent='touchend';}var mouseStartEvent='mousedown';var mouseMoveEvent='mousemove';var mouseEndEvent='mouseup'; // utilities
-	var noop=function(){}; // simple no operation function
-	var offloadFn=function(fn){setTimeout(fn||noop,0);}; // offload a functions execution
+	*/(function(ionic){'use strict';ionic.views.Slider=ionic.views.View.inherit({initialize:function initialize(options){var slider=this;var touchStartEvent,touchMoveEvent,touchEndEvent;if(window.navigator.pointerEnabled){touchStartEvent='pointerdown';touchMoveEvent='pointermove';touchEndEvent='pointerup';}else if(window.navigator.msPointerEnabled){touchStartEvent='MSPointerDown';touchMoveEvent='MSPointerMove';touchEndEvent='MSPointerUp';}else {touchStartEvent='touchstart';touchMoveEvent='touchmove';touchEndEvent='touchend';}var mouseStartEvent='mousedown';var mouseMoveEvent='mousemove';var mouseEndEvent='mouseup'; // utilities
+	var noop=function noop(){}; // simple no operation function
+	var offloadFn=function offloadFn(fn){setTimeout(fn||noop,0);}; // offload a functions execution
 	// check browser capabilities
-	var browser={addEventListener:!!window.addEventListener,transitions:function(temp){var props=['transitionProperty','WebkitTransition','MozTransition','OTransition','msTransition'];for(var i in props)if(temp.style[props[i]]!==undefined)return true;return false;}(document.createElement('swipe'))};var container=options.el; // quit if no root element
+	var browser={addEventListener:!!window.addEventListener,transitions:function(temp){var props=['transitionProperty','WebkitTransition','MozTransition','OTransition','msTransition'];for(var i in props){if(temp.style[props[i]]!==undefined)return true;}return false;}(document.createElement('swipe'))};var container=options.el; // quit if no root element
 	if(!container)return;var element=container.children[0];var slides,slidePos,width,length;options=options||{};var index=parseInt(options.startSlide,10)||0;var speed=options.speed||300;options.continuous=options.continuous!==undefined?options.continuous:true;function setup(){ // do not setup if the container has no width
 	if(!container.offsetWidth){return;} // cache slides
 	slides=element.children;length=slides.length; // set continuous to false if only one slide
@@ -2630,24 +2636,24 @@
 	if(options.continuous){var naturalDirection=direction;direction=-slidePos[circle(to)]/width; // if going forward but to < index, use to = slides.length + to
 	// if going backward but to > index, use to = -slides.length + to
 	if(direction!==naturalDirection)to=-direction*slides.length+to;}var diff=Math.abs(index-to)-1; // move all the slides between index and to in the right direction
-	while(diff--)move(circle((to>index?to:index)-diff-1),width*direction,0);to=circle(to);move(index,width*direction,slideSpeed||speed);move(to,0,slideSpeed||speed);if(options.continuous)move(circle(to-direction),-(width*direction),0); // we need to get the next in place
+	while(diff--){move(circle((to>index?to:index)-diff-1),width*direction,0);}to=circle(to);move(index,width*direction,slideSpeed||speed);move(to,0,slideSpeed||speed);if(options.continuous)move(circle(to-direction),-(width*direction),0); // we need to get the next in place
 	}else {to=circle(to);animate(index*-width,to*-width,slideSpeed||speed); //no fallback for a circular continuous if the browser does not accept transitions
 	}index=to;offloadFn(options.callback&&options.callback(index,slides[index]));}function move(index,dist,speed){translate(index,dist,speed);slidePos[index]=dist;}function translate(index,dist,speed){var slide=slides[index];var style=slide&&slide.style;if(!style)return;style.webkitTransitionDuration=style.MozTransitionDuration=style.msTransitionDuration=style.OTransitionDuration=style.transitionDuration=speed+'ms';style.webkitTransform='translate('+dist+'px,0)'+'translateZ(0)';style.msTransform=style.MozTransform=style.OTransform='translateX('+dist+'px)';}function animate(from,to,speed){ // if not an animation, just reposition
 	if(!speed){element.style.left=to+'px';return;}var start=+new Date();var timer=setInterval(function(){var timeElap=+new Date()-start;if(timeElap>speed){element.style.left=to+'px';if(delay)begin();options.transitionEnd&&options.transitionEnd.call(event,index,slides[index]);clearInterval(timer);return;}element.style.left=(to-from)*(Math.floor(timeElap/speed*100)/100)+from+'px';},4);} // setup auto slideshow
 	var delay=options.auto||0;var interval;function begin(){interval=setTimeout(next,delay);}function stop(){delay=options.auto||0;clearTimeout(interval);} // setup initial vars
-	var start={};var delta={};var isScrolling; // setup event capturing
-	var events={handleEvent:function(event){if(!event.touches&&event.pageX&&event.pageY){event.touches=[{pageX:event.pageX,pageY:event.pageY}];}switch(event.type){case touchStartEvent:this.start(event);break;case mouseStartEvent:this.start(event);break;case touchMoveEvent:this.touchmove(event);break;case mouseMoveEvent:this.touchmove(event);break;case touchEndEvent:offloadFn(this.end(event));break;case mouseEndEvent:offloadFn(this.end(event));break;case 'webkitTransitionEnd':case 'msTransitionEnd':case 'oTransitionEnd':case 'otransitionend':case 'transitionend':offloadFn(this.transitionEnd(event));break;case 'resize':offloadFn(setup);break;}if(options.stopPropagation)event.stopPropagation();},start:function(event){ // prevent to start if there is no valid event
+	var _start={};var delta={};var isScrolling; // setup event capturing
+	var events={handleEvent:function handleEvent(event){if(!event.touches&&event.pageX&&event.pageY){event.touches=[{pageX:event.pageX,pageY:event.pageY}];}switch(event.type){case touchStartEvent:this.start(event);break;case mouseStartEvent:this.start(event);break;case touchMoveEvent:this.touchmove(event);break;case mouseMoveEvent:this.touchmove(event);break;case touchEndEvent:offloadFn(this.end(event));break;case mouseEndEvent:offloadFn(this.end(event));break;case 'webkitTransitionEnd':case 'msTransitionEnd':case 'oTransitionEnd':case 'otransitionend':case 'transitionend':offloadFn(this.transitionEnd(event));break;case 'resize':offloadFn(setup);break;}if(options.stopPropagation)event.stopPropagation();},start:function start(event){ // prevent to start if there is no valid event
 	if(!event.touches){return;}var touches=event.touches[0]; // measure start values
-	start={ // get initial touch coords
+	_start={ // get initial touch coords
 	x:touches.pageX,y:touches.pageY, // store time to determine touch duration
 	time:+new Date()}; // used for testing first move event
 	isScrolling=undefined; // reset delta and end measurements
 	delta={}; // attach touchmove and touchend listeners
-	element.addEventListener(touchMoveEvent,this,false);element.addEventListener(mouseMoveEvent,this,false);element.addEventListener(touchEndEvent,this,false);element.addEventListener(mouseEndEvent,this,false);document.addEventListener(touchEndEvent,this,false);document.addEventListener(mouseEndEvent,this,false);},touchmove:function(event){ // ensure there is a valid event
+	element.addEventListener(touchMoveEvent,this,false);element.addEventListener(mouseMoveEvent,this,false);element.addEventListener(touchEndEvent,this,false);element.addEventListener(mouseEndEvent,this,false);document.addEventListener(touchEndEvent,this,false);document.addEventListener(mouseEndEvent,this,false);},touchmove:function touchmove(event){ // ensure there is a valid event
 	// ensure swiping with one touch and not pinching
 	// ensure sliding is enabled
 	if(!event.touches||event.touches.length>1||event.scale&&event.scale!==1||slider.slideIsDisabled){return;}if(options.disableScroll)event.preventDefault();var touches=event.touches[0]; // measure change in x and y
-	delta={x:touches.pageX-start.x,y:touches.pageY-start.y}; // determine if scrolling test has run - one time test
+	delta={x:touches.pageX-_start.x,y:touches.pageY-_start.y}; // determine if scrolling test has run - one time test
 	if(typeof isScrolling=='undefined'){isScrolling=!!(isScrolling||Math.abs(delta.x)<Math.abs(delta.y));} // if user is not trying to scroll vertically
 	if(!isScrolling){ // prevent native scrolling
 	event.preventDefault(); // stop slideshow
@@ -2664,8 +2670,8 @@
 	}if(Math.abs(delta.x)>width*(slides.length-index-1)){ //We are trying to scroll past right bondary
 	delta.x=Math.max(-width*(slides.length-index-1),delta.x); //Set delta.x so we don't go past right screen
 	}} // translate 1:1
-	translate(index-1,delta.x+slidePos[index-1],0);translate(index,delta.x+slidePos[index],0);translate(index+1,delta.x+slidePos[index+1],0);}options.onDrag&&options.onDrag();}},end:function(){ // measure duration
-	var duration=+new Date()-start.time; // determine if slide attempt triggers next/prev slide
+	translate(index-1,delta.x+slidePos[index-1],0);translate(index,delta.x+slidePos[index],0);translate(index+1,delta.x+slidePos[index+1],0);}options.onDrag&&options.onDrag();}},end:function end(){ // measure duration
+	var duration=+new Date()-_start.time; // determine if slide attempt triggers next/prev slide
 	var isValidSlide=Number(duration)<250&& // if slide duration is less than 250ms
 	Math.abs(delta.x)>20|| // and if slide amt is greater than 20px
 	Math.abs(delta.x)>width/2; // or if slide amt is greater than half the width
@@ -2677,7 +2683,7 @@
 	if(!isScrolling){if(isValidSlide&&!isPastBounds){if(direction){if(options.continuous){ // we need to get the next in this direction in place
 	move(circle(index-1),-width,0);move(circle(index+2),width,0);}else {move(index-1,-width,0);}move(index,slidePos[index]-width,speed);move(circle(index+1),slidePos[circle(index+1)]-width,speed);index=circle(index+1);}else {if(options.continuous){ // we need to get the next in this direction in place
 	move(circle(index+1),width,0);move(circle(index-2),-width,0);}else {move(index+1,width,0);}move(index,slidePos[index]+width,speed);move(circle(index-1),slidePos[circle(index-1)]+width,speed);index=circle(index-1);}options.callback&&options.callback(index,slides[index]);}else {if(options.continuous){move(circle(index-1),-width,speed);move(index,0,speed);move(circle(index+1),width,speed);}else {move(index-1,-width,speed);move(index,0,speed);move(index+1,width,speed);}}} // kill touchmove and touchend event listeners until touchstart called again
-	element.removeEventListener(touchMoveEvent,events,false);element.removeEventListener(mouseMoveEvent,events,false);element.removeEventListener(touchEndEvent,events,false);element.removeEventListener(mouseEndEvent,events,false);document.removeEventListener(touchEndEvent,events,false);document.removeEventListener(mouseEndEvent,events,false);options.onDragEnd&&options.onDragEnd();},transitionEnd:function(event){if(parseInt(event.target.getAttribute('data-index'),10)==index){if(delay)begin();options.transitionEnd&&options.transitionEnd.call(event,index,slides[index]);}}}; // Public API
+	element.removeEventListener(touchMoveEvent,events,false);element.removeEventListener(mouseMoveEvent,events,false);element.removeEventListener(touchEndEvent,events,false);element.removeEventListener(mouseEndEvent,events,false);document.removeEventListener(touchEndEvent,events,false);document.removeEventListener(mouseEndEvent,events,false);options.onDragEnd&&options.onDragEnd();},transitionEnd:function transitionEnd(event){if(parseInt(event.target.getAttribute('data-index'),10)==index){if(delay)begin();options.transitionEnd&&options.transitionEnd.call(event,index,slides[index]);}}}; // Public API
 	this.update=function(){setTimeout(setup);};this.setup=function(){setup();};this.loop=function(value){if(arguments.length)options.continuous=!!value;return options.continuous;};this.enableSlide=function(shouldEnable){if(arguments.length){this.slideIsDisabled=!shouldEnable;}return !this.slideIsDisabled;};this.slide=this.select=function(to,speed){ // cancel slideshow
 	stop();slide(to,speed);};this.prev=this.previous=function(){ // cancel slideshow
 	stop();prev();};this.next=function(){ // cancel slideshow
@@ -2710,7 +2716,7 @@
 	 * Released on: December 7, 2015
 	 */(function(){'use strict';var $; /*===========================
 	    Swiper
-	    ===========================*/var Swiper=function(container,params,_scope,$compile){if(!(this instanceof Swiper))return new Swiper(container,params);var defaults={direction:'horizontal',touchEventsTarget:'container',initialSlide:0,speed:300, // autoplay
+	    ===========================*/var Swiper=function Swiper(container,params,_scope,$compile){if(!(this instanceof Swiper))return new Swiper(container,params);var defaults={direction:'horizontal',touchEventsTarget:'container',initialSlide:0,speed:300, // autoplay
 	autoplay:false,autoplayDisableOnInteraction:true, // To support iOS's swipe-to-go-back gesture (when being used in-app, with UIWebView).
 	iOSEdgeSwipeDetection:false,iOSEdgeSwipeThreshold:20, // Free mode
 	freeMode:false,freeModeMomentum:true,freeModeMomentumRatio:1,freeModeMomentumBounce:true,freeModeMomentumBounceRatio:1,freeModeSticky:false,freeModeMinimumVelocity:0.02, // Autoheight
@@ -2771,7 +2777,7 @@
 	            onAutoplayStop: function (swiper),
 	            onLazyImageLoad: function (swiper, slide, image)
 	            onLazyImageReady: function (swiper, slide, image)
-	            */};var initialVirtualTranslate=params&&params.virtualTranslate;params=params||{};var originalParams={};for(var param in params){if(typeof params[param]==='object'&&!(params[param].nodeType||params[param]===window||params[param]===document||typeof Dom7!=='undefined'&&params[param] instanceof Dom7||typeof jQuery!=='undefined'&&params[param] instanceof jQuery)){originalParams[param]={};for(var deepParam in params[param]){originalParams[param][deepParam]=params[param][deepParam];}}else {originalParams[param]=params[param];}}for(var def in defaults){if(typeof params[def]==='undefined'){params[def]=defaults[def];}else if(typeof params[def]==='object'){for(var deepDef in defaults[def]){if(typeof params[def][deepDef]==='undefined'){params[def][deepDef]=defaults[def][deepDef];}}}} // Swiper
+	            */};var initialVirtualTranslate=params&&params.virtualTranslate;params=params||{};var originalParams={};for(var param in params){if(_typeof(params[param])==='object'&&!(params[param].nodeType||params[param]===window||params[param]===document||typeof Dom7!=='undefined'&&params[param] instanceof Dom7||typeof jQuery!=='undefined'&&params[param] instanceof jQuery)){originalParams[param]={};for(var deepParam in params[param]){originalParams[param][deepParam]=params[param][deepParam];}}else {originalParams[param]=params[param];}}for(var def in defaults){if(typeof params[def]==='undefined'){params[def]=defaults[def];}else if(_typeof(params[def])==='object'){for(var deepDef in defaults[def]){if(typeof params[def][deepDef]==='undefined'){params[def][deepDef]=defaults[def][deepDef];}}}} // Swiper
 	var s=this; // Params
 	s.params=params;s.originalParams=originalParams; // Classname
 	s.classNames=[]; /*=========================
@@ -2917,38 +2923,38 @@
 	if(s.activeIndex<s.loopedSlides){newIndex=s.slides.length-s.loopedSlides*3+s.activeIndex;newIndex=newIndex+s.loopedSlides;s.slideTo(newIndex,0,false,true);} //Fix For Positive Oversliding
 	else if(s.params.slidesPerView==='auto'&&s.activeIndex>=s.loopedSlides*2||s.activeIndex>s.slides.length-s.params.slidesPerView*2){newIndex=-s.slides.length+s.activeIndex+s.loopedSlides;newIndex=newIndex+s.loopedSlides;s.slideTo(newIndex,0,false,true);}}; /*=========================
 	          Append/Prepend/Remove Slides
-	          ===========================*/s.appendSlide=function(slides){if(s.params.loop){s.destroyLoop();}if(typeof slides==='object'&&slides.length){for(var i=0;i<slides.length;i++){if(slides[i])s.wrapper.append(slides[i]);}}else {s.wrapper.append(slides);}if(s.params.loop){s.createLoop();}if(!(s.params.observer&&s.support.observer)){s.update(true);}};s.prependSlide=function(slides){if(s.params.loop){s.destroyLoop();}var newActiveIndex=s.activeIndex+1;if(typeof slides==='object'&&slides.length){for(var i=0;i<slides.length;i++){if(slides[i])s.wrapper.prepend(slides[i]);}newActiveIndex=s.activeIndex+slides.length;}else {s.wrapper.prepend(slides);}if(s.params.loop){s.createLoop();}if(!(s.params.observer&&s.support.observer)){s.update(true);}s.slideTo(newActiveIndex,0,false);};s.removeSlide=function(slidesIndexes){if(s.params.loop){s.destroyLoop();s.slides=s.wrapper.children('.'+s.params.slideClass);}var newActiveIndex=s.activeIndex,indexToRemove;if(typeof slidesIndexes==='object'&&slidesIndexes.length){for(var i=0;i<slidesIndexes.length;i++){indexToRemove=slidesIndexes[i];if(s.slides[indexToRemove])s.slides.eq(indexToRemove).remove();if(indexToRemove<newActiveIndex)newActiveIndex--;}newActiveIndex=Math.max(newActiveIndex,0);}else {indexToRemove=slidesIndexes;if(s.slides[indexToRemove])s.slides.eq(indexToRemove).remove();if(indexToRemove<newActiveIndex)newActiveIndex--;newActiveIndex=Math.max(newActiveIndex,0);}if(s.params.loop){s.createLoop();}if(!(s.params.observer&&s.support.observer)){s.update(true);}if(s.params.loop){s.slideTo(newActiveIndex+s.loopedSlides,0,false);}else {s.slideTo(newActiveIndex,0,false);}};s.removeAllSlides=function(){var slidesIndexes=[];for(var i=0;i<s.slides.length;i++){slidesIndexes.push(i);}s.removeSlide(slidesIndexes);}; /*=========================
+	          ===========================*/s.appendSlide=function(slides){if(s.params.loop){s.destroyLoop();}if((typeof slides==='undefined'?'undefined':_typeof(slides))==='object'&&slides.length){for(var i=0;i<slides.length;i++){if(slides[i])s.wrapper.append(slides[i]);}}else {s.wrapper.append(slides);}if(s.params.loop){s.createLoop();}if(!(s.params.observer&&s.support.observer)){s.update(true);}};s.prependSlide=function(slides){if(s.params.loop){s.destroyLoop();}var newActiveIndex=s.activeIndex+1;if((typeof slides==='undefined'?'undefined':_typeof(slides))==='object'&&slides.length){for(var i=0;i<slides.length;i++){if(slides[i])s.wrapper.prepend(slides[i]);}newActiveIndex=s.activeIndex+slides.length;}else {s.wrapper.prepend(slides);}if(s.params.loop){s.createLoop();}if(!(s.params.observer&&s.support.observer)){s.update(true);}s.slideTo(newActiveIndex,0,false);};s.removeSlide=function(slidesIndexes){if(s.params.loop){s.destroyLoop();s.slides=s.wrapper.children('.'+s.params.slideClass);}var newActiveIndex=s.activeIndex,indexToRemove;if((typeof slidesIndexes==='undefined'?'undefined':_typeof(slidesIndexes))==='object'&&slidesIndexes.length){for(var i=0;i<slidesIndexes.length;i++){indexToRemove=slidesIndexes[i];if(s.slides[indexToRemove])s.slides.eq(indexToRemove).remove();if(indexToRemove<newActiveIndex)newActiveIndex--;}newActiveIndex=Math.max(newActiveIndex,0);}else {indexToRemove=slidesIndexes;if(s.slides[indexToRemove])s.slides.eq(indexToRemove).remove();if(indexToRemove<newActiveIndex)newActiveIndex--;newActiveIndex=Math.max(newActiveIndex,0);}if(s.params.loop){s.createLoop();}if(!(s.params.observer&&s.support.observer)){s.update(true);}if(s.params.loop){s.slideTo(newActiveIndex+s.loopedSlides,0,false);}else {s.slideTo(newActiveIndex,0,false);}};s.removeAllSlides=function(){var slidesIndexes=[];for(var i=0;i<s.slides.length;i++){slidesIndexes.push(i);}s.removeSlide(slidesIndexes);}; /*=========================
 	          Effects
-	          ===========================*/s.effects={fade:{setTranslate:function(){for(var i=0;i<s.slides.length;i++){var slide=s.slides.eq(i);var offset=slide[0].swiperSlideOffset;var tx=-offset;if(!s.params.virtualTranslate)tx=tx-s.translate;var ty=0;if(!isH()){ty=tx;tx=0;}var slideOpacity=s.params.fade.crossFade?Math.max(1-Math.abs(slide[0].progress),0):1+Math.min(Math.max(slide[0].progress,-1),0);slide.css({opacity:slideOpacity}).transform('translate3d('+tx+'px, '+ty+'px, 0px)');}},setTransition:function(duration){s.slides.transition(duration);if(s.params.virtualTranslate&&duration!==0){var eventTriggered=false;s.slides.transitionEnd(function(){if(eventTriggered)return;if(!s)return;eventTriggered=true;s.animating=false;var triggerEvents=['webkitTransitionEnd','transitionend','oTransitionEnd','MSTransitionEnd','msTransitionEnd'];for(var i=0;i<triggerEvents.length;i++){s.wrapper.trigger(triggerEvents[i]);}});}}},cube:{setTranslate:function(){var wrapperRotate=0,cubeShadow;if(s.params.cube.shadow){if(isH()){cubeShadow=s.wrapper.find('.swiper-cube-shadow');if(cubeShadow.length===0){cubeShadow=$('<div class="swiper-cube-shadow"></div>');s.wrapper.append(cubeShadow);}cubeShadow.css({height:s.width+'px'});}else {cubeShadow=s.container.find('.swiper-cube-shadow');if(cubeShadow.length===0){cubeShadow=$('<div class="swiper-cube-shadow"></div>');s.container.append(cubeShadow);}}}for(var i=0;i<s.slides.length;i++){var slide=s.slides.eq(i);var slideAngle=i*90;var round=Math.floor(slideAngle/360);if(s.rtl){slideAngle=-slideAngle;round=Math.floor(-slideAngle/360);}var progress=Math.max(Math.min(slide[0].progress,1),-1);var tx=0,ty=0,tz=0;if(i%4===0){tx=-round*4*s.size;tz=0;}else if((i-1)%4===0){tx=0;tz=-round*4*s.size;}else if((i-2)%4===0){tx=s.size+round*4*s.size;tz=s.size;}else if((i-3)%4===0){tx=-s.size;tz=3*s.size+s.size*4*round;}if(s.rtl){tx=-tx;}if(!isH()){ty=tx;tx=0;}var transform='rotateX('+(isH()?0:-slideAngle)+'deg) rotateY('+(isH()?slideAngle:0)+'deg) translate3d('+tx+'px, '+ty+'px, '+tz+'px)';if(progress<=1&&progress>-1){wrapperRotate=i*90+progress*90;if(s.rtl)wrapperRotate=-i*90-progress*90;}slide.transform(transform);if(s.params.cube.slideShadows){ //Set shadows
-	var shadowBefore=isH()?slide.find('.swiper-slide-shadow-left'):slide.find('.swiper-slide-shadow-top');var shadowAfter=isH()?slide.find('.swiper-slide-shadow-right'):slide.find('.swiper-slide-shadow-bottom');if(shadowBefore.length===0){shadowBefore=$('<div class="swiper-slide-shadow-'+(isH()?'left':'top')+'"></div>');slide.append(shadowBefore);}if(shadowAfter.length===0){shadowAfter=$('<div class="swiper-slide-shadow-'+(isH()?'right':'bottom')+'"></div>');slide.append(shadowAfter);}var shadowOpacity=slide[0].progress;if(shadowBefore.length)shadowBefore[0].style.opacity=-slide[0].progress;if(shadowAfter.length)shadowAfter[0].style.opacity=slide[0].progress;}}s.wrapper.css({'-webkit-transform-origin':'50% 50% -'+s.size/2+'px','-moz-transform-origin':'50% 50% -'+s.size/2+'px','-ms-transform-origin':'50% 50% -'+s.size/2+'px','transform-origin':'50% 50% -'+s.size/2+'px'});if(s.params.cube.shadow){if(isH()){cubeShadow.transform('translate3d(0px, '+(s.width/2+s.params.cube.shadowOffset)+'px, '+-s.width/2+'px) rotateX(90deg) rotateZ(0deg) scale('+s.params.cube.shadowScale+')');}else {var shadowAngle=Math.abs(wrapperRotate)-Math.floor(Math.abs(wrapperRotate)/90)*90;var multiplier=1.5-(Math.sin(shadowAngle*2*Math.PI/360)/2+Math.cos(shadowAngle*2*Math.PI/360)/2);var scale1=s.params.cube.shadowScale,scale2=s.params.cube.shadowScale/multiplier,offset=s.params.cube.shadowOffset;cubeShadow.transform('scale3d('+scale1+', 1, '+scale2+') translate3d(0px, '+(s.height/2+offset)+'px, '+-s.height/2/scale2+'px) rotateX(-90deg)');}}var zFactor=s.isSafari||s.isUiWebView?-s.size/2:0;s.wrapper.transform('translate3d(0px,0,'+zFactor+'px) rotateX('+(isH()?0:wrapperRotate)+'deg) rotateY('+(isH()?-wrapperRotate:0)+'deg)');},setTransition:function(duration){s.slides.transition(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transition(duration);if(s.params.cube.shadow&&!isH()){s.container.find('.swiper-cube-shadow').transition(duration);}}},coverflow:{setTranslate:function(){var transform=s.translate;var center=isH()?-transform+s.width/2:-transform+s.height/2;var rotate=isH()?s.params.coverflow.rotate:-s.params.coverflow.rotate;var translate=s.params.coverflow.depth; //Each slide offset from center
+	          ===========================*/s.effects={fade:{setTranslate:function setTranslate(){for(var i=0;i<s.slides.length;i++){var slide=s.slides.eq(i);var offset=slide[0].swiperSlideOffset;var tx=-offset;if(!s.params.virtualTranslate)tx=tx-s.translate;var ty=0;if(!isH()){ty=tx;tx=0;}var slideOpacity=s.params.fade.crossFade?Math.max(1-Math.abs(slide[0].progress),0):1+Math.min(Math.max(slide[0].progress,-1),0);slide.css({opacity:slideOpacity}).transform('translate3d('+tx+'px, '+ty+'px, 0px)');}},setTransition:function setTransition(duration){s.slides.transition(duration);if(s.params.virtualTranslate&&duration!==0){var eventTriggered=false;s.slides.transitionEnd(function(){if(eventTriggered)return;if(!s)return;eventTriggered=true;s.animating=false;var triggerEvents=['webkitTransitionEnd','transitionend','oTransitionEnd','MSTransitionEnd','msTransitionEnd'];for(var i=0;i<triggerEvents.length;i++){s.wrapper.trigger(triggerEvents[i]);}});}}},cube:{setTranslate:function setTranslate(){var wrapperRotate=0,cubeShadow;if(s.params.cube.shadow){if(isH()){cubeShadow=s.wrapper.find('.swiper-cube-shadow');if(cubeShadow.length===0){cubeShadow=$('<div class="swiper-cube-shadow"></div>');s.wrapper.append(cubeShadow);}cubeShadow.css({height:s.width+'px'});}else {cubeShadow=s.container.find('.swiper-cube-shadow');if(cubeShadow.length===0){cubeShadow=$('<div class="swiper-cube-shadow"></div>');s.container.append(cubeShadow);}}}for(var i=0;i<s.slides.length;i++){var slide=s.slides.eq(i);var slideAngle=i*90;var round=Math.floor(slideAngle/360);if(s.rtl){slideAngle=-slideAngle;round=Math.floor(-slideAngle/360);}var progress=Math.max(Math.min(slide[0].progress,1),-1);var tx=0,ty=0,tz=0;if(i%4===0){tx=-round*4*s.size;tz=0;}else if((i-1)%4===0){tx=0;tz=-round*4*s.size;}else if((i-2)%4===0){tx=s.size+round*4*s.size;tz=s.size;}else if((i-3)%4===0){tx=-s.size;tz=3*s.size+s.size*4*round;}if(s.rtl){tx=-tx;}if(!isH()){ty=tx;tx=0;}var transform='rotateX('+(isH()?0:-slideAngle)+'deg) rotateY('+(isH()?slideAngle:0)+'deg) translate3d('+tx+'px, '+ty+'px, '+tz+'px)';if(progress<=1&&progress>-1){wrapperRotate=i*90+progress*90;if(s.rtl)wrapperRotate=-i*90-progress*90;}slide.transform(transform);if(s.params.cube.slideShadows){ //Set shadows
+	var shadowBefore=isH()?slide.find('.swiper-slide-shadow-left'):slide.find('.swiper-slide-shadow-top');var shadowAfter=isH()?slide.find('.swiper-slide-shadow-right'):slide.find('.swiper-slide-shadow-bottom');if(shadowBefore.length===0){shadowBefore=$('<div class="swiper-slide-shadow-'+(isH()?'left':'top')+'"></div>');slide.append(shadowBefore);}if(shadowAfter.length===0){shadowAfter=$('<div class="swiper-slide-shadow-'+(isH()?'right':'bottom')+'"></div>');slide.append(shadowAfter);}var shadowOpacity=slide[0].progress;if(shadowBefore.length)shadowBefore[0].style.opacity=-slide[0].progress;if(shadowAfter.length)shadowAfter[0].style.opacity=slide[0].progress;}}s.wrapper.css({'-webkit-transform-origin':'50% 50% -'+s.size/2+'px','-moz-transform-origin':'50% 50% -'+s.size/2+'px','-ms-transform-origin':'50% 50% -'+s.size/2+'px','transform-origin':'50% 50% -'+s.size/2+'px'});if(s.params.cube.shadow){if(isH()){cubeShadow.transform('translate3d(0px, '+(s.width/2+s.params.cube.shadowOffset)+'px, '+-s.width/2+'px) rotateX(90deg) rotateZ(0deg) scale('+s.params.cube.shadowScale+')');}else {var shadowAngle=Math.abs(wrapperRotate)-Math.floor(Math.abs(wrapperRotate)/90)*90;var multiplier=1.5-(Math.sin(shadowAngle*2*Math.PI/360)/2+Math.cos(shadowAngle*2*Math.PI/360)/2);var scale1=s.params.cube.shadowScale,scale2=s.params.cube.shadowScale/multiplier,offset=s.params.cube.shadowOffset;cubeShadow.transform('scale3d('+scale1+', 1, '+scale2+') translate3d(0px, '+(s.height/2+offset)+'px, '+-s.height/2/scale2+'px) rotateX(-90deg)');}}var zFactor=s.isSafari||s.isUiWebView?-s.size/2:0;s.wrapper.transform('translate3d(0px,0,'+zFactor+'px) rotateX('+(isH()?0:wrapperRotate)+'deg) rotateY('+(isH()?-wrapperRotate:0)+'deg)');},setTransition:function setTransition(duration){s.slides.transition(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transition(duration);if(s.params.cube.shadow&&!isH()){s.container.find('.swiper-cube-shadow').transition(duration);}}},coverflow:{setTranslate:function setTranslate(){var transform=s.translate;var center=isH()?-transform+s.width/2:-transform+s.height/2;var rotate=isH()?s.params.coverflow.rotate:-s.params.coverflow.rotate;var translate=s.params.coverflow.depth; //Each slide offset from center
 	for(var i=0,length=s.slides.length;i<length;i++){var slide=s.slides.eq(i);var slideSize=s.slidesSizesGrid[i];var slideOffset=slide[0].swiperSlideOffset;var offsetMultiplier=(center-slideOffset-slideSize/2)/slideSize*s.params.coverflow.modifier;var rotateY=isH()?rotate*offsetMultiplier:0;var rotateX=isH()?0:rotate*offsetMultiplier; // var rotateZ = 0
 	var translateZ=-translate*Math.abs(offsetMultiplier);var translateY=isH()?0:s.params.coverflow.stretch*offsetMultiplier;var translateX=isH()?s.params.coverflow.stretch*offsetMultiplier:0; //Fix for ultra small values
 	if(Math.abs(translateX)<0.001)translateX=0;if(Math.abs(translateY)<0.001)translateY=0;if(Math.abs(translateZ)<0.001)translateZ=0;if(Math.abs(rotateY)<0.001)rotateY=0;if(Math.abs(rotateX)<0.001)rotateX=0;var slideTransform='translate3d('+translateX+'px,'+translateY+'px,'+translateZ+'px)  rotateX('+rotateX+'deg) rotateY('+rotateY+'deg)';slide.transform(slideTransform);slide[0].style.zIndex=-Math.abs(Math.round(offsetMultiplier))+1;if(s.params.coverflow.slideShadows){ //Set shadows
 	var shadowBefore=isH()?slide.find('.swiper-slide-shadow-left'):slide.find('.swiper-slide-shadow-top');var shadowAfter=isH()?slide.find('.swiper-slide-shadow-right'):slide.find('.swiper-slide-shadow-bottom');if(shadowBefore.length===0){shadowBefore=$('<div class="swiper-slide-shadow-'+(isH()?'left':'top')+'"></div>');slide.append(shadowBefore);}if(shadowAfter.length===0){shadowAfter=$('<div class="swiper-slide-shadow-'+(isH()?'right':'bottom')+'"></div>');slide.append(shadowAfter);}if(shadowBefore.length)shadowBefore[0].style.opacity=offsetMultiplier>0?offsetMultiplier:0;if(shadowAfter.length)shadowAfter[0].style.opacity=-offsetMultiplier>0?-offsetMultiplier:0;}} //Set correct perspective for IE10
-	if(s.browser.ie){var ws=s.wrapper[0].style;ws.perspectiveOrigin=center+'px 50%';}},setTransition:function(duration){s.slides.transition(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transition(duration);}}}; /*=========================
+	if(s.browser.ie){var ws=s.wrapper[0].style;ws.perspectiveOrigin=center+'px 50%';}},setTransition:function setTransition(duration){s.slides.transition(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transition(duration);}}}; /*=========================
 	          Images Lazy Loading
-	          ===========================*/s.lazy={initialImageLoaded:false,loadImageInSlide:function(index,loadInDuplicate){if(typeof index==='undefined')return;if(typeof loadInDuplicate==='undefined')loadInDuplicate=true;if(s.slides.length===0)return;var slide=s.slides.eq(index);var img=slide.find('.swiper-lazy:not(.swiper-lazy-loaded):not(.swiper-lazy-loading)');if(slide.hasClass('swiper-lazy')&&!slide.hasClass('swiper-lazy-loaded')&&!slide.hasClass('swiper-lazy-loading')){img=img.add(slide[0]);}if(img.length===0)return;img.each(function(){var _img=$(this);_img.addClass('swiper-lazy-loading');var background=_img.attr('data-background');var src=_img.attr('data-src'),srcset=_img.attr('data-srcset');s.loadImage(_img[0],src||background,srcset,false,function(){if(background){_img.css('background-image','url('+background+')');_img.removeAttr('data-background');}else {if(srcset){_img.attr('srcset',srcset);_img.removeAttr('data-srcset');}if(src){_img.attr('src',src);_img.removeAttr('data-src');}}_img.addClass('swiper-lazy-loaded').removeClass('swiper-lazy-loading');slide.find('.swiper-lazy-preloader, .preloader').remove();if(s.params.loop&&loadInDuplicate){var slideOriginalIndex=slide.attr('data-swiper-slide-index');if(slide.hasClass(s.params.slideDuplicateClass)){var originalSlide=s.wrapper.children('[data-swiper-slide-index="'+slideOriginalIndex+'"]:not(.'+s.params.slideDuplicateClass+')');s.lazy.loadImageInSlide(originalSlide.index(),false);}else {var duplicatedSlide=s.wrapper.children('.'+s.params.slideDuplicateClass+'[data-swiper-slide-index="'+slideOriginalIndex+'"]');s.lazy.loadImageInSlide(duplicatedSlide.index(),false);}}s.emit('onLazyImageReady',s,slide[0],_img[0]);});s.emit('onLazyImageLoad',s,slide[0],_img[0]);});},load:function(){var i;if(s.params.watchSlidesVisibility){s.wrapper.children('.'+s.params.slideVisibleClass).each(function(){s.lazy.loadImageInSlide($(this).index());});}else {if(s.params.slidesPerView>1){for(i=s.activeIndex;i<s.activeIndex+s.params.slidesPerView;i++){if(s.slides[i])s.lazy.loadImageInSlide(i);}}else {s.lazy.loadImageInSlide(s.activeIndex);}}if(s.params.lazyLoadingInPrevNext){if(s.params.slidesPerView>1){ // Next Slides
+	          ===========================*/s.lazy={initialImageLoaded:false,loadImageInSlide:function loadImageInSlide(index,loadInDuplicate){if(typeof index==='undefined')return;if(typeof loadInDuplicate==='undefined')loadInDuplicate=true;if(s.slides.length===0)return;var slide=s.slides.eq(index);var img=slide.find('.swiper-lazy:not(.swiper-lazy-loaded):not(.swiper-lazy-loading)');if(slide.hasClass('swiper-lazy')&&!slide.hasClass('swiper-lazy-loaded')&&!slide.hasClass('swiper-lazy-loading')){img=img.add(slide[0]);}if(img.length===0)return;img.each(function(){var _img=$(this);_img.addClass('swiper-lazy-loading');var background=_img.attr('data-background');var src=_img.attr('data-src'),srcset=_img.attr('data-srcset');s.loadImage(_img[0],src||background,srcset,false,function(){if(background){_img.css('background-image','url('+background+')');_img.removeAttr('data-background');}else {if(srcset){_img.attr('srcset',srcset);_img.removeAttr('data-srcset');}if(src){_img.attr('src',src);_img.removeAttr('data-src');}}_img.addClass('swiper-lazy-loaded').removeClass('swiper-lazy-loading');slide.find('.swiper-lazy-preloader, .preloader').remove();if(s.params.loop&&loadInDuplicate){var slideOriginalIndex=slide.attr('data-swiper-slide-index');if(slide.hasClass(s.params.slideDuplicateClass)){var originalSlide=s.wrapper.children('[data-swiper-slide-index="'+slideOriginalIndex+'"]:not(.'+s.params.slideDuplicateClass+')');s.lazy.loadImageInSlide(originalSlide.index(),false);}else {var duplicatedSlide=s.wrapper.children('.'+s.params.slideDuplicateClass+'[data-swiper-slide-index="'+slideOriginalIndex+'"]');s.lazy.loadImageInSlide(duplicatedSlide.index(),false);}}s.emit('onLazyImageReady',s,slide[0],_img[0]);});s.emit('onLazyImageLoad',s,slide[0],_img[0]);});},load:function load(){var i;if(s.params.watchSlidesVisibility){s.wrapper.children('.'+s.params.slideVisibleClass).each(function(){s.lazy.loadImageInSlide($(this).index());});}else {if(s.params.slidesPerView>1){for(i=s.activeIndex;i<s.activeIndex+s.params.slidesPerView;i++){if(s.slides[i])s.lazy.loadImageInSlide(i);}}else {s.lazy.loadImageInSlide(s.activeIndex);}}if(s.params.lazyLoadingInPrevNext){if(s.params.slidesPerView>1){ // Next Slides
 	for(i=s.activeIndex+s.params.slidesPerView;i<s.activeIndex+s.params.slidesPerView+s.params.slidesPerView;i++){if(s.slides[i])s.lazy.loadImageInSlide(i);} // Prev Slides
-	for(i=s.activeIndex-s.params.slidesPerView;i<s.activeIndex;i++){if(s.slides[i])s.lazy.loadImageInSlide(i);}}else {var nextSlide=s.wrapper.children('.'+s.params.slideNextClass);if(nextSlide.length>0)s.lazy.loadImageInSlide(nextSlide.index());var prevSlide=s.wrapper.children('.'+s.params.slidePrevClass);if(prevSlide.length>0)s.lazy.loadImageInSlide(prevSlide.index());}}},onTransitionStart:function(){if(s.params.lazyLoading){if(s.params.lazyLoadingOnTransitionStart||!s.params.lazyLoadingOnTransitionStart&&!s.lazy.initialImageLoaded){s.lazy.load();}}},onTransitionEnd:function(){if(s.params.lazyLoading&&!s.params.lazyLoadingOnTransitionStart){s.lazy.load();}}}; /*=========================
+	for(i=s.activeIndex-s.params.slidesPerView;i<s.activeIndex;i++){if(s.slides[i])s.lazy.loadImageInSlide(i);}}else {var nextSlide=s.wrapper.children('.'+s.params.slideNextClass);if(nextSlide.length>0)s.lazy.loadImageInSlide(nextSlide.index());var prevSlide=s.wrapper.children('.'+s.params.slidePrevClass);if(prevSlide.length>0)s.lazy.loadImageInSlide(prevSlide.index());}}},onTransitionStart:function onTransitionStart(){if(s.params.lazyLoading){if(s.params.lazyLoadingOnTransitionStart||!s.params.lazyLoadingOnTransitionStart&&!s.lazy.initialImageLoaded){s.lazy.load();}}},onTransitionEnd:function onTransitionEnd(){if(s.params.lazyLoading&&!s.params.lazyLoadingOnTransitionStart){s.lazy.load();}}}; /*=========================
 	          Scrollbar
-	          ===========================*/s.scrollbar={isTouched:false,setDragPosition:function(e){var sb=s.scrollbar;var x=0,y=0;var translate;var pointerPosition=isH()?e.type==='touchstart'||e.type==='touchmove'?e.targetTouches[0].pageX:e.pageX||e.clientX:e.type==='touchstart'||e.type==='touchmove'?e.targetTouches[0].pageY:e.pageY||e.clientY;var position=pointerPosition-sb.track.offset()[isH()?'left':'top']-sb.dragSize/2;var positionMin=-s.minTranslate()*sb.moveDivider;var positionMax=-s.maxTranslate()*sb.moveDivider;if(position<positionMin){position=positionMin;}else if(position>positionMax){position=positionMax;}position=-position/sb.moveDivider;s.updateProgress(position);s.setWrapperTranslate(position,true);},dragStart:function(e){var sb=s.scrollbar;sb.isTouched=true;e.preventDefault();e.stopPropagation();sb.setDragPosition(e);clearTimeout(sb.dragTimeout);sb.track.transition(0);if(s.params.scrollbarHide){sb.track.css('opacity',1);}s.wrapper.transition(100);sb.drag.transition(100);s.emit('onScrollbarDragStart',s);},dragMove:function(e){var sb=s.scrollbar;if(!sb.isTouched)return;if(e.preventDefault)e.preventDefault();else e.returnValue=false;sb.setDragPosition(e);s.wrapper.transition(0);sb.track.transition(0);sb.drag.transition(0);s.emit('onScrollbarDragMove',s);},dragEnd:function(e){var sb=s.scrollbar;if(!sb.isTouched)return;sb.isTouched=false;if(s.params.scrollbarHide){clearTimeout(sb.dragTimeout);sb.dragTimeout=setTimeout(function(){sb.track.css('opacity',0);sb.track.transition(400);},1000);}s.emit('onScrollbarDragEnd',s);if(s.params.scrollbarSnapOnRelease){s.slideReset();}},enableDraggable:function(){var sb=s.scrollbar;var target=s.support.touch?sb.track:document;$(sb.track).on(s.touchEvents.start,sb.dragStart);$(target).on(s.touchEvents.move,sb.dragMove);$(target).on(s.touchEvents.end,sb.dragEnd);},disableDraggable:function(){var sb=s.scrollbar;var target=s.support.touch?sb.track:document;$(sb.track).off(s.touchEvents.start,sb.dragStart);$(target).off(s.touchEvents.move,sb.dragMove);$(target).off(s.touchEvents.end,sb.dragEnd);},set:function(){if(!s.params.scrollbar)return;var sb=s.scrollbar;sb.track=$(s.params.scrollbar);sb.drag=sb.track.find('.swiper-scrollbar-drag');if(sb.drag.length===0){sb.drag=$('<div class="swiper-scrollbar-drag"></div>');sb.track.append(sb.drag);}sb.drag[0].style.width='';sb.drag[0].style.height='';sb.trackSize=isH()?sb.track[0].offsetWidth:sb.track[0].offsetHeight;sb.divider=s.size/s.virtualSize;sb.moveDivider=sb.divider*(sb.trackSize/s.size);sb.dragSize=sb.trackSize*sb.divider;if(isH()){sb.drag[0].style.width=sb.dragSize+'px';}else {sb.drag[0].style.height=sb.dragSize+'px';}if(sb.divider>=1){sb.track[0].style.display='none';}else {sb.track[0].style.display='';}if(s.params.scrollbarHide){sb.track[0].style.opacity=0;}},setTranslate:function(){if(!s.params.scrollbar)return;var diff;var sb=s.scrollbar;var translate=s.translate||0;var newPos;var newSize=sb.dragSize;newPos=(sb.trackSize-sb.dragSize)*s.progress;if(s.rtl&&isH()){newPos=-newPos;if(newPos>0){newSize=sb.dragSize-newPos;newPos=0;}else if(-newPos+sb.dragSize>sb.trackSize){newSize=sb.trackSize+newPos;}}else {if(newPos<0){newSize=sb.dragSize+newPos;newPos=0;}else if(newPos+sb.dragSize>sb.trackSize){newSize=sb.trackSize-newPos;}}if(isH()){if(s.support.transforms3d){sb.drag.transform('translate3d('+newPos+'px, 0, 0)');}else {sb.drag.transform('translateX('+newPos+'px)');}sb.drag[0].style.width=newSize+'px';}else {if(s.support.transforms3d){sb.drag.transform('translate3d(0px, '+newPos+'px, 0)');}else {sb.drag.transform('translateY('+newPos+'px)');}sb.drag[0].style.height=newSize+'px';}if(s.params.scrollbarHide){clearTimeout(sb.timeout);sb.track[0].style.opacity=1;sb.timeout=setTimeout(function(){sb.track[0].style.opacity=0;sb.track.transition(400);},1000);}},setTransition:function(duration){if(!s.params.scrollbar)return;s.scrollbar.drag.transition(duration);}}; /*=========================
+	          ===========================*/s.scrollbar={isTouched:false,setDragPosition:function setDragPosition(e){var sb=s.scrollbar;var x=0,y=0;var translate;var pointerPosition=isH()?e.type==='touchstart'||e.type==='touchmove'?e.targetTouches[0].pageX:e.pageX||e.clientX:e.type==='touchstart'||e.type==='touchmove'?e.targetTouches[0].pageY:e.pageY||e.clientY;var position=pointerPosition-sb.track.offset()[isH()?'left':'top']-sb.dragSize/2;var positionMin=-s.minTranslate()*sb.moveDivider;var positionMax=-s.maxTranslate()*sb.moveDivider;if(position<positionMin){position=positionMin;}else if(position>positionMax){position=positionMax;}position=-position/sb.moveDivider;s.updateProgress(position);s.setWrapperTranslate(position,true);},dragStart:function dragStart(e){var sb=s.scrollbar;sb.isTouched=true;e.preventDefault();e.stopPropagation();sb.setDragPosition(e);clearTimeout(sb.dragTimeout);sb.track.transition(0);if(s.params.scrollbarHide){sb.track.css('opacity',1);}s.wrapper.transition(100);sb.drag.transition(100);s.emit('onScrollbarDragStart',s);},dragMove:function dragMove(e){var sb=s.scrollbar;if(!sb.isTouched)return;if(e.preventDefault)e.preventDefault();else e.returnValue=false;sb.setDragPosition(e);s.wrapper.transition(0);sb.track.transition(0);sb.drag.transition(0);s.emit('onScrollbarDragMove',s);},dragEnd:function dragEnd(e){var sb=s.scrollbar;if(!sb.isTouched)return;sb.isTouched=false;if(s.params.scrollbarHide){clearTimeout(sb.dragTimeout);sb.dragTimeout=setTimeout(function(){sb.track.css('opacity',0);sb.track.transition(400);},1000);}s.emit('onScrollbarDragEnd',s);if(s.params.scrollbarSnapOnRelease){s.slideReset();}},enableDraggable:function enableDraggable(){var sb=s.scrollbar;var target=s.support.touch?sb.track:document;$(sb.track).on(s.touchEvents.start,sb.dragStart);$(target).on(s.touchEvents.move,sb.dragMove);$(target).on(s.touchEvents.end,sb.dragEnd);},disableDraggable:function disableDraggable(){var sb=s.scrollbar;var target=s.support.touch?sb.track:document;$(sb.track).off(s.touchEvents.start,sb.dragStart);$(target).off(s.touchEvents.move,sb.dragMove);$(target).off(s.touchEvents.end,sb.dragEnd);},set:function set(){if(!s.params.scrollbar)return;var sb=s.scrollbar;sb.track=$(s.params.scrollbar);sb.drag=sb.track.find('.swiper-scrollbar-drag');if(sb.drag.length===0){sb.drag=$('<div class="swiper-scrollbar-drag"></div>');sb.track.append(sb.drag);}sb.drag[0].style.width='';sb.drag[0].style.height='';sb.trackSize=isH()?sb.track[0].offsetWidth:sb.track[0].offsetHeight;sb.divider=s.size/s.virtualSize;sb.moveDivider=sb.divider*(sb.trackSize/s.size);sb.dragSize=sb.trackSize*sb.divider;if(isH()){sb.drag[0].style.width=sb.dragSize+'px';}else {sb.drag[0].style.height=sb.dragSize+'px';}if(sb.divider>=1){sb.track[0].style.display='none';}else {sb.track[0].style.display='';}if(s.params.scrollbarHide){sb.track[0].style.opacity=0;}},setTranslate:function setTranslate(){if(!s.params.scrollbar)return;var diff;var sb=s.scrollbar;var translate=s.translate||0;var newPos;var newSize=sb.dragSize;newPos=(sb.trackSize-sb.dragSize)*s.progress;if(s.rtl&&isH()){newPos=-newPos;if(newPos>0){newSize=sb.dragSize-newPos;newPos=0;}else if(-newPos+sb.dragSize>sb.trackSize){newSize=sb.trackSize+newPos;}}else {if(newPos<0){newSize=sb.dragSize+newPos;newPos=0;}else if(newPos+sb.dragSize>sb.trackSize){newSize=sb.trackSize-newPos;}}if(isH()){if(s.support.transforms3d){sb.drag.transform('translate3d('+newPos+'px, 0, 0)');}else {sb.drag.transform('translateX('+newPos+'px)');}sb.drag[0].style.width=newSize+'px';}else {if(s.support.transforms3d){sb.drag.transform('translate3d(0px, '+newPos+'px, 0)');}else {sb.drag.transform('translateY('+newPos+'px)');}sb.drag[0].style.height=newSize+'px';}if(s.params.scrollbarHide){clearTimeout(sb.timeout);sb.track[0].style.opacity=1;sb.timeout=setTimeout(function(){sb.track[0].style.opacity=0;sb.track.transition(400);},1000);}},setTransition:function setTransition(duration){if(!s.params.scrollbar)return;s.scrollbar.drag.transition(duration);}}; /*=========================
 	          Controller
-	          ===========================*/s.controller={LinearSpline:function(x,y){this.x=x;this.y=y;this.lastIndex=x.length-1; // Given an x value (x2), return the expected y2 value:
+	          ===========================*/s.controller={LinearSpline:function LinearSpline(x,y){this.x=x;this.y=y;this.lastIndex=x.length-1; // Given an x value (x2), return the expected y2 value:
 	// (x1,y1) is the known point before given value,
 	// (x3,y3) is the known point after given value.
 	var i1,i3;var l=this.x.length;this.interpolate=function(x2){if(!x2)return 0; // Get the indexes of x1 and x3 (the array indexes before and after given x2):
 	i3=binarySearch(this.x,x2);i1=i3-1; // We have our indexes i1 & i3, so we can calculate already:
 	// y2 := ((x2−x1) × (y3−y1)) ÷ (x3−x1) + y1
-	return (x2-this.x[i1])*(this.y[i3]-this.y[i1])/(this.x[i3]-this.x[i1])+this.y[i1];};var binarySearch=function(){var maxIndex,minIndex,guess;return function(array,val){minIndex=-1;maxIndex=array.length;while(maxIndex-minIndex>1)if(array[guess=maxIndex+minIndex>>1]<=val){minIndex=guess;}else {maxIndex=guess;}return maxIndex;};}();}, //xxx: for now i will just save one spline function to to
-	getInterpolateFunction:function(c){if(!s.controller.spline)s.controller.spline=s.params.loop?new s.controller.LinearSpline(s.slidesGrid,c.slidesGrid):new s.controller.LinearSpline(s.snapGrid,c.snapGrid);},setTranslate:function(translate,byController){var controlled=s.params.control;var multiplier,controlledTranslate;function setControlledTranslate(c){ // this will create an Interpolate function based on the snapGrids
+	return (x2-this.x[i1])*(this.y[i3]-this.y[i1])/(this.x[i3]-this.x[i1])+this.y[i1];};var binarySearch=function(){var maxIndex,minIndex,guess;return function(array,val){minIndex=-1;maxIndex=array.length;while(maxIndex-minIndex>1){if(array[guess=maxIndex+minIndex>>1]<=val){minIndex=guess;}else {maxIndex=guess;}}return maxIndex;};}();}, //xxx: for now i will just save one spline function to to
+	getInterpolateFunction:function getInterpolateFunction(c){if(!s.controller.spline)s.controller.spline=s.params.loop?new s.controller.LinearSpline(s.slidesGrid,c.slidesGrid):new s.controller.LinearSpline(s.snapGrid,c.snapGrid);},setTranslate:function setTranslate(translate,byController){var controlled=s.params.control;var multiplier,controlledTranslate;function setControlledTranslate(c){ // this will create an Interpolate function based on the snapGrids
 	// x is the Grid of the scrolled scroller and y will be the controlled scroller
 	// it makes sense to create this only once and recall it for the interpolation
 	// the function does a lot of value caching for performance
 	translate=c.rtl&&c.params.direction==='horizontal'?-s.translate:s.translate;if(s.params.controlBy==='slide'){s.controller.getInterpolateFunction(c); // i am not sure why the values have to be multiplicated this way, tried to invert the snapGrid
 	// but it did not work out
-	controlledTranslate=-s.controller.spline.interpolate(-translate);}if(!controlledTranslate||s.params.controlBy==='container'){multiplier=(c.maxTranslate()-c.minTranslate())/(s.maxTranslate()-s.minTranslate());controlledTranslate=(translate-s.minTranslate())*multiplier+c.minTranslate();}if(s.params.controlInverse){controlledTranslate=c.maxTranslate()-controlledTranslate;}c.updateProgress(controlledTranslate);c.setWrapperTranslate(controlledTranslate,false,s);c.updateActiveIndex();}if(s.isArray(controlled)){for(var i=0;i<controlled.length;i++){if(controlled[i]!==byController&&controlled[i] instanceof Swiper){setControlledTranslate(controlled[i]);}}}else if(controlled instanceof Swiper&&byController!==controlled){setControlledTranslate(controlled);}},setTransition:function(duration,byController){var controlled=s.params.control;var i;function setControlledTransition(c){c.setWrapperTransition(duration,s);if(duration!==0){c.onTransitionStart();c.wrapper.transitionEnd(function(){if(!controlled)return;if(c.params.loop&&s.params.controlBy==='slide'){c.fixLoop();}c.onTransitionEnd();});}}if(s.isArray(controlled)){for(i=0;i<controlled.length;i++){if(controlled[i]!==byController&&controlled[i] instanceof Swiper){setControlledTransition(controlled[i]);}}}else if(controlled instanceof Swiper&&byController!==controlled){setControlledTransition(controlled);}}}; /*=========================
+	controlledTranslate=-s.controller.spline.interpolate(-translate);}if(!controlledTranslate||s.params.controlBy==='container'){multiplier=(c.maxTranslate()-c.minTranslate())/(s.maxTranslate()-s.minTranslate());controlledTranslate=(translate-s.minTranslate())*multiplier+c.minTranslate();}if(s.params.controlInverse){controlledTranslate=c.maxTranslate()-controlledTranslate;}c.updateProgress(controlledTranslate);c.setWrapperTranslate(controlledTranslate,false,s);c.updateActiveIndex();}if(s.isArray(controlled)){for(var i=0;i<controlled.length;i++){if(controlled[i]!==byController&&controlled[i] instanceof Swiper){setControlledTranslate(controlled[i]);}}}else if(controlled instanceof Swiper&&byController!==controlled){setControlledTranslate(controlled);}},setTransition:function setTransition(duration,byController){var controlled=s.params.control;var i;function setControlledTransition(c){c.setWrapperTransition(duration,s);if(duration!==0){c.onTransitionStart();c.wrapper.transitionEnd(function(){if(!controlled)return;if(c.params.loop&&s.params.controlBy==='slide'){c.fixLoop();}c.onTransitionEnd();});}}if(s.isArray(controlled)){for(i=0;i<controlled.length;i++){if(controlled[i]!==byController&&controlled[i] instanceof Swiper){setControlledTransition(controlled[i]);}}}else if(controlled instanceof Swiper&&byController!==controlled){setControlledTransition(controlled);}}}; /*=========================
 	          Hash Navigation
-	          ===========================*/s.hashnav={init:function(){if(!s.params.hashnav)return;s.hashnav.initialized=true;var hash=document.location.hash.replace('#','');if(!hash)return;var speed=0;for(var i=0,length=s.slides.length;i<length;i++){var slide=s.slides.eq(i);var slideHash=slide.attr('data-hash');if(slideHash===hash&&!slide.hasClass(s.params.slideDuplicateClass)){var index=slide.index();s.slideTo(index,speed,s.params.runCallbacksOnInit,true);}}},setHash:function(){if(!s.hashnav.initialized||!s.params.hashnav)return;document.location.hash=s.slides.eq(s.activeIndex).attr('data-hash')||'';}}; /*=========================
+	          ===========================*/s.hashnav={init:function init(){if(!s.params.hashnav)return;s.hashnav.initialized=true;var hash=document.location.hash.replace('#','');if(!hash)return;var speed=0;for(var i=0,length=s.slides.length;i<length;i++){var slide=s.slides.eq(i);var slideHash=slide.attr('data-hash');if(slideHash===hash&&!slide.hasClass(s.params.slideDuplicateClass)){var index=slide.index();s.slideTo(index,speed,s.params.runCallbacksOnInit,true);}}},setHash:function setHash(){if(!s.hashnav.initialized||!s.params.hashnav)return;document.location.hash=s.slides.eq(s.activeIndex).attr('data-hash')||'';}}; /*=========================
 	          Keyboard Control
 	          ===========================*/function handleKeyboard(e){if(e.originalEvent)e=e.originalEvent; //jquery fix
 	var kc=e.keyCode||e.charCode; // Directions locks
@@ -2964,7 +2970,7 @@
 	var position=s.getWrapperTranslate()+delta*s.params.mousewheelSensitivity;var wasBeginning=s.isBeginning,wasEnd=s.isEnd;if(position>=s.minTranslate())position=s.minTranslate();if(position<=s.maxTranslate())position=s.maxTranslate();s.setWrapperTransition(0);s.setWrapperTranslate(position);s.updateProgress();s.updateActiveIndex();if(!wasBeginning&&s.isBeginning||!wasEnd&&s.isEnd){s.updateClasses();}if(s.params.freeModeSticky){clearTimeout(s.mousewheel.timeout);s.mousewheel.timeout=setTimeout(function(){s.slideReset();},300);} // Return page scroll on edge positions
 	if(position===0||position===s.maxTranslate())return;}if(s.params.autoplay)s.stopAutoplay();if(e.preventDefault)e.preventDefault();else e.returnValue=false;return false;}s.disableMousewheelControl=function(){if(!s.mousewheel.event)return false;s.container.off(s.mousewheel.event,handleMousewheel);return true;};s.enableMousewheelControl=function(){if(!s.mousewheel.event)return false;s.container.on(s.mousewheel.event,handleMousewheel);return true;}; /*=========================
 	          Parallax
-	          ===========================*/function setParallaxTransform(el,progress){el=$(el);var p,pX,pY;var rtlFactor=s.rtl?-1:1;p=el.attr('data-swiper-parallax')||'0';pX=el.attr('data-swiper-parallax-x');pY=el.attr('data-swiper-parallax-y');if(pX||pY){pX=pX||'0';pY=pY||'0';}else {if(isH()){pX=p;pY='0';}else {pY=p;pX='0';}}if(pX.indexOf('%')>=0){pX=parseInt(pX,10)*progress*rtlFactor+'%';}else {pX=pX*progress*rtlFactor+'px';}if(pY.indexOf('%')>=0){pY=parseInt(pY,10)*progress+'%';}else {pY=pY*progress+'px';}el.transform('translate3d('+pX+', '+pY+',0px)');}s.parallax={setTranslate:function(){s.container.children('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){setParallaxTransform(this,s.progress);});s.slides.each(function(){var slide=$(this);slide.find('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){var progress=Math.min(Math.max(slide[0].progress,-1),1);setParallaxTransform(this,progress);});});},setTransition:function(duration){if(typeof duration==='undefined')duration=s.params.speed;s.container.find('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){var el=$(this);var parallaxDuration=parseInt(el.attr('data-swiper-parallax-duration'),10)||duration;if(duration===0)parallaxDuration=0;el.transition(parallaxDuration);});}}; /*=========================
+	          ===========================*/function setParallaxTransform(el,progress){el=$(el);var p,pX,pY;var rtlFactor=s.rtl?-1:1;p=el.attr('data-swiper-parallax')||'0';pX=el.attr('data-swiper-parallax-x');pY=el.attr('data-swiper-parallax-y');if(pX||pY){pX=pX||'0';pY=pY||'0';}else {if(isH()){pX=p;pY='0';}else {pY=p;pX='0';}}if(pX.indexOf('%')>=0){pX=parseInt(pX,10)*progress*rtlFactor+'%';}else {pX=pX*progress*rtlFactor+'px';}if(pY.indexOf('%')>=0){pY=parseInt(pY,10)*progress+'%';}else {pY=pY*progress+'px';}el.transform('translate3d('+pX+', '+pY+',0px)');}s.parallax={setTranslate:function setTranslate(){s.container.children('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){setParallaxTransform(this,s.progress);});s.slides.each(function(){var slide=$(this);slide.find('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){var progress=Math.min(Math.max(slide[0].progress,-1),1);setParallaxTransform(this,progress);});});},setTransition:function setTransition(duration){if(typeof duration==='undefined')duration=s.params.speed;s.container.find('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){var el=$(this);var parallaxDuration=parseInt(el.attr('data-swiper-parallax-duration'),10)||duration;if(duration===0)parallaxDuration=0;el.transition(parallaxDuration);});}}; /*=========================
 	          Plugins API. Collect all and init all plugins
 	          ===========================*/s._plugins=[];for(var plugin in s.plugins){var p=s.plugins[plugin](s,s.params[plugin]);if(p)s._plugins.push(p);} // Method to call all plugins event/method
 	s.callPlugins=function(eventName){for(var i=0;i<s._plugins.length;i++){if(eventName in s._plugins[i]){s._plugins[i][eventName](arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]);}}}; /*=========================
@@ -2973,9 +2979,9 @@
 	if(s.params[eventName]){s.params[eventName](arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]);}var i; // Trigger events
 	if(s.emitterEventListeners[eventName]){for(i=0;i<s.emitterEventListeners[eventName].length;i++){s.emitterEventListeners[eventName][i](arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]);}} // Trigger plugins
 	if(s.callPlugins)s.callPlugins(eventName,arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]);};s.on=function(eventName,handler){eventName=normalizeEventName(eventName);if(!s.emitterEventListeners[eventName])s.emitterEventListeners[eventName]=[];s.emitterEventListeners[eventName].push(handler);return s;};s.off=function(eventName,handler){var i;eventName=normalizeEventName(eventName);if(typeof handler==='undefined'){ // Remove all handlers for such event
-	s.emitterEventListeners[eventName]=[];return s;}if(!s.emitterEventListeners[eventName]||s.emitterEventListeners[eventName].length===0)return;for(i=0;i<s.emitterEventListeners[eventName].length;i++){if(s.emitterEventListeners[eventName][i]===handler)s.emitterEventListeners[eventName].splice(i,1);}return s;};s.once=function(eventName,handler){eventName=normalizeEventName(eventName);var _handler=function(){handler(arguments[0],arguments[1],arguments[2],arguments[3],arguments[4]);s.off(eventName,_handler);};s.on(eventName,_handler);return s;}; // Accessibility tools
-	s.a11y={makeFocusable:function($el){$el.attr('tabIndex','0');return $el;},addRole:function($el,role){$el.attr('role',role);return $el;},addLabel:function($el,label){$el.attr('aria-label',label);return $el;},disable:function($el){$el.attr('aria-disabled',true);return $el;},enable:function($el){$el.attr('aria-disabled',false);return $el;},onEnterKey:function(event){if(event.keyCode!==13)return;if($(event.target).is(s.params.nextButton)){s.onClickNext(event);if(s.isEnd){s.a11y.notify(s.params.lastSlideMessage);}else {s.a11y.notify(s.params.nextSlideMessage);}}else if($(event.target).is(s.params.prevButton)){s.onClickPrev(event);if(s.isBeginning){s.a11y.notify(s.params.firstSlideMessage);}else {s.a11y.notify(s.params.prevSlideMessage);}}if($(event.target).is('.'+s.params.bulletClass)){$(event.target)[0].click();}},liveRegion:$('<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>'),notify:function(message){var notification=s.a11y.liveRegion;if(notification.length===0)return;notification.html('');notification.html(message);},init:function(){ // Setup accessibility
-	if(s.params.nextButton){var nextButton=$(s.params.nextButton);s.a11y.makeFocusable(nextButton);s.a11y.addRole(nextButton,'button');s.a11y.addLabel(nextButton,s.params.nextSlideMessage);}if(s.params.prevButton){var prevButton=$(s.params.prevButton);s.a11y.makeFocusable(prevButton);s.a11y.addRole(prevButton,'button');s.a11y.addLabel(prevButton,s.params.prevSlideMessage);}$(s.container).append(s.a11y.liveRegion);},initPagination:function(){if(s.params.pagination&&s.params.paginationClickable&&s.bullets&&s.bullets.length){s.bullets.each(function(){var bullet=$(this);s.a11y.makeFocusable(bullet);s.a11y.addRole(bullet,'button');s.a11y.addLabel(bullet,s.params.paginationBulletMessage.replace(/{{index}}/,bullet.index()+1));});}},destroy:function(){if(s.a11y.liveRegion&&s.a11y.liveRegion.length>0)s.a11y.liveRegion.remove();}}; /*=========================
+	s.emitterEventListeners[eventName]=[];return s;}if(!s.emitterEventListeners[eventName]||s.emitterEventListeners[eventName].length===0)return;for(i=0;i<s.emitterEventListeners[eventName].length;i++){if(s.emitterEventListeners[eventName][i]===handler)s.emitterEventListeners[eventName].splice(i,1);}return s;};s.once=function(eventName,handler){eventName=normalizeEventName(eventName);var _handler=function _handler(){handler(arguments[0],arguments[1],arguments[2],arguments[3],arguments[4]);s.off(eventName,_handler);};s.on(eventName,_handler);return s;}; // Accessibility tools
+	s.a11y={makeFocusable:function makeFocusable($el){$el.attr('tabIndex','0');return $el;},addRole:function addRole($el,role){$el.attr('role',role);return $el;},addLabel:function addLabel($el,label){$el.attr('aria-label',label);return $el;},disable:function disable($el){$el.attr('aria-disabled',true);return $el;},enable:function enable($el){$el.attr('aria-disabled',false);return $el;},onEnterKey:function onEnterKey(event){if(event.keyCode!==13)return;if($(event.target).is(s.params.nextButton)){s.onClickNext(event);if(s.isEnd){s.a11y.notify(s.params.lastSlideMessage);}else {s.a11y.notify(s.params.nextSlideMessage);}}else if($(event.target).is(s.params.prevButton)){s.onClickPrev(event);if(s.isBeginning){s.a11y.notify(s.params.firstSlideMessage);}else {s.a11y.notify(s.params.prevSlideMessage);}}if($(event.target).is('.'+s.params.bulletClass)){$(event.target)[0].click();}},liveRegion:$('<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>'),notify:function notify(message){var notification=s.a11y.liveRegion;if(notification.length===0)return;notification.html('');notification.html(message);},init:function init(){ // Setup accessibility
+	if(s.params.nextButton){var nextButton=$(s.params.nextButton);s.a11y.makeFocusable(nextButton);s.a11y.addRole(nextButton,'button');s.a11y.addLabel(nextButton,s.params.nextSlideMessage);}if(s.params.prevButton){var prevButton=$(s.params.prevButton);s.a11y.makeFocusable(prevButton);s.a11y.addRole(prevButton,'button');s.a11y.addLabel(prevButton,s.params.prevSlideMessage);}$(s.container).append(s.a11y.liveRegion);},initPagination:function initPagination(){if(s.params.pagination&&s.params.paginationClickable&&s.bullets&&s.bullets.length){s.bullets.each(function(){var bullet=$(this);s.a11y.makeFocusable(bullet);s.a11y.addRole(bullet,'button');s.a11y.addLabel(bullet,s.params.paginationBulletMessage.replace(/{{index}}/,bullet.index()+1));});}},destroy:function destroy(){if(s.a11y.liveRegion&&s.a11y.liveRegion.length>0)s.a11y.liveRegion.remove();}}; /*=========================
 	          Init/Destroy
 	          ===========================*/s.init=function(){if(s.params.loop)s.createLoop();s.updateContainerSize();s.updateSlidesSize();s.updatePagination();if(s.params.scrollbar&&s.scrollbar){s.scrollbar.set();if(s.params.scrollbarDraggable){s.scrollbar.enableDraggable();}}if(s.params.effect!=='slide'&&s.effects[s.params.effect]){if(!s.params.loop)s.updateProgress();s.effects[s.params.effect].setTranslate();}if(s.params.loop){s.slideTo(s.params.initialSlide+s.loopedSlides,0,s.params.runCallbacksOnInit);}else {s.slideTo(s.params.initialSlide,0,s.params.runCallbacksOnInit);if(s.params.initialSlide===0){if(s.parallax&&s.params.parallax)s.parallax.setTranslate();if(s.lazy&&s.params.lazyLoading){s.lazy.load();s.lazy.initialImageLoaded=true;}}}s.attachEvents();if(s.params.observer&&s.support.observer){s.initObservers();}if(s.params.preloadImages&&!s.params.lazyLoading){s.preloadImages();}if(s.params.autoplay){s.startAutoplay();}if(s.params.keyboardControl){if(s.enableKeyboardControl)s.enableKeyboardControl();}if(s.params.mousewheelControl){if(s.enableMousewheelControl)s.enableMousewheelControl();}if(s.params.hashnav){if(s.hashnav)s.hashnav.init();}if(s.params.a11y&&s.a11y)s.a11y.init();s.emit('onInit',s);}; // Cleanup dynamic styles
 	s.cleanupStyles=function(){ // Container
@@ -2998,7 +3004,7 @@
 	if(deleteInstance!==false)s=null;};s.init(); // Return swiper instance
 	return s;}; /*==================================================
 	        Prototype
-	    ====================================================*/Swiper.prototype={isSafari:function(){var ua=navigator.userAgent.toLowerCase();return ua.indexOf('safari')>=0&&ua.indexOf('chrome')<0&&ua.indexOf('android')<0;}(),isUiWebView:/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent),isArray:function(arr){return Object.prototype.toString.apply(arr)==='[object Array]';}, /*==================================================
+	    ====================================================*/Swiper.prototype={isSafari:function(){var ua=navigator.userAgent.toLowerCase();return ua.indexOf('safari')>=0&&ua.indexOf('chrome')<0&&ua.indexOf('android')<0;}(),isUiWebView:/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent),isArray:function isArray(arr){return Object.prototype.toString.apply(arr)==='[object Array]';}, /*==================================================
 	        Browser
 	        ====================================================*/browser:{ie:window.navigator.pointerEnabled||window.navigator.msPointerEnabled,ieTouch:window.navigator.msPointerEnabled&&window.navigator.msMaxTouchPoints>1||window.navigator.pointerEnabled&&window.navigator.maxTouchPoints>1}, /*==================================================
 	        Devices
@@ -3008,41 +3014,41 @@
 	        Plugins
 	        ====================================================*/plugins:{}}; /*===========================
 	    Dom7 Library
-	    ===========================*/var Dom7=function(){var Dom7=function(arr){var _this=this,i=0; // Create array-like object
+	    ===========================*/var Dom7=function(){var Dom7=function Dom7(arr){var _this=this,i=0; // Create array-like object
 	for(i=0;i<arr.length;i++){_this[i]=arr[i];}_this.length=arr.length; // Return collection with methods
-	return this;};var $=function(selector,context){var arr=[],i=0;if(selector&&!context){if(selector instanceof Dom7){return selector;}}if(selector){ // String
+	return this;};var $=function $(selector,context){var arr=[],i=0;if(selector&&!context){if(selector instanceof Dom7){return selector;}}if(selector){ // String
 	if(typeof selector==='string'){var els,tempParent,html=selector.trim();if(html.indexOf('<')>=0&&html.indexOf('>')>=0){var toCreate='div';if(html.indexOf('<li')===0)toCreate='ul';if(html.indexOf('<tr')===0)toCreate='tbody';if(html.indexOf('<td')===0||html.indexOf('<th')===0)toCreate='tr';if(html.indexOf('<tbody')===0)toCreate='table';if(html.indexOf('<option')===0)toCreate='select';tempParent=document.createElement(toCreate);tempParent.innerHTML=selector;for(i=0;i<tempParent.childNodes.length;i++){arr.push(tempParent.childNodes[i]);}}else {if(!context&&selector[0]==='#'&&!selector.match(/[ .<>:~]/)){ // Pure ID selector
 	els=[document.getElementById(selector.split('#')[1])];}else { // Other selectors
 	els=(context||document).querySelectorAll(selector);}for(i=0;i<els.length;i++){if(els[i])arr.push(els[i]);}}} // Node/element
 	else if(selector.nodeType||selector===window||selector===document){arr.push(selector);} //Array of elements or instance of Dom
 	else if(selector.length>0&&selector[0].nodeType){for(i=0;i<selector.length;i++){arr.push(selector[i]);}}}return new Dom7(arr);};Dom7.prototype={ // Classes and attriutes
-	addClass:function(className){if(typeof className==='undefined'){return this;}var classes=className.split(' ');for(var i=0;i<classes.length;i++){for(var j=0;j<this.length;j++){this[j].classList.add(classes[i]);}}return this;},removeClass:function(className){var classes=className.split(' ');for(var i=0;i<classes.length;i++){for(var j=0;j<this.length;j++){this[j].classList.remove(classes[i]);}}return this;},hasClass:function(className){if(!this[0])return false;else return this[0].classList.contains(className);},toggleClass:function(className){var classes=className.split(' ');for(var i=0;i<classes.length;i++){for(var j=0;j<this.length;j++){this[j].classList.toggle(classes[i]);}}return this;},attr:function(attrs,value){if(arguments.length===1&&typeof attrs==='string'){ // Get attr
+	addClass:function addClass(className){if(typeof className==='undefined'){return this;}var classes=className.split(' ');for(var i=0;i<classes.length;i++){for(var j=0;j<this.length;j++){this[j].classList.add(classes[i]);}}return this;},removeClass:function removeClass(className){var classes=className.split(' ');for(var i=0;i<classes.length;i++){for(var j=0;j<this.length;j++){this[j].classList.remove(classes[i]);}}return this;},hasClass:function hasClass(className){if(!this[0])return false;else return this[0].classList.contains(className);},toggleClass:function toggleClass(className){var classes=className.split(' ');for(var i=0;i<classes.length;i++){for(var j=0;j<this.length;j++){this[j].classList.toggle(classes[i]);}}return this;},attr:function attr(attrs,value){if(arguments.length===1&&typeof attrs==='string'){ // Get attr
 	if(this[0])return this[0].getAttribute(attrs);else return undefined;}else { // Set attrs
 	for(var i=0;i<this.length;i++){if(arguments.length===2){ // String
 	this[i].setAttribute(attrs,value);}else { // Object
-	for(var attrName in attrs){this[i][attrName]=attrs[attrName];this[i].setAttribute(attrName,attrs[attrName]);}}}return this;}},removeAttr:function(attr){for(var i=0;i<this.length;i++){this[i].removeAttribute(attr);}return this;},data:function(key,value){if(typeof value==='undefined'){ // Get value
+	for(var attrName in attrs){this[i][attrName]=attrs[attrName];this[i].setAttribute(attrName,attrs[attrName]);}}}return this;}},removeAttr:function removeAttr(attr){for(var i=0;i<this.length;i++){this[i].removeAttribute(attr);}return this;},data:function data(key,value){if(typeof value==='undefined'){ // Get value
 	if(this[0]){var dataKey=this[0].getAttribute('data-'+key);if(dataKey)return dataKey;else if(this[0].dom7ElementDataStorage&&key in this[0].dom7ElementDataStorage)return this[0].dom7ElementDataStorage[key];else return undefined;}else return undefined;}else { // Set value
 	for(var i=0;i<this.length;i++){var el=this[i];if(!el.dom7ElementDataStorage)el.dom7ElementDataStorage={};el.dom7ElementDataStorage[key]=value;}return this;}}, // Transforms
-	transform:function(transform){for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransform=elStyle.MsTransform=elStyle.msTransform=elStyle.MozTransform=elStyle.OTransform=elStyle.transform=transform;}return this;},transition:function(duration){if(typeof duration!=='string'){duration=duration+'ms';}for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransitionDuration=elStyle.MsTransitionDuration=elStyle.msTransitionDuration=elStyle.MozTransitionDuration=elStyle.OTransitionDuration=elStyle.transitionDuration=duration;}return this;}, //Events
-	on:function(eventName,targetSelector,listener,capture){function handleLiveEvent(e){var target=e.target;if($(target).is(targetSelector))listener.call(target,e);else {var parents=$(target).parents();for(var k=0;k<parents.length;k++){if($(parents[k]).is(targetSelector))listener.call(parents[k],e);}}}var events=eventName.split(' ');var i,j;for(i=0;i<this.length;i++){if(typeof targetSelector==='function'||targetSelector===false){ // Usual events
+	transform:function transform(_transform){for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransform=elStyle.MsTransform=elStyle.msTransform=elStyle.MozTransform=elStyle.OTransform=elStyle.transform=_transform;}return this;},transition:function transition(duration){if(typeof duration!=='string'){duration=duration+'ms';}for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransitionDuration=elStyle.MsTransitionDuration=elStyle.msTransitionDuration=elStyle.MozTransitionDuration=elStyle.OTransitionDuration=elStyle.transitionDuration=duration;}return this;}, //Events
+	on:function on(eventName,targetSelector,listener,capture){function handleLiveEvent(e){var target=e.target;if($(target).is(targetSelector))listener.call(target,e);else {var parents=$(target).parents();for(var k=0;k<parents.length;k++){if($(parents[k]).is(targetSelector))listener.call(parents[k],e);}}}var events=eventName.split(' ');var i,j;for(i=0;i<this.length;i++){if(typeof targetSelector==='function'||targetSelector===false){ // Usual events
 	if(typeof targetSelector==='function'){listener=arguments[1];capture=arguments[2]||false;}for(j=0;j<events.length;j++){this[i].addEventListener(events[j],listener,capture);}}else { //Live events
-	for(j=0;j<events.length;j++){if(!this[i].dom7LiveListeners)this[i].dom7LiveListeners=[];this[i].dom7LiveListeners.push({listener:listener,liveListener:handleLiveEvent});this[i].addEventListener(events[j],handleLiveEvent,capture);}}}return this;},off:function(eventName,targetSelector,listener,capture){var events=eventName.split(' ');for(var i=0;i<events.length;i++){for(var j=0;j<this.length;j++){if(typeof targetSelector==='function'||targetSelector===false){ // Usual events
+	for(j=0;j<events.length;j++){if(!this[i].dom7LiveListeners)this[i].dom7LiveListeners=[];this[i].dom7LiveListeners.push({listener:listener,liveListener:handleLiveEvent});this[i].addEventListener(events[j],handleLiveEvent,capture);}}}return this;},off:function off(eventName,targetSelector,listener,capture){var events=eventName.split(' ');for(var i=0;i<events.length;i++){for(var j=0;j<this.length;j++){if(typeof targetSelector==='function'||targetSelector===false){ // Usual events
 	if(typeof targetSelector==='function'){listener=arguments[1];capture=arguments[2]||false;}this[j].removeEventListener(events[i],listener,capture);}else { // Live event
-	if(this[j].dom7LiveListeners){for(var k=0;k<this[j].dom7LiveListeners.length;k++){if(this[j].dom7LiveListeners[k].listener===listener){this[j].removeEventListener(events[i],this[j].dom7LiveListeners[k].liveListener,capture);}}}}}}return this;},once:function(eventName,targetSelector,listener,capture){var dom=this;if(typeof targetSelector==='function'){targetSelector=false;listener=arguments[1];capture=arguments[2];}function proxy(e){listener(e);dom.off(eventName,targetSelector,proxy,capture);}dom.on(eventName,targetSelector,proxy,capture);},trigger:function(eventName,eventData){for(var i=0;i<this.length;i++){var evt;try{evt=new window.CustomEvent(eventName,{detail:eventData,bubbles:true,cancelable:true});}catch(e){evt=document.createEvent('Event');evt.initEvent(eventName,true,true);evt.detail=eventData;}this[i].dispatchEvent(evt);}return this;},transitionEnd:function(callback){var events=['webkitTransitionEnd','transitionend','oTransitionEnd','MSTransitionEnd','msTransitionEnd'],i,j,dom=this;function fireCallBack(e){ /*jshint validthis:true */if(e.target!==this)return;callback.call(this,e);for(i=0;i<events.length;i++){dom.off(events[i],fireCallBack);}}if(callback){for(i=0;i<events.length;i++){dom.on(events[i],fireCallBack);}}return this;}, // Sizing/Styles
-	width:function(){if(this[0]===window){return window.innerWidth;}else {if(this.length>0){return parseFloat(this.css('width'));}else {return null;}}},outerWidth:function(includeMargins){if(this.length>0){if(includeMargins)return this[0].offsetWidth+parseFloat(this.css('margin-right'))+parseFloat(this.css('margin-left'));else return this[0].offsetWidth;}else return null;},height:function(){if(this[0]===window){return window.innerHeight;}else {if(this.length>0){return parseFloat(this.css('height'));}else {return null;}}},outerHeight:function(includeMargins){if(this.length>0){if(includeMargins)return this[0].offsetHeight+parseFloat(this.css('margin-top'))+parseFloat(this.css('margin-bottom'));else return this[0].offsetHeight;}else return null;},offset:function(){if(this.length>0){var el=this[0];var box=el.getBoundingClientRect();var body=document.body;var clientTop=el.clientTop||body.clientTop||0;var clientLeft=el.clientLeft||body.clientLeft||0;var scrollTop=window.pageYOffset||el.scrollTop;var scrollLeft=window.pageXOffset||el.scrollLeft;return {top:box.top+scrollTop-clientTop,left:box.left+scrollLeft-clientLeft};}else {return null;}},css:function(props,value){var i;if(arguments.length===1){if(typeof props==='string'){if(this[0])return window.getComputedStyle(this[0],null).getPropertyValue(props);}else {for(i=0;i<this.length;i++){for(var prop in props){this[i].style[prop]=props[prop];}}return this;}}if(arguments.length===2&&typeof props==='string'){for(i=0;i<this.length;i++){this[i].style[props]=value;}return this;}return this;}, //Dom manipulation
-	each:function(callback){for(var i=0;i<this.length;i++){callback.call(this[i],i,this[i]);}return this;},html:function(html){if(typeof html==='undefined'){return this[0]?this[0].innerHTML:undefined;}else {for(var i=0;i<this.length;i++){this[i].innerHTML=html;}return this;}},is:function(selector){if(!this[0])return false;var compareWith,i;if(typeof selector==='string'){var el=this[0];if(el===document)return selector===document;if(el===window)return selector===window;if(el.matches)return el.matches(selector);else if(el.webkitMatchesSelector)return el.webkitMatchesSelector(selector);else if(el.mozMatchesSelector)return el.mozMatchesSelector(selector);else if(el.msMatchesSelector)return el.msMatchesSelector(selector);else {compareWith=$(selector);for(i=0;i<compareWith.length;i++){if(compareWith[i]===this[0])return true;}return false;}}else if(selector===document)return this[0]===document;else if(selector===window)return this[0]===window;else {if(selector.nodeType||selector instanceof Dom7){compareWith=selector.nodeType?[selector]:selector;for(i=0;i<compareWith.length;i++){if(compareWith[i]===this[0])return true;}return false;}return false;}},index:function(){if(this[0]){var child=this[0];var i=0;while((child=child.previousSibling)!==null){if(child.nodeType===1)i++;}return i;}else return undefined;},eq:function(index){if(typeof index==='undefined')return this;var length=this.length;var returnIndex;if(index>length-1){return new Dom7([]);}if(index<0){returnIndex=length+index;if(returnIndex<0)return new Dom7([]);else return new Dom7([this[returnIndex]]);}return new Dom7([this[index]]);},append:function(newChild){var i,j;for(i=0;i<this.length;i++){if(typeof newChild==='string'){var tempDiv=document.createElement('div');tempDiv.innerHTML=newChild;while(tempDiv.firstChild){this[i].appendChild(tempDiv.firstChild);}}else if(newChild instanceof Dom7){for(j=0;j<newChild.length;j++){this[i].appendChild(newChild[j]);}}else {this[i].appendChild(newChild);}}return this;},prepend:function(newChild){var i,j;for(i=0;i<this.length;i++){if(typeof newChild==='string'){var tempDiv=document.createElement('div');tempDiv.innerHTML=newChild;for(j=tempDiv.childNodes.length-1;j>=0;j--){this[i].insertBefore(tempDiv.childNodes[j],this[i].childNodes[0]);} // this[i].insertAdjacentHTML('afterbegin', newChild);
-	}else if(newChild instanceof Dom7){for(j=0;j<newChild.length;j++){this[i].insertBefore(newChild[j],this[i].childNodes[0]);}}else {this[i].insertBefore(newChild,this[i].childNodes[0]);}}return this;},insertBefore:function(selector){var before=$(selector);for(var i=0;i<this.length;i++){if(before.length===1){before[0].parentNode.insertBefore(this[i],before[0]);}else if(before.length>1){for(var j=0;j<before.length;j++){before[j].parentNode.insertBefore(this[i].cloneNode(true),before[j]);}}}},insertAfter:function(selector){var after=$(selector);for(var i=0;i<this.length;i++){if(after.length===1){after[0].parentNode.insertBefore(this[i],after[0].nextSibling);}else if(after.length>1){for(var j=0;j<after.length;j++){after[j].parentNode.insertBefore(this[i].cloneNode(true),after[j].nextSibling);}}}},next:function(selector){if(this.length>0){if(selector){if(this[0].nextElementSibling&&$(this[0].nextElementSibling).is(selector))return new Dom7([this[0].nextElementSibling]);else return new Dom7([]);}else {if(this[0].nextElementSibling)return new Dom7([this[0].nextElementSibling]);else return new Dom7([]);}}else return new Dom7([]);},nextAll:function(selector){var nextEls=[];var el=this[0];if(!el)return new Dom7([]);while(el.nextElementSibling){var next=el.nextElementSibling;if(selector){if($(next).is(selector))nextEls.push(next);}else nextEls.push(next);el=next;}return new Dom7(nextEls);},prev:function(selector){if(this.length>0){if(selector){if(this[0].previousElementSibling&&$(this[0].previousElementSibling).is(selector))return new Dom7([this[0].previousElementSibling]);else return new Dom7([]);}else {if(this[0].previousElementSibling)return new Dom7([this[0].previousElementSibling]);else return new Dom7([]);}}else return new Dom7([]);},prevAll:function(selector){var prevEls=[];var el=this[0];if(!el)return new Dom7([]);while(el.previousElementSibling){var prev=el.previousElementSibling;if(selector){if($(prev).is(selector))prevEls.push(prev);}else prevEls.push(prev);el=prev;}return new Dom7(prevEls);},parent:function(selector){var parents=[];for(var i=0;i<this.length;i++){if(selector){if($(this[i].parentNode).is(selector))parents.push(this[i].parentNode);}else {parents.push(this[i].parentNode);}}return $($.unique(parents));},parents:function(selector){var parents=[];for(var i=0;i<this.length;i++){var parent=this[i].parentNode;while(parent){if(selector){if($(parent).is(selector))parents.push(parent);}else {parents.push(parent);}parent=parent.parentNode;}}return $($.unique(parents));},find:function(selector){var foundElements=[];for(var i=0;i<this.length;i++){var found=this[i].querySelectorAll(selector);for(var j=0;j<found.length;j++){foundElements.push(found[j]);}}return new Dom7(foundElements);},children:function(selector){var children=[];for(var i=0;i<this.length;i++){var childNodes=this[i].childNodes;for(var j=0;j<childNodes.length;j++){if(!selector){if(childNodes[j].nodeType===1)children.push(childNodes[j]);}else {if(childNodes[j].nodeType===1&&$(childNodes[j]).is(selector))children.push(childNodes[j]);}}}return new Dom7($.unique(children));},remove:function(){for(var i=0;i<this.length;i++){if(this[i].parentNode)this[i].parentNode.removeChild(this[i]);}return this;},add:function(){var dom=this;var i,j;for(i=0;i<arguments.length;i++){var toAdd=$(arguments[i]);for(j=0;j<toAdd.length;j++){dom[dom.length]=toAdd[j];dom.length++;}}return dom;}};$.fn=Dom7.prototype;$.unique=function(arr){var unique=[];for(var i=0;i<arr.length;i++){if(unique.indexOf(arr[i])===-1)unique.push(arr[i]);}return unique;};return $;}(); /*===========================
+	if(this[j].dom7LiveListeners){for(var k=0;k<this[j].dom7LiveListeners.length;k++){if(this[j].dom7LiveListeners[k].listener===listener){this[j].removeEventListener(events[i],this[j].dom7LiveListeners[k].liveListener,capture);}}}}}}return this;},once:function once(eventName,targetSelector,listener,capture){var dom=this;if(typeof targetSelector==='function'){targetSelector=false;listener=arguments[1];capture=arguments[2];}function proxy(e){listener(e);dom.off(eventName,targetSelector,proxy,capture);}dom.on(eventName,targetSelector,proxy,capture);},trigger:function trigger(eventName,eventData){for(var i=0;i<this.length;i++){var evt;try{evt=new window.CustomEvent(eventName,{detail:eventData,bubbles:true,cancelable:true});}catch(e){evt=document.createEvent('Event');evt.initEvent(eventName,true,true);evt.detail=eventData;}this[i].dispatchEvent(evt);}return this;},transitionEnd:function transitionEnd(callback){var events=['webkitTransitionEnd','transitionend','oTransitionEnd','MSTransitionEnd','msTransitionEnd'],i,j,dom=this;function fireCallBack(e){ /*jshint validthis:true */if(e.target!==this)return;callback.call(this,e);for(i=0;i<events.length;i++){dom.off(events[i],fireCallBack);}}if(callback){for(i=0;i<events.length;i++){dom.on(events[i],fireCallBack);}}return this;}, // Sizing/Styles
+	width:function width(){if(this[0]===window){return window.innerWidth;}else {if(this.length>0){return parseFloat(this.css('width'));}else {return null;}}},outerWidth:function outerWidth(includeMargins){if(this.length>0){if(includeMargins)return this[0].offsetWidth+parseFloat(this.css('margin-right'))+parseFloat(this.css('margin-left'));else return this[0].offsetWidth;}else return null;},height:function height(){if(this[0]===window){return window.innerHeight;}else {if(this.length>0){return parseFloat(this.css('height'));}else {return null;}}},outerHeight:function outerHeight(includeMargins){if(this.length>0){if(includeMargins)return this[0].offsetHeight+parseFloat(this.css('margin-top'))+parseFloat(this.css('margin-bottom'));else return this[0].offsetHeight;}else return null;},offset:function offset(){if(this.length>0){var el=this[0];var box=el.getBoundingClientRect();var body=document.body;var clientTop=el.clientTop||body.clientTop||0;var clientLeft=el.clientLeft||body.clientLeft||0;var scrollTop=window.pageYOffset||el.scrollTop;var scrollLeft=window.pageXOffset||el.scrollLeft;return {top:box.top+scrollTop-clientTop,left:box.left+scrollLeft-clientLeft};}else {return null;}},css:function css(props,value){var i;if(arguments.length===1){if(typeof props==='string'){if(this[0])return window.getComputedStyle(this[0],null).getPropertyValue(props);}else {for(i=0;i<this.length;i++){for(var prop in props){this[i].style[prop]=props[prop];}}return this;}}if(arguments.length===2&&typeof props==='string'){for(i=0;i<this.length;i++){this[i].style[props]=value;}return this;}return this;}, //Dom manipulation
+	each:function each(callback){for(var i=0;i<this.length;i++){callback.call(this[i],i,this[i]);}return this;},html:function html(_html){if(typeof _html==='undefined'){return this[0]?this[0].innerHTML:undefined;}else {for(var i=0;i<this.length;i++){this[i].innerHTML=_html;}return this;}},is:function is(selector){if(!this[0])return false;var compareWith,i;if(typeof selector==='string'){var el=this[0];if(el===document)return selector===document;if(el===window)return selector===window;if(el.matches)return el.matches(selector);else if(el.webkitMatchesSelector)return el.webkitMatchesSelector(selector);else if(el.mozMatchesSelector)return el.mozMatchesSelector(selector);else if(el.msMatchesSelector)return el.msMatchesSelector(selector);else {compareWith=$(selector);for(i=0;i<compareWith.length;i++){if(compareWith[i]===this[0])return true;}return false;}}else if(selector===document)return this[0]===document;else if(selector===window)return this[0]===window;else {if(selector.nodeType||selector instanceof Dom7){compareWith=selector.nodeType?[selector]:selector;for(i=0;i<compareWith.length;i++){if(compareWith[i]===this[0])return true;}return false;}return false;}},index:function index(){if(this[0]){var child=this[0];var i=0;while((child=child.previousSibling)!==null){if(child.nodeType===1)i++;}return i;}else return undefined;},eq:function eq(index){if(typeof index==='undefined')return this;var length=this.length;var returnIndex;if(index>length-1){return new Dom7([]);}if(index<0){returnIndex=length+index;if(returnIndex<0)return new Dom7([]);else return new Dom7([this[returnIndex]]);}return new Dom7([this[index]]);},append:function append(newChild){var i,j;for(i=0;i<this.length;i++){if(typeof newChild==='string'){var tempDiv=document.createElement('div');tempDiv.innerHTML=newChild;while(tempDiv.firstChild){this[i].appendChild(tempDiv.firstChild);}}else if(newChild instanceof Dom7){for(j=0;j<newChild.length;j++){this[i].appendChild(newChild[j]);}}else {this[i].appendChild(newChild);}}return this;},prepend:function prepend(newChild){var i,j;for(i=0;i<this.length;i++){if(typeof newChild==='string'){var tempDiv=document.createElement('div');tempDiv.innerHTML=newChild;for(j=tempDiv.childNodes.length-1;j>=0;j--){this[i].insertBefore(tempDiv.childNodes[j],this[i].childNodes[0]);} // this[i].insertAdjacentHTML('afterbegin', newChild);
+	}else if(newChild instanceof Dom7){for(j=0;j<newChild.length;j++){this[i].insertBefore(newChild[j],this[i].childNodes[0]);}}else {this[i].insertBefore(newChild,this[i].childNodes[0]);}}return this;},insertBefore:function insertBefore(selector){var before=$(selector);for(var i=0;i<this.length;i++){if(before.length===1){before[0].parentNode.insertBefore(this[i],before[0]);}else if(before.length>1){for(var j=0;j<before.length;j++){before[j].parentNode.insertBefore(this[i].cloneNode(true),before[j]);}}}},insertAfter:function insertAfter(selector){var after=$(selector);for(var i=0;i<this.length;i++){if(after.length===1){after[0].parentNode.insertBefore(this[i],after[0].nextSibling);}else if(after.length>1){for(var j=0;j<after.length;j++){after[j].parentNode.insertBefore(this[i].cloneNode(true),after[j].nextSibling);}}}},next:function next(selector){if(this.length>0){if(selector){if(this[0].nextElementSibling&&$(this[0].nextElementSibling).is(selector))return new Dom7([this[0].nextElementSibling]);else return new Dom7([]);}else {if(this[0].nextElementSibling)return new Dom7([this[0].nextElementSibling]);else return new Dom7([]);}}else return new Dom7([]);},nextAll:function nextAll(selector){var nextEls=[];var el=this[0];if(!el)return new Dom7([]);while(el.nextElementSibling){var next=el.nextElementSibling;if(selector){if($(next).is(selector))nextEls.push(next);}else nextEls.push(next);el=next;}return new Dom7(nextEls);},prev:function prev(selector){if(this.length>0){if(selector){if(this[0].previousElementSibling&&$(this[0].previousElementSibling).is(selector))return new Dom7([this[0].previousElementSibling]);else return new Dom7([]);}else {if(this[0].previousElementSibling)return new Dom7([this[0].previousElementSibling]);else return new Dom7([]);}}else return new Dom7([]);},prevAll:function prevAll(selector){var prevEls=[];var el=this[0];if(!el)return new Dom7([]);while(el.previousElementSibling){var prev=el.previousElementSibling;if(selector){if($(prev).is(selector))prevEls.push(prev);}else prevEls.push(prev);el=prev;}return new Dom7(prevEls);},parent:function parent(selector){var parents=[];for(var i=0;i<this.length;i++){if(selector){if($(this[i].parentNode).is(selector))parents.push(this[i].parentNode);}else {parents.push(this[i].parentNode);}}return $($.unique(parents));},parents:function parents(selector){var parents=[];for(var i=0;i<this.length;i++){var parent=this[i].parentNode;while(parent){if(selector){if($(parent).is(selector))parents.push(parent);}else {parents.push(parent);}parent=parent.parentNode;}}return $($.unique(parents));},find:function find(selector){var foundElements=[];for(var i=0;i<this.length;i++){var found=this[i].querySelectorAll(selector);for(var j=0;j<found.length;j++){foundElements.push(found[j]);}}return new Dom7(foundElements);},children:function children(selector){var children=[];for(var i=0;i<this.length;i++){var childNodes=this[i].childNodes;for(var j=0;j<childNodes.length;j++){if(!selector){if(childNodes[j].nodeType===1)children.push(childNodes[j]);}else {if(childNodes[j].nodeType===1&&$(childNodes[j]).is(selector))children.push(childNodes[j]);}}}return new Dom7($.unique(children));},remove:function remove(){for(var i=0;i<this.length;i++){if(this[i].parentNode)this[i].parentNode.removeChild(this[i]);}return this;},add:function add(){var dom=this;var i,j;for(i=0;i<arguments.length;i++){var toAdd=$(arguments[i]);for(j=0;j<toAdd.length;j++){dom[dom.length]=toAdd[j];dom.length++;}}return dom;}};$.fn=Dom7.prototype;$.unique=function(arr){var unique=[];for(var i=0;i<arr.length;i++){if(unique.indexOf(arr[i])===-1)unique.push(arr[i]);}return unique;};return $;}(); /*===========================
 	     Get Dom libraries
 	     ===========================*/var swiperDomPlugins=['jQuery','Zepto','Dom7'];for(var i=0;i<swiperDomPlugins.length;i++){if(window[swiperDomPlugins[i]]){addLibraryPlugin(window[swiperDomPlugins[i]]);}} // Required DOM Plugins
 	var domLib;if(typeof Dom7==='undefined'){domLib=window.Dom7||window.Zepto||window.jQuery;}else {domLib=Dom7;} /*===========================
 	    Add .swiper plugin from Dom libraries
-	    ===========================*/function addLibraryPlugin(lib){lib.fn.swiper=function(params){var firstInstance;lib(this).each(function(){var s=new Swiper(this,params);if(!firstInstance)firstInstance=s;});return firstInstance;};}if(domLib){if(!('transitionEnd' in domLib.fn)){domLib.fn.transitionEnd=function(callback){var events=['webkitTransitionEnd','transitionend','oTransitionEnd','MSTransitionEnd','msTransitionEnd'],i,j,dom=this;function fireCallBack(e){ /*jshint validthis:true */if(e.target!==this)return;callback.call(this,e);for(i=0;i<events.length;i++){dom.off(events[i],fireCallBack);}}if(callback){for(i=0;i<events.length;i++){dom.on(events[i],fireCallBack);}}return this;};}if(!('transform' in domLib.fn)){domLib.fn.transform=function(transform){for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransform=elStyle.MsTransform=elStyle.msTransform=elStyle.MozTransform=elStyle.OTransform=elStyle.transform=transform;}return this;};}if(!('transition' in domLib.fn)){domLib.fn.transition=function(duration){if(typeof duration!=='string'){duration=duration+'ms';}for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransitionDuration=elStyle.MsTransitionDuration=elStyle.msTransitionDuration=elStyle.MozTransitionDuration=elStyle.OTransitionDuration=elStyle.transitionDuration=duration;}return this;};}}ionic.views.Swiper=Swiper;})();(function(ionic){'use strict';ionic.views.Toggle=ionic.views.View.inherit({initialize:function(opts){var self=this;this.el=opts.el;this.checkbox=opts.checkbox;this.track=opts.track;this.handle=opts.handle;this.openPercent=-1;this.onChange=opts.onChange||function(){};this.triggerThreshold=opts.triggerThreshold||20;this.dragStartHandler=function(e){self.dragStart(e);};this.dragHandler=function(e){self.drag(e);};this.holdHandler=function(e){self.hold(e);};this.releaseHandler=function(e){self.release(e);};this.dragStartGesture=ionic.onGesture('dragstart',this.dragStartHandler,this.el);this.dragGesture=ionic.onGesture('drag',this.dragHandler,this.el);this.dragHoldGesture=ionic.onGesture('hold',this.holdHandler,this.el);this.dragReleaseGesture=ionic.onGesture('release',this.releaseHandler,this.el);},destroy:function(){ionic.offGesture(this.dragStartGesture,'dragstart',this.dragStartGesture);ionic.offGesture(this.dragGesture,'drag',this.dragGesture);ionic.offGesture(this.dragHoldGesture,'hold',this.holdHandler);ionic.offGesture(this.dragReleaseGesture,'release',this.releaseHandler);},tap:function(){if(this.el.getAttribute('disabled')!=='disabled'){this.val(!this.checkbox.checked);}},dragStart:function(e){if(this.checkbox.disabled)return;this._dragInfo={width:this.el.offsetWidth,left:this.el.offsetLeft,right:this.el.offsetLeft+this.el.offsetWidth,triggerX:this.el.offsetWidth/2,initialState:this.checkbox.checked}; // Stop any parent dragging
+	    ===========================*/function addLibraryPlugin(lib){lib.fn.swiper=function(params){var firstInstance;lib(this).each(function(){var s=new Swiper(this,params);if(!firstInstance)firstInstance=s;});return firstInstance;};}if(domLib){if(!('transitionEnd' in domLib.fn)){domLib.fn.transitionEnd=function(callback){var events=['webkitTransitionEnd','transitionend','oTransitionEnd','MSTransitionEnd','msTransitionEnd'],i,j,dom=this;function fireCallBack(e){ /*jshint validthis:true */if(e.target!==this)return;callback.call(this,e);for(i=0;i<events.length;i++){dom.off(events[i],fireCallBack);}}if(callback){for(i=0;i<events.length;i++){dom.on(events[i],fireCallBack);}}return this;};}if(!('transform' in domLib.fn)){domLib.fn.transform=function(transform){for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransform=elStyle.MsTransform=elStyle.msTransform=elStyle.MozTransform=elStyle.OTransform=elStyle.transform=transform;}return this;};}if(!('transition' in domLib.fn)){domLib.fn.transition=function(duration){if(typeof duration!=='string'){duration=duration+'ms';}for(var i=0;i<this.length;i++){var elStyle=this[i].style;elStyle.webkitTransitionDuration=elStyle.MsTransitionDuration=elStyle.msTransitionDuration=elStyle.MozTransitionDuration=elStyle.OTransitionDuration=elStyle.transitionDuration=duration;}return this;};}}ionic.views.Swiper=Swiper;})();(function(ionic){'use strict';ionic.views.Toggle=ionic.views.View.inherit({initialize:function initialize(opts){var self=this;this.el=opts.el;this.checkbox=opts.checkbox;this.track=opts.track;this.handle=opts.handle;this.openPercent=-1;this.onChange=opts.onChange||function(){};this.triggerThreshold=opts.triggerThreshold||20;this.dragStartHandler=function(e){self.dragStart(e);};this.dragHandler=function(e){self.drag(e);};this.holdHandler=function(e){self.hold(e);};this.releaseHandler=function(e){self.release(e);};this.dragStartGesture=ionic.onGesture('dragstart',this.dragStartHandler,this.el);this.dragGesture=ionic.onGesture('drag',this.dragHandler,this.el);this.dragHoldGesture=ionic.onGesture('hold',this.holdHandler,this.el);this.dragReleaseGesture=ionic.onGesture('release',this.releaseHandler,this.el);},destroy:function destroy(){ionic.offGesture(this.dragStartGesture,'dragstart',this.dragStartGesture);ionic.offGesture(this.dragGesture,'drag',this.dragGesture);ionic.offGesture(this.dragHoldGesture,'hold',this.holdHandler);ionic.offGesture(this.dragReleaseGesture,'release',this.releaseHandler);},tap:function tap(){if(this.el.getAttribute('disabled')!=='disabled'){this.val(!this.checkbox.checked);}},dragStart:function dragStart(e){if(this.checkbox.disabled)return;this._dragInfo={width:this.el.offsetWidth,left:this.el.offsetLeft,right:this.el.offsetLeft+this.el.offsetWidth,triggerX:this.el.offsetWidth/2,initialState:this.checkbox.checked}; // Stop any parent dragging
 	e.gesture.srcEvent.preventDefault(); // Trigger hold styles
-	this.hold(e);},drag:function(e){var self=this;if(!this._dragInfo){return;} // Stop any parent dragging
+	this.hold(e);},drag:function drag(e){var self=this;if(!this._dragInfo){return;} // Stop any parent dragging
 	e.gesture.srcEvent.preventDefault();ionic.requestAnimationFrame(function(){if(!self._dragInfo){return;}var px=e.gesture.touches[0].pageX-self._dragInfo.left;var mx=self._dragInfo.width-self.triggerThreshold; // The initial state was on, so "tend towards" on
 	if(self._dragInfo.initialState){if(px<self.triggerThreshold){self.setOpenPercent(0);}else if(px>self._dragInfo.triggerX){self.setOpenPercent(100);}}else { // The initial state was off, so "tend towards" off
-	if(px<self._dragInfo.triggerX){self.setOpenPercent(0);}else if(px>mx){self.setOpenPercent(100);}}});},endDrag:function(){this._dragInfo=null;},hold:function(){this.el.classList.add('dragging');},release:function(e){this.el.classList.remove('dragging');this.endDrag(e);},setOpenPercent:function(openPercent){ // only make a change if the new open percent has changed
-	if(this.openPercent<0||openPercent<this.openPercent-3||openPercent>this.openPercent+3){this.openPercent=openPercent;if(openPercent===0){this.val(false);}else if(openPercent===100){this.val(true);}else {var openPixel=Math.round(openPercent/100*this.track.offsetWidth-this.handle.offsetWidth);openPixel=openPixel<1?0:openPixel;this.handle.style[ionic.CSS.TRANSFORM]='translate3d('+openPixel+'px,0,0)';}}},val:function(value){if(value===true||value===false){if(this.handle.style[ionic.CSS.TRANSFORM]!==""){this.handle.style[ionic.CSS.TRANSFORM]="";}this.checkbox.checked=value;this.openPercent=value?100:0;this.onChange&&this.onChange();}return this.checkbox.checked;}});})(ionic);})(); /*!
+	if(px<self._dragInfo.triggerX){self.setOpenPercent(0);}else if(px>mx){self.setOpenPercent(100);}}});},endDrag:function endDrag(){this._dragInfo=null;},hold:function hold(){this.el.classList.add('dragging');},release:function release(e){this.el.classList.remove('dragging');this.endDrag(e);},setOpenPercent:function setOpenPercent(openPercent){ // only make a change if the new open percent has changed
+	if(this.openPercent<0||openPercent<this.openPercent-3||openPercent>this.openPercent+3){this.openPercent=openPercent;if(openPercent===0){this.val(false);}else if(openPercent===100){this.val(true);}else {var openPixel=Math.round(openPercent/100*this.track.offsetWidth-this.handle.offsetWidth);openPixel=openPixel<1?0:openPixel;this.handle.style[ionic.CSS.TRANSFORM]='translate3d('+openPixel+'px,0,0)';}}},val:function val(value){if(value===true||value===false){if(this.handle.style[ionic.CSS.TRANSFORM]!==""){this.handle.style[ionic.CSS.TRANSFORM]="";}this.checkbox.checked=value;this.openPercent=value?100:0;this.onChange&&this.onChange();}return this.checkbox.checked;}});})(ionic);})(); /*!
 	 * ionic.bundle.js is a concatenation of:
 	 * ionic.js, angular.js, angular-animate.js,
 	 * angular-sanitize.js, angular-ui-router.js,
@@ -3197,7 +3203,7 @@
 	 * @description Converts the specified string to lowercase.
 	 * @param {string} string String to be converted to lowercase.
 	 * @returns {string} Lowercased string.
-	 */var lowercase=function(string){return isString(string)?string.toLowerCase():string;};var hasOwnProperty=Object.prototype.hasOwnProperty; /**
+	 */var lowercase=function lowercase(string){return isString(string)?string.toLowerCase():string;};var hasOwnProperty=Object.prototype.hasOwnProperty; /**
 	 * @ngdoc function
 	 * @name angular.uppercase
 	 * @module ng
@@ -3206,7 +3212,7 @@
 	 * @description Converts the specified string to uppercase.
 	 * @param {string} string String to be converted to uppercase.
 	 * @returns {string} Uppercased string.
-	 */var uppercase=function(string){return isString(string)?string.toUpperCase():string;};var manualLowercase=function(s){ /* jshint bitwise: false */return isString(s)?s.replace(/[A-Z]/g,function(ch){return String.fromCharCode(ch.charCodeAt(0)|32);}):s;};var manualUppercase=function(s){ /* jshint bitwise: false */return isString(s)?s.replace(/[a-z]/g,function(ch){return String.fromCharCode(ch.charCodeAt(0)&~32);}):s;}; // String#toLowerCase and String#toUpperCase don't produce correct results in browsers with Turkish
+	 */var uppercase=function uppercase(string){return isString(string)?string.toUpperCase():string;};var manualLowercase=function manualLowercase(s){ /* jshint bitwise: false */return isString(s)?s.replace(/[A-Z]/g,function(ch){return String.fromCharCode(ch.charCodeAt(0)|32);}):s;};var manualUppercase=function manualUppercase(s){ /* jshint bitwise: false */return isString(s)?s.replace(/[a-z]/g,function(ch){return String.fromCharCode(ch.charCodeAt(0)&~32);}):s;}; // String#toLowerCase and String#toUpperCase don't produce correct results in browsers with Turkish
 	// locale, for this reason we need to detect this case and redefine lowercase/uppercase methods
 	// with correct but slower alternatives.
 	if('i'!=='I'.toLowerCase()){lowercase=manualLowercase;uppercase=manualUppercase;}var msie, // holds major version number for IE, or NaN if UA is not IE.
@@ -3257,7 +3263,7 @@
 	 * @returns {Object|Array} Reference to `obj`.
 	 */function forEach(obj,iterator,context){var key,length;if(obj){if(isFunction(obj)){for(key in obj){ // Need to check if hasOwnProperty exists,
 	// as on IE8 the result of querySelectorAll is an object without a hasOwnProperty function
-	if(key!='prototype'&&key!='length'&&key!='name'&&(!obj.hasOwnProperty||obj.hasOwnProperty(key))){iterator.call(context,obj[key],key,obj);}}}else if(isArray(obj)||isArrayLike(obj)){var isPrimitive=typeof obj!=='object';for(key=0,length=obj.length;key<length;key++){if(isPrimitive||key in obj){iterator.call(context,obj[key],key,obj);}}}else if(obj.forEach&&obj.forEach!==forEach){obj.forEach(iterator,context,obj);}else if(isBlankObject(obj)){ // createMap() fast path --- Safe to avoid hasOwnProperty check because prototype chain is empty
+	if(key!='prototype'&&key!='length'&&key!='name'&&(!obj.hasOwnProperty||obj.hasOwnProperty(key))){iterator.call(context,obj[key],key,obj);}}}else if(isArray(obj)||isArrayLike(obj)){var isPrimitive=(typeof obj==='undefined'?'undefined':_typeof(obj))!=='object';for(key=0,length=obj.length;key<length;key++){if(isPrimitive||key in obj){iterator.call(context,obj[key],key,obj);}}}else if(obj.forEach&&obj.forEach!==forEach){obj.forEach(iterator,context,obj);}else if(isBlankObject(obj)){ // createMap() fast path --- Safe to avoid hasOwnProperty check because prototype chain is empty
 	for(key in obj){iterator.call(context,obj[key],key,obj);}}else if(typeof obj.hasOwnProperty==='function'){ // Slow path for objects inheriting Object.prototype, hasOwnProperty check needed
 	for(key in obj){if(obj.hasOwnProperty(key)){iterator.call(context,obj[key],key,obj);}}}else { // Slow path for objects which do not have a method `hasOwnProperty`
 	for(key in obj){if(hasOwnProperty.call(obj,key)){iterator.call(context,obj[key],key,obj);}}}}return obj;}function forEachSorted(obj,iterator,context){var keys=Object.keys(obj).sort();for(var i=0;i<keys.length;i++){iterator.call(context,obj[keys[i]],keys[i]);}return keys;} /**
@@ -3378,11 +3384,11 @@
 	 * @param {*} value Reference to check.
 	 * @returns {boolean} True if `value` is an `Object` but not `null`.
 	 */function isObject(value){ // http://jsperf.com/isobject4
-	return value!==null&&typeof value==='object';} /**
+	return value!==null&&(typeof value==='undefined'?'undefined':_typeof(value))==='object';} /**
 	 * Determine if a value is an object with a null prototype
 	 *
 	 * @returns {boolean} True if `value` is an `Object` with a null prototype
-	 */function isBlankObject(value){return value!==null&&typeof value==='object'&&!getPrototypeOf(value);} /**
+	 */function isBlankObject(value){return value!==null&&(typeof value==='undefined'?'undefined':_typeof(value))==='object'&&!getPrototypeOf(value);} /**
 	 * @ngdoc function
 	 * @name angular.isString
 	 * @module ng
@@ -3455,10 +3461,10 @@
 	 * @private
 	 * @param {*} obj Object to check
 	 * @returns {boolean} True if `obj` is a window obj.
-	 */function isWindow(obj){return obj&&obj.window===obj;}function isScope(obj){return obj&&obj.$evalAsync&&obj.$watch;}function isFile(obj){return toString.call(obj)==='[object File]';}function isFormData(obj){return toString.call(obj)==='[object FormData]';}function isBlob(obj){return toString.call(obj)==='[object Blob]';}function isBoolean(value){return typeof value==='boolean';}function isPromiseLike(obj){return obj&&isFunction(obj.then);}var TYPED_ARRAY_REGEXP=/^\[object (Uint8(Clamped)?)|(Uint16)|(Uint32)|(Int8)|(Int16)|(Int32)|(Float(32)|(64))Array\]$/;function isTypedArray(value){return TYPED_ARRAY_REGEXP.test(toString.call(value));}var trim=function(value){return isString(value)?value.trim():value;}; // Copied from:
+	 */function isWindow(obj){return obj&&obj.window===obj;}function isScope(obj){return obj&&obj.$evalAsync&&obj.$watch;}function isFile(obj){return toString.call(obj)==='[object File]';}function isFormData(obj){return toString.call(obj)==='[object FormData]';}function isBlob(obj){return toString.call(obj)==='[object Blob]';}function isBoolean(value){return typeof value==='boolean';}function isPromiseLike(obj){return obj&&isFunction(obj.then);}var TYPED_ARRAY_REGEXP=/^\[object (Uint8(Clamped)?)|(Uint16)|(Uint32)|(Int8)|(Int16)|(Int32)|(Float(32)|(64))Array\]$/;function isTypedArray(value){return TYPED_ARRAY_REGEXP.test(toString.call(value));}var trim=function trim(value){return isString(value)?value.trim():value;}; // Copied from:
 	// http://docs.closure-library.googlecode.com/git/local_closure_goog_string_string.js.source.html#line1021
 	// Prereq: s is a string.
-	var escapeForRegexp=function(s){return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g,'\\$1').replace(/\x08/g,'\\x08');}; /**
+	var escapeForRegexp=function escapeForRegexp(s){return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g,'\\$1').replace(/\x08/g,'\\x08');}; /**
 	 * @ngdoc function
 	 * @name angular.isElement
 	 * @module ng
@@ -3571,7 +3577,7 @@
 	 * @param {*} o2 Object or value to compare.
 	 * @returns {boolean} True if arguments are equal.
 	 */function equals(o1,o2){if(o1===o2)return true;if(o1===null||o2===null)return false;if(o1!==o1&&o2!==o2)return true; // NaN === NaN
-	var t1=typeof o1,t2=typeof o2,length,key,keySet;if(t1==t2){if(t1=='object'){if(isArray(o1)){if(!isArray(o2))return false;if((length=o1.length)==o2.length){for(key=0;key<length;key++){if(!equals(o1[key],o2[key]))return false;}return true;}}else if(isDate(o1)){if(!isDate(o2))return false;return equals(o1.getTime(),o2.getTime());}else if(isRegExp(o1)){return isRegExp(o2)?o1.toString()==o2.toString():false;}else {if(isScope(o1)||isScope(o2)||isWindow(o1)||isWindow(o2)||isArray(o2)||isDate(o2)||isRegExp(o2))return false;keySet=createMap();for(key in o1){if(key.charAt(0)==='$'||isFunction(o1[key]))continue;if(!equals(o1[key],o2[key]))return false;keySet[key]=true;}for(key in o2){if(!(key in keySet)&&key.charAt(0)!=='$'&&o2[key]!==undefined&&!isFunction(o2[key]))return false;}return true;}}}return false;}var csp=function(){if(isDefined(csp.isActive_))return csp.isActive_;var active=!!(document.querySelector('[ng-csp]')||document.querySelector('[data-ng-csp]'));if(!active){try{ /* jshint -W031, -W054 */new Function(''); /* jshint +W031, +W054 */}catch(e){active=true;}}return csp.isActive_=active;}; /**
+	var t1=typeof o1==='undefined'?'undefined':_typeof(o1),t2=typeof o2==='undefined'?'undefined':_typeof(o2),length,key,keySet;if(t1==t2){if(t1=='object'){if(isArray(o1)){if(!isArray(o2))return false;if((length=o1.length)==o2.length){for(key=0;key<length;key++){if(!equals(o1[key],o2[key]))return false;}return true;}}else if(isDate(o1)){if(!isDate(o2))return false;return equals(o1.getTime(),o2.getTime());}else if(isRegExp(o1)){return isRegExp(o2)?o1.toString()==o2.toString():false;}else {if(isScope(o1)||isScope(o2)||isWindow(o1)||isWindow(o2)||isArray(o2)||isDate(o2)||isRegExp(o2))return false;keySet=createMap();for(key in o1){if(key.charAt(0)==='$'||isFunction(o1[key]))continue;if(!equals(o1[key],o2[key]))return false;keySet[key]=true;}for(key in o2){if(!(key in keySet)&&key.charAt(0)!=='$'&&o2[key]!==undefined&&!isFunction(o2[key]))return false;}return true;}}}return false;}var csp=function csp(){if(isDefined(csp.isActive_))return csp.isActive_;var active=!!(document.querySelector('[ng-csp]')||document.querySelector('[data-ng-csp]'));if(!active){try{ /* jshint -W031, -W054 */new Function(''); /* jshint +W031, +W054 */}catch(e){active=true;}}return csp.isActive_=active;}; /**
 	 * @ngdoc directive
 	 * @module ng
 	 * @name ngJq
@@ -3608,7 +3614,7 @@
 	 ...
 	 </html>
 	 ```
-	 */var jq=function(){if(isDefined(jq.name_))return jq.name_;var el;var i,ii=ngAttrPrefixes.length,prefix,name;for(i=0;i<ii;++i){prefix=ngAttrPrefixes[i];if(el=document.querySelector('['+prefix.replace(':','\\:')+'jq]')){name=el.getAttribute(prefix+'jq');break;}}return jq.name_=name;};function concat(array1,array2,index){return array1.concat(slice.call(array2,index));}function sliceArgs(args,startIndex){return slice.call(args,startIndex||0);} /* jshint -W101 */ /**
+	 */var jq=function jq(){if(isDefined(jq.name_))return jq.name_;var el;var i,ii=ngAttrPrefixes.length,prefix,name;for(i=0;i<ii;++i){prefix=ngAttrPrefixes[i];if(el=document.querySelector('['+prefix.replace(':','\\:')+'jq]')){name=el.getAttribute(prefix+'jq');break;}}return jq.name_=name;};function concat(array1,array2,index){return array1.concat(slice.call(array2,index));}function sliceArgs(args,startIndex){return slice.call(args,startIndex||0);} /* jshint -W101 */ /**
 	 * @ngdoc function
 	 * @name angular.bind
 	 * @module ng
@@ -3862,7 +3868,7 @@
 	 *   assist in finding bugs which break minified code. Defaults to `false`.
 	 *
 	 * @returns {auto.$injector} Returns the newly created injector for this app.
-	 */function bootstrap(element,modules,config){if(!isObject(config))config={};var defaultConfig={strictDi:false};config=extend(defaultConfig,config);var doBootstrap=function(){element=jqLite(element);if(element.injector()){var tag=element[0]===document?'document':startingTag(element); //Encode angle brackets to prevent input from being sanitized to empty string #8683
+	 */function bootstrap(element,modules,config){if(!isObject(config))config={};var defaultConfig={strictDi:false};config=extend(defaultConfig,config);var doBootstrap=function doBootstrap(){element=jqLite(element);if(element.injector()){var tag=element[0]===document?'document':startingTag(element); //Encode angle brackets to prevent input from being sanitized to empty string #8683
 	throw ngMinErr('btstrpd',"App Already Bootstrapped with this Element '{0}'",tag.replace(/</,'&lt;').replace(/>/,'&gt;'));}modules=modules||[];modules.unshift(['$provide',function($provide){$provide.value('$rootElement',element);}]);if(config.debugInfoEnabled){ // Pushing so that this overrides `debugInfoEnabled` setting defined in user's `modules`.
 	modules.push(['$compileProvider',function($compileProvider){$compileProvider.debugInfoEnabled(true);}]);}modules.unshift('ng');var injector=createInjector(modules,config.strictDi);injector.invoke(['$rootScope','$rootElement','$compile','$injector',function bootstrapApply(scope,element,compile,injector){scope.$apply(function(){element.data('$injector',injector);compile(element)(scope);});}]);return injector;};var NG_ENABLE_DEBUG_INFO=/^NG_ENABLE_DEBUG_INFO!/;var NG_DEFER_BOOTSTRAP=/^NG_DEFER_BOOTSTRAP!/;if(window&&NG_ENABLE_DEBUG_INFO.test(window.name)){config.debugInfoEnabled=true;window.name=window.name.replace(NG_ENABLE_DEBUG_INFO,'');}if(window&&!NG_DEFER_BOOTSTRAP.test(window.name)){return doBootstrap();}window.name=window.name.replace(NG_DEFER_BOOTSTRAP,'');angular.resumeBootstrap=function(extraModules){forEach(extraModules,function(module){modules.push(module);});return doBootstrap();};if(isFunction(angular.resumeDeferredBootstrap)){angular.resumeDeferredBootstrap();}} /**
 	 * @ngdoc function
@@ -3894,7 +3900,7 @@
 	originalCleanData=jQuery.cleanData;jQuery.cleanData=function(elems){var events;if(!skipDestroyOnNextJQueryCleanData){for(var i=0,elem;(elem=elems[i])!=null;i++){events=jQuery._data(elem,"events");if(events&&events.$destroy){jQuery(elem).triggerHandler('$destroy');}}}else {skipDestroyOnNextJQueryCleanData=false;}originalCleanData(elems);};}else {jqLite=JQLite;}angular.element=jqLite; // Prevent double-proxying.
 	bindJQueryFired=true;} /**
 	 * throw error if the argument is falsy.
-	 */function assertArg(arg,name,reason){if(!arg){throw ngMinErr('areq',"Argument '{0}' is {1}",name||'?',reason||"required");}return arg;}function assertArgFn(arg,name,acceptArrayAnnotation){if(acceptArrayAnnotation&&isArray(arg)){arg=arg[arg.length-1];}assertArg(isFunction(arg),name,'not a function, got '+(arg&&typeof arg==='object'?arg.constructor.name||'Object':typeof arg));return arg;} /**
+	 */function assertArg(arg,name,reason){if(!arg){throw ngMinErr('areq',"Argument '{0}' is {1}",name||'?',reason||"required");}return arg;}function assertArgFn(arg,name,acceptArrayAnnotation){if(acceptArrayAnnotation&&isArray(arg)){arg=arg[arg.length-1];}assertArg(isFunction(arg),name,'not a function, got '+(arg&&(typeof arg==='undefined'?'undefined':_typeof(arg))==='object'?arg.constructor.name||'Object':typeof arg==='undefined'?'undefined':_typeof(arg)));return arg;} /**
 	 * throw error if the name given is hasOwnProperty
 	 * @param  {String} name    the name to test
 	 * @param  {String} context the context in which the name is used, such as module or directive
@@ -3979,7 +3985,7 @@
 	     * @param {Function=} configFn Optional configuration function for the module. Same as
 	     *        {@link angular.Module#config Module#config()}.
 	     * @returns {module} new module with the {@link angular.Module} api.
-	     */return function module(name,requires,configFn){var assertNotHasOwnProperty=function(name,context){if(name==='hasOwnProperty'){throw ngMinErr('badname','hasOwnProperty is not a valid {0} name',context);}};assertNotHasOwnProperty(name,'module');if(requires&&modules.hasOwnProperty(name)){modules[name]=null;}return ensure(modules,name,function(){if(!requires){throw $injectorMinErr('nomod',"Module '{0}' is not available! You either misspelled "+"the module name or forgot to load it. If registering a module ensure that you "+"specify the dependencies as the second argument.",name);} /** @type {!Array.<Array.<*>>} */var invokeQueue=[]; /** @type {!Array.<Function>} */var configBlocks=[]; /** @type {!Array.<Function>} */var runBlocks=[];var config=invokeLater('$injector','invoke','push',configBlocks); /** @type {angular.Module} */var moduleInstance={ // Private state
+	     */return function module(name,requires,configFn){var assertNotHasOwnProperty=function assertNotHasOwnProperty(name,context){if(name==='hasOwnProperty'){throw ngMinErr('badname','hasOwnProperty is not a valid {0} name',context);}};assertNotHasOwnProperty(name,'module');if(requires&&modules.hasOwnProperty(name)){modules[name]=null;}return ensure(modules,name,function(){if(!requires){throw $injectorMinErr('nomod',"Module '{0}' is not available! You either misspelled "+"the module name or forgot to load it. If registering a module ensure that you "+"specify the dependencies as the second argument.",name);} /** @type {!Array.<Array.<*>>} */var invokeQueue=[]; /** @type {!Array.<Function>} */var configBlocks=[]; /** @type {!Array.<Function>} */var runBlocks=[];var config=invokeLater('$injector','invoke','push',configBlocks); /** @type {angular.Module} */var moduleInstance={ // Private state
 	_invokeQueue:invokeQueue,_configBlocks:configBlocks,_runBlocks:runBlocks, /**
 	           * @ngdoc property
 	           * @name angular.Module#requires
@@ -4130,7 +4136,7 @@
 	           * @description
 	           * Use this method to register work which should be performed when the injector is done
 	           * loading all modules.
-	           */run:function(block){runBlocks.push(block);return this;}};if(configFn){config(configFn);}return moduleInstance; /**
+	           */run:function run(block){runBlocks.push(block);return this;}};if(configFn){config(configFn);}return moduleInstance; /**
 	         * @param {string} provider
 	         * @param {string} method
 	         * @param {String=} insertMethod
@@ -4349,7 +4355,7 @@
 	 *
 	 * @param {string|DOMElement} element HTML string or DOMElement to be wrapped into jQuery.
 	 * @returns {Object} jQuery object.
-	 */JQLite.expando='ng339';var jqCache=JQLite.cache={},jqId=1,addEventListenerFn=function(element,type,fn){element.addEventListener(type,fn,false);},removeEventListenerFn=function(element,type,fn){element.removeEventListener(type,fn,false);}; /*
+	 */JQLite.expando='ng339';var jqCache=JQLite.cache={},jqId=1,addEventListenerFn=function addEventListenerFn(element,type,fn){element.addEventListener(type,fn,false);},removeEventListenerFn=function removeEventListenerFn(element,type,fn){element.removeEventListener(type,fn,false);}; /*
 	 * !!! This is an undocumented "private" function !!!
 	 */JQLite._data=function(node){ //jQuery always returns an object on cache miss
 	return this.cache[node[this.expando]]||{};};function jqNextId(){return ++jqId;}var SPECIAL_CHARS_REGEXP=/([\:\-\_]+(.))/g;var MOZ_HACK_REGEXP=/^moz([A-Z])/;var MOUSE_EVENT_MAP={mouseleave:"mouseout",mouseenter:"mouseover"};var jqLiteMinErr=minErr('jqLite'); /**
@@ -4386,25 +4392,25 @@
 	jqLite(win).on('load',action);}} //////////////////////////////////////////
 	// Functions which are declared directly.
 	//////////////////////////////////////////
-	var JQLitePrototype=JQLite.prototype={ready:function(fn){var fired=false;function trigger(){if(fired)return;fired=true;fn();} // check if document is already loaded
+	var JQLitePrototype=JQLite.prototype={ready:function ready(fn){var fired=false;function trigger(){if(fired)return;fired=true;fn();} // check if document is already loaded
 	if(document.readyState==='complete'){setTimeout(trigger);}else {this.on('DOMContentLoaded',trigger); // works for modern browsers and IE9
 	// we can not use jqLite since we are not done loading and jQuery could be loaded later.
 	// jshint -W064
 	JQLite(window).on('load',trigger); // fallback to window.onload for others
 	// jshint +W064
-	}},toString:function(){var value=[];forEach(this,function(e){value.push(''+e);});return '['+value.join(', ')+']';},eq:function(index){return index>=0?jqLite(this[index]):jqLite(this[this.length+index]);},length:0,push:push,sort:[].sort,splice:[].splice}; //////////////////////////////////////////
+	}},toString:function toString(){var value=[];forEach(this,function(e){value.push(''+e);});return '['+value.join(', ')+']';},eq:function eq(index){return index>=0?jqLite(this[index]):jqLite(this[this.length+index]);},length:0,push:push,sort:[].sort,splice:[].splice}; //////////////////////////////////////////
 	// Functions iterating getter/setters.
 	// these functions return self on setter and
 	// value on get.
 	//////////////////////////////////////////
 	var BOOLEAN_ATTR={};forEach('multiple,selected,checked,disabled,readOnly,required,open'.split(','),function(value){BOOLEAN_ATTR[lowercase(value)]=value;});var BOOLEAN_ELEMENTS={};forEach('input,select,option,textarea,button,form,details'.split(','),function(value){BOOLEAN_ELEMENTS[value]=true;});var ALIASED_ATTR={'ngMinlength':'minlength','ngMaxlength':'maxlength','ngMin':'min','ngMax':'max','ngPattern':'pattern'};function getBooleanAttrName(element,name){ // check dom last since we will most likely fail on name
 	var booleanAttr=BOOLEAN_ATTR[name.toLowerCase()]; // booleanAttr is here twice to minimize DOM access
-	return booleanAttr&&BOOLEAN_ELEMENTS[nodeName_(element)]&&booleanAttr;}function getAliasedAttrName(element,name){var nodeName=element.nodeName;return (nodeName==='INPUT'||nodeName==='TEXTAREA')&&ALIASED_ATTR[name];}forEach({data:jqLiteData,removeData:jqLiteRemoveData,hasData:jqLiteHasData},function(fn,name){JQLite[name]=fn;});forEach({data:jqLiteData,inheritedData:jqLiteInheritedData,scope:function(element){ // Can't use jqLiteData here directly so we stay compatible with jQuery!
-	return jqLite.data(element,'$scope')||jqLiteInheritedData(element.parentNode||element,['$isolateScope','$scope']);},isolateScope:function(element){ // Can't use jqLiteData here directly so we stay compatible with jQuery!
-	return jqLite.data(element,'$isolateScope')||jqLite.data(element,'$isolateScopeNoTemplate');},controller:jqLiteController,injector:function(element){return jqLiteInheritedData(element,'$injector');},removeAttr:function(element,name){element.removeAttribute(name);},hasClass:jqLiteHasClass,css:function(element,name,value){name=camelCase(name);if(isDefined(value)){element.style[name]=value;}else {return element.style[name];}},attr:function(element,name,value){var nodeType=element.nodeType;if(nodeType===NODE_TYPE_TEXT||nodeType===NODE_TYPE_ATTRIBUTE||nodeType===NODE_TYPE_COMMENT){return;}var lowercasedName=lowercase(name);if(BOOLEAN_ATTR[lowercasedName]){if(isDefined(value)){if(!!value){element[name]=true;element.setAttribute(name,lowercasedName);}else {element[name]=false;element.removeAttribute(lowercasedName);}}else {return element[name]||(element.attributes.getNamedItem(name)||noop).specified?lowercasedName:undefined;}}else if(isDefined(value)){element.setAttribute(name,value);}else if(element.getAttribute){ // the extra argument "2" is to get the right thing for a.href in IE, see jQuery code
+	return booleanAttr&&BOOLEAN_ELEMENTS[nodeName_(element)]&&booleanAttr;}function getAliasedAttrName(element,name){var nodeName=element.nodeName;return (nodeName==='INPUT'||nodeName==='TEXTAREA')&&ALIASED_ATTR[name];}forEach({data:jqLiteData,removeData:jqLiteRemoveData,hasData:jqLiteHasData},function(fn,name){JQLite[name]=fn;});forEach({data:jqLiteData,inheritedData:jqLiteInheritedData,scope:function scope(element){ // Can't use jqLiteData here directly so we stay compatible with jQuery!
+	return jqLite.data(element,'$scope')||jqLiteInheritedData(element.parentNode||element,['$isolateScope','$scope']);},isolateScope:function isolateScope(element){ // Can't use jqLiteData here directly so we stay compatible with jQuery!
+	return jqLite.data(element,'$isolateScope')||jqLite.data(element,'$isolateScopeNoTemplate');},controller:jqLiteController,injector:function injector(element){return jqLiteInheritedData(element,'$injector');},removeAttr:function removeAttr(element,name){element.removeAttribute(name);},hasClass:jqLiteHasClass,css:function css(element,name,value){name=camelCase(name);if(isDefined(value)){element.style[name]=value;}else {return element.style[name];}},attr:function attr(element,name,value){var nodeType=element.nodeType;if(nodeType===NODE_TYPE_TEXT||nodeType===NODE_TYPE_ATTRIBUTE||nodeType===NODE_TYPE_COMMENT){return;}var lowercasedName=lowercase(name);if(BOOLEAN_ATTR[lowercasedName]){if(isDefined(value)){if(!!value){element[name]=true;element.setAttribute(name,lowercasedName);}else {element[name]=false;element.removeAttribute(lowercasedName);}}else {return element[name]||(element.attributes.getNamedItem(name)||noop).specified?lowercasedName:undefined;}}else if(isDefined(value)){element.setAttribute(name,value);}else if(element.getAttribute){ // the extra argument "2" is to get the right thing for a.href in IE, see jQuery code
 	// some elements (e.g. Document) don't have get attribute, so return undefined
 	var ret=element.getAttribute(name,2); // normalize non-existing attributes to undefined (as jQuery)
-	return ret===null?undefined:ret;}},prop:function(element,name,value){if(isDefined(value)){element[name]=value;}else {return element[name];}},text:function(){getText.$dv='';return getText;function getText(element,value){if(isUndefined(value)){var nodeType=element.nodeType;return nodeType===NODE_TYPE_ELEMENT||nodeType===NODE_TYPE_TEXT?element.textContent:'';}element.textContent=value;}}(),val:function(element,value){if(isUndefined(value)){if(element.multiple&&nodeName_(element)==='select'){var result=[];forEach(element.options,function(option){if(option.selected){result.push(option.value||option.text);}});return result.length===0?null:result;}return element.value;}element.value=value;},html:function(element,value){if(isUndefined(value)){return element.innerHTML;}jqLiteDealoc(element,true);element.innerHTML=value;},empty:jqLiteEmpty},function(fn,name){ /**
+	return ret===null?undefined:ret;}},prop:function prop(element,name,value){if(isDefined(value)){element[name]=value;}else {return element[name];}},text:function(){getText.$dv='';return getText;function getText(element,value){if(isUndefined(value)){var nodeType=element.nodeType;return nodeType===NODE_TYPE_ELEMENT||nodeType===NODE_TYPE_TEXT?element.textContent:'';}element.textContent=value;}}(),val:function val(element,value){if(isUndefined(value)){if(element.multiple&&nodeName_(element)==='select'){var result=[];forEach(element.options,function(option){if(option.selected){result.push(option.value||option.text);}});return result.length===0?null:result;}return element.value;}element.value=value;},html:function html(element,value){if(isUndefined(value)){return element.innerHTML;}jqLiteDealoc(element,true);element.innerHTML=value;},empty:jqLiteEmpty},function(fn,name){ /**
 	   * Properties: writes return selection, reads return first value
 	   */JQLite.prototype[name]=function(arg1,arg2){var i,key;var nodeCount=this.length; // jqLiteHasClass has only two arguments, but is a getter-only fn, so we need to special-case it
 	// in a way that survives minification.
@@ -4417,7 +4423,7 @@
 	var value=fn.$dv; // Only if we have $dv do we iterate over all, otherwise it is just the first element.
 	var jj=value===undefined?Math.min(nodeCount,1):nodeCount;for(var j=0;j<jj;j++){var nodeValue=fn(this[j],arg1,arg2);value=value?value+nodeValue:nodeValue;}return value;}}else { // we are a write, so apply to all children
 	for(i=0;i<nodeCount;i++){fn(this[i],arg1,arg2);} // return self for chaining
-	return this;}};});function createEventHandler(element,events){var eventHandler=function(event,type){ // jQuery specific api
+	return this;}};});function createEventHandler(element,events){var eventHandler=function eventHandler(event,type){ // jQuery specific api
 	event.isDefaultPrevented=function(){return event.defaultPrevented;};var eventFns=events[type||event.type];var eventFnsLength=eventFns?eventFns.length:0;if(!eventFnsLength)return;if(isUndefined(event.immediatePropagationStopped)){var originalStopImmediatePropagation=event.stopImmediatePropagation;event.stopImmediatePropagation=function(){event.immediatePropagationStopped=true;if(event.stopPropagation){event.stopPropagation();}if(originalStopImmediatePropagation){originalStopImmediatePropagation.call(event);}};}event.isImmediatePropagationStopped=function(){return event.immediatePropagationStopped===true;}; // Copy event handlers in case event handlers array is modified during execution.
 	if(eventFnsLength>1){eventFns=shallowCopy(eventFns);}for(var i=0;i<eventFnsLength;i++){if(!event.isImmediatePropagationStopped()){eventFns[i].call(element,event);}}}; // TODO: this is a hack for angularMocks/clearDataCache that makes it possible to deregister all
 	//       events on `element`
@@ -4433,18 +4439,18 @@
 	// http://www.quirksmode.org/js/events_mouse.html#link8
 	jqLiteOn(element,MOUSE_EVENT_MAP[type],function(event){var target=this,related=event.relatedTarget; // For mousenter/leave call the handler if related is outside the target.
 	// NB: No relatedTarget if the mouse left/entered the browser window
-	if(!related||related!==target&&!target.contains(related)){handle(event,type);}});}else {if(type!=='$destroy'){addEventListenerFn(element,type,handle);}}eventFns=events[type];}eventFns.push(fn);}},off:jqLiteOff,one:function(element,type,fn){element=jqLite(element); //add the listener twice so that when it is called
+	if(!related||related!==target&&!target.contains(related)){handle(event,type);}});}else {if(type!=='$destroy'){addEventListenerFn(element,type,handle);}}eventFns=events[type];}eventFns.push(fn);}},off:jqLiteOff,one:function one(element,type,fn){element=jqLite(element); //add the listener twice so that when it is called
 	//you can remove the original function and still be
 	//able to call element.off(ev, fn) normally
-	element.on(type,function onFn(){element.off(type,fn);element.off(type,onFn);});element.on(type,fn);},replaceWith:function(element,replaceNode){var index,parent=element.parentNode;jqLiteDealoc(element);forEach(new JQLite(replaceNode),function(node){if(index){parent.insertBefore(node,index.nextSibling);}else {parent.replaceChild(node,element);}index=node;});},children:function(element){var children=[];forEach(element.childNodes,function(element){if(element.nodeType===NODE_TYPE_ELEMENT){children.push(element);}});return children;},contents:function(element){return element.contentDocument||element.childNodes||[];},append:function(element,node){var nodeType=element.nodeType;if(nodeType!==NODE_TYPE_ELEMENT&&nodeType!==NODE_TYPE_DOCUMENT_FRAGMENT)return;node=new JQLite(node);for(var i=0,ii=node.length;i<ii;i++){var child=node[i];element.appendChild(child);}},prepend:function(element,node){if(element.nodeType===NODE_TYPE_ELEMENT){var index=element.firstChild;forEach(new JQLite(node),function(child){element.insertBefore(child,index);});}},wrap:function(element,wrapNode){wrapNode=jqLite(wrapNode).eq(0).clone()[0];var parent=element.parentNode;if(parent){parent.replaceChild(wrapNode,element);}wrapNode.appendChild(element);},remove:jqLiteRemove,detach:function(element){jqLiteRemove(element,true);},after:function(element,newElement){var index=element,parent=element.parentNode;newElement=new JQLite(newElement);for(var i=0,ii=newElement.length;i<ii;i++){var node=newElement[i];parent.insertBefore(node,index.nextSibling);index=node;}},addClass:jqLiteAddClass,removeClass:jqLiteRemoveClass,toggleClass:function(element,selector,condition){if(selector){forEach(selector.split(' '),function(className){var classCondition=condition;if(isUndefined(classCondition)){classCondition=!jqLiteHasClass(element,className);}(classCondition?jqLiteAddClass:jqLiteRemoveClass)(element,className);});}},parent:function(element){var parent=element.parentNode;return parent&&parent.nodeType!==NODE_TYPE_DOCUMENT_FRAGMENT?parent:null;},next:function(element){return element.nextElementSibling;},find:function(element,selector){if(element.getElementsByTagName){return element.getElementsByTagName(selector);}else {return [];}},clone:jqLiteClone,triggerHandler:function(element,event,extraParameters){var dummyEvent,eventFnsCopy,handlerArgs;var eventName=event.type||event;var expandoStore=jqLiteExpandoStore(element);var events=expandoStore&&expandoStore.events;var eventFns=events&&events[eventName];if(eventFns){ // Create a dummy event to pass to the handlers
-	dummyEvent={preventDefault:function(){this.defaultPrevented=true;},isDefaultPrevented:function(){return this.defaultPrevented===true;},stopImmediatePropagation:function(){this.immediatePropagationStopped=true;},isImmediatePropagationStopped:function(){return this.immediatePropagationStopped===true;},stopPropagation:noop,type:eventName,target:element}; // If a custom event was provided then extend our dummy event with it
+	element.on(type,function onFn(){element.off(type,fn);element.off(type,onFn);});element.on(type,fn);},replaceWith:function replaceWith(element,replaceNode){var index,parent=element.parentNode;jqLiteDealoc(element);forEach(new JQLite(replaceNode),function(node){if(index){parent.insertBefore(node,index.nextSibling);}else {parent.replaceChild(node,element);}index=node;});},children:function children(element){var children=[];forEach(element.childNodes,function(element){if(element.nodeType===NODE_TYPE_ELEMENT){children.push(element);}});return children;},contents:function contents(element){return element.contentDocument||element.childNodes||[];},append:function append(element,node){var nodeType=element.nodeType;if(nodeType!==NODE_TYPE_ELEMENT&&nodeType!==NODE_TYPE_DOCUMENT_FRAGMENT)return;node=new JQLite(node);for(var i=0,ii=node.length;i<ii;i++){var child=node[i];element.appendChild(child);}},prepend:function prepend(element,node){if(element.nodeType===NODE_TYPE_ELEMENT){var index=element.firstChild;forEach(new JQLite(node),function(child){element.insertBefore(child,index);});}},wrap:function wrap(element,wrapNode){wrapNode=jqLite(wrapNode).eq(0).clone()[0];var parent=element.parentNode;if(parent){parent.replaceChild(wrapNode,element);}wrapNode.appendChild(element);},remove:jqLiteRemove,detach:function detach(element){jqLiteRemove(element,true);},after:function after(element,newElement){var index=element,parent=element.parentNode;newElement=new JQLite(newElement);for(var i=0,ii=newElement.length;i<ii;i++){var node=newElement[i];parent.insertBefore(node,index.nextSibling);index=node;}},addClass:jqLiteAddClass,removeClass:jqLiteRemoveClass,toggleClass:function toggleClass(element,selector,condition){if(selector){forEach(selector.split(' '),function(className){var classCondition=condition;if(isUndefined(classCondition)){classCondition=!jqLiteHasClass(element,className);}(classCondition?jqLiteAddClass:jqLiteRemoveClass)(element,className);});}},parent:function parent(element){var parent=element.parentNode;return parent&&parent.nodeType!==NODE_TYPE_DOCUMENT_FRAGMENT?parent:null;},next:function next(element){return element.nextElementSibling;},find:function find(element,selector){if(element.getElementsByTagName){return element.getElementsByTagName(selector);}else {return [];}},clone:jqLiteClone,triggerHandler:function triggerHandler(element,event,extraParameters){var dummyEvent,eventFnsCopy,handlerArgs;var eventName=event.type||event;var expandoStore=jqLiteExpandoStore(element);var events=expandoStore&&expandoStore.events;var eventFns=events&&events[eventName];if(eventFns){ // Create a dummy event to pass to the handlers
+	dummyEvent={preventDefault:function preventDefault(){this.defaultPrevented=true;},isDefaultPrevented:function isDefaultPrevented(){return this.defaultPrevented===true;},stopImmediatePropagation:function stopImmediatePropagation(){this.immediatePropagationStopped=true;},isImmediatePropagationStopped:function isImmediatePropagationStopped(){return this.immediatePropagationStopped===true;},stopPropagation:noop,type:eventName,target:element}; // If a custom event was provided then extend our dummy event with it
 	if(event.type){dummyEvent=extend(dummyEvent,event);} // Copy event handlers in case event handlers array is modified during execution.
 	eventFnsCopy=shallowCopy(eventFns);handlerArgs=extraParameters?[dummyEvent].concat(extraParameters):[dummyEvent];forEach(eventFnsCopy,function(fn){if(!dummyEvent.isImmediatePropagationStopped()){fn.apply(element,handlerArgs);}});}}},function(fn,name){ /**
 	   * chaining functions
 	   */JQLite.prototype[name]=function(arg1,arg2,arg3){var value;for(var i=0,ii=this.length;i<ii;i++){if(isUndefined(value)){value=fn(this[i],arg1,arg2,arg3);if(isDefined(value)){ // any function which returns a value needs to be wrapped
 	value=jqLite(value);}}else {jqLiteAddNodes(value,fn(this[i],arg1,arg2,arg3));}}return isDefined(value)?value:this;}; // bind legacy bind/unbind to on/off
 	JQLite.prototype.bind=JQLite.prototype.on;JQLite.prototype.unbind=JQLite.prototype.off;}); // Provider for private $$jqLite service
-	function $$jqLiteProvider(){this.$get=function $$jqLite(){return extend(JQLite,{hasClass:function(node,classes){if(node.attr)node=node[0];return jqLiteHasClass(node,classes);},addClass:function(node,classes){if(node.attr)node=node[0];return jqLiteAddClass(node,classes);},removeClass:function(node,classes){if(node.attr)node=node[0];return jqLiteRemoveClass(node,classes);}});};} /**
+	function $$jqLiteProvider(){this.$get=function $$jqLite(){return extend(JQLite,{hasClass:function hasClass(node,classes){if(node.attr)node=node[0];return jqLiteHasClass(node,classes);},addClass:function addClass(node,classes){if(node.attr)node=node[0];return jqLiteAddClass(node,classes);},removeClass:function removeClass(node,classes){if(node.attr)node=node[0];return jqLiteRemoveClass(node,classes);}});};} /**
 	 * Computes a hash of an 'obj'.
 	 * Hash of a:
 	 *  string is string
@@ -4455,19 +4461,19 @@
 	 * @param obj
 	 * @returns {string} hash string such that the same input will have the same hash string.
 	 *         The resulting string key is in 'type:hashKey' format.
-	 */function hashKey(obj,nextUidFn){var key=obj&&obj.$$hashKey;if(key){if(typeof key==='function'){key=obj.$$hashKey();}return key;}var objType=typeof obj;if(objType=='function'||objType=='object'&&obj!==null){key=obj.$$hashKey=objType+':'+(nextUidFn||nextUid)();}else {key=objType+':'+obj;}return key;} /**
+	 */function hashKey(obj,nextUidFn){var key=obj&&obj.$$hashKey;if(key){if(typeof key==='function'){key=obj.$$hashKey();}return key;}var objType=typeof obj==='undefined'?'undefined':_typeof(obj);if(objType=='function'||objType=='object'&&obj!==null){key=obj.$$hashKey=objType+':'+(nextUidFn||nextUid)();}else {key=objType+':'+obj;}return key;} /**
 	 * HashMap which can use objects as keys
 	 */function HashMap(array,isolatedUid){if(isolatedUid){var uid=0;this.nextUid=function(){return ++uid;};}forEach(array,this.put,this);}HashMap.prototype={ /**
 	   * Store key value pair
 	   * @param key key to store can be any type
 	   * @param value value to store can be any type
-	   */put:function(key,value){this[hashKey(key,this.nextUid)]=value;}, /**
+	   */put:function put(key,value){this[hashKey(key,this.nextUid)]=value;}, /**
 	   * @param key
 	   * @returns {Object} the value for the key
-	   */get:function(key){return this[hashKey(key,this.nextUid)];}, /**
+	   */get:function get(key){return this[hashKey(key,this.nextUid)];}, /**
 	   * Remove the key/value pair
 	   * @param key
-	   */remove:function(key){var value=this[key=hashKey(key,this.nextUid)];delete this[key];return value;}};var $$HashMapProvider=[function(){this.$get=[function(){return HashMap;}];}]; /**
+	   */remove:function remove(key){var value=this[key=hashKey(key,this.nextUid)];delete this[key];return value;}};var $$HashMapProvider=[function(){this.$get=[function(){return HashMap;}];}]; /**
 	 * @ngdoc function
 	 * @module ng
 	 * @name angular.injector
@@ -5007,7 +5013,7 @@
 	return fn.apply(self,args);}function instantiate(Type,locals,serviceName){ // Check if Type is annotated and use just the given function at n-1 as parameter
 	// e.g. someModule.factory('greeter', ['$window', function(renamed$window) {}]);
 	// Object creation: http://jsperf.com/create-constructor/2
-	var instance=Object.create((isArray(Type)?Type[Type.length-1]:Type).prototype||null);var returnedValue=invoke(Type,instance,locals,serviceName);return isObject(returnedValue)||isFunction(returnedValue)?returnedValue:instance;}return {invoke:invoke,instantiate:instantiate,get:getService,annotate:createInjector.$$annotate,has:function(name){return providerCache.hasOwnProperty(name+providerSuffix)||cache.hasOwnProperty(name);}};}}createInjector.$$annotate=annotate; /**
+	var instance=Object.create((isArray(Type)?Type[Type.length-1]:Type).prototype||null);var returnedValue=invoke(Type,instance,locals,serviceName);return isObject(returnedValue)||isFunction(returnedValue)?returnedValue:instance;}return {invoke:invoke,instantiate:instantiate,get:getService,annotate:createInjector.$$annotate,has:function has(name){return providerCache.hasOwnProperty(name+providerSuffix)||cache.hasOwnProperty(name);}};}}createInjector.$$annotate=annotate; /**
 	 * @ngdoc provider
 	 * @name $anchorScrollProvider
 	 *
@@ -5200,9 +5206,9 @@
 	// $animate to either call the callback (< 1.2) or return a promise
 	// that can be changed. This helper function ensures that the options
 	// are wiped clean incase a callback function is provided.
-	function prepareAnimateOptions(options){return isObject(options)?options:{};}var $$CoreAnimateRunnerProvider=function(){this.$get=['$q','$$rAF',function($q,$$rAF){function AnimateRunner(){}AnimateRunner.all=noop;AnimateRunner.chain=noop;AnimateRunner.prototype={end:noop,cancel:noop,resume:noop,pause:noop,complete:noop,then:function(pass,fail){return $q(function(resolve){$$rAF(function(){resolve();});}).then(pass,fail);}};return AnimateRunner;}];}; // this is prefixed with Core since it conflicts with
+	function prepareAnimateOptions(options){return isObject(options)?options:{};}var $$CoreAnimateRunnerProvider=function $$CoreAnimateRunnerProvider(){this.$get=['$q','$$rAF',function($q,$$rAF){function AnimateRunner(){}AnimateRunner.all=noop;AnimateRunner.chain=noop;AnimateRunner.prototype={end:noop,cancel:noop,resume:noop,pause:noop,complete:noop,then:function then(pass,fail){return $q(function(resolve){$$rAF(function(){resolve();});}).then(pass,fail);}};return AnimateRunner;}];}; // this is prefixed with Core since it conflicts with
 	// the animateQueueProvider defined in ngAnimate/animateQueue.js
-	var $$CoreAnimateQueueProvider=function(){var postDigestQueue=new HashMap();var postDigestElements=[];this.$get=['$$AnimateRunner','$rootScope',function($$AnimateRunner,$rootScope){return {enabled:noop,on:noop,off:noop,pin:noop,push:function(element,event,options,domOperation){domOperation&&domOperation();options=options||{};options.from&&element.css(options.from);options.to&&element.css(options.to);if(options.addClass||options.removeClass){addRemoveClassesPostDigest(element,options.addClass,options.removeClass);}return new $$AnimateRunner(); // jshint ignore:line
+	var $$CoreAnimateQueueProvider=function $$CoreAnimateQueueProvider(){var postDigestQueue=new HashMap();var postDigestElements=[];this.$get=['$$AnimateRunner','$rootScope',function($$AnimateRunner,$rootScope){return {enabled:noop,on:noop,off:noop,pin:noop,push:function push(element,event,options,domOperation){domOperation&&domOperation();options=options||{};options.from&&element.css(options.from);options.to&&element.css(options.to);if(options.addClass||options.removeClass){addRemoveClassesPostDigest(element,options.addClass,options.removeClass);}return new $$AnimateRunner(); // jshint ignore:line
 	}};function addRemoveClassesPostDigest(element,add,remove){var data=postDigestQueue.get(element);var classVal;if(!data){postDigestQueue.put(element,data={});postDigestElements.push(element);}if(add){forEach(add.split(' '),function(className){if(className){data[className]=true;}});}if(remove){forEach(remove.split(' '),function(className){if(className){data[className]=false;}});}if(postDigestElements.length>1)return;$rootScope.$$postDigest(function(){forEach(postDigestElements,function(element){var data=postDigestQueue.get(element);if(data){var existing=splitClasses(element.attr('class'));var toAdd='';var toRemove='';forEach(data,function(status,className){var hasClass=!!existing[className];if(status!==hasClass){if(status){toAdd+=(toAdd.length?' ':'')+className;}else {toRemove+=(toRemove.length?' ':'')+className;}}});forEach(element,function(elm){toAdd&&jqLiteAddClass(elm,toAdd);toRemove&&jqLiteRemoveClass(elm,toRemove);});postDigestQueue.remove(element);}});postDigestElements.length=0;});}}];}; /**
 	 * @ngdoc provider
 	 * @name $animateProvider
@@ -5386,7 +5392,7 @@
 	       * @description Cancels the provided animation.
 	       *
 	       * @param {Promise} animationPromise The animation promise that is returned when an animation is started.
-	       */cancel:function(runner){runner.end&&runner.end();}, /**
+	       */cancel:function cancel(runner){runner.end&&runner.end();}, /**
 	       *
 	       * @ngdoc method
 	       * @name $animate#enter
@@ -5403,7 +5409,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */enter:function(element,parent,after,options){parent=parent&&jqLite(parent);after=after&&jqLite(after);parent=parent||after.parent();domInsert(element,parent,after);return $$animateQueue.push(element,'enter',prepareAnimateOptions(options));}, /**
+	       */enter:function enter(element,parent,after,options){parent=parent&&jqLite(parent);after=after&&jqLite(after);parent=parent||after.parent();domInsert(element,parent,after);return $$animateQueue.push(element,'enter',prepareAnimateOptions(options));}, /**
 	       *
 	       * @ngdoc method
 	       * @name $animate#move
@@ -5420,7 +5426,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */move:function(element,parent,after,options){parent=parent&&jqLite(parent);after=after&&jqLite(after);parent=parent||after.parent();domInsert(element,parent,after);return $$animateQueue.push(element,'move',prepareAnimateOptions(options));}, /**
+	       */move:function move(element,parent,after,options){parent=parent&&jqLite(parent);after=after&&jqLite(after);parent=parent||after.parent();domInsert(element,parent,after);return $$animateQueue.push(element,'move',prepareAnimateOptions(options));}, /**
 	       * @ngdoc method
 	       * @name $animate#leave
 	       * @kind function
@@ -5432,7 +5438,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */leave:function(element,options){return $$animateQueue.push(element,'leave',prepareAnimateOptions(options),function(){element.remove();});}, /**
+	       */leave:function leave(element,options){return $$animateQueue.push(element,'leave',prepareAnimateOptions(options),function(){element.remove();});}, /**
 	       * @ngdoc method
 	       * @name $animate#addClass
 	       * @kind function
@@ -5449,7 +5455,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */addClass:function(element,className,options){options=prepareAnimateOptions(options);options.addClass=mergeClasses(options.addclass,className);return $$animateQueue.push(element,'addClass',options);}, /**
+	       */addClass:function addClass(element,className,options){options=prepareAnimateOptions(options);options.addClass=mergeClasses(options.addclass,className);return $$animateQueue.push(element,'addClass',options);}, /**
 	       * @ngdoc method
 	       * @name $animate#removeClass
 	       * @kind function
@@ -5466,7 +5472,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */removeClass:function(element,className,options){options=prepareAnimateOptions(options);options.removeClass=mergeClasses(options.removeClass,className);return $$animateQueue.push(element,'removeClass',options);}, /**
+	       */removeClass:function removeClass(element,className,options){options=prepareAnimateOptions(options);options.removeClass=mergeClasses(options.removeClass,className);return $$animateQueue.push(element,'removeClass',options);}, /**
 	       * @ngdoc method
 	       * @name $animate#setClass
 	       * @kind function
@@ -5484,7 +5490,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */setClass:function(element,add,remove,options){options=prepareAnimateOptions(options);options.addClass=mergeClasses(options.addClass,add);options.removeClass=mergeClasses(options.removeClass,remove);return $$animateQueue.push(element,'setClass',options);}, /**
+	       */setClass:function setClass(element,add,remove,options){options=prepareAnimateOptions(options);options.addClass=mergeClasses(options.addClass,add);options.removeClass=mergeClasses(options.removeClass,remove);return $$animateQueue.push(element,'setClass',options);}, /**
 	       * @ngdoc method
 	       * @name $animate#animate
 	       * @kind function
@@ -5504,7 +5510,7 @@
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element
 	       *
 	       * @return {Promise} the animation callback promise
-	       */animate:function(element,from,to,className,options){options=prepareAnimateOptions(options);options.from=options.from?extend(options.from,from):from;options.to=options.to?extend(options.to,to):to;className=className||'ng-inline-animate';options.tempClasses=mergeClasses(options.tempClasses,className);return $$animateQueue.push(element,'animate',options);}};}];}];function $$AsyncCallbackProvider(){this.$get=['$$rAF','$timeout',function($$rAF,$timeout){return $$rAF.supported?function(fn){return $$rAF(fn);}:function(fn){return $timeout(fn,0,false);};}];} /* global stripHash: true */ /**
+	       */animate:function animate(element,from,to,className,options){options=prepareAnimateOptions(options);options.from=options.from?extend(options.from,from):from;options.to=options.to?extend(options.to,to):to;className=className||'ng-inline-animate';options.tempClasses=mergeClasses(options.tempClasses,className);return $$animateQueue.push(element,'animate',options);}};}];}];function $$AsyncCallbackProvider(){this.$get=['$$rAF','$timeout',function($$rAF,$timeout){return $$rAF.supported?function(fn){return $$rAF(fn);}:function(fn){return $timeout(fn,0,false);};}];} /* global stripHash: true */ /**
 	 * ! This is a private undocumented service !
 	 *
 	 * @name $browser
@@ -5787,7 +5793,7 @@
 	         * @param {*} value the value to store alongside the key. If it is undefined, the key
 	         *    will not be stored.
 	         * @returns {*} the value stored.
-	         */put:function(key,value){if(isUndefined(value))return;if(capacity<Number.MAX_VALUE){var lruEntry=lruHash[key]||(lruHash[key]={key:key});refresh(lruEntry);}if(!(key in data))size++;data[key]=value;if(size>capacity){this.remove(staleEnd.key);}return value;}, /**
+	         */put:function put(key,value){if(isUndefined(value))return;if(capacity<Number.MAX_VALUE){var lruEntry=lruHash[key]||(lruHash[key]={key:key});refresh(lruEntry);}if(!(key in data))size++;data[key]=value;if(size>capacity){this.remove(staleEnd.key);}return value;}, /**
 	         * @ngdoc method
 	         * @name $cacheFactory.Cache#get
 	         * @kind function
@@ -5797,7 +5803,7 @@
 	         *
 	         * @param {string} key the key of the data to be retrieved
 	         * @returns {*} the value stored.
-	         */get:function(key){if(capacity<Number.MAX_VALUE){var lruEntry=lruHash[key];if(!lruEntry)return;refresh(lruEntry);}return data[key];}, /**
+	         */get:function get(key){if(capacity<Number.MAX_VALUE){var lruEntry=lruHash[key];if(!lruEntry)return;refresh(lruEntry);}return data[key];}, /**
 	         * @ngdoc method
 	         * @name $cacheFactory.Cache#remove
 	         * @kind function
@@ -5806,14 +5812,14 @@
 	         * Removes an entry from the {@link $cacheFactory.Cache Cache} object.
 	         *
 	         * @param {string} key the key of the entry to be removed
-	         */remove:function(key){if(capacity<Number.MAX_VALUE){var lruEntry=lruHash[key];if(!lruEntry)return;if(lruEntry==freshEnd)freshEnd=lruEntry.p;if(lruEntry==staleEnd)staleEnd=lruEntry.n;link(lruEntry.n,lruEntry.p);delete lruHash[key];}delete data[key];size--;}, /**
+	         */remove:function remove(key){if(capacity<Number.MAX_VALUE){var lruEntry=lruHash[key];if(!lruEntry)return;if(lruEntry==freshEnd)freshEnd=lruEntry.p;if(lruEntry==staleEnd)staleEnd=lruEntry.n;link(lruEntry.n,lruEntry.p);delete lruHash[key];}delete data[key];size--;}, /**
 	         * @ngdoc method
 	         * @name $cacheFactory.Cache#removeAll
 	         * @kind function
 	         *
 	         * @description
 	         * Clears the cache object of any entries.
-	         */removeAll:function(){data={};size=0;lruHash={};freshEnd=staleEnd=null;}, /**
+	         */removeAll:function removeAll(){data={};size=0;lruHash={};freshEnd=staleEnd=null;}, /**
 	         * @ngdoc method
 	         * @name $cacheFactory.Cache#destroy
 	         * @kind function
@@ -5821,7 +5827,7 @@
 	         * @description
 	         * Destroys the {@link $cacheFactory.Cache Cache} object entirely,
 	         * removing it from the {@link $cacheFactory $cacheFactory} set.
-	         */destroy:function(){data=null;stats=null;lruHash=null;delete caches[cacheId];}, /**
+	         */destroy:function destroy(){data=null;stats=null;lruHash=null;delete caches[cacheId];}, /**
 	         * @ngdoc method
 	         * @name $cacheFactory.Cache#info
 	         * @kind function
@@ -5836,7 +5842,7 @@
 	         *     <li>**...**: any additional properties from the options object when creating the
 	         *       cache.</li>
 	         *   </ul>
-	         */info:function(){return extend({},stats,{size:size});}}; /**
+	         */info:function info(){return extend({},stats,{size:size});}}; /**
 	       * makes the `entry` the freshEnd of the LRU linked list
 	       */function refresh(entry){if(entry!=freshEnd){if(!staleEnd){staleEnd=entry;}else if(staleEnd==entry){staleEnd=entry.n;}link(entry.n,entry.p);link(entry,freshEnd);freshEnd=entry;freshEnd.n=null;}} /**
 	       * bidirectionally links two entries of the LRU linked list
@@ -6690,7 +6696,7 @@
 	   * {@link guide/production#disabling-debug-data Disabling Debug Data} for more.
 	   *
 	   * The default value is true.
-	   */var debugInfoEnabled=true;this.debugInfoEnabled=function(enabled){if(isDefined(enabled)){debugInfoEnabled=enabled;return this;}return debugInfoEnabled;};this.$get=['$injector','$interpolate','$exceptionHandler','$templateRequest','$parse','$controller','$rootScope','$document','$sce','$animate','$$sanitizeUri',function($injector,$interpolate,$exceptionHandler,$templateRequest,$parse,$controller,$rootScope,$document,$sce,$animate,$$sanitizeUri){var Attributes=function(element,attributesToCopy){if(attributesToCopy){var keys=Object.keys(attributesToCopy);var i,l,key;for(i=0,l=keys.length;i<l;i++){key=keys[i];this[key]=attributesToCopy[key];}}else {this.$attr={};}this.$$element=element;};Attributes.prototype={ /**
+	   */var debugInfoEnabled=true;this.debugInfoEnabled=function(enabled){if(isDefined(enabled)){debugInfoEnabled=enabled;return this;}return debugInfoEnabled;};this.$get=['$injector','$interpolate','$exceptionHandler','$templateRequest','$parse','$controller','$rootScope','$document','$sce','$animate','$$sanitizeUri',function($injector,$interpolate,$exceptionHandler,$templateRequest,$parse,$controller,$rootScope,$document,$sce,$animate,$$sanitizeUri){var Attributes=function Attributes(element,attributesToCopy){if(attributesToCopy){var keys=Object.keys(attributesToCopy);var i,l,key;for(i=0,l=keys.length;i<l;i++){key=keys[i];this[key]=attributesToCopy[key];}}else {this.$attr={};}this.$$element=element;};Attributes.prototype={ /**
 	       * @ngdoc method
 	       * @name $compile.directive.Attributes#$normalize
 	       * @kind function
@@ -6714,7 +6720,7 @@
 	       * are enabled then an animation will be triggered for the class addition.
 	       *
 	       * @param {string} classVal The className value that will be added to the element
-	       */$addClass:function(classVal){if(classVal&&classVal.length>0){$animate.addClass(this.$$element,classVal);}}, /**
+	       */$addClass:function $addClass(classVal){if(classVal&&classVal.length>0){$animate.addClass(this.$$element,classVal);}}, /**
 	       * @ngdoc method
 	       * @name $compile.directive.Attributes#$removeClass
 	       * @kind function
@@ -6724,7 +6730,7 @@
 	       * animations are enabled then an animation will be triggered for the class removal.
 	       *
 	       * @param {string} classVal The className value that will be removed from the element
-	       */$removeClass:function(classVal){if(classVal&&classVal.length>0){$animate.removeClass(this.$$element,classVal);}}, /**
+	       */$removeClass:function $removeClass(classVal){if(classVal&&classVal.length>0){$animate.removeClass(this.$$element,classVal);}}, /**
 	       * @ngdoc method
 	       * @name $compile.directive.Attributes#$updateClass
 	       * @kind function
@@ -6735,7 +6741,7 @@
 	       *
 	       * @param {string} newClasses The current CSS className value
 	       * @param {string} oldClasses The former CSS className value
-	       */$updateClass:function(newClasses,oldClasses){var toAdd=tokenDifference(newClasses,oldClasses);if(toAdd&&toAdd.length){$animate.addClass(this.$$element,toAdd);}var toRemove=tokenDifference(oldClasses,newClasses);if(toRemove&&toRemove.length){$animate.removeClass(this.$$element,toRemove);}}, /**
+	       */$updateClass:function $updateClass(newClasses,oldClasses){var toAdd=tokenDifference(newClasses,oldClasses);if(toAdd&&toAdd.length){$animate.addClass(this.$$element,toAdd);}var toRemove=tokenDifference(oldClasses,newClasses);if(toRemove&&toRemove.length){$animate.removeClass(this.$$element,toRemove);}}, /**
 	       * Set a normalized attribute on the element in a way such that all directives
 	       * can share the attribute. This function properly handles boolean attributes.
 	       * @param {string} key Normalized key. (ie ngAttribute)
@@ -6743,7 +6749,7 @@
 	       * @param {boolean=} writeAttr If false, does not write the value to DOM element attribute.
 	       *     Defaults to true.
 	       * @param {string=} attrName Optional none normalized name. Defaults to key.
-	       */$set:function(key,value,writeAttr,attrName){ // TODO: decide whether or not to throw an error if "class"
+	       */$set:function $set(key,value,writeAttr,attrName){ // TODO: decide whether or not to throw an error if "class"
 	//is set through this function since it may cause $updateClass to
 	//become unstable.
 	var node=this.$$element[0],booleanKey=getBooleanAttrName(node,key),aliasedKey=getAliasedAttrName(node,key),observer=key,nodeName;if(booleanKey){this.$$element.prop(key,value);attrName=booleanKey;}else if(aliasedKey){this[aliasedKey]=value;observer=aliasedKey;}this[key]=value; // translate normalized key to actual key
@@ -6776,7 +6782,7 @@
 	                the interpolated value of the attribute changes.
 	       *        See the {@link guide/directive#text-and-attribute-bindings Directives} guide for more info.
 	       * @returns {function()} Returns a deregistration function for this observer.
-	       */$observe:function(key,fn){var attrs=this,$$observers=attrs.$$observers||(attrs.$$observers=createMap()),listeners=$$observers[key]||($$observers[key]=[]);listeners.push(fn);$rootScope.$evalAsync(function(){if(!listeners.$$inter&&attrs.hasOwnProperty(key)){ // no one registered attribute interpolation function, so lets call it manually
+	       */$observe:function $observe(key,fn){var attrs=this,$$observers=attrs.$$observers||(attrs.$$observers=createMap()),listeners=$$observers[key]||($$observers[key]=[]);listeners.push(fn);$rootScope.$evalAsync(function(){if(!listeners.$$inter&&attrs.hasOwnProperty(key)){ // no one registered attribute interpolation function, so lets call it manually
 	fn(attrs[key]);}});return function(){arrayRemove(listeners,fn);};}};function safeAddClass($element,className){try{$element.addClass(className);}catch(e){ // ignore, since it means that we are trying to set class on
 	// SVG element, where class name is read-only.
 	}}var startSymbol=$interpolate.startSymbol(),endSymbol=$interpolate.endSymbol(),denormalizeTemplate=startSymbol=='{{'||endSymbol=='}}'?identity:function denormalizeTemplate(template){return template.replace(/\{\{/g,startSymbol).replace(/}}/g,endSymbol);},NG_ATTR_BINDING=/^ngAttr[A-Z]/;compile.$$addBindingInfo=debugInfoEnabled?function $$addBindingInfo($element,binding){var bindings=$element.data('$binding')||[];if(isArray(binding)){bindings=bindings.concat(binding);}else {bindings.push(binding);}$element.data('$binding',bindings);}:noop;compile.$$addBindingClass=debugInfoEnabled?function $$addBindingClass($element){safeAddClass($element,'ng-binding');}:noop;compile.$$addScopeInfo=debugInfoEnabled?function $$addScopeInfo($element,scope,isolated,noTemplate){var dataName=isolated?noTemplate?'$isolateScopeNoTemplate':'$isolateScope':'$scope';$element.data(dataName,scope);}:noop;compile.$$addScopeClass=debugInfoEnabled?function $$addScopeClass($element,isolated){safeAddClass($element,isolated?'ng-isolate-scope':'ng-scope');}:noop;return compile; //================================
@@ -6816,7 +6822,7 @@
 	return linkFnFound?compositeLinkFn:null;function compositeLinkFn(scope,nodeList,$rootElement,parentBoundTranscludeFn){var nodeLinkFn,childLinkFn,node,childScope,i,ii,idx,childBoundTranscludeFn;var stableNodeList;if(nodeLinkFnFound){ // copy nodeList so that if a nodeLinkFn removes or adds an element at this DOM level our
 	// offsets don't get screwed up
 	var nodeListLength=nodeList.length;stableNodeList=new Array(nodeListLength); // create a sparse array by only copying the elements which have a linkFn
-	for(i=0;i<linkFns.length;i+=3){idx=linkFns[i];stableNodeList[idx]=nodeList[idx];}}else {stableNodeList=nodeList;}for(i=0,ii=linkFns.length;i<ii;){node=stableNodeList[linkFns[i++]];nodeLinkFn=linkFns[i++];childLinkFn=linkFns[i++];if(nodeLinkFn){if(nodeLinkFn.scope){childScope=scope.$new();compile.$$addScopeInfo(jqLite(node),childScope);var destroyBindings=nodeLinkFn.$$destroyBindings;if(destroyBindings){nodeLinkFn.$$destroyBindings=null;childScope.$on('$destroyed',destroyBindings);}}else {childScope=scope;}if(nodeLinkFn.transcludeOnThisElement){childBoundTranscludeFn=createBoundTranscludeFn(scope,nodeLinkFn.transclude,parentBoundTranscludeFn);}else if(!nodeLinkFn.templateOnThisElement&&parentBoundTranscludeFn){childBoundTranscludeFn=parentBoundTranscludeFn;}else if(!parentBoundTranscludeFn&&transcludeFn){childBoundTranscludeFn=createBoundTranscludeFn(scope,transcludeFn);}else {childBoundTranscludeFn=null;}nodeLinkFn(childLinkFn,childScope,node,$rootElement,childBoundTranscludeFn,nodeLinkFn);}else if(childLinkFn){childLinkFn(scope,node.childNodes,undefined,parentBoundTranscludeFn);}}}}function createBoundTranscludeFn(scope,transcludeFn,previousBoundTranscludeFn){var boundTranscludeFn=function(transcludedScope,cloneFn,controllers,futureParentElement,containingScope){if(!transcludedScope){transcludedScope=scope.$new(false,containingScope);transcludedScope.$$transcluded=true;}return transcludeFn(transcludedScope,cloneFn,{parentBoundTranscludeFn:previousBoundTranscludeFn,transcludeControllers:controllers,futureParentElement:futureParentElement});};return boundTranscludeFn;} /**
+	for(i=0;i<linkFns.length;i+=3){idx=linkFns[i];stableNodeList[idx]=nodeList[idx];}}else {stableNodeList=nodeList;}for(i=0,ii=linkFns.length;i<ii;){node=stableNodeList[linkFns[i++]];nodeLinkFn=linkFns[i++];childLinkFn=linkFns[i++];if(nodeLinkFn){if(nodeLinkFn.scope){childScope=scope.$new();compile.$$addScopeInfo(jqLite(node),childScope);var destroyBindings=nodeLinkFn.$$destroyBindings;if(destroyBindings){nodeLinkFn.$$destroyBindings=null;childScope.$on('$destroyed',destroyBindings);}}else {childScope=scope;}if(nodeLinkFn.transcludeOnThisElement){childBoundTranscludeFn=createBoundTranscludeFn(scope,nodeLinkFn.transclude,parentBoundTranscludeFn);}else if(!nodeLinkFn.templateOnThisElement&&parentBoundTranscludeFn){childBoundTranscludeFn=parentBoundTranscludeFn;}else if(!parentBoundTranscludeFn&&transcludeFn){childBoundTranscludeFn=createBoundTranscludeFn(scope,transcludeFn);}else {childBoundTranscludeFn=null;}nodeLinkFn(childLinkFn,childScope,node,$rootElement,childBoundTranscludeFn,nodeLinkFn);}else if(childLinkFn){childLinkFn(scope,node.childNodes,undefined,parentBoundTranscludeFn);}}}}function createBoundTranscludeFn(scope,transcludeFn,previousBoundTranscludeFn){var boundTranscludeFn=function boundTranscludeFn(transcludedScope,cloneFn,controllers,futureParentElement,containingScope){if(!transcludedScope){transcludedScope=scope.$new(false,containingScope);transcludedScope.$$transcluded=true;}return transcludeFn(transcludedScope,cloneFn,{parentBoundTranscludeFn:previousBoundTranscludeFn,transcludeControllers:controllers,futureParentElement:futureParentElement});};return boundTranscludeFn;} /**
 	     * Looks for directives on the given node and adds them to the directive collection which is
 	     * sorted.
 	     *
@@ -6962,7 +6968,7 @@
 	// we don't have a parent and thus need to add the class during linking fn.
 	if(hasCompileParent)compile.$$addBindingClass(templateNodeParent);return function textInterpolateLinkFn(scope,node){var parent=node.parent();if(!hasCompileParent)compile.$$addBindingClass(parent);compile.$$addBindingInfo(parent,interpolateFn.expressions);scope.$watch(interpolateFn,function interpolateFnWatchAction(value){node[0].nodeValue=value;});};}});}}function wrapTemplate(type,template){type=lowercase(type||'html');switch(type){case 'svg':case 'math':var wrapper=document.createElement('div');wrapper.innerHTML='<'+type+'>'+template+'</'+type+'>';return wrapper.childNodes[0].childNodes;default:return template;}}function getTrustedContext(node,attrNormalizedName){if(attrNormalizedName=="srcdoc"){return $sce.HTML;}var tag=nodeName_(node); // maction[xlink:href] can source SVG.  It's not limited to <maction>.
 	if(attrNormalizedName=="xlinkHref"||tag=="form"&&attrNormalizedName=="action"||tag!="img"&&(attrNormalizedName=="src"||attrNormalizedName=="ngSrc")){return $sce.RESOURCE_URL;}}function addAttrInterpolateDirective(node,directives,value,name,allOrNothing){var trustedContext=getTrustedContext(node,name);allOrNothing=ALL_OR_NOTHING_ATTRS[name]||allOrNothing;var interpolateFn=$interpolate(value,true,trustedContext,allOrNothing); // no interpolation found -> ignore
-	if(!interpolateFn)return;if(name==="multiple"&&nodeName_(node)==="select"){throw $compileMinErr("selmulti","Binding to the 'multiple' attribute is not supported. Element: {0}",startingTag(node));}directives.push({priority:100,compile:function(){return {pre:function attrInterpolatePreLinkFn(scope,element,attr){var $$observers=attr.$$observers||(attr.$$observers={});if(EVENT_HANDLER_ATTR_REGEXP.test(name)){throw $compileMinErr('nodomevents',"Interpolations for HTML DOM event attributes are disallowed.  Please use the "+"ng- versions (such as ng-click instead of onclick) instead.");} // If the attribute has changed since last $interpolate()ed
+	if(!interpolateFn)return;if(name==="multiple"&&nodeName_(node)==="select"){throw $compileMinErr("selmulti","Binding to the 'multiple' attribute is not supported. Element: {0}",startingTag(node));}directives.push({priority:100,compile:function compile(){return {pre:function attrInterpolatePreLinkFn(scope,element,attr){var $$observers=attr.$$observers||(attr.$$observers={});if(EVENT_HANDLER_ATTR_REGEXP.test(name)){throw $compileMinErr('nodomevents',"Interpolations for HTML DOM event attributes are disallowed.  Please use the "+"ng- versions (such as ng-click instead of onclick) instead.");} // If the attribute has changed since last $interpolate()ed
 	var newValue=attr[name];if(newValue!==value){ // we need to interpolate again since the attribute value has been updated
 	// (e.g. by another directive's compile function)
 	// ensure unset/empty values make interpolateFn falsy
@@ -7011,7 +7017,7 @@
 	// the corresponding attribute. We need to make sure subsequent code won't access to the prototype function
 	attrs[attrName]=undefined;}switch(mode){case '@':if(!attrs[attrName]&&!optional){destination[scopeName]=undefined;}attrs.$observe(attrName,function(value){destination[scopeName]=value;});attrs.$$observers[attrName].$$scope=scope;if(attrs[attrName]){ // If the attribute has been provided then we trigger an interpolation to ensure
 	// the value is there for use in the link fn
-	destination[scopeName]=$interpolate(attrs[attrName])(scope);}break;case '=':if(optional&&!attrs[attrName]){return;}parentGet=$parse(attrs[attrName]);if(parentGet.literal){compare=equals;}else {compare=function(a,b){return a===b||a!==a&&b!==b;};}parentSet=parentGet.assign||function(){ // reset the change, or we will throw this exception on every $digest
+	destination[scopeName]=$interpolate(attrs[attrName])(scope);}break;case '=':if(optional&&!attrs[attrName]){return;}parentGet=$parse(attrs[attrName]);if(parentGet.literal){compare=equals;}else {compare=function compare(a,b){return a===b||a!==a&&b!==b;};}parentSet=parentGet.assign||function(){ // reset the change, or we will throw this exception on every $digest
 	lastValue=destination[scopeName]=parentGet(scope);throw $compileMinErr('nonassign',"Expression '{0}' used with directive '{1}' is non-assignable!",attrs[attrName],directive.name);};lastValue=destination[scopeName]=parentGet(scope);var parentValueWatch=function parentValueWatch(parentValue){if(!compare(parentValue,destination[scopeName])){ // we are out of sync and need to copy
 	if(!compare(parentValue,lastValue)){ // parent changed and it has precedence
 	destination[scopeName]=parentValue;}else { // if the parent can be assigned then do so
@@ -7865,7 +7871,7 @@
 	  });
 	</file>
 	</example>
-	     */function $http(requestConfig){if(!angular.isObject(requestConfig)){throw minErr('$http')('badreq','Http request configuration must be an object.  Received: {0}',requestConfig);}var config=extend({method:'get',transformRequest:defaults.transformRequest,transformResponse:defaults.transformResponse,paramSerializer:defaults.paramSerializer},requestConfig);config.headers=mergeHeaders(requestConfig);config.method=uppercase(config.method);config.paramSerializer=isString(config.paramSerializer)?$injector.get(config.paramSerializer):config.paramSerializer;var serverRequest=function(config){var headers=config.headers;var reqData=transformData(config.data,headersGetter(headers),undefined,config.transformRequest); // strip content-type if data is undefined
+	     */function $http(requestConfig){if(!angular.isObject(requestConfig)){throw minErr('$http')('badreq','Http request configuration must be an object.  Received: {0}',requestConfig);}var config=extend({method:'get',transformRequest:defaults.transformRequest,transformResponse:defaults.transformResponse,paramSerializer:defaults.paramSerializer},requestConfig);config.headers=mergeHeaders(requestConfig);config.method=uppercase(config.method);config.paramSerializer=isString(config.paramSerializer)?$injector.get(config.paramSerializer):config.paramSerializer;var serverRequest=function serverRequest(config){var headers=config.headers;var reqData=transformData(config.data,headersGetter(headers),undefined,config.transformRequest); // strip content-type if data is undefined
 	if(isUndefined(reqData)){forEach(headers,function(value,header){if(lowercase(header)==='content-type'){delete headers[header];}});}if(isUndefined(config.withCredentials)&&!isUndefined(defaults.withCredentials)){config.withCredentials=defaults.withCredentials;} // send request
 	return sendReq(config,reqData).then(transformResponse,transformResponse);};var chain=[serverRequest,undefined];var promise=$q.when(config); // apply interceptors
 	forEach(reversedInterceptors,function(interceptor){if(interceptor.request||interceptor.requestError){chain.unshift(interceptor.request,interceptor.requestError);}if(interceptor.response||interceptor.responseError){chain.push(interceptor.response,interceptor.responseError);}});while(chain.length){var thenFn=chain.shift();var rejectFn=chain.shift();promise=promise.then(thenFn,rejectFn);}promise.success=function(fn){assertArgFn(fn,'fn');promise.then(function(response){fn(response.data,response.status,response.headers,config);});return promise;};promise.error=function(fn){assertArgFn(fn,'fn');promise.then(null,function(response){fn(response.data,response.status,response.headers,config);});return promise;};return promise;function transformResponse(response){ // make a copy since the response must be cacheable
@@ -7995,7 +8001,7 @@
 	var status=xhr.status===1223?204:xhr.status; // fix status code when it is 0 (0 status is undocumented).
 	// Occurs when accessing file resources or on Android 4.1 stock browser
 	// while retrieving files from application cache.
-	if(status===0){status=response?200:urlResolve(url).protocol=='file'?404:0;}completeRequest(callback,status,response,xhr.getAllResponseHeaders(),statusText);};var requestError=function(){ // The response is always empty
+	if(status===0){status=response?200:urlResolve(url).protocol=='file'?404:0;}completeRequest(callback,status,response,xhr.getAllResponseHeaders(),statusText);};var requestError=function requestError(){ // The response is always empty
 	// See https://xhr.spec.whatwg.org/#request-error-steps and https://fetch.spec.whatwg.org/#concept-network-error
 	completeRequest(callback,-1,null,null,'');};xhr.onerror=requestError;xhr.onabort=requestError;if(withCredentials){xhr.withCredentials=true;}if(responseType){try{xhr.responseType=responseType;}catch(e){ // WebKit added support for the json responseType value on 09/03/2013
 	// https://bugs.webkit.org/show_bug.cgi?id=73648. Versions of Safari prior to 7 are
@@ -8008,7 +8014,7 @@
 	if(timeoutId!==undefined){$browserDefer.cancel(timeoutId);}jsonpDone=xhr=null;callback(status,response,headersString,statusText);$browser.$$completeOutstandingRequest(noop);}};function jsonpReq(url,callbackId,done){ // we can't use jQuery/jqLite here because jQuery does crazy stuff with script elements, e.g.:
 	// - fetches local scripts via XHR and evals them
 	// - adds and immediately removes script elements from the document
-	var script=rawDocument.createElement('script'),callback=null;script.type="text/javascript";script.src=url;script.async=true;callback=function(event){removeEventListenerFn(script,"load",callback);removeEventListenerFn(script,"error",callback);rawDocument.body.removeChild(script);script=null;var status=-1;var text="unknown";if(event){if(event.type==="load"&&!callbacks[callbackId].called){event={type:"error"};}text=event.type;status=event.type==="error"?404:200;}if(done){done(status,text);}};addEventListenerFn(script,"load",callback);addEventListenerFn(script,"error",callback);rawDocument.body.appendChild(script);return callback;}}var $interpolateMinErr=angular.$interpolateMinErr=minErr('$interpolate');$interpolateMinErr.throwNoconcat=function(text){throw $interpolateMinErr('noconcat',"Error while interpolating: {0}\nStrict Contextual Escaping disallows "+"interpolations that concatenate multiple expressions when a trusted value is "+"required.  See http://docs.angularjs.org/api/ng.$sce",text);};$interpolateMinErr.interr=function(text,err){return $interpolateMinErr('interr',"Can't interpolate: {0}\n{1}",text,err.toString());}; /**
+	var script=rawDocument.createElement('script'),_callback=null;script.type="text/javascript";script.src=url;script.async=true;_callback=function callback(event){removeEventListenerFn(script,"load",_callback);removeEventListenerFn(script,"error",_callback);rawDocument.body.removeChild(script);script=null;var status=-1;var text="unknown";if(event){if(event.type==="load"&&!callbacks[callbackId].called){event={type:"error"};}text=event.type;status=event.type==="error"?404:200;}if(done){done(status,text);}};addEventListenerFn(script,"load",_callback);addEventListenerFn(script,"error",_callback);rawDocument.body.appendChild(script);return _callback;}}var $interpolateMinErr=angular.$interpolateMinErr=minErr('$interpolate');$interpolateMinErr.throwNoconcat=function(text){throw $interpolateMinErr('noconcat',"Error while interpolating: {0}\nStrict Contextual Escaping disallows "+"interpolations that concatenate multiple expressions when a trusted value is "+"required.  See http://docs.angularjs.org/api/ng.$sce",text);};$interpolateMinErr.interr=function(text,err){return $interpolateMinErr('interr',"Can't interpolate: {0}\n{1}",text,err.toString());}; /**
 	 * @ngdoc provider
 	 * @name $interpolateProvider
 	 *
@@ -8059,7 +8065,7 @@
 	   * @param {string=} value new value to set the ending symbol to.
 	   * @returns {string|self} Returns the symbol when used as getter and self if used as setter.
 	   */this.endSymbol=function(value){if(value){endSymbol=value;return this;}else {return endSymbol;}};this.$get=['$parse','$exceptionHandler','$sce',function($parse,$exceptionHandler,$sce){var startSymbolLength=startSymbol.length,endSymbolLength=endSymbol.length,escapedStartRegexp=new RegExp(startSymbol.replace(/./g,escape),'g'),escapedEndRegexp=new RegExp(endSymbol.replace(/./g,escape),'g');function escape(ch){return '\\\\\\'+ch;}function unescapeText(text){return text.replace(escapedStartRegexp,startSymbol).replace(escapedEndRegexp,endSymbol);}function stringify(value){if(value==null){ // null || undefined
-	return '';}switch(typeof value){case 'string':break;case 'number':value=''+value;break;default:value=toJson(value);}return value;} /**
+	return '';}switch(typeof value==='undefined'?'undefined':_typeof(value)){case 'string':break;case 'number':value=''+value;break;default:value=toJson(value);}return value;} /**
 	     * @ngdoc service
 	     * @name $interpolate
 	     * @kind function
@@ -8159,9 +8165,9 @@
 	// that's used is assigned or constructed by some JS code somewhere that is more testable or
 	// make it obvious that you bound the value to some user controlled value.  This helps reduce
 	// the load when auditing for XSS issues.
-	if(trustedContext&&concat.length>1){$interpolateMinErr.throwNoconcat(text);}if(!mustHaveExpression||expressions.length){var compute=function(values){for(var i=0,ii=expressions.length;i<ii;i++){if(allOrNothing&&isUndefined(values[i]))return;concat[expressionPositions[i]]=values[i];}return concat.join('');};var getValue=function(value){return trustedContext?$sce.getTrusted(trustedContext,value):$sce.valueOf(value);};return extend(function interpolationFn(context){var i=0;var ii=expressions.length;var values=new Array(ii);try{for(;i<ii;i++){values[i]=parseFns[i](context);}return compute(values);}catch(err){$exceptionHandler($interpolateMinErr.interr(text,err));}},{ // all of these properties are undocumented for now
+	if(trustedContext&&concat.length>1){$interpolateMinErr.throwNoconcat(text);}if(!mustHaveExpression||expressions.length){var compute=function compute(values){for(var i=0,ii=expressions.length;i<ii;i++){if(allOrNothing&&isUndefined(values[i]))return;concat[expressionPositions[i]]=values[i];}return concat.join('');};var getValue=function getValue(value){return trustedContext?$sce.getTrusted(trustedContext,value):$sce.valueOf(value);};return extend(function interpolationFn(context){var i=0;var ii=expressions.length;var values=new Array(ii);try{for(;i<ii;i++){values[i]=parseFns[i](context);}return compute(values);}catch(err){$exceptionHandler($interpolateMinErr.interr(text,err));}},{ // all of these properties are undocumented for now
 	exp:text, //just for compatibility with regular watchers created via $watch
-	expressions:expressions,$$watchDelegate:function(scope,listener){var lastValue;return scope.$watchGroup(parseFns,function interpolateFnWatcher(values,oldValues){var currValue=compute(values);if(isFunction(listener)){listener.call(this,currValue,values!==oldValues?lastValue:currValue,scope);}lastValue=currValue;});}});}function parseStringifyInterceptor(value){try{value=getValue(value);return allOrNothing&&!isDefined(value)?value:stringify(value);}catch(err){$exceptionHandler($interpolateMinErr.interr(text,err));}}} /**
+	expressions:expressions,$$watchDelegate:function $$watchDelegate(scope,listener){var lastValue;return scope.$watchGroup(parseFns,function interpolateFnWatcher(values,oldValues){var currValue=compute(values);if(isFunction(listener)){listener.call(this,currValue,values!==oldValues?lastValue:currValue,scope);}lastValue=currValue;});}});}function parseStringifyInterceptor(value){try{value=getValue(value);return allOrNothing&&!isDefined(value)?value:stringify(value);}catch(err){$exceptionHandler($interpolateMinErr.interr(text,err));}}} /**
 	     * @ngdoc method
 	     * @name $interpolate#startSymbol
 	     * @description
@@ -8325,7 +8331,7 @@
 	 * * `id` – `{string}` – locale id formatted as `languageId-countryId` (e.g. `en-us`)
 	 */function $LocaleProvider(){this.$get=function(){return {id:'en-us',NUMBER_FORMATS:{DECIMAL_SEP:'.',GROUP_SEP:',',PATTERNS:[{ // Decimal Pattern
 	minInt:1,minFrac:0,maxFrac:3,posPre:'',posSuf:'',negPre:'-',negSuf:'',gSize:3,lgSize:3},{ //Currency Pattern
-	minInt:1,minFrac:2,maxFrac:2,posPre:'\u00A4',posSuf:'',negPre:'(\u00A4',negSuf:')',gSize:3,lgSize:3}],CURRENCY_SYM:'$'},DATETIME_FORMATS:{MONTH:'January,February,March,April,May,June,July,August,September,October,November,December'.split(','),SHORTMONTH:'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(','),DAY:'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'.split(','),SHORTDAY:'Sun,Mon,Tue,Wed,Thu,Fri,Sat'.split(','),AMPMS:['AM','PM'],medium:'MMM d, y h:mm:ss a','short':'M/d/yy h:mm a',fullDate:'EEEE, MMMM d, y',longDate:'MMMM d, y',mediumDate:'MMM d, y',shortDate:'M/d/yy',mediumTime:'h:mm:ss a',shortTime:'h:mm a',ERANAMES:["Before Christ","Anno Domini"],ERAS:["BC","AD"]},pluralCat:function(num){if(num===1){return 'one';}return 'other';}};};}var PATH_MATCH=/^([^\?#]*)(\?([^#]*))?(#(.*))?$/,DEFAULT_PORTS={'http':80,'https':443,'ftp':21};var $locationMinErr=minErr('$location'); /**
+	minInt:1,minFrac:2,maxFrac:2,posPre:'¤',posSuf:'',negPre:'(¤',negSuf:')',gSize:3,lgSize:3}],CURRENCY_SYM:'$'},DATETIME_FORMATS:{MONTH:'January,February,March,April,May,June,July,August,September,October,November,December'.split(','),SHORTMONTH:'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(','),DAY:'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'.split(','),SHORTDAY:'Sun,Mon,Tue,Wed,Thu,Fri,Sat'.split(','),AMPMS:['AM','PM'],medium:'MMM d, y h:mm:ss a','short':'M/d/yy h:mm a',fullDate:'EEEE, MMMM d, y',longDate:'MMMM d, y',mediumDate:'MMM d, y',shortDate:'M/d/yy',mediumTime:'h:mm:ss a',shortTime:'h:mm a',ERANAMES:["Before Christ","Anno Domini"],ERAS:["BC","AD"]},pluralCat:function pluralCat(num){if(num===1){return 'one';}return 'other';}};};}var PATH_MATCH=/^([^\?#]*)(\?([^#]*))?(#(.*))?$/,DEFAULT_PORTS={'http':80,'https':443,'ftp':21};var $locationMinErr=minErr('$location'); /**
 	 * Encode path using encodeUriSegment, ignoring forward slashes
 	 *
 	 * @param {string} path Path to encode
@@ -8445,7 +8451,7 @@
 	   *
 	   * @param {string=} url New url without base prefix (e.g. `/path?a=b#hash`)
 	   * @return {string} url
-	   */url:function(url){if(isUndefined(url)){return this.$$url;}var match=PATH_MATCH.exec(url);if(match[1]||url==='')this.path(decodeURIComponent(match[1]));if(match[2]||match[1]||url==='')this.search(match[3]||'');this.hash(match[5]||'');return this;}, /**
+	   */url:function url(_url){if(isUndefined(_url)){return this.$$url;}var match=PATH_MATCH.exec(_url);if(match[1]||_url==='')this.path(decodeURIComponent(match[1]));if(match[2]||match[1]||_url==='')this.search(match[3]||'');this.hash(match[5]||'');return this;}, /**
 	   * @ngdoc method
 	   * @name $location#protocol
 	   *
@@ -8571,8 +8577,8 @@
 	   *
 	   * @return {Object} If called with no arguments returns the parsed `search` object. If called with
 	   * one or more arguments returns `$location` object itself.
-	   */search:function(search,paramValue){switch(arguments.length){case 0:return this.$$search;case 1:if(isString(search)||isNumber(search)){search=search.toString();this.$$search=parseKeyValue(search);}else if(isObject(search)){search=copy(search,{}); // remove object undefined or null properties
-	forEach(search,function(value,key){if(value==null)delete search[key];});this.$$search=search;}else {throw $locationMinErr('isrcharg','The first argument of the `$location#search()` call must be a string or an object.');}break;default:if(isUndefined(paramValue)||paramValue===null){delete this.$$search[search];}else {this.$$search[search]=paramValue;}}this.$$compose();return this;}, /**
+	   */search:function search(_search,paramValue){switch(arguments.length){case 0:return this.$$search;case 1:if(isString(_search)||isNumber(_search)){_search=_search.toString();this.$$search=parseKeyValue(_search);}else if(isObject(_search)){_search=copy(_search,{}); // remove object undefined or null properties
+	forEach(_search,function(value,key){if(value==null)delete _search[key];});this.$$search=_search;}else {throw $locationMinErr('isrcharg','The first argument of the `$location#search()` call must be a string or an object.');}break;default:if(isUndefined(paramValue)||paramValue===null){delete this.$$search[_search];}else {this.$$search[_search]=paramValue;}}this.$$compose();return this;}, /**
 	   * @ngdoc method
 	   * @name $location#hash
 	   *
@@ -8599,7 +8605,7 @@
 	   * @description
 	   * If called, all changes to $location during current `$digest` will be replacing current history
 	   * record, instead of adding new one.
-	   */replace:function(){this.$$replace=true;return this;}};forEach([LocationHashbangInHtml5Url,LocationHashbangUrl,LocationHtml5Url],function(Location){Location.prototype=Object.create(locationPrototype); /**
+	   */replace:function replace(){this.$$replace=true;return this;}};forEach([LocationHashbangInHtml5Url,LocationHashbangUrl,LocationHtml5Url],function(Location){Location.prototype=Object.create(locationPrototype); /**
 	   * @ngdoc method
 	   * @name $location#state
 	   *
@@ -8855,18 +8861,18 @@
 	obj===Object){throw $parseMinErr('isecobj','Referencing Object in Angular expressions is disallowed! Expression: {0}',fullExpression);}}return obj;}var CALL=Function.prototype.call;var APPLY=Function.prototype.apply;var BIND=Function.prototype.bind;function ensureSafeFunction(obj,fullExpression){if(obj){if(obj.constructor===obj){throw $parseMinErr('isecfn','Referencing Function in Angular expressions is disallowed! Expression: {0}',fullExpression);}else if(obj===CALL||obj===APPLY||obj===BIND){throw $parseMinErr('isecff','Referencing call, apply or bind in Angular expressions is disallowed! Expression: {0}',fullExpression);}}}var OPERATORS=createMap();forEach('+ - * / % === !== == != < > <= >= && || ! = |'.split(' '),function(operator){OPERATORS[operator]=true;});var ESCAPE={"n":"\n","f":"\f","r":"\r","t":"\t","v":"\v","'":"'",'"':'"'}; /////////////////////////////////////////
 	/**
 	 * @constructor
-	 */var Lexer=function(options){this.options=options;};Lexer.prototype={constructor:Lexer,lex:function(text){this.text=text;this.index=0;this.tokens=[];while(this.index<this.text.length){var ch=this.text.charAt(this.index);if(ch==='"'||ch==="'"){this.readString(ch);}else if(this.isNumber(ch)||ch==='.'&&this.isNumber(this.peek())){this.readNumber();}else if(this.isIdent(ch)){this.readIdent();}else if(this.is(ch,'(){}[].,;:?')){this.tokens.push({index:this.index,text:ch});this.index++;}else if(this.isWhitespace(ch)){this.index++;}else {var ch2=ch+this.peek();var ch3=ch2+this.peek(2);var op1=OPERATORS[ch];var op2=OPERATORS[ch2];var op3=OPERATORS[ch3];if(op1||op2||op3){var token=op3?ch3:op2?ch2:ch;this.tokens.push({index:this.index,text:token,operator:true});this.index+=token.length;}else {this.throwError('Unexpected next character ',this.index,this.index+1);}}}return this.tokens;},is:function(ch,chars){return chars.indexOf(ch)!==-1;},peek:function(i){var num=i||1;return this.index+num<this.text.length?this.text.charAt(this.index+num):false;},isNumber:function(ch){return '0'<=ch&&ch<='9'&&typeof ch==="string";},isWhitespace:function(ch){ // IE treats non-breaking space as \u00A0
-	return ch===' '||ch==='\r'||ch==='\t'||ch==='\n'||ch==='\v'||ch==='\u00A0';},isIdent:function(ch){return 'a'<=ch&&ch<='z'||'A'<=ch&&ch<='Z'||'_'===ch||ch==='$';},isExpOperator:function(ch){return ch==='-'||ch==='+'||this.isNumber(ch);},throwError:function(error,start,end){end=end||this.index;var colStr=isDefined(start)?'s '+start+'-'+this.index+' ['+this.text.substring(start,end)+']':' '+end;throw $parseMinErr('lexerr','Lexer Error: {0} at column{1} in expression [{2}].',error,colStr,this.text);},readNumber:function(){var number='';var start=this.index;while(this.index<this.text.length){var ch=lowercase(this.text.charAt(this.index));if(ch=='.'||this.isNumber(ch)){number+=ch;}else {var peekCh=this.peek();if(ch=='e'&&this.isExpOperator(peekCh)){number+=ch;}else if(this.isExpOperator(ch)&&peekCh&&this.isNumber(peekCh)&&number.charAt(number.length-1)=='e'){number+=ch;}else if(this.isExpOperator(ch)&&(!peekCh||!this.isNumber(peekCh))&&number.charAt(number.length-1)=='e'){this.throwError('Invalid exponent');}else {break;}}this.index++;}this.tokens.push({index:start,text:number,constant:true,value:Number(number)});},readIdent:function(){var start=this.index;while(this.index<this.text.length){var ch=this.text.charAt(this.index);if(!(this.isIdent(ch)||this.isNumber(ch))){break;}this.index++;}this.tokens.push({index:start,text:this.text.slice(start,this.index),identifier:true});},readString:function(quote){var start=this.index;this.index++;var string='';var rawString=quote;var escape=false;while(this.index<this.text.length){var ch=this.text.charAt(this.index);rawString+=ch;if(escape){if(ch==='u'){var hex=this.text.substring(this.index+1,this.index+5);if(!hex.match(/[\da-f]{4}/i)){this.throwError('Invalid unicode escape [\\u'+hex+']');}this.index+=4;string+=String.fromCharCode(parseInt(hex,16));}else {var rep=ESCAPE[ch];string=string+(rep||ch);}escape=false;}else if(ch==='\\'){escape=true;}else if(ch===quote){this.index++;this.tokens.push({index:start,text:rawString,constant:true,value:string});return;}else {string+=ch;}this.index++;}this.throwError('Unterminated quote',start);}};var AST=function(lexer,options){this.lexer=lexer;this.options=options;};AST.Program='Program';AST.ExpressionStatement='ExpressionStatement';AST.AssignmentExpression='AssignmentExpression';AST.ConditionalExpression='ConditionalExpression';AST.LogicalExpression='LogicalExpression';AST.BinaryExpression='BinaryExpression';AST.UnaryExpression='UnaryExpression';AST.CallExpression='CallExpression';AST.MemberExpression='MemberExpression';AST.Identifier='Identifier';AST.Literal='Literal';AST.ArrayExpression='ArrayExpression';AST.Property='Property';AST.ObjectExpression='ObjectExpression';AST.ThisExpression='ThisExpression'; // Internal use only
-	AST.NGValueParameter='NGValueParameter';AST.prototype={ast:function(text){this.text=text;this.tokens=this.lexer.lex(text);var value=this.program();if(this.tokens.length!==0){this.throwError('is an unexpected token',this.tokens[0]);}return value;},program:function(){var body=[];while(true){if(this.tokens.length>0&&!this.peek('}',')',';',']'))body.push(this.expressionStatement());if(!this.expect(';')){return {type:AST.Program,body:body};}}},expressionStatement:function(){return {type:AST.ExpressionStatement,expression:this.filterChain()};},filterChain:function(){var left=this.expression();var token;while(token=this.expect('|')){left=this.filter(left);}return left;},expression:function(){return this.assignment();},assignment:function(){var result=this.ternary();if(this.expect('=')){result={type:AST.AssignmentExpression,left:result,right:this.assignment(),operator:'='};}return result;},ternary:function(){var test=this.logicalOR();var alternate;var consequent;if(this.expect('?')){alternate=this.expression();if(this.consume(':')){consequent=this.expression();return {type:AST.ConditionalExpression,test:test,alternate:alternate,consequent:consequent};}}return test;},logicalOR:function(){var left=this.logicalAND();while(this.expect('||')){left={type:AST.LogicalExpression,operator:'||',left:left,right:this.logicalAND()};}return left;},logicalAND:function(){var left=this.equality();while(this.expect('&&')){left={type:AST.LogicalExpression,operator:'&&',left:left,right:this.equality()};}return left;},equality:function(){var left=this.relational();var token;while(token=this.expect('==','!=','===','!==')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.relational()};}return left;},relational:function(){var left=this.additive();var token;while(token=this.expect('<','>','<=','>=')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.additive()};}return left;},additive:function(){var left=this.multiplicative();var token;while(token=this.expect('+','-')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.multiplicative()};}return left;},multiplicative:function(){var left=this.unary();var token;while(token=this.expect('*','/','%')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.unary()};}return left;},unary:function(){var token;if(token=this.expect('+','-','!')){return {type:AST.UnaryExpression,operator:token.text,prefix:true,argument:this.unary()};}else {return this.primary();}},primary:function(){var primary;if(this.expect('(')){primary=this.filterChain();this.consume(')');}else if(this.expect('[')){primary=this.arrayDeclaration();}else if(this.expect('{')){primary=this.object();}else if(this.constants.hasOwnProperty(this.peek().text)){primary=copy(this.constants[this.consume().text]);}else if(this.peek().identifier){primary=this.identifier();}else if(this.peek().constant){primary=this.constant();}else {this.throwError('not a primary expression',this.peek());}var next;while(next=this.expect('(','[','.')){if(next.text==='('){primary={type:AST.CallExpression,callee:primary,arguments:this.parseArguments()};this.consume(')');}else if(next.text==='['){primary={type:AST.MemberExpression,object:primary,property:this.expression(),computed:true};this.consume(']');}else if(next.text==='.'){primary={type:AST.MemberExpression,object:primary,property:this.identifier(),computed:false};}else {this.throwError('IMPOSSIBLE');}}return primary;},filter:function(baseExpression){var args=[baseExpression];var result={type:AST.CallExpression,callee:this.identifier(),arguments:args,filter:true};while(this.expect(':')){args.push(this.expression());}return result;},parseArguments:function(){var args=[];if(this.peekToken().text!==')'){do {args.push(this.expression());}while(this.expect(','));}return args;},identifier:function(){var token=this.consume();if(!token.identifier){this.throwError('is not a valid identifier',token);}return {type:AST.Identifier,name:token.text};},constant:function(){ // TODO check that it is a constant
-	return {type:AST.Literal,value:this.consume().value};},arrayDeclaration:function(){var elements=[];if(this.peekToken().text!==']'){do {if(this.peek(']')){ // Support trailing commas per ES5.1.
-	break;}elements.push(this.expression());}while(this.expect(','));}this.consume(']');return {type:AST.ArrayExpression,elements:elements};},object:function(){var properties=[],property;if(this.peekToken().text!=='}'){do {if(this.peek('}')){ // Support trailing commas per ES5.1.
-	break;}property={type:AST.Property,kind:'init'};if(this.peek().constant){property.key=this.constant();}else if(this.peek().identifier){property.key=this.identifier();}else {this.throwError("invalid key",this.peek());}this.consume(':');property.value=this.expression();properties.push(property);}while(this.expect(','));}this.consume('}');return {type:AST.ObjectExpression,properties:properties};},throwError:function(msg,token){throw $parseMinErr('syntax','Syntax Error: Token \'{0}\' {1} at column {2} of the expression [{3}] starting at [{4}].',token.text,msg,token.index+1,this.text,this.text.substring(token.index));},consume:function(e1){if(this.tokens.length===0){throw $parseMinErr('ueoe','Unexpected end of expression: {0}',this.text);}var token=this.expect(e1);if(!token){this.throwError('is unexpected, expecting ['+e1+']',this.peek());}return token;},peekToken:function(){if(this.tokens.length===0){throw $parseMinErr('ueoe','Unexpected end of expression: {0}',this.text);}return this.tokens[0];},peek:function(e1,e2,e3,e4){return this.peekAhead(0,e1,e2,e3,e4);},peekAhead:function(i,e1,e2,e3,e4){if(this.tokens.length>i){var token=this.tokens[i];var t=token.text;if(t===e1||t===e2||t===e3||t===e4||!e1&&!e2&&!e3&&!e4){return token;}}return false;},expect:function(e1,e2,e3,e4){var token=this.peek(e1,e2,e3,e4);if(token){this.tokens.shift();return token;}return false;}, /* `undefined` is not a constant, it is an identifier,
+	 */var Lexer=function Lexer(options){this.options=options;};Lexer.prototype={constructor:Lexer,lex:function lex(text){this.text=text;this.index=0;this.tokens=[];while(this.index<this.text.length){var ch=this.text.charAt(this.index);if(ch==='"'||ch==="'"){this.readString(ch);}else if(this.isNumber(ch)||ch==='.'&&this.isNumber(this.peek())){this.readNumber();}else if(this.isIdent(ch)){this.readIdent();}else if(this.is(ch,'(){}[].,;:?')){this.tokens.push({index:this.index,text:ch});this.index++;}else if(this.isWhitespace(ch)){this.index++;}else {var ch2=ch+this.peek();var ch3=ch2+this.peek(2);var op1=OPERATORS[ch];var op2=OPERATORS[ch2];var op3=OPERATORS[ch3];if(op1||op2||op3){var token=op3?ch3:op2?ch2:ch;this.tokens.push({index:this.index,text:token,operator:true});this.index+=token.length;}else {this.throwError('Unexpected next character ',this.index,this.index+1);}}}return this.tokens;},is:function is(ch,chars){return chars.indexOf(ch)!==-1;},peek:function peek(i){var num=i||1;return this.index+num<this.text.length?this.text.charAt(this.index+num):false;},isNumber:function isNumber(ch){return '0'<=ch&&ch<='9'&&typeof ch==="string";},isWhitespace:function isWhitespace(ch){ // IE treats non-breaking space as \u00A0
+	return ch===' '||ch==='\r'||ch==='\t'||ch==='\n'||ch==='\v'||ch===' ';},isIdent:function isIdent(ch){return 'a'<=ch&&ch<='z'||'A'<=ch&&ch<='Z'||'_'===ch||ch==='$';},isExpOperator:function isExpOperator(ch){return ch==='-'||ch==='+'||this.isNumber(ch);},throwError:function throwError(error,start,end){end=end||this.index;var colStr=isDefined(start)?'s '+start+'-'+this.index+' ['+this.text.substring(start,end)+']':' '+end;throw $parseMinErr('lexerr','Lexer Error: {0} at column{1} in expression [{2}].',error,colStr,this.text);},readNumber:function readNumber(){var number='';var start=this.index;while(this.index<this.text.length){var ch=lowercase(this.text.charAt(this.index));if(ch=='.'||this.isNumber(ch)){number+=ch;}else {var peekCh=this.peek();if(ch=='e'&&this.isExpOperator(peekCh)){number+=ch;}else if(this.isExpOperator(ch)&&peekCh&&this.isNumber(peekCh)&&number.charAt(number.length-1)=='e'){number+=ch;}else if(this.isExpOperator(ch)&&(!peekCh||!this.isNumber(peekCh))&&number.charAt(number.length-1)=='e'){this.throwError('Invalid exponent');}else {break;}}this.index++;}this.tokens.push({index:start,text:number,constant:true,value:Number(number)});},readIdent:function readIdent(){var start=this.index;while(this.index<this.text.length){var ch=this.text.charAt(this.index);if(!(this.isIdent(ch)||this.isNumber(ch))){break;}this.index++;}this.tokens.push({index:start,text:this.text.slice(start,this.index),identifier:true});},readString:function readString(quote){var start=this.index;this.index++;var string='';var rawString=quote;var escape=false;while(this.index<this.text.length){var ch=this.text.charAt(this.index);rawString+=ch;if(escape){if(ch==='u'){var hex=this.text.substring(this.index+1,this.index+5);if(!hex.match(/[\da-f]{4}/i)){this.throwError('Invalid unicode escape [\\u'+hex+']');}this.index+=4;string+=String.fromCharCode(parseInt(hex,16));}else {var rep=ESCAPE[ch];string=string+(rep||ch);}escape=false;}else if(ch==='\\'){escape=true;}else if(ch===quote){this.index++;this.tokens.push({index:start,text:rawString,constant:true,value:string});return;}else {string+=ch;}this.index++;}this.throwError('Unterminated quote',start);}};var AST=function AST(lexer,options){this.lexer=lexer;this.options=options;};AST.Program='Program';AST.ExpressionStatement='ExpressionStatement';AST.AssignmentExpression='AssignmentExpression';AST.ConditionalExpression='ConditionalExpression';AST.LogicalExpression='LogicalExpression';AST.BinaryExpression='BinaryExpression';AST.UnaryExpression='UnaryExpression';AST.CallExpression='CallExpression';AST.MemberExpression='MemberExpression';AST.Identifier='Identifier';AST.Literal='Literal';AST.ArrayExpression='ArrayExpression';AST.Property='Property';AST.ObjectExpression='ObjectExpression';AST.ThisExpression='ThisExpression'; // Internal use only
+	AST.NGValueParameter='NGValueParameter';AST.prototype={ast:function ast(text){this.text=text;this.tokens=this.lexer.lex(text);var value=this.program();if(this.tokens.length!==0){this.throwError('is an unexpected token',this.tokens[0]);}return value;},program:function program(){var body=[];while(true){if(this.tokens.length>0&&!this.peek('}',')',';',']'))body.push(this.expressionStatement());if(!this.expect(';')){return {type:AST.Program,body:body};}}},expressionStatement:function expressionStatement(){return {type:AST.ExpressionStatement,expression:this.filterChain()};},filterChain:function filterChain(){var left=this.expression();var token;while(token=this.expect('|')){left=this.filter(left);}return left;},expression:function expression(){return this.assignment();},assignment:function assignment(){var result=this.ternary();if(this.expect('=')){result={type:AST.AssignmentExpression,left:result,right:this.assignment(),operator:'='};}return result;},ternary:function ternary(){var test=this.logicalOR();var alternate;var consequent;if(this.expect('?')){alternate=this.expression();if(this.consume(':')){consequent=this.expression();return {type:AST.ConditionalExpression,test:test,alternate:alternate,consequent:consequent};}}return test;},logicalOR:function logicalOR(){var left=this.logicalAND();while(this.expect('||')){left={type:AST.LogicalExpression,operator:'||',left:left,right:this.logicalAND()};}return left;},logicalAND:function logicalAND(){var left=this.equality();while(this.expect('&&')){left={type:AST.LogicalExpression,operator:'&&',left:left,right:this.equality()};}return left;},equality:function equality(){var left=this.relational();var token;while(token=this.expect('==','!=','===','!==')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.relational()};}return left;},relational:function relational(){var left=this.additive();var token;while(token=this.expect('<','>','<=','>=')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.additive()};}return left;},additive:function additive(){var left=this.multiplicative();var token;while(token=this.expect('+','-')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.multiplicative()};}return left;},multiplicative:function multiplicative(){var left=this.unary();var token;while(token=this.expect('*','/','%')){left={type:AST.BinaryExpression,operator:token.text,left:left,right:this.unary()};}return left;},unary:function unary(){var token;if(token=this.expect('+','-','!')){return {type:AST.UnaryExpression,operator:token.text,prefix:true,argument:this.unary()};}else {return this.primary();}},primary:function primary(){var primary;if(this.expect('(')){primary=this.filterChain();this.consume(')');}else if(this.expect('[')){primary=this.arrayDeclaration();}else if(this.expect('{')){primary=this.object();}else if(this.constants.hasOwnProperty(this.peek().text)){primary=copy(this.constants[this.consume().text]);}else if(this.peek().identifier){primary=this.identifier();}else if(this.peek().constant){primary=this.constant();}else {this.throwError('not a primary expression',this.peek());}var next;while(next=this.expect('(','[','.')){if(next.text==='('){primary={type:AST.CallExpression,callee:primary,arguments:this.parseArguments()};this.consume(')');}else if(next.text==='['){primary={type:AST.MemberExpression,object:primary,property:this.expression(),computed:true};this.consume(']');}else if(next.text==='.'){primary={type:AST.MemberExpression,object:primary,property:this.identifier(),computed:false};}else {this.throwError('IMPOSSIBLE');}}return primary;},filter:function filter(baseExpression){var args=[baseExpression];var result={type:AST.CallExpression,callee:this.identifier(),arguments:args,filter:true};while(this.expect(':')){args.push(this.expression());}return result;},parseArguments:function parseArguments(){var args=[];if(this.peekToken().text!==')'){do {args.push(this.expression());}while(this.expect(','));}return args;},identifier:function identifier(){var token=this.consume();if(!token.identifier){this.throwError('is not a valid identifier',token);}return {type:AST.Identifier,name:token.text};},constant:function constant(){ // TODO check that it is a constant
+	return {type:AST.Literal,value:this.consume().value};},arrayDeclaration:function arrayDeclaration(){var elements=[];if(this.peekToken().text!==']'){do {if(this.peek(']')){ // Support trailing commas per ES5.1.
+	break;}elements.push(this.expression());}while(this.expect(','));}this.consume(']');return {type:AST.ArrayExpression,elements:elements};},object:function object(){var properties=[],property;if(this.peekToken().text!=='}'){do {if(this.peek('}')){ // Support trailing commas per ES5.1.
+	break;}property={type:AST.Property,kind:'init'};if(this.peek().constant){property.key=this.constant();}else if(this.peek().identifier){property.key=this.identifier();}else {this.throwError("invalid key",this.peek());}this.consume(':');property.value=this.expression();properties.push(property);}while(this.expect(','));}this.consume('}');return {type:AST.ObjectExpression,properties:properties};},throwError:function throwError(msg,token){throw $parseMinErr('syntax','Syntax Error: Token \'{0}\' {1} at column {2} of the expression [{3}] starting at [{4}].',token.text,msg,token.index+1,this.text,this.text.substring(token.index));},consume:function consume(e1){if(this.tokens.length===0){throw $parseMinErr('ueoe','Unexpected end of expression: {0}',this.text);}var token=this.expect(e1);if(!token){this.throwError('is unexpected, expecting ['+e1+']',this.peek());}return token;},peekToken:function peekToken(){if(this.tokens.length===0){throw $parseMinErr('ueoe','Unexpected end of expression: {0}',this.text);}return this.tokens[0];},peek:function peek(e1,e2,e3,e4){return this.peekAhead(0,e1,e2,e3,e4);},peekAhead:function peekAhead(i,e1,e2,e3,e4){if(this.tokens.length>i){var token=this.tokens[i];var t=token.text;if(t===e1||t===e2||t===e3||t===e4||!e1&&!e2&&!e3&&!e4){return token;}}return false;},expect:function expect(e1,e2,e3,e4){var token=this.peek(e1,e2,e3,e4);if(token){this.tokens.shift();return token;}return false;}, /* `undefined` is not a constant, it is an identifier,
 	   * but using it as an identifier is not supported
-	   */constants:{'true':{type:AST.Literal,value:true},'false':{type:AST.Literal,value:false},'null':{type:AST.Literal,value:null},'undefined':{type:AST.Literal,value:undefined},'this':{type:AST.ThisExpression}}};function ifDefined(v,d){return typeof v!=='undefined'?v:d;}function plusFn(l,r){if(typeof l==='undefined')return r;if(typeof r==='undefined')return l;return l+r;}function isStateless($filter,filterName){var fn=$filter(filterName);return !fn.$stateful;}function findConstantAndWatchExpressions(ast,$filter){var allConstants;var argsToWatch;switch(ast.type){case AST.Program:allConstants=true;forEach(ast.body,function(expr){findConstantAndWatchExpressions(expr.expression,$filter);allConstants=allConstants&&expr.expression.constant;});ast.constant=allConstants;break;case AST.Literal:ast.constant=true;ast.toWatch=[];break;case AST.UnaryExpression:findConstantAndWatchExpressions(ast.argument,$filter);ast.constant=ast.argument.constant;ast.toWatch=ast.argument.toWatch;break;case AST.BinaryExpression:findConstantAndWatchExpressions(ast.left,$filter);findConstantAndWatchExpressions(ast.right,$filter);ast.constant=ast.left.constant&&ast.right.constant;ast.toWatch=ast.left.toWatch.concat(ast.right.toWatch);break;case AST.LogicalExpression:findConstantAndWatchExpressions(ast.left,$filter);findConstantAndWatchExpressions(ast.right,$filter);ast.constant=ast.left.constant&&ast.right.constant;ast.toWatch=ast.constant?[]:[ast];break;case AST.ConditionalExpression:findConstantAndWatchExpressions(ast.test,$filter);findConstantAndWatchExpressions(ast.alternate,$filter);findConstantAndWatchExpressions(ast.consequent,$filter);ast.constant=ast.test.constant&&ast.alternate.constant&&ast.consequent.constant;ast.toWatch=ast.constant?[]:[ast];break;case AST.Identifier:ast.constant=false;ast.toWatch=[ast];break;case AST.MemberExpression:findConstantAndWatchExpressions(ast.object,$filter);if(ast.computed){findConstantAndWatchExpressions(ast.property,$filter);}ast.constant=ast.object.constant&&(!ast.computed||ast.property.constant);ast.toWatch=[ast];break;case AST.CallExpression:allConstants=ast.filter?isStateless($filter,ast.callee.name):false;argsToWatch=[];forEach(ast.arguments,function(expr){findConstantAndWatchExpressions(expr,$filter);allConstants=allConstants&&expr.constant;if(!expr.constant){argsToWatch.push.apply(argsToWatch,expr.toWatch);}});ast.constant=allConstants;ast.toWatch=ast.filter&&isStateless($filter,ast.callee.name)?argsToWatch:[ast];break;case AST.AssignmentExpression:findConstantAndWatchExpressions(ast.left,$filter);findConstantAndWatchExpressions(ast.right,$filter);ast.constant=ast.left.constant&&ast.right.constant;ast.toWatch=[ast];break;case AST.ArrayExpression:allConstants=true;argsToWatch=[];forEach(ast.elements,function(expr){findConstantAndWatchExpressions(expr,$filter);allConstants=allConstants&&expr.constant;if(!expr.constant){argsToWatch.push.apply(argsToWatch,expr.toWatch);}});ast.constant=allConstants;ast.toWatch=argsToWatch;break;case AST.ObjectExpression:allConstants=true;argsToWatch=[];forEach(ast.properties,function(property){findConstantAndWatchExpressions(property.value,$filter);allConstants=allConstants&&property.value.constant;if(!property.value.constant){argsToWatch.push.apply(argsToWatch,property.value.toWatch);}});ast.constant=allConstants;ast.toWatch=argsToWatch;break;case AST.ThisExpression:ast.constant=false;ast.toWatch=[];break;}}function getInputs(body){if(body.length!=1)return;var lastExpression=body[0].expression;var candidate=lastExpression.toWatch;if(candidate.length!==1)return candidate;return candidate[0]!==lastExpression?candidate:undefined;}function isAssignable(ast){return ast.type===AST.Identifier||ast.type===AST.MemberExpression;}function assignableAST(ast){if(ast.body.length===1&&isAssignable(ast.body[0].expression)){return {type:AST.AssignmentExpression,left:ast.body[0].expression,right:{type:AST.NGValueParameter},operator:'='};}}function isLiteral(ast){return ast.body.length===0||ast.body.length===1&&(ast.body[0].expression.type===AST.Literal||ast.body[0].expression.type===AST.ArrayExpression||ast.body[0].expression.type===AST.ObjectExpression);}function isConstant(ast){return ast.constant;}function ASTCompiler(astBuilder,$filter){this.astBuilder=astBuilder;this.$filter=$filter;}ASTCompiler.prototype={compile:function(expression,expensiveChecks){var self=this;var ast=this.astBuilder.ast(expression);this.state={nextId:0,filters:{},expensiveChecks:expensiveChecks,fn:{vars:[],body:[],own:{}},assign:{vars:[],body:[],own:{}},inputs:[]};findConstantAndWatchExpressions(ast,self.$filter);var extra='';var assignable;this.stage='assign';if(assignable=assignableAST(ast)){this.state.computing='assign';var result=this.nextId();this.recurse(assignable,result);extra='fn.assign='+this.generateFunction('assign','s,v,l');}var toWatch=getInputs(ast.body);self.stage='inputs';forEach(toWatch,function(watch,key){var fnKey='fn'+key;self.state[fnKey]={vars:[],body:[],own:{}};self.state.computing=fnKey;var intoId=self.nextId();self.recurse(watch,intoId);self.return_(intoId);self.state.inputs.push(fnKey);watch.watchId=key;});this.state.computing='fn';this.stage='main';this.recurse(ast);var fnString= // The build and minification steps remove the string "use strict" from the code, but this is done using a regex.
+	   */constants:{'true':{type:AST.Literal,value:true},'false':{type:AST.Literal,value:false},'null':{type:AST.Literal,value:null},'undefined':{type:AST.Literal,value:undefined},'this':{type:AST.ThisExpression}}};function ifDefined(v,d){return typeof v!=='undefined'?v:d;}function plusFn(l,r){if(typeof l==='undefined')return r;if(typeof r==='undefined')return l;return l+r;}function isStateless($filter,filterName){var fn=$filter(filterName);return !fn.$stateful;}function findConstantAndWatchExpressions(ast,$filter){var allConstants;var argsToWatch;switch(ast.type){case AST.Program:allConstants=true;forEach(ast.body,function(expr){findConstantAndWatchExpressions(expr.expression,$filter);allConstants=allConstants&&expr.expression.constant;});ast.constant=allConstants;break;case AST.Literal:ast.constant=true;ast.toWatch=[];break;case AST.UnaryExpression:findConstantAndWatchExpressions(ast.argument,$filter);ast.constant=ast.argument.constant;ast.toWatch=ast.argument.toWatch;break;case AST.BinaryExpression:findConstantAndWatchExpressions(ast.left,$filter);findConstantAndWatchExpressions(ast.right,$filter);ast.constant=ast.left.constant&&ast.right.constant;ast.toWatch=ast.left.toWatch.concat(ast.right.toWatch);break;case AST.LogicalExpression:findConstantAndWatchExpressions(ast.left,$filter);findConstantAndWatchExpressions(ast.right,$filter);ast.constant=ast.left.constant&&ast.right.constant;ast.toWatch=ast.constant?[]:[ast];break;case AST.ConditionalExpression:findConstantAndWatchExpressions(ast.test,$filter);findConstantAndWatchExpressions(ast.alternate,$filter);findConstantAndWatchExpressions(ast.consequent,$filter);ast.constant=ast.test.constant&&ast.alternate.constant&&ast.consequent.constant;ast.toWatch=ast.constant?[]:[ast];break;case AST.Identifier:ast.constant=false;ast.toWatch=[ast];break;case AST.MemberExpression:findConstantAndWatchExpressions(ast.object,$filter);if(ast.computed){findConstantAndWatchExpressions(ast.property,$filter);}ast.constant=ast.object.constant&&(!ast.computed||ast.property.constant);ast.toWatch=[ast];break;case AST.CallExpression:allConstants=ast.filter?isStateless($filter,ast.callee.name):false;argsToWatch=[];forEach(ast.arguments,function(expr){findConstantAndWatchExpressions(expr,$filter);allConstants=allConstants&&expr.constant;if(!expr.constant){argsToWatch.push.apply(argsToWatch,expr.toWatch);}});ast.constant=allConstants;ast.toWatch=ast.filter&&isStateless($filter,ast.callee.name)?argsToWatch:[ast];break;case AST.AssignmentExpression:findConstantAndWatchExpressions(ast.left,$filter);findConstantAndWatchExpressions(ast.right,$filter);ast.constant=ast.left.constant&&ast.right.constant;ast.toWatch=[ast];break;case AST.ArrayExpression:allConstants=true;argsToWatch=[];forEach(ast.elements,function(expr){findConstantAndWatchExpressions(expr,$filter);allConstants=allConstants&&expr.constant;if(!expr.constant){argsToWatch.push.apply(argsToWatch,expr.toWatch);}});ast.constant=allConstants;ast.toWatch=argsToWatch;break;case AST.ObjectExpression:allConstants=true;argsToWatch=[];forEach(ast.properties,function(property){findConstantAndWatchExpressions(property.value,$filter);allConstants=allConstants&&property.value.constant;if(!property.value.constant){argsToWatch.push.apply(argsToWatch,property.value.toWatch);}});ast.constant=allConstants;ast.toWatch=argsToWatch;break;case AST.ThisExpression:ast.constant=false;ast.toWatch=[];break;}}function getInputs(body){if(body.length!=1)return;var lastExpression=body[0].expression;var candidate=lastExpression.toWatch;if(candidate.length!==1)return candidate;return candidate[0]!==lastExpression?candidate:undefined;}function isAssignable(ast){return ast.type===AST.Identifier||ast.type===AST.MemberExpression;}function assignableAST(ast){if(ast.body.length===1&&isAssignable(ast.body[0].expression)){return {type:AST.AssignmentExpression,left:ast.body[0].expression,right:{type:AST.NGValueParameter},operator:'='};}}function isLiteral(ast){return ast.body.length===0||ast.body.length===1&&(ast.body[0].expression.type===AST.Literal||ast.body[0].expression.type===AST.ArrayExpression||ast.body[0].expression.type===AST.ObjectExpression);}function isConstant(ast){return ast.constant;}function ASTCompiler(astBuilder,$filter){this.astBuilder=astBuilder;this.$filter=$filter;}ASTCompiler.prototype={compile:function compile(expression,expensiveChecks){var self=this;var ast=this.astBuilder.ast(expression);this.state={nextId:0,filters:{},expensiveChecks:expensiveChecks,fn:{vars:[],body:[],own:{}},assign:{vars:[],body:[],own:{}},inputs:[]};findConstantAndWatchExpressions(ast,self.$filter);var extra='';var assignable;this.stage='assign';if(assignable=assignableAST(ast)){this.state.computing='assign';var result=this.nextId();this.recurse(assignable,result);extra='fn.assign='+this.generateFunction('assign','s,v,l');}var toWatch=getInputs(ast.body);self.stage='inputs';forEach(toWatch,function(watch,key){var fnKey='fn'+key;self.state[fnKey]={vars:[],body:[],own:{}};self.state.computing=fnKey;var intoId=self.nextId();self.recurse(watch,intoId);self.return_(intoId);self.state.inputs.push(fnKey);watch.watchId=key;});this.state.computing='fn';this.stage='main';this.recurse(ast);var fnString= // The build and minification steps remove the string "use strict" from the code, but this is done using a regex.
 	// This is a workaround for this until we do a better job at only removing the prefix only when we should.
-	'"'+this.USE+' '+this.STRICT+'";\n'+this.filterPrefix()+'var fn='+this.generateFunction('fn','s,l,a,i')+extra+this.watchFns()+'return fn;'; /* jshint -W054 */var fn=new Function('$filter','ensureSafeMemberName','ensureSafeObject','ensureSafeFunction','ifDefined','plus','text',fnString)(this.$filter,ensureSafeMemberName,ensureSafeObject,ensureSafeFunction,ifDefined,plusFn,expression); /* jshint +W054 */this.state=this.stage=undefined;fn.literal=isLiteral(ast);fn.constant=isConstant(ast);return fn;},USE:'use',STRICT:'strict',watchFns:function(){var result=[];var fns=this.state.inputs;var self=this;forEach(fns,function(name){result.push('var '+name+'='+self.generateFunction(name,'s'));});if(fns.length){result.push('fn.inputs=['+fns.join(',')+'];');}return result.join('');},generateFunction:function(name,params){return 'function('+params+'){'+this.varsPrefix(name)+this.body(name)+'};';},filterPrefix:function(){var parts=[];var self=this;forEach(this.state.filters,function(id,filter){parts.push(id+'=$filter('+self.escape(filter)+')');});if(parts.length)return 'var '+parts.join(',')+';';return '';},varsPrefix:function(section){return this.state[section].vars.length?'var '+this.state[section].vars.join(',')+';':'';},body:function(section){return this.state[section].body.join('');},recurse:function(ast,intoId,nameId,recursionFn,create,skipWatchIdCheck){var left,right,self=this,args,expression;recursionFn=recursionFn||noop;if(!skipWatchIdCheck&&isDefined(ast.watchId)){intoId=intoId||this.nextId();this.if_('i',this.lazyAssign(intoId,this.computedMember('i',ast.watchId)),this.lazyRecurse(ast,intoId,nameId,recursionFn,create,true));return;}switch(ast.type){case AST.Program:forEach(ast.body,function(expression,pos){self.recurse(expression.expression,undefined,undefined,function(expr){right=expr;});if(pos!==ast.body.length-1){self.current().body.push(right,';');}else {self.return_(right);}});break;case AST.Literal:expression=this.escape(ast.value);this.assign(intoId,expression);recursionFn(expression);break;case AST.UnaryExpression:this.recurse(ast.argument,undefined,undefined,function(expr){right=expr;});expression=ast.operator+'('+this.ifDefined(right,0)+')';this.assign(intoId,expression);recursionFn(expression);break;case AST.BinaryExpression:this.recurse(ast.left,undefined,undefined,function(expr){left=expr;});this.recurse(ast.right,undefined,undefined,function(expr){right=expr;});if(ast.operator==='+'){expression=this.plus(left,right);}else if(ast.operator==='-'){expression=this.ifDefined(left,0)+ast.operator+this.ifDefined(right,0);}else {expression='('+left+')'+ast.operator+'('+right+')';}this.assign(intoId,expression);recursionFn(expression);break;case AST.LogicalExpression:intoId=intoId||this.nextId();self.recurse(ast.left,intoId);self.if_(ast.operator==='&&'?intoId:self.not(intoId),self.lazyRecurse(ast.right,intoId));recursionFn(intoId);break;case AST.ConditionalExpression:intoId=intoId||this.nextId();self.recurse(ast.test,intoId);self.if_(intoId,self.lazyRecurse(ast.alternate,intoId),self.lazyRecurse(ast.consequent,intoId));recursionFn(intoId);break;case AST.Identifier:intoId=intoId||this.nextId();if(nameId){nameId.context=self.stage==='inputs'?'s':this.assign(this.nextId(),this.getHasOwnProperty('l',ast.name)+'?l:s');nameId.computed=false;nameId.name=ast.name;}ensureSafeMemberName(ast.name);self.if_(self.stage==='inputs'||self.not(self.getHasOwnProperty('l',ast.name)),function(){self.if_(self.stage==='inputs'||'s',function(){if(create&&create!==1){self.if_(self.not(self.nonComputedMember('s',ast.name)),self.lazyAssign(self.nonComputedMember('s',ast.name),'{}'));}self.assign(intoId,self.nonComputedMember('s',ast.name));});},intoId&&self.lazyAssign(intoId,self.nonComputedMember('l',ast.name)));if(self.state.expensiveChecks||isPossiblyDangerousMemberName(ast.name)){self.addEnsureSafeObject(intoId);}recursionFn(intoId);break;case AST.MemberExpression:left=nameId&&(nameId.context=this.nextId())||this.nextId();intoId=intoId||this.nextId();self.recurse(ast.object,left,undefined,function(){self.if_(self.notNull(left),function(){if(ast.computed){right=self.nextId();self.recurse(ast.property,right);self.addEnsureSafeMemberName(right);if(create&&create!==1){self.if_(self.not(self.computedMember(left,right)),self.lazyAssign(self.computedMember(left,right),'{}'));}expression=self.ensureSafeObject(self.computedMember(left,right));self.assign(intoId,expression);if(nameId){nameId.computed=true;nameId.name=right;}}else {ensureSafeMemberName(ast.property.name);if(create&&create!==1){self.if_(self.not(self.nonComputedMember(left,ast.property.name)),self.lazyAssign(self.nonComputedMember(left,ast.property.name),'{}'));}expression=self.nonComputedMember(left,ast.property.name);if(self.state.expensiveChecks||isPossiblyDangerousMemberName(ast.property.name)){expression=self.ensureSafeObject(expression);}self.assign(intoId,expression);if(nameId){nameId.computed=false;nameId.name=ast.property.name;}}},function(){self.assign(intoId,'undefined');});recursionFn(intoId);},!!create);break;case AST.CallExpression:intoId=intoId||this.nextId();if(ast.filter){right=self.filter(ast.callee.name);args=[];forEach(ast.arguments,function(expr){var argument=self.nextId();self.recurse(expr,argument);args.push(argument);});expression=right+'('+args.join(',')+')';self.assign(intoId,expression);recursionFn(intoId);}else {right=self.nextId();left={};args=[];self.recurse(ast.callee,right,left,function(){self.if_(self.notNull(right),function(){self.addEnsureSafeFunction(right);forEach(ast.arguments,function(expr){self.recurse(expr,self.nextId(),undefined,function(argument){args.push(self.ensureSafeObject(argument));});});if(left.name){if(!self.state.expensiveChecks){self.addEnsureSafeObject(left.context);}expression=self.member(left.context,left.name,left.computed)+'('+args.join(',')+')';}else {expression=right+'('+args.join(',')+')';}expression=self.ensureSafeObject(expression);self.assign(intoId,expression);},function(){self.assign(intoId,'undefined');});recursionFn(intoId);});}break;case AST.AssignmentExpression:right=this.nextId();left={};if(!isAssignable(ast.left)){throw $parseMinErr('lval','Trying to assing a value to a non l-value');}this.recurse(ast.left,undefined,left,function(){self.if_(self.notNull(left.context),function(){self.recurse(ast.right,right);self.addEnsureSafeObject(self.member(left.context,left.name,left.computed));expression=self.member(left.context,left.name,left.computed)+ast.operator+right;self.assign(intoId,expression);recursionFn(intoId||expression);});},1);break;case AST.ArrayExpression:args=[];forEach(ast.elements,function(expr){self.recurse(expr,self.nextId(),undefined,function(argument){args.push(argument);});});expression='['+args.join(',')+']';this.assign(intoId,expression);recursionFn(expression);break;case AST.ObjectExpression:args=[];forEach(ast.properties,function(property){self.recurse(property.value,self.nextId(),undefined,function(expr){args.push(self.escape(property.key.type===AST.Identifier?property.key.name:''+property.key.value)+':'+expr);});});expression='{'+args.join(',')+'}';this.assign(intoId,expression);recursionFn(expression);break;case AST.ThisExpression:this.assign(intoId,'s');recursionFn('s');break;case AST.NGValueParameter:this.assign(intoId,'v');recursionFn('v');break;}},getHasOwnProperty:function(element,property){var key=element+'.'+property;var own=this.current().own;if(!own.hasOwnProperty(key)){own[key]=this.nextId(false,element+'&&('+this.escape(property)+' in '+element+')');}return own[key];},assign:function(id,value){if(!id)return;this.current().body.push(id,'=',value,';');return id;},filter:function(filterName){if(!this.state.filters.hasOwnProperty(filterName)){this.state.filters[filterName]=this.nextId(true);}return this.state.filters[filterName];},ifDefined:function(id,defaultValue){return 'ifDefined('+id+','+this.escape(defaultValue)+')';},plus:function(left,right){return 'plus('+left+','+right+')';},return_:function(id){this.current().body.push('return ',id,';');},if_:function(test,alternate,consequent){if(test===true){alternate();}else {var body=this.current().body;body.push('if(',test,'){');alternate();body.push('}');if(consequent){body.push('else{');consequent();body.push('}');}}},not:function(expression){return '!('+expression+')';},notNull:function(expression){return expression+'!=null';},nonComputedMember:function(left,right){return left+'.'+right;},computedMember:function(left,right){return left+'['+right+']';},member:function(left,right,computed){if(computed)return this.computedMember(left,right);return this.nonComputedMember(left,right);},addEnsureSafeObject:function(item){this.current().body.push(this.ensureSafeObject(item),';');},addEnsureSafeMemberName:function(item){this.current().body.push(this.ensureSafeMemberName(item),';');},addEnsureSafeFunction:function(item){this.current().body.push(this.ensureSafeFunction(item),';');},ensureSafeObject:function(item){return 'ensureSafeObject('+item+',text)';},ensureSafeMemberName:function(item){return 'ensureSafeMemberName('+item+',text)';},ensureSafeFunction:function(item){return 'ensureSafeFunction('+item+',text)';},lazyRecurse:function(ast,intoId,nameId,recursionFn,create,skipWatchIdCheck){var self=this;return function(){self.recurse(ast,intoId,nameId,recursionFn,create,skipWatchIdCheck);};},lazyAssign:function(id,value){var self=this;return function(){self.assign(id,value);};},stringEscapeRegex:/[^ a-zA-Z0-9]/g,stringEscapeFn:function(c){return '\\u'+('0000'+c.charCodeAt(0).toString(16)).slice(-4);},escape:function(value){if(isString(value))return "'"+value.replace(this.stringEscapeRegex,this.stringEscapeFn)+"'";if(isNumber(value))return value.toString();if(value===true)return 'true';if(value===false)return 'false';if(value===null)return 'null';if(typeof value==='undefined')return 'undefined';throw $parseMinErr('esc','IMPOSSIBLE');},nextId:function(skip,init){var id='v'+this.state.nextId++;if(!skip){this.current().vars.push(id+(init?'='+init:''));}return id;},current:function(){return this.state[this.state.computing];}};function ASTInterpreter(astBuilder,$filter){this.astBuilder=astBuilder;this.$filter=$filter;}ASTInterpreter.prototype={compile:function(expression,expensiveChecks){var self=this;var ast=this.astBuilder.ast(expression);this.expression=expression;this.expensiveChecks=expensiveChecks;findConstantAndWatchExpressions(ast,self.$filter);var assignable;var assign;if(assignable=assignableAST(ast)){assign=this.recurse(assignable);}var toWatch=getInputs(ast.body);var inputs;if(toWatch){inputs=[];forEach(toWatch,function(watch,key){var input=self.recurse(watch);watch.input=input;inputs.push(input);watch.watchId=key;});}var expressions=[];forEach(ast.body,function(expression){expressions.push(self.recurse(expression.expression));});var fn=ast.body.length===0?function(){}:ast.body.length===1?expressions[0]:function(scope,locals){var lastValue;forEach(expressions,function(exp){lastValue=exp(scope,locals);});return lastValue;};if(assign){fn.assign=function(scope,value,locals){return assign(scope,locals,value);};}if(inputs){fn.inputs=inputs;}fn.literal=isLiteral(ast);fn.constant=isConstant(ast);return fn;},recurse:function(ast,context,create){var left,right,self=this,args,expression;if(ast.input){return this.inputs(ast.input,ast.watchId);}switch(ast.type){case AST.Literal:return this.value(ast.value,context);case AST.UnaryExpression:right=this.recurse(ast.argument);return this['unary'+ast.operator](right,context);case AST.BinaryExpression:left=this.recurse(ast.left);right=this.recurse(ast.right);return this['binary'+ast.operator](left,right,context);case AST.LogicalExpression:left=this.recurse(ast.left);right=this.recurse(ast.right);return this['binary'+ast.operator](left,right,context);case AST.ConditionalExpression:return this['ternary?:'](this.recurse(ast.test),this.recurse(ast.alternate),this.recurse(ast.consequent),context);case AST.Identifier:ensureSafeMemberName(ast.name,self.expression);return self.identifier(ast.name,self.expensiveChecks||isPossiblyDangerousMemberName(ast.name),context,create,self.expression);case AST.MemberExpression:left=this.recurse(ast.object,false,!!create);if(!ast.computed){ensureSafeMemberName(ast.property.name,self.expression);right=ast.property.name;}if(ast.computed)right=this.recurse(ast.property);return ast.computed?this.computedMember(left,right,context,create,self.expression):this.nonComputedMember(left,right,self.expensiveChecks,context,create,self.expression);case AST.CallExpression:args=[];forEach(ast.arguments,function(expr){args.push(self.recurse(expr));});if(ast.filter)right=this.$filter(ast.callee.name);if(!ast.filter)right=this.recurse(ast.callee,true);return ast.filter?function(scope,locals,assign,inputs){var values=[];for(var i=0;i<args.length;++i){values.push(args[i](scope,locals,assign,inputs));}var value=right.apply(undefined,values,inputs);return context?{context:undefined,name:undefined,value:value}:value;}:function(scope,locals,assign,inputs){var rhs=right(scope,locals,assign,inputs);var value;if(rhs.value!=null){ensureSafeObject(rhs.context,self.expression);ensureSafeFunction(rhs.value,self.expression);var values=[];for(var i=0;i<args.length;++i){values.push(ensureSafeObject(args[i](scope,locals,assign,inputs),self.expression));}value=ensureSafeObject(rhs.value.apply(rhs.context,values),self.expression);}return context?{value:value}:value;};case AST.AssignmentExpression:left=this.recurse(ast.left,true,1);right=this.recurse(ast.right);return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs=right(scope,locals,assign,inputs);ensureSafeObject(lhs.value,self.expression);lhs.context[lhs.name]=rhs;return context?{value:rhs}:rhs;};case AST.ArrayExpression:args=[];forEach(ast.elements,function(expr){args.push(self.recurse(expr));});return function(scope,locals,assign,inputs){var value=[];for(var i=0;i<args.length;++i){value.push(args[i](scope,locals,assign,inputs));}return context?{value:value}:value;};case AST.ObjectExpression:args=[];forEach(ast.properties,function(property){args.push({key:property.key.type===AST.Identifier?property.key.name:''+property.key.value,value:self.recurse(property.value)});});return function(scope,locals,assign,inputs){var value={};for(var i=0;i<args.length;++i){value[args[i].key]=args[i].value(scope,locals,assign,inputs);}return context?{value:value}:value;};case AST.ThisExpression:return function(scope){return context?{value:scope}:scope;};case AST.NGValueParameter:return function(scope,locals,assign,inputs){return context?{value:assign}:assign;};}},'unary+':function(argument,context){return function(scope,locals,assign,inputs){var arg=argument(scope,locals,assign,inputs);if(isDefined(arg)){arg=+arg;}else {arg=0;}return context?{value:arg}:arg;};},'unary-':function(argument,context){return function(scope,locals,assign,inputs){var arg=argument(scope,locals,assign,inputs);if(isDefined(arg)){arg=-arg;}else {arg=0;}return context?{value:arg}:arg;};},'unary!':function(argument,context){return function(scope,locals,assign,inputs){var arg=!argument(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary+':function(left,right,context){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs=right(scope,locals,assign,inputs);var arg=plusFn(lhs,rhs);return context?{value:arg}:arg;};},'binary-':function(left,right,context){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs=right(scope,locals,assign,inputs);var arg=(isDefined(lhs)?lhs:0)-(isDefined(rhs)?rhs:0);return context?{value:arg}:arg;};},'binary*':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)*right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary/':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)/right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary%':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)%right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary===':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)===right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary!==':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)!==right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary==':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)==right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary!=':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)!=right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary<':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)<right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary>':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)>right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary<=':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)<=right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary>=':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)>=right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary&&':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)&&right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary||':function(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)||right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'ternary?:':function(test,alternate,consequent,context){return function(scope,locals,assign,inputs){var arg=test(scope,locals,assign,inputs)?alternate(scope,locals,assign,inputs):consequent(scope,locals,assign,inputs);return context?{value:arg}:arg;};},value:function(value,context){return function(){return context?{context:undefined,name:undefined,value:value}:value;};},identifier:function(name,expensiveChecks,context,create,expression){return function(scope,locals,assign,inputs){var base=locals&&name in locals?locals:scope;if(create&&create!==1&&base&&!base[name]){base[name]={};}var value=base?base[name]:undefined;if(expensiveChecks){ensureSafeObject(value,expression);}if(context){return {context:base,name:name,value:value};}else {return value;}};},computedMember:function(left,right,context,create,expression){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs;var value;if(lhs!=null){rhs=right(scope,locals,assign,inputs);ensureSafeMemberName(rhs,expression);if(create&&create!==1&&lhs&&!lhs[rhs]){lhs[rhs]={};}value=lhs[rhs];ensureSafeObject(value,expression);}if(context){return {context:lhs,name:rhs,value:value};}else {return value;}};},nonComputedMember:function(left,right,expensiveChecks,context,create,expression){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);if(create&&create!==1&&lhs&&!lhs[right]){lhs[right]={};}var value=lhs!=null?lhs[right]:undefined;if(expensiveChecks||isPossiblyDangerousMemberName(right)){ensureSafeObject(value,expression);}if(context){return {context:lhs,name:right,value:value};}else {return value;}};},inputs:function(input,watchId){return function(scope,value,locals,inputs){if(inputs)return inputs[watchId];return input(scope,value,locals);};}}; /**
+	'"'+this.USE+' '+this.STRICT+'";\n'+this.filterPrefix()+'var fn='+this.generateFunction('fn','s,l,a,i')+extra+this.watchFns()+'return fn;'; /* jshint -W054 */var fn=new Function('$filter','ensureSafeMemberName','ensureSafeObject','ensureSafeFunction','ifDefined','plus','text',fnString)(this.$filter,ensureSafeMemberName,ensureSafeObject,ensureSafeFunction,ifDefined,plusFn,expression); /* jshint +W054 */this.state=this.stage=undefined;fn.literal=isLiteral(ast);fn.constant=isConstant(ast);return fn;},USE:'use',STRICT:'strict',watchFns:function watchFns(){var result=[];var fns=this.state.inputs;var self=this;forEach(fns,function(name){result.push('var '+name+'='+self.generateFunction(name,'s'));});if(fns.length){result.push('fn.inputs=['+fns.join(',')+'];');}return result.join('');},generateFunction:function generateFunction(name,params){return 'function('+params+'){'+this.varsPrefix(name)+this.body(name)+'};';},filterPrefix:function filterPrefix(){var parts=[];var self=this;forEach(this.state.filters,function(id,filter){parts.push(id+'=$filter('+self.escape(filter)+')');});if(parts.length)return 'var '+parts.join(',')+';';return '';},varsPrefix:function varsPrefix(section){return this.state[section].vars.length?'var '+this.state[section].vars.join(',')+';':'';},body:function body(section){return this.state[section].body.join('');},recurse:function recurse(ast,intoId,nameId,recursionFn,create,skipWatchIdCheck){var left,right,self=this,args,expression;recursionFn=recursionFn||noop;if(!skipWatchIdCheck&&isDefined(ast.watchId)){intoId=intoId||this.nextId();this.if_('i',this.lazyAssign(intoId,this.computedMember('i',ast.watchId)),this.lazyRecurse(ast,intoId,nameId,recursionFn,create,true));return;}switch(ast.type){case AST.Program:forEach(ast.body,function(expression,pos){self.recurse(expression.expression,undefined,undefined,function(expr){right=expr;});if(pos!==ast.body.length-1){self.current().body.push(right,';');}else {self.return_(right);}});break;case AST.Literal:expression=this.escape(ast.value);this.assign(intoId,expression);recursionFn(expression);break;case AST.UnaryExpression:this.recurse(ast.argument,undefined,undefined,function(expr){right=expr;});expression=ast.operator+'('+this.ifDefined(right,0)+')';this.assign(intoId,expression);recursionFn(expression);break;case AST.BinaryExpression:this.recurse(ast.left,undefined,undefined,function(expr){left=expr;});this.recurse(ast.right,undefined,undefined,function(expr){right=expr;});if(ast.operator==='+'){expression=this.plus(left,right);}else if(ast.operator==='-'){expression=this.ifDefined(left,0)+ast.operator+this.ifDefined(right,0);}else {expression='('+left+')'+ast.operator+'('+right+')';}this.assign(intoId,expression);recursionFn(expression);break;case AST.LogicalExpression:intoId=intoId||this.nextId();self.recurse(ast.left,intoId);self.if_(ast.operator==='&&'?intoId:self.not(intoId),self.lazyRecurse(ast.right,intoId));recursionFn(intoId);break;case AST.ConditionalExpression:intoId=intoId||this.nextId();self.recurse(ast.test,intoId);self.if_(intoId,self.lazyRecurse(ast.alternate,intoId),self.lazyRecurse(ast.consequent,intoId));recursionFn(intoId);break;case AST.Identifier:intoId=intoId||this.nextId();if(nameId){nameId.context=self.stage==='inputs'?'s':this.assign(this.nextId(),this.getHasOwnProperty('l',ast.name)+'?l:s');nameId.computed=false;nameId.name=ast.name;}ensureSafeMemberName(ast.name);self.if_(self.stage==='inputs'||self.not(self.getHasOwnProperty('l',ast.name)),function(){self.if_(self.stage==='inputs'||'s',function(){if(create&&create!==1){self.if_(self.not(self.nonComputedMember('s',ast.name)),self.lazyAssign(self.nonComputedMember('s',ast.name),'{}'));}self.assign(intoId,self.nonComputedMember('s',ast.name));});},intoId&&self.lazyAssign(intoId,self.nonComputedMember('l',ast.name)));if(self.state.expensiveChecks||isPossiblyDangerousMemberName(ast.name)){self.addEnsureSafeObject(intoId);}recursionFn(intoId);break;case AST.MemberExpression:left=nameId&&(nameId.context=this.nextId())||this.nextId();intoId=intoId||this.nextId();self.recurse(ast.object,left,undefined,function(){self.if_(self.notNull(left),function(){if(ast.computed){right=self.nextId();self.recurse(ast.property,right);self.addEnsureSafeMemberName(right);if(create&&create!==1){self.if_(self.not(self.computedMember(left,right)),self.lazyAssign(self.computedMember(left,right),'{}'));}expression=self.ensureSafeObject(self.computedMember(left,right));self.assign(intoId,expression);if(nameId){nameId.computed=true;nameId.name=right;}}else {ensureSafeMemberName(ast.property.name);if(create&&create!==1){self.if_(self.not(self.nonComputedMember(left,ast.property.name)),self.lazyAssign(self.nonComputedMember(left,ast.property.name),'{}'));}expression=self.nonComputedMember(left,ast.property.name);if(self.state.expensiveChecks||isPossiblyDangerousMemberName(ast.property.name)){expression=self.ensureSafeObject(expression);}self.assign(intoId,expression);if(nameId){nameId.computed=false;nameId.name=ast.property.name;}}},function(){self.assign(intoId,'undefined');});recursionFn(intoId);},!!create);break;case AST.CallExpression:intoId=intoId||this.nextId();if(ast.filter){right=self.filter(ast.callee.name);args=[];forEach(ast.arguments,function(expr){var argument=self.nextId();self.recurse(expr,argument);args.push(argument);});expression=right+'('+args.join(',')+')';self.assign(intoId,expression);recursionFn(intoId);}else {right=self.nextId();left={};args=[];self.recurse(ast.callee,right,left,function(){self.if_(self.notNull(right),function(){self.addEnsureSafeFunction(right);forEach(ast.arguments,function(expr){self.recurse(expr,self.nextId(),undefined,function(argument){args.push(self.ensureSafeObject(argument));});});if(left.name){if(!self.state.expensiveChecks){self.addEnsureSafeObject(left.context);}expression=self.member(left.context,left.name,left.computed)+'('+args.join(',')+')';}else {expression=right+'('+args.join(',')+')';}expression=self.ensureSafeObject(expression);self.assign(intoId,expression);},function(){self.assign(intoId,'undefined');});recursionFn(intoId);});}break;case AST.AssignmentExpression:right=this.nextId();left={};if(!isAssignable(ast.left)){throw $parseMinErr('lval','Trying to assing a value to a non l-value');}this.recurse(ast.left,undefined,left,function(){self.if_(self.notNull(left.context),function(){self.recurse(ast.right,right);self.addEnsureSafeObject(self.member(left.context,left.name,left.computed));expression=self.member(left.context,left.name,left.computed)+ast.operator+right;self.assign(intoId,expression);recursionFn(intoId||expression);});},1);break;case AST.ArrayExpression:args=[];forEach(ast.elements,function(expr){self.recurse(expr,self.nextId(),undefined,function(argument){args.push(argument);});});expression='['+args.join(',')+']';this.assign(intoId,expression);recursionFn(expression);break;case AST.ObjectExpression:args=[];forEach(ast.properties,function(property){self.recurse(property.value,self.nextId(),undefined,function(expr){args.push(self.escape(property.key.type===AST.Identifier?property.key.name:''+property.key.value)+':'+expr);});});expression='{'+args.join(',')+'}';this.assign(intoId,expression);recursionFn(expression);break;case AST.ThisExpression:this.assign(intoId,'s');recursionFn('s');break;case AST.NGValueParameter:this.assign(intoId,'v');recursionFn('v');break;}},getHasOwnProperty:function getHasOwnProperty(element,property){var key=element+'.'+property;var own=this.current().own;if(!own.hasOwnProperty(key)){own[key]=this.nextId(false,element+'&&('+this.escape(property)+' in '+element+')');}return own[key];},assign:function assign(id,value){if(!id)return;this.current().body.push(id,'=',value,';');return id;},filter:function filter(filterName){if(!this.state.filters.hasOwnProperty(filterName)){this.state.filters[filterName]=this.nextId(true);}return this.state.filters[filterName];},ifDefined:function ifDefined(id,defaultValue){return 'ifDefined('+id+','+this.escape(defaultValue)+')';},plus:function plus(left,right){return 'plus('+left+','+right+')';},return_:function return_(id){this.current().body.push('return ',id,';');},if_:function if_(test,alternate,consequent){if(test===true){alternate();}else {var body=this.current().body;body.push('if(',test,'){');alternate();body.push('}');if(consequent){body.push('else{');consequent();body.push('}');}}},not:function not(expression){return '!('+expression+')';},notNull:function notNull(expression){return expression+'!=null';},nonComputedMember:function nonComputedMember(left,right){return left+'.'+right;},computedMember:function computedMember(left,right){return left+'['+right+']';},member:function member(left,right,computed){if(computed)return this.computedMember(left,right);return this.nonComputedMember(left,right);},addEnsureSafeObject:function addEnsureSafeObject(item){this.current().body.push(this.ensureSafeObject(item),';');},addEnsureSafeMemberName:function addEnsureSafeMemberName(item){this.current().body.push(this.ensureSafeMemberName(item),';');},addEnsureSafeFunction:function addEnsureSafeFunction(item){this.current().body.push(this.ensureSafeFunction(item),';');},ensureSafeObject:function ensureSafeObject(item){return 'ensureSafeObject('+item+',text)';},ensureSafeMemberName:function ensureSafeMemberName(item){return 'ensureSafeMemberName('+item+',text)';},ensureSafeFunction:function ensureSafeFunction(item){return 'ensureSafeFunction('+item+',text)';},lazyRecurse:function lazyRecurse(ast,intoId,nameId,recursionFn,create,skipWatchIdCheck){var self=this;return function(){self.recurse(ast,intoId,nameId,recursionFn,create,skipWatchIdCheck);};},lazyAssign:function lazyAssign(id,value){var self=this;return function(){self.assign(id,value);};},stringEscapeRegex:/[^ a-zA-Z0-9]/g,stringEscapeFn:function stringEscapeFn(c){return '\\u'+('0000'+c.charCodeAt(0).toString(16)).slice(-4);},escape:function escape(value){if(isString(value))return "'"+value.replace(this.stringEscapeRegex,this.stringEscapeFn)+"'";if(isNumber(value))return value.toString();if(value===true)return 'true';if(value===false)return 'false';if(value===null)return 'null';if(typeof value==='undefined')return 'undefined';throw $parseMinErr('esc','IMPOSSIBLE');},nextId:function nextId(skip,init){var id='v'+this.state.nextId++;if(!skip){this.current().vars.push(id+(init?'='+init:''));}return id;},current:function current(){return this.state[this.state.computing];}};function ASTInterpreter(astBuilder,$filter){this.astBuilder=astBuilder;this.$filter=$filter;}ASTInterpreter.prototype={compile:function compile(expression,expensiveChecks){var self=this;var ast=this.astBuilder.ast(expression);this.expression=expression;this.expensiveChecks=expensiveChecks;findConstantAndWatchExpressions(ast,self.$filter);var assignable;var assign;if(assignable=assignableAST(ast)){assign=this.recurse(assignable);}var toWatch=getInputs(ast.body);var inputs;if(toWatch){inputs=[];forEach(toWatch,function(watch,key){var input=self.recurse(watch);watch.input=input;inputs.push(input);watch.watchId=key;});}var expressions=[];forEach(ast.body,function(expression){expressions.push(self.recurse(expression.expression));});var fn=ast.body.length===0?function(){}:ast.body.length===1?expressions[0]:function(scope,locals){var lastValue;forEach(expressions,function(exp){lastValue=exp(scope,locals);});return lastValue;};if(assign){fn.assign=function(scope,value,locals){return assign(scope,locals,value);};}if(inputs){fn.inputs=inputs;}fn.literal=isLiteral(ast);fn.constant=isConstant(ast);return fn;},recurse:function recurse(ast,context,create){var left,right,self=this,args,expression;if(ast.input){return this.inputs(ast.input,ast.watchId);}switch(ast.type){case AST.Literal:return this.value(ast.value,context);case AST.UnaryExpression:right=this.recurse(ast.argument);return this['unary'+ast.operator](right,context);case AST.BinaryExpression:left=this.recurse(ast.left);right=this.recurse(ast.right);return this['binary'+ast.operator](left,right,context);case AST.LogicalExpression:left=this.recurse(ast.left);right=this.recurse(ast.right);return this['binary'+ast.operator](left,right,context);case AST.ConditionalExpression:return this['ternary?:'](this.recurse(ast.test),this.recurse(ast.alternate),this.recurse(ast.consequent),context);case AST.Identifier:ensureSafeMemberName(ast.name,self.expression);return self.identifier(ast.name,self.expensiveChecks||isPossiblyDangerousMemberName(ast.name),context,create,self.expression);case AST.MemberExpression:left=this.recurse(ast.object,false,!!create);if(!ast.computed){ensureSafeMemberName(ast.property.name,self.expression);right=ast.property.name;}if(ast.computed)right=this.recurse(ast.property);return ast.computed?this.computedMember(left,right,context,create,self.expression):this.nonComputedMember(left,right,self.expensiveChecks,context,create,self.expression);case AST.CallExpression:args=[];forEach(ast.arguments,function(expr){args.push(self.recurse(expr));});if(ast.filter)right=this.$filter(ast.callee.name);if(!ast.filter)right=this.recurse(ast.callee,true);return ast.filter?function(scope,locals,assign,inputs){var values=[];for(var i=0;i<args.length;++i){values.push(args[i](scope,locals,assign,inputs));}var value=right.apply(undefined,values,inputs);return context?{context:undefined,name:undefined,value:value}:value;}:function(scope,locals,assign,inputs){var rhs=right(scope,locals,assign,inputs);var value;if(rhs.value!=null){ensureSafeObject(rhs.context,self.expression);ensureSafeFunction(rhs.value,self.expression);var values=[];for(var i=0;i<args.length;++i){values.push(ensureSafeObject(args[i](scope,locals,assign,inputs),self.expression));}value=ensureSafeObject(rhs.value.apply(rhs.context,values),self.expression);}return context?{value:value}:value;};case AST.AssignmentExpression:left=this.recurse(ast.left,true,1);right=this.recurse(ast.right);return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs=right(scope,locals,assign,inputs);ensureSafeObject(lhs.value,self.expression);lhs.context[lhs.name]=rhs;return context?{value:rhs}:rhs;};case AST.ArrayExpression:args=[];forEach(ast.elements,function(expr){args.push(self.recurse(expr));});return function(scope,locals,assign,inputs){var value=[];for(var i=0;i<args.length;++i){value.push(args[i](scope,locals,assign,inputs));}return context?{value:value}:value;};case AST.ObjectExpression:args=[];forEach(ast.properties,function(property){args.push({key:property.key.type===AST.Identifier?property.key.name:''+property.key.value,value:self.recurse(property.value)});});return function(scope,locals,assign,inputs){var value={};for(var i=0;i<args.length;++i){value[args[i].key]=args[i].value(scope,locals,assign,inputs);}return context?{value:value}:value;};case AST.ThisExpression:return function(scope){return context?{value:scope}:scope;};case AST.NGValueParameter:return function(scope,locals,assign,inputs){return context?{value:assign}:assign;};}},'unary+':function unary(argument,context){return function(scope,locals,assign,inputs){var arg=argument(scope,locals,assign,inputs);if(isDefined(arg)){arg=+arg;}else {arg=0;}return context?{value:arg}:arg;};},'unary-':function unary(argument,context){return function(scope,locals,assign,inputs){var arg=argument(scope,locals,assign,inputs);if(isDefined(arg)){arg=-arg;}else {arg=0;}return context?{value:arg}:arg;};},'unary!':function unary(argument,context){return function(scope,locals,assign,inputs){var arg=!argument(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary+':function binary(left,right,context){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs=right(scope,locals,assign,inputs);var arg=plusFn(lhs,rhs);return context?{value:arg}:arg;};},'binary-':function binary(left,right,context){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs=right(scope,locals,assign,inputs);var arg=(isDefined(lhs)?lhs:0)-(isDefined(rhs)?rhs:0);return context?{value:arg}:arg;};},'binary*':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)*right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary/':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)/right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary%':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)%right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary===':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)===right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary!==':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)!==right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary==':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)==right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary!=':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)!=right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary<':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)<right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary>':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)>right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary<=':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)<=right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary>=':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)>=right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary&&':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)&&right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'binary||':function binary(left,right,context){return function(scope,locals,assign,inputs){var arg=left(scope,locals,assign,inputs)||right(scope,locals,assign,inputs);return context?{value:arg}:arg;};},'ternary?:':function ternary(test,alternate,consequent,context){return function(scope,locals,assign,inputs){var arg=test(scope,locals,assign,inputs)?alternate(scope,locals,assign,inputs):consequent(scope,locals,assign,inputs);return context?{value:arg}:arg;};},value:function(_value2){function value(_x,_x2){return _value2.apply(this,arguments);}value.toString=function(){return _value2.toString();};return value;}(function(value,context){return function(){return context?{context:undefined,name:undefined,value:value}:value;};}),identifier:function identifier(name,expensiveChecks,context,create,expression){return function(scope,locals,assign,inputs){var base=locals&&name in locals?locals:scope;if(create&&create!==1&&base&&!base[name]){base[name]={};}var value=base?base[name]:undefined;if(expensiveChecks){ensureSafeObject(value,expression);}if(context){return {context:base,name:name,value:value};}else {return value;}};},computedMember:function computedMember(left,right,context,create,expression){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);var rhs;var value;if(lhs!=null){rhs=right(scope,locals,assign,inputs);ensureSafeMemberName(rhs,expression);if(create&&create!==1&&lhs&&!lhs[rhs]){lhs[rhs]={};}value=lhs[rhs];ensureSafeObject(value,expression);}if(context){return {context:lhs,name:rhs,value:value};}else {return value;}};},nonComputedMember:function nonComputedMember(left,right,expensiveChecks,context,create,expression){return function(scope,locals,assign,inputs){var lhs=left(scope,locals,assign,inputs);if(create&&create!==1&&lhs&&!lhs[right]){lhs[right]={};}var value=lhs!=null?lhs[right]:undefined;if(expensiveChecks||isPossiblyDangerousMemberName(right)){ensureSafeObject(value,expression);}if(context){return {context:lhs,name:right,value:value};}else {return value;}};},inputs:function inputs(input,watchId){return function(scope,value,locals,inputs){if(inputs)return inputs[watchId];return input(scope,value,locals);};}}; /**
 	 * @constructor
-	 */var Parser=function(lexer,$filter,options){this.lexer=lexer;this.$filter=$filter;this.options=options;this.ast=new AST(this.lexer);this.astCompiler=options.csp?new ASTInterpreter(this.ast,$filter):new ASTCompiler(this.ast,$filter);};Parser.prototype={constructor:Parser,parse:function(text){return this.astCompiler.compile(text,this.options.expensiveChecks);}}; //////////////////////////////////////////////////
+	 */var Parser=function Parser(lexer,$filter,options){this.lexer=lexer;this.$filter=$filter;this.options=options;this.ast=new AST(this.lexer);this.astCompiler=options.csp?new ASTInterpreter(this.ast,$filter):new ASTCompiler(this.ast,$filter);};Parser.prototype={constructor:Parser,parse:function parse(text){return this.astCompiler.compile(text,this.options.expensiveChecks);}}; //////////////////////////////////////////////////
 	// Parser helper functions
 	//////////////////////////////////////////////////
 	function setter(obj,path,setValue,fullExp){ensureSafeObject(obj,fullExp);var element=path.split('.'),key;for(var i=0;element.length>1;i++){key=ensureSafeMemberName(element.shift(),fullExp);var propertyObj=ensureSafeObject(obj[key],fullExp);if(!propertyObj){propertyObj={};obj[key]=propertyObj;}obj=propertyObj;}key=ensureSafeMemberName(element.shift(),fullExp);ensureSafeObject(obj[key],fullExp);obj[key]=setValue;return setValue;}var getterFnCacheDefault=createMap();var getterFnCacheExpensive=createMap();function isPossiblyDangerousMemberName(name){return name=='constructor';}var objectValueOf=Object.prototype.valueOf;function getValueOf(value){return isFunction(value.valueOf)?value.valueOf():objectValueOf.call(value);} ///////////////////////////////////
@@ -8915,11 +8921,11 @@
 	 * @description
 	 * `$parseProvider` can be used for configuring the default behavior of the {@link ng.$parse $parse}
 	 *  service.
-	 */function $ParseProvider(){var cacheDefault=createMap();var cacheExpensive=createMap();this.$get=['$filter','$sniffer',function($filter,$sniffer){var $parseOptions={csp:$sniffer.csp,expensiveChecks:false},$parseOptionsExpensive={csp:$sniffer.csp,expensiveChecks:true};return function $parse(exp,interceptorFn,expensiveChecks){var parsedExpression,oneTime,cacheKey;switch(typeof exp){case 'string':exp=exp.trim();cacheKey=exp;var cache=expensiveChecks?cacheExpensive:cacheDefault;parsedExpression=cache[cacheKey];if(!parsedExpression){if(exp.charAt(0)===':'&&exp.charAt(1)===':'){oneTime=true;exp=exp.substring(2);}var parseOptions=expensiveChecks?$parseOptionsExpensive:$parseOptions;var lexer=new Lexer(parseOptions);var parser=new Parser(lexer,$filter,parseOptions);parsedExpression=parser.parse(exp);if(parsedExpression.constant){parsedExpression.$$watchDelegate=constantWatchDelegate;}else if(oneTime){parsedExpression.$$watchDelegate=parsedExpression.literal?oneTimeLiteralWatchDelegate:oneTimeWatchDelegate;}else if(parsedExpression.inputs){parsedExpression.$$watchDelegate=inputsWatchDelegate;}cache[cacheKey]=parsedExpression;}return addInterceptor(parsedExpression,interceptorFn);case 'function':return addInterceptor(exp,interceptorFn);default:return noop;}};function expressionInputDirtyCheck(newValue,oldValueOfValue){if(newValue==null||oldValueOfValue==null){ // null/undefined
-	return newValue===oldValueOfValue;}if(typeof newValue==='object'){ // attempt to convert the value to a primitive type
+	 */function $ParseProvider(){var cacheDefault=createMap();var cacheExpensive=createMap();this.$get=['$filter','$sniffer',function($filter,$sniffer){var $parseOptions={csp:$sniffer.csp,expensiveChecks:false},$parseOptionsExpensive={csp:$sniffer.csp,expensiveChecks:true};return function $parse(exp,interceptorFn,expensiveChecks){var parsedExpression,oneTime,cacheKey;switch(typeof exp==='undefined'?'undefined':_typeof(exp)){case 'string':exp=exp.trim();cacheKey=exp;var cache=expensiveChecks?cacheExpensive:cacheDefault;parsedExpression=cache[cacheKey];if(!parsedExpression){if(exp.charAt(0)===':'&&exp.charAt(1)===':'){oneTime=true;exp=exp.substring(2);}var parseOptions=expensiveChecks?$parseOptionsExpensive:$parseOptions;var lexer=new Lexer(parseOptions);var parser=new Parser(lexer,$filter,parseOptions);parsedExpression=parser.parse(exp);if(parsedExpression.constant){parsedExpression.$$watchDelegate=constantWatchDelegate;}else if(oneTime){parsedExpression.$$watchDelegate=parsedExpression.literal?oneTimeLiteralWatchDelegate:oneTimeWatchDelegate;}else if(parsedExpression.inputs){parsedExpression.$$watchDelegate=inputsWatchDelegate;}cache[cacheKey]=parsedExpression;}return addInterceptor(parsedExpression,interceptorFn);case 'function':return addInterceptor(exp,interceptorFn);default:return noop;}};function expressionInputDirtyCheck(newValue,oldValueOfValue){if(newValue==null||oldValueOfValue==null){ // null/undefined
+	return newValue===oldValueOfValue;}if((typeof newValue==='undefined'?'undefined':_typeof(newValue))==='object'){ // attempt to convert the value to a primitive type
 	// TODO(docs): add a note to docs that by implementing valueOf even objects and arrays can
 	//             be cheaply dirty-checked
-	newValue=getValueOf(newValue);if(typeof newValue==='object'){ // objects/arrays are not supported - deep-watching them would be too expensive
+	newValue=getValueOf(newValue);if((typeof newValue==='undefined'?'undefined':_typeof(newValue))==='object'){ // objects/arrays are not supported - deep-watching them would be too expensive
 	return false;} // fall-through to the primitive equality check
 	} //Primitive or NaN
 	return newValue===oldValueOfValue||newValue!==newValue&&oldValueOfValue!==oldValueOfValue;}function inputsWatchDelegate(scope,listener,objectEquality,parsedExpression,prettyPrintExpression){var inputExpressions=parsedExpression.inputs;var lastResult;if(inputExpressions.length===1){var oldInputValueOf=expressionInputDirtyCheck; // init to something unique so that equals check fails
@@ -9158,9 +9164,9 @@
 	   * Creates a `Deferred` object which represents a task which will finish in the future.
 	   *
 	   * @returns {Deferred} Returns a new instance of deferred.
-	   */var defer=function(){return new Deferred();};function Promise(){this.$$state={status:0};}Promise.prototype={then:function(onFulfilled,onRejected,progressBack){var result=new Deferred();this.$$state.pending=this.$$state.pending||[];this.$$state.pending.push([result,onFulfilled,onRejected,progressBack]);if(this.$$state.status>0)scheduleProcessQueue(this.$$state);return result.promise;},"catch":function(callback){return this.then(null,callback);},"finally":function(callback,progressBack){return this.then(function(value){return handleCallback(value,true,callback);},function(error){return handleCallback(error,false,callback);},progressBack);}}; //Faster, more basic than angular.bind http://jsperf.com/angular-bind-vs-custom-vs-native
+	   */var defer=function defer(){return new Deferred();};function Promise(){this.$$state={status:0};}Promise.prototype={then:function then(onFulfilled,onRejected,progressBack){var result=new Deferred();this.$$state.pending=this.$$state.pending||[];this.$$state.pending.push([result,onFulfilled,onRejected,progressBack]);if(this.$$state.status>0)scheduleProcessQueue(this.$$state);return result.promise;},"catch":function _catch(callback){return this.then(null,callback);},"finally":function _finally(callback,progressBack){return this.then(function(value){return handleCallback(value,true,callback);},function(error){return handleCallback(error,false,callback);},progressBack);}}; //Faster, more basic than angular.bind http://jsperf.com/angular-bind-vs-custom-vs-native
 	function simpleBind(context,fn){return function(value){fn.call(context,value);};}function processQueue(state){var fn,deferred,pending;pending=state.pending;state.processScheduled=false;state.pending=undefined;for(var i=0,ii=pending.length;i<ii;++i){deferred=pending[i][0];fn=pending[i][state.status];try{if(isFunction(fn)){deferred.resolve(fn(state.value));}else if(state.status===1){deferred.resolve(state.value);}else {deferred.reject(state.value);}}catch(e){deferred.reject(e);exceptionHandler(e);}}}function scheduleProcessQueue(state){if(state.processScheduled||!state.pending)return;state.processScheduled=true;nextTick(function(){processQueue(state);});}function Deferred(){this.promise=new Promise(); //Necessary to support unbound execution :/
-	this.resolve=simpleBind(this,this.resolve);this.reject=simpleBind(this,this.reject);this.notify=simpleBind(this,this.notify);}Deferred.prototype={resolve:function(val){if(this.promise.$$state.status)return;if(val===this.promise){this.$$reject($qMinErr('qcycle',"Expected promise to be resolved with value other than itself '{0}'",val));}else {this.$$resolve(val);}},$$resolve:function(val){var then,fns;fns=callOnce(this,this.$$resolve,this.$$reject);try{if(isObject(val)||isFunction(val))then=val&&val.then;if(isFunction(then)){this.promise.$$state.status=-1;then.call(val,fns[0],fns[1],this.notify);}else {this.promise.$$state.value=val;this.promise.$$state.status=1;scheduleProcessQueue(this.promise.$$state);}}catch(e){fns[1](e);exceptionHandler(e);}},reject:function(reason){if(this.promise.$$state.status)return;this.$$reject(reason);},$$reject:function(reason){this.promise.$$state.value=reason;this.promise.$$state.status=2;scheduleProcessQueue(this.promise.$$state);},notify:function(progress){var callbacks=this.promise.$$state.pending;if(this.promise.$$state.status<=0&&callbacks&&callbacks.length){nextTick(function(){var callback,result;for(var i=0,ii=callbacks.length;i<ii;i++){result=callbacks[i][0];callback=callbacks[i][3];try{result.notify(isFunction(callback)?callback(progress):progress);}catch(e){exceptionHandler(e);}}});}}}; /**
+	this.resolve=simpleBind(this,this.resolve);this.reject=simpleBind(this,this.reject);this.notify=simpleBind(this,this.notify);}Deferred.prototype={resolve:function resolve(val){if(this.promise.$$state.status)return;if(val===this.promise){this.$$reject($qMinErr('qcycle',"Expected promise to be resolved with value other than itself '{0}'",val));}else {this.$$resolve(val);}},$$resolve:function $$resolve(val){var then,fns;fns=callOnce(this,this.$$resolve,this.$$reject);try{if(isObject(val)||isFunction(val))then=val&&val.then;if(isFunction(then)){this.promise.$$state.status=-1;then.call(val,fns[0],fns[1],this.notify);}else {this.promise.$$state.value=val;this.promise.$$state.status=1;scheduleProcessQueue(this.promise.$$state);}}catch(e){fns[1](e);exceptionHandler(e);}},reject:function reject(reason){if(this.promise.$$state.status)return;this.$$reject(reason);},$$reject:function $$reject(reason){this.promise.$$state.value=reason;this.promise.$$state.status=2;scheduleProcessQueue(this.promise.$$state);},notify:function notify(progress){var callbacks=this.promise.$$state.pending;if(this.promise.$$state.status<=0&&callbacks&&callbacks.length){nextTick(function(){var callback,result;for(var i=0,ii=callbacks.length;i<ii;i++){result=callbacks[i][0];callback=callbacks[i][3];try{result.notify(isFunction(callback)?callback(progress):progress);}catch(e){exceptionHandler(e);}}});}}}; /**
 	   * @ngdoc method
 	   * @name $q#reject
 	   * @kind function
@@ -9195,7 +9201,7 @@
 	   *
 	   * @param {*} reason Constant, message, exception or an object representing the rejection reason.
 	   * @returns {Promise} Returns a promise that was already resolved as rejected with the `reason`.
-	   */var reject=function(reason){var result=new Deferred();result.reject(reason);return result.promise;};var makePromise=function makePromise(value,resolved){var result=new Deferred();if(resolved){result.resolve(value);}else {result.reject(value);}return result.promise;};var handleCallback=function handleCallback(value,isResolved,callback){var callbackOutput=null;try{if(isFunction(callback))callbackOutput=callback();}catch(e){return makePromise(e,false);}if(isPromiseLike(callbackOutput)){return callbackOutput.then(function(){return makePromise(value,isResolved);},function(error){return makePromise(error,false);});}else {return makePromise(value,isResolved);}}; /**
+	   */var reject=function reject(reason){var result=new Deferred();result.reject(reason);return result.promise;};var makePromise=function makePromise(value,resolved){var result=new Deferred();if(resolved){result.resolve(value);}else {result.reject(value);}return result.promise;};var handleCallback=function handleCallback(value,isResolved,callback){var callbackOutput=null;try{if(isFunction(callback))callbackOutput=callback();}catch(e){return makePromise(e,false);}if(isPromiseLike(callbackOutput)){return callbackOutput.then(function(){return makePromise(value,isResolved);},function(error){return makePromise(error,false);});}else {return makePromise(value,isResolved);}}; /**
 	   * @ngdoc method
 	   * @name $q#when
 	   * @kind function
@@ -9207,7 +9213,7 @@
 	   *
 	   * @param {*} value Value or a promise
 	   * @returns {Promise} Returns a promise of the passed value or promise
-	   */var when=function(value,callback,errback,progressBack){var result=new Deferred();result.resolve(value);return result.promise.then(callback,errback,progressBack);}; /**
+	   */var when=function when(value,callback,errback,progressBack){var result=new Deferred();result.resolve(value);return result.promise.then(callback,errback,progressBack);}; /**
 	   * @ngdoc method
 	   * @name $q#resolve
 	   * @kind function
@@ -9380,7 +9386,7 @@
 	       *
 	       * @returns {Object} The newly created child scope.
 	       *
-	       */$new:function(isolate,parent){var child;parent=parent||this;if(isolate){child=new Scope();child.$root=this.$root;}else { // Only create a child scope class if somebody asks for one,
+	       */$new:function $new(isolate,parent){var child;parent=parent||this;if(isolate){child=new Scope();child.$root=this.$root;}else { // Only create a child scope class if somebody asks for one,
 	// but cache it to allow the VM to optimize lookups.
 	if(!this.$$ChildScope){this.$$ChildScope=createChildScopeClass(this);}child=new this.$$ChildScope();}child.$parent=parent;child.$$prevSibling=parent.$$childTail;if(parent.$$childHead){parent.$$childTail.$$nextSibling=child;parent.$$childTail=child;}else {parent.$$childHead=parent.$$childTail=child;} // When the new scope is not isolated or we inherit from `this`, and
 	// the parent scope is destroyed, the property `$$destroyed` is inherited
@@ -9502,7 +9508,7 @@
 	       * @param {boolean=} objectEquality Compare for object equality using {@link angular.equals} instead of
 	       *     comparing for reference equality.
 	       * @returns {function()} Returns a deregistration function for this listener.
-	       */$watch:function(watchExp,listener,objectEquality,prettyPrintExpression){var get=$parse(watchExp);if(get.$$watchDelegate){return get.$$watchDelegate(this,listener,objectEquality,get,watchExp);}var scope=this,array=scope.$$watchers,watcher={fn:listener,last:initWatchVal,get:get,exp:prettyPrintExpression||watchExp,eq:!!objectEquality};lastDirtyWatch=null;if(!isFunction(listener)){watcher.fn=noop;}if(!array){array=scope.$$watchers=[];} // we use unshift since we use a while loop in $digest for speed.
+	       */$watch:function $watch(watchExp,listener,objectEquality,prettyPrintExpression){var get=$parse(watchExp);if(get.$$watchDelegate){return get.$$watchDelegate(this,listener,objectEquality,get,watchExp);}var scope=this,array=scope.$$watchers,watcher={fn:listener,last:initWatchVal,get:get,exp:prettyPrintExpression||watchExp,eq:!!objectEquality};lastDirtyWatch=null;if(!isFunction(listener)){watcher.fn=noop;}if(!array){array=scope.$$watchers=[];} // we use unshift since we use a while loop in $digest for speed.
 	// the while loop reads in reverse order.
 	array.unshift(watcher);incrementWatchersCount(this,1);return function deregisterWatch(){if(arrayRemove(array,watcher)>=0){incrementWatchersCount(scope,-1);}lastDirtyWatch=null;};}, /**
 	       * @ngdoc method
@@ -9528,7 +9534,7 @@
 	       *    those of `watchExpression`
 	       *    The `scope` refers to the current scope.
 	       * @returns {function()} Returns a de-registration function for all listeners.
-	       */$watchGroup:function(watchExpressions,listener){var oldValues=new Array(watchExpressions.length);var newValues=new Array(watchExpressions.length);var deregisterFns=[];var self=this;var changeReactionScheduled=false;var firstRun=true;if(!watchExpressions.length){ // No expressions means we call the listener ASAP
+	       */$watchGroup:function $watchGroup(watchExpressions,listener){var oldValues=new Array(watchExpressions.length);var newValues=new Array(watchExpressions.length);var deregisterFns=[];var self=this;var changeReactionScheduled=false;var firstRun=true;if(!watchExpressions.length){ // No expressions means we call the listener ASAP
 	var shouldCall=true;self.$evalAsync(function(){if(shouldCall)listener(newValues,newValues,self);});return function deregisterWatchGroup(){shouldCall=false;};}if(watchExpressions.length===1){ // Special case size of one
 	return this.$watch(watchExpressions[0],function watchGroupAction(value,oldValue,scope){newValues[0]=value;oldValues[0]=oldValue;listener(newValues,value===oldValue?newValues:oldValues,scope);});}forEach(watchExpressions,function(expr,i){var unwatchFn=self.$watch(expr,function watchGroupSubAction(value,oldValue){newValues[i]=value;oldValues[i]=oldValue;if(!changeReactionScheduled){changeReactionScheduled=true;self.$evalAsync(watchGroupAction);}});deregisterFns.push(unwatchFn);});function watchGroupAction(){changeReactionScheduled=false;if(firstRun){firstRun=false;listener(newValues,newValues,self);}else {listener(newValues,oldValues,self);}}return function deregisterWatchGroup(){while(deregisterFns.length){deregisterFns.shift()();}};}, /**
 	       * @ngdoc method
@@ -9584,7 +9590,7 @@
 	       *
 	       * @returns {function()} Returns a de-registration function for this listener. When the
 	       *    de-registration function is executed, the internal watch operation is terminated.
-	       */$watchCollection:function(obj,listener){$watchCollectionInterceptor.$stateful=true;var self=this; // the current value, updated on each dirty-check run
+	       */$watchCollection:function $watchCollection(obj,listener){$watchCollectionInterceptor.$stateful=true;var self=this; // the current value, updated on each dirty-check run
 	var newValue; // a shallow copy of the newValue from the last dirty-check run,
 	// updated to match newValue during dirty-check run
 	var oldValue; // a shallow copy of the newValue from when the last change happened
@@ -9650,7 +9656,7 @@
 	           expect(scope.counter).toEqual(2);
 	       * ```
 	       *
-	       */$digest:function(){var watch,value,last,watchers,length,dirty,ttl=TTL,next,current,target=this,watchLog=[],logIdx,logMsg,asyncTask;beginPhase('$digest'); // Check for changes to browser url that happened in sync before the call to $digest
+	       */$digest:function $digest(){var watch,value,last,watchers,length,dirty,ttl=TTL,next,current,target=this,watchLog=[],logIdx,logMsg,asyncTask;beginPhase('$digest'); // Check for changes to browser url that happened in sync before the call to $digest
 	$browser.$$checkUrlChange();if(this===$rootScope&&applyAsyncId!==null){ // If this is the root scope, and $applyAsync has scheduled a deferred $apply(), then
 	// cancel the scheduled $apply and flush the queue of expressions to be evaluated.
 	$browser.defer.cancel(applyAsyncId);flushApplyAsync();}lastDirtyWatch=null;do { // "while dirty" loop
@@ -9695,7 +9701,7 @@
 	       *
 	       * Note that, in AngularJS, there is also a `$destroy` jQuery event, which can be used to
 	       * clean up DOM bindings before an element is removed from the DOM.
-	       */$destroy:function(){ // We can't destroy a scope that has been already destroyed.
+	       */$destroy:function $destroy(){ // We can't destroy a scope that has been already destroyed.
 	if(this.$$destroyed)return;var parent=this.$parent;this.$broadcast('$destroy');this.$$destroyed=true;if(this===$rootScope){ //Remove handlers attached to window when $rootScope is removed
 	$browser.$$applicationDestroyed();}incrementWatchersCount(this,-this.$$watchersCount);for(var eventName in this.$$listenerCount){decrementListenerCount(this,this.$$listenerCount[eventName],eventName);} // sever all the references to parent scopes (after this cleanup, the current scope should
 	// not be retained by any of our references and should be eligible for garbage collection)
@@ -9734,7 +9740,7 @@
 	       *
 	       * @param {(object)=} locals Local variables object, useful for overriding values in scope.
 	       * @returns {*} The result of evaluating the expression.
-	       */$eval:function(expr,locals){return $parse(expr)(this,locals);}, /**
+	       */$eval:function $eval(expr,locals){return $parse(expr)(this,locals);}, /**
 	       * @ngdoc method
 	       * @name $rootScope.Scope#$evalAsync
 	       * @kind function
@@ -9763,9 +9769,9 @@
 	       *    - `function(scope)`: execute the function with the current `scope` parameter.
 	       *
 	       * @param {(object)=} locals Local variables object, useful for overriding values in scope.
-	       */$evalAsync:function(expr,locals){ // if we are outside of an $digest loop and this is the first time we are scheduling async
+	       */$evalAsync:function $evalAsync(expr,locals){ // if we are outside of an $digest loop and this is the first time we are scheduling async
 	// task also schedule async auto-flush
-	if(!$rootScope.$$phase&&!asyncQueue.length){$browser.defer(function(){if(asyncQueue.length){$rootScope.$digest();}});}asyncQueue.push({scope:this,expression:expr,locals:locals});},$$postDigest:function(fn){postDigestQueue.push(fn);}, /**
+	if(!$rootScope.$$phase&&!asyncQueue.length){$browser.defer(function(){if(asyncQueue.length){$rootScope.$digest();}});}asyncQueue.push({scope:this,expression:expr,locals:locals});},$$postDigest:function $$postDigest(fn){postDigestQueue.push(fn);}, /**
 	       * @ngdoc method
 	       * @name $rootScope.Scope#$apply
 	       * @kind function
@@ -9809,7 +9815,7 @@
 	       *    - `function(scope)`: execute the function with current `scope` parameter.
 	       *
 	       * @returns {*} The result of evaluating the expression.
-	       */$apply:function(expr){try{beginPhase('$apply');return this.$eval(expr);}catch(e){$exceptionHandler(e);}finally {clearPhase();try{$rootScope.$digest();}catch(e){$exceptionHandler(e);throw e;}}}, /**
+	       */$apply:function $apply(expr){try{beginPhase('$apply');return this.$eval(expr);}catch(e){$exceptionHandler(e);}finally {clearPhase();try{$rootScope.$digest();}catch(e){$exceptionHandler(e);throw e;}}}, /**
 	       * @ngdoc method
 	       * @name $rootScope.Scope#$applyAsync
 	       * @kind function
@@ -9825,7 +9831,7 @@
 	       *
 	       *    - `string`: execute using the rules as defined in {@link guide/expression expression}.
 	       *    - `function(scope)`: execute the function with current `scope` parameter.
-	       */$applyAsync:function(expr){var scope=this;expr&&applyAsyncQueue.push($applyAsyncExpression);scheduleApplyAsync();function $applyAsyncExpression(){scope.$eval(expr);}}, /**
+	       */$applyAsync:function $applyAsync(expr){var scope=this;expr&&applyAsyncQueue.push($applyAsyncExpression);scheduleApplyAsync();function $applyAsyncExpression(){scope.$eval(expr);}}, /**
 	       * @ngdoc method
 	       * @name $rootScope.Scope#$on
 	       * @kind function
@@ -9851,7 +9857,7 @@
 	       * @param {string} name Event name to listen on.
 	       * @param {function(event, ...args)} listener Function to call when the event is emitted.
 	       * @returns {function()} Returns a deregistration function for this listener.
-	       */$on:function(name,listener){var namedListeners=this.$$listeners[name];if(!namedListeners){this.$$listeners[name]=namedListeners=[];}namedListeners.push(listener);var current=this;do {if(!current.$$listenerCount[name]){current.$$listenerCount[name]=0;}current.$$listenerCount[name]++;}while(current=current.$parent);var self=this;return function(){var indexOfListener=namedListeners.indexOf(listener);if(indexOfListener!==-1){namedListeners[indexOfListener]=null;decrementListenerCount(self,1,name);}};}, /**
+	       */$on:function $on(name,listener){var namedListeners=this.$$listeners[name];if(!namedListeners){this.$$listeners[name]=namedListeners=[];}namedListeners.push(listener);var current=this;do {if(!current.$$listenerCount[name]){current.$$listenerCount[name]=0;}current.$$listenerCount[name]++;}while(current=current.$parent);var self=this;return function(){var indexOfListener=namedListeners.indexOf(listener);if(indexOfListener!==-1){namedListeners[indexOfListener]=null;decrementListenerCount(self,1,name);}};}, /**
 	       * @ngdoc method
 	       * @name $rootScope.Scope#$emit
 	       * @kind function
@@ -9872,10 +9878,10 @@
 	       * @param {string} name Event name to emit.
 	       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
 	       * @return {Object} Event object (see {@link ng.$rootScope.Scope#$on}).
-	       */$emit:function(name,args){var empty=[],namedListeners,scope=this,stopPropagation=false,event={name:name,targetScope:scope,stopPropagation:function(){stopPropagation=true;},preventDefault:function(){event.defaultPrevented=true;},defaultPrevented:false},listenerArgs=concat([event],arguments,1),i,length;do {namedListeners=scope.$$listeners[name]||empty;event.currentScope=scope;for(i=0,length=namedListeners.length;i<length;i++){ // if listeners were deregistered, defragment the array
+	       */$emit:function $emit(name,args){var empty=[],namedListeners,scope=this,_stopPropagation=false,event={name:name,targetScope:scope,stopPropagation:function stopPropagation(){_stopPropagation=true;},preventDefault:function preventDefault(){event.defaultPrevented=true;},defaultPrevented:false},listenerArgs=concat([event],arguments,1),i,length;do {namedListeners=scope.$$listeners[name]||empty;event.currentScope=scope;for(i=0,length=namedListeners.length;i<length;i++){ // if listeners were deregistered, defragment the array
 	if(!namedListeners[i]){namedListeners.splice(i,1);i--;length--;continue;}try{ //allow all listeners attached to the current scope to run
 	namedListeners[i].apply(null,listenerArgs);}catch(e){$exceptionHandler(e);}} //if any listener on the current scope stops propagation, prevent bubbling
-	if(stopPropagation){event.currentScope=null;return event;} //traverse upwards
+	if(_stopPropagation){event.currentScope=null;return event;} //traverse upwards
 	scope=scope.$parent;}while(scope);event.currentScope=null;return event;}, /**
 	       * @ngdoc method
 	       * @name $rootScope.Scope#$broadcast
@@ -9896,7 +9902,7 @@
 	       * @param {string} name Event name to broadcast.
 	       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
 	       * @return {Object} Event object, see {@link ng.$rootScope.Scope#$on}
-	       */$broadcast:function(name,args){var target=this,current=target,next=target,event={name:name,targetScope:target,preventDefault:function(){event.defaultPrevented=true;},defaultPrevented:false};if(!target.$$listenerCount[name])return event;var listenerArgs=concat([event],arguments,1),listeners,i,length; //down while you can, then up and next sibling or up and next sibling until back at root
+	       */$broadcast:function $broadcast(name,args){var target=this,current=target,next=target,event={name:name,targetScope:target,preventDefault:function preventDefault(){event.defaultPrevented=true;},defaultPrevented:false};if(!target.$$listenerCount[name])return event;var listenerArgs=concat([event],arguments,1),listeners,i,length; //down while you can, then up and next sibling or up and next sibling until back at root
 	while(current=next){event.currentScope=current;listeners=current.$$listeners[name]||[];for(i=0,length=listeners.length;i<length;i++){ // if listeners were deregistered, defragment the array
 	if(!listeners[i]){listeners.splice(i,1);i--;length--;continue;}try{listeners[i].apply(null,listenerArgs);}catch(e){$exceptionHandler(e);}} // Insanity Warning: scope depth-first traversal
 	// yes, this code is a bit crazy, but it works and we have tests to prove it!
@@ -10714,7 +10720,7 @@
 	// We are purposefully using `!(android < 4)` to cover the case when `android` is undefined
 	// jshint -W018
 	history:!!($window.history&&$window.history.pushState&&!(android<4)&&!boxee), // jshint +W018
-	hasEvent:function(event){ // IE9 implements 'input' event it's so fubared that we rather pretend that it doesn't have
+	hasEvent:function hasEvent(event){ // IE9 implements 'input' event it's so fubared that we rather pretend that it doesn't have
 	// it. In particular the event is not fired when backspace or delete key are pressed or
 	// when cut operation is performed.
 	// IE10+ implements 'input' event but it erroneously fires under various situations,
@@ -11197,13 +11203,13 @@
 	 */function filterFilter(){return function(array,expression,comparator){if(!isArrayLike(array)){if(array==null){return array;}else {throw minErr('filter')('notarray','Expected array but received: {0}',array);}}var expressionType=getTypeForFilter(expression);var predicateFn;var matchAgainstAnyProp;switch(expressionType){case 'function':predicateFn=expression;break;case 'boolean':case 'null':case 'number':case 'string':matchAgainstAnyProp=true; //jshint -W086
 	case 'object': //jshint +W086
 	predicateFn=createPredicateFn(expression,comparator,matchAgainstAnyProp);break;default:return array;}return Array.prototype.filter.call(array,predicateFn);};} // Helper functions for `filterFilter`
-	function createPredicateFn(expression,comparator,matchAgainstAnyProp){var shouldMatchPrimitives=isObject(expression)&&'$' in expression;var predicateFn;if(comparator===true){comparator=equals;}else if(!isFunction(comparator)){comparator=function(actual,expected){if(isUndefined(actual)){ // No substring matching against `undefined`
+	function createPredicateFn(expression,comparator,matchAgainstAnyProp){var shouldMatchPrimitives=isObject(expression)&&'$' in expression;var predicateFn;if(comparator===true){comparator=equals;}else if(!isFunction(comparator)){comparator=function comparator(actual,expected){if(isUndefined(actual)){ // No substring matching against `undefined`
 	return false;}if(actual===null||expected===null){ // No substring matching against `null`; only match against `null`
 	return actual===expected;}if(isObject(expected)||isObject(actual)&&!hasCustomToString(actual)){ // Should not compare primitives against objects, unless they have custom `toString` method
-	return false;}actual=lowercase(''+actual);expected=lowercase(''+expected);return actual.indexOf(expected)!==-1;};}predicateFn=function(item){if(shouldMatchPrimitives&&!isObject(item)){return deepCompare(item,expression.$,comparator,false);}return deepCompare(item,expression,comparator,matchAgainstAnyProp);};return predicateFn;}function deepCompare(actual,expected,comparator,matchAgainstAnyProp,dontMatchWholeObject){var actualType=getTypeForFilter(actual);var expectedType=getTypeForFilter(expected);if(expectedType==='string'&&expected.charAt(0)==='!'){return !deepCompare(actual,expected.substring(1),comparator,matchAgainstAnyProp);}else if(isArray(actual)){ // In case `actual` is an array, consider it a match
+	return false;}actual=lowercase(''+actual);expected=lowercase(''+expected);return actual.indexOf(expected)!==-1;};}predicateFn=function predicateFn(item){if(shouldMatchPrimitives&&!isObject(item)){return deepCompare(item,expression.$,comparator,false);}return deepCompare(item,expression,comparator,matchAgainstAnyProp);};return predicateFn;}function deepCompare(actual,expected,comparator,matchAgainstAnyProp,dontMatchWholeObject){var actualType=getTypeForFilter(actual);var expectedType=getTypeForFilter(expected);if(expectedType==='string'&&expected.charAt(0)==='!'){return !deepCompare(actual,expected.substring(1),comparator,matchAgainstAnyProp);}else if(isArray(actual)){ // In case `actual` is an array, consider it a match
 	// if ANY of it's items matches `expected`
 	return actual.some(function(item){return deepCompare(item,expected,comparator,matchAgainstAnyProp);});}switch(actualType){case 'object':var key;if(matchAgainstAnyProp){for(key in actual){if(key.charAt(0)!=='$'&&deepCompare(actual[key],expected,comparator,true)){return true;}}return dontMatchWholeObject?false:deepCompare(actual,expected,comparator,false);}else if(expectedType==='object'){for(key in expected){var expectedVal=expected[key];if(isFunction(expectedVal)||isUndefined(expectedVal)){continue;}var matchAnyProperty=key==='$';var actualVal=matchAnyProperty?actual:actual[key];if(!deepCompare(actualVal,expectedVal,comparator,matchAnyProperty,matchAnyProperty)){return false;}}return true;}else {return comparator(actual,expected);}break;case 'function':return false;default:return comparator(actual,expected);}} // Used for easily differentiating between `null` and actual `object`
-	function getTypeForFilter(val){return val===null?'null':typeof val;} /**
+	function getTypeForFilter(val){return val===null?'null':typeof val==='undefined'?'undefined':_typeof(val);} /**
 	 * @ngdoc filter
 	 * @name currency
 	 * @kind function
@@ -11307,12 +11313,12 @@
 	     </file>
 	   </example>
 	 */numberFilter.$inject=['$locale'];function numberFilter($locale){var formats=$locale.NUMBER_FORMATS;return function(number,fractionSize){ // if null or undefined pass it through
-	return number==null?number:formatNumber(number,formats.PATTERNS[0],formats.GROUP_SEP,formats.DECIMAL_SEP,fractionSize);};}var DECIMAL_SEP='.';function formatNumber(number,pattern,groupSep,decimalSep,fractionSize){if(isObject(number))return '';var isNegative=number<0;number=Math.abs(number);var isInfinity=number===Infinity;if(!isInfinity&&!isFinite(number))return '';var numStr=number+'',formatedText='',hasExponent=false,parts=[];if(isInfinity)formatedText='\u221e';if(!isInfinity&&numStr.indexOf('e')!==-1){var match=numStr.match(/([\d\.]+)e(-?)(\d+)/);if(match&&match[2]=='-'&&match[3]>fractionSize+1){number=0;}else {formatedText=numStr;hasExponent=true;}}if(!isInfinity&&!hasExponent){var fractionLen=(numStr.split(DECIMAL_SEP)[1]||'').length; // determine fractionSize if it is not specified
+	return number==null?number:formatNumber(number,formats.PATTERNS[0],formats.GROUP_SEP,formats.DECIMAL_SEP,fractionSize);};}var DECIMAL_SEP='.';function formatNumber(number,pattern,groupSep,decimalSep,fractionSize){if(isObject(number))return '';var isNegative=number<0;number=Math.abs(number);var isInfinity=number===Infinity;if(!isInfinity&&!isFinite(number))return '';var numStr=number+'',formatedText='',hasExponent=false,parts=[];if(isInfinity)formatedText='∞';if(!isInfinity&&numStr.indexOf('e')!==-1){var match=numStr.match(/([\d\.]+)e(-?)(\d+)/);if(match&&match[2]=='-'&&match[3]>fractionSize+1){number=0;}else {formatedText=numStr;hasExponent=true;}}if(!isInfinity&&!hasExponent){var fractionLen=(numStr.split(DECIMAL_SEP)[1]||'').length; // determine fractionSize if it is not specified
 	if(isUndefined(fractionSize)){fractionSize=Math.min(Math.max(pattern.minFrac,fractionLen),pattern.maxFrac);} // safely round numbers in JS without hitting imprecisions of floating-point arithmetics
 	// inspired by:
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
 	number=+(Math.round(+(number.toString()+'e'+fractionSize)).toString()+'e'+-fractionSize);var fraction=(''+number).split(DECIMAL_SEP);var whole=fraction[0];fraction=fraction[1]||'';var i,pos=0,lgroup=pattern.lgSize,group=pattern.gSize;if(whole.length>=lgroup+group){pos=whole.length-lgroup;for(i=0;i<pos;i++){if((pos-i)%group===0&&i!==0){formatedText+=groupSep;}formatedText+=whole.charAt(i);}}for(i=pos;i<whole.length;i++){if((whole.length-i)%lgroup===0&&i!==0){formatedText+=groupSep;}formatedText+=whole.charAt(i);} // format fraction part.
-	while(fraction.length<fractionSize){fraction+='0';}if(fractionSize&&fractionSize!=="0")formatedText+=decimalSep+fraction.substr(0,fractionSize);}else {if(fractionSize>0&&number<1){formatedText=number.toFixed(fractionSize);number=parseFloat(formatedText);}}if(number===0){isNegative=false;}parts.push(isNegative?pattern.negPre:pattern.posPre,formatedText,isNegative?pattern.negSuf:pattern.posSuf);return parts.join('');}function padNumber(num,digits,trim){var neg='';if(num<0){neg='-';num=-num;}num=''+num;while(num.length<digits)num='0'+num;if(trim){num=num.substr(num.length-digits);}return neg+num;}function dateGetter(name,size,offset,trim){offset=offset||0;return function(date){var value=date['get'+name]();if(offset>0||value>-offset){value+=offset;}if(value===0&&offset==-12)value=12;return padNumber(value,size,trim);};}function dateStrGetter(name,shortForm){return function(date,formats){var value=date['get'+name]();var get=uppercase(shortForm?'SHORT'+name:name);return formats[get][value];};}function timeZoneGetter(date,formats,offset){var zone=-1*offset;var paddedZone=zone>=0?"+":"";paddedZone+=padNumber(Math[zone>0?'floor':'ceil'](zone/60),2)+padNumber(Math.abs(zone%60),2);return paddedZone;}function getFirstThursdayOfYear(year){ // 0 = index of January
+	while(fraction.length<fractionSize){fraction+='0';}if(fractionSize&&fractionSize!=="0")formatedText+=decimalSep+fraction.substr(0,fractionSize);}else {if(fractionSize>0&&number<1){formatedText=number.toFixed(fractionSize);number=parseFloat(formatedText);}}if(number===0){isNegative=false;}parts.push(isNegative?pattern.negPre:pattern.posPre,formatedText,isNegative?pattern.negSuf:pattern.posSuf);return parts.join('');}function padNumber(num,digits,trim){var neg='';if(num<0){neg='-';num=-num;}num=''+num;while(num.length<digits){num='0'+num;}if(trim){num=num.substr(num.length-digits);}return neg+num;}function dateGetter(name,size,offset,trim){offset=offset||0;return function(date){var value=date['get'+name]();if(offset>0||value>-offset){value+=offset;}if(value===0&&offset==-12)value=12;return padNumber(value,size,trim);};}function dateStrGetter(name,shortForm){return function(date,formats){var value=date['get'+name]();var get=uppercase(shortForm?'SHORT'+name:name);return formats[get][value];};}function timeZoneGetter(date,formats,offset){var zone=-1*offset;var paddedZone=zone>=0?"+":"";paddedZone+=padNumber(Math[zone>0?'floor':'ceil'](zone/60),2)+padNumber(Math.abs(zone%60),2);return paddedZone;}function getFirstThursdayOfYear(year){ // 0 = index of January
 	var dayOfWeekOnFirst=new Date(year,0,1).getDay(); // 4 = index of Thursday (+1 to account for 1st = 5)
 	// 11 = index of *next* Thursday (+1 account for 1st = 12)
 	return new Date(year,0,(dayOfWeekOnFirst<=4?5:12)-dayOfWeekOnFirst);}function getThursdayThisWeek(datetime){return new Date(datetime.getFullYear(),datetime.getMonth(), // 4 = index of Thursday
@@ -11728,10 +11734,10 @@
 	 */orderByFilter.$inject=['$parse'];function orderByFilter($parse){return function(array,sortPredicate,reverseOrder){if(!isArrayLike(array))return array;if(!isArray(sortPredicate)){sortPredicate=[sortPredicate];}if(sortPredicate.length===0){sortPredicate=['+'];}var predicates=processPredicates(sortPredicate,reverseOrder); // The next three lines are a version of a Swartzian Transform idiom from Perl
 	// (sometimes called the Decorate-Sort-Undecorate idiom)
 	// See https://en.wikipedia.org/wiki/Schwartzian_transform
-	var compareValues=Array.prototype.map.call(array,getComparisonObject);compareValues.sort(doComparison);array=compareValues.map(function(item){return item.value;});return array;function getComparisonObject(value,index){return {value:value,predicateValues:predicates.map(function(predicate){return getPredicateValue(predicate.get(value),index);})};}function doComparison(v1,v2){var result=0;for(var index=0,length=predicates.length;index<length;++index){result=compare(v1.predicateValues[index],v2.predicateValues[index])*predicates[index].descending;if(result)break;}return result;}};function processPredicates(sortPredicate,reverseOrder){reverseOrder=reverseOrder?-1:1;return sortPredicate.map(function(predicate){var descending=1,get=identity;if(isFunction(predicate)){get=predicate;}else if(isString(predicate)){if(predicate.charAt(0)=='+'||predicate.charAt(0)=='-'){descending=predicate.charAt(0)=='-'?-1:1;predicate=predicate.substring(1);}if(predicate!==''){get=$parse(predicate);if(get.constant){var key=get();get=function(value){return value[key];};}}}return {get:get,descending:descending*reverseOrder};});}function isPrimitive(value){switch(typeof value){case 'number': /* falls through */case 'boolean': /* falls through */case 'string':return true;default:return false;}}function objectValue(value,index){ // If `valueOf` is a valid function use that
+	var compareValues=Array.prototype.map.call(array,getComparisonObject);compareValues.sort(doComparison);array=compareValues.map(function(item){return item.value;});return array;function getComparisonObject(value,index){return {value:value,predicateValues:predicates.map(function(predicate){return getPredicateValue(predicate.get(value),index);})};}function doComparison(v1,v2){var result=0;for(var index=0,length=predicates.length;index<length;++index){result=compare(v1.predicateValues[index],v2.predicateValues[index])*predicates[index].descending;if(result)break;}return result;}};function processPredicates(sortPredicate,reverseOrder){reverseOrder=reverseOrder?-1:1;return sortPredicate.map(function(predicate){var descending=1,get=identity;if(isFunction(predicate)){get=predicate;}else if(isString(predicate)){if(predicate.charAt(0)=='+'||predicate.charAt(0)=='-'){descending=predicate.charAt(0)=='-'?-1:1;predicate=predicate.substring(1);}if(predicate!==''){get=$parse(predicate);if(get.constant){var key=get();get=function get(value){return value[key];};}}}return {get:get,descending:descending*reverseOrder};});}function isPrimitive(value){switch(typeof value==='undefined'?'undefined':_typeof(value)){case 'number': /* falls through */case 'boolean': /* falls through */case 'string':return true;default:return false;}}function objectValue(value,index){ // If `valueOf` is a valid function use that
 	if(typeof value.valueOf==='function'){value=value.valueOf();if(isPrimitive(value))return value;} // If `toString` is a valid function and not the one from `Object.prototype` use that
 	if(hasCustomToString(value)){value=value.toString();if(isPrimitive(value))return value;} // We have a basic object so we use the position of the object in the collection
-	return index;}function getPredicateValue(value,index){var type=typeof value;if(value===null){type='string';value='null';}else if(type==='string'){value=value.toLowerCase();}else if(type==='object'){value=objectValue(value,index);}return {value:value,type:type};}function compare(v1,v2){var result=0;if(v1.type===v2.type){if(v1.value!==v2.value){result=v1.value<v2.value?-1:1;}}else {result=v1.type<v2.type?-1:1;}return result;}}function ngDirective(directive){if(isFunction(directive)){directive={link:directive};}directive.restrict=directive.restrict||'AC';return valueFn(directive);} /**
+	return index;}function getPredicateValue(value,index){var type=typeof value==='undefined'?'undefined':_typeof(value);if(value===null){type='string';value='null';}else if(type==='string'){value=value.toLowerCase();}else if(type==='object'){value=objectValue(value,index);}return {value:value,type:type};}function compare(v1,v2){var result=0;if(v1.type===v2.type){if(v1.value!==v2.value){result=v1.value<v2.value?-1:1;}}else {result=v1.type<v2.type?-1:1;}return result;}}function ngDirective(directive){if(isFunction(directive)){directive={link:directive};}directive.restrict=directive.restrict||'AC';return valueFn(directive);} /**
 	 * @ngdoc directive
 	 * @name a
 	 * @restrict E
@@ -11743,7 +11749,7 @@
 	 * This change permits the easy creation of action links with the `ngClick` directive
 	 * without changing the location or causing page reloads, e.g.:
 	 * `<a href="" ng-click="list.addItem()">Add Item</a>`
-	 */var htmlAnchorDirective=valueFn({restrict:'E',compile:function(element,attr){if(!attr.href&&!attr.xlinkHref){return function(scope,element){ // If the linked element is not an anchor tag anymore, do nothing
+	 */var htmlAnchorDirective=valueFn({restrict:'E',compile:function compile(element,attr){if(!attr.href&&!attr.xlinkHref){return function(scope,element){ // If the linked element is not an anchor tag anymore, do nothing
 	if(element[0].nodeName.toLowerCase()!=='a')return; // SVGAElement does not use the href attribute, but rather the 'xlinkHref' attribute.
 	var href=toString.call(element.prop('href'))==='[object SVGAnimatedString]'?'xlink:href':'href';element.on('click',function(event){ // if we have no href url, then don't navigate anywhere.
 	if(!element.attr(href)){event.preventDefault();}});};}}}); /**
@@ -12079,13 +12085,13 @@
 	 *     then special attribute "open" will be set on the element
 	 */var ngAttributeAliasDirectives={}; // boolean attrs are evaluated
 	forEach(BOOLEAN_ATTR,function(propName,attrName){ // binding to multiple is not supported
-	if(propName=="multiple")return;function defaultLinkFn(scope,element,attr){scope.$watch(attr[normalized],function ngBooleanAttrWatchAction(value){attr.$set(attrName,!!value);});}var normalized=directiveNormalize('ng-'+attrName);var linkFn=defaultLinkFn;if(propName==='checked'){linkFn=function(scope,element,attr){ // ensuring ngChecked doesn't interfere with ngModel when both are set on the same input
+	if(propName=="multiple")return;function defaultLinkFn(scope,element,attr){scope.$watch(attr[normalized],function ngBooleanAttrWatchAction(value){attr.$set(attrName,!!value);});}var normalized=directiveNormalize('ng-'+attrName);var linkFn=defaultLinkFn;if(propName==='checked'){linkFn=function linkFn(scope,element,attr){ // ensuring ngChecked doesn't interfere with ngModel when both are set on the same input
 	if(attr.ngModel!==attr[normalized]){defaultLinkFn(scope,element,attr);}};}ngAttributeAliasDirectives[normalized]=function(){return {restrict:'A',priority:100,link:linkFn};};}); // aliased input attrs are evaluated
-	forEach(ALIASED_ATTR,function(htmlAttr,ngAttr){ngAttributeAliasDirectives[ngAttr]=function(){return {priority:100,link:function(scope,element,attr){ //special case ngPattern when a literal regular expression value
+	forEach(ALIASED_ATTR,function(htmlAttr,ngAttr){ngAttributeAliasDirectives[ngAttr]=function(){return {priority:100,link:function link(scope,element,attr){ //special case ngPattern when a literal regular expression value
 	//is used as the expression (this way we don't have to watch anything).
 	if(ngAttr==="ngPattern"&&attr.ngPattern.charAt(0)=="/"){var match=attr.ngPattern.match(REGEX_STRING_REGEXP);if(match){attr.$set("ngPattern",new RegExp(match[1],match[2]));return;}}scope.$watch(attr[ngAttr],function ngAttrAliasWatchAction(value){attr.$set(ngAttr,value);});}};};}); // ng-src, ng-srcset, ng-href are interpolated
 	forEach(['src','srcset','href'],function(attrName){var normalized=directiveNormalize('ng-'+attrName);ngAttributeAliasDirectives[normalized]=function(){return {priority:99, // it needs to run after the attributes are interpolated
-	link:function(scope,element,attr){var propName=attrName,name=attrName;if(attrName==='href'&&toString.call(element.prop('href'))==='[object SVGAnimatedString]'){name='xlinkHref';attr.$attr[name]='xlink:href';propName=null;}attr.$observe(normalized,function(value){if(!value){if(attrName==='href'){attr.$set(name,null);}return;}attr.$set(name,value); // on IE, if "ng:src" directive declaration is used and "src" attribute doesn't exist
+	link:function link(scope,element,attr){var propName=attrName,name=attrName;if(attrName==='href'&&toString.call(element.prop('href'))==='[object SVGAnimatedString]'){name='xlinkHref';attr.$attr[name]='xlink:href';propName=null;}attr.$observe(normalized,function(value){if(!value){if(attrName==='href'){attr.$set(name,null);}return;}attr.$set(name,value); // on IE, if "ng:src" directive declaration is used and "src" attribute doesn't exist
 	// then calling element.setAttribute('src', 'foo') doesn't do anything, so we need
 	// to set the property as well to achieve the desired effect.
 	// we use attr[attrName] value since $set can sanitize the url.
@@ -12179,7 +12185,7 @@
 	   * Sets the validity of a form control.
 	   *
 	   * This method will also propagate to parent forms.
-	   */addSetValidityMethod({ctrl:this,$element:element,set:function(object,property,controller){var list=object[property];if(!list){object[property]=[controller];}else {var index=list.indexOf(controller);if(index===-1){list.push(controller);}}},unset:function(object,property,controller){var list=object[property];if(!list){return;}arrayRemove(list,controller);if(list.length===0){delete object[property];}},parentForm:parentForm,$animate:$animate}); /**
+	   */addSetValidityMethod({ctrl:this,$element:element,set:function set(object,property,controller){var list=object[property];if(!list){object[property]=[controller];}else {var index=list.indexOf(controller);if(index===-1){list.push(controller);}}},unset:function unset(object,property,controller){var list=object[property];if(!list){return;}arrayRemove(list,controller);if(list.length===0){delete object[property];}},parentForm:parentForm,$animate:$animate}); /**
 	   * @ngdoc method
 	   * @name form.FormController#$setDirty
 	   *
@@ -12381,7 +12387,7 @@
 	 *
 	 * @param {string=} name Name of the form. If specified, the form controller will be published into
 	 *                       related scope, under this name.
-	 */var formDirectiveFactory=function(isNgForm){return ['$timeout',function($timeout){var formDirective={name:'form',restrict:isNgForm?'EAC':'E',controller:FormController,compile:function ngFormCompile(formElement,attr){ // Setup initial state of the control
+	 */var formDirectiveFactory=function formDirectiveFactory(isNgForm){return ['$timeout',function($timeout){var formDirective={name:'form',restrict:isNgForm?'EAC':'E',controller:FormController,compile:function ngFormCompile(formElement,attr){ // Setup initial state of the control
 	formElement.addClass(PRISTINE_CLASS).addClass(VALID_CLASS);var nameAttr=attr.name?'name':isNgForm&&attr.ngForm?'ngForm':false;return {pre:function ngFormPreLink(scope,formElement,attr,controller){ // if `action` attr is not present on the form, prevent the default action (submission)
 	if(!('action' in attr)){ // we can't use jq events because if a form is destroyed during submission the default
 	// action is not prevented. see #1238
@@ -12389,7 +12395,7 @@
 	// IE 9 is not affected because it doesn't fire a submit event and try to do a full
 	// page reload if the form was destroyed by submission of the form via a click handler
 	// on a button in the form. Looks like an IE9 specific bug.
-	var handleFormSubmission=function(event){scope.$apply(function(){controller.$commitViewValue();controller.$setSubmitted();});event.preventDefault();};addEventListenerFn(formElement[0],'submit',handleFormSubmission); // unregister the preventDefault listener so that we don't not leak memory but in a
+	var handleFormSubmission=function handleFormSubmission(event){scope.$apply(function(){controller.$commitViewValue();controller.$setSubmitted();});event.preventDefault();};addEventListenerFn(formElement[0],'submit',handleFormSubmission); // unregister the preventDefault listener so that we don't not leak memory but in a
 	// way that will achieve the prevention of the default action.
 	formElement.on('$destroy',function(){$timeout(function(){removeEventListenerFn(formElement[0],'submit',handleFormSubmission);},0,false);});}var parentFormCtrl=controller.$$parentForm;if(nameAttr){setter(scope,controller.$name,controller,controller.$name);attr.$observe(nameAttr,function(newValue){if(controller.$name===newValue)return;setter(scope,controller.$name,undefined,controller.$name);parentFormCtrl.$$renameControl(controller,newValue);setter(scope,controller.$name,controller,controller.$name);});}formElement.on('$destroy',function(){parentFormCtrl.$removeControl(controller);if(nameAttr){setter(scope,attr[nameAttr],undefined,controller.$name);}extend(controller,nullFormCtrl); //stop propagating child destruction handlers upwards
 	});}};}};return formDirective;}];};var formDirective=formDirectiveFactory();var ngFormDirective=formDirectiveFactory(true); /* global VALID_CLASS: false,
@@ -13364,7 +13370,7 @@
 	   */'checkbox':checkboxInputType,'hidden':noop,'button':noop,'submit':noop,'reset':noop,'file':noop};function stringBasedInputType(ctrl){ctrl.$formatters.push(function(value){return ctrl.$isEmpty(value)?value:value.toString();});}function textInputType(scope,element,attr,ctrl,$sniffer,$browser){baseInputType(scope,element,attr,ctrl,$sniffer,$browser);stringBasedInputType(ctrl);}function baseInputType(scope,element,attr,ctrl,$sniffer,$browser){var type=lowercase(element[0].type); // In composition mode, users are still inputing intermediate text buffer,
 	// hold the listener until composition is done.
 	// More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
-	if(!$sniffer.android){var composing=false;element.on('compositionstart',function(data){composing=true;});element.on('compositionend',function(){composing=false;listener();});}var listener=function(ev){if(timeout){$browser.defer.cancel(timeout);timeout=null;}if(composing)return;var value=element.val(),event=ev&&ev.type; // By default we will trim the value
+	if(!$sniffer.android){var composing=false;element.on('compositionstart',function(data){composing=true;});element.on('compositionend',function(){composing=false;listener();});}var listener=function listener(ev){if(timeout){$browser.defer.cancel(timeout);timeout=null;}if(composing)return;var value=element.val(),event=ev&&ev.type; // By default we will trim the value
 	// If the attribute ng-trim exists we will avoid trimming
 	// If input type is 'password', the value is never trimmed
 	if(type!=='password'&&(!attr.ngTrim||attr.ngTrim!=='false')){value=trim(value);} // If a control is suffering from bad input (due to native validators), browsers discard its
@@ -13372,7 +13378,7 @@
 	// control's value is the same empty value twice in a row.
 	if(ctrl.$viewValue!==value||value===''&&ctrl.$$hasNativeValidators){ctrl.$setViewValue(value,event);}}; // if the browser does support "input" event, we are fine - except on IE9 which doesn't fire the
 	// input event on backspace, delete or cut
-	if($sniffer.hasEvent('input')){element.on('input',listener);}else {var timeout;var deferListener=function(ev,input,origValue){if(!timeout){timeout=$browser.defer(function(){timeout=null;if(!input||input.value!==origValue){listener(ev);}});}};element.on('keydown',function(event){var key=event.keyCode; // ignore
+	if($sniffer.hasEvent('input')){element.on('input',listener);}else {var timeout;var deferListener=function deferListener(ev,input,origValue){if(!timeout){timeout=$browser.defer(function(){timeout=null;if(!input||input.value!==origValue){listener(ev);}});}};element.on('keydown',function(event){var key=event.keyCode; // ignore
 	//    command            modifiers                   arrows
 	if(key===91||15<key&&key<19||37<=key&&key<=40)return;deferListener(event,this,this.value);}); // if user modifies input value using context menu in IE, we need "paste" and "cut" events to catch it
 	if($sniffer.hasEvent('paste')){element.on('paste cut',deferListener);}} // if user paste into input using mouse on older browser
@@ -13395,7 +13401,7 @@
 	baseInputType(scope,element,attr,ctrl,$sniffer,$browser);stringBasedInputType(ctrl);ctrl.$$parserName='url';ctrl.$validators.url=function(modelValue,viewValue){var value=modelValue||viewValue;return ctrl.$isEmpty(value)||URL_REGEXP.test(value);};}function emailInputType(scope,element,attr,ctrl,$sniffer,$browser){ // Note: no badInputChecker here by purpose as `url` is only a validation
 	// in browsers, i.e. we can always read out input.value even if it is not valid!
 	baseInputType(scope,element,attr,ctrl,$sniffer,$browser);stringBasedInputType(ctrl);ctrl.$$parserName='email';ctrl.$validators.email=function(modelValue,viewValue){var value=modelValue||viewValue;return ctrl.$isEmpty(value)||EMAIL_REGEXP.test(value);};}function radioInputType(scope,element,attr,ctrl){ // make the name unique, if not defined
-	if(isUndefined(attr.name)){element.attr('name',nextUid());}var listener=function(ev){if(element[0].checked){ctrl.$setViewValue(attr.value,ev&&ev.type);}};element.on('click',listener);ctrl.$render=function(){var value=attr.value;element[0].checked=value==ctrl.$viewValue;};attr.$observe('value',ctrl.$render);}function parseConstantExpr($parse,context,name,expression,fallback){var parseFn;if(isDefined(expression)){parseFn=$parse(expression);if(!parseFn.constant){throw minErr('ngModel')('constexpr','Expected constant expression for `{0}`, but saw '+'`{1}`.',name,expression);}return parseFn(context);}return fallback;}function checkboxInputType(scope,element,attr,ctrl,$sniffer,$browser,$filter,$parse){var trueValue=parseConstantExpr($parse,scope,'ngTrueValue',attr.ngTrueValue,true);var falseValue=parseConstantExpr($parse,scope,'ngFalseValue',attr.ngFalseValue,false);var listener=function(ev){ctrl.$setViewValue(element[0].checked,ev&&ev.type);};element.on('click',listener);ctrl.$render=function(){element[0].checked=ctrl.$viewValue;}; // Override the standard `$isEmpty` because the $viewValue of an empty checkbox is always set to `false`
+	if(isUndefined(attr.name)){element.attr('name',nextUid());}var listener=function listener(ev){if(element[0].checked){ctrl.$setViewValue(attr.value,ev&&ev.type);}};element.on('click',listener);ctrl.$render=function(){var value=attr.value;element[0].checked=value==ctrl.$viewValue;};attr.$observe('value',ctrl.$render);}function parseConstantExpr($parse,context,name,expression,fallback){var parseFn;if(isDefined(expression)){parseFn=$parse(expression);if(!parseFn.constant){throw minErr('ngModel')('constexpr','Expected constant expression for `{0}`, but saw '+'`{1}`.',name,expression);}return parseFn(context);}return fallback;}function checkboxInputType(scope,element,attr,ctrl,$sniffer,$browser,$filter,$parse){var trueValue=parseConstantExpr($parse,scope,'ngTrueValue',attr.ngTrueValue,true);var falseValue=parseConstantExpr($parse,scope,'ngFalseValue',attr.ngFalseValue,false);var listener=function listener(ev){ctrl.$setViewValue(element[0].checked,ev&&ev.type);};element.on('click',listener);ctrl.$render=function(){element[0].checked=ctrl.$viewValue;}; // Override the standard `$isEmpty` because the $viewValue of an empty checkbox is always set to `false`
 	// This is because of the parser below, which compares the `$modelValue` with `trueValue` to convert
 	// it to a boolean.
 	ctrl.$isEmpty=function(value){return value===false;};ctrl.$formatters.push(function(value){return equals(value,trueValue);});ctrl.$parsers.push(function(value){return value?trueValue:falseValue;});} /**
@@ -13567,7 +13573,7 @@
 	        });
 	      </file>
 	    </example>
-	 */var inputDirective=['$browser','$sniffer','$filter','$parse',function($browser,$sniffer,$filter,$parse){return {restrict:'E',require:['?ngModel'],link:{pre:function(scope,element,attr,ctrls){if(ctrls[0]){(inputType[lowercase(attr.type)]||inputType.text)(scope,element,attr,ctrls[0],$sniffer,$browser,$filter,$parse);}}}};}];var CONSTANT_VALUE_REGEXP=/^(true|false|\d+)$/; /**
+	 */var inputDirective=['$browser','$sniffer','$filter','$parse',function($browser,$sniffer,$filter,$parse){return {restrict:'E',require:['?ngModel'],link:{pre:function pre(scope,element,attr,ctrls){if(ctrls[0]){(inputType[lowercase(attr.type)]||inputType.text)(scope,element,attr,ctrls[0],$sniffer,$browser,$filter,$parse);}}}};}];var CONSTANT_VALUE_REGEXP=/^(true|false|\d+)$/; /**
 	 * @ngdoc directive
 	 * @name ngValue
 	 *
@@ -13623,7 +13629,7 @@
 	        });
 	      </file>
 	    </example>
-	 */var ngValueDirective=function(){return {restrict:'A',priority:100,compile:function(tpl,tplAttr){if(CONSTANT_VALUE_REGEXP.test(tplAttr.ngValue)){return function ngValueConstantLink(scope,elm,attr){attr.$set('value',scope.$eval(attr.ngValue));};}else {return function ngValueLink(scope,elm,attr){scope.$watch(attr.ngValue,function valueWatchAction(value){attr.$set('value',value);});};}}};}; /**
+	 */var ngValueDirective=function ngValueDirective(){return {restrict:'A',priority:100,compile:function compile(tpl,tplAttr){if(CONSTANT_VALUE_REGEXP.test(tplAttr.ngValue)){return function ngValueConstantLink(scope,elm,attr){attr.$set('value',scope.$eval(attr.ngValue));};}else {return function ngValueLink(scope,elm,attr){scope.$watch(attr.ngValue,function valueWatchAction(value){attr.$set('value',value);});};}}};}; /**
 	 * @ngdoc directive
 	 * @name ngBind
 	 * @restrict AC
@@ -13837,7 +13843,7 @@
 	 *     });
 	 *   </file>
 	 * </example>
-	 */var ngChangeDirective=valueFn({restrict:'A',require:'ngModel',link:function(scope,element,attr,ctrl){ctrl.$viewChangeListeners.push(function(){scope.$eval(attr.ngChange);});}});function classDirective(name,selector){name='ngClass'+name;return ['$animate',function($animate){return {restrict:'AC',link:function(scope,element,attr){var oldVal;scope.$watch(attr[name],ngClassWatchAction,true);attr.$observe('class',function(value){ngClassWatchAction(scope.$eval(attr[name]));});if(name!=='ngClass'){scope.$watch('$index',function($index,old$index){ // jshint bitwise: false
+	 */var ngChangeDirective=valueFn({restrict:'A',require:'ngModel',link:function link(scope,element,attr,ctrl){ctrl.$viewChangeListeners.push(function(){scope.$eval(attr.ngChange);});}});function classDirective(name,selector){name='ngClass'+name;return ['$animate',function($animate){return {restrict:'AC',link:function link(scope,element,attr){var oldVal;scope.$watch(attr[name],ngClassWatchAction,true);attr.$observe('class',function(value){ngClassWatchAction(scope.$eval(attr[name]));});if(name!=='ngClass'){scope.$watch('$index',function($index,old$index){ // jshint bitwise: false
 	var mod=$index&1;if(mod!==(old$index&1)){var classes=arrayClasses(scope.$eval(attr[name]));mod===selector?addClasses(classes):removeClasses(classes);}});}function addClasses(classes){var newClasses=digestClassCounts(classes,1);attr.$addClass(newClasses);}function removeClasses(classes){var newClasses=digestClassCounts(classes,-1);attr.$removeClass(newClasses);}function digestClassCounts(classes,count){ // Use createMap() to prevent class assumptions involving property
 	// names in Object.prototype
 	var classCounts=element.data('$classCounts')||createMap();var classesToUpdate=[];forEach(classes,function(className){if(count>0||classCounts[className]){classCounts[className]=(classCounts[className]||0)+count;if(classCounts[className]===+(count>0)){classesToUpdate.push(className);}}});element.data('$classCounts',classCounts);return classesToUpdate.join(' ');}function updateClasses(oldClasses,newClasses){var toAdd=arrayDifference(newClasses,oldClasses);var toRemove=arrayDifference(oldClasses,newClasses);toAdd=digestClassCounts(toAdd,1);toRemove=digestClassCounts(toRemove,-1);if(toAdd&&toAdd.length){$animate.addClass(element,toAdd);}if(toRemove&&toRemove.length){$animate.removeClass(element,toRemove);}}function ngClassWatchAction(newVal){if(selector===true||scope.$index%2===selector){var newClasses=arrayClasses(newVal||[]);if(!oldVal){addClasses(newClasses);}else if(!equals(newVal,oldVal)){var oldClasses=arrayClasses(oldVal);updateClasses(oldClasses,newClasses);}}oldVal=shallowCopy(newVal);}}};function arrayDifference(tokens1,tokens2){var values=[];outer: for(var i=0;i<tokens1.length;i++){var token=tokens1[i];for(var j=0;j<tokens2.length;j++){if(token==tokens2[j])continue outer;}values.push(token);}return values;}function arrayClasses(classVal){var classes=[];if(isArray(classVal)){forEach(classVal,function(v){classes=classes.concat(arrayClasses(v));});return classes;}else if(isString(classVal)){return classVal.split(' ');}else if(isObject(classVal)){forEach(classVal,function(v,k){if(v){classes=classes.concat(k.split(' '));}});return classes;}return classVal;}}];} /**
@@ -14158,7 +14164,7 @@
 	     </file>
 	   </example>
 	 *
-	 */var ngCloakDirective=ngDirective({compile:function(element,attr){attr.$set('ngCloak',undefined);element.removeClass('ng-cloak');}}); /**
+	 */var ngCloakDirective=ngDirective({compile:function compile(element,attr){attr.$set('ngCloak',undefined);element.removeClass('ng-cloak');}}); /**
 	 * @ngdoc directive
 	 * @name ngController
 	 *
@@ -14590,11 +14596,11 @@
 	 */var ngEventDirectives={}; // For events that might fire synchronously during DOM manipulation
 	// we need to execute their event handlers asynchronously using $evalAsync,
 	// so that they are not executed in an inconsistent state.
-	var forceAsyncEvents={'blur':true,'focus':true};forEach('click dblclick mousedown mouseup mouseover mouseout mousemove mouseenter mouseleave keydown keyup keypress submit focus blur copy cut paste'.split(' '),function(eventName){var directiveName=directiveNormalize('ng-'+eventName);ngEventDirectives[directiveName]=['$parse','$rootScope',function($parse,$rootScope){return {restrict:'A',compile:function($element,attr){ // We expose the powerful $event object on the scope that provides access to the Window,
+	var forceAsyncEvents={'blur':true,'focus':true};forEach('click dblclick mousedown mouseup mouseover mouseout mousemove mouseenter mouseleave keydown keyup keypress submit focus blur copy cut paste'.split(' '),function(eventName){var directiveName=directiveNormalize('ng-'+eventName);ngEventDirectives[directiveName]=['$parse','$rootScope',function($parse,$rootScope){return {restrict:'A',compile:function compile($element,attr){ // We expose the powerful $event object on the scope that provides access to the Window,
 	// etc. that isn't protected by the fast paths in $parse.  We explicitly request better
 	// checks at the cost of speed since event handler expressions are not executed as
 	// frequently as regular change detection.
-	var fn=$parse(attr[directiveName], /* interceptorFn */null, /* expensiveChecks */true);return function ngEventHandler(scope,element){element.on(eventName,function(event){var callback=function(){fn(scope,{$event:event});};if(forceAsyncEvents[eventName]&&$rootScope.$$phase){scope.$evalAsync(callback);}else {scope.$apply(callback);}});};}};}];}); /**
+	var fn=$parse(attr[directiveName], /* interceptorFn */null, /* expensiveChecks */true);return function ngEventHandler(scope,element){element.on(eventName,function(event){var callback=function callback(){fn(scope,{$event:event});};if(forceAsyncEvents[eventName]&&$rootScope.$$phase){scope.$evalAsync(callback);}else {scope.$apply(callback);}});};}};}];}); /**
 	 * @ngdoc directive
 	 * @name ngDblclick
 	 *
@@ -15037,7 +15043,7 @@
 	      }
 	    </file>
 	  </example>
-	 */var ngIfDirective=['$animate',function($animate){return {multiElement:true,transclude:'element',priority:600,terminal:true,restrict:'A',$$tlb:true,link:function($scope,$element,$attr,ctrl,$transclude){var block,childScope,previousElements;$scope.$watch($attr.ngIf,function ngIfWatchAction(value){if(value){if(!childScope){$transclude(function(clone,newScope){childScope=newScope;clone[clone.length++]=document.createComment(' end ngIf: '+$attr.ngIf+' '); // Note: We only need the first/last node of the cloned nodes.
+	 */var ngIfDirective=['$animate',function($animate){return {multiElement:true,transclude:'element',priority:600,terminal:true,restrict:'A',$$tlb:true,link:function link($scope,$element,$attr,ctrl,$transclude){var block,childScope,previousElements;$scope.$watch($attr.ngIf,function ngIfWatchAction(value){if(value){if(!childScope){$transclude(function(clone,newScope){childScope=newScope;clone[clone.length++]=document.createComment(' end ngIf: '+$attr.ngIf+' '); // Note: We only need the first/last node of the cloned nodes.
 	// However, we need to keep the reference to the jqlite wrapper as it might be changed later
 	// by a directive with templateUrl when its template arrives.
 	block={clone:clone};$animate.enter(clone,$element.parent(),$element);});}}else {if(previousElements){previousElements.remove();previousElements=null;}if(childScope){childScope.$destroy();childScope=null;}if(block){previousElements=getBlockNodes(block.clone);$animate.leave(previousElements).then(function(){previousElements=null;});block=null;}}});}};}]; /**
@@ -15208,7 +15214,7 @@
 	 *
 	 * @param {Object} angularEvent Synthetic event object.
 	 * @param {String} src URL of content to load.
-	 */var ngIncludeDirective=['$templateRequest','$anchorScroll','$animate',function($templateRequest,$anchorScroll,$animate){return {restrict:'ECA',priority:400,terminal:true,transclude:'element',controller:angular.noop,compile:function(element,attr){var srcExp=attr.ngInclude||attr.src,onloadExp=attr.onload||'',autoScrollExp=attr.autoscroll;return function(scope,$element,$attr,ctrl,$transclude){var changeCounter=0,currentScope,previousElement,currentElement;var cleanupLastIncludeContent=function(){if(previousElement){previousElement.remove();previousElement=null;}if(currentScope){currentScope.$destroy();currentScope=null;}if(currentElement){$animate.leave(currentElement).then(function(){previousElement=null;});previousElement=currentElement;currentElement=null;}};scope.$watch(srcExp,function ngIncludeWatchAction(src){var afterAnimation=function(){if(isDefined(autoScrollExp)&&(!autoScrollExp||scope.$eval(autoScrollExp))){$anchorScroll();}};var thisChangeId=++changeCounter;if(src){ //set the 2nd param to true to ignore the template request error so that the inner
+	 */var ngIncludeDirective=['$templateRequest','$anchorScroll','$animate',function($templateRequest,$anchorScroll,$animate){return {restrict:'ECA',priority:400,terminal:true,transclude:'element',controller:angular.noop,compile:function compile(element,attr){var srcExp=attr.ngInclude||attr.src,onloadExp=attr.onload||'',autoScrollExp=attr.autoscroll;return function(scope,$element,$attr,ctrl,$transclude){var changeCounter=0,currentScope,previousElement,currentElement;var cleanupLastIncludeContent=function cleanupLastIncludeContent(){if(previousElement){previousElement.remove();previousElement=null;}if(currentScope){currentScope.$destroy();currentScope=null;}if(currentElement){$animate.leave(currentElement).then(function(){previousElement=null;});previousElement=currentElement;currentElement=null;}};scope.$watch(srcExp,function ngIncludeWatchAction(src){var afterAnimation=function afterAnimation(){if(isDefined(autoScrollExp)&&(!autoScrollExp||scope.$eval(autoScrollExp))){$anchorScroll();}};var thisChangeId=++changeCounter;if(src){ //set the 2nd param to true to ignore the template request error so that the inner
 	//contents and scope can be cleaned up.
 	$templateRequest(src,true).then(function(response){if(thisChangeId!==changeCounter)return;var newScope=scope.$new();ctrl.template=response; // Note: This will also link all children of ng-include that were contained in the original
 	// html. If that content contains controllers, ... they could pollute/change the scope.
@@ -15221,7 +15227,7 @@
 	// We need this directive so that the element content is already filled when
 	// the link function of another directive on the same element as ngInclude
 	// is called.
-	var ngIncludeFillContentDirective=['$compile',function($compile){return {restrict:'ECA',priority:-400,require:'ngInclude',link:function(scope,$element,$attr,ctrl){if(/SVG/.test($element[0].toString())){ // WebKit: https://bugs.webkit.org/show_bug.cgi?id=135698 --- SVG elements do not
+	var ngIncludeFillContentDirective=['$compile',function($compile){return {restrict:'ECA',priority:-400,require:'ngInclude',link:function link(scope,$element,$attr,ctrl){if(/SVG/.test($element[0].toString())){ // WebKit: https://bugs.webkit.org/show_bug.cgi?id=135698 --- SVG elements do not
 	// support innerHTML, so detect this here and try to generate the contents
 	// specially.
 	$element.empty();$compile(jqLiteBuildFragment(ctrl.template,document).childNodes)(scope,function namespaceAdaptedClone(clone){$element.append(clone);},{futureParentElement:$element});return;}$element.html(ctrl.template);$compile($element.contents())(scope);}};}]; /**
@@ -15279,7 +15285,7 @@
 	       });
 	     </file>
 	   </example>
-	 */var ngInitDirective=ngDirective({priority:450,compile:function(){return {pre:function(scope,element,attrs){scope.$eval(attrs.ngInit);}};}}); /**
+	 */var ngInitDirective=ngDirective({priority:450,compile:function compile(){return {pre:function pre(scope,element,attrs){scope.$eval(attrs.ngInit);}};}}); /**
 	 * @ngdoc directive
 	 * @name ngList
 	 *
@@ -15362,9 +15368,9 @@
 	 *
 	 * @element input
 	 * @param {string=} ngList optional delimiter that should be used to split the value.
-	 */var ngListDirective=function(){return {restrict:'A',priority:100,require:'ngModel',link:function(scope,element,attr,ctrl){ // We want to control whitespace trimming so we use this convoluted approach
+	 */var ngListDirective=function ngListDirective(){return {restrict:'A',priority:100,require:'ngModel',link:function link(scope,element,attr,ctrl){ // We want to control whitespace trimming so we use this convoluted approach
 	// to access the ngList attribute, which doesn't pre-trim the attribute
-	var ngList=element.attr(attr.$attr.ngList)||', ';var trimValues=attr.ngTrim!=='false';var separator=trimValues?trim(ngList):ngList;var parse=function(viewValue){ // If the viewValue is invalid (say required but empty) it will be `undefined`
+	var ngList=element.attr(attr.$attr.ngList)||', ';var trimValues=attr.ngTrim!=='false';var separator=trimValues?trim(ngList):ngList;var parse=function parse(viewValue){ // If the viewValue is invalid (say required but empty) it will be `undefined`
 	if(isUndefined(viewValue))return;var list=[];if(viewValue){forEach(viewValue.split(separator),function(value){if(value)list.push(trimValues?trim(value):value);});}return list;};ctrl.$parsers.push(parse);ctrl.$formatters.push(function(value){if(isArray(value)){return value.join(ngList);}return undefined;}); // Override the standard $isEmpty because an empty array means the input is empty.
 	ctrl.$isEmpty=function(value){return !value||!value.length;};}};}; /* global VALID_CLASS: true,
 	  INVALID_CLASS: true,
@@ -15573,7 +15579,7 @@
 	this.$validators={};this.$asyncValidators={};this.$parsers=[];this.$formatters=[];this.$viewChangeListeners=[];this.$untouched=true;this.$touched=false;this.$pristine=true;this.$dirty=false;this.$valid=true;this.$invalid=false;this.$error={}; // keep invalid keys here
 	this.$$success={}; // keep valid keys here
 	this.$pending=undefined; // keep pending keys here
-	this.$name=$interpolate($attr.name||'',false)($scope);var parsedNgModel=$parse($attr.ngModel),parsedNgModelAssign=parsedNgModel.assign,ngModelGet=parsedNgModel,ngModelSet=parsedNgModelAssign,pendingDebounce=null,parserValid,ctrl=this;this.$$setOptions=function(options){ctrl.$options=options;if(options&&options.getterSetter){var invokeModelGetter=$parse($attr.ngModel+'()'),invokeModelSetter=$parse($attr.ngModel+'($$$p)');ngModelGet=function($scope){var modelValue=parsedNgModel($scope);if(isFunction(modelValue)){modelValue=invokeModelGetter($scope);}return modelValue;};ngModelSet=function($scope,newValue){if(isFunction(parsedNgModel($scope))){invokeModelSetter($scope,{$$$p:ctrl.$modelValue});}else {parsedNgModelAssign($scope,ctrl.$modelValue);}};}else if(!parsedNgModel.assign){throw $ngModelMinErr('nonassign',"Expression '{0}' is non-assignable. Element: {1}",$attr.ngModel,startingTag($element));}}; /**
+	this.$name=$interpolate($attr.name||'',false)($scope);var parsedNgModel=$parse($attr.ngModel),parsedNgModelAssign=parsedNgModel.assign,ngModelGet=parsedNgModel,ngModelSet=parsedNgModelAssign,pendingDebounce=null,parserValid,ctrl=this;this.$$setOptions=function(options){ctrl.$options=options;if(options&&options.getterSetter){var invokeModelGetter=$parse($attr.ngModel+'()'),invokeModelSetter=$parse($attr.ngModel+'($$$p)');ngModelGet=function ngModelGet($scope){var modelValue=parsedNgModel($scope);if(isFunction(modelValue)){modelValue=invokeModelGetter($scope);}return modelValue;};ngModelSet=function ngModelSet($scope,newValue){if(isFunction(parsedNgModel($scope))){invokeModelSetter($scope,{$$$p:ctrl.$modelValue});}else {parsedNgModelAssign($scope,ctrl.$modelValue);}};}else if(!parsedNgModel.assign){throw $ngModelMinErr('nonassign',"Expression '{0}' is non-assignable. Element: {1}",$attr.ngModel,startingTag($element));}}; /**
 	   * @ngdoc method
 	   * @name ngModel.NgModelController#$render
 	   *
@@ -15630,7 +15636,7 @@
 	   *                          or skipped (null). Pending is used for unfulfilled `$asyncValidators`.
 	   *                          Skipped is used by Angular when validators do not run because of parse errors and
 	   *                          when `$asyncValidators` do not run because any of the `$validators` failed.
-	   */addSetValidityMethod({ctrl:this,$element:$element,set:function(object,property){object[property]=true;},unset:function(object,property){delete object[property];},parentForm:parentForm,$animate:$animate}); /**
+	   */addSetValidityMethod({ctrl:this,$element:$element,set:function set(object,property){object[property]=true;},unset:function unset(object,property){delete object[property];},parentForm:parentForm,$animate:$animate}); /**
 	   * @ngdoc method
 	   * @name ngModel.NgModelController#$setPristine
 	   *
@@ -16157,7 +16163,7 @@
 	        }]);
 	    </file>
 	  </example>
-	 */var ngModelOptionsDirective=function(){return {restrict:'A',controller:['$scope','$attrs',function($scope,$attrs){var that=this;this.$options=copy($scope.$eval($attrs.ngModelOptions)); // Allow adding/overriding bound events
+	 */var ngModelOptionsDirective=function ngModelOptionsDirective(){return {restrict:'A',controller:['$scope','$attrs',function($scope,$attrs){var that=this;this.$options=copy($scope.$eval($attrs.ngModelOptions)); // Allow adding/overriding bound events
 	if(this.$options.updateOn!==undefined){this.$options.updateOnDefault=false; // extract "default" pseudo-event from list of events that can trigger a model update
 	this.$options.updateOn=trim(this.$options.updateOn.replace(DEFAULT_REGEXP,function(){that.$options.updateOnDefault=true;return ' ';}));}else {this.$options.updateOnDefault=true;}}]};}; // helper methods
 	function addSetValidityMethod(context){var ctrl=context.ctrl,$element=context.$element,classCache={},set=context.set,unset=context.unset,parentForm=context.parentForm,$animate=context.$animate;classCache[INVALID_CLASS]=!(classCache[VALID_CLASS]=$element.hasClass(VALID_CLASS));ctrl.$setValidity=setValidity;function setValidity(validationErrorKey,state,controller){if(state===undefined){createAndSet('$pending',validationErrorKey,controller);}else {unsetAndCleanup('$pending',validationErrorKey,controller);}if(!isBoolean(state)){unset(ctrl.$error,validationErrorKey,controller);unset(ctrl.$$success,validationErrorKey,controller);}else {if(state){unset(ctrl.$error,validationErrorKey,controller);set(ctrl.$$success,validationErrorKey,controller);}else {set(ctrl.$error,validationErrorKey,controller);unset(ctrl.$$success,validationErrorKey,controller);}}if(ctrl.$pending){cachedToggleClass(PENDING_CLASS,true);ctrl.$valid=ctrl.$invalid=undefined;toggleValidationCss('',null);}else {cachedToggleClass(PENDING_CLASS,false);ctrl.$valid=isObjectEmpty(ctrl.$error);ctrl.$invalid=!ctrl.$valid;toggleValidationCss('',ctrl.$valid);} // re-read the state as the set/unset methods could have
@@ -16423,24 +16429,24 @@
 	var valueFn=$parse(match[2]?match[1]:valueName);var selectAsFn=selectAs&&$parse(selectAs);var viewValueFn=selectAsFn||valueFn;var trackByFn=trackBy&&$parse(trackBy); // Get the value by which we are going to track the option
 	// if we have a trackFn then use that (passing scope and locals)
 	// otherwise just hash the given viewValue
-	var getTrackByValueFn=trackBy?function(value,locals){return trackByFn(scope,locals);}:function getHashOfValue(value){return hashKey(value);};var getTrackByValue=function(value,key){return getTrackByValueFn(value,getLocals(value,key));};var displayFn=$parse(match[2]||match[1]);var groupByFn=$parse(match[3]||'');var disableWhenFn=$parse(match[4]||'');var valuesFn=$parse(match[8]);var locals={};var getLocals=keyName?function(value,key){locals[keyName]=key;locals[valueName]=value;return locals;}:function(value){locals[valueName]=value;return locals;};function Option(selectValue,viewValue,label,group,disabled){this.selectValue=selectValue;this.viewValue=viewValue;this.label=label;this.group=group;this.disabled=disabled;}function getOptionValuesKeys(optionValues){var optionValuesKeys;if(!keyName&&isArrayLike(optionValues)){optionValuesKeys=optionValues;}else { // if object, extract keys, in enumeration order, unsorted
+	var getTrackByValueFn=trackBy?function(value,locals){return trackByFn(scope,locals);}:function getHashOfValue(value){return hashKey(value);};var getTrackByValue=function getTrackByValue(value,key){return getTrackByValueFn(value,getLocals(value,key));};var displayFn=$parse(match[2]||match[1]);var groupByFn=$parse(match[3]||'');var disableWhenFn=$parse(match[4]||'');var valuesFn=$parse(match[8]);var locals={};var getLocals=keyName?function(value,key){locals[keyName]=key;locals[valueName]=value;return locals;}:function(value){locals[valueName]=value;return locals;};function Option(selectValue,viewValue,label,group,disabled){this.selectValue=selectValue;this.viewValue=viewValue;this.label=label;this.group=group;this.disabled=disabled;}function getOptionValuesKeys(optionValues){var optionValuesKeys;if(!keyName&&isArrayLike(optionValues)){optionValuesKeys=optionValues;}else { // if object, extract keys, in enumeration order, unsorted
 	optionValuesKeys=[];for(var itemKey in optionValues){if(optionValues.hasOwnProperty(itemKey)&&itemKey.charAt(0)!=='$'){optionValuesKeys.push(itemKey);}}}return optionValuesKeys;}return {trackBy:trackBy,getTrackByValue:getTrackByValue,getWatchables:$parse(valuesFn,function(optionValues){ // Create a collection of things that we would like to watch (watchedArray)
 	// so that they can all be watched using a single $watchCollection
 	// that only runs the handler once if anything changes
 	var watchedArray=[];optionValues=optionValues||[];var optionValuesKeys=getOptionValuesKeys(optionValues);var optionValuesLength=optionValuesKeys.length;for(var index=0;index<optionValuesLength;index++){var key=optionValues===optionValuesKeys?index:optionValuesKeys[index];var value=optionValues[key];var locals=getLocals(optionValues[key],key);var selectValue=getTrackByValueFn(optionValues[key],locals);watchedArray.push(selectValue); // Only need to watch the displayFn if there is a specific label expression
 	if(match[2]||match[1]){var label=displayFn(scope,locals);watchedArray.push(label);} // Only need to watch the disableWhenFn if there is a specific disable expression
-	if(match[4]){var disableWhen=disableWhenFn(scope,locals);watchedArray.push(disableWhen);}}return watchedArray;}),getOptions:function(){var optionItems=[];var selectValueMap={}; // The option values were already computed in the `getWatchables` fn,
+	if(match[4]){var disableWhen=disableWhenFn(scope,locals);watchedArray.push(disableWhen);}}return watchedArray;}),getOptions:function getOptions(){var optionItems=[];var selectValueMap={}; // The option values were already computed in the `getWatchables` fn,
 	// which must have been called to trigger `getOptions`
-	var optionValues=valuesFn(scope)||[];var optionValuesKeys=getOptionValuesKeys(optionValues);var optionValuesLength=optionValuesKeys.length;for(var index=0;index<optionValuesLength;index++){var key=optionValues===optionValuesKeys?index:optionValuesKeys[index];var value=optionValues[key];var locals=getLocals(value,key);var viewValue=viewValueFn(scope,locals);var selectValue=getTrackByValueFn(viewValue,locals);var label=displayFn(scope,locals);var group=groupByFn(scope,locals);var disabled=disableWhenFn(scope,locals);var optionItem=new Option(selectValue,viewValue,label,group,disabled);optionItems.push(optionItem);selectValueMap[selectValue]=optionItem;}return {items:optionItems,selectValueMap:selectValueMap,getOptionFromViewValue:function(value){return selectValueMap[getTrackByValue(value)];},getViewValueFromOption:function(option){ // If the viewValue could be an object that may be mutated by the application,
+	var optionValues=valuesFn(scope)||[];var optionValuesKeys=getOptionValuesKeys(optionValues);var optionValuesLength=optionValuesKeys.length;for(var index=0;index<optionValuesLength;index++){var key=optionValues===optionValuesKeys?index:optionValuesKeys[index];var value=optionValues[key];var locals=getLocals(value,key);var viewValue=viewValueFn(scope,locals);var selectValue=getTrackByValueFn(viewValue,locals);var label=displayFn(scope,locals);var group=groupByFn(scope,locals);var disabled=disableWhenFn(scope,locals);var optionItem=new Option(selectValue,viewValue,label,group,disabled);optionItems.push(optionItem);selectValueMap[selectValue]=optionItem;}return {items:optionItems,selectValueMap:selectValueMap,getOptionFromViewValue:function getOptionFromViewValue(value){return selectValueMap[getTrackByValue(value)];},getViewValueFromOption:function getViewValueFromOption(option){ // If the viewValue could be an object that may be mutated by the application,
 	// we need to make a copy and not return the reference to the value on the option.
 	return trackBy?angular.copy(option.viewValue):option.viewValue;}};}};} // we can't just jqLite('<option>') since jqLite is not smart enough
 	// to create it in <select> and IE barfs otherwise.
-	var optionTemplate=document.createElement('option'),optGroupTemplate=document.createElement('optgroup');return {restrict:'A',terminal:true,require:['select','?ngModel'],link:function(scope,selectElement,attr,ctrls){ // if ngModel is not defined, we don't need to do anything
+	var optionTemplate=document.createElement('option'),optGroupTemplate=document.createElement('optgroup');return {restrict:'A',terminal:true,require:['select','?ngModel'],link:function link(scope,selectElement,attr,ctrls){ // if ngModel is not defined, we don't need to do anything
 	var ngModelCtrl=ctrls[1];if(!ngModelCtrl)return;var selectCtrl=ctrls[0];var multiple=attr.multiple; // The emptyOption allows the application developer to provide their own custom "empty"
 	// option when the viewValue does not match any of the option values.
-	var emptyOption;for(var i=0,children=selectElement.children(),ii=children.length;i<ii;i++){if(children[i].value===''){emptyOption=children.eq(i);break;}}var providedEmptyOption=!!emptyOption;var unknownOption=jqLite(optionTemplate.cloneNode(false));unknownOption.val('?');var options;var ngOptions=parseOptionsExpression(attr.ngOptions,selectElement,scope);var renderEmptyOption=function(){if(!providedEmptyOption){selectElement.prepend(emptyOption);}selectElement.val('');emptyOption.prop('selected',true); // needed for IE
-	emptyOption.attr('selected',true);};var removeEmptyOption=function(){if(!providedEmptyOption){emptyOption.remove();}};var renderUnknownOption=function(){selectElement.prepend(unknownOption);selectElement.val('?');unknownOption.prop('selected',true); // needed for IE
-	unknownOption.attr('selected',true);};var removeUnknownOption=function(){unknownOption.remove();}; // Update the controller methods for multiple selectable options
+	var emptyOption;for(var i=0,children=selectElement.children(),ii=children.length;i<ii;i++){if(children[i].value===''){emptyOption=children.eq(i);break;}}var providedEmptyOption=!!emptyOption;var unknownOption=jqLite(optionTemplate.cloneNode(false));unknownOption.val('?');var options;var ngOptions=parseOptionsExpression(attr.ngOptions,selectElement,scope);var renderEmptyOption=function renderEmptyOption(){if(!providedEmptyOption){selectElement.prepend(emptyOption);}selectElement.val('');emptyOption.prop('selected',true); // needed for IE
+	emptyOption.attr('selected',true);};var removeEmptyOption=function removeEmptyOption(){if(!providedEmptyOption){emptyOption.remove();}};var renderUnknownOption=function renderUnknownOption(){selectElement.prepend(unknownOption);selectElement.val('?');unknownOption.prop('selected',true); // needed for IE
+	unknownOption.attr('selected',true);};var removeUnknownOption=function removeUnknownOption(){unknownOption.remove();}; // Update the controller methods for multiple selectable options
 	if(!multiple){selectCtrl.writeValue=function writeNgOptionsValue(value){var option=options.getOptionFromViewValue(value);if(option&&!option.disabled){if(selectElement[0].value!==option.selectValue){removeUnknownOption();removeEmptyOption();selectElement[0].value=option.selectValue;option.element.selected=true;option.element.setAttribute('selected','selected');}}else {if(value===null||providedEmptyOption){removeUnknownOption();renderEmptyOption();}else {removeEmptyOption();renderUnknownOption();}}};selectCtrl.readValue=function readNgOptionsValue(){var selectedOption=options.selectValueMap[selectElement.val()];if(selectedOption&&!selectedOption.disabled){removeEmptyOption();removeUnknownOption();return options.getViewValueFromOption(selectedOption);}return null;}; // If we are using `track by` then we must watch the tracked value on the model
 	// since ngModel only watches for object identity change
 	if(ngOptions.trackBy){scope.$watch(function(){return ngOptions.getTrackByValue(ngModelCtrl.$viewValue);},function(){ngModelCtrl.$render();});}}else {ngModelCtrl.$isEmpty=function(value){return !value||value.length===0;};selectCtrl.writeValue=function writeNgOptionsMultiple(value){options.items.forEach(function(option){option.element.selected=false;});if(value){value.forEach(function(item){var option=options.getOptionFromViewValue(item);if(option&&!option.disabled)option.element.selected=true;});}};selectCtrl.readValue=function readNgOptionsMultiple(){var selectedValues=selectElement.val()||[],selections=[];forEach(selectedValues,function(value){var option=options.selectValueMap[value];if(!option.disabled)selections.push(options.getViewValueFromOption(option));});return selections;}; // If we are using `track by` then we must watch these tracked values on the model
@@ -16646,7 +16652,7 @@
 	        });
 	      </file>
 	    </example>
-	 */var ngPluralizeDirective=['$locale','$interpolate','$log',function($locale,$interpolate,$log){var BRACE=/{}/g,IS_WHEN=/^when(Minus)?(.+)$/;return {link:function(scope,element,attr){var numberExp=attr.count,whenExp=attr.$attr.when&&element.attr(attr.$attr.when), // we have {{}} in attrs
+	 */var ngPluralizeDirective=['$locale','$interpolate','$log',function($locale,$interpolate,$log){var BRACE=/{}/g,IS_WHEN=/^when(Minus)?(.+)$/;return {link:function link(scope,element,attr){var numberExp=attr.count,whenExp=attr.$attr.when&&element.attr(attr.$attr.when), // we have {{}} in attrs
 	offset=attr.offset||0,whens=scope.$eval(whenExp)||{},whensExpFns={},startSymbol=$interpolate.startSymbol(),endSymbol=$interpolate.endSymbol(),braceReplacement=startSymbol+numberExp+'-'+offset+endSymbol,watchRemover=angular.noop,lastCount;forEach(attr,function(expression,attributeName){var tmpMatch=IS_WHEN.exec(attributeName);if(tmpMatch){var whenKey=(tmpMatch[1]?'-':'')+lowercase(tmpMatch[2]);whens[whenKey]=element.attr(attr.$attr[attributeName]);}});forEach(whens,function(expression,key){whensExpFns[key]=$interpolate(expression.replace(BRACE,braceReplacement));});scope.$watch(numberExp,function ngPluralizeWatchAction(newVal){var count=parseFloat(newVal);var countIsNaN=isNaN(count);if(!countIsNaN&&!(count in whens)){ // If an explicit number rule such as 1, 2, 3... is defined, just use it.
 	// Otherwise, check it against pluralization rules in $locale service.
 	count=$locale.pluralCat(count-offset);} // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
@@ -16948,10 +16954,10 @@
 	       });
 	      </file>
 	    </example>
-	 */var ngRepeatDirective=['$parse','$animate',function($parse,$animate){var NG_REMOVED='$$NG_REMOVED';var ngRepeatMinErr=minErr('ngRepeat');var updateScope=function(scope,index,valueIdentifier,value,keyIdentifier,key,arrayLength){ // TODO(perf): generate setters to shave off ~40ms or 1-1.5%
+	 */var ngRepeatDirective=['$parse','$animate',function($parse,$animate){var NG_REMOVED='$$NG_REMOVED';var ngRepeatMinErr=minErr('ngRepeat');var updateScope=function updateScope(scope,index,valueIdentifier,value,keyIdentifier,key,arrayLength){ // TODO(perf): generate setters to shave off ~40ms or 1-1.5%
 	scope[valueIdentifier]=value;if(keyIdentifier)scope[keyIdentifier]=key;scope.$index=index;scope.$first=index===0;scope.$last=index===arrayLength-1;scope.$middle=!(scope.$first||scope.$last); // jshint bitwise: false
 	scope.$odd=!(scope.$even=(index&1)===0); // jshint bitwise: true
-	};var getBlockStart=function(block){return block.clone[0];};var getBlockEnd=function(block){return block.clone[block.clone.length-1];};return {restrict:'A',multiElement:true,transclude:'element',priority:1000,terminal:true,$$tlb:true,compile:function ngRepeatCompile($element,$attr){var expression=$attr.ngRepeat;var ngRepeatEndComment=document.createComment(' end ngRepeat: '+expression+' ');var match=expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);if(!match){throw ngRepeatMinErr('iexp',"Expected expression in form of '_item_ in _collection_[ track by _id_]' but got '{0}'.",expression);}var lhs=match[1];var rhs=match[2];var aliasAs=match[3];var trackByExp=match[4];match=lhs.match(/^(?:(\s*[\$\w]+)|\(\s*([\$\w]+)\s*,\s*([\$\w]+)\s*\))$/);if(!match){throw ngRepeatMinErr('iidexp',"'_item_' in '_item_ in _collection_' should be an identifier or '(_key_, _value_)' expression, but got '{0}'.",lhs);}var valueIdentifier=match[3]||match[1];var keyIdentifier=match[2];if(aliasAs&&(!/^[$a-zA-Z_][$a-zA-Z0-9_]*$/.test(aliasAs)||/^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent|\$root|\$id)$/.test(aliasAs))){throw ngRepeatMinErr('badident',"alias '{0}' is invalid --- must be a valid JS identifier which is not a reserved name.",aliasAs);}var trackByExpGetter,trackByIdExpFn,trackByIdArrayFn,trackByIdObjFn;var hashFnLocals={$id:hashKey};if(trackByExp){trackByExpGetter=$parse(trackByExp);}else {trackByIdArrayFn=function(key,value){return hashKey(value);};trackByIdObjFn=function(key){return key;};}return function ngRepeatLink($scope,$element,$attr,ctrl,$transclude){if(trackByExpGetter){trackByIdExpFn=function(key,value,index){ // assign key, value, and $index to the locals so that they can be used in hash functions
+	};var getBlockStart=function getBlockStart(block){return block.clone[0];};var getBlockEnd=function getBlockEnd(block){return block.clone[block.clone.length-1];};return {restrict:'A',multiElement:true,transclude:'element',priority:1000,terminal:true,$$tlb:true,compile:function ngRepeatCompile($element,$attr){var expression=$attr.ngRepeat;var ngRepeatEndComment=document.createComment(' end ngRepeat: '+expression+' ');var match=expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);if(!match){throw ngRepeatMinErr('iexp',"Expected expression in form of '_item_ in _collection_[ track by _id_]' but got '{0}'.",expression);}var lhs=match[1];var rhs=match[2];var aliasAs=match[3];var trackByExp=match[4];match=lhs.match(/^(?:(\s*[\$\w]+)|\(\s*([\$\w]+)\s*,\s*([\$\w]+)\s*\))$/);if(!match){throw ngRepeatMinErr('iidexp',"'_item_' in '_item_ in _collection_' should be an identifier or '(_key_, _value_)' expression, but got '{0}'.",lhs);}var valueIdentifier=match[3]||match[1];var keyIdentifier=match[2];if(aliasAs&&(!/^[$a-zA-Z_][$a-zA-Z0-9_]*$/.test(aliasAs)||/^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent|\$root|\$id)$/.test(aliasAs))){throw ngRepeatMinErr('badident',"alias '{0}' is invalid --- must be a valid JS identifier which is not a reserved name.",aliasAs);}var trackByExpGetter,trackByIdExpFn,trackByIdArrayFn,trackByIdObjFn;var hashFnLocals={$id:hashKey};if(trackByExp){trackByExpGetter=$parse(trackByExp);}else {trackByIdArrayFn=function trackByIdArrayFn(key,value){return hashKey(value);};trackByIdObjFn=function trackByIdObjFn(key){return key;};}return function ngRepeatLink($scope,$element,$attr,ctrl,$transclude){if(trackByExpGetter){trackByIdExpFn=function trackByIdExpFn(key,value,index){ // assign key, value, and $index to the locals so that they can be used in hash functions
 	if(keyIdentifier)hashFnLocals[keyIdentifier]=key;hashFnLocals[valueIdentifier]=value;hashFnLocals.$index=index;return trackByExpGetter($scope,hashFnLocals);};} // Store a list of elements from previous run. This is a hash where key is the item from the
 	// iterator, and the value is objects with following properties.
 	//   - scope: bound scope
@@ -17142,7 +17148,7 @@
 	      });
 	    </file>
 	  </example>
-	 */var ngShowDirective=['$animate',function($animate){return {restrict:'A',multiElement:true,link:function(scope,element,attr){scope.$watch(attr.ngShow,function ngShowWatchAction(value){ // we're adding a temporary, animation-specific class for ng-hide since this way
+	 */var ngShowDirective=['$animate',function($animate){return {restrict:'A',multiElement:true,link:function link(scope,element,attr){scope.$watch(attr.ngShow,function ngShowWatchAction(value){ // we're adding a temporary, animation-specific class for ng-hide since this way
 	// we can control when the element is actually displayed on screen without having
 	// to have a global/greedy CSS selector that breaks when other animations are run.
 	// Read: https://github.com/angular/angular.js/issues/9103#issuecomment-58335845
@@ -17288,7 +17294,7 @@
 	      });
 	    </file>
 	  </example>
-	 */var ngHideDirective=['$animate',function($animate){return {restrict:'A',multiElement:true,link:function(scope,element,attr){scope.$watch(attr.ngHide,function ngHideWatchAction(value){ // The comment inside of the ngShowDirective explains why we add and
+	 */var ngHideDirective=['$animate',function($animate){return {restrict:'A',multiElement:true,link:function link(scope,element,attr){scope.$watch(attr.ngHide,function ngHideWatchAction(value){ // The comment inside of the ngShowDirective explains why we add and
 	// remove a temporary class for the show/hide animation
 	$animate[value?'addClass':'removeClass'](element,NG_HIDE_CLASS,{tempClasses:NG_HIDE_IN_PROGRESS_CLASS});});}};}]; /**
 	 * @ngdoc directive
@@ -17463,7 +17469,7 @@
 	    </file>
 	  </example>
 	 */var ngSwitchDirective=['$animate',function($animate){return {require:'ngSwitch', // asks for $scope to fool the BC controller module
-	controller:['$scope',function ngSwitchController(){this.cases={};}],link:function(scope,element,attr,ngSwitchController){var watchExpr=attr.ngSwitch||attr.on,selectedTranscludes=[],selectedElements=[],previousLeaveAnimations=[],selectedScopes=[];var spliceFactory=function(array,index){return function(){array.splice(index,1);};};scope.$watch(watchExpr,function ngSwitchWatchAction(value){var i,ii;for(i=0,ii=previousLeaveAnimations.length;i<ii;++i){$animate.cancel(previousLeaveAnimations[i]);}previousLeaveAnimations.length=0;for(i=0,ii=selectedScopes.length;i<ii;++i){var selected=getBlockNodes(selectedElements[i].clone);selectedScopes[i].$destroy();var promise=previousLeaveAnimations[i]=$animate.leave(selected);promise.then(spliceFactory(previousLeaveAnimations,i));}selectedElements.length=0;selectedScopes.length=0;if(selectedTranscludes=ngSwitchController.cases['!'+value]||ngSwitchController.cases['?']){forEach(selectedTranscludes,function(selectedTransclude){selectedTransclude.transclude(function(caseElement,selectedScope){selectedScopes.push(selectedScope);var anchor=selectedTransclude.element;caseElement[caseElement.length++]=document.createComment(' end ngSwitchWhen: ');var block={clone:caseElement};selectedElements.push(block);$animate.enter(caseElement,anchor.parent(),anchor);});});}});}};}];var ngSwitchWhenDirective=ngDirective({transclude:'element',priority:1200,require:'^ngSwitch',multiElement:true,link:function(scope,element,attrs,ctrl,$transclude){ctrl.cases['!'+attrs.ngSwitchWhen]=ctrl.cases['!'+attrs.ngSwitchWhen]||[];ctrl.cases['!'+attrs.ngSwitchWhen].push({transclude:$transclude,element:element});}});var ngSwitchDefaultDirective=ngDirective({transclude:'element',priority:1200,require:'^ngSwitch',multiElement:true,link:function(scope,element,attr,ctrl,$transclude){ctrl.cases['?']=ctrl.cases['?']||[];ctrl.cases['?'].push({transclude:$transclude,element:element});}}); /**
+	controller:['$scope',function ngSwitchController(){this.cases={};}],link:function link(scope,element,attr,ngSwitchController){var watchExpr=attr.ngSwitch||attr.on,selectedTranscludes=[],selectedElements=[],previousLeaveAnimations=[],selectedScopes=[];var spliceFactory=function spliceFactory(array,index){return function(){array.splice(index,1);};};scope.$watch(watchExpr,function ngSwitchWatchAction(value){var i,ii;for(i=0,ii=previousLeaveAnimations.length;i<ii;++i){$animate.cancel(previousLeaveAnimations[i]);}previousLeaveAnimations.length=0;for(i=0,ii=selectedScopes.length;i<ii;++i){var selected=getBlockNodes(selectedElements[i].clone);selectedScopes[i].$destroy();var promise=previousLeaveAnimations[i]=$animate.leave(selected);promise.then(spliceFactory(previousLeaveAnimations,i));}selectedElements.length=0;selectedScopes.length=0;if(selectedTranscludes=ngSwitchController.cases['!'+value]||ngSwitchController.cases['?']){forEach(selectedTranscludes,function(selectedTransclude){selectedTransclude.transclude(function(caseElement,selectedScope){selectedScopes.push(selectedScope);var anchor=selectedTransclude.element;caseElement[caseElement.length++]=document.createComment(' end ngSwitchWhen: ');var block={clone:caseElement};selectedElements.push(block);$animate.enter(caseElement,anchor.parent(),anchor);});});}});}};}];var ngSwitchWhenDirective=ngDirective({transclude:'element',priority:1200,require:'^ngSwitch',multiElement:true,link:function link(scope,element,attrs,ctrl,$transclude){ctrl.cases['!'+attrs.ngSwitchWhen]=ctrl.cases['!'+attrs.ngSwitchWhen]||[];ctrl.cases['!'+attrs.ngSwitchWhen].push({transclude:$transclude,element:element});}});var ngSwitchDefaultDirective=ngDirective({transclude:'element',priority:1200,require:'^ngSwitch',multiElement:true,link:function link(scope,element,attr,ctrl,$transclude){ctrl.cases['?']=ctrl.cases['?']||[];ctrl.cases['?'].push({transclude:$transclude,element:element});}}); /**
 	 * @ngdoc directive
 	 * @name ngTransclude
 	 * @restrict EAC
@@ -17516,7 +17522,7 @@
 	     </file>
 	   </example>
 	 *
-	 */var ngTranscludeDirective=ngDirective({restrict:'EAC',link:function($scope,$element,$attrs,controller,$transclude){if(!$transclude){throw minErr('ngTransclude')('orphan','Illegal use of ngTransclude directive in the template! '+'No parent directive that requires a transclusion found. '+'Element: {0}',startingTag($element));}$transclude(function(clone){$element.empty();$element.append(clone);});}}); /**
+	 */var ngTranscludeDirective=ngDirective({restrict:'EAC',link:function link($scope,$element,$attrs,controller,$transclude){if(!$transclude){throw minErr('ngTransclude')('orphan','Illegal use of ngTransclude directive in the template! '+'No parent directive that requires a transclusion found. '+'Element: {0}',startingTag($element));}$transclude(function(clone){$element.empty();$element.append(clone);});}}); /**
 	 * @ngdoc directive
 	 * @name script
 	 * @restrict E
@@ -17548,7 +17554,7 @@
 	      });
 	    </file>
 	  </example>
-	 */var scriptDirective=['$templateCache',function($templateCache){return {restrict:'E',terminal:true,compile:function(element,attr){if(attr.type=='text/ng-template'){var templateUrl=attr.id,text=element[0].text;$templateCache.put(templateUrl,text);}}};}];var noopNgModelController={$setViewValue:noop,$render:noop}; /**
+	 */var scriptDirective=['$templateCache',function($templateCache){return {restrict:'E',terminal:true,compile:function compile(element,attr){if(attr.type=='text/ng-template'){var templateUrl=attr.id,text=element[0].text;$templateCache.put(templateUrl,text);}}};}];var noopNgModelController={$setViewValue:noop,$render:noop}; /**
 	 * @ngdoc type
 	 * @name  select.SelectController
 	 * @description
@@ -17641,7 +17647,7 @@
 	 *   </file>
 	 * </example>
 	 *
-	 */var selectDirective=function(){return {restrict:'E',require:['select','?ngModel'],controller:SelectController,link:function(scope,element,attr,ctrls){ // if ngModel is not defined, we don't need to do anything
+	 */var selectDirective=function selectDirective(){return {restrict:'E',require:['select','?ngModel'],controller:SelectController,link:function link(scope,element,attr,ctrls){ // if ngModel is not defined, we don't need to do anything
 	var ngModelCtrl=ctrls[1];if(!ngModelCtrl)return;var selectCtrl=ctrls[0];selectCtrl.ngModelCtrl=ngModelCtrl; // We delegate rendering to the `writeValue` method, which can be changed
 	// if the select can have multiple selected values or if the options are being
 	// generated by `ngOptions`
@@ -17664,15 +17670,15 @@
 	var optionDirective=['$interpolate',function($interpolate){function chromeHack(optionElement){ // Workaround for https://code.google.com/p/chromium/issues/detail?id=381459
 	// Adding an <option selected="selected"> element to a <select required="required"> should
 	// automatically select the new element
-	if(optionElement[0].hasAttribute('selected')){optionElement[0].selected=true;}}return {restrict:'E',priority:100,compile:function(element,attr){ // If the value attribute is not defined then we fall back to the
+	if(optionElement[0].hasAttribute('selected')){optionElement[0].selected=true;}}return {restrict:'E',priority:100,compile:function compile(element,attr){ // If the value attribute is not defined then we fall back to the
 	// text content of the option element, which may be interpolated
 	if(isUndefined(attr.value)){var interpolateFn=$interpolate(element.text(),true);if(!interpolateFn){attr.$set('value',element.text());}}return function(scope,element,attr){ // This is an optimization over using ^^ since we don't want to have to search
 	// all the way to the root of the DOM for every single option element
 	var selectCtrlName='$selectController',parent=element.parent(),selectCtrl=parent.data(selectCtrlName)||parent.parent().data(selectCtrlName); // in case we are in optgroup
 	// Only update trigger option updates if this is an option within a `select`
 	// that also has `ngModel` attached
-	if(selectCtrl&&selectCtrl.ngModelCtrl){if(interpolateFn){scope.$watch(interpolateFn,function interpolateWatchAction(newVal,oldVal){attr.$set('value',newVal);if(oldVal!==newVal){selectCtrl.removeOption(oldVal);}selectCtrl.addOption(newVal,element);selectCtrl.ngModelCtrl.$render();chromeHack(element);});}else {selectCtrl.addOption(attr.value,element);selectCtrl.ngModelCtrl.$render();chromeHack(element);}element.on('$destroy',function(){selectCtrl.removeOption(attr.value);selectCtrl.ngModelCtrl.$render();});}};}};}];var styleDirective=valueFn({restrict:'E',terminal:false});var requiredDirective=function(){return {restrict:'A',require:'?ngModel',link:function(scope,elm,attr,ctrl){if(!ctrl)return;attr.required=true; // force truthy in case we are on non input element
-	ctrl.$validators.required=function(modelValue,viewValue){return !attr.required||!ctrl.$isEmpty(viewValue);};attr.$observe('required',function(){ctrl.$validate();});}};};var patternDirective=function(){return {restrict:'A',require:'?ngModel',link:function(scope,elm,attr,ctrl){if(!ctrl)return;var regexp,patternExp=attr.ngPattern||attr.pattern;attr.$observe('pattern',function(regex){if(isString(regex)&&regex.length>0){regex=new RegExp('^'+regex+'$');}if(regex&&!regex.test){throw minErr('ngPattern')('noregexp','Expected {0} to be a RegExp but was {1}. Element: {2}',patternExp,regex,startingTag(elm));}regexp=regex||undefined;ctrl.$validate();});ctrl.$validators.pattern=function(value){return ctrl.$isEmpty(value)||isUndefined(regexp)||regexp.test(value);};}};};var maxlengthDirective=function(){return {restrict:'A',require:'?ngModel',link:function(scope,elm,attr,ctrl){if(!ctrl)return;var maxlength=-1;attr.$observe('maxlength',function(value){var intVal=toInt(value);maxlength=isNaN(intVal)?-1:intVal;ctrl.$validate();});ctrl.$validators.maxlength=function(modelValue,viewValue){return maxlength<0||ctrl.$isEmpty(viewValue)||viewValue.length<=maxlength;};}};};var minlengthDirective=function(){return {restrict:'A',require:'?ngModel',link:function(scope,elm,attr,ctrl){if(!ctrl)return;var minlength=0;attr.$observe('minlength',function(value){minlength=toInt(value)||0;ctrl.$validate();});ctrl.$validators.minlength=function(modelValue,viewValue){return ctrl.$isEmpty(viewValue)||viewValue.length>=minlength;};}};};if(window.angular.bootstrap){ //AngularJS is already loaded, so we can return here...
+	if(selectCtrl&&selectCtrl.ngModelCtrl){if(interpolateFn){scope.$watch(interpolateFn,function interpolateWatchAction(newVal,oldVal){attr.$set('value',newVal);if(oldVal!==newVal){selectCtrl.removeOption(oldVal);}selectCtrl.addOption(newVal,element);selectCtrl.ngModelCtrl.$render();chromeHack(element);});}else {selectCtrl.addOption(attr.value,element);selectCtrl.ngModelCtrl.$render();chromeHack(element);}element.on('$destroy',function(){selectCtrl.removeOption(attr.value);selectCtrl.ngModelCtrl.$render();});}};}};}];var styleDirective=valueFn({restrict:'E',terminal:false});var requiredDirective=function requiredDirective(){return {restrict:'A',require:'?ngModel',link:function link(scope,elm,attr,ctrl){if(!ctrl)return;attr.required=true; // force truthy in case we are on non input element
+	ctrl.$validators.required=function(modelValue,viewValue){return !attr.required||!ctrl.$isEmpty(viewValue);};attr.$observe('required',function(){ctrl.$validate();});}};};var patternDirective=function patternDirective(){return {restrict:'A',require:'?ngModel',link:function link(scope,elm,attr,ctrl){if(!ctrl)return;var regexp,patternExp=attr.ngPattern||attr.pattern;attr.$observe('pattern',function(regex){if(isString(regex)&&regex.length>0){regex=new RegExp('^'+regex+'$');}if(regex&&!regex.test){throw minErr('ngPattern')('noregexp','Expected {0} to be a RegExp but was {1}. Element: {2}',patternExp,regex,startingTag(elm));}regexp=regex||undefined;ctrl.$validate();});ctrl.$validators.pattern=function(value){return ctrl.$isEmpty(value)||isUndefined(regexp)||regexp.test(value);};}};};var maxlengthDirective=function maxlengthDirective(){return {restrict:'A',require:'?ngModel',link:function link(scope,elm,attr,ctrl){if(!ctrl)return;var maxlength=-1;attr.$observe('maxlength',function(value){var intVal=toInt(value);maxlength=isNaN(intVal)?-1:intVal;ctrl.$validate();});ctrl.$validators.maxlength=function(modelValue,viewValue){return maxlength<0||ctrl.$isEmpty(viewValue)||viewValue.length<=maxlength;};}};};var minlengthDirective=function minlengthDirective(){return {restrict:'A',require:'?ngModel',link:function link(scope,elm,attr,ctrl){if(!ctrl)return;var minlength=0;attr.$observe('minlength',function(value){minlength=toInt(value)||0;ctrl.$validate();});ctrl.$validators.minlength=function(modelValue,viewValue){return ctrl.$isEmpty(viewValue)||viewValue.length>=minlength;};}};};if(window.angular.bootstrap){ //AngularJS is already loaded, so we can return here...
 	console.log('WARNING: Tried to load angular more than once.');return;} //try to bind to jquery now so that one can write jqLite(document).ready()
 	//but we will rebind on bootstrap again.
 	bindJQuery();publishExternalAPI(angular);jqLite(document).ready(function(){angularInit(document,bootstrap);});})(window,document);!window.angular.$$csp()&&window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>'); /*!
@@ -17684,7 +17690,7 @@
 	 * @license AngularJS v1.4.3
 	 * (c) 2010-2015 Google, Inc. http://angularjs.org
 	 * License: MIT
-	 */(function(window,angular,undefined){'use strict'; /* jshint ignore:start */var noop=angular.noop;var extend=angular.extend;var jqLite=angular.element;var forEach=angular.forEach;var isArray=angular.isArray;var isString=angular.isString;var isObject=angular.isObject;var isUndefined=angular.isUndefined;var isDefined=angular.isDefined;var isFunction=angular.isFunction;var isElement=angular.isElement;var ELEMENT_NODE=1;var COMMENT_NODE=8;var NG_ANIMATE_CLASSNAME='ng-animate';var NG_ANIMATE_CHILDREN_DATA='$$ngAnimateChildren';var isPromiseLike=function(p){return p&&p.then?true:false;};function assertArg(arg,name,reason){if(!arg){throw ngMinErr('areq',"Argument '{0}' is {1}",name||'?',reason||"required");}return arg;}function mergeClasses(a,b){if(!a&&!b)return '';if(!a)return b;if(!b)return a;if(isArray(a))a=a.join(' ');if(isArray(b))b=b.join(' ');return a+' '+b;}function packageStyles(options){var styles={};if(options&&(options.to||options.from)){styles.to=options.to;styles.from=options.from;}return styles;}function pendClasses(classes,fix,isPrefix){var className='';classes=isArray(classes)?classes:classes&&isString(classes)&&classes.length?classes.split(/\s+/):[];forEach(classes,function(klass,i){if(klass&&klass.length>0){className+=i>0?' ':'';className+=isPrefix?fix+klass:klass+fix;}});return className;}function removeFromArray(arr,val){var index=arr.indexOf(val);if(val>=0){arr.splice(index,1);}}function stripCommentsFromElement(element){if(element instanceof jqLite){switch(element.length){case 0:return [];break;case 1: // there is no point of stripping anything if the element
+	 */(function(window,angular,undefined){'use strict'; /* jshint ignore:start */var noop=angular.noop;var extend=angular.extend;var jqLite=angular.element;var forEach=angular.forEach;var isArray=angular.isArray;var isString=angular.isString;var isObject=angular.isObject;var isUndefined=angular.isUndefined;var isDefined=angular.isDefined;var isFunction=angular.isFunction;var isElement=angular.isElement;var ELEMENT_NODE=1;var COMMENT_NODE=8;var NG_ANIMATE_CLASSNAME='ng-animate';var NG_ANIMATE_CHILDREN_DATA='$$ngAnimateChildren';var isPromiseLike=function isPromiseLike(p){return p&&p.then?true:false;};function assertArg(arg,name,reason){if(!arg){throw ngMinErr('areq',"Argument '{0}' is {1}",name||'?',reason||"required");}return arg;}function mergeClasses(a,b){if(!a&&!b)return '';if(!a)return b;if(!b)return a;if(isArray(a))a=a.join(' ');if(isArray(b))b=b.join(' ');return a+' '+b;}function packageStyles(options){var styles={};if(options&&(options.to||options.from)){styles.to=options.to;styles.from=options.from;}return styles;}function pendClasses(classes,fix,isPrefix){var className='';classes=isArray(classes)?classes:classes&&isString(classes)&&classes.length?classes.split(/\s+/):[];forEach(classes,function(klass,i){if(klass&&klass.length>0){className+=i>0?' ':'';className+=isPrefix?fix+klass:klass+fix;}});return className;}function removeFromArray(arr,val){var index=arr.indexOf(val);if(val>=0){arr.splice(index,1);}}function stripCommentsFromElement(element){if(element instanceof jqLite){switch(element.length){case 0:return [];break;case 1: // there is no point of stripping anything if the element
 	// is the only element within the jqLite wrapper.
 	// (it's important that we retain the element instance.)
 	if(element[0].nodeType===ELEMENT_NODE){return element;}break;default:return jqLite(extractElementNode(element));break;}}if(element.nodeType===ELEMENT_NODE){return jqLite(element);}}function extractElementNode(element){if(!element[0])return element;for(var i=0;i<element.length;i++){var elm=element[i];if(elm.nodeType==ELEMENT_NODE){return elm;}}}function $$addClass($$jqLite,element,className){forEach(element,function(elm){$$jqLite.addClass(elm,className);});}function $$removeClass($$jqLite,element,className){forEach(element,function(elm){$$jqLite.removeClass(elm,className);});}function applyAnimationClassesFactory($$jqLite){return function(element,options){if(options.addClass){$$addClass($$jqLite,element,options.addClass);options.addClass=null;}if(options.removeClass){$$removeClass($$jqLite,element,options.removeClass);options.removeClass=null;}};}function prepareAnimationOptions(options){options=options||{};if(!options.$$prepared){var domOperation=options.domOperation||noop;options.domOperation=function(){options.$$domOperationFired=true;domOperation();domOperation=noop;};options.$$prepared=true;}return options;}function applyAnimationStyles(element,options){applyAnimationFromStyles(element,options);applyAnimationToStyles(element,options);}function applyAnimationFromStyles(element,options){if(options.from){element.css(options.from);options.from=null;}}function applyAnimationToStyles(element,options){if(options.to){element.css(options.to);options.to=null;}}function mergeAnimationOptions(element,target,newOptions){var toAdd=(target.addClass||'')+' '+(newOptions.addClass||'');var toRemove=(target.removeClass||'')+' '+(newOptions.removeClass||'');var classes=resolveElementClasses(element.attr('class'),toAdd,toRemove);extend(target,newOptions);if(classes.addClass){target.addClass=classes.addClass;}else {target.addClass=null;}if(classes.removeClass){target.removeClass=classes.removeClass;}else {target.removeClass=null;}return target;}function resolveElementClasses(existing,toAdd,toRemove){var ADD_CLASS=1;var REMOVE_CLASS=-1;var flags={};existing=splitClassesToLookup(existing);toAdd=splitClassesToLookup(toAdd);forEach(toAdd,function(value,key){flags[key]=ADD_CLASS;});toRemove=splitClassesToLookup(toRemove);forEach(toRemove,function(value,key){flags[key]=flags[key]===ADD_CLASS?null:REMOVE_CLASS;});var classes={addClass:'',removeClass:''};forEach(flags,function(val,klass){var prop,allow;if(val===ADD_CLASS){prop='addClass';allow=!existing[klass];}else if(val===REMOVE_CLASS){prop='removeClass';allow=existing[klass];}if(allow){if(classes[prop].length){classes[prop]+=' ';}classes[prop]+=klass;}});function splitClassesToLookup(classes){if(isString(classes)){classes=classes.split(' ');}var obj={};forEach(classes,function(klass){ // sometimes the split leaves empty string values
@@ -17926,7 +17932,7 @@
 	if(value.charAt(value.length-1)=='s'){value=value.substring(0,value.length-1);}value=parseFloat(value)||0;maxValue=maxValue?Math.max(value,maxValue):value;});return maxValue;}function truthyTimingValue(val){return val===0||val!=null;}function getCssTransitionDurationStyle(duration,applyOnlyDuration){var style=TRANSITION_PROP;var value=duration+'s';if(applyOnlyDuration){style+=DURATION_KEY;}else {value+=' linear all';}return [style,value];}function getCssKeyframeDurationStyle(duration){return [ANIMATION_DURATION_PROP,duration+'s'];}function getCssDelayStyle(delay,isKeyframeAnimation){var prop=isKeyframeAnimation?ANIMATION_DELAY_PROP:TRANSITION_DELAY_PROP;return [prop,delay+'s'];}function blockTransitions(node,duration){ // we use a negative delay value since it performs blocking
 	// yet it doesn't kill any existing transitions running on the
 	// same element which makes this safe for class-based animations
-	var value=duration?'-'+duration+'s':'';applyInlineStyle(node,[TRANSITION_DELAY_PROP,value]);return [TRANSITION_DELAY_PROP,value];}function blockKeyframeAnimations(node,applyBlock){var value=applyBlock?'paused':'';var key=ANIMATION_PROP+ANIMATION_PLAYSTATE_KEY;applyInlineStyle(node,[key,value]);return [key,value];}function applyInlineStyle(node,styleTuple){var prop=styleTuple[0];var value=styleTuple[1];node.style[prop]=value;}function createLocalCacheLookup(){var cache=Object.create(null);return {flush:function(){cache=Object.create(null);},count:function(key){var entry=cache[key];return entry?entry.total:0;},get:function(key){var entry=cache[key];return entry&&entry.value;},put:function(key,value){if(!cache[key]){cache[key]={total:1,value:value};}else {cache[key].total++;}}};}var $AnimateCssProvider=['$animateProvider',function($animateProvider){var gcsLookup=createLocalCacheLookup();var gcsStaggerLookup=createLocalCacheLookup();this.$get=['$window','$$jqLite','$$AnimateRunner','$timeout','$document','$sniffer','$$rAFScheduler',function($window,$$jqLite,$$AnimateRunner,$timeout,$document,$sniffer,$$rAFScheduler){var applyAnimationClasses=applyAnimationClassesFactory($$jqLite);var parentCounter=0;function gcsHashFn(node,extraClasses){var KEY="$$ngAnimateParentKey";var parentNode=node.parentNode;var parentID=parentNode[KEY]||(parentNode[KEY]=++parentCounter);return parentID+'-'+node.getAttribute('class')+'-'+extraClasses;}function computeCachedCssStyles(node,className,cacheKey,properties){var timings=gcsLookup.get(cacheKey);if(!timings){timings=computeCssStyles($window,node,properties);if(timings.animationIterationCount==='infinite'){timings.animationIterationCount=1;}} // we keep putting this in multiple times even though the value and the cacheKey are the same
+	var value=duration?'-'+duration+'s':'';applyInlineStyle(node,[TRANSITION_DELAY_PROP,value]);return [TRANSITION_DELAY_PROP,value];}function blockKeyframeAnimations(node,applyBlock){var value=applyBlock?'paused':'';var key=ANIMATION_PROP+ANIMATION_PLAYSTATE_KEY;applyInlineStyle(node,[key,value]);return [key,value];}function applyInlineStyle(node,styleTuple){var prop=styleTuple[0];var value=styleTuple[1];node.style[prop]=value;}function createLocalCacheLookup(){var cache=Object.create(null);return {flush:function flush(){cache=Object.create(null);},count:function count(key){var entry=cache[key];return entry?entry.total:0;},get:function get(key){var entry=cache[key];return entry&&entry.value;},put:function put(key,value){if(!cache[key]){cache[key]={total:1,value:value};}else {cache[key].total++;}}};}var $AnimateCssProvider=['$animateProvider',function($animateProvider){var gcsLookup=createLocalCacheLookup();var gcsStaggerLookup=createLocalCacheLookup();this.$get=['$window','$$jqLite','$$AnimateRunner','$timeout','$document','$sniffer','$$rAFScheduler',function($window,$$jqLite,$$AnimateRunner,$timeout,$document,$sniffer,$$rAFScheduler){var applyAnimationClasses=applyAnimationClassesFactory($$jqLite);var parentCounter=0;function gcsHashFn(node,extraClasses){var KEY="$$ngAnimateParentKey";var parentNode=node.parentNode;var parentID=parentNode[KEY]||(parentNode[KEY]=++parentCounter);return parentID+'-'+node.getAttribute('class')+'-'+extraClasses;}function computeCachedCssStyles(node,className,cacheKey,properties){var timings=gcsLookup.get(cacheKey);if(!timings){timings=computeCssStyles($window,node,properties);if(timings.animationIterationCount==='infinite'){timings.animationIterationCount=1;}} // we keep putting this in multiple times even though the value and the cacheKey are the same
 	// because we're keeping an interal tally of how many duplicate animations are detected.
 	gcsLookup.put(cacheKey,timings);return timings;}function computeCachedCssStaggerStyles(node,className,cacheKey,properties){var stagger; // if we have one or more existing matches of matching elements
 	// containing the same parent + CSS styles (which is how cacheKey works)
@@ -17962,8 +17968,8 @@
 	// delay value and the delay value is required for the final event checking. This
 	// property will ensure that this will happen after the RAF phase has passed.
 	if(options.duration==null&&timings.transitionDuration>0){flags.recalculateTimingStyles=flags.recalculateTimingStyles||isFirst;}maxDelayTime=maxDelay*ONE_SECOND;maxDurationTime=maxDuration*ONE_SECOND;if(!options.skipBlocking){flags.blockTransition=timings.transitionDuration>0;flags.blockKeyframeAnimation=timings.animationDuration>0&&stagger.animationDelay>0&&stagger.animationDuration===0;}applyAnimationFromStyles(element,options);if(!flags.blockTransition){blockTransitions(node,false);}applyBlocking(maxDuration); // TODO(matsko): for 1.5 change this code to have an animator object for better debugging
-	return {$$willAnimate:true,end:endFn,start:function(){if(animationClosed)return;runnerHost={end:endFn,cancel:cancelFn,resume:null, //this will be set during the start() phase
-	pause:null};runner=new $$AnimateRunner(runnerHost);waitUntilQuiet(start); // we don't have access to pause/resume the animation
+	return {$$willAnimate:true,end:endFn,start:function start(){if(animationClosed)return;runnerHost={end:endFn,cancel:cancelFn,resume:null, //this will be set during the start() phase
+	pause:null};runner=new $$AnimateRunner(runnerHost);waitUntilQuiet(_start2); // we don't have access to pause/resume the animation
 	// since it hasn't run yet. AnimateRunner will therefore
 	// set noop functions for resume and pause and they will
 	// later be overridden once the animation is triggered
@@ -17979,11 +17985,11 @@
 	// the element must be removed just after the animation is over or else the element
 	// will appear on screen for one animation frame causing an overbearing flicker.
 	if(options.onDone){options.onDone();} // if the preparation function fails then the promise is not setup
-	if(runner){runner.complete(!rejected);}}function applyBlocking(duration){if(flags.blockTransition){blockTransitions(node,duration);}if(flags.blockKeyframeAnimation){blockKeyframeAnimations(node,!!duration);}}function closeAndReturnNoopAnimator(){runner=new $$AnimateRunner({end:endFn,cancel:cancelFn});close();return {$$willAnimate:false,start:function(){return runner;},end:endFn};}function start(){if(animationClosed)return;if(!node.parentNode){close();return;}var startTime,events=[]; // even though we only pause keyframe animations here the pause flag
+	if(runner){runner.complete(!rejected);}}function applyBlocking(duration){if(flags.blockTransition){blockTransitions(node,duration);}if(flags.blockKeyframeAnimation){blockKeyframeAnimations(node,!!duration);}}function closeAndReturnNoopAnimator(){runner=new $$AnimateRunner({end:endFn,cancel:cancelFn});close();return {$$willAnimate:false,start:function start(){return runner;},end:endFn};}function _start2(){if(animationClosed)return;if(!node.parentNode){close();return;}var startTime,events=[]; // even though we only pause keyframe animations here the pause flag
 	// will still happen when transitions are used. Only the transition will
 	// not be paused since that is not possible. If the animation ends when
 	// paused then it will not complete until unpaused or cancelled.
-	var playPause=function(playAnimation){if(!animationCompleted){animationPaused=!playAnimation;if(timings.animationDuration){var value=blockKeyframeAnimations(node,animationPaused);animationPaused?temporaryStyles.push(value):removeFromArray(temporaryStyles,value);}}else if(animationPaused&&playAnimation){animationPaused=false;close();}}; // checking the stagger duration prevents an accidently cascade of the CSS delay style
+	var playPause=function playPause(playAnimation){if(!animationCompleted){animationPaused=!playAnimation;if(timings.animationDuration){var value=blockKeyframeAnimations(node,animationPaused);animationPaused?temporaryStyles.push(value):removeFromArray(temporaryStyles,value);}}else if(animationPaused&&playAnimation){animationPaused=false;close();}}; // checking the stagger duration prevents an accidently cascade of the CSS delay style
 	// being inherited from the parent. If the transition duration is zero then we can safely
 	// rely that the delay value is an intential stagger delay style.
 	var maxStagger=itemIndex>0&&(timings.transitionDuration&&stagger.transitionDuration===0||timings.animationDuration&&stagger.animationDuration===0)&&Math.max(stagger.animationDelay,stagger.transitionDelay);if(maxStagger){$timeout(triggerAnimationStart,Math.floor(maxStagger*itemIndex*ONE_SECOND),false);}else {triggerAnimationStart();} // this will decorate the existing promise runner with pause/resume methods
@@ -18007,7 +18013,7 @@
 	// only making use of the `in` animation or vice-versa.
 	// In either case we should allow this and not assume the
 	// animation is over unless both animations are not used.
-	if(!animatorOut){animatorIn=prepareInAnimation();if(!animatorIn){return end();}}var startingAnimator=animatorOut||animatorIn;return {start:function(){var runner;var currentAnimation=startingAnimator.start();currentAnimation.done(function(){currentAnimation=null;if(!animatorIn){animatorIn=prepareInAnimation();if(animatorIn){currentAnimation=animatorIn.start();currentAnimation.done(function(){currentAnimation=null;end();runner.complete();});return currentAnimation;}} // in the event that there is no `in` animation
+	if(!animatorOut){animatorIn=prepareInAnimation();if(!animatorIn){return end();}}var startingAnimator=animatorOut||animatorIn;return {start:function start(){var runner;var currentAnimation=startingAnimator.start();currentAnimation.done(function(){currentAnimation=null;if(!animatorIn){animatorIn=prepareInAnimation();if(animatorIn){currentAnimation=animatorIn.start();currentAnimation.done(function(){currentAnimation=null;end();runner.complete();});return currentAnimation;}} // in the event that there is no `in` animation
 	end();runner.complete();});runner=new $$AnimateRunner({end:endFn,cancel:endFn});return runner;function endFn(){if(currentAnimation){currentAnimation.end();}}}};function calculateAnchorStyles(anchor){var styles={};var coords=getDomNode(anchor).getBoundingClientRect(); // we iterate directly since safari messes up and doesn't return
 	// all the keys for the coods object when iterated
 	forEach(['width','height','top','left'],function(key){var value=coords[key];switch(key){case 'top':value+=bodyNode.scrollTop;break;case 'left':value+=bodyNode.scrollLeft;break;}styles[key]=Math.floor(value)+'px';});return styles;}function prepareOutAnimation(){var animator=$animateCss(clone,{addClass:NG_OUT_ANCHOR_CLASS_NAME,delay:true,from:calculateAnchorStyles(outAnchor)}); // read the comment within `prepareRegularAnimation` to understand
@@ -18015,7 +18021,7 @@
 	return animator.$$willAnimate?animator:null;}function getClassVal(element){return element.attr('class')||'';}function prepareInAnimation(){var endingClasses=filterCssClasses(getClassVal(inAnchor));var toAdd=getUniqueValues(endingClasses,startingClasses);var toRemove=getUniqueValues(startingClasses,endingClasses);var animator=$animateCss(clone,{to:calculateAnchorStyles(inAnchor),addClass:NG_IN_ANCHOR_CLASS_NAME+' '+toAdd,removeClass:NG_OUT_ANCHOR_CLASS_NAME+' '+toRemove,delay:true}); // read the comment within `prepareRegularAnimation` to understand
 	// why this check is necessary
 	return animator.$$willAnimate?animator:null;}function end(){clone.remove();outAnchor.removeClass(NG_ANIMATE_SHIM_CLASS_NAME);inAnchor.removeClass(NG_ANIMATE_SHIM_CLASS_NAME);}}function prepareFromToAnchorAnimation(from,to,classes,anchors){var fromAnimation=prepareRegularAnimation(from);var toAnimation=prepareRegularAnimation(to);var anchorAnimations=[];forEach(anchors,function(anchor){var outElement=anchor['out'];var inElement=anchor['in'];var animator=prepareAnchoredAnimation(classes,outElement,inElement);if(animator){anchorAnimations.push(animator);}}); // no point in doing anything when there are no elements to animate
-	if(!fromAnimation&&!toAnimation&&anchorAnimations.length===0)return;return {start:function(){var animationRunners=[];if(fromAnimation){animationRunners.push(fromAnimation.start());}if(toAnimation){animationRunners.push(toAnimation.start());}forEach(anchorAnimations,function(animation){animationRunners.push(animation.start());});var runner=new $$AnimateRunner({end:endFn,cancel:endFn // CSS-driven animations cannot be cancelled, only ended
+	if(!fromAnimation&&!toAnimation&&anchorAnimations.length===0)return;return {start:function start(){var animationRunners=[];if(fromAnimation){animationRunners.push(fromAnimation.start());}if(toAnimation){animationRunners.push(toAnimation.start());}forEach(anchorAnimations,function(animation){animationRunners.push(animation.start());});var runner=new $$AnimateRunner({end:endFn,cancel:endFn // CSS-driven animations cannot be cancelled, only ended
 	});$$AnimateRunner.all(animationRunners,function(status){runner.complete(status);});return runner;function endFn(){forEach(animationRunners,function(runner){runner.end();});}}};}function prepareRegularAnimation(animationDetails){var element=animationDetails.element;var options=animationDetails.options||{};if(animationDetails.structural){ // structural animations ensure that the CSS classes are always applied
 	// before the detection starts.
 	options.structural=options.applyClassesEarly=true; // we special case the leave animation since we want to ensure that
@@ -18038,10 +18044,10 @@
 	// we don't return anything which then makes $animation query the next driver.
 	var animations=lookupAnimations(classes);var before,after;if(animations.length){var afterFn,beforeFn;if(event=='leave'){beforeFn='leave';afterFn='afterLeave'; // TODO(matsko): get rid of this
 	}else {beforeFn='before'+event.charAt(0).toUpperCase()+event.substr(1);afterFn=event;}if(event!=='enter'&&event!=='move'){before=packageAnimations(element,event,options,animations,beforeFn);}after=packageAnimations(element,event,options,animations,afterFn);} // no matching animations
-	if(!before&&!after)return;function applyOptions(){options.domOperation();applyAnimationClasses(element,options);}return {start:function(){var closeActiveAnimations;var chain=[];if(before){chain.push(function(fn){closeActiveAnimations=before(fn);});}if(chain.length){chain.push(function(fn){applyOptions();fn(true);});}else {applyOptions();}if(after){chain.push(function(fn){closeActiveAnimations=after(fn);});}var animationClosed=false;var runner=new $$AnimateRunner({end:function(){endAnimations();},cancel:function(){endAnimations(true);}});$$AnimateRunner.chain(chain,onComplete);return runner;function onComplete(success){animationClosed=true;applyOptions();applyAnimationStyles(element,options);runner.complete(success);}function endAnimations(cancelled){if(!animationClosed){(closeActiveAnimations||noop)(cancelled);onComplete(cancelled);}}}};function executeAnimationFn(fn,element,event,options,onDone){var args;switch(event){case 'animate':args=[element,options.from,options.to,onDone];break;case 'setClass':args=[element,classesToAdd,classesToRemove,onDone];break;case 'addClass':args=[element,classesToAdd,onDone];break;case 'removeClass':args=[element,classesToRemove,onDone];break;default:args=[element,onDone];break;}args.push(options);var value=fn.apply(fn,args);if(value){if(isFunction(value.start)){value=value.start();}if(value instanceof $$AnimateRunner){value.done(onDone);}else if(isFunction(value)){ // optional onEnd / onCancel callback
+	if(!before&&!after)return;function applyOptions(){options.domOperation();applyAnimationClasses(element,options);}return {start:function start(){var closeActiveAnimations;var chain=[];if(before){chain.push(function(fn){closeActiveAnimations=before(fn);});}if(chain.length){chain.push(function(fn){applyOptions();fn(true);});}else {applyOptions();}if(after){chain.push(function(fn){closeActiveAnimations=after(fn);});}var animationClosed=false;var runner=new $$AnimateRunner({end:function end(){endAnimations();},cancel:function cancel(){endAnimations(true);}});$$AnimateRunner.chain(chain,onComplete);return runner;function onComplete(success){animationClosed=true;applyOptions();applyAnimationStyles(element,options);runner.complete(success);}function endAnimations(cancelled){if(!animationClosed){(closeActiveAnimations||noop)(cancelled);onComplete(cancelled);}}}};function executeAnimationFn(fn,element,event,options,onDone){var args;switch(event){case 'animate':args=[element,options.from,options.to,onDone];break;case 'setClass':args=[element,classesToAdd,classesToRemove,onDone];break;case 'addClass':args=[element,classesToAdd,onDone];break;case 'removeClass':args=[element,classesToRemove,onDone];break;default:args=[element,onDone];break;}args.push(options);var value=fn.apply(fn,args);if(value){if(isFunction(value.start)){value=value.start();}if(value instanceof $$AnimateRunner){value.done(onDone);}else if(isFunction(value)){ // optional onEnd / onCancel callback
 	return value;}}return noop;}function groupEventedAnimations(element,event,options,animations,fnName){var operations=[];forEach(animations,function(ani){var animation=ani[fnName];if(!animation)return; // note that all of these animations will run in parallel
-	operations.push(function(){var runner;var endProgressCb;var resolved=false;var onAnimationComplete=function(rejected){if(!resolved){resolved=true;(endProgressCb||noop)(rejected);runner.complete(!rejected);}};runner=new $$AnimateRunner({end:function(){onAnimationComplete();},cancel:function(){onAnimationComplete(true);}});endProgressCb=executeAnimationFn(animation,element,event,options,function(result){var cancelled=result===false;onAnimationComplete(cancelled);});return runner;});});return operations;}function packageAnimations(element,event,options,animations,fnName){var operations=groupEventedAnimations(element,event,options,animations,fnName);if(operations.length===0){var a,b;if(fnName==='beforeSetClass'){a=groupEventedAnimations(element,'removeClass',options,animations,'beforeRemoveClass');b=groupEventedAnimations(element,'addClass',options,animations,'beforeAddClass');}else if(fnName==='setClass'){a=groupEventedAnimations(element,'removeClass',options,animations,'removeClass');b=groupEventedAnimations(element,'addClass',options,animations,'addClass');}if(a){operations=operations.concat(a);}if(b){operations=operations.concat(b);}}if(operations.length===0)return; // TODO(matsko): add documentation
-	return function startAnimation(callback){var runners=[];if(operations.length){forEach(operations,function(animateFn){runners.push(animateFn());});}runners.length?$$AnimateRunner.all(runners,callback):callback();return function endFn(reject){forEach(runners,function(runner){reject?runner.cancel():runner.end();});};};}};function lookupAnimations(classes){classes=isArray(classes)?classes:classes.split(' ');var matches=[],flagMap={};for(var i=0;i<classes.length;i++){var klass=classes[i],animationFactory=$animateProvider.$$registeredAnimations[klass];if(animationFactory&&!flagMap[klass]){matches.push($injector.get(animationFactory));flagMap[klass]=true;}}return matches;}}];}];var $$AnimateJsDriverProvider=['$$animationProvider',function($$animationProvider){$$animationProvider.drivers.push('$$animateJsDriver');this.$get=['$$animateJs','$$AnimateRunner',function($$animateJs,$$AnimateRunner){return function initDriverFn(animationDetails){if(animationDetails.from&&animationDetails.to){var fromAnimation=prepareAnimation(animationDetails.from);var toAnimation=prepareAnimation(animationDetails.to);if(!fromAnimation&&!toAnimation)return;return {start:function(){var animationRunners=[];if(fromAnimation){animationRunners.push(fromAnimation.start());}if(toAnimation){animationRunners.push(toAnimation.start());}$$AnimateRunner.all(animationRunners,done);var runner=new $$AnimateRunner({end:endFnFactory(),cancel:endFnFactory()});return runner;function endFnFactory(){return function(){forEach(animationRunners,function(runner){ // at this point we cannot cancel animations for groups just yet. 1.5+
+	operations.push(function(){var runner;var endProgressCb;var resolved=false;var onAnimationComplete=function onAnimationComplete(rejected){if(!resolved){resolved=true;(endProgressCb||noop)(rejected);runner.complete(!rejected);}};runner=new $$AnimateRunner({end:function end(){onAnimationComplete();},cancel:function cancel(){onAnimationComplete(true);}});endProgressCb=executeAnimationFn(animation,element,event,options,function(result){var cancelled=result===false;onAnimationComplete(cancelled);});return runner;});});return operations;}function packageAnimations(element,event,options,animations,fnName){var operations=groupEventedAnimations(element,event,options,animations,fnName);if(operations.length===0){var a,b;if(fnName==='beforeSetClass'){a=groupEventedAnimations(element,'removeClass',options,animations,'beforeRemoveClass');b=groupEventedAnimations(element,'addClass',options,animations,'beforeAddClass');}else if(fnName==='setClass'){a=groupEventedAnimations(element,'removeClass',options,animations,'removeClass');b=groupEventedAnimations(element,'addClass',options,animations,'addClass');}if(a){operations=operations.concat(a);}if(b){operations=operations.concat(b);}}if(operations.length===0)return; // TODO(matsko): add documentation
+	return function startAnimation(callback){var runners=[];if(operations.length){forEach(operations,function(animateFn){runners.push(animateFn());});}runners.length?$$AnimateRunner.all(runners,callback):callback();return function endFn(reject){forEach(runners,function(runner){reject?runner.cancel():runner.end();});};};}};function lookupAnimations(classes){classes=isArray(classes)?classes:classes.split(' ');var matches=[],flagMap={};for(var i=0;i<classes.length;i++){var klass=classes[i],animationFactory=$animateProvider.$$registeredAnimations[klass];if(animationFactory&&!flagMap[klass]){matches.push($injector.get(animationFactory));flagMap[klass]=true;}}return matches;}}];}];var $$AnimateJsDriverProvider=['$$animationProvider',function($$animationProvider){$$animationProvider.drivers.push('$$animateJsDriver');this.$get=['$$animateJs','$$AnimateRunner',function($$animateJs,$$AnimateRunner){return function initDriverFn(animationDetails){if(animationDetails.from&&animationDetails.to){var fromAnimation=prepareAnimation(animationDetails.from);var toAnimation=prepareAnimation(animationDetails.to);if(!fromAnimation&&!toAnimation)return;return {start:function start(){var animationRunners=[];if(fromAnimation){animationRunners.push(fromAnimation.start());}if(toAnimation){animationRunners.push(toAnimation.start());}$$AnimateRunner.all(animationRunners,done);var runner=new $$AnimateRunner({end:endFnFactory(),cancel:endFnFactory()});return runner;function endFnFactory(){return function(){forEach(animationRunners,function(runner){ // at this point we cannot cancel animations for groups just yet. 1.5+
 	runner.end();});};}function done(status){runner.complete(status);}}};}else {return prepareAnimation(animationDetails);}};function prepareAnimation(animationDetails){ // TODO(matsko): make sure to check for grouped animations and delegate down to normal animations
 	var element=animationDetails.element;var event=animationDetails.event;var options=animationDetails.options;var classes=animationDetails.classes;return $$animateJs(element,event,classes,options);}}];}];var NG_ANIMATE_ATTR_NAME='data-ng-animate';var NG_ANIMATE_PIN_DATA='$ngAnimatePin';var $$AnimateQueueProvider=['$animateProvider',function($animateProvider){var PRE_DIGEST_STATE=1;var RUNNING_STATE=2;var rules=this.rules={skip:[],cancel:[],join:[]};function isAllowed(ruleType,element,currentAnimation,previousAnimation){return rules[ruleType].some(function(fn){return fn(element,currentAnimation,previousAnimation);});}function hasAnimationClasses(options,and){options=options||{};var a=(options.addClass||'').length>0;var b=(options.removeClass||'').length>0;return and?a&&b:a||b;}rules.join.push(function(element,newAnimation,currentAnimation){ // if the new animation is class-based then we can just tack that on
 	return !newAnimation.structural&&hasAnimationClasses(newAnimation.options);});rules.skip.push(function(element,newAnimation,currentAnimation){ // there is no need to animate anything if no classes are being added and
@@ -18068,12 +18074,12 @@
 	// .enabled() with whatever arguments that it provided it with
 	if(animationsEnabled===null){animationsEnabled=true;}});});});var bodyElement=jqLite($document[0].body);var callbackRegistry={}; // remember that the classNameFilter is set during the provider/config
 	// stage therefore we can optimize here and setup a helper function
-	var classNameFilter=$animateProvider.classNameFilter();var isAnimatableClassName=!classNameFilter?function(){return true;}:function(className){return classNameFilter.test(className);};var applyAnimationClasses=applyAnimationClassesFactory($$jqLite);function normalizeAnimationOptions(element,options){return mergeAnimationOptions(element,options,{});}function findCallbacks(element,event){var targetNode=getDomNode(element);var matches=[];var entries=callbackRegistry[event];if(entries){forEach(entries,function(entry){if(entry.node.contains(targetNode)){matches.push(entry.callback);}});}return matches;}function triggerCallback(event,element,phase,data){$$rAF(function(){forEach(findCallbacks(element,event),function(callback){callback(element,phase,data);});});}return {on:function(event,container,callback){var node=extractElementNode(container);callbackRegistry[event]=callbackRegistry[event]||[];callbackRegistry[event].push({node:node,callback:callback});},off:function(event,container,callback){var entries=callbackRegistry[event];if(!entries)return;callbackRegistry[event]=arguments.length===1?null:filterFromRegistry(entries,container,callback);function filterFromRegistry(list,matchContainer,matchCallback){var containerNode=extractElementNode(matchContainer);return list.filter(function(entry){var isMatch=entry.node===containerNode&&(!matchCallback||entry.callback===matchCallback);return !isMatch;});}},pin:function(element,parentElement){assertArg(isElement(element),'element','not an element');assertArg(isElement(parentElement),'parentElement','not an element');element.data(NG_ANIMATE_PIN_DATA,parentElement);},push:function(element,event,options,domOperation){options=options||{};options.domOperation=domOperation;return queueAnimation(element,event,options);}, // this method has four signatures:
+	var classNameFilter=$animateProvider.classNameFilter();var isAnimatableClassName=!classNameFilter?function(){return true;}:function(className){return classNameFilter.test(className);};var applyAnimationClasses=applyAnimationClassesFactory($$jqLite);function normalizeAnimationOptions(element,options){return mergeAnimationOptions(element,options,{});}function findCallbacks(element,event){var targetNode=getDomNode(element);var matches=[];var entries=callbackRegistry[event];if(entries){forEach(entries,function(entry){if(entry.node.contains(targetNode)){matches.push(entry.callback);}});}return matches;}function triggerCallback(event,element,phase,data){$$rAF(function(){forEach(findCallbacks(element,event),function(callback){callback(element,phase,data);});});}return {on:function on(event,container,callback){var node=extractElementNode(container);callbackRegistry[event]=callbackRegistry[event]||[];callbackRegistry[event].push({node:node,callback:callback});},off:function off(event,container,callback){var entries=callbackRegistry[event];if(!entries)return;callbackRegistry[event]=arguments.length===1?null:filterFromRegistry(entries,container,callback);function filterFromRegistry(list,matchContainer,matchCallback){var containerNode=extractElementNode(matchContainer);return list.filter(function(entry){var isMatch=entry.node===containerNode&&(!matchCallback||entry.callback===matchCallback);return !isMatch;});}},pin:function pin(element,parentElement){assertArg(isElement(element),'element','not an element');assertArg(isElement(parentElement),'parentElement','not an element');element.data(NG_ANIMATE_PIN_DATA,parentElement);},push:function push(element,event,options,domOperation){options=options||{};options.domOperation=domOperation;return queueAnimation(element,event,options);}, // this method has four signatures:
 	//  () - global getter
 	//  (bool) - global setter
 	//  (element) - element getter
 	//  (element, bool) - element setter<F37>
-	enabled:function(element,bool){var argCount=arguments.length;if(argCount===0){ // () - Global getter
+	enabled:function enabled(element,bool){var argCount=arguments.length;if(argCount===0){ // () - Global getter
 	bool=!!animationsEnabled;}else {var hasElement=isElement(element);if(!hasElement){ // (bool) - Global setter
 	bool=animationsEnabled=!!element;}else {var node=getDomNode(element);var recordExists=disabledElementsLookup.get(node);if(argCount===1){ // (element) - Element getter
 	bool=!recordExists;}else { // (element, bool) - Element setter
@@ -18139,12 +18145,12 @@
 	// therefore we need to ensure that the rootElement is an ancestor of the current element
 	rootElementDetected=isMatchingElement(parentElement,$rootElement);if(!rootElementDetected){parentHost=parentElement.data(NG_ANIMATE_PIN_DATA);if(parentHost){parentElement=parentHost;}}}if(!bodyElementDetected){ // we also need to ensure that the element is or will be apart of the body element
 	// otherwise it is pointless to even issue an animation to be rendered
-	bodyElementDetected=isMatchingElement(parentElement,bodyElement);}parentElement=parentElement.parent();}var allowAnimation=!parentAnimationDetected||animateChildren;return allowAnimation&&rootElementDetected&&bodyElementDetected;}function markElementAnimationState(element,state,details){details=details||{};details.state=state;var node=getDomNode(element);node.setAttribute(NG_ANIMATE_ATTR_NAME,state);var oldValue=activeAnimationsLookup.get(node);var newValue=oldValue?extend(oldValue,details):details;activeAnimationsLookup.put(node,newValue);}}];}];var $$rAFMutexFactory=['$$rAF',function($$rAF){return function(){var passed=false;$$rAF(function(){passed=true;});return function(fn){passed?fn():$$rAF(fn);};};}];var $$AnimateRunnerFactory=['$q','$$rAFMutex',function($q,$$rAFMutex){var INITIAL_STATE=0;var DONE_PENDING_STATE=1;var DONE_COMPLETE_STATE=2;AnimateRunner.chain=function(chain,callback){var index=0;next();function next(){if(index===chain.length){callback(true);return;}chain[index](function(response){if(response===false){callback(false);return;}index++;next();});}};AnimateRunner.all=function(runners,callback){var count=0;var status=true;forEach(runners,function(runner){runner.done(onProgress);});function onProgress(response){status=status&&response;if(++count===runners.length){callback(status);}}};function AnimateRunner(host){this.setHost(host);this._doneCallbacks=[];this._runInAnimationFrame=$$rAFMutex();this._state=0;}AnimateRunner.prototype={setHost:function(host){this.host=host||{};},done:function(fn){if(this._state===DONE_COMPLETE_STATE){fn();}else {this._doneCallbacks.push(fn);}},progress:noop,getPromise:function(){if(!this.promise){var self=this;this.promise=$q(function(resolve,reject){self.done(function(status){status===false?reject():resolve();});});}return this.promise;},then:function(resolveHandler,rejectHandler){return this.getPromise().then(resolveHandler,rejectHandler);},'catch':function(handler){return this.getPromise()['catch'](handler);},'finally':function(handler){return this.getPromise()['finally'](handler);},pause:function(){if(this.host.pause){this.host.pause();}},resume:function(){if(this.host.resume){this.host.resume();}},end:function(){if(this.host.end){this.host.end();}this._resolve(true);},cancel:function(){if(this.host.cancel){this.host.cancel();}this._resolve(false);},complete:function(response){var self=this;if(self._state===INITIAL_STATE){self._state=DONE_PENDING_STATE;self._runInAnimationFrame(function(){self._resolve(response);});}},_resolve:function(response){if(this._state!==DONE_COMPLETE_STATE){forEach(this._doneCallbacks,function(fn){fn(response);});this._doneCallbacks.length=0;this._state=DONE_COMPLETE_STATE;}}};return AnimateRunner;}];var $$AnimationProvider=['$animateProvider',function($animateProvider){var NG_ANIMATE_REF_ATTR='ng-animate-ref';var drivers=this.drivers=[];var RUNNER_STORAGE_KEY='$$animationRunner';function setRunner(element,runner){element.data(RUNNER_STORAGE_KEY,runner);}function removeRunner(element){element.removeData(RUNNER_STORAGE_KEY);}function getRunner(element){return element.data(RUNNER_STORAGE_KEY);}this.$get=['$$jqLite','$rootScope','$injector','$$AnimateRunner','$$rAFScheduler',function($$jqLite,$rootScope,$injector,$$AnimateRunner,$$rAFScheduler){var animationQueue=[];var applyAnimationClasses=applyAnimationClassesFactory($$jqLite);var totalPendingClassBasedAnimations=0;var totalActiveClassBasedAnimations=0;var classBasedAnimationsQueue=[]; // TODO(matsko): document the signature in a better way
+	bodyElementDetected=isMatchingElement(parentElement,bodyElement);}parentElement=parentElement.parent();}var allowAnimation=!parentAnimationDetected||animateChildren;return allowAnimation&&rootElementDetected&&bodyElementDetected;}function markElementAnimationState(element,state,details){details=details||{};details.state=state;var node=getDomNode(element);node.setAttribute(NG_ANIMATE_ATTR_NAME,state);var oldValue=activeAnimationsLookup.get(node);var newValue=oldValue?extend(oldValue,details):details;activeAnimationsLookup.put(node,newValue);}}];}];var $$rAFMutexFactory=['$$rAF',function($$rAF){return function(){var passed=false;$$rAF(function(){passed=true;});return function(fn){passed?fn():$$rAF(fn);};};}];var $$AnimateRunnerFactory=['$q','$$rAFMutex',function($q,$$rAFMutex){var INITIAL_STATE=0;var DONE_PENDING_STATE=1;var DONE_COMPLETE_STATE=2;AnimateRunner.chain=function(chain,callback){var index=0;next();function next(){if(index===chain.length){callback(true);return;}chain[index](function(response){if(response===false){callback(false);return;}index++;next();});}};AnimateRunner.all=function(runners,callback){var count=0;var status=true;forEach(runners,function(runner){runner.done(onProgress);});function onProgress(response){status=status&&response;if(++count===runners.length){callback(status);}}};function AnimateRunner(host){this.setHost(host);this._doneCallbacks=[];this._runInAnimationFrame=$$rAFMutex();this._state=0;}AnimateRunner.prototype={setHost:function setHost(host){this.host=host||{};},done:function done(fn){if(this._state===DONE_COMPLETE_STATE){fn();}else {this._doneCallbacks.push(fn);}},progress:noop,getPromise:function getPromise(){if(!this.promise){var self=this;this.promise=$q(function(resolve,reject){self.done(function(status){status===false?reject():resolve();});});}return this.promise;},then:function then(resolveHandler,rejectHandler){return this.getPromise().then(resolveHandler,rejectHandler);},'catch':function _catch(handler){return this.getPromise()['catch'](handler);},'finally':function _finally(handler){return this.getPromise()['finally'](handler);},pause:function pause(){if(this.host.pause){this.host.pause();}},resume:function resume(){if(this.host.resume){this.host.resume();}},end:function end(){if(this.host.end){this.host.end();}this._resolve(true);},cancel:function cancel(){if(this.host.cancel){this.host.cancel();}this._resolve(false);},complete:function complete(response){var self=this;if(self._state===INITIAL_STATE){self._state=DONE_PENDING_STATE;self._runInAnimationFrame(function(){self._resolve(response);});}},_resolve:function _resolve(response){if(this._state!==DONE_COMPLETE_STATE){forEach(this._doneCallbacks,function(fn){fn(response);});this._doneCallbacks.length=0;this._state=DONE_COMPLETE_STATE;}}};return AnimateRunner;}];var $$AnimationProvider=['$animateProvider',function($animateProvider){var NG_ANIMATE_REF_ATTR='ng-animate-ref';var drivers=this.drivers=[];var RUNNER_STORAGE_KEY='$$animationRunner';function setRunner(element,runner){element.data(RUNNER_STORAGE_KEY,runner);}function removeRunner(element){element.removeData(RUNNER_STORAGE_KEY);}function getRunner(element){return element.data(RUNNER_STORAGE_KEY);}this.$get=['$$jqLite','$rootScope','$injector','$$AnimateRunner','$$rAFScheduler',function($$jqLite,$rootScope,$injector,$$AnimateRunner,$$rAFScheduler){var animationQueue=[];var applyAnimationClasses=applyAnimationClassesFactory($$jqLite);var totalPendingClassBasedAnimations=0;var totalActiveClassBasedAnimations=0;var classBasedAnimationsQueue=[]; // TODO(matsko): document the signature in a better way
 	return function(element,event,options){options=prepareAnimationOptions(options);var isStructural=['enter','move','leave'].indexOf(event)>=0; // there is no animation at the current moment, however
 	// these runner methods will get later updated with the
 	// methods leading into the driver's end/cancel methods
 	// for now they just stop the animation from starting
-	var runner=new $$AnimateRunner({end:function(){close();},cancel:function(){close(true);}});if(!drivers.length){close();return runner;}setRunner(element,runner);var classes=mergeClasses(element.attr('class'),mergeClasses(options.addClass,options.removeClass));var tempClasses=options.tempClasses;if(tempClasses){classes+=' '+tempClasses;options.tempClasses=null;}var classBasedIndex;if(!isStructural){classBasedIndex=totalPendingClassBasedAnimations;totalPendingClassBasedAnimations+=1;}animationQueue.push({ // this data is used by the postDigest code and passed into
+	var runner=new $$AnimateRunner({end:function end(){close();},cancel:function cancel(){close(true);}});if(!drivers.length){close();return runner;}setRunner(element,runner);var classes=mergeClasses(element.attr('class'),mergeClasses(options.addClass,options.removeClass));var tempClasses=options.tempClasses;if(tempClasses){classes+=' '+tempClasses;options.tempClasses=null;}var classBasedIndex;if(!isStructural){classBasedIndex=totalPendingClassBasedAnimations;totalPendingClassBasedAnimations+=1;}animationQueue.push({ // this data is used by the postDigest code and passed into
 	// the driver step function
 	element:element,classes:classes,event:event,classBasedIndex:classBasedIndex,structural:isStructural,options:options,beforeStart:beforeStart,close:close});element.on('$destroy',handleDestroyedElement); // we only want there to be one function called within the post digest
 	// block. This way we can group animations for all the animations that
@@ -18164,7 +18170,7 @@
 	var targetElement=animationEntry.anchors?animationEntry.from.element||animationEntry.to.element:animationEntry.element;if(getRunner(targetElement)&&getDomNode(targetElement).parentNode){var operation=invokeFirstDriver(animationEntry);if(operation){startAnimationFn=operation.start;}}if(!startAnimationFn){closeFn();}else {var animationRunner=startAnimationFn();animationRunner.done(function(status){closeFn(!status);});updateAnimationRunners(animationEntry,animationRunner);}}});});return runner; // TODO(matsko): change to reference nodes
 	function getAnchorNodes(node){var SELECTOR='['+NG_ANIMATE_REF_ATTR+']';var items=node.hasAttribute(NG_ANIMATE_REF_ATTR)?[node]:node.querySelectorAll(SELECTOR);var anchors=[];forEach(items,function(node){var attr=node.getAttribute(NG_ANIMATE_REF_ATTR);if(attr&&attr.length){anchors.push(node);}});return anchors;}function groupAnimations(animations){var preparedAnimations=[];var refLookup={};forEach(animations,function(animation,index){var element=animation.element;var node=getDomNode(element);var event=animation.event;var enterOrMove=['enter','move'].indexOf(event)>=0;var anchorNodes=animation.structural?getAnchorNodes(node):[];if(anchorNodes.length){var direction=enterOrMove?'to':'from';forEach(anchorNodes,function(anchor){var key=anchor.getAttribute(NG_ANIMATE_REF_ATTR);refLookup[key]=refLookup[key]||{};refLookup[key][direction]={animationID:index,element:jqLite(anchor)};});}else {preparedAnimations.push(animation);}});var usedIndicesLookup={};var anchorGroups={};forEach(refLookup,function(operations,key){var from=operations.from;var to=operations.to;if(!from||!to){ // only one of these is set therefore we can't have an
 	// anchor animation since all three pieces are required
-	var index=from?from.animationID:to.animationID;var indexKey=index.toString();if(!usedIndicesLookup[indexKey]){usedIndicesLookup[indexKey]=true;preparedAnimations.push(animations[index]);}return;}var fromAnimation=animations[from.animationID];var toAnimation=animations[to.animationID];var lookupKey=from.animationID.toString();if(!anchorGroups[lookupKey]){var group=anchorGroups[lookupKey]={structural:true,beforeStart:function(){fromAnimation.beforeStart();toAnimation.beforeStart();},close:function(){fromAnimation.close();toAnimation.close();},classes:cssClassesIntersection(fromAnimation.classes,toAnimation.classes),from:fromAnimation,to:toAnimation,anchors:[] // TODO(matsko): change to reference nodes
+	var index=from?from.animationID:to.animationID;var indexKey=index.toString();if(!usedIndicesLookup[indexKey]){usedIndicesLookup[indexKey]=true;preparedAnimations.push(animations[index]);}return;}var fromAnimation=animations[from.animationID];var toAnimation=animations[to.animationID];var lookupKey=from.animationID.toString();if(!anchorGroups[lookupKey]){var group=anchorGroups[lookupKey]={structural:true,beforeStart:function beforeStart(){fromAnimation.beforeStart();toAnimation.beforeStart();},close:function close(){fromAnimation.close();toAnimation.close();},classes:cssClassesIntersection(fromAnimation.classes,toAnimation.classes),from:fromAnimation,to:toAnimation,anchors:[] // TODO(matsko): change to reference nodes
 	}; // the anchor animations require that the from and to elements both have at least
 	// one shared CSS class which effictively marries the two elements together to use
 	// the same animation driver and to properly sequence the anchor animation.
@@ -19090,7 +19096,7 @@
 	html=html.replace(new RegExp("([\\W\\w]*)<\\s*\\/\\s*"+stack.last()+"[^>]*>",'i'),function(all,text){text=text.replace(COMMENT_REGEXP,"$1").replace(CDATA_REGEXP,"$1");if(handler.chars)handler.chars(decodeEntities(text));return "";});parseEndTag("",stack.last());}if(html==last){throw $sanitizeMinErr('badparse',"The sanitizer was unable to parse the following block "+"of html: {0}",html);}last=html;} // Clean up any remaining tags
 	parseEndTag();function parseStartTag(tag,tagName,rest,unary){tagName=angular.lowercase(tagName);if(blockElements[tagName]){while(stack.last()&&inlineElements[stack.last()]){parseEndTag("",stack.last());}}if(optionalEndTagElements[tagName]&&stack.last()==tagName){parseEndTag("",tagName);}unary=voidElements[tagName]||!!unary;if(!unary){stack.push(tagName);}var attrs={};rest.replace(ATTR_REGEXP,function(match,name,doubleQuotedValue,singleQuotedValue,unquotedValue){var value=doubleQuotedValue||singleQuotedValue||unquotedValue||'';attrs[name]=decodeEntities(value);});if(handler.start)handler.start(tagName,attrs,unary);}function parseEndTag(tag,tagName){var pos=0,i;tagName=angular.lowercase(tagName);if(tagName){ // Find the closest opened tag of the same type
 	for(pos=stack.length-1;pos>=0;pos--){if(stack[pos]==tagName)break;}}if(pos>=0){ // Close all the open elements, up the stack
-	for(i=stack.length-1;i>=pos;i--)if(handler.end)handler.end(stack[i]); // Remove the open elements from the stack
+	for(i=stack.length-1;i>=pos;i--){if(handler.end)handler.end(stack[i]);} // Remove the open elements from the stack
 	stack.length=pos;}}}var hiddenPre=document.createElement("pre"); /**
 	 * decodes all entities into regular string
 	 * @param value
@@ -19112,7 +19118,7 @@
 	 *     chars: function(text) {},
 	 *     comment: function(text) {}
 	 * }
-	 */function htmlSanitizeWriter(buf,uriValidator){var ignore=false;var out=angular.bind(buf,buf.push);return {start:function(tag,attrs,unary){tag=angular.lowercase(tag);if(!ignore&&specialElements[tag]){ignore=tag;}if(!ignore&&validElements[tag]===true){out('<');out(tag);angular.forEach(attrs,function(value,key){var lkey=angular.lowercase(key);var isImage=tag==='img'&&lkey==='src'||lkey==='background';if(validAttrs[lkey]===true&&(uriAttrs[lkey]!==true||uriValidator(value,isImage))){out(' ');out(key);out('="');out(encodeEntities(value));out('"');}});out(unary?'/>':'>');}},end:function(tag){tag=angular.lowercase(tag);if(!ignore&&validElements[tag]===true){out('</');out(tag);out('>');}if(tag==ignore){ignore=false;}},chars:function(chars){if(!ignore){out(encodeEntities(chars));}}};} // define ngSanitize module and register $sanitize service
+	 */function htmlSanitizeWriter(buf,uriValidator){var ignore=false;var out=angular.bind(buf,buf.push);return {start:function start(tag,attrs,unary){tag=angular.lowercase(tag);if(!ignore&&specialElements[tag]){ignore=tag;}if(!ignore&&validElements[tag]===true){out('<');out(tag);angular.forEach(attrs,function(value,key){var lkey=angular.lowercase(key);var isImage=tag==='img'&&lkey==='src'||lkey==='background';if(validAttrs[lkey]===true&&(uriAttrs[lkey]!==true||uriValidator(value,isImage))){out(' ');out(key);out('="');out(encodeEntities(value));out('"');}});out(unary?'/>':'>');}},end:function end(tag){tag=angular.lowercase(tag);if(!ignore&&validElements[tag]===true){out('</');out(tag);out('>');}if(tag==ignore){ignore=false;}},chars:function chars(_chars){if(!ignore){out(encodeEntities(_chars));}}};} // define ngSanitize module and register $sanitize service
 	angular.module('ngSanitize',[]).provider('$sanitize',$SanitizeProvider); /* global sanitizeText: false */ /**
 	 * @ngdoc filter
 	 * @name linky
@@ -19257,7 +19263,7 @@
 	 * @param {Array} keys The list of keys within each object to compare. If the list is empty or not specified,
 	 *                     it defaults to the list of keys in `a`.
 	 * @return {Boolean} Returns `true` if the keys match, otherwise `false`.
-	 */function equalForKeys(a,b,keys){if(!keys){keys=[];for(var n in a)keys.push(n); // Used instead of Object.keys() for IE8 compatibility
+	 */function equalForKeys(a,b,keys){if(!keys){keys=[];for(var n in a){keys.push(n);} // Used instead of Object.keys() for IE8 compatibility
 	}for(var i=0;i<keys.length;i++){var k=keys[i];if(a[k]!=b[k])return false; // Not '===', values aren't necessarily normalized
 	}return true;} /**
 	 * Returns the subset of an object, based on a list of keys.
@@ -19791,7 +19797,7 @@
 	 * is also available to providers under the name `$urlMatcherFactoryProvider`.
 	 */function $UrlMatcherFactory(){$$UMFP=this;var isCaseInsensitive=false,isStrictMode=true,defaultSquashPolicy=false;function valToString(val){return val!=null?val.toString().replace(/\//g,"%2F"):val;}function valFromString(val){return val!=null?val.toString().replace(/%2F/g,"/"):val;} //  TODO: in 1.0, make string .is() return false if value is undefined by default.
 	//  function regexpMatches(val) { /*jshint validthis:true */ return isDefined(val) && this.pattern.test(val); }
-	function regexpMatches(val){ /*jshint validthis:true */return this.pattern.test(val);}var $types={},enqueue=true,typeQueue=[],injector,defaultTypes={string:{encode:valToString,decode:valFromString,is:regexpMatches,pattern:/[^/]*/},int:{encode:valToString,decode:function(val){return parseInt(val,10);},is:function(val){return isDefined(val)&&this.decode(val.toString())===val;},pattern:/\d+/},bool:{encode:function(val){return val?1:0;},decode:function(val){return parseInt(val,10)!==0;},is:function(val){return val===true||val===false;},pattern:/0|1/},date:{encode:function(val){if(!this.is(val))return undefined;return [val.getFullYear(),('0'+(val.getMonth()+1)).slice(-2),('0'+val.getDate()).slice(-2)].join("-");},decode:function(val){if(this.is(val))return val;var match=this.capture.exec(val);return match?new Date(match[1],match[2]-1,match[3]):undefined;},is:function(val){return val instanceof Date&&!isNaN(val.valueOf());},equals:function(a,b){return this.is(a)&&this.is(b)&&a.toISOString()===b.toISOString();},pattern:/[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,capture:/([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/},json:{encode:angular.toJson,decode:angular.fromJson,is:angular.isObject,equals:angular.equals,pattern:/[^/]*/},any:{ // does not encode/decode
+	function regexpMatches(val){ /*jshint validthis:true */return this.pattern.test(val);}var $types={},enqueue=true,typeQueue=[],injector,defaultTypes={string:{encode:valToString,decode:valFromString,is:regexpMatches,pattern:/[^/]*/},int:{encode:valToString,decode:function decode(val){return parseInt(val,10);},is:function is(val){return isDefined(val)&&this.decode(val.toString())===val;},pattern:/\d+/},bool:{encode:function encode(val){return val?1:0;},decode:function decode(val){return parseInt(val,10)!==0;},is:function is(val){return val===true||val===false;},pattern:/0|1/},date:{encode:function encode(val){if(!this.is(val))return undefined;return [val.getFullYear(),('0'+(val.getMonth()+1)).slice(-2),('0'+val.getDate()).slice(-2)].join("-");},decode:function decode(val){if(this.is(val))return val;var match=this.capture.exec(val);return match?new Date(match[1],match[2]-1,match[3]):undefined;},is:function is(val){return val instanceof Date&&!isNaN(val.valueOf());},equals:function equals(a,b){return this.is(a)&&this.is(b)&&a.toISOString()===b.toISOString();},pattern:/[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,capture:/([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/},json:{encode:angular.toJson,decode:angular.fromJson,is:angular.isObject,equals:angular.equals,pattern:/[^/]*/},any:{ // does not encode/decode
 	encode:angular.identity,decode:angular.identity,is:angular.identity,equals:angular.equals,pattern:/.*/}};function getDefaultConfig(){return {strict:isStrictMode,caseInsensitive:isCaseInsensitive};}function isInjectable(value){return isFunction(value)||isArray(value)&&isFunction(value[value.length-1]);} /**
 	   * [Internal] Get the default value of a parameter, which may be an injectable function.
 	   */$UrlMatcherFactory.$$getDefaultValue=function(config){if(!isInjectable(config.value))return config.value;if(!injector)throw new Error("Injectable functions cannot be called at configuration time");return injector.invoke(config.value);}; /**
@@ -19967,7 +19973,7 @@
 	     */function $$getDefaultValue(){if(!injector)throw new Error("Injectable functions cannot be called at configuration time");return injector.invoke(config.$$fn);} /**
 	     * [Internal] Gets the decoded representation of a value if the value is defined, otherwise, returns the
 	     * default value, which may be the result of an injectable function.
-	     */function $value(value){function hasReplaceVal(val){return function(obj){return obj.from===val;};}function $replace(value){var replacement=map(filter(self.replace,hasReplaceVal(value)),function(obj){return obj.to;});return replacement.length?replacement[0]:value;}value=$replace(value);return isDefined(value)?self.type.decode(value):$$getDefaultValue();}function toString(){return "{Param:"+id+" "+type+" squash: '"+squash+"' optional: "+isOptional+"}";}extend(this,{id:id,type:type,location:location,array:arrayMode,squash:squash,replace:replace,isOptional:isOptional,value:$value,dynamic:undefined,config:config,toString:toString});};function ParamSet(params){extend(this,params||{});}ParamSet.prototype={$$new:function(){return inherit(this,extend(new ParamSet(),{$$parent:this}));},$$keys:function(){var keys=[],chain=[],parent=this,ignore=objectKeys(ParamSet.prototype);while(parent){chain.push(parent);parent=parent.$$parent;}chain.reverse();forEach(chain,function(paramset){forEach(objectKeys(paramset),function(key){if(indexOf(keys,key)===-1&&indexOf(ignore,key)===-1)keys.push(key);});});return keys;},$$values:function(paramValues){var values={},self=this;forEach(self.$$keys(),function(key){values[key]=self[key].value(paramValues&&paramValues[key]);});return values;},$$equals:function(paramValues1,paramValues2){var equal=true,self=this;forEach(self.$$keys(),function(key){var left=paramValues1&&paramValues1[key],right=paramValues2&&paramValues2[key];if(!self[key].type.equals(left,right))equal=false;});return equal;},$$validates:function $$validate(paramValues){var result=true,isOptional,val,param,self=this;forEach(this.$$keys(),function(key){param=self[key];val=paramValues[key];isOptional=!val&&param.isOptional;result=result&&(isOptional||!!param.type.is(val));});return result;},$$parent:undefined};this.ParamSet=ParamSet;} // Register as a provider so it's available to other providers
+	     */function $value(value){function hasReplaceVal(val){return function(obj){return obj.from===val;};}function $replace(value){var replacement=map(filter(self.replace,hasReplaceVal(value)),function(obj){return obj.to;});return replacement.length?replacement[0]:value;}value=$replace(value);return isDefined(value)?self.type.decode(value):$$getDefaultValue();}function toString(){return "{Param:"+id+" "+type+" squash: '"+squash+"' optional: "+isOptional+"}";}extend(this,{id:id,type:type,location:location,array:arrayMode,squash:squash,replace:replace,isOptional:isOptional,value:$value,dynamic:undefined,config:config,toString:toString});};function ParamSet(params){extend(this,params||{});}ParamSet.prototype={$$new:function $$new(){return inherit(this,extend(new ParamSet(),{$$parent:this}));},$$keys:function $$keys(){var keys=[],chain=[],parent=this,ignore=objectKeys(ParamSet.prototype);while(parent){chain.push(parent);parent=parent.$$parent;}chain.reverse();forEach(chain,function(paramset){forEach(objectKeys(paramset),function(key){if(indexOf(keys,key)===-1&&indexOf(ignore,key)===-1)keys.push(key);});});return keys;},$$values:function $$values(paramValues){var values={},self=this;forEach(self.$$keys(),function(key){values[key]=self[key].value(paramValues&&paramValues[key]);});return values;},$$equals:function $$equals(paramValues1,paramValues2){var equal=true,self=this;forEach(self.$$keys(),function(key){var left=paramValues1&&paramValues1[key],right=paramValues2&&paramValues2[key];if(!self[key].type.equals(left,right))equal=false;});return equal;},$$validates:function $$validate(paramValues){var result=true,isOptional,val,param,self=this;forEach(this.$$keys(),function(key){param=self[key];val=paramValues[key];isOptional=!val&&param.isOptional;result=result&&(isOptional||!!param.type.is(val));});return result;},$$parent:undefined};this.ParamSet=ParamSet;} // Register as a provider so it's available to other providers
 	angular.module('ui.router.util').provider('$urlMatcherFactory',$UrlMatcherFactory);angular.module('ui.router.util').run(['$urlMatcherFactory',function($urlMatcherFactory){}]); /**
 	 * @ngdoc object
 	 * @name ui.router.router.$urlRouterProvider
@@ -20045,7 +20051,7 @@
 	   * `$injector` and `$location` services, and must return a url string.
 	   *
 	   * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
-	   */this.otherwise=function(rule){if(isString(rule)){var redirect=rule;rule=function(){return redirect;};}else if(!isFunction(rule))throw new Error("'rule' must be a function");otherwise=rule;return this;};function handleIfMatch($injector,handler,match){if(!match)return false;var result=$injector.invoke(handler,handler,{$match:match});return isDefined(result)?result:true;} /**
+	   */this.otherwise=function(rule){if(isString(rule)){var redirect=rule;rule=function rule(){return redirect;};}else if(!isFunction(rule))throw new Error("'rule' must be a function");otherwise=rule;return this;};function handleIfMatch($injector,handler,match){if(!match)return false;var result=$injector.invoke(handler,handler,{$match:match});return isDefined(result)?result:true;} /**
 	   * @ngdoc function
 	   * @name ui.router.router.$urlRouterProvider#when
 	   * @methodOf ui.router.router.$urlRouterProvider
@@ -20081,7 +20087,7 @@
 	   *
 	   * @param {string|object} what The incoming path that you want to redirect.
 	   * @param {string|object} handler The path you want to redirect your user to.
-	   */this.when=function(what,handler){var redirect,handlerIsString=isString(handler);if(isString(what))what=$urlMatcherFactory.compile(what);if(!handlerIsString&&!isFunction(handler)&&!isArray(handler))throw new Error("invalid 'handler' in when()");var strategies={matcher:function(what,handler){if(handlerIsString){redirect=$urlMatcherFactory.compile(handler);handler=['$match',function($match){return redirect.format($match);}];}return extend(function($injector,$location){return handleIfMatch($injector,handler,what.exec($location.path(),$location.search()));},{prefix:isString(what.prefix)?what.prefix:''});},regex:function(what,handler){if(what.global||what.sticky)throw new Error("when() RegExp must not be global or sticky");if(handlerIsString){redirect=handler;handler=['$match',function($match){return interpolate(redirect,$match);}];}return extend(function($injector,$location){return handleIfMatch($injector,handler,what.exec($location.path()));},{prefix:regExpPrefix(what)});}};var check={matcher:$urlMatcherFactory.isMatcher(what),regex:what instanceof RegExp};for(var n in check){if(check[n])return this.rule(strategies[n](what,handler));}throw new Error("invalid 'what' in when()");}; /**
+	   */this.when=function(what,handler){var redirect,handlerIsString=isString(handler);if(isString(what))what=$urlMatcherFactory.compile(what);if(!handlerIsString&&!isFunction(handler)&&!isArray(handler))throw new Error("invalid 'handler' in when()");var strategies={matcher:function matcher(what,handler){if(handlerIsString){redirect=$urlMatcherFactory.compile(handler);handler=['$match',function($match){return redirect.format($match);}];}return extend(function($injector,$location){return handleIfMatch($injector,handler,what.exec($location.path(),$location.search()));},{prefix:isString(what.prefix)?what.prefix:''});},regex:function regex(what,handler){if(what.global||what.sticky)throw new Error("when() RegExp must not be global or sticky");if(handlerIsString){redirect=handler;handler=['$match',function($match){return interpolate(redirect,$match);}];}return extend(function($injector,$location){return handleIfMatch($injector,handler,what.exec($location.path()));},{prefix:regExpPrefix(what)});}};var check={matcher:$urlMatcherFactory.isMatcher(what),regex:what instanceof RegExp};for(var n in check){if(check[n])return this.rule(strategies[n](what,handler));}throw new Error("invalid 'what' in when()");}; /**
 	   * @ngdoc function
 	   * @name ui.router.router.$urlRouterProvider#deferIntercept
 	   * @methodOf ui.router.router.$urlRouterProvider
@@ -20141,7 +20147,7 @@
 	   *
 	   */this.$get=$get;$get.$inject=['$location','$rootScope','$injector','$browser'];function $get($location,$rootScope,$injector,$browser){var baseHref=$browser.baseHref(),location=$location.url(),lastPushedUrl;function appendBasePath(url,isHtml5,absolute){if(baseHref==='/')return url;if(isHtml5)return baseHref.slice(0,-1)+url;if(absolute)return baseHref.slice(1)+url;return url;} // TODO: Optimize groups of rules with non-empty prefix into some sort of decision tree
 	function update(evt){if(evt&&evt.defaultPrevented)return;var ignoreUpdate=lastPushedUrl&&$location.url()===lastPushedUrl;lastPushedUrl=undefined;if(ignoreUpdate)return true;function check(rule){var handled=rule($injector,$location);if(!handled)return false;if(isString(handled))$location.replace().url(handled);return true;}var n=rules.length,i;for(i=0;i<n;i++){if(check(rules[i]))return;} // always check otherwise last to allow dynamic updates to the set of rules
-	if(otherwise)check(otherwise);}function listen(){listener=listener||$rootScope.$on('$locationChangeSuccess',update);return listener;}if(!interceptDeferred)listen();return { /**
+	if(otherwise)check(otherwise);}function _listen(){listener=listener||$rootScope.$on('$locationChangeSuccess',update);return listener;}if(!interceptDeferred)_listen();return { /**
 	       * @ngdoc function
 	       * @name ui.router.router.$urlRouter#sync
 	       * @methodOf ui.router.router.$urlRouter
@@ -20166,7 +20172,7 @@
 	       *     });
 	       * });
 	       * </pre>
-	       */sync:function(){update();},listen:function(){return listen();},update:function(read){if(read){location=$location.url();return;}if($location.url()===location)return;$location.url(location);$location.replace();},push:function(urlMatcher,params,options){$location.url(urlMatcher.format(params||{}));lastPushedUrl=options&&options.$$avoidResync?$location.url():undefined;if(options&&options.replace)$location.replace();}, /**
+	       */sync:function sync(){update();},listen:function listen(){return _listen();},update:function update(read){if(read){location=$location.url();return;}if($location.url()===location)return;$location.url(location);$location.replace();},push:function push(urlMatcher,params,options){$location.url(urlMatcher.format(params||{}));lastPushedUrl=options&&options.$$avoidResync?$location.url():undefined;if(options&&options.replace)$location.replace();}, /**
 	       * @ngdoc function
 	       * @name ui.router.router.$urlRouter#href
 	       * @methodOf ui.router.router.$urlRouter
@@ -20190,7 +20196,7 @@
 	       * - **`absolute`** - {boolean=false},  If true will generate an absolute url, e.g. "http://www.example.com/fullurl".
 	       *
 	       * @returns {string} Returns the fully compiled URL, or `null` if `params` fail validation against `urlMatcher`
-	       */href:function(urlMatcher,params,options){if(!urlMatcher.validates(params))return null;var isHtml5=$locationProvider.html5Mode();if(angular.isObject(isHtml5)){isHtml5=isHtml5.enabled;}var url=urlMatcher.format(params);options=options||{};if(!isHtml5&&url!==null){url="#"+$locationProvider.hashPrefix()+url;}url=appendBasePath(url,isHtml5,options.absolute);if(!options.absolute||!url){return url;}var slash=!isHtml5&&url?'/':'',port=$location.port();port=port===80||port===443?'':':'+port;return [$location.protocol(),'://',$location.host(),port,slash,url].join('');}};}}angular.module('ui.router.router').provider('$urlRouter',$UrlRouterProvider); /**
+	       */href:function href(urlMatcher,params,options){if(!urlMatcher.validates(params))return null;var isHtml5=$locationProvider.html5Mode();if(angular.isObject(isHtml5)){isHtml5=isHtml5.enabled;}var url=urlMatcher.format(params);options=options||{};if(!isHtml5&&url!==null){url="#"+$locationProvider.hashPrefix()+url;}url=appendBasePath(url,isHtml5,options.absolute);if(!options.absolute||!url){return url;}var slash=!isHtml5&&url?'/':'',port=$location.port();port=port===80||port===443?'':':'+port;return [$location.protocol(),'://',$location.host(),port,slash,url].join('');}};}}angular.module('ui.router.router').provider('$urlRouter',$UrlRouterProvider); /**
 	 * @ngdoc object
 	 * @name ui.router.state.$stateProvider
 	 *
@@ -20214,23 +20220,23 @@
 	var stateBuilder={ // Derive parent state from a hierarchical name only if 'parent' is not explicitly defined.
 	// state.children = [];
 	// if (parent) parent.children.push(state);
-	parent:function(state){if(isDefined(state.parent)&&state.parent)return findState(state.parent); // regex matches any valid composite state name
+	parent:function parent(state){if(isDefined(state.parent)&&state.parent)return findState(state.parent); // regex matches any valid composite state name
 	// would match "contact.list" but not "contacts"
 	var compositeName=/^(.+)\.[^.]+$/.exec(state.name);return compositeName?findState(compositeName[1]):root;}, // inherit 'data' from parent and override by own values (if any)
-	data:function(state){if(state.parent&&state.parent.data){state.data=state.self.data=extend({},state.parent.data,state.data);}return state.data;}, // Build a URLMatcher if necessary, either via a relative or absolute URL
-	url:function(state){var url=state.url,config={params:state.params||{}};if(isString(url)){if(url.charAt(0)=='^')return $urlMatcherFactory.compile(url.substring(1),config);return (state.parent.navigable||root).url.concat(url,config);}if(!url||$urlMatcherFactory.isMatcher(url))return url;throw new Error("Invalid url '"+url+"' in state '"+state+"'");}, // Keep track of the closest ancestor state that has a URL (i.e. is navigable)
-	navigable:function(state){return state.url?state:state.parent?state.parent.navigable:null;}, // Own parameters for this state. state.url.params is already built at this point. Create and add non-url params
-	ownParams:function(state){var params=state.url&&state.url.params||new $$UMFP.ParamSet();forEach(state.params||{},function(config,id){if(!params[id])params[id]=new $$UMFP.Param(id,null,config,"config");});return params;}, // Derive parameters for this state and ensure they're a super-set of parent's parameters
-	params:function(state){return state.parent&&state.parent.params?extend(state.parent.params.$$new(),state.ownParams):new $$UMFP.ParamSet();}, // If there is no explicit multi-view configuration, make one up so we don't have
+	data:function data(state){if(state.parent&&state.parent.data){state.data=state.self.data=extend({},state.parent.data,state.data);}return state.data;}, // Build a URLMatcher if necessary, either via a relative or absolute URL
+	url:function url(state){var url=state.url,config={params:state.params||{}};if(isString(url)){if(url.charAt(0)=='^')return $urlMatcherFactory.compile(url.substring(1),config);return (state.parent.navigable||root).url.concat(url,config);}if(!url||$urlMatcherFactory.isMatcher(url))return url;throw new Error("Invalid url '"+url+"' in state '"+state+"'");}, // Keep track of the closest ancestor state that has a URL (i.e. is navigable)
+	navigable:function navigable(state){return state.url?state:state.parent?state.parent.navigable:null;}, // Own parameters for this state. state.url.params is already built at this point. Create and add non-url params
+	ownParams:function ownParams(state){var params=state.url&&state.url.params||new $$UMFP.ParamSet();forEach(state.params||{},function(config,id){if(!params[id])params[id]=new $$UMFP.Param(id,null,config,"config");});return params;}, // Derive parameters for this state and ensure they're a super-set of parent's parameters
+	params:function params(state){return state.parent&&state.parent.params?extend(state.parent.params.$$new(),state.ownParams):new $$UMFP.ParamSet();}, // If there is no explicit multi-view configuration, make one up so we don't have
 	// to handle both cases in the view directive later. Note that having an explicit
 	// 'views' property will mean the default unnamed view properties are ignored. This
 	// is also a good time to resolve view names to absolute names, so everything is a
 	// straight lookup at link time.
-	views:function(state){var views={};forEach(isDefined(state.views)?state.views:{'':state},function(view,name){if(name.indexOf('@')<0)name+='@'+state.parent.name;views[name]=view;});return views;}, // Keep a full path from the root down to this state as this is needed for state activation.
-	path:function(state){return state.parent?state.parent.path.concat(state):[]; // exclude root from path
+	views:function views(state){var views={};forEach(isDefined(state.views)?state.views:{'':state},function(view,name){if(name.indexOf('@')<0)name+='@'+state.parent.name;views[name]=view;});return views;}, // Keep a full path from the root down to this state as this is needed for state activation.
+	path:function path(state){return state.parent?state.parent.path.concat(state):[]; // exclude root from path
 	}, // Speed up $state.contains() as it's used a lot
-	includes:function(state){var includes=state.parent?extend({},state.parent.includes):{};includes[state.name]=true;return includes;},$delegates:{}};function isRelative(stateName){return stateName.indexOf(".")===0||stateName.indexOf("^")===0;}function findState(stateOrName,base){if(!stateOrName)return undefined;var isStr=isString(stateOrName),name=isStr?stateOrName:stateOrName.name,path=isRelative(name);if(path){if(!base)throw new Error("No reference point given for path '"+name+"'");base=findState(base);var rel=name.split("."),i=0,pathLength=rel.length,current=base;for(;i<pathLength;i++){if(rel[i]===""&&i===0){current=base;continue;}if(rel[i]==="^"){if(!current.parent)throw new Error("Path '"+name+"' not valid for state '"+base.name+"'");current=current.parent;continue;}break;}rel=rel.slice(i).join(".");name=current.name+(current.name&&rel?".":"")+rel;}var state=states[name];if(state&&(isStr||!isStr&&(state===stateOrName||state.self===stateOrName))){return state;}return undefined;}function queueState(parentName,state){if(!queue[parentName]){queue[parentName]=[];}queue[parentName].push(state);}function flushQueuedChildren(parentName){var queued=queue[parentName]||[];while(queued.length){registerState(queued.shift());}}function registerState(state){ // Wrap a new object around the state so we can store our private details easily.
-	state=inherit(state,{self:state,resolve:state.resolve||{},toString:function(){return this.name;}});var name=state.name;if(!isString(name)||name.indexOf('@')>=0)throw new Error("State must have a valid name");if(states.hasOwnProperty(name))throw new Error("State '"+name+"'' is already defined"); // Get parent name
+	includes:function includes(state){var includes=state.parent?extend({},state.parent.includes):{};includes[state.name]=true;return includes;},$delegates:{}};function isRelative(stateName){return stateName.indexOf(".")===0||stateName.indexOf("^")===0;}function findState(stateOrName,base){if(!stateOrName)return undefined;var isStr=isString(stateOrName),name=isStr?stateOrName:stateOrName.name,path=isRelative(name);if(path){if(!base)throw new Error("No reference point given for path '"+name+"'");base=findState(base);var rel=name.split("."),i=0,pathLength=rel.length,current=base;for(;i<pathLength;i++){if(rel[i]===""&&i===0){current=base;continue;}if(rel[i]==="^"){if(!current.parent)throw new Error("Path '"+name+"' not valid for state '"+base.name+"'");current=current.parent;continue;}break;}rel=rel.slice(i).join(".");name=current.name+(current.name&&rel?".":"")+rel;}var state=states[name];if(state&&(isStr||!isStr&&(state===stateOrName||state.self===stateOrName))){return state;}return undefined;}function queueState(parentName,state){if(!queue[parentName]){queue[parentName]=[];}queue[parentName].push(state);}function flushQueuedChildren(parentName){var queued=queue[parentName]||[];while(queued.length){registerState(queued.shift());}}function registerState(state){ // Wrap a new object around the state so we can store our private details easily.
+	state=inherit(state,{self:state,resolve:state.resolve||{},toString:function toString(){return this.name;}});var name=state.name;if(!isString(name)||name.indexOf('@')>=0)throw new Error("State must have a valid name");if(states.hasOwnProperty(name))throw new Error("State '"+name+"'' is already defined"); // Get parent name
 	var parentName=name.indexOf('.')!==-1?name.substring(0,name.lastIndexOf('.')):isString(state.parent)?state.parent:isObject(state.parent)&&isString(state.parent.name)?state.parent.name:''; // If parent is not registered yet, add state to queue and register later
 	if(parentName&&!states[parentName]){return queueState(parentName,state.self);}for(var key in stateBuilder){if(isFunction(stateBuilder[key]))state[key]=stateBuilder[key](state,stateBuilder.$delegates[key]);}states[name]=state; // Register the state in the global state list and with $urlRouter if necessary.
 	if(!state[abstractKey]&&state.url){$urlRouterProvider.when(state.url,['$match','$stateParams',function($match,$stateParams){if($state.$current.navigable!=state||!equalForKeys($match,$stateParams)){$state.transitionTo(state,$match,{inherit:true,location:false});}}]);} // Register any queued children
@@ -21221,7 +21227,7 @@
 	 * </pre>
 	 */$ViewDirective.$inject=['$state','$injector','$uiViewScroll','$interpolate'];function $ViewDirective($state,$injector,$uiViewScroll,$interpolate){function getService(){return $injector.has?function(service){return $injector.has(service)?$injector.get(service):null;}:function(service){try{return $injector.get(service);}catch(e){return null;}};}var service=getService(),$animator=service('$animator'),$animate=service('$animate'); // Returns a set of DOM manipulation functions based on which Angular version
 	// it should use
-	function getRenderer(attrs,scope){var statics=function(){return {enter:function(element,target,cb){target.after(element);cb();},leave:function(element,cb){element.remove();cb();}};};if($animate){return {enter:function(element,target,cb){var promise=$animate.enter(element,null,target,cb);if(promise&&promise.then)promise.then(cb);},leave:function(element,cb){var promise=$animate.leave(element,cb);if(promise&&promise.then)promise.then(cb);}};}if($animator){var animate=$animator&&$animator(scope,attrs);return {enter:function(element,target,cb){animate.enter(element,null,target);cb();},leave:function(element,cb){animate.leave(element);cb();}};}return statics();}var directive={restrict:'ECA',terminal:true,priority:400,transclude:'element',compile:function(tElement,tAttrs,$transclude){return function(scope,$element,attrs){var previousEl,currentEl,currentScope,latestLocals,onloadExp=attrs.onload||'',autoScrollExp=attrs.autoscroll,renderer=getRenderer(attrs,scope);scope.$on('$stateChangeSuccess',function(){updateView(false);});scope.$on('$viewContentLoading',function(){updateView(false);});updateView(true);function cleanupLastView(){if(previousEl){previousEl.remove();previousEl=null;}if(currentScope){currentScope.$destroy();currentScope=null;}if(currentEl){renderer.leave(currentEl,function(){previousEl=null;});previousEl=currentEl;currentEl=null;}}function updateView(firstTime){var newScope,name=getUiViewName(scope,attrs,$element,$interpolate),previousLocals=name&&$state.$current&&$state.$current.locals[name];if(!firstTime&&previousLocals===latestLocals)return; // nothing to do
+	function getRenderer(attrs,scope){var statics=function statics(){return {enter:function enter(element,target,cb){target.after(element);cb();},leave:function leave(element,cb){element.remove();cb();}};};if($animate){return {enter:function enter(element,target,cb){var promise=$animate.enter(element,null,target,cb);if(promise&&promise.then)promise.then(cb);},leave:function leave(element,cb){var promise=$animate.leave(element,cb);if(promise&&promise.then)promise.then(cb);}};}if($animator){var animate=$animator&&$animator(scope,attrs);return {enter:function enter(element,target,cb){animate.enter(element,null,target);cb();},leave:function leave(element,cb){animate.leave(element);cb();}};}return statics();}var directive={restrict:'ECA',terminal:true,priority:400,transclude:'element',compile:function compile(tElement,tAttrs,$transclude){return function(scope,$element,attrs){var previousEl,currentEl,currentScope,latestLocals,onloadExp=attrs.onload||'',autoScrollExp=attrs.autoscroll,renderer=getRenderer(attrs,scope);scope.$on('$stateChangeSuccess',function(){updateView(false);});scope.$on('$viewContentLoading',function(){updateView(false);});updateView(true);function cleanupLastView(){if(previousEl){previousEl.remove();previousEl=null;}if(currentScope){currentScope.$destroy();currentScope=null;}if(currentEl){renderer.leave(currentEl,function(){previousEl=null;});previousEl=currentEl;currentEl=null;}}function updateView(firstTime){var newScope,name=getUiViewName(scope,attrs,$element,$interpolate),previousLocals=name&&$state.$current&&$state.$current.locals[name];if(!firstTime&&previousLocals===latestLocals)return; // nothing to do
 	newScope=scope.$new();latestLocals=$state.$current.locals[name];var clone=$transclude(newScope,function(clone){renderer.enter(clone,$element,function onUiViewEnter(){if(currentScope){currentScope.$emit('$viewContentAnimationEnded');}if(angular.isDefined(autoScrollExp)&&!autoScrollExp||scope.$eval(autoScrollExp)){$uiViewScroll(clone);}});cleanupLastView();});currentEl=clone;currentScope=newScope; /**
 	           * @ngdoc event
 	           * @name ui.router.state.directive:ui-view#$viewContentLoaded
@@ -21231,7 +21237,7 @@
 	           * Fired once the view is **loaded**, *after* the DOM is rendered.
 	           *
 	           * @param {Object} event Event object.
-	           */currentScope.$emit('$viewContentLoaded');currentScope.$eval(onloadExp);}};}};return directive;}$ViewDirectiveFill.$inject=['$compile','$controller','$state','$interpolate'];function $ViewDirectiveFill($compile,$controller,$state,$interpolate){return {restrict:'ECA',priority:-400,compile:function(tElement){var initial=tElement.html();return function(scope,$element,attrs){var current=$state.$current,name=getUiViewName(scope,attrs,$element,$interpolate),locals=current&&current.locals[name];if(!locals){return;}$element.data('$uiView',{name:name,state:locals.$$state});$element.html(locals.$template?locals.$template:initial);var link=$compile($element.contents());if(locals.$$controller){locals.$scope=scope;var controller=$controller(locals.$$controller,locals);if(locals.$$controllerAs){scope[locals.$$controllerAs]=controller;}$element.data('$ngControllerController',controller);$element.children().data('$ngControllerController',controller);}link(scope);};}};} /**
+	           */currentScope.$emit('$viewContentLoaded');currentScope.$eval(onloadExp);}};}};return directive;}$ViewDirectiveFill.$inject=['$compile','$controller','$state','$interpolate'];function $ViewDirectiveFill($compile,$controller,$state,$interpolate){return {restrict:'ECA',priority:-400,compile:function compile(tElement){var initial=tElement.html();return function(scope,$element,attrs){var current=$state.$current,name=getUiViewName(scope,attrs,$element,$interpolate),locals=current&&current.locals[name];if(!locals){return;}$element.data('$uiView',{name:name,state:locals.$$state});$element.html(locals.$template?locals.$template:initial);var link=$compile($element.contents());if(locals.$$controller){locals.$scope=scope;var controller=$controller(locals.$$controller,locals);if(locals.$$controllerAs){scope[locals.$$controllerAs]=controller;}$element.data('$ngControllerController',controller);$element.children().data('$ngControllerController',controller);}link(scope);};}};} /**
 	 * Shared ui-view code for both directives:
 	 * Given scope, element, and its attributes, return the view's name
 	 */function getUiViewName(scope,attrs,element,$interpolate){var name=$interpolate(attrs.uiView||attrs.name||'')(scope);var inherited=element.inheritedData('$uiView');return name.indexOf('@')>=0?name:name+'@'+(inherited?inherited.state.name:'');}angular.module('ui.router.state').directive('uiView',$ViewDirective);angular.module('ui.router.state').directive('uiView',$ViewDirectiveFill);function parseStateRef(ref,current){var preparsed=ref.match(/^\s*({[^}]*})\s*$/),parsed;if(preparsed)ref=current+'('+preparsed[1]+')';parsed=ref.replace(/\n/g," ").match(/^([^(]+?)\s*(\((.*)\))?$/);if(!parsed||parsed.length!==4)throw new Error("Invalid state ref '"+ref+"'");return {state:parsed[1],paramExpr:parsed[3]||null};}function stateContext(el){var stateData=el.parent().inheritedData('$uiView');if(stateData&&stateData.state&&stateData.state.name){return stateData.state;}} /**
@@ -21295,7 +21301,7 @@
 	 *
 	 * @param {string} ui-sref 'stateName' can be any valid absolute or relative state
 	 * @param {Object} ui-sref-opts options to pass to {@link ui.router.state.$state#go $state.go()}
-	 */$StateRefDirective.$inject=['$state','$timeout'];function $StateRefDirective($state,$timeout){var allowedOptions=['location','inherit','reload'];return {restrict:'A',require:['?^uiSrefActive','?^uiSrefActiveEq'],link:function(scope,element,attrs,uiSrefActive){var ref=parseStateRef(attrs.uiSref,$state.current.name);var params=null,url=null,base=stateContext(element)||$state.$current;var newHref=null,isAnchor=element.prop("tagName")==="A";var isForm=element[0].nodeName==="FORM";var attr=isForm?"action":"href",nav=true;var options={relative:base,inherit:true};var optionsOverride=scope.$eval(attrs.uiSrefOpts)||{};angular.forEach(allowedOptions,function(option){if(option in optionsOverride){options[option]=optionsOverride[option];}});var update=function(newVal){if(newVal)params=angular.copy(newVal);if(!nav)return;newHref=$state.href(ref.state,params,options);var activeDirective=uiSrefActive[1]||uiSrefActive[0];if(activeDirective){activeDirective.$$setStateInfo(ref.state,params);}if(newHref===null){nav=false;return false;}attrs.$set(attr,newHref);};if(ref.paramExpr){scope.$watch(ref.paramExpr,function(newVal,oldVal){if(newVal!==params)update(newVal);},true);params=angular.copy(scope.$eval(ref.paramExpr));}update();if(isForm)return;element.bind("click",function(e){var button=e.which||e.button;if(!(button>1||e.ctrlKey||e.metaKey||e.shiftKey||element.attr('target'))){ // HACK: This is to allow ng-clicks to be processed before the transition is initiated:
+	 */$StateRefDirective.$inject=['$state','$timeout'];function $StateRefDirective($state,$timeout){var allowedOptions=['location','inherit','reload'];return {restrict:'A',require:['?^uiSrefActive','?^uiSrefActiveEq'],link:function link(scope,element,attrs,uiSrefActive){var ref=parseStateRef(attrs.uiSref,$state.current.name);var params=null,url=null,base=stateContext(element)||$state.$current;var newHref=null,isAnchor=element.prop("tagName")==="A";var isForm=element[0].nodeName==="FORM";var attr=isForm?"action":"href",nav=true;var options={relative:base,inherit:true};var optionsOverride=scope.$eval(attrs.uiSrefOpts)||{};angular.forEach(allowedOptions,function(option){if(option in optionsOverride){options[option]=optionsOverride[option];}});var update=function update(newVal){if(newVal)params=angular.copy(newVal);if(!nav)return;newHref=$state.href(ref.state,params,options);var activeDirective=uiSrefActive[1]||uiSrefActive[0];if(activeDirective){activeDirective.$$setStateInfo(ref.state,params);}if(newHref===null){nav=false;return false;}attrs.$set(attr,newHref);};if(ref.paramExpr){scope.$watch(ref.paramExpr,function(newVal,oldVal){if(newVal!==params)update(newVal);},true);params=angular.copy(scope.$eval(ref.paramExpr));}update();if(isForm)return;element.bind("click",function(e){var button=e.which||e.button;if(!(button>1||e.ctrlKey||e.metaKey||e.shiftKey||element.attr('target'))){ // HACK: This is to allow ng-clicks to be processed before the transition is initiated:
 	var transition=$timeout(function(){$state.go(ref.state,params,options);});e.preventDefault(); // if the state has no URL, ignore one preventDefault from the <a> directive.
 	var ignorePreventDefaultCount=isAnchor&&!newHref?1:0;e.preventDefault=function(){if(ignorePreventDefaultCount--<=0)$timeout.cancel(transition);};}});}};} /**
 	 * @ngdoc directive
@@ -21381,7 +21387,7 @@
 	 *
 	 * @description
 	 * Translates to {@link ui.router.state.$state#methods_is $state.is("stateName")}.
-	 */$IsStateFilter.$inject=['$state'];function $IsStateFilter($state){var isFilter=function(state){return $state.is(state);};isFilter.$stateful=true;return isFilter;} /**
+	 */$IsStateFilter.$inject=['$state'];function $IsStateFilter($state){var isFilter=function isFilter(state){return $state.is(state);};isFilter.$stateful=true;return isFilter;} /**
 	 * @ngdoc filter
 	 * @name ui.router.state.filter:includedByState
 	 *
@@ -21389,7 +21395,7 @@
 	 *
 	 * @description
 	 * Translates to {@link ui.router.state.$state#methods_includes $state.includes('fullOrPartialStateName')}.
-	 */$IncludedByStateFilter.$inject=['$state'];function $IncludedByStateFilter($state){var includesFilter=function(state){return $state.includes(state);};includesFilter.$stateful=true;return includesFilter;}angular.module('ui.router.state').filter('isState',$IsStateFilter).filter('includedByState',$IncludedByStateFilter);})(window,window.angular); /*!
+	 */$IncludedByStateFilter.$inject=['$state'];function $IncludedByStateFilter($state){var includesFilter=function includesFilter(state){return $state.includes(state);};includesFilter.$stateful=true;return includesFilter;}angular.module('ui.router.state').filter('isState',$IsStateFilter).filter('includedByState',$IncludedByStateFilter);})(window,window.angular); /*!
 	 * ionic.bundle.js is a concatenation of:
 	 * ionic.js, angular.js, angular-animate.js,
 	 * angular-sanitize.js, angular-ui-router.js,
@@ -21576,13 +21582,13 @@
 	     * @description Add a class to the document's body element.
 	     * @param {string} class Each argument will be added to the body element.
 	     * @returns {$ionicBody} The $ionicBody service so methods can be chained.
-	     */addClass:function(){for(var x=0;x<arguments.length;x++){$document[0].body.classList.add(arguments[x]);}return this;}, /**
+	     */addClass:function addClass(){for(var x=0;x<arguments.length;x++){$document[0].body.classList.add(arguments[x]);}return this;}, /**
 	     * @ngdoc method
 	     * @name $ionicBody#removeClass
 	     * @description Remove a class from the document's body element.
 	     * @param {string} class Each argument will be removed from the body element.
 	     * @returns {$ionicBody} The $ionicBody service so methods can be chained.
-	     */removeClass:function(){for(var x=0;x<arguments.length;x++){$document[0].body.classList.remove(arguments[x]);}return this;}, /**
+	     */removeClass:function removeClass(){for(var x=0;x<arguments.length;x++){$document[0].body.classList.remove(arguments[x]);}return this;}, /**
 	     * @ngdoc method
 	     * @name $ionicBody#enableClass
 	     * @description Similar to the `add` method, except the first parameter accepts a boolean
@@ -21593,19 +21599,19 @@
 	     * @param {string} class Each remaining argument would be added or removed depending on
 	     * the first argument.
 	     * @returns {$ionicBody} The $ionicBody service so methods can be chained.
-	     */enableClass:function(shouldEnableClass){var args=Array.prototype.slice.call(arguments).slice(1);if(shouldEnableClass){this.addClass.apply(this,args);}else {this.removeClass.apply(this,args);}return this;}, /**
+	     */enableClass:function enableClass(shouldEnableClass){var args=Array.prototype.slice.call(arguments).slice(1);if(shouldEnableClass){this.addClass.apply(this,args);}else {this.removeClass.apply(this,args);}return this;}, /**
 	     * @ngdoc method
 	     * @name $ionicBody#append
 	     * @description Append a child to the document's body.
 	     * @param {element} element The element to be appended to the body. The passed in element
 	     * can be either a jqLite element, or a DOM element.
 	     * @returns {$ionicBody} The $ionicBody service so methods can be chained.
-	     */append:function(ele){$document[0].body.appendChild(ele.length?ele[0]:ele);return this;}, /**
+	     */append:function append(ele){$document[0].body.appendChild(ele.length?ele[0]:ele);return this;}, /**
 	     * @ngdoc method
 	     * @name $ionicBody#get
 	     * @description Get the document's body element.
 	     * @returns {element} Returns the document's body element.
-	     */get:function(){return $document[0].body;}};}]);IonicModule.factory('$ionicClickBlock',['$document','$ionicBody','$timeout',function($document,$ionicBody,$timeout){var CSS_HIDE='click-block-hide';var cbEle,fallbackTimer,pendingShow;function preventClick(ev){ev.preventDefault();ev.stopPropagation();}function addClickBlock(){if(pendingShow){if(cbEle){cbEle.classList.remove(CSS_HIDE);}else {cbEle=$document[0].createElement('div');cbEle.className='click-block';$ionicBody.append(cbEle);cbEle.addEventListener('touchstart',preventClick);cbEle.addEventListener('mousedown',preventClick);}pendingShow=false;}}function removeClickBlock(){cbEle&&cbEle.classList.add(CSS_HIDE);}return {show:function(autoExpire){pendingShow=true;$timeout.cancel(fallbackTimer);fallbackTimer=$timeout(this.hide,autoExpire||310,false);addClickBlock();},hide:function(){pendingShow=false;$timeout.cancel(fallbackTimer);removeClickBlock();}};}]); /**
+	     */get:function get(){return $document[0].body;}};}]);IonicModule.factory('$ionicClickBlock',['$document','$ionicBody','$timeout',function($document,$ionicBody,$timeout){var CSS_HIDE='click-block-hide';var cbEle,fallbackTimer,pendingShow;function preventClick(ev){ev.preventDefault();ev.stopPropagation();}function addClickBlock(){if(pendingShow){if(cbEle){cbEle.classList.remove(CSS_HIDE);}else {cbEle=$document[0].createElement('div');cbEle.className='click-block';$ionicBody.append(cbEle);cbEle.addEventListener('touchstart',preventClick);cbEle.addEventListener('mousedown',preventClick);}pendingShow=false;}}function removeClickBlock(){cbEle&&cbEle.classList.add(CSS_HIDE);}return {show:function show(autoExpire){pendingShow=true;$timeout.cancel(fallbackTimer);fallbackTimer=$timeout(this.hide,autoExpire||310,false);addClickBlock();},hide:function hide(){pendingShow=false;$timeout.cancel(fallbackTimer);removeClickBlock();}};}]); /**
 	 * @ngdoc service
 	 * @name $ionicGesture
 	 * @module ionic
@@ -21621,14 +21627,14 @@
 	     * @param {element} $element The angular element to listen for the event on.
 	     * @param {object} options object.
 	     * @returns {ionic.Gesture} The gesture object (use this to remove the gesture later on).
-	     */on:function(eventType,cb,$element,options){return window.ionic.onGesture(eventType,cb,$element[0],options);}, /**
+	     */on:function on(eventType,cb,$element,options){return window.ionic.onGesture(eventType,cb,$element[0],options);}, /**
 	     * @ngdoc method
 	     * @name $ionicGesture#off
 	     * @description Remove an event listener for a gesture on an element. See {@link ionic.utility:ionic.EventController#offGesture}.
 	     * @param {ionic.Gesture} gesture The gesture that should be removed.
 	     * @param {string} eventType The gesture event to remove the listener for.
 	     * @param {function(e)} callback The listener to remove.
-	     */off:function(gesture,eventType,cb){return window.ionic.offGesture(gesture,eventType,cb);}};}]); /**
+	     */off:function off(gesture,eventType,cb){return window.ionic.offGesture(gesture,eventType,cb);}};}]); /**
 	 * @ngdoc service
 	 * @name $ionicHistory
 	 * @module ionic
@@ -21646,13 +21652,13 @@
 	 * `$ionicHistory` facilitates this parallel history architecture.
 	 */IonicModule.factory('$ionicHistory',['$rootScope','$state','$location','$window','$timeout','$ionicViewSwitcher','$ionicNavViewDelegate',function($rootScope,$state,$location,$window,$timeout,$ionicViewSwitcher,$ionicNavViewDelegate){ // history actions while navigating views
 	var ACTION_INITIAL_VIEW='initialView';var ACTION_NEW_VIEW='newView';var ACTION_MOVE_BACK='moveBack';var ACTION_MOVE_FORWARD='moveForward'; // direction of navigation
-	var DIRECTION_BACK='back';var DIRECTION_FORWARD='forward';var DIRECTION_ENTER='enter';var DIRECTION_EXIT='exit';var DIRECTION_SWAP='swap';var DIRECTION_NONE='none';var stateChangeCounter=0;var lastStateId,nextViewOptions,deregisterStateChangeListener,nextViewExpireTimer,forcedNav;var viewHistory={histories:{root:{historyId:'root',parentHistoryId:null,stack:[],cursor:-1}},views:{},backView:null,forwardView:null,currentView:null};var View=function(){};View.prototype.initialize=function(data){if(data){for(var name in data)this[name]=data[name];return this;}return null;};View.prototype.go=function(){if(this.stateName){return $state.go(this.stateName,this.stateParams);}if(this.url&&this.url!==$location.url()){if(viewHistory.backView===this){return $window.history.go(-1);}else if(viewHistory.forwardView===this){return $window.history.go(1);}$location.url(this.url);}return null;};View.prototype.destroy=function(){if(this.scope){this.scope.$destroy&&this.scope.$destroy();this.scope=null;}};function getViewById(viewId){return viewId?viewHistory.views[viewId]:null;}function getBackView(view){return view?getViewById(view.backViewId):null;}function getForwardView(view){return view?getViewById(view.forwardViewId):null;}function getHistoryById(historyId){return historyId?viewHistory.histories[historyId]:null;}function getHistory(scope){var histObj=getParentHistoryObj(scope);if(!viewHistory.histories[histObj.historyId]){ // this history object exists in parent scope, but doesn't
+	var DIRECTION_BACK='back';var DIRECTION_FORWARD='forward';var DIRECTION_ENTER='enter';var DIRECTION_EXIT='exit';var DIRECTION_SWAP='swap';var DIRECTION_NONE='none';var stateChangeCounter=0;var lastStateId,_nextViewOptions,deregisterStateChangeListener,nextViewExpireTimer,forcedNav;var _viewHistory={histories:{root:{historyId:'root',parentHistoryId:null,stack:[],cursor:-1}},views:{},backView:null,forwardView:null,currentView:null};var View=function View(){};View.prototype.initialize=function(data){if(data){for(var name in data){this[name]=data[name];}return this;}return null;};View.prototype.go=function(){if(this.stateName){return $state.go(this.stateName,this.stateParams);}if(this.url&&this.url!==$location.url()){if(_viewHistory.backView===this){return $window.history.go(-1);}else if(_viewHistory.forwardView===this){return $window.history.go(1);}$location.url(this.url);}return null;};View.prototype.destroy=function(){if(this.scope){this.scope.$destroy&&this.scope.$destroy();this.scope=null;}};function getViewById(viewId){return viewId?_viewHistory.views[viewId]:null;}function getBackView(view){return view?getViewById(view.backViewId):null;}function getForwardView(view){return view?getViewById(view.forwardViewId):null;}function getHistoryById(historyId){return historyId?_viewHistory.histories[historyId]:null;}function getHistory(scope){var histObj=getParentHistoryObj(scope);if(!_viewHistory.histories[histObj.historyId]){ // this history object exists in parent scope, but doesn't
 	// exist in the history data yet
-	viewHistory.histories[histObj.historyId]={historyId:histObj.historyId,parentHistoryId:getParentHistoryObj(histObj.scope.$parent).historyId,stack:[],cursor:-1};}return getHistoryById(histObj.historyId);}function getParentHistoryObj(scope){var parentScope=scope;while(parentScope){if(parentScope.hasOwnProperty('$historyId')){ // this parent scope has a historyId
+	_viewHistory.histories[histObj.historyId]={historyId:histObj.historyId,parentHistoryId:getParentHistoryObj(histObj.scope.$parent).historyId,stack:[],cursor:-1};}return getHistoryById(histObj.historyId);}function getParentHistoryObj(scope){var parentScope=scope;while(parentScope){if(parentScope.hasOwnProperty('$historyId')){ // this parent scope has a historyId
 	return {historyId:parentScope.$historyId,scope:parentScope};} // nothing found keep climbing up
 	parentScope=parentScope.$parent;} // no history for the parent, use the root
-	return {historyId:'root',scope:$rootScope};}function setNavViews(viewId){viewHistory.currentView=getViewById(viewId);viewHistory.backView=getBackView(viewHistory.currentView);viewHistory.forwardView=getForwardView(viewHistory.currentView);}function getCurrentStateId(){var id;if($state&&$state.current&&$state.current.name){id=$state.current.name;if($state.params){for(var key in $state.params){if($state.params.hasOwnProperty(key)&&$state.params[key]){id+="_"+key+"="+$state.params[key];}}}return id;} // if something goes wrong make sure its got a unique stateId
-	return ionic.Utils.nextUid();}function getCurrentStateParams(){var rtn;if($state&&$state.params){for(var key in $state.params){if($state.params.hasOwnProperty(key)){rtn=rtn||{};rtn[key]=$state.params[key];}}}return rtn;}return {register:function(parentScope,viewLocals){var currentStateId=getCurrentStateId(),hist=getHistory(parentScope),currentView=viewHistory.currentView,backView=viewHistory.backView,forwardView=viewHistory.forwardView,viewId=null,action=null,direction=DIRECTION_NONE,historyId=hist.historyId,url=$location.url(),tmp,x,ele;if(lastStateId!==currentStateId){lastStateId=currentStateId;stateChangeCounter++;}if(forcedNav){ // we've previously set exactly what to do
+	return {historyId:'root',scope:$rootScope};}function setNavViews(viewId){_viewHistory.currentView=getViewById(viewId);_viewHistory.backView=getBackView(_viewHistory.currentView);_viewHistory.forwardView=getForwardView(_viewHistory.currentView);}function getCurrentStateId(){var id;if($state&&$state.current&&$state.current.name){id=$state.current.name;if($state.params){for(var key in $state.params){if($state.params.hasOwnProperty(key)&&$state.params[key]){id+="_"+key+"="+$state.params[key];}}}return id;} // if something goes wrong make sure its got a unique stateId
+	return ionic.Utils.nextUid();}function getCurrentStateParams(){var rtn;if($state&&$state.params){for(var key in $state.params){if($state.params.hasOwnProperty(key)){rtn=rtn||{};rtn[key]=$state.params[key];}}}return rtn;}return {register:function register(parentScope,viewLocals){var currentStateId=getCurrentStateId(),hist=getHistory(parentScope),currentView=_viewHistory.currentView,backView=_viewHistory.backView,forwardView=_viewHistory.forwardView,viewId=null,action=null,direction=DIRECTION_NONE,historyId=hist.historyId,url=$location.url(),tmp,x,ele;if(lastStateId!==currentStateId){lastStateId=currentStateId;stateChangeCounter++;}if(forcedNav){ // we've previously set exactly what to do
 	viewId=forcedNav.viewId;action=forcedNav.action;direction=forcedNav.direction;forcedNav=null;}else if(backView&&backView.stateId===currentStateId){ // they went back one, set the old current view as a forward view
 	viewId=backView.viewId;historyId=backView.historyId;action=ACTION_MOVE_BACK;if(backView.historyId===currentView.historyId){ // went back in the same history
 	direction=DIRECTION_BACK;}else if(currentView){direction=DIRECTION_EXIT;tmp=getHistoryById(backView.historyId);if(tmp&&tmp.parentHistoryId===currentView.historyId){direction=DIRECTION_ENTER;}else {tmp=getHistoryById(currentView.historyId);if(tmp&&tmp.parentHistoryId===hist.parentHistoryId){direction=DIRECTION_SWAP;}}}}else if(forwardView&&forwardView.stateId===currentStateId){ // they went to the forward one, set the forward view to no longer a forward view
@@ -21673,42 +21679,42 @@
 	if(hist.historyId===currentView.historyId){direction=DIRECTION_FORWARD;}else if(currentView.historyId!==hist.historyId){direction=DIRECTION_ENTER;tmp=getHistoryById(currentView.historyId);if(tmp&&tmp.parentHistoryId===hist.parentHistoryId){direction=DIRECTION_SWAP;}else {tmp=getHistoryById(tmp.parentHistoryId);if(tmp&&tmp.historyId===hist.historyId){direction=DIRECTION_EXIT;}}}}else { // there's no current view, so this must be the initial view
 	action=ACTION_INITIAL_VIEW;}if(stateChangeCounter<2){ // views that were spun up on the first load should not animate
 	direction=DIRECTION_NONE;} // add the new view
-	viewHistory.views[viewId]=this.createView({viewId:viewId,index:hist.stack.length,historyId:hist.historyId,backViewId:currentView&&currentView.viewId?currentView.viewId:null,forwardViewId:null,stateId:currentStateId,stateName:this.currentStateName(),stateParams:getCurrentStateParams(),url:url,canSwipeBack:canSwipeBack(ele,viewLocals)}); // add the new view to this history's stack
-	hist.stack.push(viewHistory.views[viewId]);}deregisterStateChangeListener&&deregisterStateChangeListener();$timeout.cancel(nextViewExpireTimer);if(nextViewOptions){if(nextViewOptions.disableAnimate)direction=DIRECTION_NONE;if(nextViewOptions.disableBack)viewHistory.views[viewId].backViewId=null;if(nextViewOptions.historyRoot){for(x=0;x<hist.stack.length;x++){if(hist.stack[x].viewId===viewId){hist.stack[x].index=0;hist.stack[x].backViewId=hist.stack[x].forwardViewId=null;}else {delete viewHistory.views[hist.stack[x].viewId];}}hist.stack=[viewHistory.views[viewId]];}nextViewOptions=null;}setNavViews(viewId);if(viewHistory.backView&&historyId==viewHistory.backView.historyId&&currentStateId==viewHistory.backView.stateId&&url==viewHistory.backView.url){for(x=0;x<hist.stack.length;x++){if(hist.stack[x].viewId==viewId){action='dupNav';direction=DIRECTION_NONE;if(x>0){hist.stack[x-1].forwardViewId=null;}viewHistory.forwardView=null;viewHistory.currentView.index=viewHistory.backView.index;viewHistory.currentView.backViewId=viewHistory.backView.backViewId;viewHistory.backView=getBackView(viewHistory.backView);hist.stack.splice(x,1);break;}}}void 0;hist.cursor=viewHistory.currentView.index;return {viewId:viewId,action:action,direction:direction,historyId:historyId,enableBack:this.enabledBack(viewHistory.currentView),isHistoryRoot:viewHistory.currentView.index===0,ele:ele};},registerHistory:function(scope){scope.$historyId=ionic.Utils.nextUid();},createView:function(data){var newView=new View();return newView.initialize(data);},getViewById:getViewById, /**
+	_viewHistory.views[viewId]=this.createView({viewId:viewId,index:hist.stack.length,historyId:hist.historyId,backViewId:currentView&&currentView.viewId?currentView.viewId:null,forwardViewId:null,stateId:currentStateId,stateName:this.currentStateName(),stateParams:getCurrentStateParams(),url:url,canSwipeBack:canSwipeBack(ele,viewLocals)}); // add the new view to this history's stack
+	hist.stack.push(_viewHistory.views[viewId]);}deregisterStateChangeListener&&deregisterStateChangeListener();$timeout.cancel(nextViewExpireTimer);if(_nextViewOptions){if(_nextViewOptions.disableAnimate)direction=DIRECTION_NONE;if(_nextViewOptions.disableBack)_viewHistory.views[viewId].backViewId=null;if(_nextViewOptions.historyRoot){for(x=0;x<hist.stack.length;x++){if(hist.stack[x].viewId===viewId){hist.stack[x].index=0;hist.stack[x].backViewId=hist.stack[x].forwardViewId=null;}else {delete _viewHistory.views[hist.stack[x].viewId];}}hist.stack=[_viewHistory.views[viewId]];}_nextViewOptions=null;}setNavViews(viewId);if(_viewHistory.backView&&historyId==_viewHistory.backView.historyId&&currentStateId==_viewHistory.backView.stateId&&url==_viewHistory.backView.url){for(x=0;x<hist.stack.length;x++){if(hist.stack[x].viewId==viewId){action='dupNav';direction=DIRECTION_NONE;if(x>0){hist.stack[x-1].forwardViewId=null;}_viewHistory.forwardView=null;_viewHistory.currentView.index=_viewHistory.backView.index;_viewHistory.currentView.backViewId=_viewHistory.backView.backViewId;_viewHistory.backView=getBackView(_viewHistory.backView);hist.stack.splice(x,1);break;}}}void 0;hist.cursor=_viewHistory.currentView.index;return {viewId:viewId,action:action,direction:direction,historyId:historyId,enableBack:this.enabledBack(_viewHistory.currentView),isHistoryRoot:_viewHistory.currentView.index===0,ele:ele};},registerHistory:function registerHistory(scope){scope.$historyId=ionic.Utils.nextUid();},createView:function createView(data){var newView=new View();return newView.initialize(data);},getViewById:getViewById, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#viewHistory
 	     * @description The app's view history data, such as all the views and histories, along
 	     * with how they are ordered and linked together within the navigation stack.
 	     * @returns {object} Returns an object containing the apps view history data.
-	     */viewHistory:function(){return viewHistory;}, /**
+	     */viewHistory:function viewHistory(){return _viewHistory;}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#currentView
 	     * @description The app's current view.
 	     * @returns {object} Returns the current view.
-	     */currentView:function(view){if(arguments.length){viewHistory.currentView=view;}return viewHistory.currentView;}, /**
+	     */currentView:function currentView(view){if(arguments.length){_viewHistory.currentView=view;}return _viewHistory.currentView;}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#currentHistoryId
 	     * @description The ID of the history stack which is the parent container of the current view.
 	     * @returns {string} Returns the current history ID.
-	     */currentHistoryId:function(){return viewHistory.currentView?viewHistory.currentView.historyId:null;}, /**
+	     */currentHistoryId:function currentHistoryId(){return _viewHistory.currentView?_viewHistory.currentView.historyId:null;}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#currentTitle
 	     * @description Gets and sets the current view's title.
 	     * @param {string=} val The title to update the current view with.
 	     * @returns {string} Returns the current view's title.
-	     */currentTitle:function(val){if(viewHistory.currentView){if(arguments.length){viewHistory.currentView.title=val;}return viewHistory.currentView.title;}}, /**
+	     */currentTitle:function currentTitle(val){if(_viewHistory.currentView){if(arguments.length){_viewHistory.currentView.title=val;}return _viewHistory.currentView.title;}}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#backView
 	     * @description Returns the view that was before the current view in the history stack.
 	     * If the user navigated from View A to View B, then View A would be the back view, and
 	     * View B would be the current view.
 	     * @returns {object} Returns the back view.
-	     */backView:function(view){if(arguments.length){viewHistory.backView=view;}return viewHistory.backView;}, /**
+	     */backView:function backView(view){if(arguments.length){_viewHistory.backView=view;}return _viewHistory.backView;}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#backTitle
 	     * @description Gets the back view's title.
 	     * @returns {string} Returns the back view's title.
-	     */backTitle:function(view){var backView=view&&getViewById(view.backViewId)||viewHistory.backView;return backView&&backView.title;}, /**
+	     */backTitle:function backTitle(view){var backView=view&&getViewById(view.backViewId)||_viewHistory.backView;return backView&&backView.title;}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#forwardView
 	     * @description Returns the view that was in front of the current view in the history stack.
@@ -21716,12 +21722,12 @@
 	     * navigated back to View A. At this point then View B would be the forward view, and View
 	     * A would be the current view.
 	     * @returns {object} Returns the forward view.
-	     */forwardView:function(view){if(arguments.length){viewHistory.forwardView=view;}return viewHistory.forwardView;}, /**
+	     */forwardView:function forwardView(view){if(arguments.length){_viewHistory.forwardView=view;}return _viewHistory.forwardView;}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#currentStateName
 	     * @description Returns the current state name.
 	     * @returns {string}
-	     */currentStateName:function(){return $state&&$state.current?$state.current.name:null;},isCurrentStateNavView:function(navView){return !!($state&&$state.current&&$state.current.views&&$state.current.views[navView]);},goToHistoryRoot:function(historyId){if(historyId){var hist=getHistoryById(historyId);if(hist&&hist.stack.length){if(viewHistory.currentView&&viewHistory.currentView.viewId===hist.stack[0].viewId){return;}forcedNav={viewId:hist.stack[0].viewId,action:ACTION_MOVE_BACK,direction:DIRECTION_BACK};hist.stack[0].go();}}}, /**
+	     */currentStateName:function currentStateName(){return $state&&$state.current?$state.current.name:null;},isCurrentStateNavView:function isCurrentStateNavView(navView){return !!($state&&$state.current&&$state.current.views&&$state.current.views[navView]);},goToHistoryRoot:function goToHistoryRoot(historyId){if(historyId){var hist=getHistoryById(historyId);if(hist&&hist.stack.length){if(_viewHistory.currentView&&_viewHistory.currentView.viewId===hist.stack[0].viewId){return;}forcedNav={viewId:hist.stack[0].viewId,action:ACTION_MOVE_BACK,direction:DIRECTION_BACK};hist.stack[0].go();}}}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#goBack
 	     * @param {number=} backCount Optional negative integer setting how many views to go
@@ -21731,17 +21737,17 @@
 	     * stack. If the number is zero or greater then it'll do nothing. It also does not
 	     * cross history stacks, meaning it can only go as far back as the current history.
 	     * @description Navigates the app to the back view, if a back view exists.
-	     */goBack:function(backCount){if(isDefined(backCount)&&backCount!==-1){if(backCount>-1)return;var currentHistory=viewHistory.histories[this.currentHistoryId()];var newCursor=currentHistory.cursor+backCount+1;if(newCursor<1){newCursor=1;}currentHistory.cursor=newCursor;setNavViews(currentHistory.stack[newCursor].viewId);var cursor=newCursor-1;var clearStateIds=[];var fwdView=getViewById(currentHistory.stack[cursor].forwardViewId);while(fwdView){clearStateIds.push(fwdView.stateId||fwdView.viewId);cursor++;if(cursor>=currentHistory.stack.length)break;fwdView=getViewById(currentHistory.stack[cursor].forwardViewId);}var self=this;if(clearStateIds.length){$timeout(function(){self.clearCache(clearStateIds);},600);}}viewHistory.backView&&viewHistory.backView.go();},enabledBack:function(view){var backView=getBackView(view);return !!(backView&&backView.historyId===view.historyId);}, /**
+	     */goBack:function goBack(backCount){if(isDefined(backCount)&&backCount!==-1){if(backCount>-1)return;var currentHistory=_viewHistory.histories[this.currentHistoryId()];var newCursor=currentHistory.cursor+backCount+1;if(newCursor<1){newCursor=1;}currentHistory.cursor=newCursor;setNavViews(currentHistory.stack[newCursor].viewId);var cursor=newCursor-1;var clearStateIds=[];var fwdView=getViewById(currentHistory.stack[cursor].forwardViewId);while(fwdView){clearStateIds.push(fwdView.stateId||fwdView.viewId);cursor++;if(cursor>=currentHistory.stack.length)break;fwdView=getViewById(currentHistory.stack[cursor].forwardViewId);}var self=this;if(clearStateIds.length){$timeout(function(){self.clearCache(clearStateIds);},600);}}_viewHistory.backView&&_viewHistory.backView.go();},enabledBack:function enabledBack(view){var backView=getBackView(view);return !!(backView&&backView.historyId===view.historyId);}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#clearHistory
 	     * @description Clears out the app's entire history, except for the current view.
-	     */clearHistory:function(){var histories=viewHistory.histories,currentView=viewHistory.currentView;if(histories){for(var historyId in histories){if(histories[historyId].stack){histories[historyId].stack=[];histories[historyId].cursor=-1;}if(currentView&&currentView.historyId===historyId){currentView.backViewId=currentView.forwardViewId=null;histories[historyId].stack.push(currentView);}else if(histories[historyId].destroy){histories[historyId].destroy();}}}for(var viewId in viewHistory.views){if(viewId!==currentView.viewId){delete viewHistory.views[viewId];}}if(currentView){setNavViews(currentView.viewId);}}, /**
+	     */clearHistory:function clearHistory(){var histories=_viewHistory.histories,currentView=_viewHistory.currentView;if(histories){for(var historyId in histories){if(histories[historyId].stack){histories[historyId].stack=[];histories[historyId].cursor=-1;}if(currentView&&currentView.historyId===historyId){currentView.backViewId=currentView.forwardViewId=null;histories[historyId].stack.push(currentView);}else if(histories[historyId].destroy){histories[historyId].destroy();}}}for(var viewId in _viewHistory.views){if(viewId!==currentView.viewId){delete _viewHistory.views[viewId];}}if(currentView){setNavViews(currentView.viewId);}}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#clearCache
 		 * @return promise
 	     * @description Removes all cached views within every {@link ionic.directive:ionNavView}.
 	     * This both removes the view element from the DOM, and destroy it's scope.
-	     */clearCache:function(stateIds){return $timeout(function(){$ionicNavViewDelegate._instances.forEach(function(instance){instance.clearCache(stateIds);});});}, /**
+	     */clearCache:function clearCache(stateIds){return $timeout(function(){$ionicNavViewDelegate._instances.forEach(function(instance){instance.clearCache(stateIds);});});}, /**
 	     * @ngdoc method
 	     * @name $ionicHistory#nextViewOptions
 	     * @description Sets options for the next view. This method can be useful to override
@@ -21763,7 +21769,7 @@
 	     *   disableBack: true
 	     * });
 	     * ```
-	     */nextViewOptions:function(opts){deregisterStateChangeListener&&deregisterStateChangeListener();if(arguments.length){$timeout.cancel(nextViewExpireTimer);if(opts===null){nextViewOptions=opts;}else {nextViewOptions=nextViewOptions||{};extend(nextViewOptions,opts);if(nextViewOptions.expire){deregisterStateChangeListener=$rootScope.$on('$stateChangeSuccess',function(){nextViewExpireTimer=$timeout(function(){nextViewOptions=null;},nextViewOptions.expire);});}}}return nextViewOptions;},isAbstractEle:function(ele,viewLocals){if(viewLocals&&viewLocals.$$state&&viewLocals.$$state.self['abstract']){return true;}return !!(ele&&(isAbstractTag(ele)||isAbstractTag(ele.children())));},isActiveScope:function(scope){if(!scope)return false;var climbScope=scope;var currentHistoryId=this.currentHistoryId();var foundHistoryId;while(climbScope){if(climbScope.$$disconnected){return false;}if(!foundHistoryId&&climbScope.hasOwnProperty('$historyId')){foundHistoryId=true;}if(currentHistoryId){if(climbScope.hasOwnProperty('$historyId')&&currentHistoryId==climbScope.$historyId){return true;}if(climbScope.hasOwnProperty('$activeHistoryId')){if(currentHistoryId==climbScope.$activeHistoryId){if(climbScope.hasOwnProperty('$historyId')){return true;}if(!foundHistoryId){return true;}}}}if(foundHistoryId&&climbScope.hasOwnProperty('$activeHistoryId')){foundHistoryId=false;}climbScope=climbScope.$parent;}return currentHistoryId?currentHistoryId=='root':true;}};function isAbstractTag(ele){return ele&&ele.length&&/ion-side-menus|ion-tabs/i.test(ele[0].tagName);}function canSwipeBack(ele,viewLocals){if(viewLocals&&viewLocals.$$state&&viewLocals.$$state.self.canSwipeBack===false){return false;}if(ele&&ele.attr('can-swipe-back')==='false'){return false;}return true;}}]).run(['$rootScope','$state','$location','$document','$ionicPlatform','$ionicHistory','IONIC_BACK_PRIORITY',function($rootScope,$state,$location,$document,$ionicPlatform,$ionicHistory,IONIC_BACK_PRIORITY){ // always reset the keyboard state when change stage
+	     */nextViewOptions:function nextViewOptions(opts){deregisterStateChangeListener&&deregisterStateChangeListener();if(arguments.length){$timeout.cancel(nextViewExpireTimer);if(opts===null){_nextViewOptions=opts;}else {_nextViewOptions=_nextViewOptions||{};extend(_nextViewOptions,opts);if(_nextViewOptions.expire){deregisterStateChangeListener=$rootScope.$on('$stateChangeSuccess',function(){nextViewExpireTimer=$timeout(function(){_nextViewOptions=null;},_nextViewOptions.expire);});}}}return _nextViewOptions;},isAbstractEle:function isAbstractEle(ele,viewLocals){if(viewLocals&&viewLocals.$$state&&viewLocals.$$state.self['abstract']){return true;}return !!(ele&&(isAbstractTag(ele)||isAbstractTag(ele.children())));},isActiveScope:function isActiveScope(scope){if(!scope)return false;var climbScope=scope;var currentHistoryId=this.currentHistoryId();var foundHistoryId;while(climbScope){if(climbScope.$$disconnected){return false;}if(!foundHistoryId&&climbScope.hasOwnProperty('$historyId')){foundHistoryId=true;}if(currentHistoryId){if(climbScope.hasOwnProperty('$historyId')&&currentHistoryId==climbScope.$historyId){return true;}if(climbScope.hasOwnProperty('$activeHistoryId')){if(currentHistoryId==climbScope.$activeHistoryId){if(climbScope.hasOwnProperty('$historyId')){return true;}if(!foundHistoryId){return true;}}}}if(foundHistoryId&&climbScope.hasOwnProperty('$activeHistoryId')){foundHistoryId=false;}climbScope=climbScope.$parent;}return currentHistoryId?currentHistoryId=='root':true;}};function isAbstractTag(ele){return ele&&ele.length&&/ion-side-menus|ion-tabs/i.test(ele[0].tagName);}function canSwipeBack(ele,viewLocals){if(viewLocals&&viewLocals.$$state&&viewLocals.$$state.self.canSwipeBack===false){return false;}if(ele&&ele.attr('can-swipe-back')==='false'){return false;}return true;}}]).run(['$rootScope','$state','$location','$document','$ionicPlatform','$ionicHistory','IONIC_BACK_PRIORITY',function($rootScope,$state,$location,$document,$ionicPlatform,$ionicHistory,IONIC_BACK_PRIORITY){ // always reset the keyboard state when change stage
 	$rootScope.$on('$ionicView.beforeEnter',function(){ionic.keyboard&&ionic.keyboard.hide&&ionic.keyboard.hide();});$rootScope.$on('$ionicHistory.change',function(e,data){if(!data)return null;var viewHistory=$ionicHistory.viewHistory();var hist=data.historyId?viewHistory.histories[data.historyId]:null;if(hist&&hist.cursor>-1&&hist.cursor<hist.stack.length){ // the history they're going to already exists
 	// go to it's last view in its stack
 	var view=hist.stack[hist.cursor];return view.go(data);} // this history does not have a URL, but it does have a uiSref
@@ -21985,15 +21991,15 @@
 	//}
 	spinner:{icon:'android'}});provider.transitions={views:{},navBar:{}}; // iOS Transitions
 	// -----------------------
-	provider.transitions.views.ios=function(enteringEle,leavingEle,direction,shouldAnimate){function setStyles(ele,opacity,x,boxShadowOpacity){var css={};css[ionic.CSS.TRANSITION_DURATION]=d.shouldAnimate?'':0;css.opacity=opacity;if(boxShadowOpacity>-1){css.boxShadow='0 0 10px rgba(0,0,0,'+(d.shouldAnimate?boxShadowOpacity*0.45:0.3)+')';}css[ionic.CSS.TRANSFORM]='translate3d('+x+'%,0,0)';ionic.DomUtil.cachedStyles(ele,css);}var d={run:function(step){if(direction=='forward'){setStyles(enteringEle,1,(1-step)*99,1-step); // starting at 98% prevents a flicker
+	provider.transitions.views.ios=function(enteringEle,leavingEle,direction,shouldAnimate){function setStyles(ele,opacity,x,boxShadowOpacity){var css={};css[ionic.CSS.TRANSITION_DURATION]=d.shouldAnimate?'':0;css.opacity=opacity;if(boxShadowOpacity>-1){css.boxShadow='0 0 10px rgba(0,0,0,'+(d.shouldAnimate?boxShadowOpacity*0.45:0.3)+')';}css[ionic.CSS.TRANSFORM]='translate3d('+x+'%,0,0)';ionic.DomUtil.cachedStyles(ele,css);}var d={run:function run(step){if(direction=='forward'){setStyles(enteringEle,1,(1-step)*99,1-step); // starting at 98% prevents a flicker
 	setStyles(leavingEle,1-0.1*step,step*-33,-1);}else if(direction=='back'){setStyles(enteringEle,1-0.1*(1-step),(1-step)*-33,-1);setStyles(leavingEle,1,step*100,1-step);}else { // swap, enter, exit
-	setStyles(enteringEle,1,0,-1);setStyles(leavingEle,0,0,-1);}},shouldAnimate:shouldAnimate&&(direction=='forward'||direction=='back')};return d;};provider.transitions.navBar.ios=function(enteringHeaderBar,leavingHeaderBar,direction,shouldAnimate){function setStyles(ctrl,opacity,titleX,backTextX){var css={};css[ionic.CSS.TRANSITION_DURATION]=d.shouldAnimate?'':'0ms';css.opacity=opacity===1?'':opacity;ctrl.setCss('buttons-left',css);ctrl.setCss('buttons-right',css);ctrl.setCss('back-button',css);css[ionic.CSS.TRANSFORM]='translate3d('+backTextX+'px,0,0)';ctrl.setCss('back-text',css);css[ionic.CSS.TRANSFORM]='translate3d('+titleX+'px,0,0)';ctrl.setCss('title',css);}function enter(ctrlA,ctrlB,step){if(!ctrlA||!ctrlB)return;var titleX=(ctrlA.titleTextX()+ctrlA.titleWidth())*(1-step);var backTextX=ctrlB&&(ctrlB.titleTextX()-ctrlA.backButtonTextLeft())*(1-step)||0;setStyles(ctrlA,step,titleX,backTextX);}function leave(ctrlA,ctrlB,step){if(!ctrlA||!ctrlB)return;var titleX=(-(ctrlA.titleTextX()-ctrlB.backButtonTextLeft())-ctrlA.titleLeftRight())*step;setStyles(ctrlA,1-step,titleX,0);}var d={run:function(step){var enteringHeaderCtrl=enteringHeaderBar.controller();var leavingHeaderCtrl=leavingHeaderBar&&leavingHeaderBar.controller();if(d.direction=='back'){leave(enteringHeaderCtrl,leavingHeaderCtrl,1-step);enter(leavingHeaderCtrl,enteringHeaderCtrl,1-step);}else {enter(enteringHeaderCtrl,leavingHeaderCtrl,step);leave(leavingHeaderCtrl,enteringHeaderCtrl,step);}},direction:direction,shouldAnimate:shouldAnimate&&(direction=='forward'||direction=='back')};return d;}; // Android Transitions
+	setStyles(enteringEle,1,0,-1);setStyles(leavingEle,0,0,-1);}},shouldAnimate:shouldAnimate&&(direction=='forward'||direction=='back')};return d;};provider.transitions.navBar.ios=function(enteringHeaderBar,leavingHeaderBar,direction,shouldAnimate){function setStyles(ctrl,opacity,titleX,backTextX){var css={};css[ionic.CSS.TRANSITION_DURATION]=d.shouldAnimate?'':'0ms';css.opacity=opacity===1?'':opacity;ctrl.setCss('buttons-left',css);ctrl.setCss('buttons-right',css);ctrl.setCss('back-button',css);css[ionic.CSS.TRANSFORM]='translate3d('+backTextX+'px,0,0)';ctrl.setCss('back-text',css);css[ionic.CSS.TRANSFORM]='translate3d('+titleX+'px,0,0)';ctrl.setCss('title',css);}function enter(ctrlA,ctrlB,step){if(!ctrlA||!ctrlB)return;var titleX=(ctrlA.titleTextX()+ctrlA.titleWidth())*(1-step);var backTextX=ctrlB&&(ctrlB.titleTextX()-ctrlA.backButtonTextLeft())*(1-step)||0;setStyles(ctrlA,step,titleX,backTextX);}function leave(ctrlA,ctrlB,step){if(!ctrlA||!ctrlB)return;var titleX=(-(ctrlA.titleTextX()-ctrlB.backButtonTextLeft())-ctrlA.titleLeftRight())*step;setStyles(ctrlA,1-step,titleX,0);}var d={run:function run(step){var enteringHeaderCtrl=enteringHeaderBar.controller();var leavingHeaderCtrl=leavingHeaderBar&&leavingHeaderBar.controller();if(d.direction=='back'){leave(enteringHeaderCtrl,leavingHeaderCtrl,1-step);enter(leavingHeaderCtrl,enteringHeaderCtrl,1-step);}else {enter(enteringHeaderCtrl,leavingHeaderCtrl,step);leave(leavingHeaderCtrl,enteringHeaderCtrl,step);}},direction:direction,shouldAnimate:shouldAnimate&&(direction=='forward'||direction=='back')};return d;}; // Android Transitions
 	// -----------------------
-	provider.transitions.views.android=function(enteringEle,leavingEle,direction,shouldAnimate){shouldAnimate=shouldAnimate&&(direction=='forward'||direction=='back');function setStyles(ele,x){var css={};css[ionic.CSS.TRANSITION_DURATION]=d.shouldAnimate?'':0;css[ionic.CSS.TRANSFORM]='translate3d('+x+'%,0,0)';ionic.DomUtil.cachedStyles(ele,css);}var d={run:function(step){if(direction=='forward'){setStyles(enteringEle,(1-step)*99); // starting at 98% prevents a flicker
+	provider.transitions.views.android=function(enteringEle,leavingEle,direction,shouldAnimate){shouldAnimate=shouldAnimate&&(direction=='forward'||direction=='back');function setStyles(ele,x){var css={};css[ionic.CSS.TRANSITION_DURATION]=d.shouldAnimate?'':0;css[ionic.CSS.TRANSFORM]='translate3d('+x+'%,0,0)';ionic.DomUtil.cachedStyles(ele,css);}var d={run:function run(step){if(direction=='forward'){setStyles(enteringEle,(1-step)*99); // starting at 98% prevents a flicker
 	setStyles(leavingEle,step*-100);}else if(direction=='back'){setStyles(enteringEle,(1-step)*-100);setStyles(leavingEle,step*100);}else { // swap, enter, exit
-	setStyles(enteringEle,0);setStyles(leavingEle,0);}},shouldAnimate:shouldAnimate};return d;};provider.transitions.navBar.android=function(enteringHeaderBar,leavingHeaderBar,direction,shouldAnimate){function setStyles(ctrl,opacity){if(!ctrl)return;var css={};css.opacity=opacity===1?'':opacity;ctrl.setCss('buttons-left',css);ctrl.setCss('buttons-right',css);ctrl.setCss('back-button',css);ctrl.setCss('back-text',css);ctrl.setCss('title',css);}return {run:function(step){setStyles(enteringHeaderBar.controller(),step);setStyles(leavingHeaderBar&&leavingHeaderBar.controller(),1-step);},shouldAnimate:shouldAnimate&&(direction=='forward'||direction=='back')};}; // No Transition
+	setStyles(enteringEle,0);setStyles(leavingEle,0);}},shouldAnimate:shouldAnimate};return d;};provider.transitions.navBar.android=function(enteringHeaderBar,leavingHeaderBar,direction,shouldAnimate){function setStyles(ctrl,opacity){if(!ctrl)return;var css={};css.opacity=opacity===1?'':opacity;ctrl.setCss('buttons-left',css);ctrl.setCss('buttons-right',css);ctrl.setCss('back-button',css);ctrl.setCss('back-text',css);ctrl.setCss('title',css);}return {run:function run(step){setStyles(enteringHeaderBar.controller(),step);setStyles(leavingHeaderBar&&leavingHeaderBar.controller(),1-step);},shouldAnimate:shouldAnimate&&(direction=='forward'||direction=='back')};}; // No Transition
 	// -----------------------
-	provider.transitions.views.none=function(enteringEle,leavingEle){return {run:function(step){provider.transitions.views.android(enteringEle,leavingEle,false,false).run(step);},shouldAnimate:false};};provider.transitions.navBar.none=function(enteringHeaderBar,leavingHeaderBar){return {run:function(step){provider.transitions.navBar.ios(enteringHeaderBar,leavingHeaderBar,false,false).run(step);provider.transitions.navBar.android(enteringHeaderBar,leavingHeaderBar,false,false).run(step);},shouldAnimate:false};}; // private: used to set platform configs
+	provider.transitions.views.none=function(enteringEle,leavingEle){return {run:function run(step){provider.transitions.views.android(enteringEle,leavingEle,false,false).run(step);},shouldAnimate:false};};provider.transitions.navBar.none=function(enteringHeaderBar,leavingHeaderBar){return {run:function run(step){provider.transitions.navBar.ios(enteringHeaderBar,leavingHeaderBar,false,false).run(step);provider.transitions.navBar.android(enteringHeaderBar,leavingHeaderBar,false,false).run(step);},shouldAnimate:false};}; // private: used to set platform configs
 	function setPlatformConfig(platformName,platformConfigs){configProperties.platform[platformName]=platformConfigs;provider.platform[platformName]={};addConfig(configProperties,configProperties.platform[platformName]);createConfig(configProperties.platform[platformName],provider.platform[platformName],'');} // private: used to recursively add new platform configs
 	function addConfig(configObj,platformObj){for(var n in configObj){if(n!=PLATFORM&&configObj.hasOwnProperty(n)){if(angular.isObject(configObj[n])){if(!isDefined(platformObj[n])){platformObj[n]={};}addConfig(configObj[n],platformObj[n]);}else if(!isDefined(platformObj[n])){platformObj[n]=null;}}}} // private: create methods for each config to get/set
 	function createConfig(configObj,providerObj,platformPath){forEach(configObj,function(value,namespace){if(angular.isObject(configObj[namespace])){ // recursively drill down the config object so we can create a method for each one
@@ -22172,12 +22178,12 @@
 	     *    Default: true.
 	     *  - `{boolean=}` `hardwareBackButtonClose` Whether the modal can be closed using the hardware
 	     *    back button on Android and similar devices.  Default: true.
-	     */initialize:function(opts){ionic.views.Modal.prototype.initialize.call(this,opts);this.animation=opts.animation||'slide-in-up';}, /**
+	     */initialize:function initialize(opts){ionic.views.Modal.prototype.initialize.call(this,opts);this.animation=opts.animation||'slide-in-up';}, /**
 	     * @ngdoc method
 	     * @name ionicModal#show
 	     * @description Show this modal instance.
 	     * @returns {promise} A promise which is resolved when the modal is finished animating in.
-	     */show:function(target){var self=this;if(self.scope.$$destroyed){$log.error('Cannot call '+self.viewType+'.show() after remove(). Please create a new '+self.viewType+' instance.');return $$q.when();} // on iOS, clicks will sometimes bleed through/ghost click on underlying
+	     */show:function show(target){var self=this;if(self.scope.$$destroyed){$log.error('Cannot call '+self.viewType+'.show() after remove(). Please create a new '+self.viewType+' instance.');return $$q.when();} // on iOS, clicks will sometimes bleed through/ghost click on underlying
 	// elements
 	$ionicClickBlock.show(600);stack.add(self);var modalEl=jqLite(self.modalEl);self.el.classList.remove('hide');$timeout(function(){if(!self._isShown)return;$ionicBody.addClass(self.viewType+'-open');},400,false);if(!self.el.parentElement){modalEl.addClass(self.animation);$ionicBody.append(self.el);} // if modal was closed while the keyboard was up, reset scroll view on
 	// next show since we can only resize it once it's visible
@@ -22189,7 +22195,7 @@
 	     * @name ionicModal#hide
 	     * @description Hide this modal instance.
 	     * @returns {promise} A promise which is resolved when the modal is finished animating out.
-	     */hide:function(){var self=this;var modalEl=jqLite(self.modalEl); // on iOS, clicks will sometimes bleed through/ghost click on underlying
+	     */hide:function hide(){var self=this;var modalEl=jqLite(self.modalEl); // on iOS, clicks will sometimes bleed through/ghost click on underlying
 	// elements
 	$ionicClickBlock.show(600);stack.remove(self);self.el.classList.remove('active');modalEl.addClass('ng-leave');$timeout(function(){if(self._isShown)return;modalEl.addClass('ng-leave-active').removeClass('ng-enter ng-enter-active active');},20,false);self.$el.off('click');self._isShown=false;self.scope.$parent&&self.scope.$parent.$broadcast(self.viewType+'.hidden',self);self._deregisterBackButton&&self._deregisterBackButton();ionic.views.Modal.prototype.hide.call(self); // clean up event listeners
 	if(self.positionView){ionic.off('resize',self._onWindowResize,window);}return $timeout(function(){$ionicBody.removeClass(self.viewType+'-open');self.el.classList.add('hide');},self.hideDelay||320);}, /**
@@ -22197,15 +22203,15 @@
 	     * @name ionicModal#remove
 	     * @description Remove this modal instance from the DOM and clean up.
 	     * @returns {promise} A promise which is resolved when the modal is finished animating out.
-	     */remove:function(){var self=this;self.scope.$parent&&self.scope.$parent.$broadcast(self.viewType+'.removed',self);return self.hide().then(function(){self.scope.$destroy();self.$el.remove();});}, /**
+	     */remove:function remove(){var self=this;self.scope.$parent&&self.scope.$parent.$broadcast(self.viewType+'.removed',self);return self.hide().then(function(){self.scope.$destroy();self.$el.remove();});}, /**
 	     * @ngdoc method
 	     * @name ionicModal#isShown
 	     * @returns boolean Whether this modal is currently shown.
-	     */isShown:function(){return !!this._isShown;}});var createModal=function(templateString,options){ // Create a new scope for the modal
+	     */isShown:function isShown(){return !!this._isShown;}});var createModal=function createModal(templateString,options){ // Create a new scope for the modal
 	var scope=options.scope&&options.scope.$new()||$rootScope.$new(true);options.viewType=options.viewType||'modal';extend(scope,{$hasHeader:false,$hasSubheader:false,$hasFooter:false,$hasSubfooter:false,$hasTabs:false,$hasTabsTop:false}); // Compile the template
 	var element=$compile('<ion-'+options.viewType+'>'+templateString+'</ion-'+options.viewType+'>')(scope);options.$el=element;options.el=element[0];options.modalEl=options.el.querySelector('.'+options.viewType);var modal=new ModalView(options);modal.scope=scope; // If this wasn't a defined scope, we can assign the viewType to the isolated scope
 	// we created
-	if(!options.scope){scope[options.viewType]=modal;}return modal;};var modalStack=[];var stack={add:function(modal){modalStack.push(modal);},remove:function(modal){var index=modalStack.indexOf(modal);if(index>-1&&index<modalStack.length){modalStack.splice(index,1);}},isHighest:function(modal){var index=modalStack.indexOf(modal);return index>-1&&index===modalStack.length-1;}};return { /**
+	if(!options.scope){scope[options.viewType]=modal;}return modal;};var modalStack=[];var stack={add:function add(modal){modalStack.push(modal);},remove:function remove(modal){var index=modalStack.indexOf(modal);if(index>-1&&index<modalStack.length){modalStack.splice(index,1);}},isHighest:function isHighest(modal){var index=modalStack.indexOf(modal);return index>-1&&index===modalStack.length-1;}};return { /**
 	     * @ngdoc method
 	     * @name $ionicModal#fromTemplate
 	     * @param {string} templateString The template string to use as the modal's
@@ -22213,7 +22219,7 @@
 	     * @param {object} options Options to be passed {@link ionic.controller:ionicModal#initialize ionicModal#initialize} method.
 	     * @returns {object} An instance of an {@link ionic.controller:ionicModal}
 	     * controller.
-	     */fromTemplate:function(templateString,options){var modal=createModal(templateString,options||{});return modal;}, /**
+	     */fromTemplate:function fromTemplate(templateString,options){var modal=createModal(templateString,options||{});return modal;}, /**
 	     * @ngdoc method
 	     * @name $ionicModal#fromTemplateUrl
 	     * @param {string} templateUrl The url to load the template from.
@@ -22221,7 +22227,7 @@
 	     * options object.
 	     * @returns {promise} A promise that will be resolved with an instance of
 	     * an {@link ionic.controller:ionicModal} controller.
-	     */fromTemplateUrl:function(url,options,_){var cb; //Deprecated: allow a callback as second parameter. Now we return a promise.
+	     */fromTemplateUrl:function fromTemplateUrl(url,options,_){var cb; //Deprecated: allow a callback as second parameter. Now we return a promise.
 	if(angular.isFunction(options)){cb=options;options=_;}return $ionicTemplateLoader.load(url).then(function(templateString){var modal=createModal(templateString,options||{});cb&&cb(modal);return modal;});},stack:stack};}]); /**
 	 * @ngdoc service
 	 * @name $ionicNavBarDelegate
@@ -22292,14 +22298,14 @@
 	         * Some platforms have a hardware back button, so this is one way to
 	         * bind to it.
 	         * @param {function} callback the callback to trigger when this event occurs
-	         */onHardwareBackButton:function(cb){ionic.Platform.ready(function(){document.addEventListener('backbutton',cb,false);});}, /**
+	         */onHardwareBackButton:function onHardwareBackButton(cb){ionic.Platform.ready(function(){document.addEventListener('backbutton',cb,false);});}, /**
 	         * @ngdoc method
 	         * @name $ionicPlatform#offHardwareBackButton
 	         * @description
 	         * Remove an event listener for the backbutton.
 	         * @param {function} callback The listener function that was
 	         * originally bound.
-	         */offHardwareBackButton:function(fn){ionic.Platform.ready(function(){document.removeEventListener('backbutton',fn);});}, /**
+	         */offHardwareBackButton:function offHardwareBackButton(fn){ionic.Platform.ready(function(){document.removeEventListener('backbutton',fn);});}, /**
 	         * @ngdoc method
 	         * @name $ionicPlatform#registerBackButtonAction
 	         * @description
@@ -22331,13 +22337,13 @@
 	         * random unique id.
 	         * @returns {function} A function that, when called, will deregister
 	         * this backButtonAction.
-	         */$backButtonActions:{},registerBackButtonAction:function(fn,priority,actionId){if(!self._hasBackButtonHandler){ // add a back button listener if one hasn't been setup yet
+	         */$backButtonActions:{},registerBackButtonAction:function registerBackButtonAction(fn,priority,actionId){if(!self._hasBackButtonHandler){ // add a back button listener if one hasn't been setup yet
 	self.$backButtonActions={};self.onHardwareBackButton(self.hardwareBackButtonClick);self._hasBackButtonHandler=true;}var action={id:actionId?actionId:ionic.Utils.nextUid(),priority:priority?priority:0,fn:fn};self.$backButtonActions[action.id]=action; // return a function to de-register this back button action
 	return function(){delete self.$backButtonActions[action.id];};}, /**
 	         * @private
-	         */hardwareBackButtonClick:function(e){ // loop through all the registered back button actions
+	         */hardwareBackButtonClick:function hardwareBackButtonClick(e){ // loop through all the registered back button actions
 	// and only run the last one of the highest priority
-	var priorityAction,actionId;for(actionId in self.$backButtonActions){if(!priorityAction||self.$backButtonActions[actionId].priority>=priorityAction.priority){priorityAction=self.$backButtonActions[actionId];}}if(priorityAction){priorityAction.fn(e);return priorityAction;}},is:function(type){return ionic.Platform.is(type);}, /**
+	var priorityAction,actionId;for(actionId in self.$backButtonActions){if(!priorityAction||self.$backButtonActions[actionId].priority>=priorityAction.priority){priorityAction=self.$backButtonActions[actionId];}}if(priorityAction){priorityAction.fn(e);return priorityAction;}},is:function is(type){return ionic.Platform.is(type);}, /**
 	         * @ngdoc method
 	         * @name $ionicPlatform#on
 	         * @description
@@ -22347,7 +22353,7 @@
 	         * @param {string} type Cordova [event type](https://cordova.apache.org/docs/en/edge/cordova_events_events.md.html#Events).
 	         * @param {function} callback Called when the Cordova event is fired.
 	         * @returns {function} Returns a deregistration function to remove the event listener.
-	         */on:function(type,cb){ionic.Platform.ready(function(){document.addEventListener(type,cb,false);});return function(){ionic.Platform.ready(function(){document.removeEventListener(type,cb);});};}, /**
+	         */on:function on(type,cb){ionic.Platform.ready(function(){document.addEventListener(type,cb,false);});return function(){ionic.Platform.ready(function(){document.removeEventListener(type,cb);});};}, /**
 	         * @ngdoc method
 	         * @name $ionicPlatform#ready
 	         * @description
@@ -22355,7 +22361,7 @@
 	         * or immediately if the device is already ready.
 	         * @param {function=} callback The function to call.
 	         * @returns {promise} A promise which is resolved when the device is ready.
-	         */ready:function(cb){var q=$q.defer();ionic.Platform.ready(function(){q.resolve();cb&&cb();});return q.promise;}};window.addEventListener('statusTap',function(){$ionicScrollDelegate.scrollTop(true);});return self;}]};}); /**
+	         */ready:function ready(cb){var q=$q.defer();ionic.Platform.ready(function(){q.resolve();cb&&cb();});return q.promise;}};window.addEventListener('statusTap',function(){$ionicScrollDelegate.scrollTop(true);});return self;}]};}); /**
 	 * @ngdoc service
 	 * @name $ionicPopover
 	 * @module ionic
@@ -22488,14 +22494,14 @@
 	     * @param {object} options Options to be passed to the initialize method.
 	     * @returns {object} An instance of an {@link ionic.controller:ionicPopover}
 	     * controller (ionicPopover is built on top of $ionicPopover).
-	     */fromTemplate:function(templateString,options){return $ionicModal.fromTemplate(templateString,ionic.Utils.extend({},POPOVER_OPTIONS,options));}, /**
+	     */fromTemplate:function fromTemplate(templateString,options){return $ionicModal.fromTemplate(templateString,ionic.Utils.extend({},POPOVER_OPTIONS,options));}, /**
 	     * @ngdoc method
 	     * @name $ionicPopover#fromTemplateUrl
 	     * @param {string} templateUrl The url to load the template from.
 	     * @param {object} options Options to be passed to the initialize method.
 	     * @returns {promise} A promise that will be resolved with an instance of
 	     * an {@link ionic.controller:ionicPopover} controller (ionicPopover is built on top of $ionicPopover).
-	     */fromTemplateUrl:function(url,options){return $ionicModal.fromTemplateUrl(url,ionic.Utils.extend({},POPOVER_OPTIONS,options));}};}]);var POPUP_TPL='<div class="popup-container" ng-class="cssClass">'+'<div class="popup">'+'<div class="popup-head">'+'<h3 class="popup-title" ng-bind-html="title"></h3>'+'<h5 class="popup-sub-title" ng-bind-html="subTitle" ng-if="subTitle"></h5>'+'</div>'+'<div class="popup-body">'+'</div>'+'<div class="popup-buttons" ng-show="buttons.length">'+'<button ng-repeat="button in buttons" ng-click="$buttonTapped(button, $event)" class="button" ng-class="button.type || \'button-default\'" ng-bind-html="button.text"></button>'+'</div>'+'</div>'+'</div>'; /**
+	     */fromTemplateUrl:function fromTemplateUrl(url,options){return $ionicModal.fromTemplateUrl(url,ionic.Utils.extend({},POPOVER_OPTIONS,options));}};}]);var POPUP_TPL='<div class="popup-container" ng-class="cssClass">'+'<div class="popup">'+'<div class="popup-head">'+'<h3 class="popup-title" ng-bind-html="title"></h3>'+'<h5 class="popup-sub-title" ng-bind-html="subTitle" ng-if="subTitle"></h5>'+'</div>'+'<div class="popup-body">'+'</div>'+'<div class="popup-buttons" ng-show="buttons.length">'+'<button ng-repeat="button in buttons" ng-click="$buttonTapped(button, $event)" class="button" ng-class="button.type || \'button-default\'" ng-bind-html="button.text"></button>'+'</div>'+'</div>'+'</div>'; /**
 	 * @ngdoc service
 	 * @name $ionicPopup
 	 * @module ionic
@@ -22724,7 +22730,7 @@
 	     * with the given value.
 	     */prompt:showPrompt, /**
 	     * @private for testing
-	     */_createPopup:createPopup,_popupStack:popupStack};return $ionicPopup;function createPopup(options){options=extend({scope:null,title:'',buttons:[]},options||{});var self={};self.scope=(options.scope||$rootScope).$new();self.element=jqLite(POPUP_TPL);self.responseDeferred=$q.defer();$ionicBody.get().appendChild(self.element[0]);$compile(self.element)(self.scope);extend(self.scope,{title:options.title,buttons:options.buttons,subTitle:options.subTitle,cssClass:options.cssClass,$buttonTapped:function(button,event){var result=(button.onTap||noop).apply(self,[event]);event=event.originalEvent||event; //jquery events
+	     */_createPopup:createPopup,_popupStack:popupStack};return $ionicPopup;function createPopup(options){options=extend({scope:null,title:'',buttons:[]},options||{});var self={};self.scope=(options.scope||$rootScope).$new();self.element=jqLite(POPUP_TPL);self.responseDeferred=$q.defer();$ionicBody.get().appendChild(self.element[0]);$compile(self.element)(self.scope);extend(self.scope,{title:options.title,buttons:options.buttons,subTitle:options.subTitle,cssClass:options.cssClass,$buttonTapped:function $buttonTapped(button,event){var result=(button.onTap||noop).apply(self,[event]);event=event.originalEvent||event; //jquery events
 	if(!event.defaultPrevented){self.responseDeferred.resolve(result);}}});$q.when(options.templateUrl?$ionicTemplateLoader.load(options.templateUrl):options.template||options.content||'').then(function(template){var popupBody=jqLite(self.element[0].querySelector('.popup-body'));if(template){popupBody.html(template);$compile(popupBody.contents())(self.scope);}else {popupBody.remove();}});self.show=function(){if(self.isShown||self.removed)return;$ionicModal.stack.add(self);self.isShown=true;ionic.requestAnimationFrame(function(){ //if hidden while waiting for raf, don't show
 	if(!self.isShown)return;self.element.removeClass('popup-hidden');self.element.addClass('popup-showing active');focusInput(self.element);});};self.hide=function(callback){callback=callback||noop;if(!self.isShown)return callback();$ionicModal.stack.remove(self);self.isShown=false;self.element.removeClass('active');self.element.addClass('popup-hidden');$timeout(callback,250,false);};self.remove=function(){if(self.removed)return;self.hide(function(){self.element.remove();self.scope.$destroy();});self.removed=true;};return self;}function onHardwareBackButton(){var last=popupStack[popupStack.length-1];last&&last.responseDeferred.resolve();}function showPopup(options){var popup=$ionicPopup._createPopup(options);var showDelay=0;if(popupStack.length>0){showDelay=config.stackPushDelay;$timeout(popupStack[popupStack.length-1].hide,showDelay,false);}else { //Add popup-open & backdrop if this is first popup
 	$ionicBody.addClass('popup-open');$ionicBackdrop.retain(); //only show the backdrop on the first popup
@@ -22733,7 +22739,7 @@
 	popup.responseDeferred.notify({close:popup.responseDeferred.close});doShow();return popup.responseDeferred.promise;function doShow(){popupStack.push(popup);$timeout(popup.show,showDelay,false);popup.responseDeferred.promise.then(function(result){var index=popupStack.indexOf(popup);if(index!==-1){popupStack.splice(index,1);}popup.remove();if(popupStack.length>0){popupStack[popupStack.length-1].show();}else {$ionicBackdrop.release(); //Remove popup-open & backdrop if this is last popup
 	$timeout(function(){ // wait to remove this due to a 300ms delay native
 	// click which would trigging whatever was underneath this
-	if(!popupStack.length){$ionicBody.removeClass('popup-open');}},400,false);($ionicPopup._backButtonActionDone||noop)();}return result;});}}function focusInput(element){var focusOn=element[0].querySelector('[autofocus]');if(focusOn){focusOn.focus();}}function showAlert(opts){return showPopup(extend({buttons:[{text:opts.okText||'OK',type:opts.okType||'button-positive',onTap:function(){return true;}}]},opts||{}));}function showConfirm(opts){return showPopup(extend({buttons:[{text:opts.cancelText||'Cancel',type:opts.cancelType||'button-default',onTap:function(){return false;}},{text:opts.okText||'OK',type:opts.okType||'button-positive',onTap:function(){return true;}}]},opts||{}));}function showPrompt(opts){var scope=$rootScope.$new(true);scope.data={};scope.data.fieldtype=opts.inputType?opts.inputType:'text';scope.data.response=opts.defaultText?opts.defaultText:'';scope.data.placeholder=opts.inputPlaceholder?opts.inputPlaceholder:'';scope.data.maxlength=opts.maxLength?parseInt(opts.maxLength):'';var text='';if(opts.template&&/<[a-z][\s\S]*>/i.test(opts.template)===false){text='<span>'+opts.template+'</span>';delete opts.template;}return showPopup(extend({template:text+'<input ng-model="data.response" '+'type="{{ data.fieldtype }}"'+'maxlength="{{ data.maxlength }}"'+'placeholder="{{ data.placeholder }}"'+'>',scope:scope,buttons:[{text:opts.cancelText||'Cancel',type:opts.cancelType||'button-default',onTap:function(){}},{text:opts.okText||'OK',type:opts.okType||'button-positive',onTap:function(){return scope.data.response||'';}}]},opts||{}));}}]); /**
+	if(!popupStack.length){$ionicBody.removeClass('popup-open');}},400,false);($ionicPopup._backButtonActionDone||noop)();}return result;});}}function focusInput(element){var focusOn=element[0].querySelector('[autofocus]');if(focusOn){focusOn.focus();}}function showAlert(opts){return showPopup(extend({buttons:[{text:opts.okText||'OK',type:opts.okType||'button-positive',onTap:function onTap(){return true;}}]},opts||{}));}function showConfirm(opts){return showPopup(extend({buttons:[{text:opts.cancelText||'Cancel',type:opts.cancelType||'button-default',onTap:function onTap(){return false;}},{text:opts.okText||'OK',type:opts.okType||'button-positive',onTap:function onTap(){return true;}}]},opts||{}));}function showPrompt(opts){var scope=$rootScope.$new(true);scope.data={};scope.data.fieldtype=opts.inputType?opts.inputType:'text';scope.data.response=opts.defaultText?opts.defaultText:'';scope.data.placeholder=opts.inputPlaceholder?opts.inputPlaceholder:'';scope.data.maxlength=opts.maxLength?parseInt(opts.maxLength):'';var text='';if(opts.template&&/<[a-z][\s\S]*>/i.test(opts.template)===false){text='<span>'+opts.template+'</span>';delete opts.template;}return showPopup(extend({template:text+'<input ng-model="data.response" '+'type="{{ data.fieldtype }}"'+'maxlength="{{ data.maxlength }}"'+'placeholder="{{ data.placeholder }}"'+'>',scope:scope,buttons:[{text:opts.cancelText||'Cancel',type:opts.cancelType||'button-default',onTap:function onTap(){}},{text:opts.okText||'OK',type:opts.okType||'button-positive',onTap:function onTap(){return scope.data.response||'';}}]},opts||{}));}}]); /**
 	 * @ngdoc service
 	 * @name $ionicPosition
 	 * @module ionic
@@ -22752,21 +22758,21 @@
 	   */function isStaticPositioned(element){return (getStyle(element,'position')||'static')==='static';} /**
 	   * returns the closest, non-statically positioned parentOffset of a given element
 	   * @param element
-	   */var parentOffsetEl=function(element){var docDomEl=$document[0];var offsetParent=element.offsetParent||docDomEl;while(offsetParent&&offsetParent!==docDomEl&&isStaticPositioned(offsetParent)){offsetParent=offsetParent.offsetParent;}return offsetParent||docDomEl;};return { /**
+	   */var parentOffsetEl=function parentOffsetEl(element){var docDomEl=$document[0];var offsetParent=element.offsetParent||docDomEl;while(offsetParent&&offsetParent!==docDomEl&&isStaticPositioned(offsetParent)){offsetParent=offsetParent.offsetParent;}return offsetParent||docDomEl;};return { /**
 	     * @ngdoc method
 	     * @name $ionicPosition#position
 	     * @description Get the current coordinates of the element, relative to the offset parent.
 	     * Read-only equivalent of [jQuery's position function](http://api.jquery.com/position/).
 	     * @param {element} element The element to get the position of.
 	     * @returns {object} Returns an object containing the properties top, left, width and height.
-	     */position:function(element){var elBCR=this.offset(element);var offsetParentBCR={top:0,left:0};var offsetParentEl=parentOffsetEl(element[0]);if(offsetParentEl!=$document[0]){offsetParentBCR=this.offset(jqLite(offsetParentEl));offsetParentBCR.top+=offsetParentEl.clientTop-offsetParentEl.scrollTop;offsetParentBCR.left+=offsetParentEl.clientLeft-offsetParentEl.scrollLeft;}var boundingClientRect=element[0].getBoundingClientRect();return {width:boundingClientRect.width||element.prop('offsetWidth'),height:boundingClientRect.height||element.prop('offsetHeight'),top:elBCR.top-offsetParentBCR.top,left:elBCR.left-offsetParentBCR.left};}, /**
+	     */position:function position(element){var elBCR=this.offset(element);var offsetParentBCR={top:0,left:0};var offsetParentEl=parentOffsetEl(element[0]);if(offsetParentEl!=$document[0]){offsetParentBCR=this.offset(jqLite(offsetParentEl));offsetParentBCR.top+=offsetParentEl.clientTop-offsetParentEl.scrollTop;offsetParentBCR.left+=offsetParentEl.clientLeft-offsetParentEl.scrollLeft;}var boundingClientRect=element[0].getBoundingClientRect();return {width:boundingClientRect.width||element.prop('offsetWidth'),height:boundingClientRect.height||element.prop('offsetHeight'),top:elBCR.top-offsetParentBCR.top,left:elBCR.left-offsetParentBCR.left};}, /**
 	     * @ngdoc method
 	     * @name $ionicPosition#offset
 	     * @description Get the current coordinates of the element, relative to the document.
 	     * Read-only equivalent of [jQuery's offset function](http://api.jquery.com/offset/).
 	     * @param {element} element The element to get the offset of.
 	     * @returns {object} Returns an object containing the properties top, left, width and height.
-	     */offset:function(element){var boundingClientRect=element[0].getBoundingClientRect();return {width:boundingClientRect.width||element.prop('offsetWidth'),height:boundingClientRect.height||element.prop('offsetHeight'),top:boundingClientRect.top+($window.pageYOffset||$document[0].documentElement.scrollTop),left:boundingClientRect.left+($window.pageXOffset||$document[0].documentElement.scrollLeft)};}};}]); /**
+	     */offset:function offset(element){var boundingClientRect=element[0].getBoundingClientRect();return {width:boundingClientRect.width||element.prop('offsetWidth'),height:boundingClientRect.height||element.prop('offsetHeight'),top:boundingClientRect.top+($window.pageYOffset||$document[0].documentElement.scrollTop),left:boundingClientRect.left+($window.pageXOffset||$document[0].documentElement.scrollLeft)};}};}]); /**
 	 * @ngdoc service
 	 * @name $ionicScrollDelegate
 	 * @module ionic
@@ -23189,7 +23195,7 @@
 	$ionicTemplateCache._runCount=0; // default method
 	return $ionicTemplateCache;}]) // Intercepts the $stateprovider.state() command to look for templateUrls that can be cached
 	.config(['$stateProvider','$ionicConfigProvider',function($stateProvider,$ionicConfigProvider){var stateProviderState=$stateProvider.state;$stateProvider.state=function(stateName,definition){ // don't even bother if it's disabled. note, another config may run after this, so it's not a catch-all
-	if(typeof definition==='object'){var enabled=definition.prefetchTemplate!==false&&templatesToCache.length<$ionicConfigProvider.templates.maxPrefetch();if(enabled&&isString(definition.templateUrl))templatesToCache.push(definition.templateUrl);if(angular.isObject(definition.views)){for(var key in definition.views){enabled=definition.views[key].prefetchTemplate!==false&&templatesToCache.length<$ionicConfigProvider.templates.maxPrefetch();if(enabled&&isString(definition.views[key].templateUrl))templatesToCache.push(definition.views[key].templateUrl);}}}return stateProviderState.call($stateProvider,stateName,definition);};}]) // process the templateUrls collected by the $stateProvider, adding them to the cache
+	if((typeof definition==='undefined'?'undefined':_typeof(definition))==='object'){var enabled=definition.prefetchTemplate!==false&&templatesToCache.length<$ionicConfigProvider.templates.maxPrefetch();if(enabled&&isString(definition.templateUrl))templatesToCache.push(definition.templateUrl);if(angular.isObject(definition.views)){for(var key in definition.views){enabled=definition.views[key].prefetchTemplate!==false&&templatesToCache.length<$ionicConfigProvider.templates.maxPrefetch();if(enabled&&isString(definition.views[key].templateUrl))templatesToCache.push(definition.views[key].templateUrl);}}}return stateProviderState.call($stateProvider,stateName,definition);};}]) // process the templateUrls collected by the $stateProvider, adding them to the cache
 	.run(['$ionicTemplateCache',function($ionicTemplateCache){$ionicTemplateCache();}]);})();IonicModule.factory('$ionicTemplateLoader',['$compile','$controller','$http','$q','$rootScope','$templateCache',function($compile,$controller,$http,$q,$rootScope,$templateCache){return {load:fetchTemplate,compile:loadAndCompile};function fetchTemplate(url){return $http.get(url,{cache:$templateCache}).then(function(response){return response.data&&response.data.trim();});}function loadAndCompile(options){options=extend({template:'',templateUrl:'',scope:null,controller:null,locals:{},appendTo:null},options||{});var templatePromise=options.templateUrl?this.load(options.templateUrl):$q.when(options.template);return templatePromise.then(function(template){var controller;var scope=options.scope||$rootScope.$new(); //Incase template doesn't have just one root element, do this
 	var element=jqLite('<div>').html(template).contents();if(options.controller){controller=$controller(options.controller,extend(options.locals,{$scope:scope}));element.children().data('$ngControllerController',controller);}if(options.appendTo){jqLite(options.appendTo).append(element);}$compile(element)(scope);return {element:element,scope:scope};});}}]); /**
 	 * @private
@@ -23197,64 +23203,64 @@
 	 */IonicModule.factory('$ionicViewService',['$ionicHistory','$log',function($ionicHistory,$log){function warn(oldMethod,newMethod){$log.warn('$ionicViewService'+oldMethod+' is deprecated, please use $ionicHistory'+newMethod+' instead: http://ionicframework.com/docs/nightly/api/service/$ionicHistory/');}warn('','');var methodsMap={getCurrentView:'currentView',getBackView:'backView',getForwardView:'forwardView',getCurrentStateName:'currentStateName',nextViewOptions:'nextViewOptions',clearHistory:'clearHistory'};forEach(methodsMap,function(newMethod,oldMethod){methodsMap[oldMethod]=function(){warn('.'+oldMethod,'.'+newMethod);return $ionicHistory[newMethod].apply(this,arguments);};});return methodsMap;}]); /**
 	 * @private
 	 * TODO document
-	 */IonicModule.factory('$ionicViewSwitcher',['$timeout','$document','$q','$ionicClickBlock','$ionicConfig','$ionicNavBarDelegate',function($timeout,$document,$q,$ionicClickBlock,$ionicConfig,$ionicNavBarDelegate){var TRANSITIONEND_EVENT='webkitTransitionEnd transitionend';var DATA_NO_CACHE='$noCache';var DATA_DESTROY_ELE='$destroyEle';var DATA_ELE_IDENTIFIER='$eleId';var DATA_VIEW_ACCESSED='$accessed';var DATA_FALLBACK_TIMER='$fallbackTimer';var DATA_VIEW='$viewData';var NAV_VIEW_ATTR='nav-view';var VIEW_STATUS_ACTIVE='active';var VIEW_STATUS_CACHED='cached';var VIEW_STATUS_STAGED='stage';var transitionCounter=0;var nextTransition,nextDirection;ionic.transition=ionic.transition||{};ionic.transition.isActive=false;var isActiveTimer;var cachedAttr=ionic.DomUtil.cachedAttr;var transitionPromises=[];var defaultTimeout=1100;var ionicViewSwitcher={create:function(navViewCtrl,viewLocals,enteringView,leavingView,renderStart,renderEnd){ // get a reference to an entering/leaving element if they exist
+	 */IonicModule.factory('$ionicViewSwitcher',['$timeout','$document','$q','$ionicClickBlock','$ionicConfig','$ionicNavBarDelegate',function($timeout,$document,$q,$ionicClickBlock,$ionicConfig,$ionicNavBarDelegate){var TRANSITIONEND_EVENT='webkitTransitionEnd transitionend';var DATA_NO_CACHE='$noCache';var DATA_DESTROY_ELE='$destroyEle';var DATA_ELE_IDENTIFIER='$eleId';var DATA_VIEW_ACCESSED='$accessed';var DATA_FALLBACK_TIMER='$fallbackTimer';var DATA_VIEW='$viewData';var NAV_VIEW_ATTR='nav-view';var VIEW_STATUS_ACTIVE='active';var VIEW_STATUS_CACHED='cached';var VIEW_STATUS_STAGED='stage';var transitionCounter=0;var _nextTransition,_nextDirection;ionic.transition=ionic.transition||{};ionic.transition.isActive=false;var isActiveTimer;var cachedAttr=ionic.DomUtil.cachedAttr;var transitionPromises=[];var defaultTimeout=1100;var ionicViewSwitcher={create:function create(navViewCtrl,viewLocals,enteringView,leavingView,renderStart,renderEnd){ // get a reference to an entering/leaving element if they exist
 	// loop through to see if the view is already in the navViewElement
-	var enteringEle,leavingEle;var transitionId=++transitionCounter;var alreadyInDom;var switcher={init:function(registerData,callback){ionicViewSwitcher.isTransitioning(true);switcher.loadViewElements(registerData);switcher.render(registerData,function(){callback&&callback();});},loadViewElements:function(registerData){var x,l,viewEle;var viewElements=navViewCtrl.getViewElements();var enteringEleIdentifier=getViewElementIdentifier(viewLocals,enteringView);var navViewActiveEleId=navViewCtrl.activeEleId();for(x=0,l=viewElements.length;x<l;x++){viewEle=viewElements.eq(x);if(viewEle.data(DATA_ELE_IDENTIFIER)===enteringEleIdentifier){ // we found an existing element in the DOM that should be entering the view
+	var _enteringEle,_leavingEle;var transitionId=++transitionCounter;var alreadyInDom;var switcher={init:function init(registerData,callback){ionicViewSwitcher.isTransitioning(true);switcher.loadViewElements(registerData);switcher.render(registerData,function(){callback&&callback();});},loadViewElements:function loadViewElements(registerData){var x,l,viewEle;var viewElements=navViewCtrl.getViewElements();var enteringEleIdentifier=getViewElementIdentifier(viewLocals,enteringView);var navViewActiveEleId=navViewCtrl.activeEleId();for(x=0,l=viewElements.length;x<l;x++){viewEle=viewElements.eq(x);if(viewEle.data(DATA_ELE_IDENTIFIER)===enteringEleIdentifier){ // we found an existing element in the DOM that should be entering the view
 	if(viewEle.data(DATA_NO_CACHE)){ // the existing element should not be cached, don't use it
-	viewEle.data(DATA_ELE_IDENTIFIER,enteringEleIdentifier+ionic.Utils.nextUid());viewEle.data(DATA_DESTROY_ELE,true);}else {enteringEle=viewEle;}}else if(isDefined(navViewActiveEleId)&&viewEle.data(DATA_ELE_IDENTIFIER)===navViewActiveEleId){leavingEle=viewEle;}if(enteringEle&&leavingEle)break;}alreadyInDom=!!enteringEle;if(!alreadyInDom){ // still no existing element to use
+	viewEle.data(DATA_ELE_IDENTIFIER,enteringEleIdentifier+ionic.Utils.nextUid());viewEle.data(DATA_DESTROY_ELE,true);}else {_enteringEle=viewEle;}}else if(isDefined(navViewActiveEleId)&&viewEle.data(DATA_ELE_IDENTIFIER)===navViewActiveEleId){_leavingEle=viewEle;}if(_enteringEle&&_leavingEle)break;}alreadyInDom=!!_enteringEle;if(!alreadyInDom){ // still no existing element to use
 	// create it using existing template/scope/locals
-	enteringEle=registerData.ele||ionicViewSwitcher.createViewEle(viewLocals); // existing elements in the DOM are looked up by their state name and state id
-	enteringEle.data(DATA_ELE_IDENTIFIER,enteringEleIdentifier);}if(renderEnd){navViewCtrl.activeEleId(enteringEleIdentifier);}registerData.ele=null;},render:function(registerData,callback){if(alreadyInDom){ // it was already found in the DOM, just reconnect the scope
-	ionic.Utils.reconnectScope(enteringEle.scope());}else { // the entering element is not already in the DOM
+	_enteringEle=registerData.ele||ionicViewSwitcher.createViewEle(viewLocals); // existing elements in the DOM are looked up by their state name and state id
+	_enteringEle.data(DATA_ELE_IDENTIFIER,enteringEleIdentifier);}if(renderEnd){navViewCtrl.activeEleId(enteringEleIdentifier);}registerData.ele=null;},render:function render(registerData,callback){if(alreadyInDom){ // it was already found in the DOM, just reconnect the scope
+	ionic.Utils.reconnectScope(_enteringEle.scope());}else { // the entering element is not already in the DOM
 	// set that the entering element should be "staged" and its
 	// styles of where this element will go before it hits the DOM
-	navViewAttr(enteringEle,VIEW_STATUS_STAGED);var enteringData=getTransitionData(viewLocals,enteringEle,registerData.direction,enteringView);var transitionFn=$ionicConfig.transitions.views[enteringData.transition]||$ionicConfig.transitions.views.none;transitionFn(enteringEle,null,enteringData.direction,true).run(0);enteringEle.data(DATA_VIEW,{viewId:enteringData.viewId,historyId:enteringData.historyId,stateName:enteringData.stateName,stateParams:enteringData.stateParams}); // if the current state has cache:false
+	navViewAttr(_enteringEle,VIEW_STATUS_STAGED);var enteringData=getTransitionData(viewLocals,_enteringEle,registerData.direction,enteringView);var transitionFn=$ionicConfig.transitions.views[enteringData.transition]||$ionicConfig.transitions.views.none;transitionFn(_enteringEle,null,enteringData.direction,true).run(0);_enteringEle.data(DATA_VIEW,{viewId:enteringData.viewId,historyId:enteringData.historyId,stateName:enteringData.stateName,stateParams:enteringData.stateParams}); // if the current state has cache:false
 	// or the element has cache-view="false" attribute
-	if(viewState(viewLocals).cache===false||viewState(viewLocals).cache==='false'||enteringEle.attr('cache-view')=='false'||$ionicConfig.views.maxCache()===0){enteringEle.data(DATA_NO_CACHE,true);} // append the entering element to the DOM, create a new scope and run link
-	var viewScope=navViewCtrl.appendViewElement(enteringEle,viewLocals);delete enteringData.direction;delete enteringData.transition;viewScope.$emit('$ionicView.loaded',enteringData);} // update that this view was just accessed
-	enteringEle.data(DATA_VIEW_ACCESSED,Date.now());callback&&callback();},transition:function(direction,enableBack,allowAnimate){var deferred;var enteringData=getTransitionData(viewLocals,enteringEle,direction,enteringView);var leavingData=extend(extend({},enteringData),getViewData(leavingView));enteringData.transitionId=leavingData.transitionId=transitionId;enteringData.fromCache=!!alreadyInDom;enteringData.enableBack=!!enableBack;enteringData.renderStart=renderStart;enteringData.renderEnd=renderEnd;cachedAttr(enteringEle.parent(),'nav-view-transition',enteringData.transition);cachedAttr(enteringEle.parent(),'nav-view-direction',enteringData.direction); // cancel any previous transition complete fallbacks
-	$timeout.cancel(enteringEle.data(DATA_FALLBACK_TIMER)); // get the transition ready and see if it'll animate
-	var transitionFn=$ionicConfig.transitions.views[enteringData.transition]||$ionicConfig.transitions.views.none;var viewTransition=transitionFn(enteringEle,leavingEle,enteringData.direction,enteringData.shouldAnimate&&allowAnimate&&renderEnd);if(viewTransition.shouldAnimate){ // attach transitionend events (and fallback timer)
-	enteringEle.on(TRANSITIONEND_EVENT,completeOnTransitionEnd);enteringEle.data(DATA_FALLBACK_TIMER,$timeout(transitionComplete,defaultTimeout));$ionicClickBlock.show(defaultTimeout);}if(renderStart){ // notify the views "before" the transition starts
+	if(viewState(viewLocals).cache===false||viewState(viewLocals).cache==='false'||_enteringEle.attr('cache-view')=='false'||$ionicConfig.views.maxCache()===0){_enteringEle.data(DATA_NO_CACHE,true);} // append the entering element to the DOM, create a new scope and run link
+	var viewScope=navViewCtrl.appendViewElement(_enteringEle,viewLocals);delete enteringData.direction;delete enteringData.transition;viewScope.$emit('$ionicView.loaded',enteringData);} // update that this view was just accessed
+	_enteringEle.data(DATA_VIEW_ACCESSED,Date.now());callback&&callback();},transition:function transition(direction,enableBack,allowAnimate){var deferred;var enteringData=getTransitionData(viewLocals,_enteringEle,direction,enteringView);var leavingData=extend(extend({},enteringData),getViewData(leavingView));enteringData.transitionId=leavingData.transitionId=transitionId;enteringData.fromCache=!!alreadyInDom;enteringData.enableBack=!!enableBack;enteringData.renderStart=renderStart;enteringData.renderEnd=renderEnd;cachedAttr(_enteringEle.parent(),'nav-view-transition',enteringData.transition);cachedAttr(_enteringEle.parent(),'nav-view-direction',enteringData.direction); // cancel any previous transition complete fallbacks
+	$timeout.cancel(_enteringEle.data(DATA_FALLBACK_TIMER)); // get the transition ready and see if it'll animate
+	var transitionFn=$ionicConfig.transitions.views[enteringData.transition]||$ionicConfig.transitions.views.none;var viewTransition=transitionFn(_enteringEle,_leavingEle,enteringData.direction,enteringData.shouldAnimate&&allowAnimate&&renderEnd);if(viewTransition.shouldAnimate){ // attach transitionend events (and fallback timer)
+	_enteringEle.on(TRANSITIONEND_EVENT,completeOnTransitionEnd);_enteringEle.data(DATA_FALLBACK_TIMER,$timeout(transitionComplete,defaultTimeout));$ionicClickBlock.show(defaultTimeout);}if(renderStart){ // notify the views "before" the transition starts
 	switcher.emit('before',enteringData,leavingData); // stage entering element, opacity 0, no transition duration
-	navViewAttr(enteringEle,VIEW_STATUS_STAGED); // render the elements in the correct location for their starting point
+	navViewAttr(_enteringEle,VIEW_STATUS_STAGED); // render the elements in the correct location for their starting point
 	viewTransition.run(0);}if(renderEnd){ // create a promise so we can keep track of when all transitions finish
 	// only required if this transition should complete
 	deferred=$q.defer();transitionPromises.push(deferred.promise);}if(renderStart&&renderEnd){ // CSS "auto" transitioned, not manually transitioned
 	// wait a frame so the styles apply before auto transitioning
 	$timeout(function(){ionic.requestAnimationFrame(onReflow);});}else if(!renderEnd){ // just the start of a manual transition
 	// but it will not render the end of the transition
-	navViewAttr(enteringEle,'entering');navViewAttr(leavingEle,'leaving'); // return the transition run method so each step can be ran manually
-	return {run:viewTransition.run,cancel:function(shouldAnimate){if(shouldAnimate){enteringEle.on(TRANSITIONEND_EVENT,cancelOnTransitionEnd);enteringEle.data(DATA_FALLBACK_TIMER,$timeout(cancelTransition,defaultTimeout));$ionicClickBlock.show(defaultTimeout);}else {cancelTransition();}viewTransition.shouldAnimate=shouldAnimate;viewTransition.run(0);viewTransition=null;}};}else if(renderEnd){ // just the end of a manual transition
+	navViewAttr(_enteringEle,'entering');navViewAttr(_leavingEle,'leaving'); // return the transition run method so each step can be ran manually
+	return {run:viewTransition.run,cancel:function cancel(shouldAnimate){if(shouldAnimate){_enteringEle.on(TRANSITIONEND_EVENT,cancelOnTransitionEnd);_enteringEle.data(DATA_FALLBACK_TIMER,$timeout(cancelTransition,defaultTimeout));$ionicClickBlock.show(defaultTimeout);}else {cancelTransition();}viewTransition.shouldAnimate=shouldAnimate;viewTransition.run(0);viewTransition=null;}};}else if(renderEnd){ // just the end of a manual transition
 	// happens after the manual transition has completed
 	// and a full history change has happened
 	onReflow();}function onReflow(){ // remove that we're staging the entering element so it can auto transition
-	navViewAttr(enteringEle,viewTransition.shouldAnimate?'entering':VIEW_STATUS_ACTIVE);navViewAttr(leavingEle,viewTransition.shouldAnimate?'leaving':VIEW_STATUS_CACHED); // start the auto transition and let the CSS take over
+	navViewAttr(_enteringEle,viewTransition.shouldAnimate?'entering':VIEW_STATUS_ACTIVE);navViewAttr(_leavingEle,viewTransition.shouldAnimate?'leaving':VIEW_STATUS_CACHED); // start the auto transition and let the CSS take over
 	viewTransition.run(1); // trigger auto transitions on the associated nav bars
 	$ionicNavBarDelegate._instances.forEach(function(instance){instance.triggerTransitionStart(transitionId);});if(!viewTransition.shouldAnimate){ // no animated auto transition
 	transitionComplete();}} // Make sure that transitionend events bubbling up from children won't fire
 	// transitionComplete. Will only go forward if ev.target == the element listening.
-	function completeOnTransitionEnd(ev){if(ev.target!==this)return;transitionComplete();}function transitionComplete(){if(transitionComplete.x)return;transitionComplete.x=true;enteringEle.off(TRANSITIONEND_EVENT,completeOnTransitionEnd);$timeout.cancel(enteringEle.data(DATA_FALLBACK_TIMER));leavingEle&&$timeout.cancel(leavingEle.data(DATA_FALLBACK_TIMER)); // resolve that this one transition (there could be many w/ nested views)
+	function completeOnTransitionEnd(ev){if(ev.target!==this)return;transitionComplete();}function transitionComplete(){if(transitionComplete.x)return;transitionComplete.x=true;_enteringEle.off(TRANSITIONEND_EVENT,completeOnTransitionEnd);$timeout.cancel(_enteringEle.data(DATA_FALLBACK_TIMER));_leavingEle&&$timeout.cancel(_leavingEle.data(DATA_FALLBACK_TIMER)); // resolve that this one transition (there could be many w/ nested views)
 	deferred&&deferred.resolve(navViewCtrl); // the most recent transition added has completed and all the active
 	// transition promises should be added to the services array of promises
 	if(transitionId===transitionCounter){$q.all(transitionPromises).then(ionicViewSwitcher.transitionEnd); // emit that the views have finished transitioning
 	// each parent nav-view will update which views are active and cached
 	switcher.emit('after',enteringData,leavingData);switcher.cleanup(enteringData);} // tell the nav bars that the transition has ended
 	$ionicNavBarDelegate._instances.forEach(function(instance){instance.triggerTransitionEnd();}); // remove any references that could cause memory issues
-	nextTransition=nextDirection=enteringView=leavingView=enteringEle=leavingEle=null;} // Make sure that transitionend events bubbling up from children won't fire
+	_nextTransition=_nextDirection=enteringView=leavingView=_enteringEle=_leavingEle=null;} // Make sure that transitionend events bubbling up from children won't fire
 	// transitionComplete. Will only go forward if ev.target == the element listening.
-	function cancelOnTransitionEnd(ev){if(ev.target!==this)return;cancelTransition();}function cancelTransition(){navViewAttr(enteringEle,VIEW_STATUS_CACHED);navViewAttr(leavingEle,VIEW_STATUS_ACTIVE);enteringEle.off(TRANSITIONEND_EVENT,cancelOnTransitionEnd);$timeout.cancel(enteringEle.data(DATA_FALLBACK_TIMER));ionicViewSwitcher.transitionEnd([navViewCtrl]);}},emit:function(step,enteringData,leavingData){var enteringScope=enteringEle.scope(),leavingScope=leavingEle&&leavingEle.scope();if(step=='after'){if(enteringScope){enteringScope.$emit('$ionicView.enter',enteringData);}if(leavingScope){leavingScope.$emit('$ionicView.leave',leavingData);}else if(enteringScope&&leavingData&&leavingData.viewId){enteringScope.$emit('$ionicNavView.leave',leavingData);}}if(enteringScope){enteringScope.$emit('$ionicView.'+step+'Enter',enteringData);}if(leavingScope){leavingScope.$emit('$ionicView.'+step+'Leave',leavingData);}else if(enteringScope&&leavingData&&leavingData.viewId){enteringScope.$emit('$ionicNavView.'+step+'Leave',leavingData);}},cleanup:function(transData){ // check if any views should be removed
-	if(leavingEle&&transData.direction=='back'&&!$ionicConfig.views.forwardCache()){ // if they just navigated back we can destroy the forward view
+	function cancelOnTransitionEnd(ev){if(ev.target!==this)return;cancelTransition();}function cancelTransition(){navViewAttr(_enteringEle,VIEW_STATUS_CACHED);navViewAttr(_leavingEle,VIEW_STATUS_ACTIVE);_enteringEle.off(TRANSITIONEND_EVENT,cancelOnTransitionEnd);$timeout.cancel(_enteringEle.data(DATA_FALLBACK_TIMER));ionicViewSwitcher.transitionEnd([navViewCtrl]);}},emit:function emit(step,enteringData,leavingData){var enteringScope=_enteringEle.scope(),leavingScope=_leavingEle&&_leavingEle.scope();if(step=='after'){if(enteringScope){enteringScope.$emit('$ionicView.enter',enteringData);}if(leavingScope){leavingScope.$emit('$ionicView.leave',leavingData);}else if(enteringScope&&leavingData&&leavingData.viewId){enteringScope.$emit('$ionicNavView.leave',leavingData);}}if(enteringScope){enteringScope.$emit('$ionicView.'+step+'Enter',enteringData);}if(leavingScope){leavingScope.$emit('$ionicView.'+step+'Leave',leavingData);}else if(enteringScope&&leavingData&&leavingData.viewId){enteringScope.$emit('$ionicNavView.'+step+'Leave',leavingData);}},cleanup:function cleanup(transData){ // check if any views should be removed
+	if(_leavingEle&&transData.direction=='back'&&!$ionicConfig.views.forwardCache()){ // if they just navigated back we can destroy the forward view
 	// do not remove forward views if cacheForwardViews config is true
-	destroyViewEle(leavingEle);}var viewElements=navViewCtrl.getViewElements();var viewElementsLength=viewElements.length;var x,viewElement;var removeOldestAccess=viewElementsLength-1>$ionicConfig.views.maxCache();var removableEle;var oldestAccess=Date.now();for(x=0;x<viewElementsLength;x++){viewElement=viewElements.eq(x);if(removeOldestAccess&&viewElement.data(DATA_VIEW_ACCESSED)<oldestAccess){ // remember what was the oldest element to be accessed so it can be destroyed
-	oldestAccess=viewElement.data(DATA_VIEW_ACCESSED);removableEle=viewElements.eq(x);}else if(viewElement.data(DATA_DESTROY_ELE)&&navViewAttr(viewElement)!=VIEW_STATUS_ACTIVE){destroyViewEle(viewElement);}}destroyViewEle(removableEle);if(enteringEle.data(DATA_NO_CACHE)){enteringEle.data(DATA_DESTROY_ELE,true);}},enteringEle:function(){return enteringEle;},leavingEle:function(){return leavingEle;}};return switcher;},transitionEnd:function(navViewCtrls){forEach(navViewCtrls,function(navViewCtrl){navViewCtrl.transitionEnd();});ionicViewSwitcher.isTransitioning(false);$ionicClickBlock.hide();transitionPromises=[];},nextTransition:function(val){nextTransition=val;},nextDirection:function(val){nextDirection=val;},isTransitioning:function(val){if(arguments.length){ionic.transition.isActive=!!val;$timeout.cancel(isActiveTimer);if(val){isActiveTimer=$timeout(function(){ionicViewSwitcher.isTransitioning(false);},999);}}return ionic.transition.isActive;},createViewEle:function(viewLocals){var containerEle=$document[0].createElement('div');if(viewLocals&&viewLocals.$template){containerEle.innerHTML=viewLocals.$template;if(containerEle.children.length===1){containerEle.children[0].classList.add('pane');return jqLite(containerEle.children[0]);}}containerEle.className="pane";return jqLite(containerEle);},viewEleIsActive:function(viewEle,isActiveAttr){navViewAttr(viewEle,isActiveAttr?VIEW_STATUS_ACTIVE:VIEW_STATUS_CACHED);},getTransitionData:getTransitionData,navViewAttr:navViewAttr,destroyViewEle:destroyViewEle};return ionicViewSwitcher;function getViewElementIdentifier(locals,view){if(viewState(locals)['abstract'])return viewState(locals).name;if(view)return view.stateId||view.viewId;return ionic.Utils.nextUid();}function viewState(locals){return locals&&locals.$$state&&locals.$$state.self||{};}function getTransitionData(viewLocals,enteringEle,direction,view){ // Priority
+	destroyViewEle(_leavingEle);}var viewElements=navViewCtrl.getViewElements();var viewElementsLength=viewElements.length;var x,viewElement;var removeOldestAccess=viewElementsLength-1>$ionicConfig.views.maxCache();var removableEle;var oldestAccess=Date.now();for(x=0;x<viewElementsLength;x++){viewElement=viewElements.eq(x);if(removeOldestAccess&&viewElement.data(DATA_VIEW_ACCESSED)<oldestAccess){ // remember what was the oldest element to be accessed so it can be destroyed
+	oldestAccess=viewElement.data(DATA_VIEW_ACCESSED);removableEle=viewElements.eq(x);}else if(viewElement.data(DATA_DESTROY_ELE)&&navViewAttr(viewElement)!=VIEW_STATUS_ACTIVE){destroyViewEle(viewElement);}}destroyViewEle(removableEle);if(_enteringEle.data(DATA_NO_CACHE)){_enteringEle.data(DATA_DESTROY_ELE,true);}},enteringEle:function enteringEle(){return _enteringEle;},leavingEle:function leavingEle(){return _leavingEle;}};return switcher;},transitionEnd:function transitionEnd(navViewCtrls){forEach(navViewCtrls,function(navViewCtrl){navViewCtrl.transitionEnd();});ionicViewSwitcher.isTransitioning(false);$ionicClickBlock.hide();transitionPromises=[];},nextTransition:function nextTransition(val){_nextTransition=val;},nextDirection:function nextDirection(val){_nextDirection=val;},isTransitioning:function isTransitioning(val){if(arguments.length){ionic.transition.isActive=!!val;$timeout.cancel(isActiveTimer);if(val){isActiveTimer=$timeout(function(){ionicViewSwitcher.isTransitioning(false);},999);}}return ionic.transition.isActive;},createViewEle:function createViewEle(viewLocals){var containerEle=$document[0].createElement('div');if(viewLocals&&viewLocals.$template){containerEle.innerHTML=viewLocals.$template;if(containerEle.children.length===1){containerEle.children[0].classList.add('pane');return jqLite(containerEle.children[0]);}}containerEle.className="pane";return jqLite(containerEle);},viewEleIsActive:function viewEleIsActive(viewEle,isActiveAttr){navViewAttr(viewEle,isActiveAttr?VIEW_STATUS_ACTIVE:VIEW_STATUS_CACHED);},getTransitionData:getTransitionData,navViewAttr:navViewAttr,destroyViewEle:destroyViewEle};return ionicViewSwitcher;function getViewElementIdentifier(locals,view){if(viewState(locals)['abstract'])return viewState(locals).name;if(view)return view.stateId||view.viewId;return ionic.Utils.nextUid();}function viewState(locals){return locals&&locals.$$state&&locals.$$state.self||{};}function getTransitionData(viewLocals,enteringEle,direction,view){ // Priority
 	// 1) attribute directive on the button/link to this view
 	// 2) entering element's attribute
 	// 3) entering view's $state config property
 	// 4) view registration data
 	// 5) global config
 	// 6) fallback value
-	var state=viewState(viewLocals);var viewTransition=nextTransition||cachedAttr(enteringEle,'view-transition')||state.viewTransition||$ionicConfig.views.transition()||'ios';var navBarTransition=$ionicConfig.navBar.transition();direction=nextDirection||cachedAttr(enteringEle,'view-direction')||state.viewDirection||direction||'none';return extend(getViewData(view),{transition:viewTransition,navBarTransition:navBarTransition==='view'?viewTransition:navBarTransition,direction:direction,shouldAnimate:viewTransition!=='none'&&direction!=='none'});}function getViewData(view){view=view||{};return {viewId:view.viewId,historyId:view.historyId,stateId:view.stateId,stateName:view.stateName,stateParams:view.stateParams};}function navViewAttr(ele,value){if(arguments.length>1){cachedAttr(ele,NAV_VIEW_ATTR,value);}else {return cachedAttr(ele,NAV_VIEW_ATTR);}}function destroyViewEle(ele){ // we found an element that should be removed
+	var state=viewState(viewLocals);var viewTransition=_nextTransition||cachedAttr(enteringEle,'view-transition')||state.viewTransition||$ionicConfig.views.transition()||'ios';var navBarTransition=$ionicConfig.navBar.transition();direction=_nextDirection||cachedAttr(enteringEle,'view-direction')||state.viewDirection||direction||'none';return extend(getViewData(view),{transition:viewTransition,navBarTransition:navBarTransition==='view'?viewTransition:navBarTransition,direction:direction,shouldAnimate:viewTransition!=='none'&&direction!=='none'});}function getViewData(view){view=view||{};return {viewId:view.viewId,historyId:view.historyId,stateId:view.stateId,stateName:view.stateName,stateParams:view.stateParams};}function navViewAttr(ele,value){if(arguments.length>1){cachedAttr(ele,NAV_VIEW_ATTR,value);}else {return cachedAttr(ele,NAV_VIEW_ATTR);}}function destroyViewEle(ele){ // we found an element that should be removed
 	// destroy its scope, then remove the element
 	if(ele&&ele.length){var viewScope=ele.scope();if(viewScope){viewScope.$emit('$ionicView.unloaded',ele.data(DATA_VIEW));viewScope.$destroy();}ele.remove();}}}]); /**
 	 * ==================  angular-ios9-uiwebview.patch.js v1.1.1 ==================
@@ -23316,7 +23322,7 @@
 	// right children, and the desired alignment mode
 	if(textAlign=='left'){updateCss='title-left';if(buttonsLeft){updateTitleLeft=buttonsLeft+15;}if(buttonsRight){updateTitleRight=buttonsRight+15;}}else if(textAlign=='right'){updateCss='title-right';if(buttonsLeft){updateTitleLeft=buttonsLeft+15;}if(buttonsRight){updateTitleRight=buttonsRight+15;}}else { // center the default
 	var margin=Math.max(buttonsLeft,buttonsRight)+10;if(margin>10){updateTitleLeft=updateTitleRight=margin;}}return {backButtonWidth:backButtonWidth,buttonsLeft:buttonsLeft,buttonsRight:buttonsRight,titleLeft:updateTitleLeft,titleRight:updateTitleRight,showPrevTitle:isPreviousTitle,css:updateCss};};self.updatePositions=function(titleEle,updateTitleLeft,updateTitleRight,buttonsLeft,buttonsRight,updateCss,showPreviousTitle){var deferred=$q.defer(); // only make DOM updates when there are actual changes
-	if(titleEle){if(updateTitleLeft!==titleLeft){titleEle.style.left=updateTitleLeft?updateTitleLeft+'px':'';titleLeft=updateTitleLeft;}if(updateTitleRight!==titleRight){titleEle.style.right=updateTitleRight?updateTitleRight+'px':'';titleRight=updateTitleRight;}if(updateCss!==titleCss){updateCss&&titleEle.classList.add(updateCss);titleCss&&titleEle.classList.remove(titleCss);titleCss=updateCss;}}if($ionicConfig.backButton.previousTitleText()){var prevTitle=getEle(PREVIOUS_TITLE);var defaultTitle=getEle(DEFAULT_TITLE);prevTitle&&prevTitle.classList[showPreviousTitle?'remove':'add'](HIDE);defaultTitle&&defaultTitle.classList[showPreviousTitle?'add':'remove'](HIDE);}ionic.requestAnimationFrame(function(){if(titleEle&&titleEle.offsetWidth+10<titleEle.scrollWidth){var minRight=buttonsRight+5;var testRight=$element[0].offsetWidth-titleLeft-self.titleTextWidth()-20;updateTitleRight=testRight<minRight?minRight:testRight;if(updateTitleRight!==titleRight){titleEle.style.right=updateTitleRight+'px';titleRight=updateTitleRight;}}deferred.resolve();});return deferred.promise;};self.setCss=function(elementClassname,css){ionic.DomUtil.cachedStyles(getEle(elementClassname),css);};var eleCache={};function getEle(className){if(!eleCache[className]){eleCache[className]=$element[0].querySelector('.'+className);}return eleCache[className];}$scope.$on('$destroy',function(){for(var n in eleCache)eleCache[n]=null;});}]);IonicModule.controller('$ionInfiniteScroll',['$scope','$attrs','$element','$timeout',function($scope,$attrs,$element,$timeout){var self=this;self.isLoading=false;$scope.icon=function(){return isDefined($attrs.icon)?$attrs.icon:'ion-load-d';};$scope.spinner=function(){return isDefined($attrs.spinner)?$attrs.spinner:'';};$scope.$on('scroll.infiniteScrollComplete',function(){finishInfiniteScroll();});$scope.$on('$destroy',function(){if(self.scrollCtrl&&self.scrollCtrl.$element)self.scrollCtrl.$element.off('scroll',self.checkBounds);if(self.scrollEl&&self.scrollEl.removeEventListener){self.scrollEl.removeEventListener('scroll',self.checkBounds);}}); // debounce checking infinite scroll events
+	if(titleEle){if(updateTitleLeft!==titleLeft){titleEle.style.left=updateTitleLeft?updateTitleLeft+'px':'';titleLeft=updateTitleLeft;}if(updateTitleRight!==titleRight){titleEle.style.right=updateTitleRight?updateTitleRight+'px':'';titleRight=updateTitleRight;}if(updateCss!==titleCss){updateCss&&titleEle.classList.add(updateCss);titleCss&&titleEle.classList.remove(titleCss);titleCss=updateCss;}}if($ionicConfig.backButton.previousTitleText()){var prevTitle=getEle(PREVIOUS_TITLE);var defaultTitle=getEle(DEFAULT_TITLE);prevTitle&&prevTitle.classList[showPreviousTitle?'remove':'add'](HIDE);defaultTitle&&defaultTitle.classList[showPreviousTitle?'add':'remove'](HIDE);}ionic.requestAnimationFrame(function(){if(titleEle&&titleEle.offsetWidth+10<titleEle.scrollWidth){var minRight=buttonsRight+5;var testRight=$element[0].offsetWidth-titleLeft-self.titleTextWidth()-20;updateTitleRight=testRight<minRight?minRight:testRight;if(updateTitleRight!==titleRight){titleEle.style.right=updateTitleRight+'px';titleRight=updateTitleRight;}}deferred.resolve();});return deferred.promise;};self.setCss=function(elementClassname,css){ionic.DomUtil.cachedStyles(getEle(elementClassname),css);};var eleCache={};function getEle(className){if(!eleCache[className]){eleCache[className]=$element[0].querySelector('.'+className);}return eleCache[className];}$scope.$on('$destroy',function(){for(var n in eleCache){eleCache[n]=null;}});}]);IonicModule.controller('$ionInfiniteScroll',['$scope','$attrs','$element','$timeout',function($scope,$attrs,$element,$timeout){var self=this;self.isLoading=false;$scope.icon=function(){return isDefined($attrs.icon)?$attrs.icon:'ion-load-d';};$scope.spinner=function(){return isDefined($attrs.spinner)?$attrs.spinner:'';};$scope.$on('scroll.infiniteScrollComplete',function(){finishInfiniteScroll();});$scope.$on('$destroy',function(){if(self.scrollCtrl&&self.scrollCtrl.$element)self.scrollCtrl.$element.off('scroll',self.checkBounds);if(self.scrollEl&&self.scrollEl.removeEventListener){self.scrollEl.removeEventListener('scroll',self.checkBounds);}}); // debounce checking infinite scroll events
 	self.checkBounds=ionic.Utils.throttle(checkInfiniteBounds,300);function onInfinite(){ionic.requestAnimationFrame(function(){$element[0].classList.add('active');});self.isLoading=true;$scope.$parent&&$scope.$parent.$apply($attrs.onInfinite||'');}function finishInfiniteScroll(){ionic.requestAnimationFrame(function(){$element[0].classList.remove('active');});$timeout(function(){if(self.jsScrolling)self.scrollView.resize(); // only check bounds again immediately if the page isn't cached (scroll el has height)
 	if(self.jsScrolling&&self.scrollView.__container&&self.scrollView.__container.offsetHeight>0||!self.jsScrolling){self.checkBounds();}},30,false);self.isLoading=false;} // check if we've scrolled far enough to trigger an infinite scroll
 	function checkInfiniteBounds(){if(self.isLoading)return;var maxScroll={};if(self.jsScrolling){maxScroll=self.getJSMaxScroll();var scrollValues=self.scrollView.getValues();if(maxScroll.left!==-1&&scrollValues.left>=maxScroll.left||maxScroll.top!==-1&&scrollValues.top>=maxScroll.top){onInfinite();}}else {maxScroll=self.getNativeMaxScroll();if(maxScroll.left!==-1&&self.scrollEl.scrollLeft>=maxScroll.left-self.scrollEl.clientWidth||maxScroll.top!==-1&&self.scrollEl.scrollTop>=maxScroll.top-self.scrollEl.clientHeight){onInfinite();}}} // determine the threshold at which we should fire an infinite scroll
@@ -23386,25 +23392,25 @@
 	   * the given handle.
 	   *
 	   * Example: `$ionicListDelegate.$getByHandle('my-handle').showReorder(true);`
-	   */])).controller('$ionicList',['$scope','$attrs','$ionicListDelegate','$ionicHistory',function($scope,$attrs,$ionicListDelegate,$ionicHistory){var self=this;var isSwipeable=true;var isReorderShown=false;var isDeleteShown=false;var deregisterInstance=$ionicListDelegate._registerInstance(self,$attrs.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});$scope.$on('$destroy',deregisterInstance);self.showReorder=function(show){if(arguments.length){isReorderShown=!!show;}return isReorderShown;};self.showDelete=function(show){if(arguments.length){isDeleteShown=!!show;}return isDeleteShown;};self.canSwipeItems=function(can){if(arguments.length){isSwipeable=!!can;}return isSwipeable;};self.closeOptionButtons=function(){self.listView&&self.listView.clearDragEffects();};}]);IonicModule.controller('$ionicNavBar',['$scope','$element','$attrs','$compile','$timeout','$ionicNavBarDelegate','$ionicConfig','$ionicHistory',function($scope,$element,$attrs,$compile,$timeout,$ionicNavBarDelegate,$ionicConfig,$ionicHistory){var CSS_HIDE='hide';var DATA_NAV_BAR_CTRL='$ionNavBarController';var PRIMARY_BUTTONS='primaryButtons';var SECONDARY_BUTTONS='secondaryButtons';var BACK_BUTTON='backButton';var ITEM_TYPES='primaryButtons secondaryButtons leftButtons rightButtons title'.split(' ');var self=this;var headerBars=[];var navElementHtml={};var isVisible=true;var queuedTransitionStart,queuedTransitionEnd,latestTransitionId;$element.parent().data(DATA_NAV_BAR_CTRL,self);var delegateHandle=$attrs.delegateHandle||'navBar'+ionic.Utils.nextUid();var deregisterInstance=$ionicNavBarDelegate._registerInstance(self,delegateHandle);self.init=function(){$element.addClass('nav-bar-container');ionic.DomUtil.cachedAttr($element,'nav-bar-transition',$ionicConfig.views.transition()); // create two nav bar blocks which will trade out which one is shown
-	self.createHeaderBar(false);self.createHeaderBar(true);$scope.$emit('ionNavBar.init',delegateHandle);};self.createHeaderBar=function(isActive){var containerEle=jqLite('<div class="nav-bar-block">');ionic.DomUtil.cachedAttr(containerEle,'nav-bar',isActive?'active':'cached');var alignTitle=$attrs.alignTitle||$ionicConfig.navBar.alignTitle();var headerBarEle=jqLite('<ion-header-bar>').addClass($attrs['class']).attr('align-title',alignTitle);if(isDefined($attrs.noTapScroll))headerBarEle.attr('no-tap-scroll',$attrs.noTapScroll);var titleEle=jqLite('<div class="title title-'+alignTitle+'">');var navEle={};var lastViewItemEle={};var leftButtonsEle,rightButtonsEle;navEle[BACK_BUTTON]=createNavElement(BACK_BUTTON);navEle[BACK_BUTTON]&&headerBarEle.append(navEle[BACK_BUTTON]); // append title in the header, this is the rock to where buttons append
-	headerBarEle.append(titleEle);forEach(ITEM_TYPES,function(itemType){ // create default button elements
+	   */])).controller('$ionicList',['$scope','$attrs','$ionicListDelegate','$ionicHistory',function($scope,$attrs,$ionicListDelegate,$ionicHistory){var self=this;var isSwipeable=true;var isReorderShown=false;var isDeleteShown=false;var deregisterInstance=$ionicListDelegate._registerInstance(self,$attrs.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});$scope.$on('$destroy',deregisterInstance);self.showReorder=function(show){if(arguments.length){isReorderShown=!!show;}return isReorderShown;};self.showDelete=function(show){if(arguments.length){isDeleteShown=!!show;}return isDeleteShown;};self.canSwipeItems=function(can){if(arguments.length){isSwipeable=!!can;}return isSwipeable;};self.closeOptionButtons=function(){self.listView&&self.listView.clearDragEffects();};}]);IonicModule.controller('$ionicNavBar',['$scope','$element','$attrs','$compile','$timeout','$ionicNavBarDelegate','$ionicConfig','$ionicHistory',function($scope,$element,$attrs,$compile,$timeout,$ionicNavBarDelegate,$ionicConfig,$ionicHistory){var CSS_HIDE='hide';var DATA_NAV_BAR_CTRL='$ionNavBarController';var PRIMARY_BUTTONS='primaryButtons';var SECONDARY_BUTTONS='secondaryButtons';var BACK_BUTTON='backButton';var ITEM_TYPES='primaryButtons secondaryButtons leftButtons rightButtons title'.split(' ');var self=this;var headerBars=[];var navElementHtml={};var isVisible=true;var _queuedTransitionStart,queuedTransitionEnd,latestTransitionId;$element.parent().data(DATA_NAV_BAR_CTRL,self);var delegateHandle=$attrs.delegateHandle||'navBar'+ionic.Utils.nextUid();var deregisterInstance=$ionicNavBarDelegate._registerInstance(self,delegateHandle);self.init=function(){$element.addClass('nav-bar-container');ionic.DomUtil.cachedAttr($element,'nav-bar-transition',$ionicConfig.views.transition()); // create two nav bar blocks which will trade out which one is shown
+	self.createHeaderBar(false);self.createHeaderBar(true);$scope.$emit('ionNavBar.init',delegateHandle);};self.createHeaderBar=function(isActive){var _containerEle=jqLite('<div class="nav-bar-block">');ionic.DomUtil.cachedAttr(_containerEle,'nav-bar',isActive?'active':'cached');var alignTitle=$attrs.alignTitle||$ionicConfig.navBar.alignTitle();var _headerBarEle=jqLite('<ion-header-bar>').addClass($attrs['class']).attr('align-title',alignTitle);if(isDefined($attrs.noTapScroll))_headerBarEle.attr('no-tap-scroll',$attrs.noTapScroll);var titleEle=jqLite('<div class="title title-'+alignTitle+'">');var navEle={};var lastViewItemEle={};var leftButtonsEle,rightButtonsEle;navEle[BACK_BUTTON]=createNavElement(BACK_BUTTON);navEle[BACK_BUTTON]&&_headerBarEle.append(navEle[BACK_BUTTON]); // append title in the header, this is the rock to where buttons append
+	_headerBarEle.append(titleEle);forEach(ITEM_TYPES,function(itemType){ // create default button elements
 	navEle[itemType]=createNavElement(itemType); // append and position buttons
 	positionItem(navEle[itemType],itemType);}); // add header-item to the root children
-	for(var x=0;x<headerBarEle[0].children.length;x++){headerBarEle[0].children[x].classList.add('header-item');} // compile header and append to the DOM
-	containerEle.append(headerBarEle);$element.append($compile(containerEle)($scope.$new()));var headerBarCtrl=headerBarEle.data('$ionHeaderBarController');headerBarCtrl.backButtonIcon=$ionicConfig.backButton.icon();headerBarCtrl.backButtonText=$ionicConfig.backButton.text();var headerBarInstance={isActive:isActive,title:function(newTitleText){headerBarCtrl.title(newTitleText);},setItem:function(navBarItemEle,itemType){ // first make sure any exiting nav bar item has been removed
+	for(var x=0;x<_headerBarEle[0].children.length;x++){_headerBarEle[0].children[x].classList.add('header-item');} // compile header and append to the DOM
+	_containerEle.append(_headerBarEle);$element.append($compile(_containerEle)($scope.$new()));var headerBarCtrl=_headerBarEle.data('$ionHeaderBarController');headerBarCtrl.backButtonIcon=$ionicConfig.backButton.icon();headerBarCtrl.backButtonText=$ionicConfig.backButton.text();var headerBarInstance={isActive:isActive,title:function title(newTitleText){headerBarCtrl.title(newTitleText);},setItem:function setItem(navBarItemEle,itemType){ // first make sure any exiting nav bar item has been removed
 	headerBarInstance.removeItem(itemType);if(navBarItemEle){if(itemType==='title'){ // clear out the text based title
 	headerBarInstance.title("");} // there's a custom nav bar item
 	positionItem(navBarItemEle,itemType);if(navEle[itemType]){ // make sure the default on this itemType is hidden
 	navEle[itemType].addClass(CSS_HIDE);}lastViewItemEle[itemType]=navBarItemEle;}else if(navEle[itemType]){ // there's a default button for this side and no view button
-	navEle[itemType].removeClass(CSS_HIDE);}},removeItem:function(itemType){if(lastViewItemEle[itemType]){lastViewItemEle[itemType].scope().$destroy();lastViewItemEle[itemType].remove();lastViewItemEle[itemType]=null;}},containerEle:function(){return containerEle;},headerBarEle:function(){return headerBarEle;},afterLeave:function(){forEach(ITEM_TYPES,function(itemType){headerBarInstance.removeItem(itemType);});headerBarCtrl.resetBackButton();},controller:function(){return headerBarCtrl;},destroy:function(){forEach(ITEM_TYPES,function(itemType){headerBarInstance.removeItem(itemType);});containerEle.scope().$destroy();for(var n in navEle){if(navEle[n]){navEle[n].removeData();navEle[n]=null;}}leftButtonsEle&&leftButtonsEle.removeData();rightButtonsEle&&rightButtonsEle.removeData();titleEle.removeData();headerBarEle.removeData();containerEle.remove();containerEle=headerBarEle=titleEle=leftButtonsEle=rightButtonsEle=null;}};function positionItem(ele,itemType){if(!ele)return;if(itemType==='title'){ // title element
+	navEle[itemType].removeClass(CSS_HIDE);}},removeItem:function removeItem(itemType){if(lastViewItemEle[itemType]){lastViewItemEle[itemType].scope().$destroy();lastViewItemEle[itemType].remove();lastViewItemEle[itemType]=null;}},containerEle:function containerEle(){return _containerEle;},headerBarEle:function headerBarEle(){return _headerBarEle;},afterLeave:function afterLeave(){forEach(ITEM_TYPES,function(itemType){headerBarInstance.removeItem(itemType);});headerBarCtrl.resetBackButton();},controller:function controller(){return headerBarCtrl;},destroy:function destroy(){forEach(ITEM_TYPES,function(itemType){headerBarInstance.removeItem(itemType);});_containerEle.scope().$destroy();for(var n in navEle){if(navEle[n]){navEle[n].removeData();navEle[n]=null;}}leftButtonsEle&&leftButtonsEle.removeData();rightButtonsEle&&rightButtonsEle.removeData();titleEle.removeData();_headerBarEle.removeData();_containerEle.remove();_containerEle=_headerBarEle=titleEle=leftButtonsEle=rightButtonsEle=null;}};function positionItem(ele,itemType){if(!ele)return;if(itemType==='title'){ // title element
 	titleEle.append(ele);}else if(itemType=='rightButtons'||itemType==SECONDARY_BUTTONS&&$ionicConfig.navBar.positionSecondaryButtons()!='left'||itemType==PRIMARY_BUTTONS&&$ionicConfig.navBar.positionPrimaryButtons()=='right'){ // right side
-	if(!rightButtonsEle){rightButtonsEle=jqLite('<div class="buttons buttons-right">');headerBarEle.append(rightButtonsEle);}if(itemType==SECONDARY_BUTTONS){rightButtonsEle.append(ele);}else {rightButtonsEle.prepend(ele);}}else { // left side
-	if(!leftButtonsEle){leftButtonsEle=jqLite('<div class="buttons buttons-left">');if(navEle[BACK_BUTTON]){navEle[BACK_BUTTON].after(leftButtonsEle);}else {headerBarEle.prepend(leftButtonsEle);}}if(itemType==SECONDARY_BUTTONS){leftButtonsEle.append(ele);}else {leftButtonsEle.prepend(ele);}}}headerBars.push(headerBarInstance);return headerBarInstance;};self.navElement=function(type,html){if(isDefined(html)){navElementHtml[type]=html;}return navElementHtml[type];};self.update=function(viewData){var showNavBar=!viewData.hasHeaderBar&&viewData.showNavBar;viewData.transition=$ionicConfig.views.transition();if(!showNavBar){viewData.direction='none';}self.enable(showNavBar);var enteringHeaderBar=self.isInitialized?getOffScreenHeaderBar():getOnScreenHeaderBar();var leavingHeaderBar=self.isInitialized?getOnScreenHeaderBar():null;var enteringHeaderCtrl=enteringHeaderBar.controller(); // update if the entering header should show the back button or not
+	if(!rightButtonsEle){rightButtonsEle=jqLite('<div class="buttons buttons-right">');_headerBarEle.append(rightButtonsEle);}if(itemType==SECONDARY_BUTTONS){rightButtonsEle.append(ele);}else {rightButtonsEle.prepend(ele);}}else { // left side
+	if(!leftButtonsEle){leftButtonsEle=jqLite('<div class="buttons buttons-left">');if(navEle[BACK_BUTTON]){navEle[BACK_BUTTON].after(leftButtonsEle);}else {_headerBarEle.prepend(leftButtonsEle);}}if(itemType==SECONDARY_BUTTONS){leftButtonsEle.append(ele);}else {leftButtonsEle.prepend(ele);}}}headerBars.push(headerBarInstance);return headerBarInstance;};self.navElement=function(type,html){if(isDefined(html)){navElementHtml[type]=html;}return navElementHtml[type];};self.update=function(viewData){var showNavBar=!viewData.hasHeaderBar&&viewData.showNavBar;viewData.transition=$ionicConfig.views.transition();if(!showNavBar){viewData.direction='none';}self.enable(showNavBar);var enteringHeaderBar=self.isInitialized?getOffScreenHeaderBar():getOnScreenHeaderBar();var leavingHeaderBar=self.isInitialized?getOnScreenHeaderBar():null;var enteringHeaderCtrl=enteringHeaderBar.controller(); // update if the entering header should show the back button or not
 	enteringHeaderCtrl.enableBack(viewData.enableBack,true);enteringHeaderCtrl.showBack(viewData.showBack,true);enteringHeaderCtrl.updateBackButton(); // update the entering header bar's title
 	self.title(viewData.title,enteringHeaderBar);self.showBar(showNavBar); // update the nav bar items, depending if the view has their own or not
 	if(viewData.navBarItems){forEach(ITEM_TYPES,function(itemType){enteringHeaderBar.setItem(viewData.navBarItems[itemType],itemType);});} // begin transition of entering and leaving header bars
-	self.transition(enteringHeaderBar,leavingHeaderBar,viewData);self.isInitialized=true;navSwipeAttr('');};self.transition=function(enteringHeaderBar,leavingHeaderBar,viewData){var enteringHeaderBarCtrl=enteringHeaderBar.controller();var transitionFn=$ionicConfig.transitions.navBar[viewData.navBarTransition]||$ionicConfig.transitions.navBar.none;var transitionId=viewData.transitionId;enteringHeaderBarCtrl.beforeEnter(viewData);var navBarTransition=transitionFn(enteringHeaderBar,leavingHeaderBar,viewData.direction,viewData.shouldAnimate&&self.isInitialized);ionic.DomUtil.cachedAttr($element,'nav-bar-transition',viewData.navBarTransition);ionic.DomUtil.cachedAttr($element,'nav-bar-direction',viewData.direction);if(navBarTransition.shouldAnimate&&viewData.renderEnd){navBarAttr(enteringHeaderBar,'stage');}else {navBarAttr(enteringHeaderBar,'entering');navBarAttr(leavingHeaderBar,'leaving');}enteringHeaderBarCtrl.resetBackButton(viewData);navBarTransition.run(0);self.activeTransition={run:function(step){navBarTransition.shouldAnimate=false;navBarTransition.direction='back';navBarTransition.run(step);},cancel:function(shouldAnimate,speed,cancelData){navSwipeAttr(speed);navBarAttr(leavingHeaderBar,'active');navBarAttr(enteringHeaderBar,'cached');navBarTransition.shouldAnimate=shouldAnimate;navBarTransition.run(0);self.activeTransition=navBarTransition=null;var runApply;if(cancelData.showBar!==self.showBar()){self.showBar(cancelData.showBar);}if(cancelData.showBackButton!==self.showBackButton()){self.showBackButton(cancelData.showBackButton);}if(runApply){$scope.$apply();}},complete:function(shouldAnimate,speed){navSwipeAttr(speed);navBarTransition.shouldAnimate=shouldAnimate;navBarTransition.run(1);queuedTransitionEnd=transitionEnd;}};$timeout(enteringHeaderBarCtrl.align,16);queuedTransitionStart=function(){if(latestTransitionId!==transitionId)return;navBarAttr(enteringHeaderBar,'entering');navBarAttr(leavingHeaderBar,'leaving');navBarTransition.run(1);queuedTransitionEnd=function(){if(latestTransitionId==transitionId||!navBarTransition.shouldAnimate){transitionEnd();}};queuedTransitionStart=null;};function transitionEnd(){for(var x=0;x<headerBars.length;x++){headerBars[x].isActive=false;}enteringHeaderBar.isActive=true;navBarAttr(enteringHeaderBar,'active');navBarAttr(leavingHeaderBar,'cached');self.activeTransition=navBarTransition=queuedTransitionEnd=null;}queuedTransitionStart();};self.triggerTransitionStart=function(triggerTransitionId){latestTransitionId=triggerTransitionId;queuedTransitionStart&&queuedTransitionStart();};self.triggerTransitionEnd=function(){queuedTransitionEnd&&queuedTransitionEnd();};self.showBar=function(shouldShow){if(arguments.length){self.visibleBar(shouldShow);$scope.$parent.$hasHeader=!!shouldShow;}return !!$scope.$parent.$hasHeader;};self.visibleBar=function(shouldShow){if(shouldShow&&!isVisible){$element.removeClass(CSS_HIDE);self.align();}else if(!shouldShow&&isVisible){$element.addClass(CSS_HIDE);}isVisible=shouldShow;};self.enable=function(val){ // set primary to show first
+	self.transition(enteringHeaderBar,leavingHeaderBar,viewData);self.isInitialized=true;navSwipeAttr('');};self.transition=function(enteringHeaderBar,leavingHeaderBar,viewData){var enteringHeaderBarCtrl=enteringHeaderBar.controller();var transitionFn=$ionicConfig.transitions.navBar[viewData.navBarTransition]||$ionicConfig.transitions.navBar.none;var transitionId=viewData.transitionId;enteringHeaderBarCtrl.beforeEnter(viewData);var navBarTransition=transitionFn(enteringHeaderBar,leavingHeaderBar,viewData.direction,viewData.shouldAnimate&&self.isInitialized);ionic.DomUtil.cachedAttr($element,'nav-bar-transition',viewData.navBarTransition);ionic.DomUtil.cachedAttr($element,'nav-bar-direction',viewData.direction);if(navBarTransition.shouldAnimate&&viewData.renderEnd){navBarAttr(enteringHeaderBar,'stage');}else {navBarAttr(enteringHeaderBar,'entering');navBarAttr(leavingHeaderBar,'leaving');}enteringHeaderBarCtrl.resetBackButton(viewData);navBarTransition.run(0);self.activeTransition={run:function run(step){navBarTransition.shouldAnimate=false;navBarTransition.direction='back';navBarTransition.run(step);},cancel:function cancel(shouldAnimate,speed,cancelData){navSwipeAttr(speed);navBarAttr(leavingHeaderBar,'active');navBarAttr(enteringHeaderBar,'cached');navBarTransition.shouldAnimate=shouldAnimate;navBarTransition.run(0);self.activeTransition=navBarTransition=null;var runApply;if(cancelData.showBar!==self.showBar()){self.showBar(cancelData.showBar);}if(cancelData.showBackButton!==self.showBackButton()){self.showBackButton(cancelData.showBackButton);}if(runApply){$scope.$apply();}},complete:function complete(shouldAnimate,speed){navSwipeAttr(speed);navBarTransition.shouldAnimate=shouldAnimate;navBarTransition.run(1);queuedTransitionEnd=transitionEnd;}};$timeout(enteringHeaderBarCtrl.align,16);_queuedTransitionStart=function queuedTransitionStart(){if(latestTransitionId!==transitionId)return;navBarAttr(enteringHeaderBar,'entering');navBarAttr(leavingHeaderBar,'leaving');navBarTransition.run(1);queuedTransitionEnd=function queuedTransitionEnd(){if(latestTransitionId==transitionId||!navBarTransition.shouldAnimate){transitionEnd();}};_queuedTransitionStart=null;};function transitionEnd(){for(var x=0;x<headerBars.length;x++){headerBars[x].isActive=false;}enteringHeaderBar.isActive=true;navBarAttr(enteringHeaderBar,'active');navBarAttr(leavingHeaderBar,'cached');self.activeTransition=navBarTransition=queuedTransitionEnd=null;}_queuedTransitionStart();};self.triggerTransitionStart=function(triggerTransitionId){latestTransitionId=triggerTransitionId;_queuedTransitionStart&&_queuedTransitionStart();};self.triggerTransitionEnd=function(){queuedTransitionEnd&&queuedTransitionEnd();};self.showBar=function(shouldShow){if(arguments.length){self.visibleBar(shouldShow);$scope.$parent.$hasHeader=!!shouldShow;}return !!$scope.$parent.$hasHeader;};self.visibleBar=function(shouldShow){if(shouldShow&&!isVisible){$element.removeClass(CSS_HIDE);self.align();}else if(!shouldShow&&isVisible){$element.addClass(CSS_HIDE);}isVisible=shouldShow;};self.enable=function(val){ // set primary to show first
 	self.visibleBar(val); // set non primary to hide second
 	for(var x=0;x<$ionicNavBarDelegate._instances.length;x++){if($ionicNavBarDelegate._instances[x]!==self)$ionicNavBarDelegate._instances[x].visibleBar(false);}}; /**
 	   * @ngdoc method
@@ -23521,7 +23527,7 @@
 	//Also attach to parent so that sibling elements can require this
 	($element.parent().length?$element.parent():$element).data('$$ionicScrollController',self);var deregisterInstance=$ionicScrollDelegate._registerInstance(self,scrollViewOptions.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});if(!isDefined(scrollViewOptions.bouncing)){ionic.Platform.ready(function(){if(scrollView&&scrollView.options){scrollView.options.bouncing=true;if(ionic.Platform.isAndroid()){ // No bouncing by default on Android
 	scrollView.options.bouncing=false; // Faster scroll decel
-	scrollView.options.deceleration=0.95;}}});}var resize=angular.bind(scrollView,scrollView.resize);angular.element($window).on('resize',resize);var scrollFunc=function(e){var detail=(e.originalEvent||e).detail||{};$scope.$onScroll&&$scope.$onScroll({event:e,scrollTop:detail.scrollTop||0,scrollLeft:detail.scrollLeft||0});};$element.on('scroll',scrollFunc);$scope.$on('$destroy',function(){deregisterInstance();scrollView&&scrollView.__cleanup&&scrollView.__cleanup();angular.element($window).off('resize',resize);$element.off('scroll',scrollFunc);scrollView=self.scrollView=scrollViewOptions=self._scrollViewOptions=scrollViewOptions.el=self._scrollViewOptions.el=$element=self.$element=element=null;});$timeout(function(){scrollView&&scrollView.run&&scrollView.run();});self.getScrollView=function(){return scrollView;};self.getScrollPosition=function(){return scrollView.getValues();};self.resize=function(){return $timeout(resize,0,false).then(function(){$element&&$element.triggerHandler('scroll-resize');});};self.scrollTop=function(shouldAnimate){self.resize().then(function(){if(!scrollView){return;}scrollView.scrollTo(0,0,!!shouldAnimate);});};self.scrollBottom=function(shouldAnimate){self.resize().then(function(){if(!scrollView){return;}var max=scrollView.getScrollMax();scrollView.scrollTo(max.left,max.top,!!shouldAnimate);});};self.scrollTo=function(left,top,shouldAnimate){self.resize().then(function(){if(!scrollView){return;}scrollView.scrollTo(left,top,!!shouldAnimate);});};self.zoomTo=function(zoom,shouldAnimate,originLeft,originTop){self.resize().then(function(){if(!scrollView){return;}scrollView.zoomTo(zoom,!!shouldAnimate,originLeft,originTop);});};self.zoomBy=function(zoom,shouldAnimate,originLeft,originTop){self.resize().then(function(){if(!scrollView){return;}scrollView.zoomBy(zoom,!!shouldAnimate,originLeft,originTop);});};self.scrollBy=function(left,top,shouldAnimate){self.resize().then(function(){if(!scrollView){return;}scrollView.scrollBy(left,top,!!shouldAnimate);});};self.anchorScroll=function(shouldAnimate){self.resize().then(function(){if(!scrollView){return;}var hash=$location.hash();var elm=hash&&$document[0].getElementById(hash);if(!(hash&&elm)){scrollView.scrollTo(0,0,!!shouldAnimate);return;}var curElm=elm;var scrollLeft=0,scrollTop=0;do {if(curElm!==null)scrollLeft+=curElm.offsetLeft;if(curElm!==null)scrollTop+=curElm.offsetTop;curElm=curElm.offsetParent;}while(curElm.attributes!=self.element.attributes&&curElm.offsetParent);scrollView.scrollTo(scrollLeft,scrollTop,!!shouldAnimate);});};self.freezeScroll=scrollView.freeze;self.freezeScrollShut=scrollView.freezeShut;self.freezeAllScrolls=function(shouldFreeze){for(var i=0;i<$ionicScrollDelegate._instances.length;i++){$ionicScrollDelegate._instances[i].freezeScroll(shouldFreeze);}}; /**
+	scrollView.options.deceleration=0.95;}}});}var resize=angular.bind(scrollView,scrollView.resize);angular.element($window).on('resize',resize);var scrollFunc=function scrollFunc(e){var detail=(e.originalEvent||e).detail||{};$scope.$onScroll&&$scope.$onScroll({event:e,scrollTop:detail.scrollTop||0,scrollLeft:detail.scrollLeft||0});};$element.on('scroll',scrollFunc);$scope.$on('$destroy',function(){deregisterInstance();scrollView&&scrollView.__cleanup&&scrollView.__cleanup();angular.element($window).off('resize',resize);$element.off('scroll',scrollFunc);scrollView=self.scrollView=scrollViewOptions=self._scrollViewOptions=scrollViewOptions.el=self._scrollViewOptions.el=$element=self.$element=element=null;});$timeout(function(){scrollView&&scrollView.run&&scrollView.run();});self.getScrollView=function(){return scrollView;};self.getScrollPosition=function(){return scrollView.getValues();};self.resize=function(){return $timeout(resize,0,false).then(function(){$element&&$element.triggerHandler('scroll-resize');});};self.scrollTop=function(shouldAnimate){self.resize().then(function(){if(!scrollView){return;}scrollView.scrollTo(0,0,!!shouldAnimate);});};self.scrollBottom=function(shouldAnimate){self.resize().then(function(){if(!scrollView){return;}var max=scrollView.getScrollMax();scrollView.scrollTo(max.left,max.top,!!shouldAnimate);});};self.scrollTo=function(left,top,shouldAnimate){self.resize().then(function(){if(!scrollView){return;}scrollView.scrollTo(left,top,!!shouldAnimate);});};self.zoomTo=function(zoom,shouldAnimate,originLeft,originTop){self.resize().then(function(){if(!scrollView){return;}scrollView.zoomTo(zoom,!!shouldAnimate,originLeft,originTop);});};self.zoomBy=function(zoom,shouldAnimate,originLeft,originTop){self.resize().then(function(){if(!scrollView){return;}scrollView.zoomBy(zoom,!!shouldAnimate,originLeft,originTop);});};self.scrollBy=function(left,top,shouldAnimate){self.resize().then(function(){if(!scrollView){return;}scrollView.scrollBy(left,top,!!shouldAnimate);});};self.anchorScroll=function(shouldAnimate){self.resize().then(function(){if(!scrollView){return;}var hash=$location.hash();var elm=hash&&$document[0].getElementById(hash);if(!(hash&&elm)){scrollView.scrollTo(0,0,!!shouldAnimate);return;}var curElm=elm;var scrollLeft=0,scrollTop=0;do {if(curElm!==null)scrollLeft+=curElm.offsetLeft;if(curElm!==null)scrollTop+=curElm.offsetTop;curElm=curElm.offsetParent;}while(curElm.attributes!=self.element.attributes&&curElm.offsetParent);scrollView.scrollTo(scrollLeft,scrollTop,!!shouldAnimate);});};self.freezeScroll=scrollView.freeze;self.freezeScrollShut=scrollView.freezeShut;self.freezeAllScrolls=function(shouldFreeze){for(var i=0;i<$ionicScrollDelegate._instances.length;i++){$ionicScrollDelegate._instances[i].freezeScroll(shouldFreeze);}}; /**
 	   * @private
 	   */self._setRefresher=function(refresherScope,refresherElement,refresherMethods){self.refresher=refresherElement;var refresherHeight=self.refresher.clientHeight||60;scrollView.activatePullToRefresh(refresherHeight,refresherMethods);};}]);IonicModule.controller('$ionicSideMenus',['$scope','$attrs','$ionicSideMenuDelegate','$ionicPlatform','$ionicBody','$ionicHistory','$ionicScrollDelegate','IONIC_BACK_PRIORITY','$rootScope',function($scope,$attrs,$ionicSideMenuDelegate,$ionicPlatform,$ionicBody,$ionicHistory,$ionicScrollDelegate,IONIC_BACK_PRIORITY,$rootScope){var self=this;var rightShowing,leftShowing,isDragging;var startX,lastX,offsetX,isAsideExposed;var enableMenuWithBackViews=true;self.$scope=$scope;self.initialize=function(options){self.left=options.left;self.right=options.right;self.setContent(options.content);self.dragThresholdX=options.dragThresholdX||10;$ionicHistory.registerHistory(self.$scope);}; /**
 	   * Set the content view controller if not passed in the constructor options.
@@ -23596,7 +23602,7 @@
 	startX=lastX;isDragging=true; // Initialize dragging
 	self.content.disableAnimation();offsetX=self.getOpenAmount();}if(isDragging){self.openAmount(offsetX+(lastX-startX)); //self.content.setCanScroll(false);
 	}};self.canDragContent=function(canDrag){if(arguments.length){$scope.dragContent=!!canDrag;}return $scope.dragContent;};self.edgeThreshold=25;self.edgeThresholdEnabled=false;self.edgeDragThreshold=function(value){if(arguments.length){if(isNumber(value)&&value>0){self.edgeThreshold=value;self.edgeThresholdEnabled=true;}else {self.edgeThresholdEnabled=!!value;}}return self.edgeThresholdEnabled;};self.isDraggableTarget=function(e){ //Only restrict edge when sidemenu is closed and restriction is enabled
-	var shouldOnlyAllowEdgeDrag=self.edgeThresholdEnabled&&!self.isOpen();var startX=e.gesture.startEvent&&e.gesture.startEvent.center&&e.gesture.startEvent.center.pageX;var dragIsWithinBounds=!shouldOnlyAllowEdgeDrag||startX<=self.edgeThreshold||startX>=self.content.element.offsetWidth-self.edgeThreshold;var backView=$ionicHistory.backView();var menuEnabled=enableMenuWithBackViews?true:!backView;if(!menuEnabled){var currentView=$ionicHistory.currentView()||{};return dragIsWithinBounds&&backView.historyId!==currentView.historyId;}return ($scope.dragContent||self.isOpen())&&dragIsWithinBounds&&!e.gesture.srcEvent.defaultPrevented&&menuEnabled&&!e.target.tagName.match(/input|textarea|select|object|embed/i)&&!e.target.isContentEditable&&!(e.target.dataset?e.target.dataset.preventScroll:e.target.getAttribute('data-prevent-scroll')=='true');};$scope.sideMenuContentTranslateX=0;var deregisterBackButtonAction=noop;var closeSideMenu=angular.bind(self,self.close);$scope.$watch(function(){return self.getOpenAmount()!==0;},function(isOpen){deregisterBackButtonAction();if(isOpen){deregisterBackButtonAction=$ionicPlatform.registerBackButtonAction(closeSideMenu,IONIC_BACK_PRIORITY.sideMenu);}});var deregisterInstance=$ionicSideMenuDelegate._registerInstance(self,$attrs.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});$scope.$on('$destroy',function(){deregisterInstance();deregisterBackButtonAction();self.$scope=null;if(self.content){self.content.setCanScroll(true);self.content.element=null;self.content=null;}});self.initialize({left:{width:275},right:{width:275}});}]);(function(ionic){var TRANSLATE32='translate(32,32)';var STROKE_OPACITY='stroke-opacity';var ROUND='round';var INDEFINITE='indefinite';var DURATION='750ms';var NONE='none';var SHORTCUTS={a:'animate',an:'attributeName',at:'animateTransform',c:'circle',da:'stroke-dasharray',os:'stroke-dashoffset',f:'fill',lc:'stroke-linecap',rc:'repeatCount',sw:'stroke-width',t:'transform',v:'values'};var SPIN_ANIMATION={v:'0,32,32;360,32,32',an:'transform',type:'rotate',rc:INDEFINITE,dur:DURATION};function createSvgElement(tagName,data,parent,spinnerName){var ele=document.createElement(SHORTCUTS[tagName]||tagName);var k,x,y;for(k in data){if(angular.isArray(data[k])){for(x=0;x<data[k].length;x++){if(data[k][x].fn){for(y=0;y<data[k][x].t;y++){createSvgElement(k,data[k][x].fn(y,spinnerName),ele,spinnerName);}}else {createSvgElement(k,data[k][x],ele,spinnerName);}}}else {setSvgAttribute(ele,k,data[k]);}}parent.appendChild(ele);}function setSvgAttribute(ele,k,v){ele.setAttribute(SHORTCUTS[k]||k,v);}function animationValues(strValues,i){var values=strValues.split(';');var back=values.slice(i);var front=values.slice(0,values.length-back.length);values=back.concat(front).reverse();return values.join(';')+';'+values[0];}var IOS_SPINNER={sw:4,lc:ROUND,line:[{fn:function(i,spinnerName){return {y1:spinnerName=='ios'?17:12,y2:spinnerName=='ios'?29:20,t:TRANSLATE32+' rotate('+(30*i+(i<6?180:-180))+')',a:[{fn:function(){return {an:STROKE_OPACITY,dur:DURATION,v:animationValues('0;.1;.15;.25;.35;.45;.55;.65;.7;.85;1',i),rc:INDEFINITE};},t:1}]};},t:12}]};var spinners={android:{c:[{sw:6,da:128,os:82,r:26,cx:32,cy:32,f:NONE}]},ios:IOS_SPINNER,'ios-small':IOS_SPINNER,bubbles:{sw:0,c:[{fn:function(i){return {cx:24*Math.cos(2*Math.PI*i/8),cy:24*Math.sin(2*Math.PI*i/8),t:TRANSLATE32,a:[{fn:function(){return {an:'r',dur:DURATION,v:animationValues('1;2;3;4;5;6;7;8',i),rc:INDEFINITE};},t:1}]};},t:8}]},circles:{c:[{fn:function(i){return {r:5,cx:24*Math.cos(2*Math.PI*i/8),cy:24*Math.sin(2*Math.PI*i/8),t:TRANSLATE32,sw:0,a:[{fn:function(){return {an:'fill-opacity',dur:DURATION,v:animationValues('.3;.3;.3;.4;.7;.85;.9;1',i),rc:INDEFINITE};},t:1}]};},t:8}]},crescent:{c:[{sw:4,da:128,os:82,r:26,cx:32,cy:32,f:NONE,at:[SPIN_ANIMATION]}]},dots:{c:[{fn:function(i){return {cx:16+16*i,cy:32,sw:0,a:[{fn:function(){return {an:'fill-opacity',dur:DURATION,v:animationValues('.5;.6;.8;1;.8;.6;.5',i),rc:INDEFINITE};},t:1},{fn:function(){return {an:'r',dur:DURATION,v:animationValues('4;5;6;5;4;3;3',i),rc:INDEFINITE};},t:1}]};},t:3}]},lines:{sw:7,lc:ROUND,line:[{fn:function(i){return {x1:10+i*14,x2:10+i*14,a:[{fn:function(){return {an:'y1',dur:DURATION,v:animationValues('16;18;28;18;16',i),rc:INDEFINITE};},t:1},{fn:function(){return {an:'y2',dur:DURATION,v:animationValues('48;44;36;46;48',i),rc:INDEFINITE};},t:1},{fn:function(){return {an:STROKE_OPACITY,dur:DURATION,v:animationValues('1;.8;.5;.4;1',i),rc:INDEFINITE};},t:1}]};},t:4}]},ripple:{f:NONE,'fill-rule':'evenodd',sw:3,circle:[{fn:function(i){return {cx:32,cy:32,a:[{fn:function(){return {an:'r',begin:i*-1+'s',dur:'2s',v:'0;24',keyTimes:'0;1',keySplines:'0.1,0.2,0.3,1',calcMode:'spline',rc:INDEFINITE};},t:1},{fn:function(){return {an:STROKE_OPACITY,begin:i*-1+'s',dur:'2s',v:'.2;1;.2;0',rc:INDEFINITE};},t:1}]};},t:2}]},spiral:{defs:[{linearGradient:[{id:'sGD',gradientUnits:'userSpaceOnUse',x1:55,y1:46,x2:2,y2:46,stop:[{offset:0.1,class:'stop1'},{offset:1,class:'stop2'}]}]}],g:[{sw:4,lc:ROUND,f:NONE,path:[{stroke:'url(#sGD)',d:'M4,32 c0,15,12,28,28,28c8,0,16-4,21-9'},{d:'M60,32 C60,16,47.464,4,32,4S4,16,4,32'}],at:[SPIN_ANIMATION]}]}};var animations={android:function(ele){var self=this;this.stop=false;var rIndex=0;var rotateCircle=0;var startTime;var svgEle=ele.querySelector('g');var circleEle=ele.querySelector('circle');function run(){if(self.stop)return;var v=easeInOutCubic(Date.now()-startTime,650);var scaleX=1;var translateX=0;var dasharray=188-58*v;var dashoffset=182-182*v;if(rIndex%2){scaleX=-1;translateX=-64;dasharray=128- -58*v;dashoffset=182*v;}var rotateLine=[0,-101,-90,-11,-180,79,-270,-191][rIndex];setSvgAttribute(circleEle,'da',Math.max(Math.min(dasharray,188),128));setSvgAttribute(circleEle,'os',Math.max(Math.min(dashoffset,182),0));setSvgAttribute(circleEle,'t','scale('+scaleX+',1) translate('+translateX+',0) rotate('+rotateLine+',32,32)');rotateCircle+=4.1;if(rotateCircle>359)rotateCircle=0;setSvgAttribute(svgEle,'t','rotate('+rotateCircle+',32,32)');if(v>=1){rIndex++;if(rIndex>7)rIndex=0;startTime=Date.now();}ionic.requestAnimationFrame(run);}return function(){startTime=Date.now();run();return self;};}};function easeInOutCubic(t,c){t/=c/2;if(t<1)return 1/2*t*t*t;t-=2;return 1/2*(t*t*t+2);}IonicModule.controller('$ionicSpinner',['$element','$attrs','$ionicConfig',function($element,$attrs,$ionicConfig){var spinnerName,anim;this.init=function(){spinnerName=$attrs.icon||$ionicConfig.spinner.icon();var container=document.createElement('div');createSvgElement('svg',{viewBox:'0 0 64 64',g:[spinners[spinnerName]]},container,spinnerName); // Specifically for animations to work,
+	var shouldOnlyAllowEdgeDrag=self.edgeThresholdEnabled&&!self.isOpen();var startX=e.gesture.startEvent&&e.gesture.startEvent.center&&e.gesture.startEvent.center.pageX;var dragIsWithinBounds=!shouldOnlyAllowEdgeDrag||startX<=self.edgeThreshold||startX>=self.content.element.offsetWidth-self.edgeThreshold;var backView=$ionicHistory.backView();var menuEnabled=enableMenuWithBackViews?true:!backView;if(!menuEnabled){var currentView=$ionicHistory.currentView()||{};return dragIsWithinBounds&&backView.historyId!==currentView.historyId;}return ($scope.dragContent||self.isOpen())&&dragIsWithinBounds&&!e.gesture.srcEvent.defaultPrevented&&menuEnabled&&!e.target.tagName.match(/input|textarea|select|object|embed/i)&&!e.target.isContentEditable&&!(e.target.dataset?e.target.dataset.preventScroll:e.target.getAttribute('data-prevent-scroll')=='true');};$scope.sideMenuContentTranslateX=0;var deregisterBackButtonAction=noop;var closeSideMenu=angular.bind(self,self.close);$scope.$watch(function(){return self.getOpenAmount()!==0;},function(isOpen){deregisterBackButtonAction();if(isOpen){deregisterBackButtonAction=$ionicPlatform.registerBackButtonAction(closeSideMenu,IONIC_BACK_PRIORITY.sideMenu);}});var deregisterInstance=$ionicSideMenuDelegate._registerInstance(self,$attrs.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});$scope.$on('$destroy',function(){deregisterInstance();deregisterBackButtonAction();self.$scope=null;if(self.content){self.content.setCanScroll(true);self.content.element=null;self.content=null;}});self.initialize({left:{width:275},right:{width:275}});}]);(function(ionic){var TRANSLATE32='translate(32,32)';var STROKE_OPACITY='stroke-opacity';var ROUND='round';var INDEFINITE='indefinite';var DURATION='750ms';var NONE='none';var SHORTCUTS={a:'animate',an:'attributeName',at:'animateTransform',c:'circle',da:'stroke-dasharray',os:'stroke-dashoffset',f:'fill',lc:'stroke-linecap',rc:'repeatCount',sw:'stroke-width',t:'transform',v:'values'};var SPIN_ANIMATION={v:'0,32,32;360,32,32',an:'transform',type:'rotate',rc:INDEFINITE,dur:DURATION};function createSvgElement(tagName,data,parent,spinnerName){var ele=document.createElement(SHORTCUTS[tagName]||tagName);var k,x,y;for(k in data){if(angular.isArray(data[k])){for(x=0;x<data[k].length;x++){if(data[k][x].fn){for(y=0;y<data[k][x].t;y++){createSvgElement(k,data[k][x].fn(y,spinnerName),ele,spinnerName);}}else {createSvgElement(k,data[k][x],ele,spinnerName);}}}else {setSvgAttribute(ele,k,data[k]);}}parent.appendChild(ele);}function setSvgAttribute(ele,k,v){ele.setAttribute(SHORTCUTS[k]||k,v);}function animationValues(strValues,i){var values=strValues.split(';');var back=values.slice(i);var front=values.slice(0,values.length-back.length);values=back.concat(front).reverse();return values.join(';')+';'+values[0];}var IOS_SPINNER={sw:4,lc:ROUND,line:[{fn:function fn(i,spinnerName){return {y1:spinnerName=='ios'?17:12,y2:spinnerName=='ios'?29:20,t:TRANSLATE32+' rotate('+(30*i+(i<6?180:-180))+')',a:[{fn:function fn(){return {an:STROKE_OPACITY,dur:DURATION,v:animationValues('0;.1;.15;.25;.35;.45;.55;.65;.7;.85;1',i),rc:INDEFINITE};},t:1}]};},t:12}]};var spinners={android:{c:[{sw:6,da:128,os:82,r:26,cx:32,cy:32,f:NONE}]},ios:IOS_SPINNER,'ios-small':IOS_SPINNER,bubbles:{sw:0,c:[{fn:function fn(i){return {cx:24*Math.cos(2*Math.PI*i/8),cy:24*Math.sin(2*Math.PI*i/8),t:TRANSLATE32,a:[{fn:function fn(){return {an:'r',dur:DURATION,v:animationValues('1;2;3;4;5;6;7;8',i),rc:INDEFINITE};},t:1}]};},t:8}]},circles:{c:[{fn:function fn(i){return {r:5,cx:24*Math.cos(2*Math.PI*i/8),cy:24*Math.sin(2*Math.PI*i/8),t:TRANSLATE32,sw:0,a:[{fn:function fn(){return {an:'fill-opacity',dur:DURATION,v:animationValues('.3;.3;.3;.4;.7;.85;.9;1',i),rc:INDEFINITE};},t:1}]};},t:8}]},crescent:{c:[{sw:4,da:128,os:82,r:26,cx:32,cy:32,f:NONE,at:[SPIN_ANIMATION]}]},dots:{c:[{fn:function fn(i){return {cx:16+16*i,cy:32,sw:0,a:[{fn:function fn(){return {an:'fill-opacity',dur:DURATION,v:animationValues('.5;.6;.8;1;.8;.6;.5',i),rc:INDEFINITE};},t:1},{fn:function fn(){return {an:'r',dur:DURATION,v:animationValues('4;5;6;5;4;3;3',i),rc:INDEFINITE};},t:1}]};},t:3}]},lines:{sw:7,lc:ROUND,line:[{fn:function fn(i){return {x1:10+i*14,x2:10+i*14,a:[{fn:function fn(){return {an:'y1',dur:DURATION,v:animationValues('16;18;28;18;16',i),rc:INDEFINITE};},t:1},{fn:function fn(){return {an:'y2',dur:DURATION,v:animationValues('48;44;36;46;48',i),rc:INDEFINITE};},t:1},{fn:function fn(){return {an:STROKE_OPACITY,dur:DURATION,v:animationValues('1;.8;.5;.4;1',i),rc:INDEFINITE};},t:1}]};},t:4}]},ripple:{f:NONE,'fill-rule':'evenodd',sw:3,circle:[{fn:function fn(i){return {cx:32,cy:32,a:[{fn:function fn(){return {an:'r',begin:i*-1+'s',dur:'2s',v:'0;24',keyTimes:'0;1',keySplines:'0.1,0.2,0.3,1',calcMode:'spline',rc:INDEFINITE};},t:1},{fn:function fn(){return {an:STROKE_OPACITY,begin:i*-1+'s',dur:'2s',v:'.2;1;.2;0',rc:INDEFINITE};},t:1}]};},t:2}]},spiral:{defs:[{linearGradient:[{id:'sGD',gradientUnits:'userSpaceOnUse',x1:55,y1:46,x2:2,y2:46,stop:[{offset:0.1,class:'stop1'},{offset:1,class:'stop2'}]}]}],g:[{sw:4,lc:ROUND,f:NONE,path:[{stroke:'url(#sGD)',d:'M4,32 c0,15,12,28,28,28c8,0,16-4,21-9'},{d:'M60,32 C60,16,47.464,4,32,4S4,16,4,32'}],at:[SPIN_ANIMATION]}]}};var animations={android:function android(ele){var self=this;this.stop=false;var rIndex=0;var rotateCircle=0;var startTime;var svgEle=ele.querySelector('g');var circleEle=ele.querySelector('circle');function run(){if(self.stop)return;var v=easeInOutCubic(Date.now()-startTime,650);var scaleX=1;var translateX=0;var dasharray=188-58*v;var dashoffset=182-182*v;if(rIndex%2){scaleX=-1;translateX=-64;dasharray=128- -58*v;dashoffset=182*v;}var rotateLine=[0,-101,-90,-11,-180,79,-270,-191][rIndex];setSvgAttribute(circleEle,'da',Math.max(Math.min(dasharray,188),128));setSvgAttribute(circleEle,'os',Math.max(Math.min(dashoffset,182),0));setSvgAttribute(circleEle,'t','scale('+scaleX+',1) translate('+translateX+',0) rotate('+rotateLine+',32,32)');rotateCircle+=4.1;if(rotateCircle>359)rotateCircle=0;setSvgAttribute(svgEle,'t','rotate('+rotateCircle+',32,32)');if(v>=1){rIndex++;if(rIndex>7)rIndex=0;startTime=Date.now();}ionic.requestAnimationFrame(run);}return function(){startTime=Date.now();run();return self;};}};function easeInOutCubic(t,c){t/=c/2;if(t<1)return 1/2*t*t*t;t-=2;return 1/2*(t*t*t+2);}IonicModule.controller('$ionicSpinner',['$element','$attrs','$ionicConfig',function($element,$attrs,$ionicConfig){var spinnerName,anim;this.init=function(){spinnerName=$attrs.icon||$ionicConfig.spinner.icon();var container=document.createElement('div');createSvgElement('svg',{viewBox:'0 0 64 64',g:[spinners[spinnerName]]},container,spinnerName); // Specifically for animations to work,
 	// Android 4.3 and below requires the element to be
 	// added as an html string, rather than dynmically
 	// building up the svg element and appending it.
@@ -23619,7 +23625,7 @@
 	return $compile(html)($scope.$new());}}function attrTrue(key){return !!$scope.$eval($attrs[key]);}self.navElement=function(type,html){navElementHtml[type]=html;};}]); /*
 	 * We don't document the ionActionSheet directive, we instead document
 	 * the $ionicActionSheet service
-	 */IonicModule.directive('ionActionSheet',['$document',function($document){return {restrict:'E',scope:true,replace:true,link:function($scope,$element){var keyUp=function(e){if(e.which==27){$scope.cancel();$scope.$apply();}};var backdropClick=function(e){if(e.target==$element[0]){$scope.cancel();$scope.$apply();}};$scope.$on('$destroy',function(){$element.remove();$document.unbind('keyup',keyUp);});$document.bind('keyup',keyUp);$element.bind('click',backdropClick);},template:'<div class="action-sheet-backdrop">'+'<div class="action-sheet-wrapper">'+'<div class="action-sheet" ng-class="{\'action-sheet-has-icons\': $actionSheetHasIcon}">'+'<div class="action-sheet-group action-sheet-options">'+'<div class="action-sheet-title" ng-if="titleText" ng-bind-html="titleText"></div>'+'<button class="button action-sheet-option" ng-click="buttonClicked($index)" ng-class="b.className" ng-repeat="b in buttons" ng-bind-html="b.text"></button>'+'<button class="button destructive action-sheet-destructive" ng-if="destructiveText" ng-click="destructiveButtonClicked()" ng-bind-html="destructiveText"></button>'+'</div>'+'<div class="action-sheet-group action-sheet-cancel" ng-if="cancelText">'+'<button class="button" ng-click="cancel()" ng-bind-html="cancelText"></button>'+'</div>'+'</div>'+'</div>'+'</div>'};}]); /**
+	 */IonicModule.directive('ionActionSheet',['$document',function($document){return {restrict:'E',scope:true,replace:true,link:function link($scope,$element){var keyUp=function keyUp(e){if(e.which==27){$scope.cancel();$scope.$apply();}};var backdropClick=function backdropClick(e){if(e.target==$element[0]){$scope.cancel();$scope.$apply();}};$scope.$on('$destroy',function(){$element.remove();$document.unbind('keyup',keyUp);});$document.bind('keyup',keyUp);$element.bind('click',backdropClick);},template:'<div class="action-sheet-backdrop">'+'<div class="action-sheet-wrapper">'+'<div class="action-sheet" ng-class="{\'action-sheet-has-icons\': $actionSheetHasIcon}">'+'<div class="action-sheet-group action-sheet-options">'+'<div class="action-sheet-title" ng-if="titleText" ng-bind-html="titleText"></div>'+'<button class="button action-sheet-option" ng-click="buttonClicked($index)" ng-class="b.className" ng-repeat="b in buttons" ng-bind-html="b.text"></button>'+'<button class="button destructive action-sheet-destructive" ng-if="destructiveText" ng-click="destructiveButtonClicked()" ng-bind-html="destructiveText"></button>'+'</div>'+'<div class="action-sheet-group action-sheet-cancel" ng-if="cancelText">'+'<button class="button" ng-click="cancel()" ng-bind-html="cancelText"></button>'+'</div>'+'</div>'+'</div>'+'</div>'};}]); /**
 	 * @ngdoc directive
 	 * @name ionCheckbox
 	 * @module ionic
@@ -23634,7 +23640,7 @@
 	 * ```html
 	 * <ion-checkbox ng-model="isChecked">Checkbox Label</ion-checkbox>
 	 * ```
-	 */IonicModule.directive('ionCheckbox',['$ionicConfig',function($ionicConfig){return {restrict:'E',replace:true,require:'?ngModel',transclude:true,template:'<label class="item item-checkbox">'+'<div class="checkbox checkbox-input-hidden disable-pointer-events">'+'<input type="checkbox">'+'<i class="checkbox-icon"></i>'+'</div>'+'<div class="item-content disable-pointer-events" ng-transclude></div>'+'</label>',compile:function(element,attr){var input=element.find('input');forEach({'name':attr.name,'ng-value':attr.ngValue,'ng-model':attr.ngModel,'ng-checked':attr.ngChecked,'ng-disabled':attr.ngDisabled,'ng-true-value':attr.ngTrueValue,'ng-false-value':attr.ngFalseValue,'ng-change':attr.ngChange,'ng-required':attr.ngRequired,'required':attr.required},function(value,name){if(isDefined(value)){input.attr(name,value);}});var checkboxWrapper=element[0].querySelector('.checkbox');checkboxWrapper.classList.add('checkbox-'+$ionicConfig.form.checkbox());}};}]); /**
+	 */IonicModule.directive('ionCheckbox',['$ionicConfig',function($ionicConfig){return {restrict:'E',replace:true,require:'?ngModel',transclude:true,template:'<label class="item item-checkbox">'+'<div class="checkbox checkbox-input-hidden disable-pointer-events">'+'<input type="checkbox">'+'<i class="checkbox-icon"></i>'+'</div>'+'<div class="item-content disable-pointer-events" ng-transclude></div>'+'</label>',compile:function compile(element,attr){var input=element.find('input');forEach({'name':attr.name,'ng-value':attr.ngValue,'ng-model':attr.ngModel,'ng-checked':attr.ngChecked,'ng-disabled':attr.ngDisabled,'ng-true-value':attr.ngTrueValue,'ng-false-value':attr.ngFalseValue,'ng-change':attr.ngChange,'ng-required':attr.ngRequired,'required':attr.required},function(value,name){if(isDefined(value)){input.attr(name,value);}});var checkboxWrapper=element[0].querySelector('.checkbox');checkboxWrapper.classList.add('checkbox-'+$ionicConfig.form.checkbox());}};}]); /**
 	 * @ngdoc directive
 	 * @restrict A
 	 * @name collectionRepeat
@@ -23717,12 +23723,12 @@
 	var renderBufferExpr=attr.itemRenderBuffer||attr.collectionBufferSize;var renderBuffer=angular.isDefined(renderBufferExpr)?parseInt(renderBufferExpr):DEFAULT_RENDER_BUFFER; // attr.collectionItemHeight is deprecated
 	var heightExpr=attr.itemHeight||attr.collectionItemHeight; // attr.collectionItemWidth is deprecated
 	var widthExpr=attr.itemWidth||attr.collectionItemWidth;var afterItemsContainer=initAfterItemsContainer();var changeValidator=makeChangeValidator();initDimensions(); // Dimensions are refreshed on resize or data change.
-	scrollCtrl.$element.on('scroll-resize',refreshDimensions);angular.element($window).on('resize',onResize);var unlistenToExposeAside=$rootScope.$on('$ionicExposeAside',ionic.animationFrameThrottle(function(){scrollCtrl.scrollView.resize();onResize();}));$timeout(refreshDimensions,0,false);function onResize(){if(changeValidator.resizeRequiresRefresh(scrollView.__clientWidth,scrollView.__clientHeight)){refreshDimensions();}}scope.$watchCollection(listGetter,function(newValue){data=newValue||(newValue=[]);if(!angular.isArray(newValue)){throw new Error("collection-repeat expected an array for '"+listExpr+"', "+"but got a "+typeof value);} // Wait for this digest to end before refreshing everything.
+	scrollCtrl.$element.on('scroll-resize',refreshDimensions);angular.element($window).on('resize',onResize);var unlistenToExposeAside=$rootScope.$on('$ionicExposeAside',ionic.animationFrameThrottle(function(){scrollCtrl.scrollView.resize();onResize();}));$timeout(refreshDimensions,0,false);function onResize(){if(changeValidator.resizeRequiresRefresh(scrollView.__clientWidth,scrollView.__clientHeight)){refreshDimensions();}}scope.$watchCollection(listGetter,function(newValue){data=newValue||(newValue=[]);if(!angular.isArray(newValue)){throw new Error("collection-repeat expected an array for '"+listExpr+"', "+"but got a "+(typeof value==='undefined'?'undefined':_typeof(value)));} // Wait for this digest to end before refreshing everything.
 	scope.$$postDigest(function(){getRepeatManager().setData(data);if(changeValidator.dataChangeRequiresRefresh(data))refreshDimensions();});});scope.$on('$destroy',function(){angular.element($window).off('resize',onResize);unlistenToExposeAside();scrollCtrl.$element&&scrollCtrl.$element.off('scroll-resize',refreshDimensions);computedStyleNode&&computedStyleNode.parentNode&&computedStyleNode.parentNode.removeChild(computedStyleNode);computedStyleScope&&computedStyleScope.$destroy();computedStyleScope=computedStyleNode=null;repeatManager&&repeatManager.destroy();repeatManager=null;});function makeChangeValidator(){var self;return self={dataLength:0,width:0,height:0, // A resize triggers a refresh only if we have data, the scrollView has size,
 	// and the size has changed.
-	resizeRequiresRefresh:function(newWidth,newHeight){var requiresRefresh=self.dataLength&&newWidth&&newHeight&&(newWidth!==self.width||newHeight!==self.height);self.width=newWidth;self.height=newHeight;return !!requiresRefresh;}, // A change in data only triggers a refresh if the data has length, or if the data's
+	resizeRequiresRefresh:function resizeRequiresRefresh(newWidth,newHeight){var requiresRefresh=self.dataLength&&newWidth&&newHeight&&(newWidth!==self.width||newHeight!==self.height);self.width=newWidth;self.height=newHeight;return !!requiresRefresh;}, // A change in data only triggers a refresh if the data has length, or if the data's
 	// length is less than before.
-	dataChangeRequiresRefresh:function(newData){var requiresRefresh=newData.length>0||newData.length<self.dataLength;self.dataLength=newData.length;return !!requiresRefresh;}};}function getRepeatManager(){return repeatManager||(repeatManager=new $ionicCollectionManager({afterItemsNode:afterItemsContainer[0],containerNode:containerNode,heightData:heightData,widthData:widthData,forceRefreshImages:!!(isDefined(attr.forceRefreshImages)&&attr.forceRefreshImages!=='false'),keyExpression:keyExpr,renderBuffer:renderBuffer,scope:scope,scrollView:scrollCtrl.scrollView,transclude:transclude}));}function initAfterItemsContainer(){var container=angular.element(scrollView.__content.querySelector('.collection-repeat-after-container')); // Put everything in the view after the repeater into a container.
+	dataChangeRequiresRefresh:function dataChangeRequiresRefresh(newData){var requiresRefresh=newData.length>0||newData.length<self.dataLength;self.dataLength=newData.length;return !!requiresRefresh;}};}function getRepeatManager(){return repeatManager||(repeatManager=new $ionicCollectionManager({afterItemsNode:afterItemsContainer[0],containerNode:containerNode,heightData:heightData,widthData:widthData,forceRefreshImages:!!(isDefined(attr.forceRefreshImages)&&attr.forceRefreshImages!=='false'),keyExpression:keyExpr,renderBuffer:renderBuffer,scope:scope,scrollView:scrollCtrl.scrollView,transclude:transclude}));}function initAfterItemsContainer(){var container=angular.element(scrollView.__content.querySelector('.collection-repeat-after-container')); // Put everything in the view after the repeater into a container.
 	if(!container.length){var elementIsAfterRepeater=false;var afterNodes=[].filter.call(scrollView.__content.childNodes,function(node){if(ionic.DomUtil.contains(node,containerNode)){elementIsAfterRepeater=true;return false;}return elementIsAfterRepeater;});container=angular.element('<span class="collection-repeat-after-container">');if(scrollView.options.scrollingX){container.addClass('horizontal');}container.append(afterNodes);scrollView.__content.appendChild(container[0]);}return container;}function initDimensions(){ //Height and width have four 'modes':
 	//1) Computed Mode
 	//  - Nothing is supplied, so we getComputedStyle() on one element in the list and use
@@ -23749,7 +23755,7 @@
 	if(isConstant){ // For percents, store the percent getter on .getValue()
 	if(attrValue.indexOf('%')>-1){var decimalValue=parseFloat(parsedValue())/100;dimensionData.getValue=dimensionData===heightData?function(){return Math.floor(decimalValue*scrollView.__clientHeight);}:function(){return Math.floor(decimalValue*scrollView.__clientWidth);};}else { // For static constants, just store the static constant.
 	dimensionData.value=parseInt(parsedValue());}}else {dimensionData.dynamic=true;dimensionData.getValue=dimensionData===heightData?function heightGetter(scope,locals){var result=parsedValue(scope,locals);if(result.charAt&&result.charAt(result.length-1)==='%'){return Math.floor(parseFloat(result)/100*scrollView.__clientHeight);}return parseInt(result);}:function widthGetter(scope,locals){var result=parsedValue(scope,locals);if(result.charAt&&result.charAt(result.length-1)==='%'){return Math.floor(parseFloat(result)/100*scrollView.__clientWidth);}return parseInt(result);};}}var computedStyleNode;var computedStyleScope;function computeStyleDimensions(){if(!computedStyleNode){transclude(computedStyleScope=scope.$new(),function(clone){clone[0].removeAttribute('collection-repeat'); // remove absolute position styling
-	computedStyleNode=clone[0];});}computedStyleScope[keyExpr]=(listGetter(scope)||[])[0];if(!$rootScope.$$phase)computedStyleScope.$digest();containerNode.appendChild(computedStyleNode);var style=$window.getComputedStyle(computedStyleNode);computedStyleDimensions.width=parseInt(style.width);computedStyleDimensions.height=parseInt(style.height);containerNode.removeChild(computedStyleNode);}}}RepeatManagerFactory.$inject=['$rootScope','$window','$$rAF'];function RepeatManagerFactory($rootScope,$window,$$rAF){var EMPTY_DIMENSION={primaryPos:0,secondaryPos:0,primarySize:0,secondarySize:0,rowPrimarySize:0};return function RepeatController(options){var afterItemsNode=options.afterItemsNode;var containerNode=options.containerNode;var forceRefreshImages=options.forceRefreshImages;var heightData=options.heightData;var widthData=options.widthData;var keyExpression=options.keyExpression;var renderBuffer=options.renderBuffer;var scope=options.scope;var scrollView=options.scrollView;var transclude=options.transclude;var data=[];var getterLocals={};var heightFn=heightData.getValue||function(){return heightData.value;};var heightGetter=function(index,value){getterLocals[keyExpression]=value;getterLocals.$index=index;return heightFn(scope,getterLocals);};var widthFn=widthData.getValue||function(){return widthData.value;};var widthGetter=function(index,value){getterLocals[keyExpression]=value;getterLocals.$index=index;return widthFn(scope,getterLocals);};var isVertical=!!scrollView.options.scrollingY; // We say it's a grid view if we're either dynamic or not 100% width
+	computedStyleNode=clone[0];});}computedStyleScope[keyExpr]=(listGetter(scope)||[])[0];if(!$rootScope.$$phase)computedStyleScope.$digest();containerNode.appendChild(computedStyleNode);var style=$window.getComputedStyle(computedStyleNode);computedStyleDimensions.width=parseInt(style.width);computedStyleDimensions.height=parseInt(style.height);containerNode.removeChild(computedStyleNode);}}}RepeatManagerFactory.$inject=['$rootScope','$window','$$rAF'];function RepeatManagerFactory($rootScope,$window,$$rAF){var EMPTY_DIMENSION={primaryPos:0,secondaryPos:0,primarySize:0,secondarySize:0,rowPrimarySize:0};return function RepeatController(options){var afterItemsNode=options.afterItemsNode;var containerNode=options.containerNode;var forceRefreshImages=options.forceRefreshImages;var heightData=options.heightData;var widthData=options.widthData;var keyExpression=options.keyExpression;var renderBuffer=options.renderBuffer;var scope=options.scope;var scrollView=options.scrollView;var transclude=options.transclude;var data=[];var getterLocals={};var heightFn=heightData.getValue||function(){return heightData.value;};var heightGetter=function heightGetter(index,value){getterLocals[keyExpression]=value;getterLocals.$index=index;return heightFn(scope,getterLocals);};var widthFn=widthData.getValue||function(){return widthData.value;};var widthGetter=function widthGetter(index,value){getterLocals[keyExpression]=value;getterLocals.$index=index;return widthFn(scope,getterLocals);};var isVertical=!!scrollView.options.scrollingY; // We say it's a grid view if we're either dynamic or not 100% width
 	var isGridView=isVertical?widthData.dynamic||widthData.value!==scrollView.__clientWidth:heightData.dynamic||heightData.value!==scrollView.__clientHeight;var isStaticView=!heightData.dynamic&&!widthData.dynamic;var PRIMARY='PRIMARY';var SECONDARY='SECONDARY';var TRANSLATE_TEMPLATE_STR=isVertical?'translate3d(SECONDARYpx,PRIMARYpx,0)':'translate3d(PRIMARYpx,SECONDARYpx,0)';var WIDTH_HEIGHT_TEMPLATE_STR=isVertical?'height: PRIMARYpx; width: SECONDARYpx;':'height: SECONDARYpx; width: PRIMARYpx;';var estimatedHeight;var estimatedWidth;var repeaterBeforeSize=0;var repeaterAfterSize=0;var renderStartIndex=-1;var renderEndIndex=-1;var renderAfterBoundary=-1;var renderBeforeBoundary=-1;var itemsPool=[];var itemsLeaving=[];var itemsEntering=[];var itemsShownMap={};var nextItemId=0;var scrollViewSetDimensions=isVertical?function(){scrollView.setDimensions(null,null,null,view.getContentSize(),true);}:function(){scrollView.setDimensions(null,null,view.getContentSize(),null,true);}; // view is a mix of list/grid methods + static/dynamic methods.
 	// See bottom for implementations. Available methods:
 	//
@@ -23846,7 +23852,7 @@
 	 * @param {boolean=} has-bouncing Whether to allow scrolling to bounce past the edges
 	 * of the content.  Defaults to true on iOS, false on Android.
 	 * @param {number=} scroll-event-interval Number of milliseconds between each firing of the 'on-scroll' expression. Default 10.
-	 */IonicModule.directive('ionContent',['$timeout','$controller','$ionicBind','$ionicConfig',function($timeout,$controller,$ionicBind,$ionicConfig){return {restrict:'E',require:'^?ionNavView',scope:true,priority:800,compile:function(element,attr){var innerElement;var scrollCtrl;element.addClass('scroll-content ionic-scroll');if(attr.scroll!='false'){ //We cannot use normal transclude here because it breaks element.data()
+	 */IonicModule.directive('ionContent',['$timeout','$controller','$ionicBind','$ionicConfig',function($timeout,$controller,$ionicBind,$ionicConfig){return {restrict:'E',require:'^?ionNavView',scope:true,priority:800,compile:function compile(element,attr){var innerElement;var scrollCtrl;element.addClass('scroll-content ionic-scroll');if(attr.scroll!='false'){ //We cannot use normal transclude here because it breaks element.data()
 	//inheritance on compile
 	innerElement=jqLite('<div class="scroll"></div>');innerElement.append(element.contents());element.append(innerElement);}else {element.addClass('scroll-content-false');}var nativeScrolling=attr.overflowScroll!=="false"&&(attr.overflowScroll==="true"||!$ionicConfig.scrolling.jsScrolling()); // collection-repeat requires JS scrolling
 	if(nativeScrolling){nativeScrolling=!element[0].querySelector('[collection-repeat]');}return {pre:prelink};function prelink($scope,$element,$attr){var parentScope=$scope.$parent;$scope.$watch(function(){return (parentScope.$hasHeader?' has-header':'')+(parentScope.$hasSubheader?' has-subheader':'')+(parentScope.$hasFooter?' has-footer':'')+(parentScope.$hasSubfooter?' has-subfooter':'')+(parentScope.$hasTabs?' has-tabs':'')+(parentScope.$hasTabsTop?' has-tabs-top':'');},function(className,oldClassName){$element.removeClass(oldClassName);$element.addClass(className);}); //Only this ionContent should use these variables from parent scopes
@@ -23894,7 +23900,7 @@
 	 * ```
 	 * For a complete side menu example, see the
 	 * {@link ionic.directive:ionSideMenus} documentation.
-	 */IonicModule.directive('exposeAsideWhen',['$window',function($window){return {restrict:'A',require:'^ionSideMenus',link:function($scope,$element,$attr,sideMenuCtrl){ // Setup a match media query listener that triggers a ui change only when a change
+	 */IonicModule.directive('exposeAsideWhen',['$window',function($window){return {restrict:'A',require:'^ionSideMenus',link:function link($scope,$element,$attr,sideMenuCtrl){ // Setup a match media query listener that triggers a ui change only when a change
 	// in media matching status occurs
 	var mq=$attr.exposeAsideWhen=='large'?'(min-width:768px)':$attr.exposeAsideWhen;var mql=$window.matchMedia(mq);mql.addListener(function(){onResize();});function checkAsideExpose(){var mq=$attr.exposeAsideWhen=='large'?'(min-width:768px)':$attr.exposeAsideWhen;sideMenuCtrl.exposeAside($window.matchMedia(mq).matches);sideMenuCtrl.activeAsideResizing(false);}function onResize(){sideMenuCtrl.activeAsideResizing(true);debouncedCheck();}var debouncedCheck=ionic.debounce(function(){$scope.$apply(checkAsideExpose);},300,false);$scope.$evalAsync(checkAsideExpose);}};}]);var GESTURE_DIRECTIVES='onHold onTap onDoubleTap onTouch onRelease onDragStart onDrag onDragEnd onDragUp onDragRight onDragDown onDragLeft onSwipe onSwipeUp onSwipeRight onSwipeDown onSwipeLeft'.split(' ');GESTURE_DIRECTIVES.forEach(function(name){IonicModule.directive(name,gestureDirective(name));}); /**
 	 * @ngdoc directive
@@ -24121,7 +24127,7 @@
 	 * ```html
 	 * <button on-swipe-left="onSwipeLeft()" class="button">Test</button>
 	 * ```
-	 */function gestureDirective(directiveName){return ['$ionicGesture','$parse',function($ionicGesture,$parse){var eventType=directiveName.substr(2).toLowerCase();return function(scope,element,attr){var fn=$parse(attr[directiveName]);var listener=function(ev){scope.$apply(function(){fn(scope,{$event:ev});});};var gesture=$ionicGesture.on(eventType,listener,element);scope.$on('$destroy',function(){$ionicGesture.off(gesture,eventType,listener);});};}];}IonicModule //.directive('ionHeaderBar', tapScrollToTopDirective())
+	 */function gestureDirective(directiveName){return ['$ionicGesture','$parse',function($ionicGesture,$parse){var eventType=directiveName.substr(2).toLowerCase();return function(scope,element,attr){var fn=$parse(attr[directiveName]);var listener=function listener(ev){scope.$apply(function(){fn(scope,{$event:ev});});};var gesture=$ionicGesture.on(eventType,listener,element);scope.$on('$destroy',function(){$ionicGesture.off(gesture,eventType,listener);});};}];}IonicModule //.directive('ionHeaderBar', tapScrollToTopDirective())
 	/**
 	 * @ngdoc directive
 	 * @name ionHeaderBar
@@ -24192,8 +24198,8 @@
 	 * </ion-footer-bar>
 	 * ```
 	 */.directive('ionFooterBar',headerFooterBarDirective(false));function tapScrollToTopDirective(){ //eslint-disable-line no-unused-vars
-	return ['$ionicScrollDelegate',function($ionicScrollDelegate){return {restrict:'E',link:function($scope,$element,$attr){if($attr.noTapScroll=='true'){return;}ionic.on('tap',onTap,$element[0]);$scope.$on('$destroy',function(){ionic.off('tap',onTap,$element[0]);});function onTap(e){var depth=3;var current=e.target; //Don't scroll to top in certain cases
-	while(depth--&&current){if(current.classList.contains('button')||current.tagName.match(/input|textarea|select/i)||current.isContentEditable){return;}current=current.parentNode;}var touch=e.gesture&&e.gesture.touches[0]||e.detail.touches[0];var bounds=$element[0].getBoundingClientRect();if(ionic.DomUtil.rectContains(touch.pageX,touch.pageY,bounds.left,bounds.top-20,bounds.left+bounds.width,bounds.top+bounds.height)){$ionicScrollDelegate.scrollTop(true);}}}};}];}function headerFooterBarDirective(isHeader){return ['$document','$timeout',function($document,$timeout){return {restrict:'E',controller:'$ionicHeaderBar',compile:function(tElement){tElement.addClass(isHeader?'bar bar-header':'bar bar-footer'); // top style tabs? if so, remove bottom border for seamless display
+	return ['$ionicScrollDelegate',function($ionicScrollDelegate){return {restrict:'E',link:function link($scope,$element,$attr){if($attr.noTapScroll=='true'){return;}ionic.on('tap',onTap,$element[0]);$scope.$on('$destroy',function(){ionic.off('tap',onTap,$element[0]);});function onTap(e){var depth=3;var current=e.target; //Don't scroll to top in certain cases
+	while(depth--&&current){if(current.classList.contains('button')||current.tagName.match(/input|textarea|select/i)||current.isContentEditable){return;}current=current.parentNode;}var touch=e.gesture&&e.gesture.touches[0]||e.detail.touches[0];var bounds=$element[0].getBoundingClientRect();if(ionic.DomUtil.rectContains(touch.pageX,touch.pageY,bounds.left,bounds.top-20,bounds.left+bounds.width,bounds.top+bounds.height)){$ionicScrollDelegate.scrollTop(true);}}}};}];}function headerFooterBarDirective(isHeader){return ['$document','$timeout',function($document,$timeout){return {restrict:'E',controller:'$ionicHeaderBar',compile:function compile(tElement){tElement.addClass(isHeader?'bar bar-header':'bar bar-footer'); // top style tabs? if so, remove bottom border for seamless display
 	$timeout(function(){if(isHeader&&$document[0].getElementsByClassName('tabs-top').length)tElement.addClass('has-tabs-top');});return {pre:prelink};function prelink($scope,$element,$attr,ctrl){if(isHeader){$scope.$watch(function(){return $element[0].className;},function(value){var isShown=value.indexOf('ng-hide')===-1;var isSubheader=value.indexOf('bar-subheader')!==-1;$scope.$hasHeader=isShown&&!isSubheader;$scope.$hasSubheader=isShown&&isSubheader;$scope.$emit('$ionicSubheader',$scope.$hasSubheader);});$scope.$on('$destroy',function(){delete $scope.$hasHeader;delete $scope.$hasSubheader;});ctrl.align();$scope.$on('$ionicHeader.align',function(){ionic.requestAnimationFrame(function(){ctrl.align();});});}else {$scope.$watch(function(){return $element[0].className;},function(value){var isShown=value.indexOf('ng-hide')===-1;var isSubfooter=value.indexOf('bar-subfooter')!==-1;$scope.$hasFooter=isShown&&!isSubfooter;$scope.$hasSubfooter=isShown&&isSubfooter;});$scope.$on('$destroy',function(){delete $scope.$hasFooter;delete $scope.$hasSubfooter;});$scope.$watch('$hasTabs',function(val){$element.toggleClass('has-tabs',!!val);});ctrl.align();$scope.$on('$ionicFooter.align',function(){ionic.requestAnimationFrame(function(){ctrl.align();});});}}}};}];} /**
 	 * @ngdoc directive
 	 * @name ionInfiniteScroll
@@ -24260,7 +24266,7 @@
 	 *   on-infinite="loadMoreData()">
 	 * </ion-infinite-scroll>
 	 * ```
-	 */IonicModule.directive('ionInfiniteScroll',['$timeout',function($timeout){return {restrict:'E',require:['?^$ionicScroll','ionInfiniteScroll'],template:function($element,$attrs){if($attrs.icon)return '<i class="icon {{icon()}} icon-refreshing {{scrollingType}}"></i>';return '<ion-spinner icon="{{spinner()}}"></ion-spinner>';},scope:true,controller:'$ionInfiniteScroll',link:function($scope,$element,$attrs,ctrls){var infiniteScrollCtrl=ctrls[1];var scrollCtrl=infiniteScrollCtrl.scrollCtrl=ctrls[0];var jsScrolling=infiniteScrollCtrl.jsScrolling=!scrollCtrl.isNative(); // if this view is not beneath a scrollCtrl, it can't be injected, proceed w/ native scrolling
+	 */IonicModule.directive('ionInfiniteScroll',['$timeout',function($timeout){return {restrict:'E',require:['?^$ionicScroll','ionInfiniteScroll'],template:function template($element,$attrs){if($attrs.icon)return '<i class="icon {{icon()}} icon-refreshing {{scrollingType}}"></i>';return '<ion-spinner icon="{{spinner()}}"></ion-spinner>';},scope:true,controller:'$ionInfiniteScroll',link:function link($scope,$element,$attrs,ctrls){var infiniteScrollCtrl=ctrls[1];var scrollCtrl=infiniteScrollCtrl.scrollCtrl=ctrls[0];var jsScrolling=infiniteScrollCtrl.jsScrolling=!scrollCtrl.isNative(); // if this view is not beneath a scrollCtrl, it can't be injected, proceed w/ native scrolling
 	if(jsScrolling){infiniteScrollCtrl.scrollView=scrollCtrl.scrollView;$scope.scrollingType='js-scrolling'; //bind to JS scroll events
 	scrollCtrl.$element.on('scroll',infiniteScrollCtrl.checkBounds);}else { // grabbing the scrollable element, to determine dimensions, and current scroll pos
 	var scrollEl=ionic.DomUtil.getParentOrSelfWithClass($element[0].parentNode,'overflow-scroll');infiniteScrollCtrl.scrollEl=scrollEl; // if there's no scroll controller, and no overflow scroll div, infinite scroll wont work
@@ -24310,9 +24316,9 @@
 	*   </ion-input>
 	* </ion-list>
 	* ```
-	*/IonicModule.directive('ionLabel',[function(){return {restrict:'E',require:'?^ionInput',compile:function(){return function link($scope,$element,$attrs,ionInputCtrl){var element=$element[0];$element.addClass('input-label');$element.attr('aria-label',$element.text());var id=element.id||'_label-'+ ++labelIds;if(!element.id){$element.attr('id',id);}if(ionInputCtrl){ionInputCtrl.setInputAriaLabeledBy(id);$element.on('click',function(){ionInputCtrl.focus();});}};}};}]); /**
+	*/IonicModule.directive('ionLabel',[function(){return {restrict:'E',require:'?^ionInput',compile:function compile(){return function link($scope,$element,$attrs,ionInputCtrl){var element=$element[0];$element.addClass('input-label');$element.attr('aria-label',$element.text());var id=element.id||'_label-'+ ++labelIds;if(!element.id){$element.attr('id',id);}if(ionInputCtrl){ionInputCtrl.setInputAriaLabeledBy(id);$element.on('click',function(){ionInputCtrl.focus();});}};}};}]); /**
 	 * Input label adds accessibility to <span class="input-label">.
-	 */IonicModule.directive('inputLabel',[function(){return {restrict:'C',require:'?^ionInput',compile:function(){return function link($scope,$element,$attrs,ionInputCtrl){var element=$element[0];$element.attr('aria-label',$element.text());var id=element.id||'_label-'+ ++labelIds;if(!element.id){$element.attr('id',id);}if(ionInputCtrl){ionInputCtrl.setInputAriaLabeledBy(id);}};}};}]); /**
+	 */IonicModule.directive('inputLabel',[function(){return {restrict:'C',require:'?^ionInput',compile:function compile(){return function link($scope,$element,$attrs,ionInputCtrl){var element=$element[0];$element.attr('aria-label',$element.text());var id=element.id||'_label-'+ ++labelIds;if(!element.id){$element.attr('id',id);}if(ionInputCtrl){ionInputCtrl.setInputAriaLabeledBy(id);}};}};}]); /**
 	* @ngdoc directive
 	* @name ionItem
 	* @parent ionic.directive:ionList
@@ -24336,7 +24342,7 @@
 	*   </ion-item>
 	* </ion-list>
 	* ```
-	*/IonicModule.directive('ionItem',['$$rAF',function($$rAF){return {restrict:'E',controller:['$scope','$element',function($scope,$element){this.$scope=$scope;this.$element=$element;}],scope:true,compile:function($element,$attrs){var isAnchor=isDefined($attrs.href)||isDefined($attrs.ngHref)||isDefined($attrs.uiSref);var isComplexItem=isAnchor|| //Lame way of testing, but we have to know at compile what to do with the element
+	*/IonicModule.directive('ionItem',['$$rAF',function($$rAF){return {restrict:'E',controller:['$scope','$element',function($scope,$element){this.$scope=$scope;this.$element=$element;}],scope:true,compile:function compile($element,$attrs){var isAnchor=isDefined($attrs.href)||isDefined($attrs.ngHref)||isDefined($attrs.uiSref);var isComplexItem=isAnchor|| //Lame way of testing, but we have to know at compile what to do with the element
 	/ion-(delete|option|reorder)-button/i.test($element.html());if(isComplexItem){var innerElement=jqLite(isAnchor?'<a></a>':'<div></div>');innerElement.addClass('item-content');if(isDefined($attrs.href)||isDefined($attrs.ngHref)){innerElement.attr('ng-href','{{$href()}}');if(isDefined($attrs.target)){innerElement.attr('target','{{$target()}}');}}innerElement.append($element.contents());$element.addClass('item item-complex').append(innerElement);}else {$element.addClass('item');}return function link($scope,$element,$attrs){$scope.$href=function(){return $attrs.href||$attrs.ngHref;};$scope.$target=function(){return $attrs.target;};var content=$element[0].querySelector('.item-content');if(content){$scope.$on('$collectionRepeatLeave',function(){if(content&&content.$$ionicOptionsOpen){content.style[ionic.CSS.TRANSFORM]='';content.style[ionic.CSS.TRANSITION]='none';$$rAF(function(){content.style[ionic.CSS.TRANSITION]='';});content.$$ionicOptionsOpen=false;}});}};}};}]);var ITEM_TPL_DELETE_BUTTON='<div class="item-left-edit item-delete enable-pointer-events">'+'</div>'; /**
 	* @ngdoc directive
 	* @name ionDeleteButton
@@ -24366,10 +24372,10 @@
 	* ```
 	*/IonicModule.directive('ionDeleteButton',function(){function stopPropagation(ev){ev.stopPropagation();}return {restrict:'E',require:['^^ionItem','^?ionList'], //Run before anything else, so we can move it before other directives process
 	//its location (eg ngIf relies on the location of the directive in the dom)
-	priority:Number.MAX_VALUE,compile:function($element,$attr){ //Add the classes we need during the compile phase, so that they stay
+	priority:Number.MAX_VALUE,compile:function compile($element,$attr){ //Add the classes we need during the compile phase, so that they stay
 	//even if something else like ngIf removes the element and re-addss it
 	$attr.$set('class',($attr['class']||'')+' button icon button-icon',true);return function($scope,$element,$attr,ctrls){var itemCtrl=ctrls[0];var listCtrl=ctrls[1];var container=jqLite(ITEM_TPL_DELETE_BUTTON);container.append($element);itemCtrl.$element.append(container).addClass('item-left-editable'); //Don't bubble click up to main .item
-	$element.on('click',stopPropagation);init();$scope.$on('$ionic.reconnectScope',init);function init(){listCtrl=listCtrl||$element.controller('ionList');if(listCtrl&&listCtrl.showDelete()){container.addClass('visible active');}}};}};});IonicModule.directive('itemFloatingLabel',function(){return {restrict:'C',link:function(scope,element){var el=element[0];var input=el.querySelector('input, textarea');var inputLabel=el.querySelector('.input-label');if(!input||!inputLabel)return;var onInput=function(){if(input.value){inputLabel.classList.add('has-input');}else {inputLabel.classList.remove('has-input');}};input.addEventListener('input',onInput);var ngModelCtrl=jqLite(input).controller('ngModel');if(ngModelCtrl){ngModelCtrl.$render=function(){input.value=ngModelCtrl.$viewValue||'';onInput();};}scope.$on('$destroy',function(){input.removeEventListener('input',onInput);});}};});var ITEM_TPL_OPTION_BUTTONS='<div class="item-options invisible">'+'</div>'; /**
+	$element.on('click',stopPropagation);init();$scope.$on('$ionic.reconnectScope',init);function init(){listCtrl=listCtrl||$element.controller('ionList');if(listCtrl&&listCtrl.showDelete()){container.addClass('visible active');}}};}};});IonicModule.directive('itemFloatingLabel',function(){return {restrict:'C',link:function link(scope,element){var el=element[0];var input=el.querySelector('input, textarea');var inputLabel=el.querySelector('.input-label');if(!input||!inputLabel)return;var onInput=function onInput(){if(input.value){inputLabel.classList.add('has-input');}else {inputLabel.classList.remove('has-input');}};input.addEventListener('input',onInput);var ngModelCtrl=jqLite(input).controller('ngModel');if(ngModelCtrl){ngModelCtrl.$render=function(){input.value=ngModelCtrl.$viewValue||'';onInput();};}scope.$on('$destroy',function(){input.removeEventListener('input',onInput);});}};});var ITEM_TPL_OPTION_BUTTONS='<div class="item-options invisible">'+'</div>'; /**
 	* @ngdoc directive
 	* @name ionOptionButton
 	* @parent ionic.directive:ionItem
@@ -24395,7 +24401,7 @@
 	*   </ion-item>
 	* </ion-list>
 	* ```
-	*/IonicModule.directive('ionOptionButton',[function(){function stopPropagation(e){e.stopPropagation();}return {restrict:'E',require:'^ionItem',priority:Number.MAX_VALUE,compile:function($element,$attr){$attr.$set('class',($attr['class']||'')+' button',true);return function($scope,$element,$attr,itemCtrl){if(!itemCtrl.optionsContainer){itemCtrl.optionsContainer=jqLite(ITEM_TPL_OPTION_BUTTONS);itemCtrl.$element.append(itemCtrl.optionsContainer);}itemCtrl.optionsContainer.append($element);itemCtrl.$element.addClass('item-right-editable'); //Don't bubble click up to main .item
+	*/IonicModule.directive('ionOptionButton',[function(){function stopPropagation(e){e.stopPropagation();}return {restrict:'E',require:'^ionItem',priority:Number.MAX_VALUE,compile:function compile($element,$attr){$attr.$set('class',($attr['class']||'')+' button',true);return function($scope,$element,$attr,itemCtrl){if(!itemCtrl.optionsContainer){itemCtrl.optionsContainer=jqLite(ITEM_TPL_OPTION_BUTTONS);itemCtrl.$element.append(itemCtrl.optionsContainer);}itemCtrl.optionsContainer.append($element);itemCtrl.$element.addClass('item-right-editable'); //Don't bubble click up to main .item
 	$element.on('click',stopPropagation);};}};}]);var ITEM_TPL_REORDER_BUTTON='<div data-prevent-scroll="true" class="item-right-edit item-reorder enable-pointer-events">'+'</div>'; /**
 	* @ngdoc directive
 	* @name ionReorderButton
@@ -24439,7 +24445,7 @@
 	*
 	* @param {expression=} on-reorder Expression to call when an item is reordered.
 	* Parameters given: $fromIndex, $toIndex.
-	*/IonicModule.directive('ionReorderButton',['$parse',function($parse){return {restrict:'E',require:['^ionItem','^?ionList'],priority:Number.MAX_VALUE,compile:function($element,$attr){$attr.$set('class',($attr['class']||'')+' button icon button-icon',true);$element[0].setAttribute('data-prevent-scroll',true);return function($scope,$element,$attr,ctrls){var itemCtrl=ctrls[0];var listCtrl=ctrls[1];var onReorderFn=$parse($attr.onReorder);$scope.$onReorder=function(oldIndex,newIndex){onReorderFn($scope,{$fromIndex:oldIndex,$toIndex:newIndex});}; // prevent clicks from bubbling up to the item
+	*/IonicModule.directive('ionReorderButton',['$parse',function($parse){return {restrict:'E',require:['^ionItem','^?ionList'],priority:Number.MAX_VALUE,compile:function compile($element,$attr){$attr.$set('class',($attr['class']||'')+' button icon button-icon',true);$element[0].setAttribute('data-prevent-scroll',true);return function($scope,$element,$attr,ctrls){var itemCtrl=ctrls[0];var listCtrl=ctrls[1];var onReorderFn=$parse($attr.onReorder);$scope.$onReorder=function(oldIndex,newIndex){onReorderFn($scope,{$fromIndex:oldIndex,$toIndex:newIndex});}; // prevent clicks from bubbling up to the item
 	if(!$attr.ngClick&&!$attr.onClick&&!$attr.onclick){$element[0].onclick=function(e){e.stopPropagation();return false;};}var container=jqLite(ITEM_TPL_REORDER_BUTTON);container.append($element);itemCtrl.$element.append(container).addClass('item-right-editable');if(listCtrl&&listCtrl.showReorder()){container.addClass('visible active');}};}};}]); /**
 	 * @ngdoc directive
 	 * @name keyboardAttach
@@ -24552,11 +24558,11 @@
 	* currently shown or hidden.
 	* @param can-swipe {boolean=} Whether the items in the list are allowed to be swiped to reveal
 	* option buttons. Default: true.
-	*/IonicModule.directive('ionList',['$timeout',function($timeout){return {restrict:'E',require:['ionList','^?$ionicScroll'],controller:'$ionicList',compile:function($element,$attr){var listEl=jqLite('<div class="list">').append($element.contents()).addClass($attr.type);$element.append(listEl);return function($scope,$element,$attrs,ctrls){var listCtrl=ctrls[0];var scrollCtrl=ctrls[1]; // Wait for child elements to render...
-	$timeout(init);function init(){var listView=listCtrl.listView=new ionic.views.ListView({el:$element[0],listEl:$element.children()[0],scrollEl:scrollCtrl&&scrollCtrl.element,scrollView:scrollCtrl&&scrollCtrl.scrollView,onReorder:function(el,oldIndex,newIndex){var itemScope=jqLite(el).scope();if(itemScope&&itemScope.$onReorder){ // Make sure onReorder is called in apply cycle,
+	*/IonicModule.directive('ionList',['$timeout',function($timeout){return {restrict:'E',require:['ionList','^?$ionicScroll'],controller:'$ionicList',compile:function compile($element,$attr){var listEl=jqLite('<div class="list">').append($element.contents()).addClass($attr.type);$element.append(listEl);return function($scope,$element,$attrs,ctrls){var listCtrl=ctrls[0];var scrollCtrl=ctrls[1]; // Wait for child elements to render...
+	$timeout(init);function init(){var listView=listCtrl.listView=new ionic.views.ListView({el:$element[0],listEl:$element.children()[0],scrollEl:scrollCtrl&&scrollCtrl.element,scrollView:scrollCtrl&&scrollCtrl.scrollView,onReorder:function onReorder(el,oldIndex,newIndex){var itemScope=jqLite(el).scope();if(itemScope&&itemScope.$onReorder){ // Make sure onReorder is called in apply cycle,
 	// but also make sure it has no conflicts by doing
 	// $evalAsync
-	$timeout(function(){itemScope.$onReorder(oldIndex,newIndex);});}},canSwipe:function(){return listCtrl.canSwipeItems();}});$scope.$on('$destroy',function(){if(listView){listView.deregister&&listView.deregister();listView=null;}});if(isDefined($attr.canSwipe)){$scope.$watch('!!('+$attr.canSwipe+')',function(value){listCtrl.canSwipeItems(value);});}if(isDefined($attr.showDelete)){$scope.$watch('!!('+$attr.showDelete+')',function(value){listCtrl.showDelete(value);});}if(isDefined($attr.showReorder)){$scope.$watch('!!('+$attr.showReorder+')',function(value){listCtrl.showReorder(value);});}$scope.$watch(function(){return listCtrl.showDelete();},function(isShown,wasShown){ //Only use isShown=false if it was already shown
+	$timeout(function(){itemScope.$onReorder(oldIndex,newIndex);});}},canSwipe:function canSwipe(){return listCtrl.canSwipeItems();}});$scope.$on('$destroy',function(){if(listView){listView.deregister&&listView.deregister();listView=null;}});if(isDefined($attr.canSwipe)){$scope.$watch('!!('+$attr.canSwipe+')',function(value){listCtrl.canSwipeItems(value);});}if(isDefined($attr.showDelete)){$scope.$watch('!!('+$attr.showDelete+')',function(value){listCtrl.showDelete(value);});}if(isDefined($attr.showReorder)){$scope.$watch('!!('+$attr.showReorder+')',function(value){listCtrl.showReorder(value);});}$scope.$watch(function(){return listCtrl.showDelete();},function(isShown,wasShown){ //Only use isShown=false if it was already shown
 	if(!isShown&&!wasShown){return;}if(isShown)listCtrl.closeOptionButtons();listCtrl.canSwipeItems(!isShown);$element.children().toggleClass('list-left-editing',isShown);$element.toggleClass('disable-pointer-events',isShown);var deleteButton=jqLite($element[0].getElementsByClassName('item-delete'));setButtonShown(deleteButton,listCtrl.showDelete);});$scope.$watch(function(){return listCtrl.showReorder();},function(isShown,wasShown){ //Only use isShown=false if it was already shown
 	if(!isShown&&!wasShown){return;}if(isShown)listCtrl.closeOptionButtons();listCtrl.canSwipeItems(!isShown);$element.children().toggleClass('list-right-editing',isShown);$element.toggleClass('disable-pointer-events',isShown);var reorderButton=jqLite($element[0].getElementsByClassName('item-reorder'));setButtonShown(reorderButton,listCtrl.showReorder);});function setButtonShown(el,shown){shown()&&el.addClass('visible')||el.removeClass('active');ionic.requestAnimationFrame(function(){shown()&&el.addClass('active')||el.removeClass('visible');});}}};}};}]); /**
 	 * @ngdoc directive
@@ -24593,7 +24599,7 @@
 	 *  expire: 300
 	 * });
 	 * ```
-	 */IonicModule.directive('menuClose',['$ionicHistory','$timeout',function($ionicHistory,$timeout){return {restrict:'AC',link:function($scope,$element){$element.bind('click',function(){var sideMenuCtrl=$element.inheritedData('$ionSideMenusController');if(sideMenuCtrl){$ionicHistory.nextViewOptions({historyRoot:true,disableAnimate:true,expire:300}); // if no transition in 300ms, reset nextViewOptions
+	 */IonicModule.directive('menuClose',['$ionicHistory','$timeout',function($ionicHistory,$timeout){return {restrict:'AC',link:function link($scope,$element){$element.bind('click',function(){var sideMenuCtrl=$element.inheritedData('$ionSideMenusController');if(sideMenuCtrl){$ionicHistory.nextViewOptions({historyRoot:true,disableAnimate:true,expire:300}); // if no transition in 300ms, reset nextViewOptions
 	// the expire should take care of it, but will be cancelled in some
 	// cases. This directive is an exception to the rules of history.js
 	$timeout(function(){$ionicHistory.nextViewOptions({historyRoot:false,disableAnimate:false});},300);sideMenuCtrl.close();}});}};}]); /**
@@ -24632,10 +24638,10 @@
 	 * ```html
 	 * <ion-side-menus enable-menu-with-back-views="true">
 	 * ```
-	 */IonicModule.directive('menuToggle',function(){return {restrict:'AC',link:function($scope,$element,$attr){$scope.$on('$ionicView.beforeEnter',function(ev,viewData){if(viewData.enableBack){var sideMenuCtrl=$element.inheritedData('$ionSideMenusController');if(!sideMenuCtrl.enableMenuWithBackViews()){$element.addClass('hide');}}else {$element.removeClass('hide');}});$element.bind('click',function(){var sideMenuCtrl=$element.inheritedData('$ionSideMenusController');sideMenuCtrl&&sideMenuCtrl.toggle($attr.menuToggle);});}};}); /*
+	 */IonicModule.directive('menuToggle',function(){return {restrict:'AC',link:function link($scope,$element,$attr){$scope.$on('$ionicView.beforeEnter',function(ev,viewData){if(viewData.enableBack){var sideMenuCtrl=$element.inheritedData('$ionSideMenusController');if(!sideMenuCtrl.enableMenuWithBackViews()){$element.addClass('hide');}}else {$element.removeClass('hide');}});$element.bind('click',function(){var sideMenuCtrl=$element.inheritedData('$ionSideMenusController');sideMenuCtrl&&sideMenuCtrl.toggle($attr.menuToggle);});}};}); /*
 	 * We don't document the ionModal directive, we instead document
 	 * the $ionicModal service
-	 */IonicModule.directive('ionModal',[function(){return {restrict:'E',transclude:true,replace:true,controller:[function(){}],template:'<div class="modal-backdrop">'+'<div class="modal-backdrop-bg"></div>'+'<div class="modal-wrapper" ng-transclude></div>'+'</div>'};}]);IonicModule.directive('ionModalView',function(){return {restrict:'E',compile:function(element){element.addClass('modal');}};}); /**
+	 */IonicModule.directive('ionModal',[function(){return {restrict:'E',transclude:true,replace:true,controller:[function(){}],template:'<div class="modal-backdrop">'+'<div class="modal-backdrop-bg"></div>'+'<div class="modal-wrapper" ng-transclude></div>'+'</div>'};}]);IonicModule.directive('ionModalView',function(){return {restrict:'E',compile:function compile(element){element.addClass('modal');}};}); /**
 	 * @ngdoc directive
 	 * @name ionNavBackButton
 	 * @module ionic
@@ -24690,8 +24696,8 @@
 	 *   };
 	 * }
 	 * ```
-	 */IonicModule.directive('ionNavBackButton',['$ionicConfig','$document',function($ionicConfig,$document){return {restrict:'E',require:'^ionNavBar',compile:function(tElement,tAttrs){ // clone the back button, but as a <div>
-	var buttonEle=$document[0].createElement('button');for(var n in tAttrs.$attr){buttonEle.setAttribute(tAttrs.$attr[n],tAttrs[n]);}if(!tAttrs.ngClick){buttonEle.setAttribute('ng-click','$ionicGoBack()');}buttonEle.className='button back-button hide buttons '+(tElement.attr('class')||'');buttonEle.innerHTML=tElement.html()||'';var childNode;var hasIcon=hasIconClass(tElement[0]);var hasInnerText;var hasButtonText;var hasPreviousTitle;for(var x=0;x<tElement[0].childNodes.length;x++){childNode=tElement[0].childNodes[x];if(childNode.nodeType===1){if(hasIconClass(childNode)){hasIcon=true;}else if(childNode.classList.contains('default-title')){hasButtonText=true;}else if(childNode.classList.contains('previous-title')){hasPreviousTitle=true;}}else if(!hasInnerText&&childNode.nodeType===3){hasInnerText=!!childNode.nodeValue.trim();}}function hasIconClass(ele){return (/ion-|icon/.test(ele.className));}var defaultIcon=$ionicConfig.backButton.icon();if(!hasIcon&&defaultIcon&&defaultIcon!=='none'){buttonEle.innerHTML='<i class="icon '+defaultIcon+'"></i> '+buttonEle.innerHTML;buttonEle.className+=' button-clear';}if(!hasInnerText){var buttonTextEle=$document[0].createElement('span');buttonTextEle.className='back-text';if(!hasButtonText&&$ionicConfig.backButton.text()){buttonTextEle.innerHTML+='<span class="default-title">'+$ionicConfig.backButton.text()+'</span>';}if(!hasPreviousTitle&&$ionicConfig.backButton.previousTitleText()){buttonTextEle.innerHTML+='<span class="previous-title"></span>';}buttonEle.appendChild(buttonTextEle);}tElement.attr('class','hide');tElement.empty();return {pre:function($scope,$element,$attr,navBarCtrl){ // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+	 */IonicModule.directive('ionNavBackButton',['$ionicConfig','$document',function($ionicConfig,$document){return {restrict:'E',require:'^ionNavBar',compile:function compile(tElement,tAttrs){ // clone the back button, but as a <div>
+	var buttonEle=$document[0].createElement('button');for(var n in tAttrs.$attr){buttonEle.setAttribute(tAttrs.$attr[n],tAttrs[n]);}if(!tAttrs.ngClick){buttonEle.setAttribute('ng-click','$ionicGoBack()');}buttonEle.className='button back-button hide buttons '+(tElement.attr('class')||'');buttonEle.innerHTML=tElement.html()||'';var childNode;var hasIcon=hasIconClass(tElement[0]);var hasInnerText;var hasButtonText;var hasPreviousTitle;for(var x=0;x<tElement[0].childNodes.length;x++){childNode=tElement[0].childNodes[x];if(childNode.nodeType===1){if(hasIconClass(childNode)){hasIcon=true;}else if(childNode.classList.contains('default-title')){hasButtonText=true;}else if(childNode.classList.contains('previous-title')){hasPreviousTitle=true;}}else if(!hasInnerText&&childNode.nodeType===3){hasInnerText=!!childNode.nodeValue.trim();}}function hasIconClass(ele){return (/ion-|icon/.test(ele.className));}var defaultIcon=$ionicConfig.backButton.icon();if(!hasIcon&&defaultIcon&&defaultIcon!=='none'){buttonEle.innerHTML='<i class="icon '+defaultIcon+'"></i> '+buttonEle.innerHTML;buttonEle.className+=' button-clear';}if(!hasInnerText){var buttonTextEle=$document[0].createElement('span');buttonTextEle.className='back-text';if(!hasButtonText&&$ionicConfig.backButton.text()){buttonTextEle.innerHTML+='<span class="default-title">'+$ionicConfig.backButton.text()+'</span>';}if(!hasPreviousTitle&&$ionicConfig.backButton.previousTitleText()){buttonTextEle.innerHTML+='<span class="previous-title"></span>';}buttonEle.appendChild(buttonTextEle);}tElement.attr('class','hide');tElement.empty();return {pre:function pre($scope,$element,$attr,navBarCtrl){ // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
 	navBarCtrl.navElement('backButton',buttonEle.outerHTML);buttonEle=null;}};}};}]); /**
 	 * @ngdoc directive
 	 * @name ionNavBar
@@ -24736,7 +24742,7 @@
 	 * to the top when tapped.  Set no-tap-scroll to true to disable this behavior.
 	 *
 	 * </table><br/>
-	 */IonicModule.directive('ionNavBar',function(){return {restrict:'E',controller:'$ionicNavBar',scope:true,link:function($scope,$element,$attr,ctrl){ctrl.init();}};}); /**
+	 */IonicModule.directive('ionNavBar',function(){return {restrict:'E',controller:'$ionicNavBar',scope:true,link:function link($scope,$element,$attr,ctrl){ctrl.init();}};}); /**
 	 * @ngdoc directive
 	 * @name ionNavButtons
 	 * @module ionic
@@ -24786,7 +24792,7 @@
 	 *
 	 * @param {string} side The side to place the buttons in the
 	 * {@link ionic.directive:ionNavBar}. Available sides: `primary`, `secondary`, `left`, and `right`.
-	 */IonicModule.directive('ionNavButtons',['$document',function($document){return {require:'^ionNavBar',restrict:'E',compile:function(tElement,tAttrs){var side='left';if(/^primary|secondary|right$/i.test(tAttrs.side||'')){side=tAttrs.side.toLowerCase();}var spanEle=$document[0].createElement('span');spanEle.className=side+'-buttons';spanEle.innerHTML=tElement.html();var navElementType=side+'Buttons';tElement.attr('class','hide');tElement.empty();return {pre:function($scope,$element,$attrs,navBarCtrl){ // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+	 */IonicModule.directive('ionNavButtons',['$document',function($document){return {require:'^ionNavBar',restrict:'E',compile:function compile(tElement,tAttrs){var side='left';if(/^primary|secondary|right$/i.test(tAttrs.side||'')){side=tAttrs.side.toLowerCase();}var spanEle=$document[0].createElement('span');spanEle.className=side+'-buttons';spanEle.innerHTML=tElement.html();var navElementType=side+'Buttons';tElement.attr('class','hide');tElement.empty();return {pre:function pre($scope,$element,$attrs,navBarCtrl){ // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
 	var parentViewCtrl=$element.parent().data('$ionViewController');if(parentViewCtrl){ // if the parent is an ion-view, then these are ion-nav-buttons for JUST this ion-view
 	parentViewCtrl.navElement(navElementType,spanEle.outerHTML);}else { // these are buttons for all views that do not have their own ion-nav-buttons
 	navBarCtrl.navElement(navElementType,spanEle.outerHTML);}spanEle=null;}};}};}]); /**
@@ -24804,7 +24810,7 @@
 	 * ```html
 	 * <a nav-direction="forward" href="#/home">Home</a>
 	 * ```
-	 */IonicModule.directive('navDirection',['$ionicViewSwitcher',function($ionicViewSwitcher){return {restrict:'A',priority:1000,link:function($scope,$element,$attr){$element.bind('click',function(){$ionicViewSwitcher.nextDirection($attr.navDirection);});}};}]); /**
+	 */IonicModule.directive('navDirection',['$ionicViewSwitcher',function($ionicViewSwitcher){return {restrict:'A',priority:1000,link:function link($scope,$element,$attr){$element.bind('click',function(){$ionicViewSwitcher.nextDirection($attr.navDirection);});}};}]); /**
 	 * @ngdoc directive
 	 * @name ionNavTitle
 	 * @module ionic
@@ -24838,7 +24844,7 @@
 	 * </ion-nav-view>
 	 * ```
 	 *
-	 */IonicModule.directive('ionNavTitle',['$document',function($document){return {require:'^ionNavBar',restrict:'E',compile:function(tElement,tAttrs){var navElementType='title';var spanEle=$document[0].createElement('span');for(var n in tAttrs.$attr){spanEle.setAttribute(tAttrs.$attr[n],tAttrs[n]);}spanEle.classList.add('nav-bar-title');spanEle.innerHTML=tElement.html();tElement.attr('class','hide');tElement.empty();return {pre:function($scope,$element,$attrs,navBarCtrl){ // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+	 */IonicModule.directive('ionNavTitle',['$document',function($document){return {require:'^ionNavBar',restrict:'E',compile:function compile(tElement,tAttrs){var navElementType='title';var spanEle=$document[0].createElement('span');for(var n in tAttrs.$attr){spanEle.setAttribute(tAttrs.$attr[n],tAttrs[n]);}spanEle.classList.add('nav-bar-title');spanEle.innerHTML=tElement.html();tElement.attr('class','hide');tElement.empty();return {pre:function pre($scope,$element,$attrs,navBarCtrl){ // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
 	var parentViewCtrl=$element.parent().data('$ionViewController');if(parentViewCtrl){ // if the parent is an ion-view, then these are ion-nav-buttons for JUST this ion-view
 	parentViewCtrl.navElement(navElementType,spanEle.outerHTML);}else { // these are buttons for all views that do not have their own ion-nav-buttons
 	navBarCtrl.navElement(navElementType,spanEle.outerHTML);}spanEle=null;}};}};}]); /**
@@ -24856,7 +24862,7 @@
 	 * ```html
 	 * <a nav-transition="none" href="#/home">Home</a>
 	 * ```
-	 */IonicModule.directive('navTransition',['$ionicViewSwitcher',function($ionicViewSwitcher){return {restrict:'A',priority:1000,link:function($scope,$element,$attr){$element.bind('click',function(){$ionicViewSwitcher.nextTransition($attr.navTransition);});}};}]); /**
+	 */IonicModule.directive('navTransition',['$ionicViewSwitcher',function($ionicViewSwitcher){return {restrict:'A',priority:1000,link:function link($scope,$element,$attr){$element.bind('click',function(){$ionicViewSwitcher.nextTransition($attr.navTransition);});}};}]); /**
 	 * @ngdoc directive
 	 * @name ionNavView
 	 * @module ionic
@@ -24998,7 +25004,7 @@
 	 * [ui-view documentation](http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.directive:ui-view).
 	 */IonicModule.directive('ionNavView',['$state','$ionicConfig',function($state,$ionicConfig){ // IONIC's fork of Angular UI Router, v0.2.10
 	// the navView handles registering views in the history and how to transition between them
-	return {restrict:'E',terminal:true,priority:2000,transclude:true,controller:'$ionicNavView',compile:function(tElement,tAttrs,transclude){ // a nav view element is a container for numerous views
+	return {restrict:'E',terminal:true,priority:2000,transclude:true,controller:'$ionicNavView',compile:function compile(tElement,tAttrs,transclude){ // a nav view element is a container for numerous views
 	tElement.addClass('view-container');ionic.DomUtil.cachedAttr(tElement,'nav-view-transition',$ionicConfig.views.transition());return function($scope,$element,$attr,navViewCtrl){var latestLocals; // Put in the compiled initial view
 	transclude($scope,function(clone){$element.append(clone);});var viewData=navViewCtrl.init(); // listen for $stateChangeSuccess
 	$scope.$on('$stateChangeSuccess',function(){updateView(false);});$scope.$on('$viewContentLoading',function(){updateView(false);}); // initial load, ready go
@@ -25012,17 +25018,17 @@
 	 * @private
 	 */.factory('$ionicNgClick',['$parse',function($parse){return function(scope,element,clickExpr){var clickHandler=angular.isFunction(clickExpr)?clickExpr:$parse(clickExpr);element.on('click',function(event){scope.$apply(function(){clickHandler(scope,{$event:event});});}); // Hack for iOS Safari's benefit. It goes searching for onclick handlers and is liable to click
 	// something else nearby.
-	element.onclick=noop;};}]).directive('ngClick',['$ionicNgClick',function($ionicNgClick){return function(scope,element,attr){$ionicNgClick(scope,element,attr.ngClick);};}]).directive('ionStopEvent',function(){return {restrict:'A',link:function(scope,element,attr){element.bind(attr.ionStopEvent,eventStopPropagation);}};});function eventStopPropagation(e){e.stopPropagation();} /**
+	element.onclick=noop;};}]).directive('ngClick',['$ionicNgClick',function($ionicNgClick){return function(scope,element,attr){$ionicNgClick(scope,element,attr.ngClick);};}]).directive('ionStopEvent',function(){return {restrict:'A',link:function link(scope,element,attr){element.bind(attr.ionStopEvent,eventStopPropagation);}};});function eventStopPropagation(e){e.stopPropagation();} /**
 	 * @ngdoc directive
 	 * @name ionPane
 	 * @module ionic
 	 * @restrict E
 	 *
 	 * @description A simple container that fits content, with no side effects.  Adds the 'pane' class to the element.
-	 */IonicModule.directive('ionPane',function(){return {restrict:'E',link:function(scope,element){element.addClass('pane');}};}); /*
+	 */IonicModule.directive('ionPane',function(){return {restrict:'E',link:function link(scope,element){element.addClass('pane');}};}); /*
 	 * We don't document the ionPopover directive, we instead document
 	 * the $ionicPopover service
-	 */IonicModule.directive('ionPopover',[function(){return {restrict:'E',transclude:true,replace:true,controller:[function(){}],template:'<div class="popover-backdrop">'+'<div class="popover-wrapper" ng-transclude></div>'+'</div>'};}]);IonicModule.directive('ionPopoverView',function(){return {restrict:'E',compile:function(element){element.append(jqLite('<div class="popover-arrow">'));element.addClass('popover');}};}); /**
+	 */IonicModule.directive('ionPopover',[function(){return {restrict:'E',transclude:true,replace:true,controller:[function(){}],template:'<div class="popover-backdrop">'+'<div class="popover-wrapper" ng-transclude></div>'+'</div>'};}]);IonicModule.directive('ionPopoverView',function(){return {restrict:'E',compile:function compile(element){element.append(jqLite('<div class="popover-arrow">'));element.addClass('popover');}};}); /**
 	 * @ngdoc directive
 	 * @name ionRadio
 	 * @module ionic
@@ -25048,7 +25054,7 @@
 	 * @param {expression=} ng-model The angular model for the radio input.
 	 * @param {boolean=} ng-disabled Angular equivalent of the disabled attribute.
 	 * @param {expression=} ng-change Triggers given expression when radio input's model changes
-	 */IonicModule.directive('ionRadio',function(){return {restrict:'E',replace:true,require:'?ngModel',transclude:true,template:'<label class="item item-radio">'+'<input type="radio" name="radio-group">'+'<div class="radio-content">'+'<div class="item-content disable-pointer-events" ng-transclude></div>'+'<i class="radio-icon disable-pointer-events icon ion-checkmark"></i>'+'</div>'+'</label>',compile:function(element,attr){if(attr.icon){var iconElm=element.find('i');iconElm.removeClass('ion-checkmark').addClass(attr.icon);}var input=element.find('input');forEach({'name':attr.name,'value':attr.value,'disabled':attr.disabled,'ng-value':attr.ngValue,'ng-model':attr.ngModel,'ng-disabled':attr.ngDisabled,'ng-change':attr.ngChange,'ng-required':attr.ngRequired,'required':attr.required},function(value,name){if(isDefined(value)){input.attr(name,value);}});return function(scope,element,attr){scope.getValue=function(){return scope.ngValue||attr.value;};};}};}); /**
+	 */IonicModule.directive('ionRadio',function(){return {restrict:'E',replace:true,require:'?ngModel',transclude:true,template:'<label class="item item-radio">'+'<input type="radio" name="radio-group">'+'<div class="radio-content">'+'<div class="item-content disable-pointer-events" ng-transclude></div>'+'<i class="radio-icon disable-pointer-events icon ion-checkmark"></i>'+'</div>'+'</label>',compile:function compile(element,attr){if(attr.icon){var iconElm=element.find('i');iconElm.removeClass('ion-checkmark').addClass(attr.icon);}var input=element.find('input');forEach({'name':attr.name,'value':attr.value,'disabled':attr.disabled,'ng-value':attr.ngValue,'ng-model':attr.ngModel,'ng-disabled':attr.ngDisabled,'ng-change':attr.ngChange,'ng-required':attr.ngRequired,'required':attr.required},function(value,name){if(isDefined(value)){input.attr(name,value);}});return function(scope,element,attr){scope.getValue=function(){return scope.ngValue||attr.value;};};}};}); /**
 	 * @ngdoc directive
 	 * @name ionRefresher
 	 * @module ionic
@@ -25109,7 +25115,7 @@
 	 * @param {boolean=} disable-pulling-rotation Disables the rotation animation of the pulling
 	 * icon when it reaches its activated threshold. To be used with a custom `pulling-icon`.
 	 *
-	 */IonicModule.directive('ionRefresher',[function(){return {restrict:'E',replace:true,require:['?^$ionicScroll','ionRefresher'],controller:'$ionicRefresher',template:'<div class="scroll-refresher invisible" collection-repeat-ignore>'+'<div class="ionic-refresher-content" '+'ng-class="{\'ionic-refresher-with-text\': pullingText || refreshingText}">'+'<div class="icon-pulling" ng-class="{\'pulling-rotation-disabled\':disablePullingRotation}">'+'<i class="icon {{pullingIcon}}"></i>'+'</div>'+'<div class="text-pulling" ng-bind-html="pullingText"></div>'+'<div class="icon-refreshing">'+'<ion-spinner ng-if="showSpinner" icon="{{spinner}}"></ion-spinner>'+'<i ng-if="showIcon" class="icon {{refreshingIcon}}"></i>'+'</div>'+'<div class="text-refreshing" ng-bind-html="refreshingText"></div>'+'</div>'+'</div>',link:function($scope,$element,$attrs,ctrls){ // JS Scrolling uses the scroll controller
+	 */IonicModule.directive('ionRefresher',[function(){return {restrict:'E',replace:true,require:['?^$ionicScroll','ionRefresher'],controller:'$ionicRefresher',template:'<div class="scroll-refresher invisible" collection-repeat-ignore>'+'<div class="ionic-refresher-content" '+'ng-class="{\'ionic-refresher-with-text\': pullingText || refreshingText}">'+'<div class="icon-pulling" ng-class="{\'pulling-rotation-disabled\':disablePullingRotation}">'+'<i class="icon {{pullingIcon}}"></i>'+'</div>'+'<div class="text-pulling" ng-bind-html="pullingText"></div>'+'<div class="icon-refreshing">'+'<ion-spinner ng-if="showSpinner" icon="{{spinner}}"></ion-spinner>'+'<i ng-if="showIcon" class="icon {{refreshingIcon}}"></i>'+'</div>'+'<div class="text-refreshing" ng-bind-html="refreshingText"></div>'+'</div>'+'</div>',link:function link($scope,$element,$attrs,ctrls){ // JS Scrolling uses the scroll controller
 	var scrollCtrl=ctrls[0],refresherCtrl=ctrls[1];if(!scrollCtrl||scrollCtrl.isNative()){ // Kick off native scrolling
 	refresherCtrl.init();}else {$element[0].classList.add('js-scrolling');scrollCtrl._setRefresher($scope,$element[0],refresherCtrl.getRefresherDomMethods());$scope.$on('scroll.refreshComplete',function(){$scope.$evalAsync(function(){scrollCtrl.scrollView.finishPullToRefresh();});});}}};}]); /**
 	 * @ngdoc directive
@@ -25151,7 +25157,7 @@
 	 * @param {integer=} max-zoom The largest zoom amount allowed (default is 3)
 	 * @param {boolean=} has-bouncing Whether to allow scrolling to bounce past the edges
 	 * of the content.  Defaults to true on iOS, false on Android.
-	 */IonicModule.directive('ionScroll',['$timeout','$controller','$ionicBind','$ionicConfig',function($timeout,$controller,$ionicBind,$ionicConfig){return {restrict:'E',scope:true,controller:function(){},compile:function(element,attr){element.addClass('scroll-view ionic-scroll'); //We cannot transclude here because it breaks element.data() inheritance on compile
+	 */IonicModule.directive('ionScroll',['$timeout','$controller','$ionicBind','$ionicConfig',function($timeout,$controller,$ionicBind,$ionicConfig){return {restrict:'E',scope:true,controller:function controller(){},compile:function compile(element,attr){element.addClass('scroll-view ionic-scroll'); //We cannot transclude here because it breaks element.data() inheritance on compile
 	var innerElement=jqLite('<div class="scroll"></div>');innerElement.append(element.contents());element.append(innerElement);var nativeScrolling=attr.overflowScroll!=="false"&&(attr.overflowScroll==="true"||!$ionicConfig.scrolling.jsScrolling());return {pre:prelink};function prelink($scope,$element,$attr){$ionicBind($scope,$attr,{direction:'@',paging:'@',$onScroll:'&onScroll',scroll:'@',scrollbarX:'@',scrollbarY:'@',zooming:'@',minZoom:'@',maxZoom:'@'});$scope.direction=$scope.direction||'y';if(isDefined($attr.padding)){$scope.$watch($attr.padding,function(newVal){innerElement.toggleClass('padding',!!newVal);});}if($scope.$eval($scope.paging)===true){innerElement.addClass('scroll-paging');}if(!$scope.direction){$scope.direction='y';}var isPaging=$scope.$eval($scope.paging)===true;if(nativeScrolling){$element.addClass('overflow-scroll');}$element.addClass('scroll-'+$scope.direction);var scrollViewOptions={el:$element[0],delegateHandle:$attr.delegateHandle,locking:($attr.locking||'true')==='true',bouncing:$scope.$eval($attr.hasBouncing),paging:isPaging,scrollbarX:$scope.$eval($scope.scrollbarX)!==false,scrollbarY:$scope.$eval($scope.scrollbarY)!==false,scrollingX:$scope.direction.indexOf('x')>=0,scrollingY:$scope.direction.indexOf('y')>=0,zooming:$scope.$eval($scope.zooming)===true,maxZoom:$scope.$eval($scope.maxZoom)||3,minZoom:$scope.$eval($scope.minZoom)||0.5,preventDefault:true,nativeScrolling:nativeScrolling};if(isPaging){scrollViewOptions.speedMultiplier=0.8;scrollViewOptions.bouncing=false;}$controller('$ionicScroll',{$scope:$scope,scrollViewOptions:scrollViewOptions});}}};}]); /**
 	 * @ngdoc directive
 	 * @name ionSideMenu
@@ -25176,7 +25182,7 @@
 	 * @param {string} side Which side the side menu is currently on.  Allowed values: 'left' or 'right'.
 	 * @param {boolean=} is-enabled Whether this side menu is enabled.
 	 * @param {number=} width How many pixels wide the side menu should be.  Defaults to 275.
-	 */IonicModule.directive('ionSideMenu',function(){return {restrict:'E',require:'^ionSideMenus',scope:true,compile:function(element,attr){angular.isUndefined(attr.isEnabled)&&attr.$set('isEnabled','true');angular.isUndefined(attr.width)&&attr.$set('width','275');element.addClass('menu menu-'+attr.side);return function($scope,$element,$attr,sideMenuCtrl){$scope.side=$attr.side||'left';var sideMenu=sideMenuCtrl[$scope.side]=new ionic.views.SideMenu({width:attr.width,el:$element[0],isEnabled:true});$scope.$watch($attr.width,function(val){var numberVal=+val;if(numberVal&&numberVal==val){sideMenu.setWidth(+val);}});$scope.$watch($attr.isEnabled,function(val){sideMenu.setIsEnabled(!!val);});};}};}); /**
+	 */IonicModule.directive('ionSideMenu',function(){return {restrict:'E',require:'^ionSideMenus',scope:true,compile:function compile(element,attr){angular.isUndefined(attr.isEnabled)&&attr.$set('isEnabled','true');angular.isUndefined(attr.width)&&attr.$set('width','275');element.addClass('menu menu-'+attr.side);return function($scope,$element,$attr,sideMenuCtrl){$scope.side=$attr.side||'left';var sideMenu=sideMenuCtrl[$scope.side]=new ionic.views.SideMenu({width:attr.width,el:$element[0],isEnabled:true});$scope.$watch($attr.width,function(val){var numberVal=+val;if(numberVal&&numberVal==val){sideMenu.setWidth(+val);}});$scope.$watch($attr.isEnabled,function(val){sideMenu.setIsEnabled(!!val);});};}};}); /**
 	 * @ngdoc directive
 	 * @name ionSideMenuContent
 	 * @module ionic
@@ -25204,7 +25210,7 @@
 	   *  - If false or 0 is given, the edge drag threshold is disabled, and dragging from anywhere on the content is allowed.
 	 *
 	 */IonicModule.directive('ionSideMenuContent',['$timeout','$ionicGesture','$window',function($timeout,$ionicGesture,$window){return {restrict:'EA', //DEPRECATED 'A'
-	require:'^ionSideMenus',scope:true,compile:function(element,attr){element.addClass('menu-content pane');return {pre:prelink};function prelink($scope,$element,$attr,sideMenuCtrl){var startCoord=null;var primaryScrollAxis=null;if(isDefined(attr.dragContent)){$scope.$watch(attr.dragContent,function(value){sideMenuCtrl.canDragContent(value);});}else {sideMenuCtrl.canDragContent(true);}if(isDefined(attr.edgeDragThreshold)){$scope.$watch(attr.edgeDragThreshold,function(value){sideMenuCtrl.edgeDragThreshold(value);});} // Listen for taps on the content to close the menu
+	require:'^ionSideMenus',scope:true,compile:function compile(element,attr){element.addClass('menu-content pane');return {pre:prelink};function prelink($scope,$element,$attr,sideMenuCtrl){var startCoord=null;var primaryScrollAxis=null;if(isDefined(attr.dragContent)){$scope.$watch(attr.dragContent,function(value){sideMenuCtrl.canDragContent(value);});}else {sideMenuCtrl.canDragContent(true);}if(isDefined(attr.edgeDragThreshold)){$scope.$watch(attr.edgeDragThreshold,function(value){sideMenuCtrl.edgeDragThreshold(value);});} // Listen for taps on the content to close the menu
 	function onContentTap(gestureEvt){if(sideMenuCtrl.getOpenAmount()!==0){sideMenuCtrl.close();gestureEvt.gesture.srcEvent.preventDefault();startCoord=null;primaryScrollAxis=null;}else if(!startCoord){startCoord=ionic.tap.pointerCoord(gestureEvt.gesture.srcEvent);}}function onDragX(e){if(!sideMenuCtrl.isDraggableTarget(e))return;if(getPrimaryScrollAxis(e)=='x'){sideMenuCtrl._handleDrag(e);e.gesture.srcEvent.preventDefault();}}function onDragY(e){if(getPrimaryScrollAxis(e)=='x'){e.gesture.srcEvent.preventDefault();}}function onDragRelease(e){sideMenuCtrl._endDrag(e);startCoord=null;primaryScrollAxis=null;}function getPrimaryScrollAxis(gestureEvt){ // gets whether the user is primarily scrolling on the X or Y
 	// If a majority of the drag has been on the Y since the start of
 	// the drag, but the X has moved a little bit, it's still a Y drag
@@ -25213,11 +25219,11 @@
 	startCoord=ionic.tap.pointerCoord(gestureEvt.gesture.srcEvent);}else { // we already have a starting point, figure out which direction they're going
 	var endCoord=ionic.tap.pointerCoord(gestureEvt.gesture.srcEvent);var xDistance=Math.abs(endCoord.x-startCoord.x);var yDistance=Math.abs(endCoord.y-startCoord.y);var scrollAxis=xDistance<yDistance?'y':'x';if(Math.max(xDistance,yDistance)>30){ // ok, we pretty much know which way they're going
 	// let's lock it in
-	primaryScrollAxis=scrollAxis;}return scrollAxis;}}return 'y';}var content={element:element[0],onDrag:function(){},endDrag:function(){},setCanScroll:function(canScroll){var c=$element[0].querySelector('.scroll');if(!c){return;}var content=angular.element(c.parentElement);if(!content){return;} // freeze our scroll container if we have one
-	var scrollScope=content.scope();scrollScope.scrollCtrl&&scrollScope.scrollCtrl.freezeScrollShut(!canScroll);},getTranslateX:function(){return $scope.sideMenuContentTranslateX||0;},setTranslateX:ionic.animationFrameThrottle(function(amount){var xTransform=content.offsetX+amount;$element[0].style[ionic.CSS.TRANSFORM]='translate3d('+xTransform+'px,0,0)';$timeout(function(){$scope.sideMenuContentTranslateX=amount;});}),setMarginLeft:ionic.animationFrameThrottle(function(amount){if(amount){amount=parseInt(amount,10);$element[0].style[ionic.CSS.TRANSFORM]='translate3d('+amount+'px,0,0)';$element[0].style.width=$window.innerWidth-amount+'px';content.offsetX=amount;}else {$element[0].style[ionic.CSS.TRANSFORM]='translate3d(0,0,0)';$element[0].style.width='';content.offsetX=0;}}),setMarginRight:ionic.animationFrameThrottle(function(amount){if(amount){amount=parseInt(amount,10);$element[0].style.width=$window.innerWidth-amount+'px';content.offsetX=amount;}else {$element[0].style.width='';content.offsetX=0;} // reset incase left gets grabby
+	primaryScrollAxis=scrollAxis;}return scrollAxis;}}return 'y';}var content={element:element[0],onDrag:function onDrag(){},endDrag:function endDrag(){},setCanScroll:function setCanScroll(canScroll){var c=$element[0].querySelector('.scroll');if(!c){return;}var content=angular.element(c.parentElement);if(!content){return;} // freeze our scroll container if we have one
+	var scrollScope=content.scope();scrollScope.scrollCtrl&&scrollScope.scrollCtrl.freezeScrollShut(!canScroll);},getTranslateX:function getTranslateX(){return $scope.sideMenuContentTranslateX||0;},setTranslateX:ionic.animationFrameThrottle(function(amount){var xTransform=content.offsetX+amount;$element[0].style[ionic.CSS.TRANSFORM]='translate3d('+xTransform+'px,0,0)';$timeout(function(){$scope.sideMenuContentTranslateX=amount;});}),setMarginLeft:ionic.animationFrameThrottle(function(amount){if(amount){amount=parseInt(amount,10);$element[0].style[ionic.CSS.TRANSFORM]='translate3d('+amount+'px,0,0)';$element[0].style.width=$window.innerWidth-amount+'px';content.offsetX=amount;}else {$element[0].style[ionic.CSS.TRANSFORM]='translate3d(0,0,0)';$element[0].style.width='';content.offsetX=0;}}),setMarginRight:ionic.animationFrameThrottle(function(amount){if(amount){amount=parseInt(amount,10);$element[0].style.width=$window.innerWidth-amount+'px';content.offsetX=amount;}else {$element[0].style.width='';content.offsetX=0;} // reset incase left gets grabby
 	$element[0].style[ionic.CSS.TRANSFORM]='translate3d(0,0,0)';}),setMarginLeftAndRight:ionic.animationFrameThrottle(function(amountLeft,amountRight){amountLeft=amountLeft&&parseInt(amountLeft,10)||0;amountRight=amountRight&&parseInt(amountRight,10)||0;var amount=amountLeft+amountRight;if(amount>0){$element[0].style[ionic.CSS.TRANSFORM]='translate3d('+amountLeft+'px,0,0)';$element[0].style.width=$window.innerWidth-amount+'px';content.offsetX=amountLeft;}else {$element[0].style[ionic.CSS.TRANSFORM]='translate3d(0,0,0)';$element[0].style.width='';content.offsetX=0;} // reset incase left gets grabby
 	//$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-	}),enableAnimation:function(){$scope.animationEnabled=true;$element[0].classList.add('menu-animated');},disableAnimation:function(){$scope.animationEnabled=false;$element[0].classList.remove('menu-animated');},offsetX:0};sideMenuCtrl.setContent(content); // add gesture handlers
+	}),enableAnimation:function enableAnimation(){$scope.animationEnabled=true;$element[0].classList.add('menu-animated');},disableAnimation:function disableAnimation(){$scope.animationEnabled=false;$element[0].classList.remove('menu-animated');},offsetX:0};sideMenuCtrl.setContent(content); // add gesture handlers
 	var gestureOpts={stop_browser_behavior:false};gestureOpts.prevent_default_directions=['left','right'];var contentTapGesture=$ionicGesture.on('tap',onContentTap,$element,gestureOpts);var dragRightGesture=$ionicGesture.on('dragright',onDragX,$element,gestureOpts);var dragLeftGesture=$ionicGesture.on('dragleft',onDragX,$element,gestureOpts);var dragUpGesture=$ionicGesture.on('dragup',onDragY,$element,gestureOpts);var dragDownGesture=$ionicGesture.on('dragdown',onDragY,$element,gestureOpts);var releaseGesture=$ionicGesture.on('release',onDragRelease,$element,gestureOpts); // Cleanup
 	$scope.$on('$destroy',function(){if(content){content.element=null;content=null;}$ionicGesture.off(dragLeftGesture,'dragleft',onDragX);$ionicGesture.off(dragRightGesture,'dragright',onDragX);$ionicGesture.off(dragUpGesture,'dragup',onDragY);$ionicGesture.off(dragDownGesture,'dragdown',onDragY);$ionicGesture.off(releaseGesture,'release',onDragRelease);$ionicGesture.off(contentTapGesture,'tap',onContentTap);});}}};}]);IonicModule /**
 	 * @ngdoc directive
@@ -25293,7 +25299,7 @@
 	 * @param {string=} delegate-handle The handle used to identify this side menu
 	 * with {@link ionic.service:$ionicSideMenuDelegate}.
 	 *
-	 */.directive('ionSideMenus',['$ionicBody',function($ionicBody){return {restrict:'ECA',controller:'$ionicSideMenus',compile:function(element,attr){attr.$set('class',(attr['class']||'')+' view');return {pre:prelink};function prelink($scope,$element,$attrs,ctrl){ctrl.enableMenuWithBackViews($scope.$eval($attrs.enableMenuWithBackViews));$scope.$on('$ionicExposeAside',function(evt,isAsideExposed){if(!$scope.$exposeAside)$scope.$exposeAside={};$scope.$exposeAside.active=isAsideExposed;$ionicBody.enableClass(isAsideExposed,'aside-open');});$scope.$on('$ionicView.beforeEnter',function(ev,d){if(d.historyId){$scope.$activeHistoryId=d.historyId;}});$scope.$on('$destroy',function(){$ionicBody.removeClass('menu-open','aside-open');});}}};}]); /**
+	 */.directive('ionSideMenus',['$ionicBody',function($ionicBody){return {restrict:'ECA',controller:'$ionicSideMenus',compile:function compile(element,attr){attr.$set('class',(attr['class']||'')+' view');return {pre:prelink};function prelink($scope,$element,$attrs,ctrl){ctrl.enableMenuWithBackViews($scope.$eval($attrs.enableMenuWithBackViews));$scope.$on('$ionicExposeAside',function(evt,isAsideExposed){if(!$scope.$exposeAside)$scope.$exposeAside={};$scope.$exposeAside.active=isAsideExposed;$ionicBody.enableClass(isAsideExposed,'aside-open');});$scope.$on('$ionicView.beforeEnter',function(ev,d){if(d.historyId){$scope.$activeHistoryId=d.historyId;}});$scope.$on('$destroy',function(){$ionicBody.removeClass('menu-open','aside-open');});}}};}]); /**
 	 * @ngdoc directive
 	 * @name ionSlideBox
 	 * @module ionic
@@ -25331,12 +25337,12 @@
 	 * @param {expression=} on-slide-changed Expression called whenever the slide is changed.  Is passed an '$index' variable.
 	 * @param {expression=} active-slide Model to bind the current slide index to.
 	 */IonicModule.directive('ionSlideBox',['$animate','$timeout','$compile','$ionicSlideBoxDelegate','$ionicHistory','$ionicScrollDelegate',function($animate,$timeout,$compile,$ionicSlideBoxDelegate,$ionicHistory,$ionicScrollDelegate){return {restrict:'E',replace:true,transclude:true,scope:{autoPlay:'=',doesContinue:'@',slideInterval:'@',showPager:'@',pagerClick:'&',disableScroll:'@',onSlideChanged:'&',activeSlide:'=?',bounce:'@'},controller:['$scope','$element','$attrs',function($scope,$element,$attrs){var _this=this;var continuous=$scope.$eval($scope.doesContinue)===true;var bouncing=$scope.$eval($scope.bounce)!==false; //Default to true
-	var shouldAutoPlay=isDefined($attrs.autoPlay)?!!$scope.autoPlay:false;var slideInterval=shouldAutoPlay?$scope.$eval($scope.slideInterval)||4000:0;var slider=new ionic.views.Slider({el:$element[0],auto:slideInterval,continuous:continuous,startSlide:$scope.activeSlide,bouncing:bouncing,slidesChanged:function(){$scope.currentSlide=slider.currentIndex(); // Try to trigger a digest
-	$timeout(function(){});},callback:function(slideIndex){$scope.currentSlide=slideIndex;$scope.onSlideChanged({index:$scope.currentSlide,$index:$scope.currentSlide});$scope.$parent.$broadcast('slideBox.slideChanged',slideIndex);$scope.activeSlide=slideIndex; // Try to trigger a digest
-	$timeout(function(){});},onDrag:function(){freezeAllScrolls(true);},onDragEnd:function(){freezeAllScrolls(false);}});function freezeAllScrolls(shouldFreeze){if(shouldFreeze&&!_this.isScrollFreeze){$ionicScrollDelegate.freezeAllScrolls(shouldFreeze);}else if(!shouldFreeze&&_this.isScrollFreeze){$ionicScrollDelegate.freezeAllScrolls(false);}_this.isScrollFreeze=shouldFreeze;}slider.enableSlide($scope.$eval($attrs.disableScroll)!==true);$scope.$watch('activeSlide',function(nv){if(isDefined(nv)){slider.slide(nv);}});$scope.$on('slideBox.nextSlide',function(){slider.next();});$scope.$on('slideBox.prevSlide',function(){slider.prev();});$scope.$on('slideBox.setSlide',function(e,index){slider.slide(index);}); //Exposed for testing
-	this.__slider=slider;var deregisterInstance=$ionicSlideBoxDelegate._registerInstance(slider,$attrs.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});$scope.$on('$destroy',function(){deregisterInstance();slider.kill();});this.slidesCount=function(){return slider.slidesCount();};this.onPagerClick=function(index){$scope.pagerClick({index:index});};$timeout(function(){slider.load();});}],template:'<div class="slider">'+'<div class="slider-slides" ng-transclude>'+'</div>'+'</div>',link:function($scope,$element,$attr){ // Disable ngAnimate for slidebox and its children
+	var shouldAutoPlay=isDefined($attrs.autoPlay)?!!$scope.autoPlay:false;var slideInterval=shouldAutoPlay?$scope.$eval($scope.slideInterval)||4000:0;var slider=new ionic.views.Slider({el:$element[0],auto:slideInterval,continuous:continuous,startSlide:$scope.activeSlide,bouncing:bouncing,slidesChanged:function slidesChanged(){$scope.currentSlide=slider.currentIndex(); // Try to trigger a digest
+	$timeout(function(){});},callback:function callback(slideIndex){$scope.currentSlide=slideIndex;$scope.onSlideChanged({index:$scope.currentSlide,$index:$scope.currentSlide});$scope.$parent.$broadcast('slideBox.slideChanged',slideIndex);$scope.activeSlide=slideIndex; // Try to trigger a digest
+	$timeout(function(){});},onDrag:function onDrag(){freezeAllScrolls(true);},onDragEnd:function onDragEnd(){freezeAllScrolls(false);}});function freezeAllScrolls(shouldFreeze){if(shouldFreeze&&!_this.isScrollFreeze){$ionicScrollDelegate.freezeAllScrolls(shouldFreeze);}else if(!shouldFreeze&&_this.isScrollFreeze){$ionicScrollDelegate.freezeAllScrolls(false);}_this.isScrollFreeze=shouldFreeze;}slider.enableSlide($scope.$eval($attrs.disableScroll)!==true);$scope.$watch('activeSlide',function(nv){if(isDefined(nv)){slider.slide(nv);}});$scope.$on('slideBox.nextSlide',function(){slider.next();});$scope.$on('slideBox.prevSlide',function(){slider.prev();});$scope.$on('slideBox.setSlide',function(e,index){slider.slide(index);}); //Exposed for testing
+	this.__slider=slider;var deregisterInstance=$ionicSlideBoxDelegate._registerInstance(slider,$attrs.delegateHandle,function(){return $ionicHistory.isActiveScope($scope);});$scope.$on('$destroy',function(){deregisterInstance();slider.kill();});this.slidesCount=function(){return slider.slidesCount();};this.onPagerClick=function(index){$scope.pagerClick({index:index});};$timeout(function(){slider.load();});}],template:'<div class="slider">'+'<div class="slider-slides" ng-transclude>'+'</div>'+'</div>',link:function link($scope,$element,$attr){ // Disable ngAnimate for slidebox and its children
 	$animate.enabled(false,$element); // if showPager is undefined, show the pager
-	if(!isDefined($attr.showPager)){$scope.showPager=true;getPager().toggleClass('hide',!true);}$attr.$observe('showPager',function(show){if(show===undefined)return;show=$scope.$eval(show);getPager().toggleClass('hide',!show);});var pager;function getPager(){if(!pager){var childScope=$scope.$new();pager=jqLite('<ion-pager></ion-pager>');$element.append(pager);pager=$compile(pager)(childScope);}return pager;}}};}]).directive('ionSlide',function(){return {restrict:'E',require:'?^ionSlideBox',compile:function(element){element.addClass('slider-slide');}};}).directive('ionPager',function(){return {restrict:'E',replace:true,require:'^ionSlideBox',template:'<div class="slider-pager"><span class="slider-pager-page" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span></div>',link:function($scope,$element,$attr,slideBox){var selectPage=function(index){var children=$element[0].children;var length=children.length;for(var i=0;i<length;i++){if(i==index){children[i].classList.add('active');}else {children[i].classList.remove('active');}}};$scope.pagerClick=function(index){slideBox.onPagerClick(index);};$scope.numSlides=function(){return new Array(slideBox.slidesCount());};$scope.$watch('currentSlide',function(v){selectPage(v);});}};}); /**
+	if(!isDefined($attr.showPager)){$scope.showPager=true;getPager().toggleClass('hide',!true);}$attr.$observe('showPager',function(show){if(show===undefined)return;show=$scope.$eval(show);getPager().toggleClass('hide',!show);});var pager;function getPager(){if(!pager){var childScope=$scope.$new();pager=jqLite('<ion-pager></ion-pager>');$element.append(pager);pager=$compile(pager)(childScope);}return pager;}}};}]).directive('ionSlide',function(){return {restrict:'E',require:'?^ionSlideBox',compile:function compile(element){element.addClass('slider-slide');}};}).directive('ionPager',function(){return {restrict:'E',replace:true,require:'^ionSlideBox',template:'<div class="slider-pager"><span class="slider-pager-page" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span></div>',link:function link($scope,$element,$attr,slideBox){var selectPage=function selectPage(index){var children=$element[0].children;var length=children.length;for(var i=0;i<length;i++){if(i==index){children[i].classList.add('active');}else {children[i].classList.remove('active');}}};$scope.pagerClick=function(index){slideBox.onPagerClick(index);};$scope.numSlides=function(){return new Array(slideBox.slidesCount());};$scope.$watch('currentSlide',function(v){selectPage(v);});}};}); /**
 	 * @ngdoc directive
 	 * @name ionSlides
 	 * @module ionic
@@ -25369,9 +25375,9 @@
 	 * with {@link ionic.service:$ionicSlideBoxDelegate}.
 	 * @param {object=} options to pass to the widget. See the full ist here: [http://www.idangero.us/swiper/api/](http://www.idangero.us/swiper/api/)
 	 */IonicModule.directive('ionSlides',['$animate','$timeout','$compile',function($animate,$timeout,$compile){return {restrict:'E',transclude:true,scope:{options:'=',slider:'='},template:'<div class="swiper-container">'+'<div class="swiper-wrapper" ng-transclude>'+'</div>'+'<div ng-hide="!showPager" class="swiper-pagination"></div>'+'</div>',controller:['$scope','$element',function($scope,$element){var _this=this;this.update=function(){$timeout(function(){if(!_this.__slider){return;}_this.__slider.update();if(_this._options.loop){_this.__slider.createLoop();} // Don't allow pager to show with > 10 slides
-	if(_this.__slider.slides.length>10){$scope.showPager=false;}});};this.rapidUpdate=ionic.debounce(function(){_this.update();},50);this.getSlider=function(){return _this.__slider;};var options=$scope.options||{};var newOptions=angular.extend({pagination:'.swiper-pagination',paginationClickable:true,lazyLoading:true,preloadImages:false},options);this._options=newOptions;$timeout(function(){var slider=new ionic.views.Swiper($element.children()[0],newOptions,$scope,$compile);_this.__slider=slider;$scope.slider=_this.__slider;$scope.$on('$destroy',function(){slider.destroy();});});}],link:function($scope){$scope.showPager=true; // Disable ngAnimate for slidebox and its children
+	if(_this.__slider.slides.length>10){$scope.showPager=false;}});};this.rapidUpdate=ionic.debounce(function(){_this.update();},50);this.getSlider=function(){return _this.__slider;};var options=$scope.options||{};var newOptions=angular.extend({pagination:'.swiper-pagination',paginationClickable:true,lazyLoading:true,preloadImages:false},options);this._options=newOptions;$timeout(function(){var slider=new ionic.views.Swiper($element.children()[0],newOptions,$scope,$compile);_this.__slider=slider;$scope.slider=_this.__slider;$scope.$on('$destroy',function(){slider.destroy();});});}],link:function link($scope){$scope.showPager=true; // Disable ngAnimate for slidebox and its children
 	//$animate.enabled(false, $element);
-	}};}]).directive('ionSlidePage',[function(){return {restrict:'E',require:'?^ionSlides',transclude:true,replace:true,template:'<div class="swiper-slide" ng-transclude></div>',link:function($scope,$element,$attr,ionSlidesCtrl){ionSlidesCtrl.rapidUpdate();}};}]); /**
+	}};}]).directive('ionSlidePage',[function(){return {restrict:'E',require:'?^ionSlides',transclude:true,replace:true,template:'<div class="swiper-slide" ng-transclude></div>',link:function link($scope,$element,$attr,ionSlidesCtrl){ionSlidesCtrl.rapidUpdate();}};}]); /**
 	* @ngdoc directive
 	* @name ionSpinner
 	* @module ionic
@@ -25552,7 +25558,7 @@
 	 * }
 	 * ```
 	 *
-	*/IonicModule.directive('ionSpinner',function(){return {restrict:'E',controller:'$ionicSpinner',link:function($scope,$element,$attrs,ctrl){var spinnerName=ctrl.init();$element.addClass('spinner spinner-'+spinnerName);$element.on('$destroy',function onDestroy(){ctrl.stop();});}};}); /**
+	*/IonicModule.directive('ionSpinner',function(){return {restrict:'E',controller:'$ionicSpinner',link:function link($scope,$element,$attrs,ctrl){var spinnerName=ctrl.init();$element.addClass('spinner spinner-'+spinnerName);$element.on('$destroy',function onDestroy(){ctrl.stop();});}};}); /**
 	 * @ngdoc directive
 	 * @name ionTab
 	 * @module ionic
@@ -25589,7 +25595,7 @@
 	 * @param {expression=} hidden Whether the tab is to be hidden or not.
 	 * @param {expression=} disabled Whether the tab is to be disabled or not.
 	 */IonicModule.directive('ionTab',['$compile','$ionicConfig','$ionicBind','$ionicViewSwitcher',function($compile,$ionicConfig,$ionicBind,$ionicViewSwitcher){ //Returns ' key="value"' if value exists
-	function attrStr(k,v){return isDefined(v)?' '+k+'="'+v+'"':'';}return {restrict:'E',require:['^ionTabs','ionTab'],controller:'$ionicTab',scope:true,compile:function(element,attr){ //We create the tabNavTemplate in the compile phase so that the
+	function attrStr(k,v){return isDefined(v)?' '+k+'="'+v+'"':'';}return {restrict:'E',require:['^ionTabs','ionTab'],controller:'$ionicTab',scope:true,compile:function compile(element,attr){ //We create the tabNavTemplate in the compile phase so that the
 	//attributes we pass down won't be interpolated yet - we want
 	//to pass down the 'raw' versions of the attributes
 	var tabNavTemplate='<ion-tab-nav'+attrStr('ng-click',attr.ngClick)+attrStr('title',attr.title)+attrStr('icon',attr.icon)+attrStr('icon-on',attr.iconOn)+attrStr('icon-off',attr.iconOff)+attrStr('badge',attr.badge)+attrStr('badge-style',attr.badgeStyle)+attrStr('hidden',attr.hidden)+attrStr('disabled',attr.disabled)+attrStr('class',attr['class'])+'></ion-tab-nav>'; //Remove the contents of the element so we can compile them later, if tab is selected
@@ -25609,7 +25615,7 @@
 	$ionicViewSwitcher.viewEleIsActive(childElement,true);}else if(isTabContentAttached&&childElement){ // this tab should NOT be selected, and it is already in the DOM
 	if($ionicConfig.views.maxCache()>0){ // keep the tabs in the DOM, only css hide it
 	$ionicViewSwitcher.viewEleIsActive(childElement,false);}else { // do not keep tabs in the DOM
-	destroyTab();}}}function destroyTab(){childScope&&childScope.$destroy();isTabContentAttached&&childElement&&childElement.remove();tabContentEle.innerHTML='';isTabContentAttached=childScope=childElement=null;}$scope.$watch('$tabSelected',tabSelected);$scope.$on('$ionicView.afterEnter',function(){$ionicViewSwitcher.viewEleIsActive(childElement,$scope.$tabSelected);});$scope.$on('$ionicView.clearCache',function(){if(!$scope.$tabSelected){destroyTab();}});};}};}]);IonicModule.directive('ionTabNav',[function(){return {restrict:'E',replace:true,require:['^ionTabs','^ionTab'],template:'<a ng-class="{\'tab-item-active\': isTabActive(), \'has-badge\':badge, \'tab-hidden\':isHidden()}" '+' ng-disabled="disabled()" class="tab-item">'+'<span class="badge {{badgeStyle}}" ng-if="badge">{{badge}}</span>'+'<i class="icon {{getIconOn()}}" ng-if="getIconOn() && isTabActive()"></i>'+'<i class="icon {{getIconOff()}}" ng-if="getIconOff() && !isTabActive()"></i>'+'<span class="tab-title" ng-bind-html="title"></span>'+'</a>',scope:{title:'@',icon:'@',iconOn:'@',iconOff:'@',badge:'=',hidden:'@',disabled:'&',badgeStyle:'@','class':'@'},link:function($scope,$element,$attrs,ctrls){var tabsCtrl=ctrls[0],tabCtrl=ctrls[1]; //Remove title attribute so browser-tooltip does not apear
+	destroyTab();}}}function destroyTab(){childScope&&childScope.$destroy();isTabContentAttached&&childElement&&childElement.remove();tabContentEle.innerHTML='';isTabContentAttached=childScope=childElement=null;}$scope.$watch('$tabSelected',tabSelected);$scope.$on('$ionicView.afterEnter',function(){$ionicViewSwitcher.viewEleIsActive(childElement,$scope.$tabSelected);});$scope.$on('$ionicView.clearCache',function(){if(!$scope.$tabSelected){destroyTab();}});};}};}]);IonicModule.directive('ionTabNav',[function(){return {restrict:'E',replace:true,require:['^ionTabs','^ionTab'],template:'<a ng-class="{\'tab-item-active\': isTabActive(), \'has-badge\':badge, \'tab-hidden\':isHidden()}" '+' ng-disabled="disabled()" class="tab-item">'+'<span class="badge {{badgeStyle}}" ng-if="badge">{{badge}}</span>'+'<i class="icon {{getIconOn()}}" ng-if="getIconOn() && isTabActive()"></i>'+'<i class="icon {{getIconOff()}}" ng-if="getIconOff() && !isTabActive()"></i>'+'<span class="tab-title" ng-bind-html="title"></span>'+'</a>',scope:{title:'@',icon:'@',iconOn:'@',iconOff:'@',badge:'=',hidden:'@',disabled:'&',badgeStyle:'@','class':'@'},link:function link($scope,$element,$attrs,ctrls){var tabsCtrl=ctrls[0],tabCtrl=ctrls[1]; //Remove title attribute so browser-tooltip does not apear
 	$element[0].removeAttribute('title');$scope.selectTab=function(e){e.preventDefault();tabsCtrl.select(tabCtrl.$scope,true);};if(!$attrs.ngClick){$element.on('click',function(event){$scope.$apply(function(){$scope.selectTab(event);});});}$scope.isHidden=function(){if($attrs.hidden==='true'||$attrs.hidden===true)return true;return false;};$scope.getIconOn=function(){return $scope.iconOn||$scope.icon;};$scope.getIconOff=function(){return $scope.iconOff||$scope.icon;};$scope.isTabActive=function(){return tabsCtrl.selectedTab()===tabCtrl.$scope;};}};}]); /**
 	 * @ngdoc directive
 	 * @name ionTabs
@@ -25656,7 +25662,7 @@
 	 *
 	 * @param {string=} delegate-handle The handle used to identify these tabs
 	 * with {@link ionic.service:$ionicTabsDelegate}.
-	 */IonicModule.directive('ionTabs',['$ionicTabsDelegate','$ionicConfig',function($ionicTabsDelegate,$ionicConfig){return {restrict:'E',scope:true,controller:'$ionicTabs',compile:function(tElement){ //We cannot use regular transclude here because it breaks element.data()
+	 */IonicModule.directive('ionTabs',['$ionicTabsDelegate','$ionicConfig',function($ionicTabsDelegate,$ionicConfig){return {restrict:'E',scope:true,controller:'$ionicTabs',compile:function compile(tElement){ //We cannot use regular transclude here because it breaks element.data()
 	//inheritance on compile
 	var innerElement=jqLite('<div class="tab-nav tabs">');innerElement.append(tElement.contents());tElement.append(innerElement).addClass('tabs-'+$ionicConfig.tabs.position()+' tabs-'+$ionicConfig.tabs.style());return {pre:prelink,post:postLink};function prelink($scope,$element,$attr,tabsCtrl){var deregisterInstance=$ionicTabsDelegate._registerInstance(tabsCtrl,$attr.delegateHandle,tabsCtrl.hasActiveScope);tabsCtrl.$scope=$scope;tabsCtrl.$element=$element;tabsCtrl.$tabsElement=jqLite($element[0].querySelector('.tabs'));$scope.$watch(function(){return $element[0].className;},function(value){var isTabsTop=value.indexOf('tabs-top')!==-1;var isHidden=value.indexOf('tabs-item-hide')!==-1;$scope.$hasTabs=!isTabsTop&&!isHidden;$scope.$hasTabsTop=isTabsTop&&!isHidden;$scope.$emit('$ionicTabs.top',$scope.$hasTabsTop);});function emitLifecycleEvent(ev,data){ev.stopPropagation();var previousSelectedTab=tabsCtrl.previousSelectedTab();if(previousSelectedTab){previousSelectedTab.$broadcast(ev.name.replace('NavView','Tabs'),data);}}$scope.$on('$ionicNavView.beforeLeave',emitLifecycleEvent);$scope.$on('$ionicNavView.afterLeave',emitLifecycleEvent);$scope.$on('$ionicNavView.leave',emitLifecycleEvent);$scope.$on('$destroy',function(){ // variable to inform child tabs that they're all being blown away
 	// used so that while destorying an individual tab, each one
@@ -25681,7 +25687,7 @@
 	*   <ion-title>Hello</ion-title>
 	* <ion-nav-bar>
 	* ```
-	*/IonicModule.directive('ionTitle',[function(){return {restrict:'E',compile:function(element){element.addClass('title');}};}]); /**
+	*/IonicModule.directive('ionTitle',[function(){return {restrict:'E',compile:function compile(element){element.addClass('title');}};}]); /**
 	 * @ngdoc directive
 	 * @name ionToggle
 	 * @module ionic
@@ -25704,7 +25710,7 @@
 	 * ```html
 	 * <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm">Airplane Mode</ion-toggle>
 	 * ```
-	 */IonicModule.directive('ionToggle',['$timeout','$ionicConfig',function($timeout,$ionicConfig){return {restrict:'E',replace:true,require:'?ngModel',transclude:true,template:'<div class="item item-toggle">'+'<div ng-transclude></div>'+'<label class="toggle">'+'<input type="checkbox">'+'<div class="track">'+'<div class="handle"></div>'+'</div>'+'</label>'+'</div>',compile:function(element,attr){var input=element.find('input');forEach({'name':attr.name,'ng-value':attr.ngValue,'ng-model':attr.ngModel,'ng-checked':attr.ngChecked,'ng-disabled':attr.ngDisabled,'ng-true-value':attr.ngTrueValue,'ng-false-value':attr.ngFalseValue,'ng-change':attr.ngChange,'ng-required':attr.ngRequired,'required':attr.required},function(value,name){if(isDefined(value)){input.attr(name,value);}});if(attr.toggleClass){element[0].getElementsByTagName('label')[0].classList.add(attr.toggleClass);}element.addClass('toggle-'+$ionicConfig.form.toggle());return function($scope,$element){var el=$element[0].getElementsByTagName('label')[0];var checkbox=el.children[0];var track=el.children[1];var handle=track.children[0];var ngModelController=jqLite(checkbox).controller('ngModel');$scope.toggle=new ionic.views.Toggle({el:el,track:track,checkbox:checkbox,handle:handle,onChange:function(){if(ngModelController){ngModelController.$setViewValue(checkbox.checked);$scope.$apply();}}});$scope.$on('$destroy',function(){$scope.toggle.destroy();});};}};}]); /**
+	 */IonicModule.directive('ionToggle',['$timeout','$ionicConfig',function($timeout,$ionicConfig){return {restrict:'E',replace:true,require:'?ngModel',transclude:true,template:'<div class="item item-toggle">'+'<div ng-transclude></div>'+'<label class="toggle">'+'<input type="checkbox">'+'<div class="track">'+'<div class="handle"></div>'+'</div>'+'</label>'+'</div>',compile:function compile(element,attr){var input=element.find('input');forEach({'name':attr.name,'ng-value':attr.ngValue,'ng-model':attr.ngModel,'ng-checked':attr.ngChecked,'ng-disabled':attr.ngDisabled,'ng-true-value':attr.ngTrueValue,'ng-false-value':attr.ngFalseValue,'ng-change':attr.ngChange,'ng-required':attr.ngRequired,'required':attr.required},function(value,name){if(isDefined(value)){input.attr(name,value);}});if(attr.toggleClass){element[0].getElementsByTagName('label')[0].classList.add(attr.toggleClass);}element.addClass('toggle-'+$ionicConfig.form.toggle());return function($scope,$element){var el=$element[0].getElementsByTagName('label')[0];var checkbox=el.children[0];var track=el.children[1];var handle=track.children[0];var ngModelController=jqLite(checkbox).controller('ngModel');$scope.toggle=new ionic.views.Toggle({el:el,track:track,checkbox:checkbox,handle:handle,onChange:function onChange(){if(ngModelController){ngModelController.$setViewValue(checkbox.checked);$scope.$apply();}}});$scope.$on('$destroy',function(){$scope.toggle.destroy();});};}};}]); /**
 	 * @ngdoc directive
 	 * @name ionView
 	 * @module ionic
@@ -25810,11 +25816,961 @@
 	 * {@link ionic.directive:ionNavBar} by default.
 	 * @param {boolean=} hide-nav-bar Whether to hide the parent
 	 * {@link ionic.directive:ionNavBar} by default.
-	 */IonicModule.directive('ionView',function(){return {restrict:'EA',priority:1000,controller:'$ionicView',compile:function(tElement){tElement.addClass('pane');tElement[0].removeAttribute('title');return function link($scope,$element,$attrs,viewCtrl){viewCtrl.init();};}};});})();
+	 */IonicModule.directive('ionView',function(){return {restrict:'EA',priority:1000,controller:'$ionicView',compile:function compile(tElement){tElement.addClass('pane');tElement[0].removeAttribute('title');return function link($scope,$element,$attrs,viewCtrl){viewCtrl.init();};}};});})();
 
 /***/ },
 /* 14 */
 /***/ function(module, exports) {
+
+	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */
+	/**
+	 * @license pdf2htmlEX.js: Core UI functions for pdf2htmlEX
+	 * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com> and other contributors
+	 * https://github.com/coolwanglu/pdf2htmlEX/blob/master/share/LICENSE
+	 */
+
+	/*
+	 * Attention:
+	 * This files is to be optimized by closure-compiler, 
+	 * so pay attention to the forms of property names:
+	 *
+	 * string/bracket form is safe, won't be optimized:
+	 * var obj={ 'a':'b' }; obj['a'] = 'b';
+	 * name/dot form will be optimized, the name is likely to be modified:
+	 * var obj={ a:'b' }; obj.a = 'b';
+	 *
+	 * Either form can be used for internal objects, 
+	 * but must be consistent for each one respectively.
+	 *
+	 * string/bracket form must be used for external objects
+	 * e.g. DEFAULT_CONFIG, object stored in page-data
+	 * property names are part of the `protocol` in these cases.
+	 *
+	 */
+
+	'use strict';
+
+	//var pdf2htmlEX = window['pdf2htmlEX'] = window['pdf2htmlEX'] || {};
+
+	/**
+	 * @const
+	 * @struct
+	 */
+
+	var CSS_CLASS_NAMES = {
+	    page_frame: 'pf',
+	    page_content_box: 'pc',
+	    page_data: 'pi',
+	    background_image: 'bi',
+	    link: 'l',
+	    input_radio: 'ir',
+	    __dummy__: 'no comma'
+	};
+
+	/**
+	 * configurations of Viewer
+	 * @const
+	 * @dict
+	 */
+	var DEFAULT_CONFIG = {
+	    // id of the element to put the pages in
+	    'container_id': 'page-container',
+	    // id of the element for sidebar (to open and close)
+	    'sidebar_id': 'sidebar',
+	    // id of the element for outline
+	    'outline_id': 'outline',
+	    // class for the loading indicator
+	    'loading_indicator_cls': 'loading-indicator',
+	    // How many page shall we preload that are below the last visible page
+	    'preload_pages': 3,
+	    // how many ms should we wait before actually rendering the pages and after a scroll event
+	    'render_timeout': 100,
+	    // zoom ratio step for each zoom in/out event
+	    'scale_step': 0.9,
+	    // register global key handler, allowing navigation by keyboard
+	    'key_handler': true,
+	    // register hashchange handler, navigate to the location specified by the hash
+	    'hashchange_handler': true,
+	    // register view history handler, allowing going back to the previous location
+	    'view_history_handler': true,
+
+	    '__dummy__': 'no comma'
+	};
+
+	/** @const */
+	var EPS = 1e-6;
+
+	/************************************/
+	/* utility function */
+	/**
+	 * @param{Array.<number>} ctm
+	 */
+	function invert(ctm) {
+	    var det = ctm[0] * ctm[3] - ctm[1] * ctm[2];
+	    return [ctm[3] / det, -ctm[1] / det, -ctm[2] / det, ctm[0] / det, (ctm[2] * ctm[5] - ctm[3] * ctm[4]) / det, (ctm[1] * ctm[4] - ctm[0] * ctm[5]) / det];
+	};
+	/**
+	 * @param{Array.<number>} ctm
+	 * @param{Array.<number>} pos
+	 */
+	function transform(ctm, pos) {
+	    return [ctm[0] * pos[0] + ctm[2] * pos[1] + ctm[4], ctm[1] * pos[0] + ctm[3] * pos[1] + ctm[5]];
+	};
+
+	/**
+	 * @param{Element} ele
+	 */
+	function get_page_number(ele) {
+	    return parseInt(ele.getAttribute('data-page-no'), 16);
+	};
+
+	/**
+	 * @param{NodeList} eles
+	 */
+	function disable_dragstart(eles) {
+	    for (var i = 0, l = eles.length; i < l; ++i) {
+	        eles[i].addEventListener('dragstart', function () {
+	            return false;
+	        }, false);
+	    }
+	};
+
+	/**
+	 * @param{...Object} var_args
+	 */
+	function clone_and_extend_objs(var_args) {
+	    var result_obj = {};
+	    for (var i = 0, l = arguments.length; i < l; ++i) {
+	        var cur_obj = arguments[i];
+	        for (var k in cur_obj) {
+	            if (cur_obj.hasOwnProperty(k)) {
+	                result_obj[k] = cur_obj[k];
+	            }
+	        }
+	    }
+	    return result_obj;
+	};
+
+	/**
+	 * @constructor
+	 * @param{Element} page The element for the page
+	 */
+	function Page(page) {
+	    if (!page) return;
+
+	    this.loaded = false;
+	    this.shown = false;
+	    this.page = page; // page frame element
+
+	    this.num = get_page_number(page);
+
+	    // page size
+	    // Need to make rescale work when page_content_box is not loaded, yet
+	    this.original_height = page.clientHeight;
+	    this.original_width = page.clientWidth;
+
+	    // content box
+	    var content_box = page.getElementsByClassName(CSS_CLASS_NAMES.page_content_box)[0];
+
+	    // if page is loaded
+	    if (content_box) {
+	        this.content_box = content_box;
+	        /*
+	         * scale ratios
+	         *
+	         * original_scale : the first one
+	         * cur_scale : currently using
+	         */
+	        this.original_scale = this.cur_scale = this.original_height / content_box.clientHeight;
+	        this.page_data = JSON.parse(page.getElementsByClassName(CSS_CLASS_NAMES.page_data)[0].getAttribute('data-data'));
+
+	        this.ctm = this.page_data['ctm'];
+	        this.ictm = invert(this.ctm);
+
+	        this.loaded = true;
+	    }
+	};
+	Page.prototype = {
+	    /* hide & show are for contents, the page frame is still there */
+	    hide: function hide() {
+	        if (this.loaded && this.shown) {
+	            this.content_box.classList.remove('opened');
+	            this.shown = false;
+	        }
+	    },
+	    show: function show() {
+	        if (this.loaded && !this.shown) {
+	            this.content_box.classList.add('opened');
+	            this.shown = true;
+	        }
+	    },
+	    /**
+	     * @param{number} ratio
+	     */
+	    rescale: function rescale(ratio) {
+	        if (ratio === 0) {
+	            // reset scale
+	            this.cur_scale = this.original_scale;
+	        } else {
+	            this.cur_scale = ratio;
+	        }
+
+	        // scale the content box
+	        if (this.loaded) {
+	            var cbs = this.content_box.style;
+	            cbs.msTransform = cbs.webkitTransform = cbs.transform = 'scale(' + this.cur_scale.toFixed(3) + ')';
+	        }
+
+	        // stretch the page frame to hold the place
+	        {
+	            var ps = this.page.style;
+	            ps.height = this.original_height * this.cur_scale + 'px';
+	            ps.width = this.original_width * this.cur_scale + 'px';
+	        }
+	    },
+	    /*
+	     * return the coordinate of the top-left corner of container
+	     * in our coordinate system
+	     * assuming that p.parentNode === p.offsetParent
+	     */
+	    view_position: function view_position() {
+	        var p = this.page;
+	        var c = p.parentNode;
+	        return [c.scrollLeft - p.offsetLeft - p.clientLeft, c.scrollTop - p.offsetTop - p.clientTop];
+	    },
+	    height: function height() {
+	        return this.page.clientHeight;
+	    },
+	    width: function width() {
+	        return this.page.clientWidth;
+	    }
+	};
+
+	/**
+	 * @constructor
+	 * @param{Object=} config
+	 */
+	function Viewer(config) {
+	    this.config = clone_and_extend_objs(DEFAULT_CONFIG, arguments.length > 0 ? config : {});
+	    this.pages_loading = [];
+	    this.init_before_loading_content();
+	    var self = this;
+	    self.init_after_loading_content();
+	};
+
+	Viewer.prototype = {
+	    scale: 1,
+	    /*
+	     * index of the active page (the one with largest visible area)
+	     * which estimates the page currently being viewed
+	     */
+	    cur_page_idx: 0,
+
+	    /*
+	     * index of the first visible page
+	     * used when determining current view
+	     */
+	    first_page_idx: 0,
+
+	    init_before_loading_content: function init_before_loading_content() {
+	        /* hide all pages before loading, will reveal only visible ones later */
+	        this.pre_hide_pages();
+	    },
+
+	    initialize_radio_button: function initialize_radio_button() {
+	        var elements = document.getElementsByClassName(CSS_CLASS_NAMES.input_radio);
+
+	        for (var i = 0; i < elements.length; i++) {
+	            var r = elements[i];
+
+	            r.addEventListener('click', function () {
+	                this.classList.toggle("checked");
+	            });
+	        }
+	    },
+
+	    init_after_loading_content: function init_after_loading_content() {
+	        console.log(this.container);
+	        console.log(123);
+	        this.sidebar = document.getElementById(this.config['sidebar_id']);
+	        this.outline = document.getElementById(this.config['outline_id']);
+	        this.container = document.getElementById(this.config['container_id']);
+	        this.loading_indicator = document.getElementsByClassName(this.config['loading_indicator_cls'])[0];
+
+	        {
+	            // Open the outline if nonempty
+	            var empty = true;
+	            var nodes = this.outline.childNodes;
+	            for (var i = 0, l = nodes.length; i < l; ++i) {
+	                var cur_node = nodes[i];
+	                if (cur_node.nodeName.toLowerCase() === 'ul') {
+	                    empty = false;
+	                    break;
+	                }
+	            }
+	            if (!empty) this.sidebar.classList.add('opened');
+	        }
+
+	        this.find_pages();
+	        // do nothing if there's nothing
+	        if (this.pages.length == 0) return;
+
+	        // disable dragging of background images
+	        disable_dragstart(document.getElementsByClassName(CSS_CLASS_NAMES.background_image));
+
+	        if (this.config['key_handler']) this.register_key_handler();
+
+	        var self = this;
+
+	        if (this.config['hashchange_handler']) {
+	            window.addEventListener('hashchange', function (e) {
+	                self.navigate_to_dest(document.location.hash.substring(1));
+	            }, false);
+	        }
+
+	        if (this.config['view_history_handler']) {
+	            window.addEventListener('popstate', function (e) {
+	                if (e.state) self.navigate_to_dest(e.state);
+	            }, false);
+	        }
+
+	        // register schedule rendering
+	        // renew old schedules since scroll() may be called frequently
+	        this.container.addEventListener('scroll', function () {
+	            self.update_page_idx();
+	            self.schedule_render(true);
+	        }, false);
+
+	        // handle links
+	        [this.container, this.outline].forEach(function (ele) {
+	            ele.addEventListener('click', self.link_handler.bind(self), false);
+	        });
+
+	        this.initialize_radio_button();
+	        this.render();
+	    },
+
+	    /*
+	     * set up this.pages and this.page_map
+	     * pages is an array holding all the Page objects
+	     * page-Map maps an original page number (in PDF) to the corresponding index in page
+	     */
+	    find_pages: function find_pages() {
+	        var new_pages = [];
+	        var new_page_map = {};
+	        var nodes = this.container.childNodes;
+	        for (var i = 0, l = nodes.length; i < l; ++i) {
+	            var cur_node = nodes[i];
+	            if (cur_node.nodeType === Node.ELEMENT_NODE && cur_node.classList.contains(CSS_CLASS_NAMES.page_frame)) {
+	                var p = new Page(cur_node);
+	                new_pages.push(p);
+	                new_page_map[p.num] = new_pages.length - 1;
+	            }
+	        }
+	        this.pages = new_pages;
+	        this.page_map = new_page_map;
+	    },
+
+	    /**
+	     * @param{number} idx
+	     * @param{number=} pages_to_preload
+	     * @param{function(Page)=} callback
+	     *
+	     * TODO: remove callback -> promise ?
+	     */
+	    load_page: function load_page(idx, pages_to_preload, callback) {
+	        var pages = this.pages;
+	        if (idx >= pages.length) return; // Page does not exist
+
+	        var cur_page = pages[idx];
+	        if (cur_page.loaded) return; // Page is loaded
+
+	        if (this.pages_loading[idx]) return; // Page is already loading
+
+	        var cur_page_ele = cur_page.page;
+	        var url = cur_page_ele.getAttribute('data-page-url');
+	        if (url) {
+	            this.pages_loading[idx] = true; // set semaphore
+
+	            // add a copy of the loading indicator if not already present
+	            var new_loading_indicator = cur_page_ele.getElementsByClassName(this.config['loading_indicator_cls'])[0];
+	            if (typeof new_loading_indicator === 'undefined') {
+	                new_loading_indicator = this.loading_indicator.cloneNode(true);
+	                new_loading_indicator.classList.add('active');
+	                cur_page_ele.appendChild(new_loading_indicator);
+	            }
+
+	            // load data
+	            {
+	                var self = this;
+	                var _idx = idx;
+	                var xhr = new XMLHttpRequest();
+	                xhr.open('GET', url, true);
+	                xhr.onload = function () {
+	                    if (xhr.status === 200 || xhr.status === 0) {
+	                        // find the page element in the data
+	                        var div = document.createElement('div');
+	                        div.innerHTML = xhr.responseText;
+
+	                        var new_page = null;
+	                        var nodes = div.childNodes;
+	                        for (var i = 0, l = nodes.length; i < l; ++i) {
+	                            var cur_node = nodes[i];
+	                            if (cur_node.nodeType === Node.ELEMENT_NODE && cur_node.classList.contains(CSS_CLASS_NAMES.page_frame)) {
+	                                new_page = cur_node;
+	                                break;
+	                            }
+	                        }
+
+	                        // replace the old page with loaded data
+	                        // the loading indicator on this page should also be destroyed
+	                        var p = self.pages[_idx];
+	                        self.container.replaceChild(new_page, p.page);
+	                        p = new Page(new_page);
+	                        self.pages[_idx] = p;
+
+	                        p.hide();
+	                        p.rescale(self.scale);
+
+	                        // disable background image dragging
+	                        disable_dragstart(new_page.getElementsByClassName(CSS_CLASS_NAMES.background_image));
+
+	                        self.schedule_render(false);
+
+	                        if (callback) {
+	                            callback(p);
+	                        }
+	                    }
+
+	                    // Reset loading token
+	                    delete self.pages_loading[_idx];
+	                };
+	                xhr.send(null);
+	            }
+	        }
+	        // Concurrent prefetch of the next pages
+	        if (pages_to_preload === undefined) pages_to_preload = this.config['preload_pages'];
+
+	        if (--pages_to_preload > 0) {
+	            var self = this;
+	            setTimeout(function () {
+	                self.load_page(idx + 1, pages_to_preload);
+	            }, 0);
+	        }
+	    },
+
+	    /*
+	     * Hide all pages that have no 'opened' class
+	     * The 'opened' class will be added to visible pages by JavaScript
+	     * We cannot add this in the default CSS because JavaScript may be disabled
+	     */
+	    pre_hide_pages: function pre_hide_pages() {
+	        /* pages might have not been loaded yet, so add a CSS rule */
+	        var s = '@media screen{.' + CSS_CLASS_NAMES.page_content_box + '{display:none;}}';
+	        var n = document.createElement('style');
+	        if (n.styleSheet) {
+	            n.styleSheet.cssText = s;
+	        } else {
+	            n.appendChild(document.createTextNode(s));
+	        }
+	        document.head.appendChild(n);
+	    },
+
+	    /*
+	     * show visible pages and hide invisible pages
+	     */
+	    render: function render() {
+	        var container = this.container;
+	        /*
+	         * show the pages that are 'nearly' visible -- it's right above or below the container
+	         *
+	         * all the y values are in the all-page element's coordinate system
+	         */
+	        var container_min_y = container.scrollTop;
+	        var container_height = container.clientHeight;
+	        var container_max_y = container_min_y + container_height;
+	        var visible_min_y = container_min_y - container_height;
+	        var visible_max_y = container_max_y + container_height;
+
+	        var cur_page_fully_visible = false;
+	        var cur_page_idx = this.cur_page_idx;
+	        var max_visible_page_idx = cur_page_idx;
+	        var max_visible_ratio = 0.0;
+
+	        var pl = this.pages;
+	        for (var i = 0, l = pl.length; i < l; ++i) {
+	            var cur_page = pl[i];
+	            var cur_page_ele = cur_page.page;
+	            var page_min_y = cur_page_ele.offsetTop + cur_page_ele.clientTop;
+	            var page_height = cur_page_ele.clientHeight;
+	            var page_max_y = page_min_y + page_height;
+	            if (page_min_y <= visible_max_y && page_max_y >= visible_min_y) {
+	                // cur_page is 'nearly' visible, show it or load it
+	                if (cur_page.loaded) {
+	                    cur_page.show();
+	                } else {
+	                    this.load_page(i);
+	                }
+	            } else {
+	                cur_page.hide();
+	            }
+	        }
+	    },
+	    /*
+	     * update cur_page_idx and first_page_idx
+	     * normally called upon scrolling
+	     */
+	    update_page_idx: function update_page_idx() {
+	        var pages = this.pages;
+	        var pages_len = pages.length;
+	        // there is no chance that cur_page_idx or first_page_idx is modified
+	        if (pages_len < 2) return;
+
+	        var container = this.container;
+	        var container_min_y = container.scrollTop;
+	        var container_max_y = container_min_y + container.clientHeight;
+
+	        // binary search for the first page
+	        // whose bottom border is below the top border of the container
+	        var first_idx = -1;
+	        var last_idx = pages_len;
+	        var rest_len = last_idx - first_idx;
+	        // TODO: use current first_page_idx as a hint?
+	        while (rest_len > 1) {
+	            var idx = first_idx + Math.floor(rest_len / 2);
+	            var cur_page_ele = pages[idx].page;
+	            if (cur_page_ele.offsetTop + cur_page_ele.clientTop + cur_page_ele.clientHeight >= container_min_y) {
+	                last_idx = idx;
+	            } else {
+	                first_idx = idx;
+	            }
+	            rest_len = last_idx - first_idx;
+	        }
+
+	        /*
+	         * with malformed settings it is possible that no page is visible, e.g.
+	         * - the container is to thin, which lies in the margin between two pages
+	         * - all pages are completely above or below the container
+	         * but we just assume that they won't happen.
+	         */
+	        this.first_page_idx = last_idx;
+
+	        // find the page with largest visible area
+	        var cur_page_idx = this.cur_page_idx;
+	        var max_visible_page_idx = cur_page_idx;
+	        var max_visible_ratio = 0.0;
+
+	        for (var i = last_idx; i < pages_len; ++i) {
+	            var cur_page_ele = pages[i].page;
+	            var page_min_y = cur_page_ele.offsetTop + cur_page_ele.clientTop;
+	            var page_height = cur_page_ele.clientHeight;
+	            var page_max_y = page_min_y + page_height;
+	            if (page_min_y > container_max_y) break;
+
+	            // check the visible fraction of the page
+	            var page_visible_ratio = (Math.min(container_max_y, page_max_y) - Math.max(container_min_y, page_min_y)) / page_height;
+
+	            // stay with the current page if it is still fully visible
+	            if (i === cur_page_idx && Math.abs(page_visible_ratio - 1.0) <= EPS) {
+	                max_visible_page_idx = cur_page_idx;
+	                break;
+	            }
+
+	            if (page_visible_ratio > max_visible_ratio) {
+	                max_visible_ratio = page_visible_ratio;
+	                max_visible_page_idx = i;
+	            }
+	        }
+
+	        this.cur_page_idx = max_visible_page_idx;
+	    },
+
+	    /**
+	     * @param{boolean} renew renew the existing schedule instead of using the old one
+	     */
+	    schedule_render: function schedule_render(renew) {
+	        if (this.render_timer !== undefined) {
+	            if (!renew) return;
+	            clearTimeout(this.render_timer);
+	        }
+
+	        var self = this;
+	        this.render_timer = setTimeout(function () {
+	            /*
+	             * render() may trigger load_page(), which may in turn trigger another render()
+	             * so delete render_timer first
+	             */
+	            delete self.render_timer;
+	            self.render();
+	        }, this.config['render_timeout']);
+	    },
+
+	    /*
+	     * Handling key events, zooming, scrolling etc.
+	     */
+	    register_key_handler: function register_key_handler() {
+	        /*
+	         * When user try to zoom in/out using ctrl + +/- or mouse wheel
+	         * handle this and prevent the default behaviours
+	         *
+	         * Code credit to PDF.js
+	         */
+	        var self = this;
+
+	        // Firefox specific event, so that we can prevent browser from zooming
+	        window.addEventListener('DOMMouseScroll', function (e) {
+	            if (e.ctrlKey) {
+	                e.preventDefault();
+	                var container = self.container;
+	                var rect = container.getBoundingClientRect();
+	                var fixed_point = [e.clientX - rect['left'] - container.clientLeft, e.clientY - rect['top'] - container.clientTop];
+	                self.rescale(Math.pow(self.config['scale_step'], e.detail), true, fixed_point);
+	            }
+	        }, false);
+
+	        window.addEventListener('keydown', function (e) {
+	            var handled = false;
+	            /*
+	             var cmd = (e.ctrlKey ? 1 : 0)
+	             | (e.altKey ? 2 : 0)
+	             | (e.shiftKey ? 4 : 0)
+	             | (e.metaKey ? 8 : 0)
+	             ;
+	             */
+	            var with_ctrl = e.ctrlKey || e.metaKey;
+	            var with_alt = e.altKey;
+	            switch (e.keyCode) {
+	                case 61: // FF/Mac '='
+	                case 107: // FF '+' and '='
+	                case 187:
+	                    // Chrome '+'
+	                    if (with_ctrl) {
+	                        self.rescale(1.0 / self.config['scale_step'], true);
+	                        handled = true;
+	                    }
+	                    break;
+	                case 173: // FF/Mac '-'
+	                case 109: // FF '-'
+	                case 189:
+	                    // Chrome '-'
+	                    if (with_ctrl) {
+	                        self.rescale(self.config['scale_step'], true);
+	                        handled = true;
+	                    }
+	                    break;
+	                case 48:
+	                    // '0'
+	                    if (with_ctrl) {
+	                        self.rescale(0, false);
+	                        handled = true;
+	                    }
+	                    break;
+	                case 33:
+	                    // Page UP:
+	                    if (with_alt) {
+	                        // alt-pageup    -> scroll one page up
+	                        self.scroll_to(self.cur_page_idx - 1);
+	                    } else {
+	                        // pageup        -> scroll one screen up
+	                        self.container.scrollTop -= self.container.clientHeight;
+	                    }
+	                    handled = true;
+	                    break;
+	                case 34:
+	                    // Page DOWN
+	                    if (with_alt) {
+	                        // alt-pagedown  -> scroll one page down
+	                        self.scroll_to(self.cur_page_idx + 1);
+	                    } else {
+	                        // pagedown      -> scroll one screen down
+	                        self.container.scrollTop += self.container.clientHeight;
+	                    }
+	                    handled = true;
+	                    break;
+	                case 35:
+	                    // End
+	                    self.container.scrollTop = self.container.scrollHeight;
+	                    handled = true;
+	                    break;
+	                case 36:
+	                    // Home
+	                    self.container.scrollTop = 0;
+	                    handled = true;
+	                    break;
+	            }
+	            if (handled) {
+	                e.preventDefault();
+	                return;
+	            }
+	        }, false);
+	    },
+
+	    /**
+	     * @param{number} ratio
+	     * @param{boolean} is_relative
+	     * @param{Array.<number>=} fixed_point preserve the position (relative to the top-left corner of the viewer) after rescaling
+	     */
+	    rescale: function rescale(ratio, is_relative, fixed_point) {
+	        var old_scale = this.scale;
+	        var new_scale = old_scale;
+	        // set new scale
+	        if (ratio === 0) {
+	            new_scale = 1;
+	            is_relative = false;
+	        } else if (is_relative) new_scale *= ratio;else new_scale = ratio;
+
+	        this.scale = new_scale;
+
+	        if (!fixed_point) fixed_point = [0, 0];
+
+	        // translate fixed_point to the coordinate system of all pages
+	        var container = this.container;
+	        console.log(container);
+	        fixed_point[0] += container.scrollLeft;
+	        fixed_point[1] += container.scrollTop;
+
+	        // find the visible page that contains the fixed point
+	        // if the fixed point lies between two pages (including their borders), it's contained in the first one
+	        var pl = this.pages;
+	        var pl_len = pl.length;
+	        for (var i = this.first_page_idx; i < pl_len; ++i) {
+	            var p = pl[i].page;
+	            if (p.offsetTop + p.clientTop >= fixed_point[1]) break;
+	        }
+	        var fixed_point_page_idx = i - 1;
+
+	        // determine the new scroll position
+	        // each-value consists of two parts, one inside the page, which is affected by rescaling,
+	        // the other is outside, (e.g. borders and margins), which is not affected
+
+	        // if the fixed_point is above the first page, use the first page as the reference
+	        if (fixed_point_page_idx < 0) fixed_point_page_idx = 0;
+
+	        var fp_p = pl[fixed_point_page_idx].page;
+	        var fp_p_width = fp_p.clientWidth;
+	        var fp_p_height = fp_p.clientHeight;
+
+	        var fp_x_ref = fp_p.offsetLeft + fp_p.clientLeft;
+	        var fp_x_inside = fixed_point[0] - fp_x_ref;
+	        if (fp_x_inside < 0) fp_x_inside = 0;else if (fp_x_inside > fp_p_width) fp_x_inside = fp_p_width;
+
+	        var fp_y_ref = fp_p.offsetTop + fp_p.clientTop;
+	        var fp_y_inside = fixed_point[1] - fp_y_ref;
+	        if (fp_y_inside < 0) fp_y_inside = 0;else if (fp_y_inside > fp_p_height) fp_y_inside = fp_p_height;
+
+	        // Rescale pages
+	        for (var i = 0; i < pl_len; ++i) {
+	            pl[i].rescale(new_scale);
+	        } // Correct container scroll to keep view aligned while zooming
+	        container.scrollLeft += fp_x_inside / old_scale * new_scale + fp_p.offsetLeft + fp_p.clientLeft - fp_x_inside - fp_x_ref;
+	        container.scrollTop += fp_y_inside / old_scale * new_scale + fp_p.offsetTop + fp_p.clientTop - fp_y_inside - fp_y_ref;
+
+	        // some pages' visibility may be toggled, wait for next render()
+	        // renew old schedules since rescale() may be called frequently
+	        this.schedule_render(true);
+	    },
+
+	    fit_width: function fit_width() {
+	        var page_idx = this.cur_page_idx;
+	        this.rescale(this.container.clientWidth / this.pages[page_idx].width(), true);
+	        this.scroll_to(page_idx);
+	    },
+
+	    fit_height: function fit_height() {
+	        var page_idx = this.cur_page_idx;
+	        this.rescale(this.container.clientHeight / this.pages[page_idx].height(), true);
+	        this.scroll_to(page_idx);
+	    },
+	    /**
+	     * @param{Node} ele
+	     */
+	    get_containing_page: function get_containing_page(ele) {
+	        /* get the page obj containing obj */
+	        while (ele) {
+	            if (ele.nodeType === Node.ELEMENT_NODE && ele.classList.contains(CSS_CLASS_NAMES.page_frame)) {
+	                /*
+	                 * Get original page number and map it to index of pages
+	                 * TODO: store the index on the dom element
+	                 */
+	                var pn = get_page_number( /** @type{Element} */ele);
+	                var pm = this.page_map;
+	                return pn in pm ? this.pages[pm[pn]] : null;
+	            }
+	            ele = ele.parentNode;
+	        }
+	        return null;
+	    },
+
+	    /**
+	     * @param{Event} e
+	     */
+	    link_handler: function link_handler(e) {
+	        var target = /** @type{Node} */e.target;
+	        var detail_str = /** @type{string} */target.getAttribute('data-dest-detail');
+	        if (!detail_str) return;
+
+	        if (this.config['view_history_handler']) {
+	            try {
+	                var cur_hash = this.get_current_view_hash();
+	                window.history.replaceState(cur_hash, '', '#' + cur_hash);
+	                window.history.pushState(detail_str, '', '#' + detail_str);
+	            } catch (ex) {}
+	        }
+	        this.navigate_to_dest(detail_str, this.get_containing_page(target));
+	        e.preventDefault();
+	    },
+
+	    /**
+	     * @param{string} detail_str may come from user provided hashtag, need sanitzing
+	     * @param{Page=} src_page page containing the source event (e.g. link)
+	     */
+	    navigate_to_dest: function navigate_to_dest(detail_str, src_page) {
+	        try {
+	            var detail = JSON.parse(detail_str);
+	        } catch (e) {
+	            return;
+	        }
+
+	        if (!(detail instanceof Array)) return;
+
+	        var target_page_no = detail[0];
+	        var page_map = this.page_map;
+	        if (!(target_page_no in page_map)) return;
+	        var target_page_idx = page_map[target_page_no];
+	        var target_page = this.pages[target_page_idx];
+
+	        for (var i = 2, l = detail.length; i < l; ++i) {
+	            var d = detail[i];
+	            if (!(d === null || typeof d === 'number')) return;
+	        }
+
+	        while (detail.length < 6) {
+	            detail.push(null);
+	        } // cur_page might be undefined, e.g. from Outline
+	        var cur_page = src_page || this.pages[this.cur_page_idx];
+
+	        var cur_pos = cur_page.view_position();
+	        cur_pos = transform(cur_page.ictm, [cur_pos[0], cur_page.height() - cur_pos[1]]);
+
+	        var zoom = this.scale;
+	        var pos = [0, 0];
+	        var upside_down = true;
+	        var ok = false;
+
+	        // position specified in `detail` are in the raw coordinate system of the page (unscaled)
+	        var scale = this.scale;
+	        // TODO: fitb*
+	        // TODO: BBox
+	        switch (detail[1]) {
+	            case 'XYZ':
+	                pos = [detail[2] === null ? cur_pos[0] : detail[2] * scale, detail[3] === null ? cur_pos[1] : detail[3] * scale];
+	                zoom = detail[4];
+	                if (zoom === null || zoom === 0) zoom = this.scale;
+	                ok = true;
+	                break;
+	            case 'Fit':
+	            case 'FitB':
+	                pos = [0, 0];
+	                ok = true;
+	                break;
+	            case 'FitH':
+	            case 'FitBH':
+	                pos = [0, detail[2] === null ? cur_pos[1] : detail[2] * scale];
+	                ok = true;
+	                break;
+	            case 'FitV':
+	            case 'FitBV':
+	                pos = [detail[2] === null ? cur_pos[0] : detail[2] * scale, 0];
+	                ok = true;
+	                break;
+	            case 'FitR':
+	                /* locate the top-left corner of the rectangle */
+	                // TODO
+	                pos = [detail[2] * scale, detail[5] * scale];
+	                upside_down = false;
+	                ok = true;
+	                break;
+	            default:
+	                break;
+	        }
+
+	        if (!ok) return;
+
+	        this.rescale(zoom, false);
+
+	        var self = this;
+	        /**
+	         * page should of type Page
+	         * @param{Page} page
+	         */
+	        var transform_and_scroll = function transform_and_scroll(page) {
+	            pos = transform(page.ctm, pos);
+	            if (upside_down) {
+	                pos[1] = page.height() - pos[1];
+	            }
+	            self.scroll_to(target_page_idx, pos);
+	        };
+
+	        if (target_page.loaded) {
+	            transform_and_scroll(target_page);
+	        } else {
+	            // TODO: scroll_to may finish before load_page
+
+	            // Scroll to the exact position once loaded.
+	            this.load_page(target_page_idx, undefined, transform_and_scroll);
+
+	            // In the meantime page gets loaded, scroll approximately position for maximum responsiveness.
+	            this.scroll_to(target_page_idx);
+	        }
+	    },
+
+	    /**
+	     * @param{number} page_idx
+	     * @param{Array.<number>=} pos [x,y] where (0,0) is the top-left corner
+	     */
+	    scroll_to: function scroll_to(page_idx, pos) {
+	        var pl = this.pages;
+	        if (page_idx < 0 || page_idx >= pl.length) return;
+	        var target_page = pl[page_idx];
+	        var cur_target_pos = target_page.view_position();
+
+	        if (pos === undefined) pos = [0, 0];
+
+	        var container = this.container;
+	        container.scrollLeft += pos[0] - cur_target_pos[0];
+	        container.scrollTop += pos[1] - cur_target_pos[1];
+	    },
+
+	    /**
+	     * generate the hash for the current view
+	     */
+	    get_current_view_hash: function get_current_view_hash() {
+	        var detail = [];
+	        var cur_page = this.pages[this.cur_page_idx];
+
+	        detail.push(cur_page.num);
+	        detail.push('XYZ');
+
+	        var cur_pos = cur_page.view_position();
+	        cur_pos = transform(cur_page.ictm, [cur_pos[0], cur_page.height() - cur_pos[1]]);
+	        detail.push(cur_pos[0] / this.scale);
+	        detail.push(cur_pos[1] / this.scale);
+
+	        detail.push(this.scale);
+
+	        return JSON.stringify(detail);
+	    }
+	};
+
+	// export pdf2htmlEX.Viewer
+	module.exports = Viewer;
+	//pdf2htmlEX['Viewer'] = Viewer;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	'use strict';
 
 	// Ionic Starter App
 
@@ -25941,8 +26897,10 @@
 	}]);
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 15/8/24.
@@ -25964,28 +26922,30 @@
 	        logout: "/login/logout.action"
 	    },
 	    config: {
-	        sitePath: "http://localhost/csaProxy", //地址
+	        sitePath: "http://211.66.86.97/csaProxy", //地址
 	        currentGroupId: 0,
 	        journalID: 374 //期刊ID
 	    }
 	});
 	function session() {
 	    return {
-	        setSession: function (paramObj) {
+	        setSession: function setSession(paramObj) {
 	            localStorage.session = JSON.stringify(paramObj);
 	        },
-	        getSession: function () {
+	        getSession: function getSession() {
 	            return JSON.parse(localStorage.session);
 	        },
-	        removeSession: function () {
+	        removeSession: function removeSession() {
 	            localStorage.clear(localStorage.session);
 	        }
 	    };
 	}
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/1/26.
@@ -26024,8 +26984,10 @@
 	}
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus on 2016/3/21.
@@ -26036,7 +26998,7 @@
 	function appInterceptor($q, $rootScope) {
 	    return {
 	        // optional method
-	        'request': function (config) {
+	        'request': function request(config) {
 	            if (config.url == "tpls/login.html") {
 	                $rootScope.$broadcast("interceptor.login"); //如果当前模板是login.html,则返回一个广播
 	            }
@@ -26044,20 +27006,20 @@
 	        },
 
 	        // optional method
-	        'requestError': function (rejection) {
+	        'requestError': function requestError(rejection) {
 	            // do something on error
 	            return $q.reject("requestError");
 	        },
 
 	        // optional method
-	        'response': function (response) {
+	        'response': function response(_response) {
 	            //console.log(response);
 	            // do something on success
-	            return response;
+	            return _response;
 	        },
 
 	        // optional method
-	        'responseError': function (rejection) {
+	        'responseError': function responseError(rejection) {
 	            // do something on error
 	            return $q.reject(rejection);
 	        }
@@ -26065,27 +27027,31 @@
 	}
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 15/8/24.
 	 */
-	let group = __webpack_require__(19),
-	    resources = __webpack_require__(20),
-	    fav = __webpack_require__(21),
-	    account = __webpack_require__(22);
+	var group = __webpack_require__(20),
+	    resources = __webpack_require__(21),
+	    fav = __webpack_require__(22),
+	    account = __webpack_require__(23);
 
 	angular.module("request.doHttpRequest", []).factory("request.group", group).factory("request.resources", resources).factory("request.fav", fav).factory("request.account", account);
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	group.$inject = ["httpRequest.sendRequest", "global.constant"];
 	function group(send, constant) {
 	    return {
-	        getList: function (id) {
+	        getList: function getList(id) {
 	            return send(constant.path.trees, "containPersonGroup=false&containAblumCategory=false&categoryId=" + id);
 	        }
 	    };
@@ -26093,14 +27059,16 @@
 	module.exports = group;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	resources.$inject = ["httpRequest.sendRequest", "global.constant"];
 
 	function resources(send, constant) {
 	    return {
-	        getList: function (id) {
+	        getList: function getList(id) {
 	            return send(constant.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
 	        }
 	    };
@@ -26108,20 +27076,22 @@
 	module.exports = resources;
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	fav.$inject = ["httpRequest.sendRequest", "global.constant"];
 
 	function fav(send, constant) {
 	    return {
 	        /** 获取收藏列表**/
-	        getList: function () {
+	        getList: function getList() {
 	            return send(constant.path.getWatches, { "type": "resource" });
 	        },
 	        /**添加收藏**/
-	        addFav: function (id) {
-	            let paramsObj = { "type": "resource", "id": id };
+	        addFav: function addFav(id) {
+	            var paramsObj = { "type": "resource", "id": id };
 	            return send(constant.path.addWatch, paramsObj);
 	        }
 	    };
@@ -26129,60 +27099,73 @@
 	module.exports = fav;
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session"];
 	function account(send, scope, interval, $ionicModal, $q, constant, session) {
 	    return {
-	        doLogin: function (paramsObj) {
-	            let defered = $q.defer();
-	            send(constant.path.authenticate, paramsObj).then(res => {
-	                let paramsStr = "memberId=" + res.data.members[0].id;
-	                this.selectMember(paramsStr).then(res => {
-	                    this.getStatus().then(res => {
-	                        let { account, isAdmin, memberId, name, personGroupId, status } = res.data;
-	                        session.setSession({ account, isAdmin, memberId, name, personGroupId, status }); //设置应用session
+	        doLogin: function doLogin(paramsObj) {
+	            var _this = this;
+
+	            var defered = $q.defer();
+	            send(constant.path.authenticate, paramsObj).then(function (res) {
+	                var paramsStr = "memberId=" + res.data.members[0].id;
+	                _this.selectMember(paramsStr).then(function (res) {
+	                    _this.getStatus().then(function (res) {
+	                        var _res$data = res.data;
+	                        var account = _res$data.account;
+	                        var isAdmin = _res$data.isAdmin;
+	                        var memberId = _res$data.memberId;
+	                        var name = _res$data.name;
+	                        var personGroupId = _res$data.personGroupId;
+	                        var status = _res$data.status;
+
+	                        session.setSession({ account: account, isAdmin: isAdmin, memberId: memberId, name: name, personGroupId: personGroupId, status: status }); //设置应用session
 	                    });
 	                    defered.resolve(res);
 	                });
 	            });
 	            return defered.promise;
 	        },
-	        selectMember: function (paramsStr) {
+	        selectMember: function selectMember(paramsStr) {
 	            return send(constant.path.selectMember, paramsStr);
 	        },
 	        /**获取用户信息**/
-	        getAccount: function () {
+	        getAccount: function getAccount() {
 	            return send(constant.path.getAccount, null);
 	        },
-	        getStatus: function () {
+	        getStatus: function getStatus() {
 	            return send(constant.path.getStatus);
 	        },
 	        keepAlive: {
 	            promise: null,
-	            start: function () {
+	            start: function start() {
 	                if (!this.promise) {
-	                    this.promise = interval(() => {
+	                    this.promise = interval(function () {
 	                        send(constant.path.keepAlive);
 	                    }, 5 * 1000 * 60);
 	                }
 	            },
-	            stop: function () {
+	            stop: function stop() {
 	                if (this.promise) {
 	                    interval.cancel(this.promise);
 	                    this.promise = null;
 	                }
 	            }
 	        },
-	        loginModal: function (scope) {
+	        loginModal: function loginModal(scope) {
+	            var _this2 = this;
+
 	            $ionicModal.fromTemplateUrl("./tpls/modal/login.html", {
 	                scope: scope,
 	                animation: 'slide-in-up',
 	                hardwareBackButtonClose: false
-	            }).then(modal => {
+	            }).then(function (modal) {
 	                scope.loginModal = modal;
-	                this.getStatus().then(res => {
+	                _this2.getStatus().then(function (res) {
 	                    if (res.data.status == "guest") {
 	                        scope.loginModal.show();
 	                        session.removeSession();
@@ -26190,7 +27173,7 @@
 	                });
 	            });
 	        },
-	        logout: function () {
+	        logout: function logout() {
 	            return send(constant.path.logout);
 	        }
 	    };
@@ -26198,8 +27181,10 @@
 	module.exports = account;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/1/26.
@@ -26209,15 +27194,17 @@
 	LoginController.$inject = ["$state", "request.account", "global.session"];
 
 	function LoginController($state, account, session) {
-	    let collect = {
-	        login: () => {
-	            let paramsObj = {
-	                "account": this.loginInfo.username,
-	                "password": encodeURIComponent(this.loginInfo.password)
+	    var _this = this;
+
+	    var collect = {
+	        login: function login() {
+	            var paramsObj = {
+	                "account": _this.loginInfo.username,
+	                "password": encodeURIComponent(_this.loginInfo.password)
 	            };
-	            account.doLogin(paramsObj).then(res => {
-	                let paramsStr = "memberId=" + res.data.members[0].id;
-	                account.selectMember(paramsStr).then(res => {
+	            account.doLogin(paramsObj).then(function (res) {
+	                var paramsStr = "memberId=" + res.data.members[0].id;
+	                account.selectMember(paramsStr).then(function (res) {
 	                    $state.go("tabs.home");
 	                    paramsStr = null;
 	                });
@@ -26225,7 +27212,7 @@
 	            });
 	        }
 	    };
-	    let loginInfo = {
+	    var loginInfo = {
 	        username: "",
 	        password: ""
 	    };
@@ -26234,8 +27221,10 @@
 	}
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/1/29.
@@ -26245,13 +27234,25 @@
 	personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", "request.account", "global.session"];
 
 	function personalController(root, scope, sendRequest, $state, $ionicPopup, account, session) {
-	    let accountInfo = {};
+	    var _this = this;
 
-	    let collect = {
-	        getAccount: () => {
-	            account.getAccount().then(res => {
-	                let { account, company, department, email, im, mobile, name, phone, position } = res.data;
-	                this.accountInfo = {
+	    var accountInfo = {};
+
+	    var collect = {
+	        getAccount: function getAccount() {
+	            account.getAccount().then(function (res) {
+	                var _res$data = res.data;
+	                var account = _res$data.account;
+	                var company = _res$data.company;
+	                var department = _res$data.department;
+	                var email = _res$data.email;
+	                var im = _res$data.im;
+	                var mobile = _res$data.mobile;
+	                var name = _res$data.name;
+	                var phone = _res$data.phone;
+	                var position = _res$data.position;
+
+	                _this.accountInfo = {
 	                    account: account,
 	                    name: name,
 	                    company: company,
@@ -26261,8 +27262,8 @@
 	                };
 	            });
 	        },
-	        logout: function () {
-	            account.logout().then(res => {
+	        logout: function logout() {
+	            account.logout().then(function (res) {
 	                $state.go("tabs.home");
 	                root.$emit("event:logout");
 	                session.removeSession();
@@ -26274,8 +27275,10 @@
 	}
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/2/17.
@@ -26285,42 +27288,44 @@
 	MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session"];
 
 	function MainController(root, scope, state, account, session) {
+	    var _this = this;
+
 	    /**接收到由httpRequest传过来的事件,退出时调用**/
-	    root.$on("status:logout", () => {
-	        this.collect.loginModal.show();
+	    root.$on("status:logout", function () {
+	        _this.collect.loginModal.show();
 	        account.keepAlive.stop(); //停止keepAlive调用
 	        session.removeSession();
 	    });
-	    root.$on("event:logout", () => {
-	        this.collect.loginModal.show();
+	    root.$on("event:logout", function () {
+	        _this.collect.loginModal.show();
 	    });
 	    account.loginModal(scope); //判断是否登录,否则显示登录窗口
-	    let collect = {
-	        init: function () {
+	    var collect = {
+	        init: function init() {
 	            account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
 	        },
-	        onTabSelected: () => {
+	        onTabSelected: function onTabSelected() {
 	            scope.$broadcast("loadFavEvent"); //重载一次收藏列表
 	        },
 	        loginModal: {
-	            show: function () {
+	            show: function show() {
 	                scope.loginModal.show();
 	            },
-	            hide: function () {
+	            hide: function hide() {
 	                scope.loginModal.hide();
 	            }
 	        },
-	        login: () => {
-	            let paramsObj = {
-	                "account": this.loginInfo.username,
-	                "password": encodeURIComponent(this.loginInfo.password)
+	        login: function login() {
+	            var paramsObj = {
+	                "account": _this.loginInfo.username,
+	                "password": encodeURIComponent(_this.loginInfo.password)
 	            };
-	            account.doLogin(paramsObj).then(res => {
-	                this.collect.loginModal.hide();
+	            account.doLogin(paramsObj).then(function (res) {
+	                _this.collect.loginModal.hide();
 	            });
 	        }
 	    };
-	    let loginInfo = {
+	    var loginInfo = {
 	        username: null,
 	        password: null
 	    };
@@ -26330,8 +27335,10 @@
 	}
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/2/17.
@@ -26342,15 +27349,15 @@
 	HomeController.$inject = ["$state", "$timeout", "global.constant"];
 
 	function HomeController($state, $timeout, constant) {
-	    let collect = {
+	    var collect = {
 	        journalID: constant.config.journalID,
-	        goFar: () => {
+	        goFar: function goFar() {
 	            $state.go('tabs.groupList');
-	            $timeout(() => {
+	            $timeout(function () {
 	                $state.go('tabs.resourceList');
 	            });
 	        },
-	        goToList: function (_id, title) {
+	        goToList: function goToList(_id, title) {
 	            $state.go('tabs.groupList', { groupId: _id, title: title });
 	        }
 	    };
@@ -26358,8 +27365,10 @@
 	}
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/2/26.
@@ -26369,13 +27378,16 @@
 	GroupListController.$inject = ["$stateParams", "request.group"];
 
 	function GroupListController($stateParams, group) {
-	    let collect = {
+	    var _this = this;
+
+	    var collect = {
 	        groupList: [],
 	        title: $stateParams.title,
-	        loadGroups: () => {
-	            group.getList($stateParams.groupId).then(res => {
-	                let { children } = res.data;
-	                this.collect.groupList = children;
+	        loadGroups: function loadGroups() {
+	            group.getList($stateParams.groupId).then(function (res) {
+	                var children = res.data.children;
+
+	                _this.collect.groupList = children;
 	            });
 	        }
 	    };
@@ -26384,42 +27396,49 @@
 	}
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant"];
-	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant) {
+	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout"];
+	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout) {
 
-	    let collect = {
+	    var collect = {
 	        resourceList: [],
 	        title: $stateParams.title,
 	        modalTitle: "",
 	        frameSrc: "",
-	        init: function () {
+	        defaultViewer: null,
+	        init: function init() {
+	            var _this = this;
+
 	            this.loadGroups();
-	            this.onHold = id => {
-	                this.showPopup(id);
+	            this.onHold = function (id) {
+	                _this.showPopup(id);
 	            };
 	            $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
 	                scope: $scope,
 	                animation: 'slide-in-up',
 	                hardwareBackButtonClose: false
-	            }).then(modal => {
+	            }).then(function (modal) {
 	                $scope.modal = modal;
 	            });
 	        },
-	        loadGroups: function () {
-	            resources.getList($stateParams.parentId).then(res => {
-	                this.resourceList = res.data.resources;
+	        loadGroups: function loadGroups() {
+	            var _this2 = this;
+
+	            resources.getList($stateParams.parentId).then(function (res) {
+	                _this2.resourceList = res.data.resources;
 	            });
 	        },
-	        showPopup: function () {
+	        showPopup: function showPopup() {
 	            // An elaborate, custom popup
-	            let popup = $ionicPopup.show({
+	            var popup = $ionicPopup.show({
 	                template: '',
 	                title: '收藏资源',
 	                subTitle: '',
@@ -26427,14 +27446,14 @@
 	                buttons: [{ text: '返回' }, {
 	                    text: '<b>收藏</b>',
 	                    type: 'button-positive',
-	                    onTap: e => {
+	                    onTap: function onTap(e) {
 	                        return id;
 	                    }
 	                }]
 	            });
-	            popup.then(id => {
+	            popup.then(function (id) {
 	                if (id != undefined) {
-	                    fav.addFav(id).then(res => {
+	                    fav.addFav(id).then(function (res) {
 	                        if (res.data.success) {
 	                            console.log("收藏成功");
 	                        }
@@ -26442,23 +27461,42 @@
 	                }
 	            });
 	        },
-	        openModal: function (id, title) {
+	        openModal: function openModal(id, title) {
+	            var _this3 = this;
+
 	            this.modalTitle = title;
-	            this.frameSrc = $sce.trustAsResourceUrl("http://211.66.86.101:8080" + constant.path.downloadResource + "?disposition=inline&id=" + id);
+	            this.content = "";
+	            //this.frameSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
+	            $timeout(function () {
+	                sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + id).then(function (res) {
+	                    _this3.content = $sce.trustAsHtml(res.data);
+	                });
+	            }, 500);
+
 	            //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
 	            $scope.modal.show();
 	        },
-	        hideModal: function () {
+	        hideModal: function hideModal() {
+	            this.content = "";
 	            $scope.modal.hide();
+	        },
+	        more: function more() {
+	            try {
+	                this.defaultViewer = new global.pdf2htmlEX({});
+	                this.defaultViewer.rescale(2.0);
+	            } catch (e) {}
 	        }
 	    };
 	    collect.init();
 	    this.collect = collect;
 	}
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/2/26.
@@ -26468,23 +27506,27 @@
 	favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "request.fav"];
 
 	function favController($rootScope, $scope, sendRequest, fav) {
-	    let collect = {
-	        loadFavList: () => {
-	            fav.getList().then(res => {
-	                this.watchesList = res.data.watches;
+	    var _this = this;
+
+	    var collect = {
+	        loadFavList: function loadFavList() {
+	            fav.getList().then(function (res) {
+	                _this.watchesList = res.data.watches;
 	            });
 	        }
 	    };
 	    collect.loadFavList();
-	    $scope.$on("loadFavEvent", () => {
+	    $scope.$on("loadFavEvent", function () {
 	        collect.loadFavList();
 	    });
 	    // this.func = func;//exports
 	}
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by dcampus on 2016/3/23.
@@ -26494,15 +27536,25 @@
 	editController.$inject = ['request.account', "$stateParams"];
 
 	function editController(account, $stateParams) {
-	    account.getAccount().then(res => {
-	        let { account, company, department, email, mobile, name } = res.data;
-	        this.name = name;
-	        this.company = company;
-	        this.department = department;
-	        this.email = email;
-	        this.mobile = mobile;
+	    var _this = this;
+
+	    account.getAccount().then(function (res) {
+	        var _res$data = res.data;
+	        var account = _res$data.account;
+	        var company = _res$data.company;
+	        var department = _res$data.department;
+	        var email = _res$data.email;
+	        var mobile = _res$data.mobile;
+	        var name = _res$data.name;
+
+	        _this.account = account;
+	        _this.name = name;
+	        _this.company = company;
+	        _this.department = department;
+	        _this.email = email;
+	        _this.mobile = mobile;
 	    });
-	    let collect = {
+	    var collect = {
 	        isName: false,
 	        isCompany: false,
 	        isEmail: false,
@@ -26510,7 +27562,7 @@
 	        isPassword: false,
 	        isDepartment: false,
 	        title: "",
-	        showLabel: function () {
+	        showLabel: function showLabel() {
 	            switch ($stateParams.type) {
 	                case "name":
 	                    this.isName = true;

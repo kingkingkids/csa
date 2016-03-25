@@ -4,14 +4,15 @@
 angular.module("ResourceListModule", ["httpRequest"])
     .controller("ResourceListController", ResourceListController);
 ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest",
-    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant"];
-function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant) {
+    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout"];
+function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout) {
 
     let collect = {
         resourceList: [],
         title: $stateParams.title,
         modalTitle: "",
         frameSrc: "",
+        defaultViewer: null,
         init: function () {
             this.loadGroups();
             this.onHold = (id)=> {
@@ -55,18 +56,33 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
                             console.log("收藏成功");
                         }
                     });
-
                 }
             });
         },
         openModal: function (id, title) {
             this.modalTitle = title;
-            this.frameSrc = $sce.trustAsResourceUrl("http://211.66.86.101:8080" + constant.path.downloadResource + "?disposition=inline&id=" + id);
+            this.content = "";
+            //this.frameSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
+            $timeout(()=> {
+                sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + id).then(res=> {
+                    this.content = $sce.trustAsHtml(res.data);
+
+                });
+            }, 500);
+
             //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
             $scope.modal.show();
         },
         hideModal: function () {
+            this.content = "";
             $scope.modal.hide();
+        },
+        more: function () {
+            try {
+                this.defaultViewer = new global.pdf2htmlEX({});
+                this.defaultViewer.rescale(2.0);
+            } catch (e) {
+            }
         }
     }
     collect.init();

@@ -8,8 +8,9 @@ angular
 editController.$inject = ['request.account', "$stateParams"];
 
 function editController(account, $stateParams) {
-    account.getAccount().then(res=> {
+    account.getAccount().then((res)=> {
         let {account,company,department,email,mobile,name} = res.data;
+        this.account = account;
         this.name = name;
         this.company = company;
         this.department = department;

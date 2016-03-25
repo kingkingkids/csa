@@ -21,7 +21,7 @@ angular
             , logout: "/login/logout.action"
         },
         config: {
-            sitePath: "http://localhost/csaProxy",//地址
+            sitePath: "http://211.66.86.97/csaProxy",//地址
             currentGroupId: 0,
             journalID: 374 //期刊ID
         }

@@ -5,11 +5,13 @@
         </div>
         <h1 class="title">{{vm.collect.modalTitle}}</h1>
         <div class="buttons">
-            <button class="button">...</button>
+            <button class="button" ng-click="vm.collect.more()">...</button>
         </div>
     </ion-header-bar>
-    <ion-content overflow-scroll="true">
-        <iframe ng-src="{{vm.collect.frameSrc}}" class="viewFrame">
-        </iframe>
+    <ion-content scroll="true" overflow-scroll="true">
+
+        <div ng-bind-html="vm.collect.content"></div>
+        <!--<iframe ng-src="{{vm.collect.frameSrc}}" class="viewFrame" frameborder="0">-->
+        <!--</iframe>-->
     </ion-content>
 </ion-modal-view>

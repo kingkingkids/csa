@@ -4,7 +4,7 @@
 require("../lib/ionic/css/ionic.css");
 require("../css/style.css");
 require("../lib/ionic/js/ionic.bundle.js");
-//require("../lib/angularjs/1.4.0/angular-cookies.min.js");
+global.pdf2htmlEX = require("../lib/pdf2htmlEX/pdf2htmlEX.js");
 require("./app.js");
 require("./services/global.js");
 require("./services/httpRequest.js");

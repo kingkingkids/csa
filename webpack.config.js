@@ -8,12 +8,12 @@ var path = require('path');
 module.exports = {
     //插件项
     //plugins: [
-    //    new TransferWebpackPlugin([
-    //        {from: 'dist', to: '../../app/platforms/android/assets/www/dist/'},
-    //        {from: 'dist', to: '../../update/dist/'},
-    //        {from: 'templates', to: '../../app/platforms/android/assets/www/templates/'}
-    //    ], path.join(__dirname, ''))
-    //    //,new webpack.optimize.UglifyJsPlugin({minimize: true})
+    //    //new TransferWebpackPlugin([
+    //    //    {from: 'dist', to: '../../app/platforms/android/assets/www/dist/'},
+    //    //    {from: 'dist', to: '../../update/dist/'},
+    //    //    {from: 'templates', to: '../../app/platforms/android/assets/www/templates/'}
+    //    //], path.join(__dirname, ''))
+    //    new webpack.optimize.UglifyJsPlugin({minimize: true})
     //],
     //页面入口文件配置
     entry: {
@@ -51,10 +51,14 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: "html-loader"
-            }, ,
+            },
             {
                 test: /\.js/,
-                loader: "babel-loader"
+                loader: "babel-loader",
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015']
+                }
             }
 
         ]
