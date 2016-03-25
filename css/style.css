@@ -1,7 +1,52 @@
+h1, h2, h3, h3, h4, h5, h6 body {
+  margin: 0 !important;
+  padding: 0; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  margin: 0 !important; }
+
+a {
+  text-decoration: none; }
+
 .viewFrame {
   width: 100%;
-  height: 100%;
-  -webkit-overflow-scrolling: touch !important;
-  overflow: scroll !important; }
+  height: 0; }
+
+.zoom {
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #333;
+  opacity: .5;
+  font-size: 12px;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  z-index: 99999999; }
+  .zoom.big {
+    bottom: 50px; }
+  .zoom.small {
+    bottom: 10px; }
+
+@media (min-width: 680px) {
+  .modal {
+    top: 0px !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important; }
+
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
+    margin-top: 20px; }
+
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {
+    height: 64px; }
+
+  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
+    top: 64px; } }
 
 /*# sourceMappingURL=style.css.map */

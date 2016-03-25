@@ -8,10 +8,15 @@
             <button class="button" ng-click="vm.collect.more()">...</button>
         </div>
     </ion-header-bar>
-    <ion-content scroll="true" overflow-scroll="true">
+    <ion-content scroll="true" style="background:#9e9e9e;">
 
-        <div ng-bind-html="vm.collect.content"></div>
-        <!--<iframe ng-src="{{vm.collect.frameSrc}}" class="viewFrame" frameborder="0">-->
-        <!--</iframe>-->
+        <div ng-bind-html="vm.collect.content" ></div>
+        <!--<iframe allowTransparency="true" src="{{vm.collect.frameSrc}}" frameborder="0"-->
+                <!--scrolling="no" class="viewFrame"></iframe>-->
+
     </ion-content>
+    <a href="javascript:void(0)" class="zoom big" ng-click="vm.collect.zoom('big')"
+       ng-show="vm.collect.showZoom">+</a>
+    <a href="javascript:void(0)" class="zoom small" ng-click="vm.collect.zoom('small')"
+       ng-show="vm.collect.showZoom">-</a>
 </ion-modal-view>

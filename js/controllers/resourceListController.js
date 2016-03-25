@@ -4,15 +4,17 @@
 angular.module("ResourceListModule", ["httpRequest"])
     .controller("ResourceListController", ResourceListController);
 ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest",
-    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout"];
-function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout) {
-
+    "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "$ionicScrollDelegate"];
+function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, $ionicScrollDelegate) {
     let collect = {
         resourceList: [],
         title: $stateParams.title,
         modalTitle: "",
         frameSrc: "",
         defaultViewer: null,
+        showZoom: false,
+        zoomNum: 1,
+        showFrame: false,
         init: function () {
             this.loadGroups();
             this.onHold = (id)=> {
@@ -61,27 +63,70 @@ function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $
         },
         openModal: function (id, title) {
             this.modalTitle = title;
-            this.content = "";
             //this.frameSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
+            this.content = "";
             $timeout(()=> {
                 sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + id).then(res=> {
                     this.content = $sce.trustAsHtml(res.data);
+                    $timeout(()=> {
+                        try {
+                            this.defaultViewer = new pdf2htmlEX({});
+                        } catch (e) {
+                        }
 
+                        this.showZoom = true;
+                    }, 1);
+
+                    res.data = null;
                 });
             }, 500);
 
             //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
             $scope.modal.show();
+            //let _viewFrame = document.querySelector(".viewFrame");
+            //angular.element(_viewFrame).bind("load", function () {
+            //    $scope.$emit("event:frameload");
+            //
+            //});
+            //$scope.$on("event:frameload", ()=> {
+            //
+            //
+            //    try {
+            //        angular.element(_viewFrame)[0].style.height = angular.element(_viewFrame).contents()[0].querySelector("#page-container").clientHeight + "px";
+            //        $timeout(()=> {
+            //            $ionicScrollDelegate.resize();
+            //            this.showZoom = true;
+            //        }, 500);
+            //    } catch (e) {
+            //
+            //    }
+            //
+            //    _viewFrame = null;
+            //});
         },
         hideModal: function () {
             this.content = "";
+            this.defaultViewer = null;
+            this.showZoom = false;
+            this.frameSrc = "";
             $scope.modal.hide();
         },
         more: function () {
-            try {
-                this.defaultViewer = new global.pdf2htmlEX({});
-                this.defaultViewer.rescale(2.0);
-            } catch (e) {
+
+
+        },
+        zoom: function (scale) {
+            if (scale == 'big') {
+                if (this.zoomNum > 2)
+                    return;
+                this.zoomNum = this.zoomNum + 1;
+                this.defaultViewer.rescale(this.zoomNum);
+            } else {
+                if (this.zoomNum == 1)
+                    return;
+                this.zoomNum = this.zoomNum - 1;
+
+                this.defaultViewer.rescale(this.zoomNum);
             }
         }
     }

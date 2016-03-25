@@ -490,7 +490,7 @@
 
 
 	// module
-	exports.push([module.id, ".viewFrame {\r\n  width: 100%;\r\n  height: 100%;\r\n  -webkit-overflow-scrolling: touch !important;\r\n  overflow: scroll !important; }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "h1, h2, h3, h3, h4, h5, h6 body {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n.viewFrame {\r\n  width: 100%;\r\n  height: 0; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -25882,17 +25882,17 @@
 	    // class for the loading indicator
 	    'loading_indicator_cls': 'loading-indicator',
 	    // How many page shall we preload that are below the last visible page
-	    'preload_pages': 3,
+	    'preload_pages': 10,
 	    // how many ms should we wait before actually rendering the pages and after a scroll event
 	    'render_timeout': 100,
 	    // zoom ratio step for each zoom in/out event
 	    'scale_step': 0.9,
 	    // register global key handler, allowing navigation by keyboard
-	    'key_handler': true,
+	    'key_handler': false,
 	    // register hashchange handler, navigate to the location specified by the hash
-	    'hashchange_handler': true,
+	    'hashchange_handler': false,
 	    // register view history handler, allowing going back to the previous location
-	    'view_history_handler': true,
+	    'view_history_handler': false,
 
 	    '__dummy__': 'no comma'
 	};
@@ -26055,6 +26055,7 @@
 	    this.pages_loading = [];
 	    this.init_before_loading_content();
 	    var self = this;
+
 	    self.init_after_loading_content();
 	};
 
@@ -26090,8 +26091,6 @@
 	    },
 
 	    init_after_loading_content: function init_after_loading_content() {
-	        console.log(this.container);
-	        console.log(123);
 	        this.sidebar = document.getElementById(this.config['sidebar_id']);
 	        this.outline = document.getElementById(this.config['outline_id']);
 	        this.container = document.getElementById(this.config['container_id']);
@@ -26136,11 +26135,10 @@
 
 	        // register schedule rendering
 	        // renew old schedules since scroll() may be called frequently
-	        this.container.addEventListener('scroll', function () {
-	            self.update_page_idx();
-	            self.schedule_render(true);
-	        }, false);
-
+	        //this.container.addEventListener('scroll', function () {
+	        //    self.update_page_idx();
+	        //    self.schedule_render(true);
+	        //}, false);
 	        // handle links
 	        [this.container, this.outline].forEach(function (ele) {
 	            ele.addEventListener('click', self.link_handler.bind(self), false);
@@ -26525,7 +26523,6 @@
 
 	        // translate fixed_point to the coordinate system of all pages
 	        var container = this.container;
-	        console.log(container);
 	        fixed_point[0] += container.scrollLeft;
 	        fixed_point[1] += container.scrollTop;
 
@@ -27399,21 +27396,23 @@
 /* 29 */
 /***/ function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+	"use strict";
 
 	/**
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout"];
-	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout) {
-
+	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "$ionicScrollDelegate"];
+	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, $ionicScrollDelegate) {
 	    var collect = {
 	        resourceList: [],
 	        title: $stateParams.title,
 	        modalTitle: "",
 	        frameSrc: "",
 	        defaultViewer: null,
+	        showZoom: false,
+	        zoomNum: 1,
+	        showFrame: false,
 	        init: function init() {
 	            var _this = this;
 
@@ -27465,32 +27464,70 @@
 	            var _this3 = this;
 
 	            this.modalTitle = title;
-	            this.content = "";
 	            //this.frameSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
+	            this.content = "";
 	            $timeout(function () {
 	                sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + id).then(function (res) {
 	                    _this3.content = $sce.trustAsHtml(res.data);
+	                    $timeout(function () {
+	                        try {
+	                            _this3.defaultViewer = new pdf2htmlEX({});
+	                        } catch (e) {}
+
+	                        _this3.showZoom = true;
+	                    }, 1);
+
+	                    res.data = null;
 	                });
 	            }, 500);
 
 	            //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
 	            $scope.modal.show();
+	            //let _viewFrame = document.querySelector(".viewFrame");
+	            //angular.element(_viewFrame).bind("load", function () {
+	            //    $scope.$emit("event:frameload");
+	            //
+	            //});
+	            //$scope.$on("event:frameload", ()=> {
+	            //
+	            //
+	            //    try {
+	            //        angular.element(_viewFrame)[0].style.height = angular.element(_viewFrame).contents()[0].querySelector("#page-container").clientHeight + "px";
+	            //        $timeout(()=> {
+	            //            $ionicScrollDelegate.resize();
+	            //            this.showZoom = true;
+	            //        }, 500);
+	            //    } catch (e) {
+	            //
+	            //    }
+	            //
+	            //    _viewFrame = null;
+	            //});
 	        },
 	        hideModal: function hideModal() {
 	            this.content = "";
+	            this.defaultViewer = null;
+	            this.showZoom = false;
+	            this.frameSrc = "";
 	            $scope.modal.hide();
 	        },
-	        more: function more() {
-	            try {
-	                this.defaultViewer = new global.pdf2htmlEX({});
-	                this.defaultViewer.rescale(2.0);
-	            } catch (e) {}
+	        more: function more() {},
+	        zoom: function zoom(scale) {
+	            if (scale == 'big') {
+	                if (this.zoomNum > 2) return;
+	                this.zoomNum = this.zoomNum + 1;
+	                this.defaultViewer.rescale(this.zoomNum);
+	            } else {
+	                if (this.zoomNum == 1) return;
+	                this.zoomNum = this.zoomNum - 1;
+
+	                this.defaultViewer.rescale(this.zoomNum);
+	            }
 	        }
 	    };
 	    collect.init();
 	    this.collect = collect;
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 30 */
