@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-    'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule']).config(["$stateProvider", "$urlRouterProvider",
+    'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule', 'viewModule']).config(["$stateProvider", "$urlRouterProvider",
         "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
             //$httpProvider.interceptors.push('appInterceptor');
             $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
@@ -32,6 +32,15 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                         "wrap": {
                             templateUrl: "tpls/tabs.html",
                             controller: "MainController",
+                            controllerAs: "vm"
+                        }
+                    }
+                }).state('view', {
+                    url: '/view/:id/:title',
+                    views: {
+                        'wrap': {
+                            templateUrl: "tpls/view.html",
+                            controller: "viewController",
                             controllerAs: "vm"
                         }
                     }

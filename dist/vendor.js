@@ -73,6 +73,7 @@
 	__webpack_require__(29); //资源列表控制器
 	__webpack_require__(30); //资源列表控制器
 	__webpack_require__(31); //资源列表控制器
+	__webpack_require__(32);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
@@ -26774,7 +26775,7 @@
 	// angular.module is a global place for creating, registering and retrieving Angular modules
 	// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 	// the 2nd parameter is an array of 'requires'
-	angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule']).config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+	angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule', 'viewModule']).config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 	    //$httpProvider.interceptors.push('appInterceptor');
 	    $ionicConfigProvider.navBar.alignTitle('left'); //覆盖默认Android的标题居左的设计
 	    if (ionic.Platform.isAndroid()) {
@@ -26799,6 +26800,15 @@
 	            "wrap": {
 	                templateUrl: "tpls/tabs.html",
 	                controller: "MainController",
+	                controllerAs: "vm"
+	            }
+	        }
+	    }).state('view', {
+	        url: '/view/:id/:title',
+	        views: {
+	            'wrap': {
+	                templateUrl: "tpls/view.html",
+	                controller: "viewController",
 	                controllerAs: "vm"
 	            }
 	        }
@@ -27402,8 +27412,8 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	ResourceListController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "$ionicScrollDelegate"];
-	function ResourceListController($rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, $ionicScrollDelegate) {
+	ResourceListController.$inject = ["$state", "$rootScope", "$scope", "httpRequest.sendRequest", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "$ionicScrollDelegate"];
+	function ResourceListController($state, $rootScope, $scope, sendRequest, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, $ionicScrollDelegate) {
 	    var collect = {
 	        resourceList: [],
 	        title: $stateParams.title,
@@ -27629,6 +27639,75 @@
 	        }
 	    };
 	    collect.showLabel();
+	    this.collect = collect;
+	}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	/**
+	 * Created by dcampus on 2016/3/23.
+	 */
+	angular.module("viewModule", []).controller("viewController", viewController);
+
+	viewController.$inject = ["$scope", "httpRequest.sendRequest", "$sce", "global.constant", "$timeout", "$stateParams"];
+
+	function viewController($scope, sendRequest, $sce, constant, $timeout, $stateParams) {
+	    var _collect;
+
+	    var collect = (_collect = {
+	        title: "",
+	        frameSrc: "",
+	        defaultViewer: null,
+	        showZoom: false,
+	        zoomNum: 1,
+	        showFrame: false
+	    }, _defineProperty(_collect, "title", $stateParams.title), _defineProperty(_collect, "init", function init() {
+	        var _this = this;
+
+	        $timeout(function () {
+	            sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + $stateParams.id).then(function (res) {
+	                _this.content = $sce.trustAsHtml(res.data);
+	                $timeout(function () {
+	                    try {
+	                        _this.defaultViewer = new pdf2htmlEX({});
+	                    } catch (e) {}
+	                    _this.showZoom = true;
+	                }, 1);
+
+	                res.data = null;
+	            });
+	        }, 500);
+	    }), _defineProperty(_collect, "hideModal", function hideModal() {
+	        this.content = "";
+	        this.defaultViewer = null;
+	        this.showZoom = false;
+	        this.frameSrc = "";
+	        $scope.modal.hide();
+	    }), _defineProperty(_collect, "more", function more() {}), _defineProperty(_collect, "zoom", function zoom(scale) {
+	        if (scale == 'big') {
+	            if (this.zoomNum > 2) return;
+	            this.zoomNum = this.zoomNum + 1;
+	            this.defaultViewer.rescale(this.zoomNum);
+	        } else {
+	            if (this.zoomNum == 1) return;
+	            this.zoomNum = this.zoomNum - 1;
+
+	            this.defaultViewer.rescale(this.zoomNum);
+	        }
+	    }), _defineProperty(_collect, "back", function back() {
+	        this.content = "";
+	        this.defaultViewer = null;
+	        this.showZoom = false;
+	        this.frameSrc = "";
+	        history.go(-1);
+	    }), _collect);
+	    collect.init();
 	    this.collect = collect;
 	}
 
