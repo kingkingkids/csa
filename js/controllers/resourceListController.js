@@ -16,7 +16,6 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
         zoomNum: 1,
         showFrame: false,
         init: function () {
-            this.loadGroups();
             this.onHold = (id)=> {
                 this.showPopup(id);
             };
@@ -28,7 +27,7 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
                 $scope.modal = modal;
             });
         },
-        loadGroups: function () {
+        loadResources: function () {
             resources.getList($stateParams.parentId).then((res)=> {
                 this.resourceList = res.data.resources;
             });
@@ -130,6 +129,7 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
             }
         }
     }
+    collect.loadResources();
     collect.init();
     this.collect = collect;
 }

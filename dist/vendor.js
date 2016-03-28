@@ -27271,9 +27271,7 @@
 	        },
 	        logout: function logout() {
 	            account.logout().then(function (res) {
-	                $state.go("tabs.home");
 	                root.$emit("event:logout");
-	                session.removeSession();
 	            });
 	        }
 	    };
@@ -27292,19 +27290,17 @@
 	 */
 	angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
-	MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session"];
+	MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory"];
 
-	function MainController(root, scope, state, account, session) {
+	function MainController(root, scope, state, account, session, $ionicHistory) {
 	    var _this = this;
 
 	    /**接收到由httpRequest传过来的事件,退出时调用**/
 	    root.$on("status:logout", function () {
-	        _this.collect.loginModal.show();
-	        account.keepAlive.stop(); //停止keepAlive调用
-	        session.removeSession();
+	        collect.logoutFunc();
 	    });
 	    root.$on("event:logout", function () {
-	        _this.collect.loginModal.show();
+	        collect.logoutFunc();
 	    });
 	    account.loginModal(scope); //判断是否登录,否则显示登录窗口
 	    var collect = {
@@ -27329,7 +27325,20 @@
 	            };
 	            account.doLogin(paramsObj).then(function (res) {
 	                _this.collect.loginModal.hide();
+	                $ionicHistory.nextViewOptions({
+	                    disableBack: false
+	                });
 	            });
+	        },
+	        logoutFunc: function logoutFunc() {
+	            _this.collect.loginModal.show();
+	            account.keepAlive.stop(); //停止keepAlive调用
+	            session.removeSession();
+	            $ionicHistory.nextViewOptions({
+	                disableBack: true
+	            });
+	            state.go("tabs.home");
+	            $ionicHistory.clearHistory();
 	        }
 	    };
 	    var loginInfo = {
@@ -27382,9 +27391,9 @@
 	 */
 	angular.module("GroupListModule", ["httpRequest"]).controller("GroupListController", GroupListController);
 
-	GroupListController.$inject = ["$stateParams", "request.group"];
+	GroupListController.$inject = ["$stateParams", "request.group", "$rootScope"];
 
-	function GroupListController($stateParams, group) {
+	function GroupListController($stateParams, group, $rootScope) {
 	    var _this = this;
 
 	    var collect = {
@@ -27396,6 +27405,9 @@
 
 	                _this.collect.groupList = children;
 	            });
+	        },
+	        loadResources: function loadResources() {
+	            $rootScope.$broadcast("event:loadResources");
 	        }
 	    };
 	    collect.loadGroups();
@@ -27426,7 +27438,6 @@
 	        init: function init() {
 	            var _this = this;
 
-	            this.loadGroups();
 	            this.onHold = function (id) {
 	                _this.showPopup(id);
 	            };
@@ -27438,7 +27449,7 @@
 	                $scope.modal = modal;
 	            });
 	        },
-	        loadGroups: function loadGroups() {
+	        loadResources: function loadResources() {
 	            var _this2 = this;
 
 	            resources.getList($stateParams.parentId).then(function (res) {
@@ -27535,6 +27546,7 @@
 	            }
 	        }
 	    };
+	    collect.loadResources();
 	    collect.init();
 	    this.collect = collect;
 	}

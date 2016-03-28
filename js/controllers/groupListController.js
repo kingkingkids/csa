@@ -5,9 +5,9 @@ angular
     .module("GroupListModule", ["httpRequest"])
     .controller("GroupListController", GroupListController);
 
-GroupListController.$inject = ["$stateParams", "request.group"];
+GroupListController.$inject = ["$stateParams", "request.group", "$rootScope"];
 
-function GroupListController($stateParams, group) {
+function GroupListController($stateParams, group, $rootScope) {
     let collect = {
         groupList: [],
         title: $stateParams.title,
@@ -16,6 +16,9 @@ function GroupListController($stateParams, group) {
                 let {children} = res.data;
                 this.collect.groupList = children;
             });
+        },
+        loadResources: function () {
+            $rootScope.$broadcast("event:loadResources");
         }
     }
     collect.loadGroups();

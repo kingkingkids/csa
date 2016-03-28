@@ -5,17 +5,15 @@ angular
     .module("MainModule", ["httpRequest"])
     .controller("MainController", MainController);
 
-MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session"];
+MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory"];
 
-function MainController(root, scope, state, account, session) {
+function MainController(root, scope, state, account, session, $ionicHistory) {
     /**接收到由httpRequest传过来的事件,退出时调用**/
     root.$on("status:logout", ()=> {
-        this.collect.loginModal.show();
-        account.keepAlive.stop();//停止keepAlive调用
-        session.removeSession();
+        collect.logoutFunc();
     });
     root.$on("event:logout", ()=> {
-        this.collect.loginModal.show();
+        collect.logoutFunc();
     });
     account.loginModal(scope);//判断是否登录,否则显示登录窗口
     let collect = {
@@ -40,8 +38,21 @@ function MainController(root, scope, state, account, session) {
             };
             account.doLogin(paramsObj).then(res=> {
                 this.collect.loginModal.hide();
+                $ionicHistory.nextViewOptions({
+                    disableBack: false
+                });
             });
 
+        },
+        logoutFunc: ()=> {
+            this.collect.loginModal.show();
+            account.keepAlive.stop();//停止keepAlive调用
+            session.removeSession();
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            state.go("tabs.home")
+            $ionicHistory.clearHistory();
         }
     };
     let loginInfo = {

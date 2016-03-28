@@ -26,9 +26,7 @@ function personalController(root, scope, sendRequest, $state, $ionicPopup, accou
         },
         logout: function () {
             account.logout().then(res=> {
-                $state.go("tabs.home");
                 root.$emit("event:logout");
-                session.removeSession();
             });
         }
     }

@@ -1,4 +1,4 @@
-<ion-view view-title="{{vm.collect.title}}">
+<ion-view view-title="{{vm.collect.title}}" cache-view="false">
     <ion-nav-bar>
         <ion-nav-back-button>
             返回
@@ -11,7 +11,9 @@
                      ui-sref="tabs.resourceList({parentId:-group.id,title:group.displayName})">
                     {{group.displayName}}
                 </div>
-                <div ng-if="group.type == 'category'" ng-click="navToJournal(group.id)">{{group.displayName}}</div>
+                <div ui-sref="tabs.groupList({groupId:group.id,title:group.displayName})" ng-if="group.type == 'category'"
+                     ng-click="navToJournal(group.id)">{{group.displayName}}
+                </div>
             </li>
         </ul>
     </ion-content>
