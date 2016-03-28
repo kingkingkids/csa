@@ -2,8 +2,8 @@ resources.$inject = ["httpRequest.sendRequest", "global.constant"];
 
 function resources(send, constant) {
     return {
-        getList: function (id) {
-            return send(constant.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
+        getList: function (id, _limit, _start) {
+            return send(constant.path.getResources, "type=all&limit=" + _limit + "&start=" + _start + "&parentId=" + id);
         }
     }
 }

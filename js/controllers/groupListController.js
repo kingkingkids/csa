@@ -11,14 +11,19 @@ function GroupListController($stateParams, group, $rootScope) {
     let collect = {
         groupList: [],
         title: $stateParams.title,
-        loadGroups: ()=> {
+        loadGroups: function () {
             group.getList($stateParams.groupId).then((res)=> {
                 let {children} = res.data;
-                this.collect.groupList = children;
+                this.groupList = children;
             });
         },
-        loadResources: function () {
-            $rootScope.$broadcast("event:loadResources");
+        doRefresh: function () {
+            group.getList($stateParams.groupId).then((res)=> {
+                let {children} = res.data;
+                this.groupList = children;
+            }).finally(function () {
+                $rootScope.$broadcast('scroll.refreshComplete');
+            });
         }
     }
     collect.loadGroups();

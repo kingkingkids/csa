@@ -8,15 +8,27 @@
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-content>
-        <ul class="list">
-            <li class="item" ng-repeat="res in vm.collect.resourceList" on-hold="vm.collect.onHold(res.id)">
+        <ion-refresher
+                pulling-text="下拉刷新"
+                on-refresh="vm.collect.doRefresh()">
+        </ion-refresher>
+
+        <ion-list>
+            <ion-item ng-repeat="res in vm.collect.resourceList" on-hold="vm.collect.onHold(res.id)">
                 <div ng-if="res.type == 1"
                      ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
                     {{res.displayName}}
                 </div>
                 <div ng-if="res.type == 2" ng-click="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
                 </div>
-            </li>
-        </ul>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll
+                immediate-check="false"
+                on-infinite="vm.collect.loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
+
     </ion-content>
 </ion-view>

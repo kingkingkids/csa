@@ -27075,8 +27075,8 @@
 
 	function resources(send, constant) {
 	    return {
-	        getList: function getList(id) {
-	            return send(constant.path.getResources, "type=all&limit=100&start=0&parentId=" + id);
+	        getList: function getList(id, _limit, _start) {
+	            return send(constant.path.getResources, "type=all&limit=" + _limit + "&start=" + _start + "&parentId=" + id);
 	        }
 	    };
 	}
@@ -27394,20 +27394,28 @@
 	GroupListController.$inject = ["$stateParams", "request.group", "$rootScope"];
 
 	function GroupListController($stateParams, group, $rootScope) {
-	    var _this = this;
-
 	    var collect = {
 	        groupList: [],
 	        title: $stateParams.title,
 	        loadGroups: function loadGroups() {
+	            var _this = this;
+
 	            group.getList($stateParams.groupId).then(function (res) {
 	                var children = res.data.children;
 
-	                _this.collect.groupList = children;
+	                _this.groupList = children;
 	            });
 	        },
-	        loadResources: function loadResources() {
-	            $rootScope.$broadcast("event:loadResources");
+	        doRefresh: function doRefresh() {
+	            var _this2 = this;
+
+	            group.getList($stateParams.groupId).then(function (res) {
+	                var children = res.data.children;
+
+	                _this2.groupList = children;
+	            }).finally(function () {
+	                $rootScope.$broadcast('scroll.refreshComplete');
+	            });
 	        }
 	    };
 	    collect.loadGroups();
@@ -27435,6 +27443,9 @@
 	        showZoom: false,
 	        zoomNum: 1,
 	        showFrame: false,
+	        start: 0, //当前页码
+	        limit: 10, //每页显示的条数
+	        totalCount: 1, //总条数
 	        init: function init() {
 	            var _this = this;
 
@@ -27449,13 +27460,7 @@
 	                $scope.modal = modal;
 	            });
 	        },
-	        loadResources: function loadResources() {
-	            var _this2 = this;
 
-	            resources.getList($stateParams.parentId).then(function (res) {
-	                _this2.resourceList = res.data.resources;
-	            });
-	        },
 	        showPopup: function showPopup() {
 	            // An elaborate, custom popup
 	            var popup = $ionicPopup.show({
@@ -27482,48 +27487,26 @@
 	            });
 	        },
 	        openModal: function openModal(id, title) {
-	            var _this3 = this;
+	            var _this2 = this;
 
 	            this.modalTitle = title;
-	            //this.frameSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
 	            this.content = "";
 	            $timeout(function () {
 	                sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + id).then(function (res) {
-	                    _this3.content = $sce.trustAsHtml(res.data);
+	                    _this2.content = $sce.trustAsHtml(res.data);
 	                    $timeout(function () {
 	                        try {
-	                            _this3.defaultViewer = new pdf2htmlEX({});
+	                            _this2.defaultViewer = new pdf2htmlEX({});
 	                        } catch (e) {}
 
-	                        _this3.showZoom = true;
+	                        _this2.showZoom = true;
 	                    }, 1);
 
 	                    res.data = null;
 	                });
 	            }, 500);
 
-	            //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
 	            $scope.modal.show();
-	            //let _viewFrame = document.querySelector(".viewFrame");
-	            //angular.element(_viewFrame).bind("load", function () {
-	            //    $scope.$emit("event:frameload");
-	            //
-	            //});
-	            //$scope.$on("event:frameload", ()=> {
-	            //
-	            //
-	            //    try {
-	            //        angular.element(_viewFrame)[0].style.height = angular.element(_viewFrame).contents()[0].querySelector("#page-container").clientHeight + "px";
-	            //        $timeout(()=> {
-	            //            $ionicScrollDelegate.resize();
-	            //            this.showZoom = true;
-	            //        }, 500);
-	            //    } catch (e) {
-	            //
-	            //    }
-	            //
-	            //    _viewFrame = null;
-	            //});
 	        },
 	        hideModal: function hideModal() {
 	            this.content = "";
@@ -27544,6 +27527,50 @@
 
 	                this.defaultViewer.rescale(this.zoomNum);
 	            }
+	        },
+	        loadResources: function loadResources() {
+	            var _this3 = this;
+
+	            this.start = 0;
+	            resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                var _res$data = res.data;
+	                var resources = _res$data.resources;
+	                var totalCount = _res$data.totalCount;
+
+	                _this3.resourceList = resources;
+	                _this3.start = _this3.limit + _this3.start;
+	                _this3.totalCount = totalCount;
+	            });
+	        },
+	        doRefresh: function doRefresh() {
+	            var _this4 = this;
+
+	            this.start = 0;
+	            resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                var _res$data2 = res.data;
+	                var resources = _res$data2.resources;
+	                var totalCount = _res$data2.totalCount;
+
+	                _this4.resourceList = resources;
+	                _this4.start = _this4.limit + _this4.start;
+	                _this4.totalCount = totalCount;
+	            }).finally(function () {
+	                $rootScope.$broadcast('scroll.refreshComplete');
+	            });
+	        },
+	        loadMore: function loadMore() {
+	            var _this5 = this;
+
+	            if (this.start >= this.totalCount) {
+	                $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                return;
+	            }
+	            resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                _this5.resourceList = _this5.resourceList.concat(res.data.resources);
+	                _this5.start = _this5.limit + _this5.start;
+	            }).finally(function () {
+	                $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	            });
 	        }
 	    };
 	    collect.loadResources();

@@ -15,6 +15,9 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
         showZoom: false,
         zoomNum: 1,
         showFrame: false,
+        start: 0,//当前页码
+        limit: 10,//每页显示的条数
+        totalCount: 1,//总条数
         init: function () {
             this.onHold = (id)=> {
                 this.showPopup(id);
@@ -27,11 +30,7 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
                 $scope.modal = modal;
             });
         },
-        loadResources: function () {
-            resources.getList($stateParams.parentId).then((res)=> {
-                this.resourceList = res.data.resources;
-            });
-        },
+
         showPopup: function () {
             // An elaborate, custom popup
             let popup = $ionicPopup.show({
@@ -62,7 +61,6 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
         },
         openModal: function (id, title) {
             this.modalTitle = title;
-            //this.frameSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
             this.content = "";
             $timeout(()=> {
                 sendRequest(constant.path.downloadResource + "?disposition=inline&id=" + id).then(res=> {
@@ -80,28 +78,7 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
                 });
             }, 500);
 
-            //this.frameSrc = $sce.trustAsResourceUrl("1.pdf");
             $scope.modal.show();
-            //let _viewFrame = document.querySelector(".viewFrame");
-            //angular.element(_viewFrame).bind("load", function () {
-            //    $scope.$emit("event:frameload");
-            //
-            //});
-            //$scope.$on("event:frameload", ()=> {
-            //
-            //
-            //    try {
-            //        angular.element(_viewFrame)[0].style.height = angular.element(_viewFrame).contents()[0].querySelector("#page-container").clientHeight + "px";
-            //        $timeout(()=> {
-            //            $ionicScrollDelegate.resize();
-            //            this.showZoom = true;
-            //        }, 500);
-            //    } catch (e) {
-            //
-            //    }
-            //
-            //    _viewFrame = null;
-            //});
         },
         hideModal: function () {
             this.content = "";
@@ -127,6 +104,39 @@ function ResourceListController($state, $rootScope, $scope, sendRequest, $stateP
 
                 this.defaultViewer.rescale(this.zoomNum);
             }
+        },
+        loadResources: function () {
+            this.start = 0;
+            resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
+                let {resources,totalCount} = res.data;
+                this.resourceList = resources;
+                this.start = this.limit + this.start;
+                this.totalCount = totalCount;
+            });
+        },
+        doRefresh: function () {
+            this.start = 0;
+            resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
+                let {resources,totalCount} = res.data;
+                this.resourceList = resources;
+                this.start = this.limit + this.start;
+                this.totalCount = totalCount;
+            }).finally(function () {
+                $rootScope.$broadcast('scroll.refreshComplete');
+            });
+        },
+        loadMore: function () {
+            if (this.start >= this.totalCount) {
+                $rootScope.$broadcast('scroll.infiniteScrollComplete');
+                return;
+            }
+            resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
+                this.resourceList = this.resourceList.concat(res.data.resources);
+                this.start = this.limit + this.start;
+
+            }).finally(function () {
+                $rootScope.$broadcast('scroll.infiniteScrollComplete');
+            });
         }
     }
     collect.loadResources();
