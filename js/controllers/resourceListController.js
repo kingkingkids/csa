@@ -17,7 +17,7 @@
             , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>')//过滤body的正则
             , pageReg: function (start, end) {
                 end = end || start;
-                return VerEx().then('<div id="' + start).anythingBut('').find('<div id="' + end);//找到当前page正则
+                return VerEx().then('<div id="' + start).anythingBut('').find('<div id="' + end + '"');//找到当前page正则
             }
             , lastPageReg: function (end) {
                 return VerEx().find('<div id="' + end).anythingBut('').then('<div class="loading')//找到最后一page正则;
@@ -37,15 +37,16 @@
             start: 0,//当前页码
             limit: 10,//每页显示的条数
             totalCount: 0,//总条数
-            swiper: null,
+
             items: [],
-            htmlCode: '',
-            index: 0,
-            styleOutLine: "",
-            style: "",
-            body: "",
-            pageArray: [],
-            pageArrayLength: 0,
+            //swiper: null,
+            //htmlCode: '',
+            //index: 0,
+            //styleOutLine: "",
+            //style: "",
+            //body: "",
+            //pageArray: [],
+            //pageArrayLength: 0,
             init: function () {
                 this.onHold = (id)=> {
                     this.showPopup(id);
@@ -57,43 +58,44 @@
                 }).then((modal)=> {
                     $scope.modal = modal;
                 });
-                $scope.$on('ngRepeatFinished', ()=> {
-                    if (!this.swiper) {
-                        this.swiper = new Swiper('.swiper-container', {
-                            pagination: '.swiper-pagination',
-                            paginationClickable: false,
-                            onInit: e=> {
-                                e.slides[0].innerHTML = this.getHtml(0);
-                                this.defaultViewer = new pdf2htmlEX({});
-                            }
-                        });
-                        this.swiper.on('onSlideChangeStart', e=> {
-                            this.defaultViewer = null;
-
-                            $timeout(()=> {
-                                let activeIndex = e.activeIndex;
-                                this.index = activeIndex;
-                                if (activeIndex != 0 && this.pageArrayLength != (activeIndex + 1)) {
-                                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
-                                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                } else if (this.pageArrayLength == (activeIndex + 1)) {
-                                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
-                                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                } else {
-                                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
-                                }
-                                this.defaultViewer = new pdf2htmlEX({});
-                            }, 100);
-
-                        });
-                    } else {
-                        this.swiper.slideTo(0);
-                        this.swiper.update(true);
-                        this.swiper.slides[0].innerHTML = this.getHtml(0);
-                    }
-                });
+                //$scope.$on('ngRepeatFinished', ()=> {
+                //    if (!this.swiper) {
+                //        this.swiper = new Swiper('.swiper-container', {
+                //            pagination: '.swiper-pagination',
+                //            paginationClickable: false,
+                //            paginationType: 'progress',
+                //            onInit: e=> {
+                //                e.slides[0].innerHTML = this.getHtml(0);
+                //                this.defaultViewer = new pdf2htmlEX({});
+                //            }
+                //        });
+                //        this.swiper.on('onSlideChangeStart', e=> {
+                //            this.defaultViewer = null;
+                //
+                //            $timeout(()=> {
+                //                let activeIndex = e.activeIndex;
+                //                this.index = activeIndex;
+                //                if (activeIndex != 0 && this.pageArrayLength != (activeIndex + 1)) {
+                //                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
+                //                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+                //                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+                //                } else if (this.pageArrayLength == (activeIndex + 1)) {
+                //                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
+                //                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+                //                } else {
+                //                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+                //                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
+                //                }
+                //                this.defaultViewer = new pdf2htmlEX({});
+                //            }, 100);
+                //
+                //        });
+                //    } else {
+                //        this.swiper.slideTo(0);
+                //        this.swiper.update(true);
+                //        this.swiper.slides[0].innerHTML = this.getHtml(0);
+                //    }
+                //});
             },
 
             showPopup: function (id) {
@@ -129,56 +131,42 @@
                 this.content = "";
                 Common.loading.show();
                 this.showZoom = true;
-                $timeout(()=> {
-                    resources.getView(id).then(res=> {
-                        this.htmlCode = res.data;
-                        this.style = this.htmlCode.match(regExp.styleReg)[0];
-                        this.body = this.htmlCode.match(regExp.bodyReg)[0];
-                        this.pageArray = this.body.match(regExp.pageIdReg)
-                            .map(function (value) {
-                                return value.replace(/(?:id\=")/gm, "");
-                            });
-                        this.pageArrayLength = this.pageArray.length;
-                        this.styleOutLine = "";
-                        this.styleOutLine = $sce.trustAsHtml(this.style);
-                        this.getHtml(this.index);
-
-                        //this.content = $sce.trustAsHtml(res.data);
-                        //$timeout(()=> {
-                        //    try {
-                        //        this.defaultViewer = new pdf2htmlEX({});
-                        //        Common.loading.hide();
-                        //    } catch (e) {
-                        //    }
-                        //}, 10);
-                        res.data = null;
-                    });
-                }, 100);
+                $scope.$broadcast('event:openModel', id);
+                //$timeout(()=> {
+                //    resources.getView(id).then(res=> {
+                //        this.htmlCode = res.data;
+                //        this.style = this.htmlCode.match(regExp.styleReg)[0];
+                //        this.body = this.htmlCode.match(regExp.bodyReg)[0];
+                //        this.pageArray = this.body.match(regExp.pageIdReg)
+                //            .map(function (value) {
+                //                return value.replace(/(?:id\=")/gm, "");
+                //            });
+                //        this.pageArrayLength = this.pageArray.length;
+                //        this.styleOutLine = "";
+                //        this.styleOutLine = $sce.trustAsHtml(this.style);
+                //        this.getHtml(this.index);
+                //        res.data = null;
+                //    });
+                //}, 100);
                 $scope.modal.show();
             },
-            getHtml: function (index) {
-                let pageContent
-                    , matchBody = this.body.match(regExp.pageReg(this.pageArray[index], this.pageArray[index + 1]));
-                this.items = this.pageArray;
-
-                if (matchBody != null) {
-                    pageContent = matchBody[0];
-                    pageContent = pageContent.substring(0, pageContent.length - 11 - (this.pageArray[index + 1]).length);
-                } else {
-                    pageContent = this.body.match(regExp.lastPageReg(this.pageArray[index]))[0];
-                    pageContent = pageContent.substring(0, pageContent.length - 19);
-
-                }
-
-
-                //this.content = "";
-                //this.content = $sce.trustAsHtml(pageContent);
-                Common.loading.hide();
-                return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
-
-
-            },
+            //getHtml: function (index) {
+            //    let pageContent
+            //        , matchBody = this.body.match(regExp.pageReg(this.pageArray[index], this.pageArray[index + 1]));
+            //    this.items = this.pageArray;
+            //    if (matchBody != null) {
+            //        pageContent = matchBody[0];
+            //        pageContent = pageContent.substring(0, pageContent.length - 11 - (this.pageArray[index + 1]).length);
+            //    } else {
+            //        pageContent = this.body.match(regExp.lastPageReg(this.pageArray[index]))[0];
+            //        pageContent = pageContent.substring(0, pageContent.length - 19);
+            //    }
+            //    Common.loading.hide();
+            //    return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
+            //},
             hideModal: function () {
+
+                $scope.$broadcast('event:hideModel');
                 this.content = "";
                 this.defaultViewer = null;
                 this.showZoom = false;
@@ -192,26 +180,10 @@
             },
             zoom: function (scale) {
                 if (scale == 'big') {
-                    this.zoomNum = this.zoomNum + 1;
-                    this.defaultViewer.rescale(this.zoomNum);
-                    this.content = $sce.trustAsHtml(this.swiper.slides[this.index].innerHTML);
-                    document.querySelector('.swiper-container').style.display = "none";
+                    $scope.$broadcast('event:scale:big');
                 } else {
-                    this.zoomNum = this.zoomNum - 1;
-                    if (this.zoomNum == 1) {
-                        this.content = "";
-                        this.defaultViewer.rescale(this.zoomNum);
-                        document.querySelector('.swiper-container').style.display = "block";
-                    } else {
-                        this.defaultViewer.rescale(this.zoomNum);
-                        this.content = $sce.trustAsHtml(this.swiper.slides[this.index].innerHTML);
-                    }
-
-
+                    $scope.$broadcast('event:scale:small');
                 }
-
-
-                //this.swiper.slides[this.index].innerHTML = "";
             },
             loadResources: function () {
                 this.start = 0;

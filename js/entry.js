@@ -20,7 +20,9 @@ require("./controllers/favController.js");//资源列表控制器
 require("./controllers/editController.js");//资源列表控制器
 //require("./controllers/viewController.js");
 require("./controllers/infoController.js");
-require("./directive/onRender.js");
+require("./directive/onFinishRender.js");
+require("./directive/viewPdf.js");
+
 
 
 

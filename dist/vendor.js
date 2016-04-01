@@ -76,6 +76,7 @@
 	//require("./controllers/viewController.js");
 	__webpack_require__(37);
 	__webpack_require__(38);
+	__webpack_require__(39);
 
 /***/ },
 /* 2 */
@@ -26633,7 +26634,7 @@
 	                , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>') //过滤body的正则
 	                , pageReg: function pageReg(start, end) {
 	                    end = end || start;
-	                    return VerEx().then('<div id="' + start).anythingBut('').find('<div id="' + end); //找到当前page正则
+	                    return VerEx().then('<div id="' + start).anythingBut('').find('<div id="' + end + '"'); //找到当前page正则
 	                },
 	                lastPageReg: function lastPageReg(end) {
 	                    return VerEx().find('<div id="' + end).anythingBut('').then('<div class="loading'); //找到最后一page正则;
@@ -26653,15 +26654,16 @@
 	                start: 0, //当前页码
 	                limit: 10, //每页显示的条数
 	                totalCount: 0, //总条数
-	                swiper: null,
+
 	                items: [],
-	                htmlCode: '',
-	                index: 0,
-	                styleOutLine: "",
-	                style: "",
-	                body: "",
-	                pageArray: [],
-	                pageArrayLength: 0,
+	                //swiper: null,
+	                //htmlCode: '',
+	                //index: 0,
+	                //styleOutLine: "",
+	                //style: "",
+	                //body: "",
+	                //pageArray: [],
+	                //pageArrayLength: 0,
 	                init: function init() {
 	                    var _this = this;
 
@@ -26675,42 +26677,44 @@
 	                    }).then(function (modal) {
 	                        $scope.modal = modal;
 	                    });
-	                    $scope.$on('ngRepeatFinished', function () {
-	                        if (!_this.swiper) {
-	                            _this.swiper = new Swiper('.swiper-container', {
-	                                pagination: '.swiper-pagination',
-	                                paginationClickable: false,
-	                                onInit: function onInit(e) {
-	                                    e.slides[0].innerHTML = _this.getHtml(0);
-	                                    _this.defaultViewer = new pdf2htmlEX({});
-	                                }
-	                            });
-	                            _this.swiper.on('onSlideChangeStart', function (e) {
-	                                _this.defaultViewer = null;
-
-	                                $timeout(function () {
-	                                    var activeIndex = e.activeIndex;
-	                                    _this.index = activeIndex;
-	                                    if (activeIndex != 0 && _this.pageArrayLength != activeIndex + 1) {
-	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
-	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                    } else if (_this.pageArrayLength == activeIndex + 1) {
-	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
-	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                    } else {
-	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
-	                                    }
-	                                    _this.defaultViewer = new pdf2htmlEX({});
-	                                }, 100);
-	                            });
-	                        } else {
-	                            _this.swiper.slideTo(0);
-	                            _this.swiper.update(true);
-	                            _this.swiper.slides[0].innerHTML = _this.getHtml(0);
-	                        }
-	                    });
+	                    //$scope.$on('ngRepeatFinished', ()=> {
+	                    //    if (!this.swiper) {
+	                    //        this.swiper = new Swiper('.swiper-container', {
+	                    //            pagination: '.swiper-pagination',
+	                    //            paginationClickable: false,
+	                    //            paginationType: 'progress',
+	                    //            onInit: e=> {
+	                    //                e.slides[0].innerHTML = this.getHtml(0);
+	                    //                this.defaultViewer = new pdf2htmlEX({});
+	                    //            }
+	                    //        });
+	                    //        this.swiper.on('onSlideChangeStart', e=> {
+	                    //            this.defaultViewer = null;
+	                    //
+	                    //            $timeout(()=> {
+	                    //                let activeIndex = e.activeIndex;
+	                    //                this.index = activeIndex;
+	                    //                if (activeIndex != 0 && this.pageArrayLength != (activeIndex + 1)) {
+	                    //                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
+	                    //                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                    //                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                    //                } else if (this.pageArrayLength == (activeIndex + 1)) {
+	                    //                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
+	                    //                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                    //                } else {
+	                    //                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                    //                    e.slides[activeIndex].innerHTML = this.getHtml(activeIndex);
+	                    //                }
+	                    //                this.defaultViewer = new pdf2htmlEX({});
+	                    //            }, 100);
+	                    //
+	                    //        });
+	                    //    } else {
+	                    //        this.swiper.slideTo(0);
+	                    //        this.swiper.update(true);
+	                    //        this.swiper.slides[0].innerHTML = this.getHtml(0);
+	                    //    }
+	                    //});
 	                },
 
 	                showPopup: function showPopup(id) {
@@ -26739,57 +26743,46 @@
 	                    });
 	                },
 	                openModal: function openModal(id, title) {
-	                    var _this2 = this;
-
 	                    this.modalTitle = title;
 	                    this.content = "";
 	                    Common.loading.show();
 	                    this.showZoom = true;
-	                    $timeout(function () {
-	                        resources.getView(id).then(function (res) {
-	                            _this2.htmlCode = res.data;
-	                            _this2.style = _this2.htmlCode.match(regExp.styleReg)[0];
-	                            _this2.body = _this2.htmlCode.match(regExp.bodyReg)[0];
-	                            _this2.pageArray = _this2.body.match(regExp.pageIdReg).map(function (value) {
-	                                return value.replace(/(?:id\=")/gm, "");
-	                            });
-	                            _this2.pageArrayLength = _this2.pageArray.length;
-	                            _this2.styleOutLine = "";
-	                            _this2.styleOutLine = $sce.trustAsHtml(_this2.style);
-	                            _this2.getHtml(_this2.index);
-
-	                            //this.content = $sce.trustAsHtml(res.data);
-	                            //$timeout(()=> {
-	                            //    try {
-	                            //        this.defaultViewer = new pdf2htmlEX({});
-	                            //        Common.loading.hide();
-	                            //    } catch (e) {
-	                            //    }
-	                            //}, 10);
-	                            res.data = null;
-	                        });
-	                    }, 100);
+	                    $scope.$broadcast('event:openModel', id);
+	                    //$timeout(()=> {
+	                    //    resources.getView(id).then(res=> {
+	                    //        this.htmlCode = res.data;
+	                    //        this.style = this.htmlCode.match(regExp.styleReg)[0];
+	                    //        this.body = this.htmlCode.match(regExp.bodyReg)[0];
+	                    //        this.pageArray = this.body.match(regExp.pageIdReg)
+	                    //            .map(function (value) {
+	                    //                return value.replace(/(?:id\=")/gm, "");
+	                    //            });
+	                    //        this.pageArrayLength = this.pageArray.length;
+	                    //        this.styleOutLine = "";
+	                    //        this.styleOutLine = $sce.trustAsHtml(this.style);
+	                    //        this.getHtml(this.index);
+	                    //        res.data = null;
+	                    //    });
+	                    //}, 100);
 	                    $scope.modal.show();
 	                },
-	                getHtml: function getHtml(index) {
-	                    var pageContent = void 0,
-	                        matchBody = this.body.match(regExp.pageReg(this.pageArray[index], this.pageArray[index + 1]));
-	                    this.items = this.pageArray;
-
-	                    if (matchBody != null) {
-	                        pageContent = matchBody[0];
-	                        pageContent = pageContent.substring(0, pageContent.length - 11 - this.pageArray[index + 1].length);
-	                    } else {
-	                        pageContent = this.body.match(regExp.lastPageReg(this.pageArray[index]))[0];
-	                        pageContent = pageContent.substring(0, pageContent.length - 19);
-	                    }
-
-	                    //this.content = "";
-	                    //this.content = $sce.trustAsHtml(pageContent);
-	                    Common.loading.hide();
-	                    return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
-	                },
+	                //getHtml: function (index) {
+	                //    let pageContent
+	                //        , matchBody = this.body.match(regExp.pageReg(this.pageArray[index], this.pageArray[index + 1]));
+	                //    this.items = this.pageArray;
+	                //    if (matchBody != null) {
+	                //        pageContent = matchBody[0];
+	                //        pageContent = pageContent.substring(0, pageContent.length - 11 - (this.pageArray[index + 1]).length);
+	                //    } else {
+	                //        pageContent = this.body.match(regExp.lastPageReg(this.pageArray[index]))[0];
+	                //        pageContent = pageContent.substring(0, pageContent.length - 19);
+	                //    }
+	                //    Common.loading.hide();
+	                //    return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
+	                //},
 	                hideModal: function hideModal() {
+
+	                    $scope.$broadcast('event:hideModel');
 	                    this.content = "";
 	                    this.defaultViewer = null;
 	                    this.showZoom = false;
@@ -26802,26 +26795,13 @@
 	                more: function more() {},
 	                zoom: function zoom(scale) {
 	                    if (scale == 'big') {
-	                        this.zoomNum = this.zoomNum + 1;
-	                        this.defaultViewer.rescale(this.zoomNum);
-	                        this.content = $sce.trustAsHtml(this.swiper.slides[this.index].innerHTML);
-	                        document.querySelector('.swiper-container').style.display = "none";
+	                        $scope.$broadcast('event:scale:big');
 	                    } else {
-	                        this.zoomNum = this.zoomNum - 1;
-	                        if (this.zoomNum == 1) {
-	                            this.content = "";
-	                            this.defaultViewer.rescale(this.zoomNum);
-	                            document.querySelector('.swiper-container').style.display = "block";
-	                        } else {
-	                            this.defaultViewer.rescale(this.zoomNum);
-	                            this.content = $sce.trustAsHtml(this.swiper.slides[this.index].innerHTML);
-	                        }
+	                        $scope.$broadcast('event:scale:small');
 	                    }
-
-	                    //this.swiper.slides[this.index].innerHTML = "";
 	                },
 	                loadResources: function loadResources() {
-	                    var _this3 = this;
+	                    var _this2 = this;
 
 	                    this.start = 0;
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
@@ -26829,13 +26809,13 @@
 	                        var resources = _res$data.resources;
 	                        var totalCount = _res$data.totalCount;
 
-	                        _this3.resourceList = resources;
-	                        _this3.start = _this3.limit + _this3.start;
-	                        _this3.totalCount = totalCount;
+	                        _this2.resourceList = resources;
+	                        _this2.start = _this2.limit + _this2.start;
+	                        _this2.totalCount = totalCount;
 	                    });
 	                },
 	                doRefresh: function doRefresh() {
-	                    var _this4 = this;
+	                    var _this3 = this;
 
 	                    this.start = 0;
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
@@ -26843,23 +26823,23 @@
 	                        var resources = _res$data2.resources;
 	                        var totalCount = _res$data2.totalCount;
 
-	                        _this4.resourceList = resources;
-	                        _this4.start = _this4.limit + _this4.start;
-	                        _this4.totalCount = totalCount;
+	                        _this3.resourceList = resources;
+	                        _this3.start = _this3.limit + _this3.start;
+	                        _this3.totalCount = totalCount;
 	                    }).finally(function () {
 	                        $rootScope.$broadcast('scroll.refreshComplete');
 	                    });
 	                },
 	                loadMore: function loadMore() {
-	                    var _this5 = this;
+	                    var _this4 = this;
 
 	                    if (this.start >= this.totalCount) {
 	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                        return;
 	                    }
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                        _this5.resourceList = _this5.resourceList.concat(res.data.resources);
-	                        _this5.start = _this5.limit + _this5.start;
+	                        _this4.resourceList = _this4.resourceList.concat(res.data.resources);
+	                        _this4.start = _this4.limit + _this4.start;
 	                    }).finally(function () {
 	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    });
@@ -32992,6 +32972,7 @@
 	    angular.module('directivesModule', []).directive('onFinishRender', function ($timeout) {
 	        return {
 	            restrict: 'A',
+	            scope: true,
 	            link: function link(scope, element, attr) {
 	                if (scope.$last === true) {
 	                    $timeout(function () {
@@ -33001,6 +32982,142 @@
 	            }
 	        };
 	    });
+	}
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	/**
+	 * Created by dcampus on 2016/4/1.
+	 */
+	{
+	    (function () {
+	        var viewPdf = function viewPdf($state, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+	            return {
+	                restrict: 'E',
+	                templateUrl: './js/directive/view.html',
+	                scope: true,
+	                link: function link(scope, element, attrs) {},
+	                controller: function controller($scope, $element, $attrs) {
+	                    $scope.showZoom = false;
+	                    var regExp = {
+	                        styleReg: VerEx().then("<style").anythingBut('').then('</style>') //过滤style的正则
+	                        , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>') //过滤body的正则
+	                        , pageReg: function pageReg(start, end) {
+	                            end = end || start;
+	                            return VerEx().then('<div id="' + start).anythingBut('').find('<div id="' + end + '"'); //找到当前page正则
+	                        },
+	                        lastPageReg: function lastPageReg(end) {
+	                            return VerEx().find('<div id="' + end).anythingBut('').then('<div class="loading'); //找到最后一page正则;
+	                        },
+	                        pageIdReg: VerEx().find('id="pf').anythingBut('"') //获取页id正则
+	                    };
+	                    $scope.index = 0;
+	                    $scope.$on('event:openModel', function (evt, next, current) {
+	                        $scope.showZoom = true;
+	                        $timeout(function () {
+	                            resources.getView(next).then(function (res) {
+	                                $scope.htmlCode = res.data;
+	                                $scope.style = $scope.htmlCode.match(regExp.styleReg)[0];
+	                                $scope.body = $scope.htmlCode.match(regExp.bodyReg)[0];
+	                                $scope.pageArray = $scope.body.match(regExp.pageIdReg).map(function (value) {
+	                                    return value.replace(/(?:id\=")/gm, "");
+	                                });
+	                                $scope.pageArrayLength = $scope.pageArray.length;
+	                                $scope.styleOutLine = "";
+	                                $scope.styleOutLine = $sce.trustAsHtml($scope.style);
+	                                $scope.getHtml($scope.index);
+	                                res.data = null;
+	                            });
+	                        }, 100);
+	                    });
+
+	                    $scope.$on('event:hideModel', function () {
+	                        $scope.content = "";
+	                        $scope.defaultViewer = null;
+	                        $scope.showZoom = false;
+	                        $scope.frameSrc = "";
+	                        $scope.items = [];
+	                        $scope.body = "";
+	                        $scope.style = "";
+	                    });
+
+	                    $scope.$on('ngRepeatFinished', function () {
+	                        if (!$scope.swiper) {
+	                            $scope.swiper = new Swiper('.swiper-container', {
+	                                pagination: '.swiper-pagination',
+	                                paginationClickable: false,
+	                                paginationType: 'progress',
+	                                onInit: function onInit(e) {
+	                                    e.slides[0].innerHTML = $scope.getHtml(0);
+	                                    $scope.defaultViewer = new pdf2htmlEX({});
+	                                }
+	                            });
+	                            $scope.swiper.on('onSlideChangeStart', function (e) {
+	                                $scope.defaultViewer = null;
+	                                $timeout(function () {
+	                                    var activeIndex = e.activeIndex;
+	                                    $scope.index = activeIndex;
+	                                    if (activeIndex != 0 && $scope.pageArrayLength != activeIndex + 1) {
+	                                        e.slides[activeIndex].innerHTML = $scope.getHtml(activeIndex);
+	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                    } else if ($scope.pageArrayLength == activeIndex + 1) {
+	                                        e.slides[activeIndex].innerHTML = $scope.getHtml(activeIndex);
+	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                    } else {
+	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                        e.slides[activeIndex].innerHTML = $scope.getHtml(activeIndex);
+	                                    }
+	                                    $scope.defaultViewer = new pdf2htmlEX({});
+	                                }, 100);
+	                            });
+	                        } else {
+	                            $scope.swiper.slideTo(0);
+	                            $scope.swiper.update(true);
+	                            $scope.swiper.slides[0].innerHTML = $scope.getHtml(0);
+	                        }
+	                    });
+
+	                    $scope.getHtml = function (index) {
+	                        var pageContent = void 0,
+	                            matchBody = $scope.body.match(regExp.pageReg($scope.pageArray[index], $scope.pageArray[index + 1]));
+	                        $scope.items = $scope.pageArray;
+	                        if (matchBody != null) {
+	                            pageContent = matchBody[0];
+	                            pageContent = pageContent.substring(0, pageContent.length - 11 - $scope.pageArray[index + 1].length);
+	                        } else {
+	                            pageContent = $scope.body.match(regExp.lastPageReg($scope.pageArray[index]))[0];
+	                            pageContent = pageContent.substring(0, pageContent.length - 19);
+	                        }
+	                        Common.loading.hide();
+	                        return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
+	                    };
+	                    $scope.$on('event:scale:big', function () {
+	                        if ($scope.defaultViewer.scale == 2.5) return;
+	                        $scope.defaultViewer.rescale(2.5);
+	                        $scope.content = $sce.trustAsHtml($scope.swiper.slides[$scope.index].innerHTML);
+	                        document.querySelector('.swiper-container').style.display = "none";
+	                    });
+	                    $scope.$on('event:scale:small', function () {
+	                        if ($scope.defaultViewer.scale == 1) return;
+	                        $scope.content = "";
+	                        $scope.defaultViewer.rescale(1);
+	                        document.querySelector('.swiper-container').style.display = "block";
+	                    });
+	                }
+	            };
+	        };
+
+	        var VerEx = __webpack_require__(32);
+	        var Swiper = __webpack_require__(33);
+	        var pdf2htmlEX = __webpack_require__(34);
+	        angular.module('directivesModule').directive('viewPdf', viewPdf);
+	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	    })();
 	}
 
 /***/ }
