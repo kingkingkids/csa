@@ -62,6 +62,7 @@
                     $scope.items = [];
                     $scope.body = "";
                     $scope.style = "";
+                    $scope.index = 0;
                 });
 
                 $scope.$on('ngRepeatFinished', ()=> {

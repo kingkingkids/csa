@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e7c4319e-0994-4e8d-9458-fe1dec90ec3f" name="Default" comment="first commit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/directive/view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/directive/viewPdf.js" />
+    <list default="true" id="e7c4319e-0994-4e8d-9458-fe1dec90ec3f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vendor.js" afterPath="$PROJECT_DIR$/dist/vendor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/resourceListController.js" afterPath="$PROJECT_DIR$/js/controllers/resourceListController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/entry.js" afterPath="$PROJECT_DIR$/js/entry.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpls/modal/view.html" afterPath="$PROJECT_DIR$/tpls/modal/view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/directive/onRender.js" afterPath="$PROJECT_DIR$/js/directive/onFinishRender.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directive/viewPdf.js" afterPath="$PROJECT_DIR$/js/directive/viewPdf.js" />
     </list>
     <ignored path="csa_git.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="resourceListController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="resourceListController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/resourceListController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5333333">
-              <caret line="182" column="38" selection-start-line="182" selection-start-column="38" selection-end-line="182" selection-end-column="55" />
+            <state vertical-scroll-proportion="-3.2266188">
+              <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -65,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewPdf.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="viewPdf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/directive/viewPdf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.528777">
-              <caret line="131" column="67" selection-start-line="131" selection-start-column="67" selection-end-line="131" selection-end-column="67" />
+            <state vertical-scroll-proportion="-11.033334">
+              <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -202,8 +197,8 @@
         <option value="D:/360data/重要数据/桌面/login/images/main.css" />
         <option value="$PROJECT_DIR$/js/directive/view.html" />
         <option value="$PROJECT_DIR$/tpls/modal/view.html" />
-        <option value="$PROJECT_DIR$/js/controllers/resourceListController.js" />
         <option value="$PROJECT_DIR$/js/directive/viewPdf.js" />
+        <option value="$PROJECT_DIR$/js/controllers/resourceListController.js" />
       </list>
     </option>
   </component>
@@ -599,14 +594,20 @@
       <option name="project" value="LOCAL" />
       <updated>1459473127065</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="first commit">
+      <created>1459502888156</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1459502888156</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15806112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15806112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21861471" sideWeight="0.5021075" order="7" side_tool="true" content_ui="tabs" />
@@ -1082,21 +1083,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/resourceListController.js">
+    <entry file="file://$PROJECT_DIR$/js/directive/viewPdf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5333333">
-          <caret line="182" column="38" selection-start-line="182" selection-start-column="38" selection-end-line="182" selection-end-column="55" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-11.033334">
+          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/directive/viewPdf.js">
+    <entry file="file://$PROJECT_DIR$/js/controllers/resourceListController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.528777">
-          <caret line="131" column="67" selection-start-line="131" selection-start-column="67" selection-end-line="131" selection-end-column="67" />
-          <folding />
+        <state vertical-scroll-proportion="-3.2266188">
+          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
