@@ -1,11 +1,17 @@
-// Ionic Starter App
+{
+    // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-    'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule', 'viewModule']).config(["$stateProvider", "$urlRouterProvider",
-        "$ionicConfigProvider", "$httpProvider", function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+    angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule',
+        'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
+        'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule',
+        'infoModule','directivesModule']).config(appConfig).run(appRun);
+    appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider"];
+    appRun.$inject = ["$ionicPlatform", "$rootScope"];
+    function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+        {
             //$httpProvider.interceptors.push('appInterceptor');
             $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
             if (ionic.Platform.isAndroid()) {
@@ -35,15 +41,6 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                             controllerAs: "vm"
                         }
                     }
-                }).state('view', {
-                    url: '/view/:id/:title',
-                    views: {
-                        'wrap': {
-                            templateUrl: "tpls/view.html",
-                            controller: "viewController",
-                            controllerAs: "vm"
-                        }
-                    }
                 })
                 .state('tabs.home', {
                     url: '/home',
@@ -69,7 +66,9 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                 url: '/info',
                 views: {
                     'info-tab': {
-                        templateUrl: "tpls/info.html"
+                        templateUrl: "tpls/info.html",
+                        controller: "infoController",
+                        controllerAs: "vm"
                     }
                 }
             }).state('tabs.personal', {
@@ -111,8 +110,10 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                 }
             });
             $urlRouterProvider.otherwise('/tabs/home');
-        }])
-    .run(["$ionicPlatform", "$rootScope", function ($ionicPlatform, $rootScope) {
+        }
+    }
+
+    function appRun($ionicPlatform, $rootScope) {
 
         /**基本配置**/
         $rootScope.config = {
@@ -136,4 +137,5 @@ angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule'
                 StatusBar.styleDefault();
             }
         });
-    }]);
+    }
+}

@@ -19,7 +19,7 @@
                      ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
                     {{res.displayName}}
                 </div>
-                <div ng-if="res.type == 2" ng-click="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
+                <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
                 </div>
             </ion-item>
         </ion-list>

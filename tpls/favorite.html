@@ -1,11 +1,12 @@
-<ion-view view-title="收藏">
+<ion-view view-title="收藏" cache-view="false">
     <ion-content>
-        <ul class="list">
-            <li class="item" collection-repeat="watch in vm.watchesList">
-                {{watch.displayName}}
-            </li>
-
-        </ul>
+        <ion-list can-swipe="true">
+            <ion-item collection-repeat="watch in vm.watchesList">
+                <p>{{watch.displayName}}</p>
+                <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId)">移除收藏
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>
 

@@ -1,22 +1,35 @@
 <ion-modal-view>
     <ion-header-bar align-title="left" class="bar-positive">
         <div class="buttons">
-            <button class="button" ng-click="vm.collect.hideModal()">返回</button>
+            <button class="button" on-tap="vm.collect.hideModal()">返回</button>
         </div>
         <h1 class="title">{{vm.collect.modalTitle}}</h1>
         <div class="buttons">
-            <button class="button" ng-click="vm.collect.more()">...</button>
+            <button class="button" on-tap="vm.collect.more()">...</button>
         </div>
     </ion-header-bar>
-    <ion-content overflow-scroll="true"  style="background:#9e9e9e;">
-
+    <ion-content overflow-scroll="true">
+        <div ng-bind-html="vm.collect.styleOutLine"></div>
         <div ng-bind-html="vm.collect.content"></div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="item in vm.collect.items" on-finish-render>
+                    <div class="spinner">加载中...</div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div id="outline" style="display: none"></div>
+
+        </div>
+
+        <!--<div ng-bind-html="vm.collect.content"></div>-->
         <!--<iframe allowTransparency="true" src="{{vm.collect.frameSrc}}" frameborder="0"-->
         <!--scrolling="no" class="viewFrame"></iframe>-->
 
     </ion-content>
-    <a href="javascript:void(0)" class="zoom big" ng-click="vm.collect.zoom('big')"
+    <a href="javascript:void(0)" class="zoom big" on-tap="vm.collect.zoom('big')"
        ng-show="vm.collect.showZoom">+</a>
-    <a href="javascript:void(0)" class="zoom small" ng-click="vm.collect.zoom('small')"
+    <a href="javascript:void(0)" class="zoom small" on-tap="vm.collect.zoom('small')"
        ng-show="vm.collect.showZoom">-</a>
 </ion-modal-view>

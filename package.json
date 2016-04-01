@@ -17,7 +17,10 @@
     "html-loader": "^0.4.0",
     "sass-loader": "^3.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "swiper": "^3.3.1",
+    "verbal-expressions": "^0.2.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

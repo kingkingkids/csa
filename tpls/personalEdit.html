@@ -4,43 +4,47 @@
             返回
         </ion-nav-back-button>
         <ion-nav-buttons side="right">
-            <button class="button" ng-click="vm.collect.save()">
+            <button class="button" on-tap="vm.collect.save()">
                 保存
             </button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content>
-        <div class="list">
+        <div class="list" style="position: relative">
             <label class="item item-input" ng-show="vm.collect.isName">
-                <input type="text" placeholder="用户名" value="{{vm.name}}">
+                <input type="text" name="userName" ng-model="vm.userInfo.userName" placeholder="用户名" id="userName">
+
             </label>
+            <!--<div class="clearInput" ng-click="vm.collect.cleanInput()"></div>-->
             <label class="item item-input" ng-show="vm.collect.isCompany">
-                <input type="text" placeholder=" 公司" value="{{vm.company}}">
+                <input type="text" placeholder=" 单位" ng-model="vm.userInfo.company">
             </label>
             <label class="item item-input" ng-show="vm.collect.isDepartment">
-                <input type="text" placeholder=" 部门" value="{{vm.department}}">
+                <input type="text" placeholder=" 地址" ng-model="vm.userInfo.department">
+            </label>
+            <label class="item item-input" ng-show="vm.collect.isIm">
+                <input type="text" placeholder="专业" ng-model="vm.userInfo.im">
             </label>
             <label class="item item-input" ng-show="vm.collect.isMobile">
-                <input type="text" placeholder=" 手机" value="{{vm.mobile}}">
+                <input type="text" placeholder=" 手机" ng-model="vm.userInfo.mobile">
             </label>
-            <!--<div class="item item-input">-->
-
-            <!--当前邮箱：{{vm.email}}-->
-            <!--</div>-->
             <div ng-show="vm.collect.isEmail">
                 <label class="item item-input">
-                    <input type="text" placeholder="请填写邮箱">
+                    <input type="text" placeholder="请填写邮箱" ng-model="vm.userInfo.email">
                 </label>
                 <label class="item item-input">
-                    <input type="text" placeholder="确认邮箱">
+                    <input type="text" placeholder="确认邮箱" ng-model="vm.userInfo.confirmEmail">
                 </label>
             </div>
             <div ng-show="vm.collect.isPassword">
                 <label class="item item-input">
-                    <input type="password" placeholder="请填写密码">
+                    <input type="password" placeholder="请填写原密码" ng-model="vm.userInfo.oldPassword">
                 </label>
                 <label class="item item-input">
-                    <input type="password" placeholder="确认密码">
+                    <input type="password" placeholder="请填写新密码" ng-model="vm.userInfo.password">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="确认密码" ng-model="vm.userInfo.confirtPassword">
                 </label>
             </div>
         </div>

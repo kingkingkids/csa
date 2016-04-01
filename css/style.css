@@ -31,6 +31,36 @@ a {
   .zoom.small {
     bottom: 10px; }
 
+.clearInput {
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  background: #8f8f8f;
+  color: #fff;
+  font-size: 11px;
+  line-height: 15px;
+  border-radius: 15px;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  z-index: 10000; }
+  .clearInput:after {
+    content: "x"; }
+
+#page-container {
+  background: none !important; }
+
+.item-content {
+  height: 100%; }
+
+.swiper-container {
+  overflow: auto; }
+
+.swiper-slide .spinner {
+  text-align: center;
+  padding-top: 10%;
+  color: #666; }
+
 @media (min-width: 680px) {
   .modal {
     top: 0px !important;

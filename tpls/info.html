@@ -1,32 +1,24 @@
-<ion-view view-title="消息">
-  <ion-header-bar align-title="left">
-    <h1 class="title">消息</h1>
-  </ion-header-bar>
-  <ion-content>
-    <ul class="list">
-      <li class="item">
-        消息。。。。。
-      </li>
-      <li class="item">
-        消息。。。。。
-      </li>
-      <li class="item">
-        消息。。。。。
-      </li>
-      <li class="item">
-        消息。。。。。
-      </li>
-      <li class="item">
-        消息。。。。。
-      </li>
-      <li class="item">
-        消息。。。。。
-      </li>
-      <li class="item">
-        消息。。。。。
-      </li>
-
-    </ul>
-  </ion-content>
+<ion-view view-title="消息" cache-view="false">
+    <ion-header-bar align-title="left">
+        <h1 class="title">消息</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-refresher
+                pulling-text="下拉刷新"
+                on-refresh="vm.collect.doRefresh()">
+        </ion-refresher>
+        <ion-list can-swipe="true">
+            <ion-item collection-repeat="item in vm.collect.items">
+                <p>{{item.displayName}}</p>
+                <ion-option-button class="button-assertive" on-tap="vm.collect.removeMessage(item.id)">删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll
+                immediate-check="false"
+                on-infinite="vm.collect.loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
 </ion-view>
 

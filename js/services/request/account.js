@@ -58,7 +58,15 @@ function account(send, scope, interval, $ionicModal, $q, constant, session) {
         },
         logout: function () {
             return send(constant.path.logout);
+        },
+        saveUserInfo: function (key, value) {
+            let paramsStr = key + "=" + value;
+            return send(constant.path.modifyLoginUser, paramsStr);
+        },
+        savePassword: function (oValue, value) {
+            return send(constant.path.modifyPassword, "password=" + oValue + "&newPassword=" + value);
         }
     }
 }
+
 module.exports = account;

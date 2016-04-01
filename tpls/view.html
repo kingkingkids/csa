@@ -1,7 +1,7 @@
 <ion-view view-title="">
 
     <ion-header-bar align-title="left" class="bar-positive">
-        <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="vm.collect.back()">Back</a>
+        <a class="button icon-left ion-chevron-left button-clear button-dark" on-touch="vm.collect.back()">Back</a>
         <h1 class="title"> {{vm.collect.title}}</h1>
 
     </ion-header-bar>
@@ -13,9 +13,9 @@
         <!--scrolling="no" class="viewFrame"></iframe>-->
 
     </ion-content>
-    <a href="javascript:void(0)" class="zoom big" ng-click="vm.collect.zoom('big')"
+    <a href="javascript:void(0)" class="zoom big" on-tap="vm.collect.zoom('big')"
        ng-show="vm.collect.showZoom">+</a>
-    <a href="javascript:void(0)" class="zoom small" ng-click="vm.collect.zoom('small')"
+    <a href="javascript:void(0)" class="zoom small" on-tap="vm.collect.zoom('small')"
        ng-show="vm.collect.showZoom">-</a>
 </ion-view>
 
