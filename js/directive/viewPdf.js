@@ -20,6 +20,7 @@
 
             },
             controller: function ($scope, $element, $attrs) {
+                console.log(1);
                 $scope.showZoom = false;
                 const regExp = {
                     styleReg: VerEx().then("<style").anythingBut('').then('</style>')//过滤style的正则
@@ -63,6 +64,7 @@
                     $scope.body = "";
                     $scope.style = "";
                     $scope.index = 0;
+                    $scope.htmlCode = "";
                 });
 
                 $scope.$on('ngRepeatFinished', ()=> {

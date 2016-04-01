@@ -26654,7 +26654,15 @@
 	                start: 0, //当前页码
 	                limit: 10, //每页显示的条数
 	                totalCount: 0, //总条数
+	                swiper: null,
 	                items: [],
+	                htmlCode: '',
+	                index: 0,
+	                styleOutLine: "",
+	                style: "",
+	                body: "",
+	                pageArray: [],
+	                pageArrayLength: 0,
 	                init: function init() {
 	                    var _this = this;
 
@@ -26667,6 +26675,43 @@
 	                        hardwareBackButtonClose: false
 	                    }).then(function (modal) {
 	                        $scope.modal = modal;
+	                    });
+	                    $scope.$on('ngRepeatFinished', function () {
+	                        if (!_this.swiper) {
+	                            _this.swiper = new Swiper('.swiper-container', {
+	                                pagination: '.swiper-pagination',
+	                                paginationClickable: false,
+	                                paginationType: 'progress',
+	                                onInit: function onInit(e) {
+	                                    e.slides[0].innerHTML = _this.getHtml(0);
+	                                    _this.defaultViewer = new pdf2htmlEX({});
+	                                }
+	                            });
+	                            _this.swiper.on('onSlideChangeStart', function (e) {
+	                                _this.defaultViewer = null;
+
+	                                $timeout(function () {
+	                                    var activeIndex = e.activeIndex;
+	                                    _this.index = activeIndex;
+	                                    if (activeIndex != 0 && _this.pageArrayLength != activeIndex + 1) {
+	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
+	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                    } else if (_this.pageArrayLength == activeIndex + 1) {
+	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
+	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                    } else {
+	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
+	                                    }
+	                                    _this.defaultViewer = new pdf2htmlEX({});
+	                                }, 150);
+	                            });
+	                        } else {
+	                            _this.swiper.slideTo(0);
+	                            _this.swiper.update(true);
+	                            _this.swiper.slides[0].innerHTML = _this.getHtml(0);
+	                        }
 	                    });
 	                },
 
@@ -26696,27 +26741,71 @@
 	                    });
 	                },
 	                openModal: function openModal(id, title) {
+	                    var _this2 = this;
+
 	                    this.modalTitle = title;
 	                    this.content = "";
 	                    Common.loading.show();
 	                    this.showZoom = true;
-	                    $scope.$broadcast('event:openModel', id);
+	                    $timeout(function () {
+	                        resources.getView(id).then(function (res) {
+	                            _this2.htmlCode = res.data;
+	                            _this2.style = _this2.htmlCode.match(regExp.styleReg)[0];
+	                            _this2.body = _this2.htmlCode.match(regExp.bodyReg)[0];
+	                            _this2.pageArray = _this2.body.match(regExp.pageIdReg).map(function (value) {
+	                                return value.replace(/(?:id\=")/gm, "");
+	                            });
+	                            _this2.pageArrayLength = _this2.pageArray.length;
+	                            _this2.styleOutLine = "";
+	                            _this2.styleOutLine = $sce.trustAsHtml(_this2.style);
+	                            _this2.getHtml(_this2.index);
+	                            res.data = null;
+	                            _this2.htmlCode = null;
+	                        });
+	                    }, 100);
 	                    $scope.modal.show();
 	                },
+	                getHtml: function getHtml(index) {
+	                    var pageContent = void 0,
+	                        matchBody = this.body.match(regExp.pageReg(this.pageArray[index], this.pageArray[index + 1]));
+	                    this.items = this.pageArray;
+
+	                    if (matchBody != null) {
+	                        pageContent = matchBody[0];
+	                        pageContent = pageContent.substring(0, pageContent.length - 11 - this.pageArray[index + 1].length);
+	                    } else {
+	                        pageContent = this.body.match(regExp.lastPageReg(this.pageArray[index]))[0];
+	                        pageContent = pageContent.substring(0, pageContent.length - 19);
+	                    }
+	                    Common.loading.hide();
+	                    return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
+	                },
 	                hideModal: function hideModal() {
-	                    $scope.$broadcast('event:hideModel');
+	                    this.content = "";
+	                    this.defaultViewer = null;
+	                    this.showZoom = false;
+	                    this.frameSrc = "";
+	                    this.items = [];
+	                    this.body = "";
+	                    this.style = "";
 	                    $scope.modal.hide();
 	                },
 	                more: function more() {},
 	                zoom: function zoom(scale) {
 	                    if (scale == 'big') {
-	                        $scope.$broadcast('event:scale:big');
+	                        if (this.defaultViewer.scale == 2.3) return;
+	                        this.defaultViewer.rescale(2.3);
+	                        this.content = $sce.trustAsHtml(this.swiper.slides[this.index].innerHTML);
+	                        document.querySelector('.swiper-container').style.display = "none";
 	                    } else {
-	                        $scope.$broadcast('event:scale:small');
+	                        if (this.defaultViewer.scale == 1) return;
+	                        this.content = "";
+	                        this.defaultViewer.rescale(1);
+	                        document.querySelector('.swiper-container').style.display = "block";
 	                    }
 	                },
 	                loadResources: function loadResources() {
-	                    var _this2 = this;
+	                    var _this3 = this;
 
 	                    this.start = 0;
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
@@ -26724,13 +26813,13 @@
 	                        var resources = _res$data.resources;
 	                        var totalCount = _res$data.totalCount;
 
-	                        _this2.resourceList = resources;
-	                        _this2.start = _this2.limit + _this2.start;
-	                        _this2.totalCount = totalCount;
+	                        _this3.resourceList = resources;
+	                        _this3.start = _this3.limit + _this3.start;
+	                        _this3.totalCount = totalCount;
 	                    });
 	                },
 	                doRefresh: function doRefresh() {
-	                    var _this3 = this;
+	                    var _this4 = this;
 
 	                    this.start = 0;
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
@@ -26738,23 +26827,23 @@
 	                        var resources = _res$data2.resources;
 	                        var totalCount = _res$data2.totalCount;
 
-	                        _this3.resourceList = resources;
-	                        _this3.start = _this3.limit + _this3.start;
-	                        _this3.totalCount = totalCount;
+	                        _this4.resourceList = resources;
+	                        _this4.start = _this4.limit + _this4.start;
+	                        _this4.totalCount = totalCount;
 	                    }).finally(function () {
 	                        $rootScope.$broadcast('scroll.refreshComplete');
 	                    });
 	                },
 	                loadMore: function loadMore() {
-	                    var _this4 = this;
+	                    var _this5 = this;
 
 	                    if (this.start >= this.totalCount) {
 	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                        return;
 	                    }
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                        _this4.resourceList = _this4.resourceList.concat(res.data.resources);
-	                        _this4.start = _this4.limit + _this4.start;
+	                        _this5.resourceList = _this5.resourceList.concat(res.data.resources);
+	                        _this5.start = _this5.limit + _this5.start;
 	                    }).finally(function () {
 	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    });
@@ -32917,6 +33006,7 @@
 	                scope: true,
 	                link: function link(scope, element, attrs) {},
 	                controller: function controller($scope, $element, $attrs) {
+	                    console.log(1);
 	                    $scope.showZoom = false;
 	                    var regExp = {
 	                        styleReg: VerEx().then("<style").anythingBut('').then('</style>') //过滤style的正则
@@ -32959,6 +33049,7 @@
 	                        $scope.body = "";
 	                        $scope.style = "";
 	                        $scope.index = 0;
+	                        $scope.htmlCode = "";
 	                    });
 
 	                    $scope.$on('ngRepeatFinished', function () {
