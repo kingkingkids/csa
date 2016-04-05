@@ -1,21 +1,32 @@
 <ion-modal-view>
-    <ion-header-bar align-title="left" class="bar-positive">
-        <h1 class="title">登录</h1>
-    </ion-header-bar>
-    <ion-content>
+    <ion-content class="loginWrap" overflow-scroll="false" scroll="false">
+        <div class="line"></div>
+        <div class="logoWrap"></div>
         <div class="list">
             <label class="item item-input">
-                <span class="input-label">用户名</span>
-                <input type="text" ng-model="vm.loginInfo.username">
+                <!--<span class="input-label">身份证号</span>-->
+                <input placeholder="请输入身份证号" type="text" ng-model="vm.loginInfo.username">
             </label>
             <label class="item item-input">
-                <span class="input-label">密码</span>
-                <input type="password" ng-model="vm.loginInfo.password">
+                <!--<span class="input-label">密码</span>-->
+                <input placeholder="请输入密码" type="password" ng-model="vm.loginInfo.password">
             </label>
+            <ion-checkbox class="remberMe" ng-model="vm.loginInfo.remberMe">记住密码？</ion-checkbox>
+
         </div>
+
         <div class="padding">
             <button class="button button-block button-positive" on-tap="vm.collect.login()">登录</button>
-            <button class="button button-block button-balanced" ui-sref="tabs.home">游客登录</button>
+            <div class="otherButton"><a href="javascript:void(0)" class="left">忘记密码</a>
+                <a class="right" on-tap="vm.collect.guestLogin()">游客登录</a>
+            </div>
+        </div>
+
+        <div class="description">
+            <p>CSA有效会员，可直接登录，</p>
+            <p>用户名和初始密码均为身份证号。</p>
+            <p>申请会员请登录中华口腔医学会会员服务网注册</p>
+            <p><a href="tel:01062116665258">（010-621 16665-258）</a></p>
         </div>
     </ion-content>
 </ion-modal-view>

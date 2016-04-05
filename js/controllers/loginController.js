@@ -11,10 +11,10 @@
 
     function LoginController($state, account, session) {
         let collect = {
-            login: ()=> {
+            login: function () {
                 let paramsObj = {
-                    "account": this.loginInfo.username,
-                    "password": encodeURIComponent(this.loginInfo.password)
+                    "account": loginInfo.username,
+                    "password": encodeURIComponent(loginInfo.password)
                 };
                 account.doLogin(paramsObj).then((res)=> {
                     let paramsStr = "memberId=" + res.data.members[0].id;
@@ -23,7 +23,6 @@
                         paramsStr = null;
                     });
                     paramsObj = null;
-
                 });
             }
         }

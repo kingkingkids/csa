@@ -1,4 +1,9 @@
-h1, h2, h3, h3, h4, h5, h6 body {
+input {
+  -webkit-appearance: none !important;
+  -moz-appearance: none;
+  appearance: none; }
+
+h1, h2, h3, h3, h4, h5, h6 body, p {
   margin: 0 !important;
   padding: 0; }
 
@@ -7,6 +12,73 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 a {
   text-decoration: none; }
+
+.loginWrap {
+  background: url("../img/login_bg.png") no-repeat;
+  background-size: cover; }
+  .loginWrap .padding {
+    padding-top: 0; }
+  .loginWrap .line {
+    background: #0d7af5;
+    height: 3px; }
+  .loginWrap .list {
+    padding: 0 20px;
+    border: 0;
+    margin-bottom: 10px; }
+    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {
+      margin-top: 8%; }
+    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {
+      background: transparent;
+      border: 1px solid #007aff; }
+    .loginWrap .list .item-checkbox .checkbox {
+      margin-top: -23px;
+      left: 5px; }
+    .loginWrap .list .item {
+      border-width: 0 !important;
+      border-bottom: 1px solid #b2b2b2 !important; }
+      .loginWrap .list .item .input-label {
+        width: 25%; }
+    .loginWrap .list .item-input {
+      background: none;
+      margin-top: 15px;
+      padding-left: 5px !important; }
+      .loginWrap .list .item-input input {
+        font-size: 14px !important;
+        height: 25px; }
+    .loginWrap .list .remberMe {
+      background: transparent !important;
+      border-bottom: 0 !important;
+      margin-top: 15px;
+      padding: 10px;
+      padding-left: 50px;
+      font-size: 14px; }
+  .loginWrap .logoWrap {
+    background: url(../img/login_logo2.png) no-repeat;
+    width: 229px;
+    margin: 0 auto;
+    height: 87.5px;
+    background-size: cover;
+    margin-top: 20px; }
+  .loginWrap .otherButton {
+    margin-top: 20px; }
+    .loginWrap .otherButton .left {
+      float: left;
+      padding-left: 10px; }
+    .loginWrap .otherButton .right {
+      float: right;
+      padding-right: 10px; }
+    .loginWrap .otherButton a {
+      font-size: 14px; }
+  .loginWrap .description {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 5px; }
+    .loginWrap .description p {
+      line-height: 150%;
+      color: #808080;
+      font-size: 12px; }
 
 .viewFrame {
   width: 100%;

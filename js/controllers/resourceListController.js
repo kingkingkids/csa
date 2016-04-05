@@ -130,6 +130,7 @@
                 this.content = "";
                 Common.loading.show();
                 this.showZoom = true;
+
                 $timeout(()=> {
                     resources.getView(id).then(res=> {
                         this.htmlCode = res.data;

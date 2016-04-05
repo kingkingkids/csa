@@ -9,6 +9,9 @@
         </div>
     </ion-header-bar>
     <ion-content overflow-scroll="true">
+        <!--<view-pdf ng-model="vm.collect.htmlCode"></view-pdf>-->
+
+
         <div ng-bind-html="vm.collect.styleOutLine"></div>
         <div ng-bind-html="vm.collect.content"></div>
         <div class="swiper-container">
@@ -26,6 +29,7 @@
         <!--<div ng-bind-html="vm.collect.content"></div>-->
         <!--<iframe allowTransparency="true" src="{{vm.collect.frameSrc}}" frameborder="0"-->
         <!--scrolling="no" class="viewFrame"></iframe>-->
+
 
     </ion-content>
     <a href="javascript:void(0)" class="zoom big" on-tap="vm.collect.zoom('big')"

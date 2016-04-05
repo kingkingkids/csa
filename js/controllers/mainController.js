@@ -7,9 +7,9 @@
         .module("MainModule", ["httpRequest"])
         .controller("MainController", MainController);
 
-    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory"];
+    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant'];
 
-    function MainController(root, scope, state, account, session, $ionicHistory) {
+    function MainController(root, scope, state, account, session, $ionicHistory, constant) {
         /**接收到由httpRequest传过来的事件,退出时调用**/
         root.$on("status:logout", ()=> {
             collect.logoutFunc();
@@ -33,7 +33,20 @@
             login: ()=> {
                 let paramsObj = {
                     "account": this.loginInfo.username,
-                    "password": encodeURIComponent(this.loginInfo.password)
+                    "password": encodeURI(this.loginInfo.password)
+                };
+                account.doLogin(paramsObj).then(res=> {
+                    this.collect.loginModal.hide();
+                    $ionicHistory.nextViewOptions({
+                        disableBack: false
+                    });
+                });
+
+            },
+            guestLogin: ()=> {
+                let paramsObj = {
+                    "account": constant.config.guestAccount[0],
+                    "password": encodeURI(constant.config.guestAccount[1])
                 };
                 account.doLogin(paramsObj).then(res=> {
                     this.collect.loginModal.hide();
