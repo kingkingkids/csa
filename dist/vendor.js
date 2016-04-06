@@ -65,18 +65,18 @@
 	__webpack_require__(20);
 	__webpack_require__(21);
 	__webpack_require__(22);
-	__webpack_require__(28);
-	__webpack_require__(29); //个人设置
-	__webpack_require__(30); //tab主控制器
-	__webpack_require__(31); //首页控制器
-	__webpack_require__(32); //柜子列表控制器
-	__webpack_require__(33); //资源列表控制器
-	__webpack_require__(37); //资源列表控制器
+	__webpack_require__(33);
+	__webpack_require__(34); //个人设置
+	__webpack_require__(35); //tab主控制器
+	__webpack_require__(36); //首页控制器
+	__webpack_require__(37); //柜子列表控制器
 	__webpack_require__(38); //资源列表控制器
+	__webpack_require__(39); //资源列表控制器
+	__webpack_require__(40); //资源列表控制器
 	//require("./controllers/viewController.js");
-	__webpack_require__(39);
-	__webpack_require__(40);
 	__webpack_require__(41);
+	__webpack_require__(42);
+	__webpack_require__(43);
 
 /***/ },
 /* 2 */
@@ -493,7 +493,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(13) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 8%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(14) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.viewFrame {\r\n  width: 100%;\r\n  height: 0; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(13) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(14) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.viewFrame {\r\n  width: 100%;\r\n  height: 0; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -26035,7 +26035,7 @@
 	                return JSON.parse(localStorage.session);
 	            },
 	            removeSession: function removeSession() {
-	                localStorage.clear(localStorage.session);
+	                localStorage.removeItem('session');
 	            }
 
 	        };
@@ -26201,7 +26201,7 @@
 	        resources = __webpack_require__(24),
 	        fav = __webpack_require__(25),
 	        account = __webpack_require__(26),
-	        message = __webpack_require__(27);
+	        message = __webpack_require__(32);
 
 	    angular.module("request.doHttpRequest", []).factory("request.group", group).factory("request.resources", resources).factory("request.fav", fav).factory("request.account", account).factory("request.message", message);
 	}
@@ -26273,19 +26273,26 @@
 
 /***/ },
 /* 26 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session"];
-	function account(send, scope, interval, $ionicModal, $q, constant, session) {
+	var Base64 = __webpack_require__(27).Base64;
+	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", 'global.Common'];
+	function account(send, scope, interval, $ionicModal, $q, constant, session, Common) {
 	    return {
 	        doLogin: function doLogin(paramsObj) {
 	            var _this = this;
 
 	            var defered = $q.defer();
-	            send(constant.path.authenticate, paramsObj).then(function (res) {
-	                var paramsStr = "memberId=" + res.data.members[0].id;
+	            send(constant.path.authenticate, paramsObj).error(function (err) {
+	                if (err.code == 300) {
+	                    Common.Alert('', '密码或用户名有误');
+	                }
+	            }).then(function (res) {
+	                var paramsStr = {
+	                    'memberId': res.data.members[0].id
+	                };
 	                _this.selectMember(paramsStr).then(function (res) {
 	                    _this.getStatus().then(function (res) {
 	                        var _res$data = res.data;
@@ -26332,6 +26339,16 @@
 	        loginModal: function loginModal(scope) {
 	            var _this2 = this;
 
+	            if (localStorage.saveUserInfo != undefined && localStorage.session == undefined) {
+	                var usrInfoArr = localStorage.saveUserInfo.split(','),
+	                    paramsObj = {
+	                    "account": Base64.decode(usrInfoArr[0]),
+	                    "password": Base64.decode(usrInfoArr[1])
+	                };
+	                this.doLogin(paramsObj);
+	                return;
+	            }
+
 	            $ionicModal.fromTemplateUrl("./tpls/modal/login.html", {
 	                scope: scope,
 	                animation: 'slide-in-up',
@@ -26363,6 +26380,1992 @@
 
 /***/ },
 /* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	 * $Id: base64.js,v 2.15 2014/04/05 12:58:57 dankogai Exp dankogai $
+	 *
+	 *  Licensed under the MIT license.
+	 *    http://opensource.org/licenses/mit-license
+	 *
+	 *  References:
+	 *    http://en.wikipedia.org/wiki/Base64
+	 */
+
+	(function(global) {
+	    'use strict';
+	    // existing version for noConflict()
+	    var _Base64 = global.Base64;
+	    var version = "2.1.9";
+	    // if node.js, we use Buffer
+	    var buffer;
+	    if (typeof module !== 'undefined' && module.exports) {
+	        try {
+	            buffer = __webpack_require__(28).Buffer;
+	        } catch (err) {}
+	    }
+	    // constants
+	    var b64chars
+	        = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+	    var b64tab = function(bin) {
+	        var t = {};
+	        for (var i = 0, l = bin.length; i < l; i++) t[bin.charAt(i)] = i;
+	        return t;
+	    }(b64chars);
+	    var fromCharCode = String.fromCharCode;
+	    // encoder stuff
+	    var cb_utob = function(c) {
+	        if (c.length < 2) {
+	            var cc = c.charCodeAt(0);
+	            return cc < 0x80 ? c
+	                : cc < 0x800 ? (fromCharCode(0xc0 | (cc >>> 6))
+	                                + fromCharCode(0x80 | (cc & 0x3f)))
+	                : (fromCharCode(0xe0 | ((cc >>> 12) & 0x0f))
+	                   + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
+	                   + fromCharCode(0x80 | ( cc         & 0x3f)));
+	        } else {
+	            var cc = 0x10000
+	                + (c.charCodeAt(0) - 0xD800) * 0x400
+	                + (c.charCodeAt(1) - 0xDC00);
+	            return (fromCharCode(0xf0 | ((cc >>> 18) & 0x07))
+	                    + fromCharCode(0x80 | ((cc >>> 12) & 0x3f))
+	                    + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
+	                    + fromCharCode(0x80 | ( cc         & 0x3f)));
+	        }
+	    };
+	    var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
+	    var utob = function(u) {
+	        return u.replace(re_utob, cb_utob);
+	    };
+	    var cb_encode = function(ccc) {
+	        var padlen = [0, 2, 1][ccc.length % 3],
+	        ord = ccc.charCodeAt(0) << 16
+	            | ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8)
+	            | ((ccc.length > 2 ? ccc.charCodeAt(2) : 0)),
+	        chars = [
+	            b64chars.charAt( ord >>> 18),
+	            b64chars.charAt((ord >>> 12) & 63),
+	            padlen >= 2 ? '=' : b64chars.charAt((ord >>> 6) & 63),
+	            padlen >= 1 ? '=' : b64chars.charAt(ord & 63)
+	        ];
+	        return chars.join('');
+	    };
+	    var btoa = global.btoa ? function(b) {
+	        return global.btoa(b);
+	    } : function(b) {
+	        return b.replace(/[\s\S]{1,3}/g, cb_encode);
+	    };
+	    var _encode = buffer ? function (u) {
+	        return (u.constructor === buffer.constructor ? u : new buffer(u))
+	        .toString('base64')
+	    }
+	    : function (u) { return btoa(utob(u)) }
+	    ;
+	    var encode = function(u, urisafe) {
+	        return !urisafe
+	            ? _encode(String(u))
+	            : _encode(String(u)).replace(/[+\/]/g, function(m0) {
+	                return m0 == '+' ? '-' : '_';
+	            }).replace(/=/g, '');
+	    };
+	    var encodeURI = function(u) { return encode(u, true) };
+	    // decoder stuff
+	    var re_btou = new RegExp([
+	        '[\xC0-\xDF][\x80-\xBF]',
+	        '[\xE0-\xEF][\x80-\xBF]{2}',
+	        '[\xF0-\xF7][\x80-\xBF]{3}'
+	    ].join('|'), 'g');
+	    var cb_btou = function(cccc) {
+	        switch(cccc.length) {
+	        case 4:
+	            var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
+	                |    ((0x3f & cccc.charCodeAt(1)) << 12)
+	                |    ((0x3f & cccc.charCodeAt(2)) <<  6)
+	                |     (0x3f & cccc.charCodeAt(3)),
+	            offset = cp - 0x10000;
+	            return (fromCharCode((offset  >>> 10) + 0xD800)
+	                    + fromCharCode((offset & 0x3FF) + 0xDC00));
+	        case 3:
+	            return fromCharCode(
+	                ((0x0f & cccc.charCodeAt(0)) << 12)
+	                    | ((0x3f & cccc.charCodeAt(1)) << 6)
+	                    |  (0x3f & cccc.charCodeAt(2))
+	            );
+	        default:
+	            return  fromCharCode(
+	                ((0x1f & cccc.charCodeAt(0)) << 6)
+	                    |  (0x3f & cccc.charCodeAt(1))
+	            );
+	        }
+	    };
+	    var btou = function(b) {
+	        return b.replace(re_btou, cb_btou);
+	    };
+	    var cb_decode = function(cccc) {
+	        var len = cccc.length,
+	        padlen = len % 4,
+	        n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0)
+	            | (len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0)
+	            | (len > 2 ? b64tab[cccc.charAt(2)] <<  6 : 0)
+	            | (len > 3 ? b64tab[cccc.charAt(3)]       : 0),
+	        chars = [
+	            fromCharCode( n >>> 16),
+	            fromCharCode((n >>>  8) & 0xff),
+	            fromCharCode( n         & 0xff)
+	        ];
+	        chars.length -= [0, 0, 2, 1][padlen];
+	        return chars.join('');
+	    };
+	    var atob = global.atob ? function(a) {
+	        return global.atob(a);
+	    } : function(a){
+	        return a.replace(/[\s\S]{1,4}/g, cb_decode);
+	    };
+	    var _decode = buffer ? function(a) {
+	        return (a.constructor === buffer.constructor
+	                ? a : new buffer(a, 'base64')).toString();
+	    }
+	    : function(a) { return btou(atob(a)) };
+	    var decode = function(a){
+	        return _decode(
+	            String(a).replace(/[-_]/g, function(m0) { return m0 == '-' ? '+' : '/' })
+	                .replace(/[^A-Za-z0-9\+\/]/g, '')
+	        );
+	    };
+	    var noConflict = function() {
+	        var Base64 = global.Base64;
+	        global.Base64 = _Base64;
+	        return Base64;
+	    };
+	    // export Base64
+	    global.Base64 = {
+	        VERSION: version,
+	        atob: atob,
+	        btoa: btoa,
+	        fromBase64: decode,
+	        toBase64: encode,
+	        utob: utob,
+	        encode: encode,
+	        encodeURI: encodeURI,
+	        btou: btou,
+	        decode: decode,
+	        noConflict: noConflict
+	    };
+	    // if ES5 is available, make Base64.extendString() available
+	    if (typeof Object.defineProperty === 'function') {
+	        var noEnum = function(v){
+	            return {value:v,enumerable:false,writable:true,configurable:true};
+	        };
+	        global.Base64.extendString = function () {
+	            Object.defineProperty(
+	                String.prototype, 'fromBase64', noEnum(function () {
+	                    return decode(this)
+	                }));
+	            Object.defineProperty(
+	                String.prototype, 'toBase64', noEnum(function (urisafe) {
+	                    return encode(this, urisafe)
+	                }));
+	            Object.defineProperty(
+	                String.prototype, 'toBase64URI', noEnum(function () {
+	                    return encode(this, true)
+	                }));
+	        };
+	    }
+	    // that's it!
+	    if (global['Meteor']) {
+	       Base64 = global.Base64; // for normal export in Meteor.js
+	    }
+	})(this);
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
+	 * The buffer module from node.js, for the browser.
+	 *
+	 * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+	 * @license  MIT
+	 */
+	/* eslint-disable no-proto */
+
+	'use strict'
+
+	var base64 = __webpack_require__(29)
+	var ieee754 = __webpack_require__(30)
+	var isArray = __webpack_require__(31)
+
+	exports.Buffer = Buffer
+	exports.SlowBuffer = SlowBuffer
+	exports.INSPECT_MAX_BYTES = 50
+	Buffer.poolSize = 8192 // not used by this implementation
+
+	var rootParent = {}
+
+	/**
+	 * If `Buffer.TYPED_ARRAY_SUPPORT`:
+	 *   === true    Use Uint8Array implementation (fastest)
+	 *   === false   Use Object implementation (most compatible, even IE6)
+	 *
+	 * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
+	 * Opera 11.6+, iOS 4.2+.
+	 *
+	 * Due to various browser bugs, sometimes the Object implementation will be used even
+	 * when the browser supports typed arrays.
+	 *
+	 * Note:
+	 *
+	 *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,
+	 *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
+	 *
+	 *   - Safari 5-7 lacks support for changing the `Object.prototype.constructor` property
+	 *     on objects.
+	 *
+	 *   - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.
+	 *
+	 *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
+	 *     incorrect length in some situations.
+
+	 * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
+	 * get the Object implementation, which is slower but behaves correctly.
+	 */
+	Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined
+	  ? global.TYPED_ARRAY_SUPPORT
+	  : typedArraySupport()
+
+	function typedArraySupport () {
+	  function Bar () {}
+	  try {
+	    var arr = new Uint8Array(1)
+	    arr.foo = function () { return 42 }
+	    arr.constructor = Bar
+	    return arr.foo() === 42 && // typed array instances can be augmented
+	        arr.constructor === Bar && // constructor can be set
+	        typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
+	        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
+	  } catch (e) {
+	    return false
+	  }
+	}
+
+	function kMaxLength () {
+	  return Buffer.TYPED_ARRAY_SUPPORT
+	    ? 0x7fffffff
+	    : 0x3fffffff
+	}
+
+	/**
+	 * Class: Buffer
+	 * =============
+	 *
+	 * The Buffer constructor returns instances of `Uint8Array` that are augmented
+	 * with function properties for all the node `Buffer` API functions. We use
+	 * `Uint8Array` so that square bracket notation works as expected -- it returns
+	 * a single octet.
+	 *
+	 * By augmenting the instances, we can avoid modifying the `Uint8Array`
+	 * prototype.
+	 */
+	function Buffer (arg) {
+	  if (!(this instanceof Buffer)) {
+	    // Avoid going through an ArgumentsAdaptorTrampoline in the common case.
+	    if (arguments.length > 1) return new Buffer(arg, arguments[1])
+	    return new Buffer(arg)
+	  }
+
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) {
+	    this.length = 0
+	    this.parent = undefined
+	  }
+
+	  // Common case.
+	  if (typeof arg === 'number') {
+	    return fromNumber(this, arg)
+	  }
+
+	  // Slightly less common case.
+	  if (typeof arg === 'string') {
+	    return fromString(this, arg, arguments.length > 1 ? arguments[1] : 'utf8')
+	  }
+
+	  // Unusual.
+	  return fromObject(this, arg)
+	}
+
+	function fromNumber (that, length) {
+	  that = allocate(that, length < 0 ? 0 : checked(length) | 0)
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) {
+	    for (var i = 0; i < length; i++) {
+	      that[i] = 0
+	    }
+	  }
+	  return that
+	}
+
+	function fromString (that, string, encoding) {
+	  if (typeof encoding !== 'string' || encoding === '') encoding = 'utf8'
+
+	  // Assumption: byteLength() return value is always < kMaxLength.
+	  var length = byteLength(string, encoding) | 0
+	  that = allocate(that, length)
+
+	  that.write(string, encoding)
+	  return that
+	}
+
+	function fromObject (that, object) {
+	  if (Buffer.isBuffer(object)) return fromBuffer(that, object)
+
+	  if (isArray(object)) return fromArray(that, object)
+
+	  if (object == null) {
+	    throw new TypeError('must start with number, buffer, array or string')
+	  }
+
+	  if (typeof ArrayBuffer !== 'undefined') {
+	    if (object.buffer instanceof ArrayBuffer) {
+	      return fromTypedArray(that, object)
+	    }
+	    if (object instanceof ArrayBuffer) {
+	      return fromArrayBuffer(that, object)
+	    }
+	  }
+
+	  if (object.length) return fromArrayLike(that, object)
+
+	  return fromJsonObject(that, object)
+	}
+
+	function fromBuffer (that, buffer) {
+	  var length = checked(buffer.length) | 0
+	  that = allocate(that, length)
+	  buffer.copy(that, 0, 0, length)
+	  return that
+	}
+
+	function fromArray (that, array) {
+	  var length = checked(array.length) | 0
+	  that = allocate(that, length)
+	  for (var i = 0; i < length; i += 1) {
+	    that[i] = array[i] & 255
+	  }
+	  return that
+	}
+
+	// Duplicate of fromArray() to keep fromArray() monomorphic.
+	function fromTypedArray (that, array) {
+	  var length = checked(array.length) | 0
+	  that = allocate(that, length)
+	  // Truncating the elements is probably not what people expect from typed
+	  // arrays with BYTES_PER_ELEMENT > 1 but it's compatible with the behavior
+	  // of the old Buffer constructor.
+	  for (var i = 0; i < length; i += 1) {
+	    that[i] = array[i] & 255
+	  }
+	  return that
+	}
+
+	function fromArrayBuffer (that, array) {
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    // Return an augmented `Uint8Array` instance, for best performance
+	    array.byteLength
+	    that = Buffer._augment(new Uint8Array(array))
+	  } else {
+	    // Fallback: Return an object instance of the Buffer class
+	    that = fromTypedArray(that, new Uint8Array(array))
+	  }
+	  return that
+	}
+
+	function fromArrayLike (that, array) {
+	  var length = checked(array.length) | 0
+	  that = allocate(that, length)
+	  for (var i = 0; i < length; i += 1) {
+	    that[i] = array[i] & 255
+	  }
+	  return that
+	}
+
+	// Deserialize { type: 'Buffer', data: [1,2,3,...] } into a Buffer object.
+	// Returns a zero-length buffer for inputs that don't conform to the spec.
+	function fromJsonObject (that, object) {
+	  var array
+	  var length = 0
+
+	  if (object.type === 'Buffer' && isArray(object.data)) {
+	    array = object.data
+	    length = checked(array.length) | 0
+	  }
+	  that = allocate(that, length)
+
+	  for (var i = 0; i < length; i += 1) {
+	    that[i] = array[i] & 255
+	  }
+	  return that
+	}
+
+	if (Buffer.TYPED_ARRAY_SUPPORT) {
+	  Buffer.prototype.__proto__ = Uint8Array.prototype
+	  Buffer.__proto__ = Uint8Array
+	} else {
+	  // pre-set for values that may exist in the future
+	  Buffer.prototype.length = undefined
+	  Buffer.prototype.parent = undefined
+	}
+
+	function allocate (that, length) {
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    // Return an augmented `Uint8Array` instance, for best performance
+	    that = Buffer._augment(new Uint8Array(length))
+	    that.__proto__ = Buffer.prototype
+	  } else {
+	    // Fallback: Return an object instance of the Buffer class
+	    that.length = length
+	    that._isBuffer = true
+	  }
+
+	  var fromPool = length !== 0 && length <= Buffer.poolSize >>> 1
+	  if (fromPool) that.parent = rootParent
+
+	  return that
+	}
+
+	function checked (length) {
+	  // Note: cannot use `length < kMaxLength` here because that fails when
+	  // length is NaN (which is otherwise coerced to zero.)
+	  if (length >= kMaxLength()) {
+	    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
+	                         'size: 0x' + kMaxLength().toString(16) + ' bytes')
+	  }
+	  return length | 0
+	}
+
+	function SlowBuffer (subject, encoding) {
+	  if (!(this instanceof SlowBuffer)) return new SlowBuffer(subject, encoding)
+
+	  var buf = new Buffer(subject, encoding)
+	  delete buf.parent
+	  return buf
+	}
+
+	Buffer.isBuffer = function isBuffer (b) {
+	  return !!(b != null && b._isBuffer)
+	}
+
+	Buffer.compare = function compare (a, b) {
+	  if (!Buffer.isBuffer(a) || !Buffer.isBuffer(b)) {
+	    throw new TypeError('Arguments must be Buffers')
+	  }
+
+	  if (a === b) return 0
+
+	  var x = a.length
+	  var y = b.length
+
+	  var i = 0
+	  var len = Math.min(x, y)
+	  while (i < len) {
+	    if (a[i] !== b[i]) break
+
+	    ++i
+	  }
+
+	  if (i !== len) {
+	    x = a[i]
+	    y = b[i]
+	  }
+
+	  if (x < y) return -1
+	  if (y < x) return 1
+	  return 0
+	}
+
+	Buffer.isEncoding = function isEncoding (encoding) {
+	  switch (String(encoding).toLowerCase()) {
+	    case 'hex':
+	    case 'utf8':
+	    case 'utf-8':
+	    case 'ascii':
+	    case 'binary':
+	    case 'base64':
+	    case 'raw':
+	    case 'ucs2':
+	    case 'ucs-2':
+	    case 'utf16le':
+	    case 'utf-16le':
+	      return true
+	    default:
+	      return false
+	  }
+	}
+
+	Buffer.concat = function concat (list, length) {
+	  if (!isArray(list)) throw new TypeError('list argument must be an Array of Buffers.')
+
+	  if (list.length === 0) {
+	    return new Buffer(0)
+	  }
+
+	  var i
+	  if (length === undefined) {
+	    length = 0
+	    for (i = 0; i < list.length; i++) {
+	      length += list[i].length
+	    }
+	  }
+
+	  var buf = new Buffer(length)
+	  var pos = 0
+	  for (i = 0; i < list.length; i++) {
+	    var item = list[i]
+	    item.copy(buf, pos)
+	    pos += item.length
+	  }
+	  return buf
+	}
+
+	function byteLength (string, encoding) {
+	  if (typeof string !== 'string') string = '' + string
+
+	  var len = string.length
+	  if (len === 0) return 0
+
+	  // Use a for loop to avoid recursion
+	  var loweredCase = false
+	  for (;;) {
+	    switch (encoding) {
+	      case 'ascii':
+	      case 'binary':
+	      // Deprecated
+	      case 'raw':
+	      case 'raws':
+	        return len
+	      case 'utf8':
+	      case 'utf-8':
+	        return utf8ToBytes(string).length
+	      case 'ucs2':
+	      case 'ucs-2':
+	      case 'utf16le':
+	      case 'utf-16le':
+	        return len * 2
+	      case 'hex':
+	        return len >>> 1
+	      case 'base64':
+	        return base64ToBytes(string).length
+	      default:
+	        if (loweredCase) return utf8ToBytes(string).length // assume utf8
+	        encoding = ('' + encoding).toLowerCase()
+	        loweredCase = true
+	    }
+	  }
+	}
+	Buffer.byteLength = byteLength
+
+	function slowToString (encoding, start, end) {
+	  var loweredCase = false
+
+	  start = start | 0
+	  end = end === undefined || end === Infinity ? this.length : end | 0
+
+	  if (!encoding) encoding = 'utf8'
+	  if (start < 0) start = 0
+	  if (end > this.length) end = this.length
+	  if (end <= start) return ''
+
+	  while (true) {
+	    switch (encoding) {
+	      case 'hex':
+	        return hexSlice(this, start, end)
+
+	      case 'utf8':
+	      case 'utf-8':
+	        return utf8Slice(this, start, end)
+
+	      case 'ascii':
+	        return asciiSlice(this, start, end)
+
+	      case 'binary':
+	        return binarySlice(this, start, end)
+
+	      case 'base64':
+	        return base64Slice(this, start, end)
+
+	      case 'ucs2':
+	      case 'ucs-2':
+	      case 'utf16le':
+	      case 'utf-16le':
+	        return utf16leSlice(this, start, end)
+
+	      default:
+	        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
+	        encoding = (encoding + '').toLowerCase()
+	        loweredCase = true
+	    }
+	  }
+	}
+
+	Buffer.prototype.toString = function toString () {
+	  var length = this.length | 0
+	  if (length === 0) return ''
+	  if (arguments.length === 0) return utf8Slice(this, 0, length)
+	  return slowToString.apply(this, arguments)
+	}
+
+	Buffer.prototype.equals = function equals (b) {
+	  if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
+	  if (this === b) return true
+	  return Buffer.compare(this, b) === 0
+	}
+
+	Buffer.prototype.inspect = function inspect () {
+	  var str = ''
+	  var max = exports.INSPECT_MAX_BYTES
+	  if (this.length > 0) {
+	    str = this.toString('hex', 0, max).match(/.{2}/g).join(' ')
+	    if (this.length > max) str += ' ... '
+	  }
+	  return '<Buffer ' + str + '>'
+	}
+
+	Buffer.prototype.compare = function compare (b) {
+	  if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
+	  if (this === b) return 0
+	  return Buffer.compare(this, b)
+	}
+
+	Buffer.prototype.indexOf = function indexOf (val, byteOffset) {
+	  if (byteOffset > 0x7fffffff) byteOffset = 0x7fffffff
+	  else if (byteOffset < -0x80000000) byteOffset = -0x80000000
+	  byteOffset >>= 0
+
+	  if (this.length === 0) return -1
+	  if (byteOffset >= this.length) return -1
+
+	  // Negative offsets start from the end of the buffer
+	  if (byteOffset < 0) byteOffset = Math.max(this.length + byteOffset, 0)
+
+	  if (typeof val === 'string') {
+	    if (val.length === 0) return -1 // special case: looking for empty string always fails
+	    return String.prototype.indexOf.call(this, val, byteOffset)
+	  }
+	  if (Buffer.isBuffer(val)) {
+	    return arrayIndexOf(this, val, byteOffset)
+	  }
+	  if (typeof val === 'number') {
+	    if (Buffer.TYPED_ARRAY_SUPPORT && Uint8Array.prototype.indexOf === 'function') {
+	      return Uint8Array.prototype.indexOf.call(this, val, byteOffset)
+	    }
+	    return arrayIndexOf(this, [ val ], byteOffset)
+	  }
+
+	  function arrayIndexOf (arr, val, byteOffset) {
+	    var foundIndex = -1
+	    for (var i = 0; byteOffset + i < arr.length; i++) {
+	      if (arr[byteOffset + i] === val[foundIndex === -1 ? 0 : i - foundIndex]) {
+	        if (foundIndex === -1) foundIndex = i
+	        if (i - foundIndex + 1 === val.length) return byteOffset + foundIndex
+	      } else {
+	        foundIndex = -1
+	      }
+	    }
+	    return -1
+	  }
+
+	  throw new TypeError('val must be string, number or Buffer')
+	}
+
+	// `get` is deprecated
+	Buffer.prototype.get = function get (offset) {
+	  console.log('.get() is deprecated. Access using array indexes instead.')
+	  return this.readUInt8(offset)
+	}
+
+	// `set` is deprecated
+	Buffer.prototype.set = function set (v, offset) {
+	  console.log('.set() is deprecated. Access using array indexes instead.')
+	  return this.writeUInt8(v, offset)
+	}
+
+	function hexWrite (buf, string, offset, length) {
+	  offset = Number(offset) || 0
+	  var remaining = buf.length - offset
+	  if (!length) {
+	    length = remaining
+	  } else {
+	    length = Number(length)
+	    if (length > remaining) {
+	      length = remaining
+	    }
+	  }
+
+	  // must be an even number of digits
+	  var strLen = string.length
+	  if (strLen % 2 !== 0) throw new Error('Invalid hex string')
+
+	  if (length > strLen / 2) {
+	    length = strLen / 2
+	  }
+	  for (var i = 0; i < length; i++) {
+	    var parsed = parseInt(string.substr(i * 2, 2), 16)
+	    if (isNaN(parsed)) throw new Error('Invalid hex string')
+	    buf[offset + i] = parsed
+	  }
+	  return i
+	}
+
+	function utf8Write (buf, string, offset, length) {
+	  return blitBuffer(utf8ToBytes(string, buf.length - offset), buf, offset, length)
+	}
+
+	function asciiWrite (buf, string, offset, length) {
+	  return blitBuffer(asciiToBytes(string), buf, offset, length)
+	}
+
+	function binaryWrite (buf, string, offset, length) {
+	  return asciiWrite(buf, string, offset, length)
+	}
+
+	function base64Write (buf, string, offset, length) {
+	  return blitBuffer(base64ToBytes(string), buf, offset, length)
+	}
+
+	function ucs2Write (buf, string, offset, length) {
+	  return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length)
+	}
+
+	Buffer.prototype.write = function write (string, offset, length, encoding) {
+	  // Buffer#write(string)
+	  if (offset === undefined) {
+	    encoding = 'utf8'
+	    length = this.length
+	    offset = 0
+	  // Buffer#write(string, encoding)
+	  } else if (length === undefined && typeof offset === 'string') {
+	    encoding = offset
+	    length = this.length
+	    offset = 0
+	  // Buffer#write(string, offset[, length][, encoding])
+	  } else if (isFinite(offset)) {
+	    offset = offset | 0
+	    if (isFinite(length)) {
+	      length = length | 0
+	      if (encoding === undefined) encoding = 'utf8'
+	    } else {
+	      encoding = length
+	      length = undefined
+	    }
+	  // legacy write(string, encoding, offset, length) - remove in v0.13
+	  } else {
+	    var swap = encoding
+	    encoding = offset
+	    offset = length | 0
+	    length = swap
+	  }
+
+	  var remaining = this.length - offset
+	  if (length === undefined || length > remaining) length = remaining
+
+	  if ((string.length > 0 && (length < 0 || offset < 0)) || offset > this.length) {
+	    throw new RangeError('attempt to write outside buffer bounds')
+	  }
+
+	  if (!encoding) encoding = 'utf8'
+
+	  var loweredCase = false
+	  for (;;) {
+	    switch (encoding) {
+	      case 'hex':
+	        return hexWrite(this, string, offset, length)
+
+	      case 'utf8':
+	      case 'utf-8':
+	        return utf8Write(this, string, offset, length)
+
+	      case 'ascii':
+	        return asciiWrite(this, string, offset, length)
+
+	      case 'binary':
+	        return binaryWrite(this, string, offset, length)
+
+	      case 'base64':
+	        // Warning: maxLength not taken into account in base64Write
+	        return base64Write(this, string, offset, length)
+
+	      case 'ucs2':
+	      case 'ucs-2':
+	      case 'utf16le':
+	      case 'utf-16le':
+	        return ucs2Write(this, string, offset, length)
+
+	      default:
+	        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
+	        encoding = ('' + encoding).toLowerCase()
+	        loweredCase = true
+	    }
+	  }
+	}
+
+	Buffer.prototype.toJSON = function toJSON () {
+	  return {
+	    type: 'Buffer',
+	    data: Array.prototype.slice.call(this._arr || this, 0)
+	  }
+	}
+
+	function base64Slice (buf, start, end) {
+	  if (start === 0 && end === buf.length) {
+	    return base64.fromByteArray(buf)
+	  } else {
+	    return base64.fromByteArray(buf.slice(start, end))
+	  }
+	}
+
+	function utf8Slice (buf, start, end) {
+	  end = Math.min(buf.length, end)
+	  var res = []
+
+	  var i = start
+	  while (i < end) {
+	    var firstByte = buf[i]
+	    var codePoint = null
+	    var bytesPerSequence = (firstByte > 0xEF) ? 4
+	      : (firstByte > 0xDF) ? 3
+	      : (firstByte > 0xBF) ? 2
+	      : 1
+
+	    if (i + bytesPerSequence <= end) {
+	      var secondByte, thirdByte, fourthByte, tempCodePoint
+
+	      switch (bytesPerSequence) {
+	        case 1:
+	          if (firstByte < 0x80) {
+	            codePoint = firstByte
+	          }
+	          break
+	        case 2:
+	          secondByte = buf[i + 1]
+	          if ((secondByte & 0xC0) === 0x80) {
+	            tempCodePoint = (firstByte & 0x1F) << 0x6 | (secondByte & 0x3F)
+	            if (tempCodePoint > 0x7F) {
+	              codePoint = tempCodePoint
+	            }
+	          }
+	          break
+	        case 3:
+	          secondByte = buf[i + 1]
+	          thirdByte = buf[i + 2]
+	          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80) {
+	            tempCodePoint = (firstByte & 0xF) << 0xC | (secondByte & 0x3F) << 0x6 | (thirdByte & 0x3F)
+	            if (tempCodePoint > 0x7FF && (tempCodePoint < 0xD800 || tempCodePoint > 0xDFFF)) {
+	              codePoint = tempCodePoint
+	            }
+	          }
+	          break
+	        case 4:
+	          secondByte = buf[i + 1]
+	          thirdByte = buf[i + 2]
+	          fourthByte = buf[i + 3]
+	          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80 && (fourthByte & 0xC0) === 0x80) {
+	            tempCodePoint = (firstByte & 0xF) << 0x12 | (secondByte & 0x3F) << 0xC | (thirdByte & 0x3F) << 0x6 | (fourthByte & 0x3F)
+	            if (tempCodePoint > 0xFFFF && tempCodePoint < 0x110000) {
+	              codePoint = tempCodePoint
+	            }
+	          }
+	      }
+	    }
+
+	    if (codePoint === null) {
+	      // we did not generate a valid codePoint so insert a
+	      // replacement char (U+FFFD) and advance only 1 byte
+	      codePoint = 0xFFFD
+	      bytesPerSequence = 1
+	    } else if (codePoint > 0xFFFF) {
+	      // encode to utf16 (surrogate pair dance)
+	      codePoint -= 0x10000
+	      res.push(codePoint >>> 10 & 0x3FF | 0xD800)
+	      codePoint = 0xDC00 | codePoint & 0x3FF
+	    }
+
+	    res.push(codePoint)
+	    i += bytesPerSequence
+	  }
+
+	  return decodeCodePointsArray(res)
+	}
+
+	// Based on http://stackoverflow.com/a/22747272/680742, the browser with
+	// the lowest limit is Chrome, with 0x10000 args.
+	// We go 1 magnitude less, for safety
+	var MAX_ARGUMENTS_LENGTH = 0x1000
+
+	function decodeCodePointsArray (codePoints) {
+	  var len = codePoints.length
+	  if (len <= MAX_ARGUMENTS_LENGTH) {
+	    return String.fromCharCode.apply(String, codePoints) // avoid extra slice()
+	  }
+
+	  // Decode in chunks to avoid "call stack size exceeded".
+	  var res = ''
+	  var i = 0
+	  while (i < len) {
+	    res += String.fromCharCode.apply(
+	      String,
+	      codePoints.slice(i, i += MAX_ARGUMENTS_LENGTH)
+	    )
+	  }
+	  return res
+	}
+
+	function asciiSlice (buf, start, end) {
+	  var ret = ''
+	  end = Math.min(buf.length, end)
+
+	  for (var i = start; i < end; i++) {
+	    ret += String.fromCharCode(buf[i] & 0x7F)
+	  }
+	  return ret
+	}
+
+	function binarySlice (buf, start, end) {
+	  var ret = ''
+	  end = Math.min(buf.length, end)
+
+	  for (var i = start; i < end; i++) {
+	    ret += String.fromCharCode(buf[i])
+	  }
+	  return ret
+	}
+
+	function hexSlice (buf, start, end) {
+	  var len = buf.length
+
+	  if (!start || start < 0) start = 0
+	  if (!end || end < 0 || end > len) end = len
+
+	  var out = ''
+	  for (var i = start; i < end; i++) {
+	    out += toHex(buf[i])
+	  }
+	  return out
+	}
+
+	function utf16leSlice (buf, start, end) {
+	  var bytes = buf.slice(start, end)
+	  var res = ''
+	  for (var i = 0; i < bytes.length; i += 2) {
+	    res += String.fromCharCode(bytes[i] + bytes[i + 1] * 256)
+	  }
+	  return res
+	}
+
+	Buffer.prototype.slice = function slice (start, end) {
+	  var len = this.length
+	  start = ~~start
+	  end = end === undefined ? len : ~~end
+
+	  if (start < 0) {
+	    start += len
+	    if (start < 0) start = 0
+	  } else if (start > len) {
+	    start = len
+	  }
+
+	  if (end < 0) {
+	    end += len
+	    if (end < 0) end = 0
+	  } else if (end > len) {
+	    end = len
+	  }
+
+	  if (end < start) end = start
+
+	  var newBuf
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    newBuf = Buffer._augment(this.subarray(start, end))
+	  } else {
+	    var sliceLen = end - start
+	    newBuf = new Buffer(sliceLen, undefined)
+	    for (var i = 0; i < sliceLen; i++) {
+	      newBuf[i] = this[i + start]
+	    }
+	  }
+
+	  if (newBuf.length) newBuf.parent = this.parent || this
+
+	  return newBuf
+	}
+
+	/*
+	 * Need to make sure that buffer isn't trying to write out of bounds.
+	 */
+	function checkOffset (offset, ext, length) {
+	  if ((offset % 1) !== 0 || offset < 0) throw new RangeError('offset is not uint')
+	  if (offset + ext > length) throw new RangeError('Trying to access beyond buffer length')
+	}
+
+	Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkOffset(offset, byteLength, this.length)
+
+	  var val = this[offset]
+	  var mul = 1
+	  var i = 0
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    val += this[offset + i] * mul
+	  }
+
+	  return val
+	}
+
+	Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) {
+	    checkOffset(offset, byteLength, this.length)
+	  }
+
+	  var val = this[offset + --byteLength]
+	  var mul = 1
+	  while (byteLength > 0 && (mul *= 0x100)) {
+	    val += this[offset + --byteLength] * mul
+	  }
+
+	  return val
+	}
+
+	Buffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 1, this.length)
+	  return this[offset]
+	}
+
+	Buffer.prototype.readUInt16LE = function readUInt16LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  return this[offset] | (this[offset + 1] << 8)
+	}
+
+	Buffer.prototype.readUInt16BE = function readUInt16BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  return (this[offset] << 8) | this[offset + 1]
+	}
+
+	Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+
+	  return ((this[offset]) |
+	      (this[offset + 1] << 8) |
+	      (this[offset + 2] << 16)) +
+	      (this[offset + 3] * 0x1000000)
+	}
+
+	Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+
+	  return (this[offset] * 0x1000000) +
+	    ((this[offset + 1] << 16) |
+	    (this[offset + 2] << 8) |
+	    this[offset + 3])
+	}
+
+	Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkOffset(offset, byteLength, this.length)
+
+	  var val = this[offset]
+	  var mul = 1
+	  var i = 0
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    val += this[offset + i] * mul
+	  }
+	  mul *= 0x80
+
+	  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
+
+	  return val
+	}
+
+	Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkOffset(offset, byteLength, this.length)
+
+	  var i = byteLength
+	  var mul = 1
+	  var val = this[offset + --i]
+	  while (i > 0 && (mul *= 0x100)) {
+	    val += this[offset + --i] * mul
+	  }
+	  mul *= 0x80
+
+	  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
+
+	  return val
+	}
+
+	Buffer.prototype.readInt8 = function readInt8 (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 1, this.length)
+	  if (!(this[offset] & 0x80)) return (this[offset])
+	  return ((0xff - this[offset] + 1) * -1)
+	}
+
+	Buffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  var val = this[offset] | (this[offset + 1] << 8)
+	  return (val & 0x8000) ? val | 0xFFFF0000 : val
+	}
+
+	Buffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  var val = this[offset + 1] | (this[offset] << 8)
+	  return (val & 0x8000) ? val | 0xFFFF0000 : val
+	}
+
+	Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+
+	  return (this[offset]) |
+	    (this[offset + 1] << 8) |
+	    (this[offset + 2] << 16) |
+	    (this[offset + 3] << 24)
+	}
+
+	Buffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+
+	  return (this[offset] << 24) |
+	    (this[offset + 1] << 16) |
+	    (this[offset + 2] << 8) |
+	    (this[offset + 3])
+	}
+
+	Buffer.prototype.readFloatLE = function readFloatLE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	  return ieee754.read(this, offset, true, 23, 4)
+	}
+
+	Buffer.prototype.readFloatBE = function readFloatBE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	  return ieee754.read(this, offset, false, 23, 4)
+	}
+
+	Buffer.prototype.readDoubleLE = function readDoubleLE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 8, this.length)
+	  return ieee754.read(this, offset, true, 52, 8)
+	}
+
+	Buffer.prototype.readDoubleBE = function readDoubleBE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 8, this.length)
+	  return ieee754.read(this, offset, false, 52, 8)
+	}
+
+	function checkInt (buf, value, offset, ext, max, min) {
+	  if (!Buffer.isBuffer(buf)) throw new TypeError('buffer must be a Buffer instance')
+	  if (value > max || value < min) throw new RangeError('value is out of bounds')
+	  if (offset + ext > buf.length) throw new RangeError('index out of range')
+	}
+
+	Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkInt(this, value, offset, byteLength, Math.pow(2, 8 * byteLength), 0)
+
+	  var mul = 1
+	  var i = 0
+	  this[offset] = value & 0xFF
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    this[offset + i] = (value / mul) & 0xFF
+	  }
+
+	  return offset + byteLength
+	}
+
+	Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkInt(this, value, offset, byteLength, Math.pow(2, 8 * byteLength), 0)
+
+	  var i = byteLength - 1
+	  var mul = 1
+	  this[offset + i] = value & 0xFF
+	  while (--i >= 0 && (mul *= 0x100)) {
+	    this[offset + i] = (value / mul) & 0xFF
+	  }
+
+	  return offset + byteLength
+	}
+
+	Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
+	  this[offset] = (value & 0xff)
+	  return offset + 1
+	}
+
+	function objectWriteUInt16 (buf, value, offset, littleEndian) {
+	  if (value < 0) value = 0xffff + value + 1
+	  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; i++) {
+	    buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>
+	      (littleEndian ? i : 1 - i) * 8
+	  }
+	}
+
+	Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value & 0xff)
+	    this[offset + 1] = (value >>> 8)
+	  } else {
+	    objectWriteUInt16(this, value, offset, true)
+	  }
+	  return offset + 2
+	}
+
+	Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 8)
+	    this[offset + 1] = (value & 0xff)
+	  } else {
+	    objectWriteUInt16(this, value, offset, false)
+	  }
+	  return offset + 2
+	}
+
+	function objectWriteUInt32 (buf, value, offset, littleEndian) {
+	  if (value < 0) value = 0xffffffff + value + 1
+	  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; i++) {
+	    buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff
+	  }
+	}
+
+	Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset + 3] = (value >>> 24)
+	    this[offset + 2] = (value >>> 16)
+	    this[offset + 1] = (value >>> 8)
+	    this[offset] = (value & 0xff)
+	  } else {
+	    objectWriteUInt32(this, value, offset, true)
+	  }
+	  return offset + 4
+	}
+
+	Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 24)
+	    this[offset + 1] = (value >>> 16)
+	    this[offset + 2] = (value >>> 8)
+	    this[offset + 3] = (value & 0xff)
+	  } else {
+	    objectWriteUInt32(this, value, offset, false)
+	  }
+	  return offset + 4
+	}
+
+	Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) {
+	    var limit = Math.pow(2, 8 * byteLength - 1)
+
+	    checkInt(this, value, offset, byteLength, limit - 1, -limit)
+	  }
+
+	  var i = 0
+	  var mul = 1
+	  var sub = value < 0 ? 1 : 0
+	  this[offset] = value & 0xFF
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
+	  }
+
+	  return offset + byteLength
+	}
+
+	Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) {
+	    var limit = Math.pow(2, 8 * byteLength - 1)
+
+	    checkInt(this, value, offset, byteLength, limit - 1, -limit)
+	  }
+
+	  var i = byteLength - 1
+	  var mul = 1
+	  var sub = value < 0 ? 1 : 0
+	  this[offset + i] = value & 0xFF
+	  while (--i >= 0 && (mul *= 0x100)) {
+	    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
+	  }
+
+	  return offset + byteLength
+	}
+
+	Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
+	  if (value < 0) value = 0xff + value + 1
+	  this[offset] = (value & 0xff)
+	  return offset + 1
+	}
+
+	Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value & 0xff)
+	    this[offset + 1] = (value >>> 8)
+	  } else {
+	    objectWriteUInt16(this, value, offset, true)
+	  }
+	  return offset + 2
+	}
+
+	Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 8)
+	    this[offset + 1] = (value & 0xff)
+	  } else {
+	    objectWriteUInt16(this, value, offset, false)
+	  }
+	  return offset + 2
+	}
+
+	Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value & 0xff)
+	    this[offset + 1] = (value >>> 8)
+	    this[offset + 2] = (value >>> 16)
+	    this[offset + 3] = (value >>> 24)
+	  } else {
+	    objectWriteUInt32(this, value, offset, true)
+	  }
+	  return offset + 4
+	}
+
+	Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
+	  if (value < 0) value = 0xffffffff + value + 1
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 24)
+	    this[offset + 1] = (value >>> 16)
+	    this[offset + 2] = (value >>> 8)
+	    this[offset + 3] = (value & 0xff)
+	  } else {
+	    objectWriteUInt32(this, value, offset, false)
+	  }
+	  return offset + 4
+	}
+
+	function checkIEEE754 (buf, value, offset, ext, max, min) {
+	  if (value > max || value < min) throw new RangeError('value is out of bounds')
+	  if (offset + ext > buf.length) throw new RangeError('index out of range')
+	  if (offset < 0) throw new RangeError('index out of range')
+	}
+
+	function writeFloat (buf, value, offset, littleEndian, noAssert) {
+	  if (!noAssert) {
+	    checkIEEE754(buf, value, offset, 4, 3.4028234663852886e+38, -3.4028234663852886e+38)
+	  }
+	  ieee754.write(buf, value, offset, littleEndian, 23, 4)
+	  return offset + 4
+	}
+
+	Buffer.prototype.writeFloatLE = function writeFloatLE (value, offset, noAssert) {
+	  return writeFloat(this, value, offset, true, noAssert)
+	}
+
+	Buffer.prototype.writeFloatBE = function writeFloatBE (value, offset, noAssert) {
+	  return writeFloat(this, value, offset, false, noAssert)
+	}
+
+	function writeDouble (buf, value, offset, littleEndian, noAssert) {
+	  if (!noAssert) {
+	    checkIEEE754(buf, value, offset, 8, 1.7976931348623157E+308, -1.7976931348623157E+308)
+	  }
+	  ieee754.write(buf, value, offset, littleEndian, 52, 8)
+	  return offset + 8
+	}
+
+	Buffer.prototype.writeDoubleLE = function writeDoubleLE (value, offset, noAssert) {
+	  return writeDouble(this, value, offset, true, noAssert)
+	}
+
+	Buffer.prototype.writeDoubleBE = function writeDoubleBE (value, offset, noAssert) {
+	  return writeDouble(this, value, offset, false, noAssert)
+	}
+
+	// copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)
+	Buffer.prototype.copy = function copy (target, targetStart, start, end) {
+	  if (!start) start = 0
+	  if (!end && end !== 0) end = this.length
+	  if (targetStart >= target.length) targetStart = target.length
+	  if (!targetStart) targetStart = 0
+	  if (end > 0 && end < start) end = start
+
+	  // Copy 0 bytes; we're done
+	  if (end === start) return 0
+	  if (target.length === 0 || this.length === 0) return 0
+
+	  // Fatal error conditions
+	  if (targetStart < 0) {
+	    throw new RangeError('targetStart out of bounds')
+	  }
+	  if (start < 0 || start >= this.length) throw new RangeError('sourceStart out of bounds')
+	  if (end < 0) throw new RangeError('sourceEnd out of bounds')
+
+	  // Are we oob?
+	  if (end > this.length) end = this.length
+	  if (target.length - targetStart < end - start) {
+	    end = target.length - targetStart + start
+	  }
+
+	  var len = end - start
+	  var i
+
+	  if (this === target && start < targetStart && targetStart < end) {
+	    // descending copy from end
+	    for (i = len - 1; i >= 0; i--) {
+	      target[i + targetStart] = this[i + start]
+	    }
+	  } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
+	    // ascending copy from start
+	    for (i = 0; i < len; i++) {
+	      target[i + targetStart] = this[i + start]
+	    }
+	  } else {
+	    target._set(this.subarray(start, start + len), targetStart)
+	  }
+
+	  return len
+	}
+
+	// fill(value, start=0, end=buffer.length)
+	Buffer.prototype.fill = function fill (value, start, end) {
+	  if (!value) value = 0
+	  if (!start) start = 0
+	  if (!end) end = this.length
+
+	  if (end < start) throw new RangeError('end < start')
+
+	  // Fill 0 bytes; we're done
+	  if (end === start) return
+	  if (this.length === 0) return
+
+	  if (start < 0 || start >= this.length) throw new RangeError('start out of bounds')
+	  if (end < 0 || end > this.length) throw new RangeError('end out of bounds')
+
+	  var i
+	  if (typeof value === 'number') {
+	    for (i = start; i < end; i++) {
+	      this[i] = value
+	    }
+	  } else {
+	    var bytes = utf8ToBytes(value.toString())
+	    var len = bytes.length
+	    for (i = start; i < end; i++) {
+	      this[i] = bytes[i % len]
+	    }
+	  }
+
+	  return this
+	}
+
+	/**
+	 * Creates a new `ArrayBuffer` with the *copied* memory of the buffer instance.
+	 * Added in Node 0.12. Only available in browsers that support ArrayBuffer.
+	 */
+	Buffer.prototype.toArrayBuffer = function toArrayBuffer () {
+	  if (typeof Uint8Array !== 'undefined') {
+	    if (Buffer.TYPED_ARRAY_SUPPORT) {
+	      return (new Buffer(this)).buffer
+	    } else {
+	      var buf = new Uint8Array(this.length)
+	      for (var i = 0, len = buf.length; i < len; i += 1) {
+	        buf[i] = this[i]
+	      }
+	      return buf.buffer
+	    }
+	  } else {
+	    throw new TypeError('Buffer.toArrayBuffer not supported in this browser')
+	  }
+	}
+
+	// HELPER FUNCTIONS
+	// ================
+
+	var BP = Buffer.prototype
+
+	/**
+	 * Augment a Uint8Array *instance* (not the Uint8Array class!) with Buffer methods
+	 */
+	Buffer._augment = function _augment (arr) {
+	  arr.constructor = Buffer
+	  arr._isBuffer = true
+
+	  // save reference to original Uint8Array set method before overwriting
+	  arr._set = arr.set
+
+	  // deprecated
+	  arr.get = BP.get
+	  arr.set = BP.set
+
+	  arr.write = BP.write
+	  arr.toString = BP.toString
+	  arr.toLocaleString = BP.toString
+	  arr.toJSON = BP.toJSON
+	  arr.equals = BP.equals
+	  arr.compare = BP.compare
+	  arr.indexOf = BP.indexOf
+	  arr.copy = BP.copy
+	  arr.slice = BP.slice
+	  arr.readUIntLE = BP.readUIntLE
+	  arr.readUIntBE = BP.readUIntBE
+	  arr.readUInt8 = BP.readUInt8
+	  arr.readUInt16LE = BP.readUInt16LE
+	  arr.readUInt16BE = BP.readUInt16BE
+	  arr.readUInt32LE = BP.readUInt32LE
+	  arr.readUInt32BE = BP.readUInt32BE
+	  arr.readIntLE = BP.readIntLE
+	  arr.readIntBE = BP.readIntBE
+	  arr.readInt8 = BP.readInt8
+	  arr.readInt16LE = BP.readInt16LE
+	  arr.readInt16BE = BP.readInt16BE
+	  arr.readInt32LE = BP.readInt32LE
+	  arr.readInt32BE = BP.readInt32BE
+	  arr.readFloatLE = BP.readFloatLE
+	  arr.readFloatBE = BP.readFloatBE
+	  arr.readDoubleLE = BP.readDoubleLE
+	  arr.readDoubleBE = BP.readDoubleBE
+	  arr.writeUInt8 = BP.writeUInt8
+	  arr.writeUIntLE = BP.writeUIntLE
+	  arr.writeUIntBE = BP.writeUIntBE
+	  arr.writeUInt16LE = BP.writeUInt16LE
+	  arr.writeUInt16BE = BP.writeUInt16BE
+	  arr.writeUInt32LE = BP.writeUInt32LE
+	  arr.writeUInt32BE = BP.writeUInt32BE
+	  arr.writeIntLE = BP.writeIntLE
+	  arr.writeIntBE = BP.writeIntBE
+	  arr.writeInt8 = BP.writeInt8
+	  arr.writeInt16LE = BP.writeInt16LE
+	  arr.writeInt16BE = BP.writeInt16BE
+	  arr.writeInt32LE = BP.writeInt32LE
+	  arr.writeInt32BE = BP.writeInt32BE
+	  arr.writeFloatLE = BP.writeFloatLE
+	  arr.writeFloatBE = BP.writeFloatBE
+	  arr.writeDoubleLE = BP.writeDoubleLE
+	  arr.writeDoubleBE = BP.writeDoubleBE
+	  arr.fill = BP.fill
+	  arr.inspect = BP.inspect
+	  arr.toArrayBuffer = BP.toArrayBuffer
+
+	  return arr
+	}
+
+	var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g
+
+	function base64clean (str) {
+	  // Node strips out invalid characters like \n and \t from the string, base64-js does not
+	  str = stringtrim(str).replace(INVALID_BASE64_RE, '')
+	  // Node converts strings with length < 2 to ''
+	  if (str.length < 2) return ''
+	  // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
+	  while (str.length % 4 !== 0) {
+	    str = str + '='
+	  }
+	  return str
+	}
+
+	function stringtrim (str) {
+	  if (str.trim) return str.trim()
+	  return str.replace(/^\s+|\s+$/g, '')
+	}
+
+	function toHex (n) {
+	  if (n < 16) return '0' + n.toString(16)
+	  return n.toString(16)
+	}
+
+	function utf8ToBytes (string, units) {
+	  units = units || Infinity
+	  var codePoint
+	  var length = string.length
+	  var leadSurrogate = null
+	  var bytes = []
+
+	  for (var i = 0; i < length; i++) {
+	    codePoint = string.charCodeAt(i)
+
+	    // is surrogate component
+	    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+	      // last char was a lead
+	      if (!leadSurrogate) {
+	        // no lead yet
+	        if (codePoint > 0xDBFF) {
+	          // unexpected trail
+	          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	          continue
+	        } else if (i + 1 === length) {
+	          // unpaired lead
+	          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	          continue
+	        }
+
+	        // valid lead
+	        leadSurrogate = codePoint
+
+	        continue
+	      }
+
+	      // 2 leads in a row
+	      if (codePoint < 0xDC00) {
+	        if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	        leadSurrogate = codePoint
+	        continue
+	      }
+
+	      // valid surrogate pair
+	      codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000
+	    } else if (leadSurrogate) {
+	      // valid bmp char, but last char was a lead
+	      if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	    }
+
+	    leadSurrogate = null
+
+	    // encode utf8
+	    if (codePoint < 0x80) {
+	      if ((units -= 1) < 0) break
+	      bytes.push(codePoint)
+	    } else if (codePoint < 0x800) {
+	      if ((units -= 2) < 0) break
+	      bytes.push(
+	        codePoint >> 0x6 | 0xC0,
+	        codePoint & 0x3F | 0x80
+	      )
+	    } else if (codePoint < 0x10000) {
+	      if ((units -= 3) < 0) break
+	      bytes.push(
+	        codePoint >> 0xC | 0xE0,
+	        codePoint >> 0x6 & 0x3F | 0x80,
+	        codePoint & 0x3F | 0x80
+	      )
+	    } else if (codePoint < 0x110000) {
+	      if ((units -= 4) < 0) break
+	      bytes.push(
+	        codePoint >> 0x12 | 0xF0,
+	        codePoint >> 0xC & 0x3F | 0x80,
+	        codePoint >> 0x6 & 0x3F | 0x80,
+	        codePoint & 0x3F | 0x80
+	      )
+	    } else {
+	      throw new Error('Invalid code point')
+	    }
+	  }
+
+	  return bytes
+	}
+
+	function asciiToBytes (str) {
+	  var byteArray = []
+	  for (var i = 0; i < str.length; i++) {
+	    // Node's code seems to be doing this and not & 0x7F..
+	    byteArray.push(str.charCodeAt(i) & 0xFF)
+	  }
+	  return byteArray
+	}
+
+	function utf16leToBytes (str, units) {
+	  var c, hi, lo
+	  var byteArray = []
+	  for (var i = 0; i < str.length; i++) {
+	    if ((units -= 2) < 0) break
+
+	    c = str.charCodeAt(i)
+	    hi = c >> 8
+	    lo = c % 256
+	    byteArray.push(lo)
+	    byteArray.push(hi)
+	  }
+
+	  return byteArray
+	}
+
+	function base64ToBytes (str) {
+	  return base64.toByteArray(base64clean(str))
+	}
+
+	function blitBuffer (src, dst, offset, length) {
+	  for (var i = 0; i < length; i++) {
+	    if ((i + offset >= dst.length) || (i >= src.length)) break
+	    dst[i + offset] = src[i]
+	  }
+	  return i
+	}
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28).Buffer, (function() { return this; }())))
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+
+	;(function (exports) {
+		'use strict';
+
+	  var Arr = (typeof Uint8Array !== 'undefined')
+	    ? Uint8Array
+	    : Array
+
+		var PLUS   = '+'.charCodeAt(0)
+		var SLASH  = '/'.charCodeAt(0)
+		var NUMBER = '0'.charCodeAt(0)
+		var LOWER  = 'a'.charCodeAt(0)
+		var UPPER  = 'A'.charCodeAt(0)
+		var PLUS_URL_SAFE = '-'.charCodeAt(0)
+		var SLASH_URL_SAFE = '_'.charCodeAt(0)
+
+		function decode (elt) {
+			var code = elt.charCodeAt(0)
+			if (code === PLUS ||
+			    code === PLUS_URL_SAFE)
+				return 62 // '+'
+			if (code === SLASH ||
+			    code === SLASH_URL_SAFE)
+				return 63 // '/'
+			if (code < NUMBER)
+				return -1 //no match
+			if (code < NUMBER + 10)
+				return code - NUMBER + 26 + 26
+			if (code < UPPER + 26)
+				return code - UPPER
+			if (code < LOWER + 26)
+				return code - LOWER + 26
+		}
+
+		function b64ToByteArray (b64) {
+			var i, j, l, tmp, placeHolders, arr
+
+			if (b64.length % 4 > 0) {
+				throw new Error('Invalid string. Length must be a multiple of 4')
+			}
+
+			// the number of equal signs (place holders)
+			// if there are two placeholders, than the two characters before it
+			// represent one byte
+			// if there is only one, then the three characters before it represent 2 bytes
+			// this is just a cheap hack to not do indexOf twice
+			var len = b64.length
+			placeHolders = '=' === b64.charAt(len - 2) ? 2 : '=' === b64.charAt(len - 1) ? 1 : 0
+
+			// base64 is 4/3 + up to two characters of the original data
+			arr = new Arr(b64.length * 3 / 4 - placeHolders)
+
+			// if there are placeholders, only get up to the last complete 4 chars
+			l = placeHolders > 0 ? b64.length - 4 : b64.length
+
+			var L = 0
+
+			function push (v) {
+				arr[L++] = v
+			}
+
+			for (i = 0, j = 0; i < l; i += 4, j += 3) {
+				tmp = (decode(b64.charAt(i)) << 18) | (decode(b64.charAt(i + 1)) << 12) | (decode(b64.charAt(i + 2)) << 6) | decode(b64.charAt(i + 3))
+				push((tmp & 0xFF0000) >> 16)
+				push((tmp & 0xFF00) >> 8)
+				push(tmp & 0xFF)
+			}
+
+			if (placeHolders === 2) {
+				tmp = (decode(b64.charAt(i)) << 2) | (decode(b64.charAt(i + 1)) >> 4)
+				push(tmp & 0xFF)
+			} else if (placeHolders === 1) {
+				tmp = (decode(b64.charAt(i)) << 10) | (decode(b64.charAt(i + 1)) << 4) | (decode(b64.charAt(i + 2)) >> 2)
+				push((tmp >> 8) & 0xFF)
+				push(tmp & 0xFF)
+			}
+
+			return arr
+		}
+
+		function uint8ToBase64 (uint8) {
+			var i,
+				extraBytes = uint8.length % 3, // if we have 1 byte left, pad 2 bytes
+				output = "",
+				temp, length
+
+			function encode (num) {
+				return lookup.charAt(num)
+			}
+
+			function tripletToBase64 (num) {
+				return encode(num >> 18 & 0x3F) + encode(num >> 12 & 0x3F) + encode(num >> 6 & 0x3F) + encode(num & 0x3F)
+			}
+
+			// go through the array every three bytes, we'll deal with trailing stuff later
+			for (i = 0, length = uint8.length - extraBytes; i < length; i += 3) {
+				temp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2])
+				output += tripletToBase64(temp)
+			}
+
+			// pad the end with zeros, but make sure to not forget the extra bytes
+			switch (extraBytes) {
+				case 1:
+					temp = uint8[uint8.length - 1]
+					output += encode(temp >> 2)
+					output += encode((temp << 4) & 0x3F)
+					output += '=='
+					break
+				case 2:
+					temp = (uint8[uint8.length - 2] << 8) + (uint8[uint8.length - 1])
+					output += encode(temp >> 10)
+					output += encode((temp >> 4) & 0x3F)
+					output += encode((temp << 2) & 0x3F)
+					output += '='
+					break
+			}
+
+			return output
+		}
+
+		exports.toByteArray = b64ToByteArray
+		exports.fromByteArray = uint8ToBase64
+	}( false ? (this.base64js = {}) : exports))
+
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
+	  var e, m
+	  var eLen = nBytes * 8 - mLen - 1
+	  var eMax = (1 << eLen) - 1
+	  var eBias = eMax >> 1
+	  var nBits = -7
+	  var i = isLE ? (nBytes - 1) : 0
+	  var d = isLE ? -1 : 1
+	  var s = buffer[offset + i]
+
+	  i += d
+
+	  e = s & ((1 << (-nBits)) - 1)
+	  s >>= (-nBits)
+	  nBits += eLen
+	  for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d, nBits -= 8) {}
+
+	  m = e & ((1 << (-nBits)) - 1)
+	  e >>= (-nBits)
+	  nBits += mLen
+	  for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d, nBits -= 8) {}
+
+	  if (e === 0) {
+	    e = 1 - eBias
+	  } else if (e === eMax) {
+	    return m ? NaN : ((s ? -1 : 1) * Infinity)
+	  } else {
+	    m = m + Math.pow(2, mLen)
+	    e = e - eBias
+	  }
+	  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
+	}
+
+	exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+	  var e, m, c
+	  var eLen = nBytes * 8 - mLen - 1
+	  var eMax = (1 << eLen) - 1
+	  var eBias = eMax >> 1
+	  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
+	  var i = isLE ? 0 : (nBytes - 1)
+	  var d = isLE ? 1 : -1
+	  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0
+
+	  value = Math.abs(value)
+
+	  if (isNaN(value) || value === Infinity) {
+	    m = isNaN(value) ? 1 : 0
+	    e = eMax
+	  } else {
+	    e = Math.floor(Math.log(value) / Math.LN2)
+	    if (value * (c = Math.pow(2, -e)) < 1) {
+	      e--
+	      c *= 2
+	    }
+	    if (e + eBias >= 1) {
+	      value += rt / c
+	    } else {
+	      value += rt * Math.pow(2, 1 - eBias)
+	    }
+	    if (value * c >= 2) {
+	      e++
+	      c /= 2
+	    }
+
+	    if (e + eBias >= eMax) {
+	      m = 0
+	      e = eMax
+	    } else if (e + eBias >= 1) {
+	      m = (value * c - 1) * Math.pow(2, mLen)
+	      e = e + eBias
+	    } else {
+	      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
+	      e = 0
+	    }
+	  }
+
+	  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}
+
+	  e = (e << mLen) | m
+	  eLen += mLen
+	  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}
+
+	  buffer[offset + i - d] |= s * 128
+	}
+
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	var toString = {}.toString;
+
+	module.exports = Array.isArray || function (arr) {
+	  return toString.call(arr) == '[object Array]';
+	};
+
+
+/***/ },
+/* 32 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26388,7 +28391,7 @@
 	module.exports = message;
 
 /***/ },
-/* 28 */
+/* 33 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26428,7 +28431,7 @@
 	}
 
 /***/ },
-/* 29 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26470,6 +28473,7 @@
 	            logout: function logout() {
 	                account.logout().then(function (res) {
 	                    root.$emit("event:logout");
+	                    localStorage.removeItem('saveUserInfo');
 	                });
 	            }
 	        };
@@ -26483,8 +28487,8 @@
 	}
 
 /***/ },
-/* 30 */
-/***/ function(module, exports) {
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -26492,80 +28496,106 @@
 	 * Created by dcampus2011 on 16/2/17.
 	 */
 	{
-	    var MainController = function MainController(root, scope, state, account, session, $ionicHistory, constant) {
-	        var _this = this;
+	    (function () {
+	        var MainController = function MainController(root, scope, state, account, session, $ionicHistory, constant) {
+	            var _this = this;
 
-	        /**接收到由httpRequest传过来的事件,退出时调用**/
-	        root.$on("status:logout", function () {
-	            collect.logoutFunc();
-	        });
-	        root.$on("event:logout", function () {
-	            collect.logoutFunc();
-	        });
-	        account.loginModal(scope); //判断是否登录,否则显示登录窗口
-	        var collect = {
-	            init: function init() {
-	                account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
-	            },
-	            loginModal: {
-	                show: function show() {
-	                    scope.loginModal.show();
+	            var loginInfo = {
+	                username: null,
+	                password: null,
+	                remberMe: null
+	            };
+
+	            /**接收到由httpRequest传过来的事件,退出时调用**/
+	            root.$on("status:logout", function () {
+	                collect.logoutFunc();
+	            });
+	            root.$on("event:logout", function () {
+	                collect.logoutFunc();
+	            });
+	            account.loginModal(scope); //判断是否登录,否则显示登录窗口
+	            var collect = {
+	                init: function init() {
+	                    if (localStorage.saveUserInfo != undefined) {
+	                        loginInfo.remberMe = true;
+	                        var usrInfoArr = localStorage.saveUserInfo.split(',');
+	                        loginInfo.username = Base64.decode(usrInfoArr[0]);
+	                        loginInfo.password = Base64.decode(usrInfoArr[1]);
+	                    }
+	                    account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
 	                },
-	                hide: function hide() {
-	                    scope.loginModal.hide();
+	                loginModal: {
+	                    show: function show() {
+	                        scope.loginModal.show();
+	                    },
+	                    hide: function hide() {
+	                        scope.loginModal.hide();
+	                    }
+	                },
+	                login: function login() {
+	                    var paramsObj = {
+	                        "account": _this.loginInfo.username,
+	                        "password": _this.loginInfo.password
+	                    };
+	                    account.doLogin(paramsObj).then(function (res) {
+	                        _this.collect.loginModal.hide();
+	                        $ionicHistory.nextViewOptions({
+	                            disableBack: false
+	                        });
+	                        if (loginInfo.remberMe) {
+	                            var usr = Base64.encode(_this.loginInfo.username),
+	                                psw = Base64.encode(_this.loginInfo.password);
+	                            localStorage.saveUserInfo = [usr, psw];
+	                        }
+	                        loginInfo = {
+	                            username: null,
+	                            password: null,
+	                            remberMe: null
+	                        };
+	                    });
+	                },
+	                guestLogin: function guestLogin() {
+	                    var paramsObj = {
+	                        "account": constant.config.guestAccount[0],
+	                        "password": constant.config.guestAccount[1]
+	                    };
+	                    account.doLogin(paramsObj).then(function (res) {
+	                        _this.collect.loginModal.hide();
+	                        $ionicHistory.nextViewOptions({
+	                            disableBack: false
+	                        });
+	                    });
+	                },
+	                logoutFunc: function logoutFunc() {
+	                    _this.collect.loginModal.show();
+	                    account.keepAlive.stop(); //停止keepAlive调用
+	                    session.removeSession();
+	                    $ionicHistory.nextViewOptions({
+	                        disableBack: true
+	                    });
+	                    state.go("tabs.home");
+	                    $ionicHistory.clearHistory();
+
+	                    _this.loginInfo.remberMe = false;
+	                    _this.loginInfo.username = '';
+	                    _this.loginInfo.password = '';
 	                }
-	            },
-	            login: function login() {
-	                var paramsObj = {
-	                    "account": _this.loginInfo.username,
-	                    "password": encodeURI(_this.loginInfo.password)
-	                };
-	                account.doLogin(paramsObj).then(function (res) {
-	                    _this.collect.loginModal.hide();
-	                    $ionicHistory.nextViewOptions({
-	                        disableBack: false
-	                    });
-	                });
-	            },
-	            guestLogin: function guestLogin() {
-	                var paramsObj = {
-	                    "account": constant.config.guestAccount[0],
-	                    "password": encodeURI(constant.config.guestAccount[1])
-	                };
-	                account.doLogin(paramsObj).then(function (res) {
-	                    _this.collect.loginModal.hide();
-	                    $ionicHistory.nextViewOptions({
-	                        disableBack: false
-	                    });
-	                });
-	            },
-	            logoutFunc: function logoutFunc() {
-	                _this.collect.loginModal.show();
-	                account.keepAlive.stop(); //停止keepAlive调用
-	                session.removeSession();
-	                $ionicHistory.nextViewOptions({
-	                    disableBack: true
-	                });
-	                state.go("tabs.home");
-	                $ionicHistory.clearHistory();
-	            }
-	        };
-	        var loginInfo = {
-	            username: null,
-	            password: null
-	        };
-	        collect.init();
-	        this.collect = collect; //外部调用
-	        this.loginInfo = loginInfo;
-	    };
+	            };
 
-	    angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
+	            collect.init();
+	            this.collect = collect; //外部调用
+	            this.loginInfo = loginInfo;
+	        };
 
-	    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant'];
+	        var Base64 = __webpack_require__(27).Base64;
+	        angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
+
+	        MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant'];
+	    })();
 	}
 
 /***/ },
-/* 31 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26597,7 +28627,7 @@
 	}
 
 /***/ },
-/* 32 */
+/* 37 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26641,8 +28671,8 @@
 	}
 
 /***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
+/* 38 */
+/***/ function(module, exports) {
 
 	"use strict";
 
@@ -26650,8 +28680,465 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	{
+	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+	        var collect = {
+	            resourceList: [],
+	            title: $stateParams.title,
+	            modalTitle: "",
+	            defaultViewer: null,
+	            showZoom: false,
+	            start: 0, //当前页码
+	            limit: 10, //每页显示的条数
+	            totalCount: 0, //总条数
+	            init: function init() {
+	                var _this = this;
+
+	                this.onHold = function (id) {
+	                    _this.showPopup(id);
+	                };
+	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+	                    scope: $scope,
+	                    animation: 'slide-in-up',
+	                    hardwareBackButtonClose: false
+	                }).then(function (modal) {
+	                    $scope.modal = modal;
+	                });
+	            },
+	            showPopup: function showPopup(id) {
+	                var popup = $ionicPopup.show({
+	                    template: '',
+	                    title: '收藏资源',
+	                    subTitle: '',
+	                    scope: $scope,
+	                    buttons: [{ text: '返回' }, {
+	                        text: '<b>收藏</b>',
+	                        type: 'button-positive',
+	                        onTap: function onTap(e) {
+	                            return id;
+	                        }
+	                    }]
+	                });
+	                popup.then(function (id) {
+	                    if (id != undefined) {
+	                        fav.addFav(id).then(function (res) {
+	                            if (res.data.success) {
+	                                console.log("收藏成功");
+	                            }
+	                        });
+	                    }
+	                });
+	            },
+	            openModal: function openModal(id, title) {
+	                var _this2 = this;
+
+	                this.modalTitle = title;
+	                Common.loading.show();
+	                $scope.modal.show();
+	                $timeout(function () {
+	                    resources.getView(id).then(function (res) {
+	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                        _this2.showZoom = true;
+	                    });
+	                }, 100);
+	            },
+	            hideModal: function hideModal() {
+	                $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
+	                this.showZoom = false;
+	                $scope.modal.hide();
+	            },
+	            more: function more() {},
+	            zoom: function zoom(scale) {
+	                if (scale == 'big') {
+	                    $rootScope.$broadcast('event:scale:big'); //传递一个事件给pdf预览指令
+	                } else {
+	                        $rootScope.$broadcast('event:scale:small'); //传递一个事件给pdf预览指令
+	                    }
+	            },
+	            loadResources: function loadResources() {
+	                var _this3 = this;
+
+	                this.start = 0;
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    var _res$data = res.data;
+	                    var resources = _res$data.resources;
+	                    var totalCount = _res$data.totalCount;
+
+	                    _this3.resourceList = resources;
+	                    _this3.start = _this3.limit + _this3.start;
+	                    _this3.totalCount = totalCount;
+	                });
+	            },
+	            doRefresh: function doRefresh() {
+	                var _this4 = this;
+
+	                this.start = 0;
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
+
+	                    _this4.resourceList = resources;
+	                    _this4.start = _this4.limit + _this4.start;
+	                    _this4.totalCount = totalCount;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.refreshComplete');
+	                });
+	            },
+	            loadMore: function loadMore() {
+	                var _this5 = this;
+
+	                if (this.start >= this.totalCount) {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    return;
+	                }
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    _this5.resourceList = _this5.resourceList.concat(res.data.resources);
+	                    _this5.start = _this5.limit + _this5.start;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                });
+	            }
+	        };
+	        collect.loadResources();
+	        collect.init();
+	        this.collect = collect;
+	    };
+
+	    angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
+	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	}
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Created by dcampus2011 on 16/2/26.
+	 */
+	{
+	    var favController = function favController($rootScope, $scope, sendRequest, fav) {
+	        var _this = this;
+
+	        var collect = {
+	            loadFavList: function loadFavList() {
+	                fav.getList().then(function (res) {
+	                    _this.watchesList = res.data.watches;
+	                });
+	            },
+	            removeFavList: function removeFavList(id) {
+	                fav.removeFav(id).then(function (res) {
+	                    if (res.data.type == "success") {
+	                        _this.watchesList = "";
+	                        collect.loadFavList();
+	                    }
+	                });
+	            }
+	        };
+	        collect.loadFavList();
+	        this.collect = collect;
+	        // this.func = func;//exports
+	    };
+
+	    angular.module("favModule", ["httpRequest"]).controller("favController", favController);
+
+	    favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "request.fav"];
+	}
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Created by dcampus on 2016/3/23.
+	 */
+	{
+	    var editController = function editController(account, $stateParams, $scope, $state, Common, $timeout) {
+	        var vm = this;
+	        var userInfo = {
+	            account: null,
+	            userName: null,
+	            company: null,
+	            department: null,
+	            email: null,
+	            confirmMail: null,
+	            mobile: null,
+	            password: null,
+	            confirmPassword: null,
+	            oldPassword: null,
+	            activate: activate //进controller就执行
+	        };
+	        var collect = {
+	            isName: false,
+	            isCompany: false,
+	            isEmail: false,
+	            isMobile: false,
+	            isPassword: false,
+	            isDepartment: false,
+	            isIm: false,
+	            title: "",
+	            showLabel: showLabel,
+	            save: save
+	        };
+	        userInfo.activate(); //读取用户信息
+	        collect.showLabel();
+	        $scope.$on("event:" + $stateParams.type, verifyAndSave);
+	        this.userInfo = userInfo;
+	        this.collect = collect;
+
+	        function activate() {
+	            account.getAccount().then(function (res) {
+	                var _res$data = res.data;
+	                var account = _res$data.account;
+	                var company = _res$data.company;
+	                var department = _res$data.department;
+	                var email = _res$data.email;
+	                var im = _res$data.im;
+	                var mobile = _res$data.mobile;
+	                var name = _res$data.name;
+
+	                vm.userInfo.account = account;
+	                vm.userInfo.userName = name;
+	                vm.userInfo.company = company;
+	                vm.userInfo.department = department;
+	                vm.userInfo.mobile = mobile;
+	                vm.userInfo.im = im;
+	            });
+	        }
+
+	        function showLabel() {
+	            switch ($stateParams.type) {
+	                case "userName":
+	                    this.isName = true;
+	                    this.title = "姓名";
+	                    break;
+	                case "company":
+	                    this.isCompany = true;
+	                    this.title = "单位";
+	                    break;
+	                case "email":
+	                    this.isEmail = true;
+	                    this.title = "邮箱";
+	                    break;
+	                case "mobile":
+	                    this.isMobile = true;
+	                    this.title = "手机";
+	                    break;
+	                case "password":
+	                    this.isPassword = true;
+	                    this.title = "密码";
+	                    break;
+	                case "department":
+	                    this.isDepartment = true;
+	                    this.title = "地址";
+	                    break;
+	                case "im":
+	                    this.isIm = true;
+	                    this.title = "专业";
+	                    break;
+	            }
+	        }
+
+	        function save() {
+	            $scope.$emit("event:" + $stateParams.type);
+	        }
+
+	        function verifyAndSave() {
+	            var reg = void 0,
+	                _value = void 0,
+	                _oldValue = void 0,
+	                _key = $stateParams.type,
+	                isVerify = false;
+	            switch ($stateParams.type) {
+	                case "userName":
+	                    _value = vm.userInfo.userName;
+	                    isVerify = true;
+	                    break;
+	                case "company":
+	                    _value = vm.userInfo.company;
+	                    isVerify = true;
+	                    break;
+	                case "email":
+	                    reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+	                    _value = vm.userInfo.email;
+	                    if (_value) {
+	                        if (!reg.test(_value)) {
+	                            Common.Alert("", "邮箱格式有误，请重新填写");
+	                        } else {
+	                            !vm.userInfo.confirmEmail ? Common.Alert("温馨提示", "请填写确认邮箱！") : vm.userInfo.confirmEmail == _value ? isVerify = true : Common.Alert("", "两次输入不一致");
+	                        }
+	                    }
+	                    break;
+	                case "mobile":
+	                    reg = new RegExp(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/);
+	                    _value = vm.userInfo.mobile;
+	                    reg.test(_value) ? isVerify = true : Common.Alert("", "手机号码格式有误，请重新填写");
+	                    break;
+	                case "password":
+	                    _oldValue = vm.userInfo.oldPassword;
+	                    _value = vm.userInfo.password;
+	                    if (_value) {
+	                        vm.userInfo.password == "" ? Common.Alert("", "请填写新密码") : vm.userInfo.password == vm.userInfo.confirtPassword ? isVerify = true : Common.Alert("", "两次输入不一致");
+	                    } else {
+	                        Common.Alert("", "请输入原密码");
+	                    }
+	                    break;
+	                case "department":
+	                    _value = vm.userInfo.department;
+	                    isVerify = true;
+	                    break;
+	                case "im":
+	                    _value = vm.userInfo.im;
+	                    isVerify = true;
+	                    break;
+	            }
+	            if (isVerify) {
+	                if (_key == "password") {
+	                    account.savePassword(_oldValue, _value).then(function (res) {
+	                        if (res.data.result) {
+	                            $state.go("tabs.personal");
+	                        }
+	                    });
+	                } else {
+	                    account.saveUserInfo(_key, _value).then(function (res) {
+	                        if (res.data.type == "success") {
+	                            $state.go("tabs.personal");
+	                        }
+	                    });
+	                }
+	            }
+	        }
+	    };
+
+	    angular.module("editModule", []).controller("editController", editController);
+
+	    editController.$inject = ['request.account', "$stateParams", "$scope", "$state", "global.Common", "$timeout"];
+	}
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Created by dcampus on 2016/3/23.
+	 */
+	{
+	    var infoController = function infoController(message, session, $rootScope) {
+	        var collect = {
+	            limit: 10,
+	            totalCount: 0,
+	            items: [],
+	            getMessage: function getMessage() {
+	                var _this = this;
+
+	                this.start = 0;
+	                message.getList(session.getSession().memberId, this.start, this.limit).then(function (res) {
+	                    var _res$data = res.data;
+	                    var resources = _res$data.resources;
+	                    var totalCount = _res$data.totalCount;
+
+	                    _this.items = resources;
+	                    _this.start = _this.limit + _this.start;
+	                    _this.totalCount = totalCount;
+	                });
+	            },
+	            doRefresh: function doRefresh() {
+	                var _this2 = this;
+
+	                this.start = 0;
+	                message.getList(session.getSession().memberId, this.start, this.limit).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
+
+	                    _this2.items = resources;
+	                    _this2.start = _this2.limit + _this2.start;
+	                    _this2.totalCount = totalCount;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.refreshComplete');
+	                });
+	            },
+	            loadMore: function loadMore() {
+	                var _this3 = this;
+
+	                if (this.start >= this.totalCount) {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    return;
+	                }
+	                message.getList(session.getSession().memberId, this.start, this.limit).then(function (res) {
+	                    var _res$data3 = res.data;
+	                    var resources = _res$data3.resources;
+	                    var totalCount = _res$data3.totalCount;
+
+	                    _this3.items = _this3.items.concat(resources);
+	                    _this3.start = _this3.limit + _this3.start;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                });
+	            },
+	            removeMessage: function removeMessage(id) {
+	                var _this4 = this;
+
+	                message.removeMessage(id).then(function (res) {
+	                    if (res.data.type == "success") {
+	                        _this4.items = "";
+	                        _this4.getMessage();
+	                    }
+	                });
+	            }
+	        };
+	        collect.getMessage();
+	        this.collect = collect;
+	    };
+
+	    angular.module("infoModule", []).controller("infoController", infoController);
+
+	    infoController.$inject = ['request.message', "global.session", "$rootScope"];
+	}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * Created by dcampus on 2016/3/31.
+	 */
+	{
+	  angular.module('directivesModule', []);
+	}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	/**
+	 * Created by dcampus on 2016/4/1.
+	 */
+	{
 	    (function () {
-	        var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+	        var onFinished = function onFinished($timeout, $q) {
+	            return {
+	                restrict: 'A',
+	                scope: true,
+	                require: '^?viewPdf',
+	                link: function link(scope, element, attrs, ctrl) {
+	                    if (scope.$last) {
+	                        ctrl.initSwipe(); //渲染结束后调用初始化Swiper
+	                    }
+	                }
+	            };
+	        };
+
+	        var viewPdf = function viewPdf($state, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
 	            var regExp = {
 	                styleReg: VerEx().then("<style").anythingBut('').then('</style>') //过滤style的正则
 	                , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>') //过滤body的正则
@@ -26664,230 +29151,132 @@
 	                },
 	                pageIdReg: VerEx().find('id="pf').anythingBut('"') //获取页id正则
 	            };
+	            return {
+	                restrict: 'E',
+	                templateUrl: './js/directive/view.html',
+	                scope: {
+	                    items: '@'
+	                },
+	                link: function link(scope, element, attrs, ctrl) {
+	                    //console.log(onFinishRenderCtrl);
+	                    scope.$on('event:openModel', openCallback);
+	                    scope.$on('event:closeModel', closeCallback);
+	                    /** 正则规则**/
+	                    scope.index = 0; //定义一个全局的分页索引，方便外部调用
+	                    scope.items = [];
+	                    scope.regExp = regExp;
+	                    function openCallback(_scope, _data) {
+	                        Common.loading.hide();
+	                        /**输出内容**/
+	                        scope.style = _data.match(regExp.styleReg)[0]; //用正则匹配出style
+	                        scope.body = _data.match(regExp.bodyReg)[0]; //匹配body中的内容
+	                        scope.pageArray = scope.body.match(regExp.pageIdReg).map(function (value) {
+	                            return value.replace(/(?:id\=")/gm, "");
+	                        }); //输出页码数组
+	                        scope.pageArrayLength = scope.pageArray.length; //计算数组长度
+	                        scope.styleOutLine = $sce.trustAsHtml(scope.style);
+	                        scope.items = scope.pageArray;
+	                        _data = null;
+	                        scope.style = null;
+	                    }
 
-	            var collect = {
-	                resourceList: [],
-	                title: $stateParams.title,
-	                modalTitle: "",
-	                frameSrc: "",
-	                defaultViewer: null,
-	                showZoom: false,
-	                zoomNum: 1,
-	                showFrame: false,
-	                start: 0, //当前页码
-	                limit: 10, //每页显示的条数
-	                totalCount: 0, //总条数
-	                swiper: null,
-	                items: [],
-	                htmlCode: '',
-	                index: 0,
-	                styleOutLine: "",
-	                style: "",
-	                body: "",
-	                pageArray: [],
-	                pageArrayLength: 0,
-	                init: function init() {
-	                    var _this = this;
-
-	                    this.onHold = function (id) {
-	                        _this.showPopup(id);
-	                    };
-	                    $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
-	                        scope: $scope,
-	                        animation: 'slide-in-up',
-	                        hardwareBackButtonClose: false
-	                    }).then(function (modal) {
-	                        $scope.modal = modal;
-	                    });
-	                    $scope.$on('ngRepeatFinished', function () {
-	                        if (!_this.swiper) {
-	                            _this.swiper = new Swiper('.swiper-container', {
+	                    function closeCallback() {
+	                        scope.styleOutLine = ""; //清空样式
+	                        scope.content = "";
+	                        scope.defaultViewer = null;
+	                        scope.showZoom = false;
+	                        scope.items = [];
+	                        scope.body = "";
+	                        scope.style = "";
+	                        scope.index = 0;
+	                    }
+	                },
+	                controller: function controller($scope, $element, $attrs) {
+	                    $scope.swiper = null;
+	                    $scope.defaultViewer = null;
+	                    var slidesArr = void 0;
+	                    /**以下为初始化Swiper及设值**/
+	                    this.initSwipe = function () {
+	                        if (!$scope.swiper) {
+	                            $scope.swiper = new Swiper('.swiper-container', {
 	                                pagination: '.swiper-pagination',
 	                                paginationClickable: false,
 	                                paginationType: 'progress',
 	                                onInit: function onInit(e) {
-	                                    e.slides[0].innerHTML = _this.getHtml(0);
-	                                    _this.defaultViewer = new pdf2htmlEX({});
+	                                    e.slides[0].innerHTML = getHtml(0);
+	                                    $scope.defaultViewer = new pdf2htmlEX({});
+	                                    slidesArr = document.querySelectorAll('.swiper-slide');
 	                                }
-	                            });
-	                            _this.swiper.on('onSlideChangeStart', function (e) {
-	                                _this.defaultViewer = null;
-
-	                                $timeout(function () {
-	                                    var activeIndex = e.activeIndex;
-	                                    _this.index = activeIndex;
-	                                    if (activeIndex != 0 && _this.pageArrayLength != activeIndex + 1) {
-	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
-	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                    } else if (_this.pageArrayLength == activeIndex + 1) {
-	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
-	                                        e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                    } else {
-	                                        e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                                        e.slides[activeIndex].innerHTML = _this.getHtml(activeIndex);
-	                                    }
-	                                    _this.defaultViewer = new pdf2htmlEX({});
-	                                }, 150);
 	                            });
 	                        } else {
-	                            _this.swiper.slideTo(0);
-	                            _this.swiper.update(true);
-	                            _this.swiper.slides[0].innerHTML = _this.getHtml(0);
+	                            $scope.swiper.slideTo(0);
+	                            $scope.swiper.update(true);
+	                            $scope.swiper.slides[0].innerHTML = getHtml(0);
+	                            slidesArr = document.querySelectorAll('.swiper-slide');
 	                        }
-	                    });
-	                },
+	                        $scope.swiper.on('onSlideChangeStart', function (e) {
+	                            $timeout(function () {
+	                                var activeIndex = e.activeIndex;
+	                                $scope.index = activeIndex;
+	                                if (activeIndex != 0 && $scope.pageArrayLength != activeIndex + 1) {
+	                                    slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+	                                    slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                    slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                } else if ($scope.pageArrayLength == activeIndex + 1) {
 
-	                showPopup: function showPopup(id) {
-	                    // An elaborate, custom popup
-	                    var popup = $ionicPopup.show({
-	                        template: '',
-	                        title: '收藏资源',
-	                        subTitle: '',
-	                        scope: $scope,
-	                        buttons: [{ text: '返回' }, {
-	                            text: '<b>收藏</b>',
-	                            type: 'button-positive',
-	                            onTap: function onTap(e) {
-	                                return id;
-	                            }
-	                        }]
-	                    });
-	                    popup.then(function (id) {
-	                        if (id != undefined) {
-	                            fav.addFav(id).then(function (res) {
-	                                if (res.data.success) {
-	                                    console.log("收藏成功");
+	                                    slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+	                                    slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                } else {
+	                                    slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+	                                    slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
 	                                }
-	                            });
-	                        }
-	                    });
-	                },
-	                openModal: function openModal(id, title) {
-	                    var _this2 = this;
-
-	                    this.modalTitle = title;
-	                    this.content = "";
-	                    Common.loading.show();
-	                    this.showZoom = true;
-
-	                    $timeout(function () {
-	                        resources.getView(id).then(function (res) {
-	                            _this2.htmlCode = res.data;
-	                            _this2.style = _this2.htmlCode.match(regExp.styleReg)[0];
-	                            _this2.body = _this2.htmlCode.match(regExp.bodyReg)[0];
-	                            _this2.pageArray = _this2.body.match(regExp.pageIdReg).map(function (value) {
-	                                return value.replace(/(?:id\=")/gm, "");
-	                            });
-	                            _this2.pageArrayLength = _this2.pageArray.length;
-	                            _this2.styleOutLine = "";
-	                            _this2.styleOutLine = $sce.trustAsHtml(_this2.style);
-	                            _this2.getHtml(_this2.index);
-	                            res.data = null;
-	                            _this2.htmlCode = null;
+	                                $scope.defaultViewer = new pdf2htmlEX({});
+	                            }, 100);
 	                        });
-	                    }, 100);
-	                    $scope.modal.show();
-	                },
-	                getHtml: function getHtml(index) {
-	                    var pageContent = void 0,
-	                        matchBody = this.body.match(regExp.pageReg(this.pageArray[index], this.pageArray[index + 1]));
-	                    this.items = this.pageArray;
-
-	                    if (matchBody != null) {
-	                        pageContent = matchBody[0];
-	                        pageContent = pageContent.substring(0, pageContent.length - 11 - this.pageArray[index + 1].length);
-	                    } else {
-	                        pageContent = this.body.match(regExp.lastPageReg(this.pageArray[index]))[0];
-	                        pageContent = pageContent.substring(0, pageContent.length - 19);
+	                    };
+	                    function getHtml(index) {
+	                        var pageContent = void 0,
+	                            matchBody = $scope.body.match(regExp.pageReg($scope.pageArray[index], $scope.pageArray[index + 1]));
+	                        $scope.items = $scope.pageArray;
+	                        if (matchBody != null) {
+	                            pageContent = matchBody[0];
+	                            pageContent = pageContent.substring(0, pageContent.length - 11 - $scope.pageArray[index + 1].length);
+	                        } else {
+	                            pageContent = $scope.body.match(regExp.lastPageReg($scope.pageArray[index]))[0];
+	                            pageContent = pageContent.substring(0, pageContent.length - 19);
+	                        }
+	                        Common.loading.hide();
+	                        matchBody = null;
+	                        return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>' + (pageContent = '');
 	                    }
-	                    Common.loading.hide();
-	                    return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
-	                },
-	                hideModal: function hideModal() {
-	                    this.content = "";
-	                    this.defaultViewer = null;
-	                    this.showZoom = false;
-	                    this.frameSrc = "";
-	                    this.items = [];
-	                    this.body = "";
-	                    this.style = "";
-	                    $scope.modal.hide();
-	                },
-	                more: function more() {},
-	                zoom: function zoom(scale) {
-	                    if (scale == 'big') {
-	                        if (this.defaultViewer.scale == 2.3) return;
-	                        this.defaultViewer.rescale(2.3);
-	                        this.content = $sce.trustAsHtml(this.swiper.slides[this.index].innerHTML);
+
+	                    $scope.$on('event:scale:big', function () {
+	                        if ($scope.defaultViewer.scale == 2.5) return;
+	                        $scope.defaultViewer.rescale(2.5);
+	                        $scope.content = $sce.trustAsHtml($scope.swiper.slides[$scope.index].innerHTML);
 	                        document.querySelector('.swiper-container').style.display = "none";
-	                    } else {
-	                        if (this.defaultViewer.scale == 1) return;
-	                        this.content = "";
-	                        this.defaultViewer.rescale(1);
+	                    });
+	                    $scope.$on('event:scale:small', function () {
+	                        if ($scope.defaultViewer.scale == 1) return;
+	                        $scope.content = "";
+	                        $scope.defaultViewer.rescale(1);
 	                        document.querySelector('.swiper-container').style.display = "block";
-	                    }
-	                },
-	                loadResources: function loadResources() {
-	                    var _this3 = this;
-
-	                    this.start = 0;
-	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                        var _res$data = res.data;
-	                        var resources = _res$data.resources;
-	                        var totalCount = _res$data.totalCount;
-
-	                        _this3.resourceList = resources;
-	                        _this3.start = _this3.limit + _this3.start;
-	                        _this3.totalCount = totalCount;
-	                    });
-	                },
-	                doRefresh: function doRefresh() {
-	                    var _this4 = this;
-
-	                    this.start = 0;
-	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                        var _res$data2 = res.data;
-	                        var resources = _res$data2.resources;
-	                        var totalCount = _res$data2.totalCount;
-
-	                        _this4.resourceList = resources;
-	                        _this4.start = _this4.limit + _this4.start;
-	                        _this4.totalCount = totalCount;
-	                    }).finally(function () {
-	                        $rootScope.$broadcast('scroll.refreshComplete');
-	                    });
-	                },
-	                loadMore: function loadMore() {
-	                    var _this5 = this;
-
-	                    if (this.start >= this.totalCount) {
-	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                        return;
-	                    }
-	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                        _this5.resourceList = _this5.resourceList.concat(res.data.resources);
-	                        _this5.start = _this5.limit + _this5.start;
-	                    }).finally(function () {
-	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    });
 	                }
 	            };
-	            collect.loadResources();
-	            collect.init();
-	            this.collect = collect;
 	        };
 
-	        var VerEx = __webpack_require__(34);
-	        var Swiper = __webpack_require__(35);
-	        var pdf2htmlEX = __webpack_require__(36);
-	        angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	        ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	        var VerEx = __webpack_require__(44);
+	        var Swiper = __webpack_require__(45);
+	        var pdf2htmlEX = __webpack_require__(46);
+	        angular.module('directivesModule').directive('onFinished', onFinished).directive('viewPdf', viewPdf);
+	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	        onFinished.$inject = ['$timeout', '$q'];
 	    })();
 	}
 
 /***/ },
-/* 34 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -27300,7 +29689,7 @@
 
 
 /***/ },
-/* 35 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -31750,7 +34139,7 @@
 
 
 /***/ },
-/* 36 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */
@@ -32693,488 +35082,6 @@
 	// export pdf2htmlEX.Viewer
 	module.exports = Viewer;
 	//pdf2htmlEX['Viewer'] = Viewer;
-
-/***/ },
-/* 37 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	/**
-	 * Created by dcampus2011 on 16/2/26.
-	 */
-	{
-	    var favController = function favController($rootScope, $scope, sendRequest, fav) {
-	        var _this = this;
-
-	        var collect = {
-	            loadFavList: function loadFavList() {
-	                fav.getList().then(function (res) {
-	                    _this.watchesList = res.data.watches;
-	                });
-	            },
-	            removeFavList: function removeFavList(id) {
-	                fav.removeFav(id).then(function (res) {
-	                    if (res.data.type == "success") {
-	                        _this.watchesList = "";
-	                        collect.loadFavList();
-	                    }
-	                });
-	            }
-	        };
-	        collect.loadFavList();
-	        this.collect = collect;
-	        // this.func = func;//exports
-	    };
-
-	    angular.module("favModule", ["httpRequest"]).controller("favController", favController);
-
-	    favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "request.fav"];
-	}
-
-/***/ },
-/* 38 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	/**
-	 * Created by dcampus on 2016/3/23.
-	 */
-	{
-	    var editController = function editController(account, $stateParams, $scope, $state, Common, $timeout) {
-	        var vm = this;
-	        var userInfo = {
-	            account: null,
-	            userName: null,
-	            company: null,
-	            department: null,
-	            email: null,
-	            confirmMail: null,
-	            mobile: null,
-	            password: null,
-	            confirmPassword: null,
-	            oldPassword: null,
-	            activate: activate //进controller就执行
-	        };
-	        var collect = {
-	            isName: false,
-	            isCompany: false,
-	            isEmail: false,
-	            isMobile: false,
-	            isPassword: false,
-	            isDepartment: false,
-	            isIm: false,
-	            title: "",
-	            showLabel: showLabel,
-	            save: save
-	        };
-	        userInfo.activate(); //读取用户信息
-	        collect.showLabel();
-	        $scope.$on("event:" + $stateParams.type, verifyAndSave);
-	        this.userInfo = userInfo;
-	        this.collect = collect;
-
-	        function activate() {
-	            account.getAccount().then(function (res) {
-	                var _res$data = res.data;
-	                var account = _res$data.account;
-	                var company = _res$data.company;
-	                var department = _res$data.department;
-	                var email = _res$data.email;
-	                var im = _res$data.im;
-	                var mobile = _res$data.mobile;
-	                var name = _res$data.name;
-
-	                vm.userInfo.account = account;
-	                vm.userInfo.userName = name;
-	                vm.userInfo.company = company;
-	                vm.userInfo.department = department;
-	                vm.userInfo.mobile = mobile;
-	                vm.userInfo.im = im;
-	            });
-	        }
-
-	        function showLabel() {
-	            switch ($stateParams.type) {
-	                case "userName":
-	                    this.isName = true;
-	                    this.title = "姓名";
-	                    break;
-	                case "company":
-	                    this.isCompany = true;
-	                    this.title = "单位";
-	                    break;
-	                case "email":
-	                    this.isEmail = true;
-	                    this.title = "邮箱";
-	                    break;
-	                case "mobile":
-	                    this.isMobile = true;
-	                    this.title = "手机";
-	                    break;
-	                case "password":
-	                    this.isPassword = true;
-	                    this.title = "密码";
-	                    break;
-	                case "department":
-	                    this.isDepartment = true;
-	                    this.title = "地址";
-	                    break;
-	                case "im":
-	                    this.isIm = true;
-	                    this.title = "专业";
-	                    break;
-	            }
-	        }
-
-	        function save() {
-	            $scope.$emit("event:" + $stateParams.type);
-	        }
-
-	        function verifyAndSave() {
-	            var reg = void 0,
-	                _value = void 0,
-	                _oldValue = void 0,
-	                _key = $stateParams.type,
-	                isVerify = false;
-	            switch ($stateParams.type) {
-	                case "userName":
-	                    _value = vm.userInfo.userName;
-	                    isVerify = true;
-	                    break;
-	                case "company":
-	                    _value = vm.userInfo.company;
-	                    isVerify = true;
-	                    break;
-	                case "email":
-	                    reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
-	                    _value = vm.userInfo.email;
-	                    if (_value) {
-	                        if (!reg.test(_value)) {
-	                            Common.Alert("", "邮箱格式有误，请重新填写");
-	                        } else {
-	                            !vm.userInfo.confirmEmail ? Common.Alert("温馨提示", "请填写确认邮箱！") : vm.userInfo.confirmEmail == _value ? isVerify = true : Common.Alert("", "两次输入不一致");
-	                        }
-	                    }
-	                    break;
-	                case "mobile":
-	                    reg = new RegExp(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/);
-	                    _value = vm.userInfo.mobile;
-	                    reg.test(_value) ? isVerify = true : Common.Alert("", "手机号码格式有误，请重新填写");
-	                    break;
-	                case "password":
-	                    _oldValue = vm.userInfo.oldPassword;
-	                    _value = vm.userInfo.password;
-	                    if (_value) {
-	                        vm.userInfo.password == "" ? Common.Alert("", "请填写新密码") : vm.userInfo.password == vm.userInfo.confirtPassword ? isVerify = true : Common.Alert("", "两次输入不一致");
-	                    } else {
-	                        Common.Alert("", "请输入原密码");
-	                    }
-	                    break;
-	                case "department":
-	                    _value = vm.userInfo.department;
-	                    isVerify = true;
-	                    break;
-	                case "im":
-	                    _value = vm.userInfo.im;
-	                    isVerify = true;
-	                    break;
-	            }
-	            if (isVerify) {
-	                if (_key == "password") {
-	                    account.savePassword(_oldValue, _value).then(function (res) {
-	                        if (res.data.result) {
-	                            $state.go("tabs.personal");
-	                        }
-	                    });
-	                } else {
-	                    account.saveUserInfo(_key, _value).then(function (res) {
-	                        if (res.data.type == "success") {
-	                            $state.go("tabs.personal");
-	                        }
-	                    });
-	                }
-	            }
-	        }
-	    };
-
-	    angular.module("editModule", []).controller("editController", editController);
-
-	    editController.$inject = ['request.account', "$stateParams", "$scope", "$state", "global.Common", "$timeout"];
-	}
-
-/***/ },
-/* 39 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	/**
-	 * Created by dcampus on 2016/3/23.
-	 */
-	{
-	    var infoController = function infoController(message, session, $rootScope) {
-	        var collect = {
-	            limit: 10,
-	            totalCount: 0,
-	            items: [],
-	            getMessage: function getMessage() {
-	                var _this = this;
-
-	                this.start = 0;
-	                message.getList(session.getSession().memberId, this.start, this.limit).then(function (res) {
-	                    var _res$data = res.data;
-	                    var resources = _res$data.resources;
-	                    var totalCount = _res$data.totalCount;
-
-	                    _this.items = resources;
-	                    _this.start = _this.limit + _this.start;
-	                    _this.totalCount = totalCount;
-	                });
-	            },
-	            doRefresh: function doRefresh() {
-	                var _this2 = this;
-
-	                this.start = 0;
-	                message.getList(session.getSession().memberId, this.start, this.limit).then(function (res) {
-	                    var _res$data2 = res.data;
-	                    var resources = _res$data2.resources;
-	                    var totalCount = _res$data2.totalCount;
-
-	                    _this2.items = resources;
-	                    _this2.start = _this2.limit + _this2.start;
-	                    _this2.totalCount = totalCount;
-	                }).finally(function () {
-	                    $rootScope.$broadcast('scroll.refreshComplete');
-	                });
-	            },
-	            loadMore: function loadMore() {
-	                var _this3 = this;
-
-	                if (this.start >= this.totalCount) {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                    return;
-	                }
-	                message.getList(session.getSession().memberId, this.start, this.limit).then(function (res) {
-	                    var _res$data3 = res.data;
-	                    var resources = _res$data3.resources;
-	                    var totalCount = _res$data3.totalCount;
-
-	                    _this3.items = _this3.items.concat(resources);
-	                    _this3.start = _this3.limit + _this3.start;
-	                }).finally(function () {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                });
-	            },
-	            removeMessage: function removeMessage(id) {
-	                var _this4 = this;
-
-	                message.removeMessage(id).then(function (res) {
-	                    if (res.data.type == "success") {
-	                        _this4.items = "";
-	                        _this4.getMessage();
-	                    }
-	                });
-	            }
-	        };
-	        collect.getMessage();
-	        this.collect = collect;
-	    };
-
-	    angular.module("infoModule", []).controller("infoController", infoController);
-
-	    infoController.$inject = ['request.message', "global.session", "$rootScope"];
-	}
-
-/***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	/**
-	 * Created by dcampus on 2016/3/31.
-	 */
-	{
-	    angular.module('directivesModule', []).directive('onFinishRender', function ($timeout) {
-	        return {
-	            restrict: 'A',
-	            scope: true,
-	            link: function link(scope, element, attr) {
-	                if (scope.$last === true) {
-	                    $timeout(function () {
-	                        scope.$emit('ngRepeatFinished');
-	                    });
-	                }
-	            }
-	        };
-	    });
-	}
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	/**
-	 * Created by dcampus on 2016/4/1.
-	 */
-	{
-	    var onFinishRender = function onFinishRender($timeout, $q) {
-	        return {
-	            restrict: 'A',
-	            scope: true,
-	            controller: function controller($scope, $element, $attrs) {
-	                var defered = $q.defer();
-	                $scope.isFinishRender = function () {
-	                    if ($scope.$last === true) {
-	                        $timeout(function () {
-	                            defered.resolve(true);
-	                        });
-	                    }
-	                    return defered.promise();
-	                };
-	            }
-	        };
-	    };
-
-	    var viewPdf = function viewPdf($state, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
-	        return {
-	            restrict: 'E',
-	            templateUrl: './js/directive/view.html',
-	            scope: {
-	                ngModel: '='
-	            },
-	            require: '^?onFinishRender',
-	            link: function link(scope, element, attrs) {},
-	            controller: function controller($scope, $element, $attrs) {
-
-	                ////$scope.showZoom = false;
-	                //const regExp = {
-	                //    styleReg: VerEx().then("<style").anythingBut('').then('</style>')//过滤style的正则
-	                //    , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>')//过滤body的正则
-	                //    , pageReg: function (start, end) {
-	                //        end = end || start;
-	                //        return VerEx().then('<div id="' + start).anythingBut('').find('<div id="' + end + '"');//找到当前page正则
-	                //    }
-	                //    , lastPageReg: function (end) {
-	                //        return VerEx().find('<div id="' + end).anythingBut('').then('<div class="loading')//找到最后一page正则;
-	                //    }
-	                //    , pageIdReg: VerEx().find('id="pf').anythingBut('"')//获取页id正则
-	                //}
-	                //$scope.index = 0;//定义一个全局的分页索引，方便外部调用
-	                //$scope.$on('event:openModel', function (evt, next, current) {
-	                //    $scope.showZoom = true;
-	                //    $timeout(()=> {
-	                //        resources.getView(next).then(res=> {
-	                //            $scope.htmlCode = res.data;
-	                //            $scope.style = $scope.htmlCode.match(regExp.styleReg)[0];
-	                //            $scope.body = $scope.htmlCode.match(regExp.bodyReg)[0];
-	                //            $scope.pageArray = $scope.body.match(regExp.pageIdReg)
-	                //                .map(function (value) {
-	                //                    return value.replace(/(?:id\=")/gm, "");
-	                //                });
-	                //            $scope.pageArrayLength = $scope.pageArray.length;
-	                //            $scope.styleOutLine = "";
-	                //            $scope.styleOutLine = $sce.trustAsHtml($scope.style);
-	                //            $scope.getHtml($scope.index);
-	                //            res.data = null;
-	                //        });
-	                //    }, 100);
-	                //});
-	                //
-	                //$scope.$on('event:hideModel', function () {
-	                //    $scope.content = "";
-	                //    $scope.defaultViewer = null;
-	                //    $scope.showZoom = false;
-	                //    $scope.frameSrc = "";
-	                //    $scope.items = [];
-	                //    $scope.body = "";
-	                //    $scope.style = "";
-	                //    $scope.index = 0;
-	                //    $scope.htmlCode = "";
-	                //});
-	                //
-	                //$scope.$on('ngRepeatFinished', ()=> {
-	                //    if (!$scope.swiper) {
-	                //        $scope.swiper = new Swiper('.swiper-container', {
-	                //            pagination: '.swiper-pagination',
-	                //            paginationClickable: false,
-	                //            paginationType: 'progress',
-	                //            onInit: e=> {
-	                //                e.slides[0].innerHTML = $scope.getHtml(0);
-	                //                $scope.defaultViewer = new pdf2htmlEX({});
-	                //            }
-	                //        });
-	                //        $scope.swiper.on('onSlideChangeStart', e=> {
-	                //            $scope.defaultViewer = null;
-	                //            $timeout(()=> {
-	                //                let activeIndex = e.activeIndex;
-	                //                $scope.index = activeIndex;
-	                //                if (activeIndex != 0 && $scope.pageArrayLength != (activeIndex + 1)) {
-	                //                    e.slides[activeIndex].innerHTML = $scope.getHtml(activeIndex);
-	                //                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                //                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                //                } else if ($scope.pageArrayLength == (activeIndex + 1)) {
-	                //                    e.slides[activeIndex].innerHTML = $scope.getHtml(activeIndex);
-	                //                    e.slides[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                //                } else {
-	                //                    e.slides[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-	                //                    e.slides[activeIndex].innerHTML = $scope.getHtml(activeIndex);
-	                //                }
-	                //                $scope.defaultViewer = new pdf2htmlEX({});
-	                //            }, 100);
-	                //
-	                //        });
-	                //    } else {
-	                //        $scope.swiper.slideTo(0);
-	                //        $scope.swiper.update(true);
-	                //        $scope.swiper.slides[0].innerHTML = $scope.getHtml(0);
-	                //    }
-	                //});
-	                //
-	                //
-	                //$scope.getHtml = function (index) {
-	                //    let pageContent
-	                //        , matchBody = $scope.body.match(regExp.pageReg($scope.pageArray[index], $scope.pageArray[index + 1]));
-	                //    $scope.items = $scope.pageArray;
-	                //    if (matchBody != null) {
-	                //        pageContent = matchBody[0];
-	                //        pageContent = pageContent.substring(0, pageContent.length - 11 - ($scope.pageArray[index + 1]).length);
-	                //    } else {
-	                //        pageContent = $scope.body.match(regExp.lastPageReg($scope.pageArray[index]))[0];
-	                //        pageContent = pageContent.substring(0, pageContent.length - 19);
-	                //    }
-	                //    Common.loading.hide();
-	                //    return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>';
-	                //}
-	                //$scope.$on('event:scale:big', function () {
-	                //    if ($scope.defaultViewer.scale == 2.5)
-	                //        return;
-	                //    $scope.defaultViewer.rescale(2.5);
-	                //    $scope.content = $sce.trustAsHtml($scope.swiper.slides[$scope.index].innerHTML);
-	                //    document.querySelector('.swiper-container').style.display = "none";
-	                //});
-	                //$scope.$on('event:scale:small', function () {
-	                //    if ($scope.defaultViewer.scale == 1)
-	                //        return;
-	                //    $scope.content = "";
-	                //    $scope.defaultViewer.rescale(1);
-	                //    document.querySelector('.swiper-container').style.display = "block";
-	                //});
-	            }
-	        };
-	    };
-
-	    var VerEx = __webpack_require__(34);
-	    var Swiper = __webpack_require__(35);
-	    var pdf2htmlEX = __webpack_require__(36);
-	    angular.module('directivesModule').directive('onFinishRender', onFinishRender).directive('viewPdf', viewPdf);
-	    viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
-	    onFinishRender.$inject = ['$timeout', '$q'];
-	}
 
 /***/ }
 /******/ ]);

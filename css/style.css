@@ -26,7 +26,7 @@ a {
     border: 0;
     margin-bottom: 10px; }
     .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {
-      margin-top: 8%; }
+      margin-top: 18%; }
     .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {
       background: transparent;
       border: 1px solid #007aff; }

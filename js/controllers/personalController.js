@@ -30,6 +30,7 @@
             logout: function () {
                 account.logout().then(res=> {
                     root.$emit("event:logout");
+                    localStorage.removeItem('saveUserInfo');
                 });
             }
         }

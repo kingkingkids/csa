@@ -45,7 +45,7 @@
                 return JSON.parse(localStorage.session);
             },
             removeSession: function () {
-                localStorage.clear(localStorage.session);
+                localStorage.removeItem('session');
             }
 
         }
