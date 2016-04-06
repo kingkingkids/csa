@@ -58,25 +58,25 @@
 	 */
 	__webpack_require__(2);
 	__webpack_require__(11);
-	__webpack_require__(15);
 	__webpack_require__(16);
-	__webpack_require__(18);
+	__webpack_require__(17);
 	__webpack_require__(19);
 	__webpack_require__(20);
 	__webpack_require__(21);
 	__webpack_require__(22);
-	__webpack_require__(33);
-	__webpack_require__(34); //个人设置
-	__webpack_require__(35); //tab主控制器
-	__webpack_require__(36); //首页控制器
-	__webpack_require__(37); //柜子列表控制器
-	__webpack_require__(38); //资源列表控制器
+	__webpack_require__(23);
+	__webpack_require__(34);
+	__webpack_require__(35); //个人设置
+	__webpack_require__(36); //tab主控制器
+	__webpack_require__(37); //首页控制器
+	__webpack_require__(38); //柜子列表控制器
 	__webpack_require__(39); //资源列表控制器
 	__webpack_require__(40); //资源列表控制器
+	__webpack_require__(41); //资源列表控制器
 	//require("./controllers/viewController.js");
-	__webpack_require__(41);
 	__webpack_require__(42);
 	__webpack_require__(43);
+	__webpack_require__(44);
 
 /***/ },
 /* 2 */
@@ -493,7 +493,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(13) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(14) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.viewFrame {\r\n  width: 100%;\r\n  height: 0; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important; } }\r\n.bar .title {\r\n  margin: 0;\r\n  background-image: none !important; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(13) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(14) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  background: url(" + __webpack_require__(15) + ") no-repeat center bottom;\r\n  background-size: 375px 3px;\r\n  text-align: center;\r\n  font-size: 16px;\r\n  height: 43px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 30px;\r\n    position: relative;\r\n    top: 8px; }\r\n\r\n.homeWrap .content .col img {\r\n  width: 100%; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -512,6 +512,12 @@
 
 /***/ },
 /* 15 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAGCAYAAACclRsMAAADUUlEQVR4nO1cTXvkIAiG2UP3r+7/n6eXPbiHTaaRgHyIxrTzniYRXhCjQWKLv/88CwAAIADA/5+vSw0NIbHJRHwQreQLL7jJ9fh8uq2QIZ69YVU0e9uPAgAo9Q+BGLN1FrERr8q+hUwXiXG0iQvTTG8ZernFl2hj3S5DHBlWVrJ/FkPddhH0XzSbb40w8rp4bheMFMNDbB2DSpFR0nkYv122aw5R2PxsaJBtWXkxY+4FQNcosf14T3snaPMZbdzUNxTkqF1qi9pBKocKN/WpIc/6cZCPcIntxA7XpnFqvlt5NFlE+EQEKAU+AODXLmMZA8tYe8ZA7I/iB+WmeqRJtmHwh7uWbFJujx5z2ZyfaTYMXE19bQ1yEvYsv5G1u6HyFwCeAAAPTfJy0IR1hhmjQjUhEn3hbElYeegy8L3715cSjqJa2uYMo4kL9x2BoCftmbboRWhDkOFLBxFN2lp8UiJYPI/2KbNry46YNWFOomhNSl/qhf9dcRi5dn9afdnbKJVrvGZC2hA4KTKnfpQrO8YFfM/tqmv/42oH3oig/2kujathYM34bad5u8jC27M4FFeNOoamfrH5wPJctirOHHjvq+JacIm0KmflDY737C8OVnNuvxR5toLrp4nreIiZqrAXGcMqVdNXg7KvsgkewCW0PUm6icBS/U6Of/YcM4p0AzG92l6BJO5favd51awBNl7OgROPJPxgcHFNi9KV4c6eYFf1JfQCz+m8M88Y4kMPsqtavTAnrNL9hM64KBhhsw+LbgYkhawkQP0KEOD0ICO5tsRin92miq1lDWO+Wpi/As1eagr7M0pxQmT4ingxNzyWcV4Ze6we1dUCL7M7gDsiM7f6cNMN1uKTooV011eMheiT7wS7DdrJ+0xb/Rg5XFcm8KLtzgTvpMNUk2mlcUTyeLTdOl3CJmEJVWURmdxo6MuGyNGDlSrZ1g1MQvE4D05j4WMlQQLzI9Gx7La+HvWOxYo5UPSIj6a2x2r9M+53xvzjuMP13lgPMzaNuszdnii/v309XPH18oXqc3mkutsTnFblUjo+IiTjIzHyyI74h4oDMaI/e5Jv3Ug0eTL8oXEd5AuVUROwhZZLsyuboPiPEgb0yZ0AK/Iq3YVfAzz4ByB2fpcyDTSSAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;}; /*!
@@ -25834,13 +25840,13 @@
 	 */IonicModule.directive('ionView',function(){return {restrict:'EA',priority:1000,controller:'$ionicView',compile:function compile(tElement){tElement.addClass('pane');tElement[0].removeAttribute('title');return function link($scope,$element,$attrs,viewCtrl){viewCtrl.init();};}};});})();
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(17);
+	var content = __webpack_require__(18);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(10)(content, {});
@@ -25860,7 +25866,7 @@
 	}
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -25874,7 +25880,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26016,7 +26022,7 @@
 	}
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26081,7 +26087,8 @@
 	            , modifyPassword: "/user/modifyPassword.action",
 	            deleteWatch: "/user/deleteWatch.action",
 	            getMyReceiveResources: "/group/getMyReceiveResources.action",
-	            deleteReceivedResource: "/group/deleteReceivedResource.action"
+	            deleteReceivedResource: "/group/deleteReceivedResource.action",
+	            findPassword: '/webmail/findPassword.action'
 
 	        },
 	        config: {
@@ -26095,7 +26102,7 @@
 	}
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26141,7 +26148,7 @@
 	}
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26187,7 +26194,7 @@
 	}
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26197,17 +26204,17 @@
 	 */
 	{
 
-	    var group = __webpack_require__(23),
-	        resources = __webpack_require__(24),
-	        fav = __webpack_require__(25),
-	        account = __webpack_require__(26),
-	        message = __webpack_require__(32);
+	    var group = __webpack_require__(24),
+	        resources = __webpack_require__(25),
+	        fav = __webpack_require__(26),
+	        account = __webpack_require__(27),
+	        message = __webpack_require__(33);
 
 	    angular.module("request.doHttpRequest", []).factory("request.group", group).factory("request.resources", resources).factory("request.fav", fav).factory("request.account", account).factory("request.message", message);
 	}
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26223,7 +26230,7 @@
 	module.exports = group;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26244,7 +26251,7 @@
 	module.exports = resources;
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26255,7 +26262,7 @@
 	    return {
 	        /** 获取收藏列表**/
 	        getList: function getList() {
-	            return send(constant.path.getWatches, { "type": "resource" });
+	            return send(constant.path.getWatches + '?abc=123', { "type": "resource" });
 	        },
 	        /**添加收藏**/
 	        addFav: function addFav(id) {
@@ -26272,12 +26279,12 @@
 	module.exports = fav;
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var Base64 = __webpack_require__(27).Base64;
+	var Base64 = __webpack_require__(28).Base64;
 	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", 'global.Common'];
 	function account(send, scope, interval, $ionicModal, $q, constant, session, Common) {
 	    return {
@@ -26363,6 +26370,13 @@
 	                });
 	            });
 	        },
+	        forgetPasswordModal: function forgetPasswordModal(scope) {
+	            return $ionicModal.fromTemplateUrl("./tpls/modal/forgetPassword.html", {
+	                scope: scope,
+	                animation: 'slide-in-up',
+	                hardwareBackButtonClose: false
+	            });
+	        },
 	        logout: function logout() {
 	            return send(constant.path.logout);
 	        },
@@ -26371,7 +26385,17 @@
 	            return send(constant.path.modifyLoginUser, paramsStr);
 	        },
 	        savePassword: function savePassword(oValue, value) {
-	            return send(constant.path.modifyPassword, "password=" + oValue + "&newPassword=" + value);
+	            var paramObj = {
+	                'password': oValue,
+	                newPassword: 'value'
+	            };
+	            return send(constant.path.modifyPassword, paramObj);
+	        },
+	        findPassword: function findPassword(email) {
+	            var paramObj = {
+	                'account': email
+	            };
+	            return send(constant.path.findPassword, paramObj);
 	        }
 	    };
 	}
@@ -26379,7 +26403,7 @@
 	module.exports = account;
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -26401,7 +26425,7 @@
 	    var buffer;
 	    if (typeof module !== 'undefined' && module.exports) {
 	        try {
-	            buffer = __webpack_require__(28).Buffer;
+	            buffer = __webpack_require__(29).Buffer;
 	        } catch (err) {}
 	    }
 	    // constants
@@ -26579,7 +26603,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -26592,9 +26616,9 @@
 
 	'use strict'
 
-	var base64 = __webpack_require__(29)
-	var ieee754 = __webpack_require__(30)
-	var isArray = __webpack_require__(31)
+	var base64 = __webpack_require__(30)
+	var ieee754 = __webpack_require__(31)
+	var isArray = __webpack_require__(32)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -28131,10 +28155,10 @@
 	  return i
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -28264,7 +28288,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -28354,7 +28378,7 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -28365,7 +28389,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28391,7 +28415,7 @@
 	module.exports = message;
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28431,7 +28455,7 @@
 	}
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28487,7 +28511,7 @@
 	}
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28497,7 +28521,7 @@
 	 */
 	{
 	    (function () {
-	        var MainController = function MainController(root, scope, state, account, session, $ionicHistory, constant) {
+	        var MainController = function MainController(root, scope, state, account, session, $ionicHistory, constant, Common) {
 	            var _this = this;
 
 	            var loginInfo = {
@@ -28579,6 +28603,35 @@
 	                    _this.loginInfo.remberMe = false;
 	                    _this.loginInfo.username = '';
 	                    _this.loginInfo.password = '';
+	                },
+	                forget: function forget() {
+	                    var _this2 = this;
+
+	                    account.forgetPasswordModal(scope).then(function (modal) {
+	                        scope.forgetPasswordModal = modal;
+	                        scope.forgetPasswordModal.show();
+	                        _this2.modalForgetTitle = '找回密码';
+	                    });
+	                },
+	                hideForgetModal: function hideForgetModal() {
+	                    scope.forgetPasswordModal.hide();
+	                },
+	                sendEmail: function sendEmail() {
+	                    var reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+	                    console.log(reg.test(this.findPasswordMail));
+	                    if (this.findPasswordMail == "") {
+	                        Common.Alert('', '邮箱为空，请填写邮箱');
+	                        return;
+	                    }
+	                    if (!reg.test(this.findPasswordMail)) {
+	                        Common.Alert('', '邮箱格式有误，请重新填写');
+	                        return;
+	                    }
+	                    account.findPassword(this.findPasswordMail).then(function (res) {
+	                        if (res.data.errorCode == '404') {
+	                            Common.Alert('', '您输入的邮箱不存在，请重新输入');
+	                        }
+	                    });
 	                }
 	            };
 
@@ -28587,15 +28640,15 @@
 	            this.loginInfo = loginInfo;
 	        };
 
-	        var Base64 = __webpack_require__(27).Base64;
+	        var Base64 = __webpack_require__(28).Base64;
 	        angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
-	        MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant'];
+	        MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant', 'global.Common'];
 	    })();
 	}
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28627,7 +28680,7 @@
 	}
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28671,7 +28724,7 @@
 	}
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28809,7 +28862,7 @@
 	}
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28847,7 +28900,7 @@
 	}
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29019,7 +29072,7 @@
 	}
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29102,7 +29155,7 @@
 	}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29115,7 +29168,7 @@
 	}
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29266,9 +29319,9 @@
 	            };
 	        };
 
-	        var VerEx = __webpack_require__(44);
-	        var Swiper = __webpack_require__(45);
-	        var pdf2htmlEX = __webpack_require__(46);
+	        var VerEx = __webpack_require__(45);
+	        var Swiper = __webpack_require__(46);
+	        var pdf2htmlEX = __webpack_require__(47);
 	        angular.module('directivesModule').directive('onFinished', onFinished).directive('viewPdf', viewPdf);
 	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	        onFinished.$inject = ['$timeout', '$q'];
@@ -29276,7 +29329,7 @@
 	}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -29689,7 +29742,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34139,7 +34192,7 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */

@@ -4,7 +4,7 @@ function fav(send, constant) {
     return {
         /** 获取收藏列表**/
         getList: function () {
-            return send(constant.path.getWatches, {"type": "resource"});
+            return send(constant.path.getWatches+'?abc=123', {"type": "resource"});
         },
         /**添加收藏**/
         addFav: function (id) {

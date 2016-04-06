@@ -73,6 +73,13 @@ function account(send, scope, interval, $ionicModal, $q, constant, session, Comm
                 });
             });
         },
+        forgetPasswordModal: function (scope) {
+            return $ionicModal.fromTemplateUrl("./tpls/modal/forgetPassword.html", {
+                scope: scope,
+                animation: 'slide-in-up',
+                hardwareBackButtonClose: false
+            });
+        },
         logout: function () {
             return send(constant.path.logout);
         },
@@ -81,7 +88,17 @@ function account(send, scope, interval, $ionicModal, $q, constant, session, Comm
             return send(constant.path.modifyLoginUser, paramsStr);
         },
         savePassword: function (oValue, value) {
-            return send(constant.path.modifyPassword, "password=" + oValue + "&newPassword=" + value);
+            let paramObj = {
+                'password': oValue,
+                newPassword: 'value'
+            }
+            return send(constant.path.modifyPassword, paramObj);
+        },
+        findPassword: function (email) {
+            let paramObj = {
+                'account': email
+            }
+            return send(constant.path.findPassword, paramObj);
         }
     }
 }

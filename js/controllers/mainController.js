@@ -7,9 +7,9 @@
         .module("MainModule", ["httpRequest"])
         .controller("MainController", MainController);
 
-    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant'];
+    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant', 'global.Common'];
 
-    function MainController(root, scope, state, account, session, $ionicHistory, constant) {
+    function MainController(root, scope, state, account, session, $ionicHistory, constant, Common) {
         let loginInfo = {
             username: null,
             password: null,
@@ -94,6 +94,33 @@
                 this.loginInfo.username = '';
                 this.loginInfo.password = '';
 
+            }
+            , forget: function () {
+                account.forgetPasswordModal(scope).then(modal=> {
+                    scope.forgetPasswordModal = modal;
+                    scope.forgetPasswordModal.show();
+                    this.modalForgetTitle = '找回密码';
+                });
+            },
+            hideForgetModal: function () {
+                scope.forgetPasswordModal.hide();
+            },
+            sendEmail: function () {
+                let reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+                console.log(reg.test(this.findPasswordMail));
+                if (this.findPasswordMail == "") {
+                    Common.Alert('', '邮箱为空，请填写邮箱');
+                    return;
+                }
+                if (!reg.test(this.findPasswordMail)) {
+                    Common.Alert('', '邮箱格式有误，请重新填写');
+                    return;
+                }
+                account.findPassword(this.findPasswordMail).then(res=> {
+                    if (res.data.errorCode == '404') {
+                        Common.Alert('', '您输入的邮箱不存在，请重新输入');
+                    }
+                });
             }
         };
 

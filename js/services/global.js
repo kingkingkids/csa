@@ -26,6 +26,7 @@
                 , deleteWatch: "/user/deleteWatch.action"
                 , getMyReceiveResources: "/group/getMyReceiveResources.action"
                 , deleteReceivedResource: "/group/deleteReceivedResource.action"
+                , findPassword: '/webmail/findPassword.action'
 
             },
             config: {

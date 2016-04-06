@@ -13,6 +13,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 a {
   text-decoration: none; }
 
+@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  .bar {
+    background-image: none !important; } }
+.bar .title {
+  margin: 0;
+  background-image: none !important; }
+
 .loginWrap {
   background: url("../img/login_bg.png") no-repeat;
   background-size: cover; }
@@ -80,10 +87,6 @@ a {
       color: #808080;
       font-size: 12px; }
 
-.viewFrame {
-  width: 100%;
-  height: 0; }
-
 .zoom {
   position: absolute;
   right: 10px;
@@ -132,6 +135,23 @@ a {
   text-align: center;
   padding-top: 10%;
   color: #666; }
+
+.homeHeader {
+  display: block;
+  width: 100%;
+  background: url("../img/login_bg_line.png") no-repeat center bottom;
+  background-size: 375px 3px;
+  text-align: center;
+  font-size: 16px;
+  height: 43px;
+  overflow: hidden; }
+  .homeHeader img {
+    width: 30px;
+    position: relative;
+    top: 8px; }
+
+.homeWrap .content .col img {
+  width: 100%; }
 
 @media (min-width: 680px) {
   .modal {
