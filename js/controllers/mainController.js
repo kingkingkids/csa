@@ -107,8 +107,7 @@
             },
             sendEmail: function () {
                 let reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
-                console.log(reg.test(this.findPasswordMail));
-                if (this.findPasswordMail == "") {
+                if (this.findPasswordMail == "" || this.findPasswordMail == undefined) {
                     Common.Alert('', '邮箱为空，请填写邮箱');
                     return;
                 }
@@ -119,6 +118,11 @@
                 account.findPassword(this.findPasswordMail).then(res=> {
                     if (res.data.errorCode == '404') {
                         Common.Alert('', '您输入的邮箱不存在，请重新输入');
+                    } else if (res.data.errorCode == "0") {
+                        Common.Alert('', '发送成功').then(res=> {
+                            this.findPasswordMail = "";
+                            scope.forgetPasswordModal.hide();
+                        });
                     }
                 });
             }

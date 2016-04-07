@@ -22,6 +22,7 @@ require("./controllers/editController.js");//资源列表控制器
 require("./controllers/infoController.js");
 require("./directive/directives.js");
 require("./directive/viewPdf.js");
+require("./directive/journalListRender.js");
 
 
 

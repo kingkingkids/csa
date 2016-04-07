@@ -18,6 +18,8 @@
             start: 0,//当前页码
             limit: 10,//每页显示的条数
             totalCount: 0,//总条数
+            listCss: true,
+            defaultPic: 'img/default.gif',
             init: function () {
                 this.onHold = (id)=> {
                     this.showPopup(id);
@@ -82,11 +84,18 @@
                     $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
                 }
             },
+            chunk: function (arr, size) {
+                let newArr = [];
+                for (let i = 0; i < arr.length; i += size) {
+                    newArr.push(arr.slice(i, i + size));
+                }
+                return newArr;
+            },
             loadResources: function () {
                 this.start = 0;
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
                     let {resources,totalCount} = res.data;
-                    this.resourceList = resources;
+                    this.resourceList = this.chunk(resources, 3);
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
                 });
@@ -95,7 +104,7 @@
                 this.start = 0;
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
                     let {resources,totalCount} = res.data;
-                    this.resourceList = resources;
+                    this.resourceList = this.chunk(resources, 3);
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
                 }).finally(function () {
@@ -108,7 +117,7 @@
                     return;
                 }
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
-                    this.resourceList = this.resourceList.concat(res.data.resources);
+                    this.resourceList = this.resourceList.concat(this.chunk(res.data.resources, 3));
                     this.start = this.limit + this.start;
 
                 }).finally(function () {

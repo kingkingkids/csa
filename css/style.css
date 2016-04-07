@@ -194,6 +194,24 @@ a {
     left: 0 !important;
     width: 100%; }
 
+.resourceBg {
+  background: url("../img/list_bg_light.png") no-repeat;
+  background-size: cover; }
+
+.jouneryList .list .item {
+  display: inline-block;
+  border: 0;
+  background: none;
+  width: 105px; }
+  .jouneryList .list .item img {
+    width: 100%; }
+.jouneryList .bookStore {
+  background: url("../img/list_bg_line.png") repeat-x center 94px;
+  background-size: auto 22.5px;
+  text-align: left; }
+  .jouneryList .bookStore p {
+    text-align: center; }
+
 @media (min-width: 680px) {
   .modal {
     top: 0px !important;

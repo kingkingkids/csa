@@ -7,21 +7,43 @@
             返回
         </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-content>
+    <ion-content class="resourceBg">
         <ion-refresher
                 pulling-text="下拉刷新"
                 on-refresh="vm.collect.doRefresh()">
         </ion-refresher>
 
-        <ion-list>
-            <ion-item ng-repeat="res in vm.collect.resourceList" on-hold="vm.collect.onHold(res.id)">
-                <div ng-if="res.type == 1"
-                     ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
-                    {{res.displayName}}
+        <ion-list ng-if="vm.collect.listCss" class="jouneryList">
+            <div ng-repeat="resTop in vm.collect.resourceList">
+                <div class="bookStore">
+                    <ion-item on-hold="vm.collect.onHold(res.id)" ng-repeat="res in resTop track by $index">
+                        <div ng-if="res.type == 1"
+                             ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
+                            <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
+                            <p>{{res.displayName}}</p>
+                        </div>
+                        <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
+                        </div>
+                    </ion-item>
                 </div>
-                <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
+            </div>
+        </ion-list>
+
+
+        <ion-list ng-if="vm.collect.articleCss">
+            <div ng-repeat="resTop in vm.collect.resourceList track by $index">
+                <div class="bookStore" ng-class="$index+1 == vm.collect.resourceList">
+                    <ion-item on-hold="vm.collect.onHold(res.id)" ng-repeat="res in resTop">
+                        <div ng-if="res.type == 1"
+                             ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
+                            <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
+                            <p>{{res.displayName}}</p>
+                        </div>
+                        <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
+                        </div>
+                    </ion-item>
                 </div>
-            </ion-item>
+            </div>
         </ion-list>
 
         <ion-infinite-scroll
