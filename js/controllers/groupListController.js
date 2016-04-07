@@ -7,12 +7,14 @@
         .module("GroupListModule", ["httpRequest"])
         .controller("GroupListController", GroupListController);
 
-    GroupListController.$inject = ["$stateParams", "request.group", "$rootScope"];
+    GroupListController.$inject = ["$stateParams", "request.group", "$rootScope", "global.constant"];
 
-    function GroupListController($stateParams, group, $rootScope) {
+    function GroupListController($stateParams, group, $rootScope, constant) {
         let collect = {
             groupList: [],
             title: $stateParams.title,
+            path: constant.config.sitePath,
+            defaultPic: 'img/default.gif',
             loadGroups: function () {
                 group.getList($stateParams.groupId).then((res)=> {
                     let {children} = res.data;

@@ -1,5 +1,5 @@
 <ion-view view-title="{{vm.collect.title}}" cache-view="false">
-    <ion-nav-bar>
+    <ion-nav-bar class="innerHeader">
         <ion-nav-back-button>
             返回
         </ion-nav-back-button>
@@ -9,11 +9,14 @@
                 pulling-text="下拉刷新"
                 on-refresh="vm.collect.doRefresh()">
         </ion-refresher>
-        <ion-list>
+        <ion-list class="catalogList">
             <ion-item collection-repeat="group in vm.collect.groupList">
                 <div ng-if="group.type == 'group'"
-                     ui-sref="tabs.resourceList({parentId:-group.id,title:group.displayName})">
-                    {{group.displayName}}
+                     ui-sref="tabs.resourceList({parentId:-group.id,title:group.displayName})" class="list">
+                    <img ng-src="{{vm.collect.path}}{{group.icon}}" ng-if="group.icon.indexOf('groupsImg') == -1"/>
+                    <img ng-src="{{vm.collect.defaultPic}}" ng-if="group.icon.indexOf('groupsImg') > -1"/>
+                    <p class="title">{{group.displayName}}</p>
+                    <p class="desc" ng-bind-html="group.desc"></p>
                 </div>
                 <div ui-sref="tabs.groupList({groupId:group.id,title:group.displayName})"
                      ng-if="group.type == 'category'">{{group.displayName}}

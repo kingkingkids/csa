@@ -20,12 +20,31 @@ a {
 @media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
   .bar {
     background-image: none !important;
+    height: 44px !important;
+    overflow: hidden;
   }
 }
 
 .bar .title {
   margin: 0;
-  background-image: none !important;
+  background: url("../img/login_bg_line.png") repeat-x bottom;
+  background-size: 500px 3px !important;
+  text-align: center !important;
+  font-weight: bold;
+}
+
+.tabs-positive > .tabs, .tabs.tabs-positive {
+  background: #fff;
+  color: #808080;
+  border-top: 1px solid #d6d6d6 !important;
+}
+
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  color: #3d7eeb;
+}
+
+.bar .button.back-button, .bar button.back-button {
+  color: #0079ff;
 }
 
 .loginWrap {
@@ -117,6 +136,26 @@ a {
   }
 }
 
+.catalogList {
+  .list {
+    img {
+      height: 90px;
+      float: left;
+      margin-right: 10px;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+      color:#000;
+    }
+    .desc {
+      padding-top:8px;
+      color: #7b7c7d;
+      font-size: 14px;
+    }
+  }
+}
+
 .zoom {
   position: absolute;
   right: 10px;
@@ -180,28 +219,45 @@ a {
 .homeHeader {
   display: block;
   width: 100%;
-  background: url('../img/login_bg_line.png') no-repeat center bottom;
-  background-size: 375px 3px;
   text-align: center;
-  font-size: 16px;
-  height:43px;
+  font-size: 17px;
+  height: 44px;
   overflow: hidden;
   img {
-    width: 30px;
-    position:relative;
-    top:8px;
+    width: 31px;
+    position: relative;
+    top: 7px;
   }
 }
 
 .homeWrap {
   .content {
+    background: url("../img/list_bg_dark.png") no-repeat;
+    background-size: cover;
     .col {
       img {
+        border: 1px solid #eeeae6;
+        border-radius: 10px;
         width: 100%;
       }
     }
   }
 
+}
+
+.innerHeader {
+  background: url("../img/login_bg_line.png") repeat-x bottom !important;
+  background-size: 500px 3px !important;
+  .bar {
+    .title {
+      &.title-left {
+        text-align: center;
+        font-weight: bold;
+        left: 0 !important;
+        width: 100%;
+      }
+    }
+  }
 }
 
 @media (min-width: 680px) {

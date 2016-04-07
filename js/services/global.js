@@ -32,7 +32,7 @@
             config: {
                 sitePath: "http://211.66.86.97/csaProxy",//地址
                 currentGroupId: 0,
-                journalID: 374, //期刊ID,
+                journalID: 379, //期刊ID,
                 guestAccount: ['guest', 'guest!@#']
             }
         });
