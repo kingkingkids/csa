@@ -267,24 +267,29 @@ a {
 
 .jouneryList {
   .list {
-    .item {
-      display: inline-block;
-      border: 0;
-      background: none;
-      width: 105px;
-      img {
-        width: 100%;
+    .bookStore {
+      background: url("../img/list_bg_line.png") repeat-x center 94px;
+      background-size: 420px 22.5px;
+      text-align: justify;
+      .bookStoreLayout {
+        width: 320px;
+        margin: 0 auto;
+      }
+      p {
+        text-align: center;
+      }
+      .item {
+        display: inline-block;
+        border: 0;
+        background: none;
+        width: 105px;
+        img {
+          width: 100%;
+        }
       }
     }
   }
-  .bookStore {
-    background: url("../img/list_bg_line.png") repeat-x center 94px;
-    background-size: auto 22.5px;
-    text-align: left;
-    p {
-      text-align: center;
-    }
-  }
+
 }
 
 @media (min-width: 680px) {

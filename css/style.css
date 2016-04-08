@@ -198,19 +198,22 @@ a {
   background: url("../img/list_bg_light.png") no-repeat;
   background-size: cover; }
 
-.jouneryList .list .item {
-  display: inline-block;
-  border: 0;
-  background: none;
-  width: 105px; }
-  .jouneryList .list .item img {
-    width: 100%; }
-.jouneryList .bookStore {
+.jouneryList .list .bookStore {
   background: url("../img/list_bg_line.png") repeat-x center 94px;
-  background-size: auto 22.5px;
-  text-align: left; }
-  .jouneryList .bookStore p {
+  background-size: 420px 22.5px;
+  text-align: justify; }
+  .jouneryList .list .bookStore .bookStoreLayout {
+    width: 320px;
+    margin: 0 auto; }
+  .jouneryList .list .bookStore p {
     text-align: center; }
+  .jouneryList .list .bookStore .item {
+    display: inline-block;
+    border: 0;
+    background: none;
+    width: 105px; }
+    .jouneryList .list .bookStore .item img {
+      width: 100%; }
 
 @media (min-width: 680px) {
   .modal {

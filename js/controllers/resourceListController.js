@@ -16,11 +16,20 @@
             defaultViewer: null,
             showZoom: false,
             start: 0,//当前页码
-            limit: 10,//每页显示的条数
+            limit: 12,//每页显示的条数
             totalCount: 0,//总条数
-            listCss: true,
+            listCss: false,
+            articleCss: false,
             defaultPic: 'img/default.gif',
+            listLength: 0,
             init: function () {
+                if ($stateParams.type == 'folder') {
+                    this.limit = 12;
+                    this.listCss = true;
+                } else if ($stateParams.type == 'list') {
+                    this.limit = 10;
+                    this.articleCss = true;
+                }
                 this.onHold = (id)=> {
                     this.showPopup(id);
                 };
@@ -95,7 +104,13 @@
                 this.start = 0;
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
                     let {resources,totalCount} = res.data;
-                    this.resourceList = this.chunk(resources, 3);
+
+                    if ($stateParams.type == 'folder') {
+                        this.resourceList = this.chunk(resources, 3);
+                        this.listLength = this.resourceList.length;
+                    } else if ($stateParams.type == 'list') {
+                        this.resourceList = resources;
+                    }
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
                 });
@@ -104,7 +119,13 @@
                 this.start = 0;
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
                     let {resources,totalCount} = res.data;
-                    this.resourceList = this.chunk(resources, 3);
+
+                    if ($stateParams.type == 'folder') {
+                        this.resourceList = this.chunk(resources, 3);
+                        this.listLength = this.resourceList.length;
+                    } else if ($stateParams.type == 'list') {
+                        this.resourceList = resources;
+                    }
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
                 }).finally(function () {
@@ -117,16 +138,20 @@
                     return;
                 }
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
-                    this.resourceList = this.resourceList.concat(this.chunk(res.data.resources, 3));
+                    if ($stateParams.type == 'folder') {
+                        this.resourceList = this.resourceList.concat(this.chunk(res.data.resources, 3));
+                        this.listLength = this.resourceList.length;
+                    } else if ($stateParams.type == 'list') {
+                        this.resourceList = this.resourceList.concat(res.data.resources);
+                    }
                     this.start = this.limit + this.start;
-
                 }).finally(function () {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
             }
         }
-        collect.loadResources();
         collect.init();
+        collect.loadResources();
         this.collect = collect;
     }
 }

@@ -7,7 +7,7 @@
     angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule',
         'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
         'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule',
-        'infoModule','directivesModule']).config(appConfig).run(appRun);
+        'infoModule', 'directivesModule']).config(appConfig).run(appRun);
     appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider"];
     appRun.$inject = ["$ionicPlatform", "$rootScope"];
     function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
@@ -100,7 +100,7 @@
                     }
                 }
             }).state('tabs.resourceList', {
-                url: '/resourceList/:parentId/:title',
+                url: '/resourceList/:parentId/:type/:title',
                 views: {
                     'home-tab': {
                         templateUrl: "tpls/resourceList.html",

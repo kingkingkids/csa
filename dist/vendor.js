@@ -494,7 +494,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar .title {\r\n  margin: 0;\r\n  background: url(" + __webpack_require__(13) + ") repeat-x bottom;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(14) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(15) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(16) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(17) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .item {\r\n  display: inline-block;\r\n  border: 0;\r\n  background: none;\r\n  width: 105px; }\r\n  .jouneryList .list .item img {\r\n    width: 100%; }\r\n.jouneryList .bookStore {\r\n  background: url(" + __webpack_require__(18) + ") repeat-x center 94px;\r\n  background-size: auto 22.5px;\r\n  text-align: left; }\r\n  .jouneryList .bookStore p {\r\n    text-align: center; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar .title {\r\n  margin: 0;\r\n  background: url(" + __webpack_require__(13) + ") repeat-x bottom;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(14) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(15) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(16) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(17) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(18) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -25991,7 +25991,7 @@
 	                    }
 	                }
 	            }).state('tabs.resourceList', {
-	                url: '/resourceList/:parentId/:title',
+	                url: '/resourceList/:parentId/:title/:type',
 	                views: {
 	                    'home-tab': {
 	                        templateUrl: "tpls/resourceList.html",
@@ -28768,13 +28768,22 @@
 	            defaultViewer: null,
 	            showZoom: false,
 	            start: 0, //当前页码
-	            limit: 10, //每页显示的条数
+	            limit: 12, //每页显示的条数
 	            totalCount: 0, //总条数
-	            listCss: true,
+	            listCss: false,
+	            articleCss: false,
 	            defaultPic: 'img/default.gif',
+	            listLength: 0,
 	            init: function init() {
 	                var _this = this;
 
+	                if ($stateParams.type == 'folder') {
+	                    this.limit = 12;
+	                    this.listCss = true;
+	                } else if ($stateParams.type == 'list') {
+	                    this.limit = 10;
+	                    this.articleCss = true;
+	                }
 	                this.onHold = function (id) {
 	                    _this.showPopup(id);
 	                };
@@ -28852,7 +28861,13 @@
 	                    var resources = _res$data.resources;
 	                    var totalCount = _res$data.totalCount;
 
-	                    _this3.resourceList = _this3.chunk(resources, 3);
+
+	                    if ($stateParams.type == 'folder') {
+	                        _this3.resourceList = _this3.chunk(resources, 3);
+	                        _this3.listLength = _this3.resourceList.length;
+	                    } else if ($stateParams.type == 'list') {
+	                        _this3.resourceList = resources;
+	                    }
 	                    _this3.start = _this3.limit + _this3.start;
 	                    _this3.totalCount = totalCount;
 	                });
@@ -28866,7 +28881,13 @@
 	                    var resources = _res$data2.resources;
 	                    var totalCount = _res$data2.totalCount;
 
-	                    _this4.resourceList = _this4.chunk(resources, 3);
+
+	                    if ($stateParams.type == 'folder') {
+	                        _this4.resourceList = _this4.chunk(resources, 3);
+	                        _this4.listLength = _this4.resourceList.length;
+	                    } else if ($stateParams.type == 'list') {
+	                        _this4.resourceList = resources;
+	                    }
 	                    _this4.start = _this4.limit + _this4.start;
 	                    _this4.totalCount = totalCount;
 	                }).finally(function () {
@@ -28881,15 +28902,20 @@
 	                    return;
 	                }
 	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                    _this5.resourceList = _this5.resourceList.concat(_this5.chunk(res.data.resources, 3));
+	                    if ($stateParams.type == 'folder') {
+	                        _this5.resourceList = _this5.resourceList.concat(_this5.chunk(res.data.resources, 3));
+	                        _this5.listLength = _this5.resourceList.length;
+	                    } else if ($stateParams.type == 'list') {
+	                        _this5.resourceList = _this5.resourceList.concat(res.data.resources);
+	                    }
 	                    _this5.start = _this5.limit + _this5.start;
 	                }).finally(function () {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                });
 	            }
 	        };
-	        collect.loadResources();
 	        collect.init();
+	        collect.loadResources();
 	        this.collect = collect;
 	    };
 

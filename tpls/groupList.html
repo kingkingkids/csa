@@ -1,4 +1,4 @@
-<ion-view view-title="{{vm.collect.title}}" cache-view="false">
+<ion-view view-title="{{vm.collect.title}}">
     <ion-nav-bar class="innerHeader">
         <ion-nav-back-button>
             返回
@@ -12,7 +12,8 @@
         <ion-list class="catalogList">
             <ion-item collection-repeat="group in vm.collect.groupList">
                 <div ng-if="group.type == 'group'"
-                     ui-sref="tabs.resourceList({parentId:-group.id,title:group.displayName})" class="list">
+                     ui-sref="tabs.resourceList({type:'folder',parentId:-group.id,title:group.displayName})"
+                     class="list">
                     <img ng-src="{{vm.collect.path}}{{group.icon}}" ng-if="group.icon.indexOf('groupsImg') == -1"/>
                     <img ng-src="{{vm.collect.defaultPic}}" ng-if="group.icon.indexOf('groupsImg') > -1"/>
                     <p class="title">{{group.displayName}}</p>
