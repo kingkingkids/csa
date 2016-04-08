@@ -1,4 +1,4 @@
-<ion-view view-title="我" cache-view="false">
+<ion-view view-title="我" cache-view="false" class="personalWrap">
     <ion-header-bar align-title="left">
         <h1 class="title">我</h1>
     </ion-header-bar>
@@ -6,32 +6,32 @@
         <div class="list">
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'userName'})">
                 姓名
-                <i class="icon"> {{vm.accountInfo.name}} ＞</i>
+                <i class="icon"> {{vm.accountInfo.name}} <span class="ion-chevron-right"></span> </i>
             </a>
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'mobile'})">
                 手机
-                <i class="icon"> {{vm.accountInfo.mobile}} ＞</i>
+                <i class="icon"> {{vm.accountInfo.mobile}} <span class="ion-chevron-right"></span></i>
             </a>
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'company'})">
                 单位
-                <i class="icon"> {{vm.accountInfo.company}} ＞</i>
+                <i class="icon"> {{vm.accountInfo.company}} <span class="ion-chevron-right"></span></i>
             </a>
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'department'})">
                 地址
-                <i class="icon"> {{vm.accountInfo.department}} ＞</i>
+                <i class="icon"> {{vm.accountInfo.department}} <span class="ion-chevron-right"></span></i>
             </a>
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'im'})">
                 专业
-                <i class="icon"> {{vm.accountInfo.im}} ＞</i>
+                <i class="icon"> {{vm.accountInfo.im}} <span class="ion-chevron-right"></span></i>
             </a>
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'email'})">
                 邮箱
-                <i class="icon"> {{vm.accountInfo.email}} ＞</i>
+                <i class="icon"> {{vm.accountInfo.email}} <span class="ion-chevron-right"></span></i>
             </a>
 
             <a class="item item-icon-right" ui-sref="tabs.edit({type:'password'})">
                 修改密码
-                <i class="icon"> ＞</i>
+                <i class="icon"><span class="ion-chevron-right"></span></i>
             </a>
             <div class="row">
                 <div class="col">

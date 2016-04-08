@@ -21,11 +21,21 @@
                     this.watchesList = res.data.watches;
                 });
             },
-            removeFavList: function (id) {
+            loadBooksList: function () {
+                fav.getList(1).then((res)=> {
+                    this.booksList = res.data.watches;
+                });
+            },
+            removeFavList: function (id,type) {
                 fav.removeFav(id).then(res=> {
                     if (res.data.type == "success") {
-                        this.watchesList = "";
-                        collect.loadFavList();
+                        if(type == 'article') {
+                            this.watchesList = "";
+                            collect.loadFavList();
+                        } else {
+                            this.booksList = "";
+                            collect.loadBooksList();
+                        }
                     }
                 });
             },
@@ -37,9 +47,7 @@
                 this.isArticleTab = false;
                 this.isBooksTab = true;
                 if (this.booksList.length == 0) {
-                    fav.getList(1).then((res)=> {
-                        this.booksList = res.data.watches;
-                    });
+                    this.loadBooksList();
                 }
             }
         }

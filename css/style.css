@@ -237,6 +237,25 @@ a {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
 
+.personalWrap .list .item {
+  font-size: 14px;
+  color: #353535; }
+.personalWrap .list .icon {
+  font-size: 14px;
+  color: #353535; }
+.personalWrap .list .ion-chevron-right {
+  margin-left: 5px; }
+  .personalWrap .list .ion-chevron-right:before {
+    font-size: 18px !important;
+    color: #c7c7cc;
+    font-weight: normal; }
+
+.personalEdit .bar-header {
+  background: #fff url("../img/login_bg_line.png") repeat-x bottom !important;
+  background-size: 480px 3px !important; }
+.personalEdit .bar .title {
+  background: none; }
+
 @media (min-width: 680px) {
   .modal {
     top: 0px !important;

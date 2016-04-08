@@ -5,7 +5,8 @@
                     on-tap="vm.collect.articleTab()">
                 文章收藏
             </button>
-            <button class="button books" ng-class="vm.collect.isBooksTab ? 'active' : ''" on-tap="vm.collect.booksTab()">
+            <button class="button books" ng-class="vm.collect.isBooksTab ? 'active' : ''"
+                    on-tap="vm.collect.booksTab()">
                 我的书架
             </button>
         </ion-nav-buttons>
@@ -14,7 +15,8 @@
         <ion-list can-swipe="true">
             <ion-item collection-repeat="watch in vm.collect.watchesList">
                 <p>{{watch.displayName}}</p>
-                <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId)">移除收藏
+                <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId,'article')">
+                    移除收藏
                 </ion-option-button>
             </ion-item>
         </ion-list>
@@ -22,8 +24,11 @@
     <ion-content ng-show="vm.collect.isBooksTab">
         <ion-list can-swipe="true">
             <ion-item collection-repeat="watch in vm.collect.booksList">
-                <p>{{watch.displayName}}</p>
-                <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId)">移除收藏
+
+                <p class="title">{{watch.displayName}}</p>
+                <p class="desc" ng-bind-html="watch.desc"></p>
+                <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId,'books')">
+                    移除收藏
                 </ion-option-button>
             </ion-item>
         </ion-list>
