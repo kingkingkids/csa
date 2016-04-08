@@ -12,18 +12,35 @@
 
     function favController($rootScope, $scope, sendRequest, fav) {
         let collect = {
-            loadFavList: ()=> {
-                fav.getList().then((res)=> {
+            watchesList: [],
+            booksList: [],
+            isArticleTab: true,
+            isBooksTab: false,
+            loadFavList: function () {
+                fav.getList(2).then((res)=> {
                     this.watchesList = res.data.watches;
                 });
             },
-            removeFavList: id=> {
+            removeFavList: function (id) {
                 fav.removeFav(id).then(res=> {
                     if (res.data.type == "success") {
                         this.watchesList = "";
                         collect.loadFavList();
                     }
                 });
+            },
+            articleTab: function () {
+                this.isArticleTab = true;
+                this.isBooksTab = false;
+            },
+            booksTab: function () {
+                this.isArticleTab = false;
+                this.isBooksTab = true;
+                if (this.booksList.length == 0) {
+                    fav.getList(1).then((res)=> {
+                        this.booksList = res.data.watches;
+                    });
+                }
             }
         }
         collect.loadFavList();

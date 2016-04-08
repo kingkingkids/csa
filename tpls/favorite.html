@@ -1,7 +1,27 @@
-<ion-view view-title="收藏" cache-view="false">
-    <ion-content>
+<ion-view view-title="" cache-view="false" class="favWrap">
+    <ion-nav-bar class="innerHeader">
+        <ion-nav-buttons side="center">
+            <button class="button article active" ng-class="vm.collect.isArticleTab ? 'active' : ''"
+                    on-tap="vm.collect.articleTab()">
+                文章收藏
+            </button>
+            <button class="button books" ng-class="vm.collect.isBooksTab ? 'active' : ''" on-tap="vm.collect.booksTab()">
+                我的书架
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content ng-show="vm.collect.isArticleTab">
         <ion-list can-swipe="true">
-            <ion-item collection-repeat="watch in vm.watchesList">
+            <ion-item collection-repeat="watch in vm.collect.watchesList">
+                <p>{{watch.displayName}}</p>
+                <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId)">移除收藏
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-content ng-show="vm.collect.isBooksTab">
+        <ion-list can-swipe="true">
+            <ion-item collection-repeat="watch in vm.collect.booksList">
                 <p>{{watch.displayName}}</p>
                 <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId)">移除收藏
                 </ion-option-button>

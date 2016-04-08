@@ -289,7 +289,37 @@ a {
       }
     }
   }
+}
 
+.favWrap {
+  .innerHeader {
+    .buttons {
+      margin: 0 auto;
+    }
+    button {
+      background: #fff;
+      display: inline-block;
+      border: 1px solid #007aff;
+      width: 156px !important;
+      height: 28px !important;
+      min-height: 28px;
+      line-height: 28px;
+      color: #007aff;
+      &.active {
+        background: #1588f0;
+        color: #fff;
+      }
+      &.article {
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &.books {;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
 }
 
 @media (min-width: 680px) {

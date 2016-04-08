@@ -23,9 +23,9 @@
                                 <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
                                 <p>{{res.displayName}}</p>
                             </div>
-                            <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">
-                                {{res.displayName}}
-                            </div>
+                            <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">-->
+                                <!--{{res.displayName}}-->
+                            <!--</div>-->
                         </ion-item>
                     </div>
                 </div>
@@ -36,11 +36,11 @@
         <ion-list ng-if="vm.collect.articleCss">
             <div ng-repeat="res in vm.collect.resourceList">
                     <ion-item on-hold="vm.collect.onHold(res.id)" >
-                        <div ng-if="res.type == 1"
-                             ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">
-                            <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
-                            <p>{{res.displayName}}</p>
-                        </div>
+                        <!--<div ng-if="res.type == 1"-->
+                        <!--ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">-->
+                        <!--<p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>-->
+                        <!--<p>{{res.displayName}}</p>-->
+                        <!--</div>-->
                         <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">{{res.displayName}}
                         </div>
                     </ion-item>

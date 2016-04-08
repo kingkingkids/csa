@@ -3,8 +3,11 @@ fav.$inject = ["httpRequest.sendRequest", "global.constant"];
 function fav(send, constant) {
     return {
         /** 获取收藏列表**/
-        getList: function () {
-            return send(constant.path.getWatches+'?abc=123', {"type": "resource"});
+        getList: function (_type) {
+            if (_type == undefined) {
+                _type = 1;
+            }
+            return send(constant.path.getWatches + '', {"type": "resource", resourceType: _type});
         },
         /**添加收藏**/
         addFav: function (id) {
