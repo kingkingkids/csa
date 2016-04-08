@@ -91,7 +91,7 @@
                     }
                 }
             }).state('tabs.groupList', {
-                url: '/groupList/:groupId/:title',
+                url: '/groupList/:type/:groupId/:title',
                 views: {
                     'home-tab': {
                         templateUrl: "tpls/groupList.html",
@@ -105,6 +105,15 @@
                     'home-tab': {
                         templateUrl: "tpls/resourceList.html",
                         controller: "ResourceListController",
+                        controllerAs: "vm"
+                    }
+                }
+            }).state('tabs.booksList', {
+                url: '/booksList/:parentId/:type/:title',
+                views: {
+                    'home-tab': {
+                        templateUrl: "tpls/booksList.html",
+                        controller: "BooksListController",
                         controllerAs: "vm"
                     }
                 }

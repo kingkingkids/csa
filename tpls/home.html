@@ -7,10 +7,10 @@
     <!--</ion-header-bar>-->
     <ion-content class="content">
         <div class="row">
-            <div class="col" on-tap="vm.collect.goToList(vm.collect.journalID,'期刊')">
+            <div class="col" ui-sref="tabs.groupList({groupId: vm.collect.journalID, title: '期刊',type:'journal'})">
                 <img src="img/index_qikan.png"/>
             </div>
-            <div class="col">
+            <div class="col" ui-sref="tabs.groupList({groupId: vm.collect.journalID, title: '图书',type:'books'})">
                 <img src="img/index_books.png"/>
             </div>
         </div>

@@ -15,6 +15,14 @@
             title: $stateParams.title,
             path: constant.config.sitePath,
             defaultPic: 'img/default.gif',
+            isBooksList: false,
+            active: function () {
+                if ($stateParams.type == "books") {
+                    this.isBooksList = true;
+                } else {
+                    this.isBooksList = false;
+                }
+            },
             loadGroups: function () {
                 group.getList($stateParams.groupId).then((res)=> {
                     let {children} = res.data;
@@ -30,6 +38,7 @@
                 });
             }
         }
+        collect.active();
         collect.loadGroups();
         this.collect = collect;
     }

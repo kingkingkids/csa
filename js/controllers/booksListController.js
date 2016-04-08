@@ -2,13 +2,13 @@
  * Created by dcampus2011 on 16/2/26.
  */
 {
-    angular.module("ResourceListModule", ["httpRequest"])
-        .controller("ResourceListController", ResourceListController);
-    ResourceListController.$inject = ["$state", "$rootScope", "$scope",
+    angular.module("ResourceListModule")
+        .controller("BooksListController", BooksListController);
+    BooksListController.$inject = ["$state", "$rootScope", "$scope",
         "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
         "$sce", "global.constant", "$timeout", "global.Common"];
-    function ResourceListController($state, $rootScope, $scope, $stateParams,
-                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+    function BooksListController($state, $rootScope, $scope, $stateParams,
+                                 $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -16,7 +16,7 @@
             defaultViewer: null,
             showZoom: false,
             start: 0,//当前页码
-            limit: 12,//每页显示的条数
+            limit: 10,//每页显示的条数
             totalCount: 0,//总条数
             listCss: false,
             articleCss: false,
@@ -24,10 +24,8 @@
             listLength: 0,
             init: function () {
                 if ($stateParams.type == 'folder') {
-                    this.limit = 12;
                     this.listCss = true;
                 } else if ($stateParams.type == 'list') {
-                    this.limit = 10;
                     this.articleCss = true;
                 }
                 this.onHold = (id)=> {
@@ -69,7 +67,6 @@
                 });
             },
             openModal: function (id, title) {
-                console.log(title);
                 this.modalTitle = title;
                 Common.loading.show();
                 $scope.modal.show();
@@ -105,13 +102,7 @@
                 this.start = 0;
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
                     let {resources,totalCount} = res.data;
-
-                    if ($stateParams.type == 'folder') {
-                        this.resourceList = this.chunk(resources, 3);
-                        this.listLength = this.resourceList.length;
-                    } else if ($stateParams.type == 'list') {
-                        this.resourceList = resources;
-                    }
+                    this.resourceList = resources;
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
                 });
@@ -120,13 +111,7 @@
                 this.start = 0;
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
                     let {resources,totalCount} = res.data;
-
-                    if ($stateParams.type == 'folder') {
-                        this.resourceList = this.chunk(resources, 3);
-                        this.listLength = this.resourceList.length;
-                    } else if ($stateParams.type == 'list') {
-                        this.resourceList = resources;
-                    }
+                    this.resourceList = resources;
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
                 }).finally(function () {
@@ -139,12 +124,7 @@
                     return;
                 }
                 resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
-                    if ($stateParams.type == 'folder') {
-                        this.resourceList = this.resourceList.concat(this.chunk(res.data.resources, 3));
-                        this.listLength = this.resourceList.length;
-                    } else if ($stateParams.type == 'list') {
-                        this.resourceList = this.resourceList.concat(res.data.resources);
-                    }
+                    this.resourceList = this.resourceList.concat(res.data.resources);
                     this.start = this.limit + this.start;
                 }).finally(function () {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');

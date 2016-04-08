@@ -1,7 +1,7 @@
-<ion-modal-view>
-    <ion-header-bar align-title="left" class="bar-positive">
+<ion-modal-view class="pdfViewModal">
+    <ion-header-bar align-title="left">
         <div class="buttons">
-            <button class="button" on-tap="vm.collect.hideModal()">返回</button>
+            <button class="button" on-tap="vm.collect.hideModal()"><span class="ion-chevron-left"></span>返回</button>
         </div>
         <h1 class="title">{{vm.collect.modalTitle}}</h1>
         <div class="buttons">
@@ -11,8 +11,6 @@
     <ion-content overflow-scroll="true">
         <view-pdf></view-pdf>
         <!--<view-pdf ng-model="vm.collect.htmlCode"></view-pdf>-->
-
-
         <!--<div ng-bind-html="vm.collect.styleOutLine"></div>-->
         <!--<div ng-bind-html="vm.collect.content"></div>-->
         <!--<div class="swiper-container">-->
@@ -30,8 +28,6 @@
         <!--<div ng-bind-html="vm.collect.content"></div>-->
         <!--<iframe allowTransparency="true" src="{{vm.collect.frameSrc}}" frameborder="0"-->
         <!--scrolling="no" class="viewFrame"></iframe>-->
-
-
     </ion-content>
     <a href="javascript:void(0)" class="zoom big" on-tap="vm.collect.zoom('big')"
        ng-show="vm.collect.showZoom">+</a>

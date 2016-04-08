@@ -1,0 +1,48 @@
+<ion-view view-title="">
+    <ion-nav-bar class="innerHeader">
+        <ion-nav-title>
+            {{vm.collect.title}}
+        </ion-nav-title>
+        <ion-nav-back-button>
+            返回
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="resourceBg">
+        <ion-refresher
+                pulling-text="下拉刷新"
+                on-refresh="vm.collect.doRefresh()">
+        </ion-refresher>
+
+        <ion-list ng-if="vm.collect.listCss" class="booksList">
+            <ion-item on-hold="vm.collect.onHold(res.id)" ng-repeat="res in vm.collect.resourceList" ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName,type:'list'})">
+                <div ng-if="res.type == 1"
+                     >
+                    <img ng-src="{{vm.collect.defaultPic}}" width="65"/>
+                    <p class="title">{{res.displayName}}</p>
+                    <p class="desc">{{res.desc}}</p>
+                </div>
+                <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">-->
+                <!--{{res.displayName}}-->
+                <!--</div>-->
+            </ion-item>
+
+        </ion-list>
+
+
+        <ion-list ng-if="vm.collect.articleCss">
+            <div ng-repeat="res in vm.collect.resourceList">
+                <ion-item on-hold="vm.collect.onHold(res.id)">
+                    <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)">{{res.displayName}}
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+
+        <ion-infinite-scroll
+                immediate-check="false"
+                on-infinite="vm.collect.loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

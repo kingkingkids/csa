@@ -7,21 +7,21 @@
         .module("HomeModule", ["httpRequest"])
         .controller("HomeController", HomeController);
 
-    HomeController.$inject = ["$state", "$timeout", "global.constant"];
+    HomeController.$inject = ["$state", "$timeout", "global.constant", "$scope"];
 
-    function HomeController($state, $timeout, constant) {
+    function HomeController($state, $timeout, constant, $scope) {
         let collect = {
             journalID: constant.config.journalID,
-            goFar: ()=> {
-                $state.go('tabs.groupList');
-                $timeout(()=> {
-                    $state.go('tabs.resourceList');
+            active: function () {
+                $scope.$on('event:favToResourcesLIst', (_scope, _data)=> {
+                    let {parentId,title,type} = _data;
+                    $timeout(()=> {
+                        $state.go('tabs.resourceList', {parentId: parentId, title: title, type: type});
+                    });
                 });
-            },
-            goToList: function (_id, title) {
-                $state.go('tabs.groupList', {groupId: _id, title: title});
             }
         }
+        collect.active();
         this.collect = collect;
     }
 }

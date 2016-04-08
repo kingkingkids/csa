@@ -73,11 +73,12 @@
 	__webpack_require__(42); //资源列表控制器
 	__webpack_require__(43); //资源列表控制器
 	__webpack_require__(44); //资源列表控制器
+	__webpack_require__(45); //资源列表控制器
 	//require("./controllers/viewController.js");
-	__webpack_require__(45);
 	__webpack_require__(46);
 	__webpack_require__(47);
-	__webpack_require__(51);
+	__webpack_require__(48);
+	__webpack_require__(52);
 
 /***/ },
 /* 2 */
@@ -494,7 +495,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar .title {\r\n  margin: 0;\r\n  background: url(" + __webpack_require__(13) + ") repeat-x bottom;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(14) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(15) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(16) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(17) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(18) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit .bar .title {\r\n  background: none; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(14) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(15) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(16) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(17) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(18) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -25982,7 +25983,7 @@
 	                    }
 	                }
 	            }).state('tabs.groupList', {
-	                url: '/groupList/:groupId/:title',
+	                url: '/groupList/:type/:groupId/:title',
 	                views: {
 	                    'home-tab': {
 	                        templateUrl: "tpls/groupList.html",
@@ -25996,6 +25997,15 @@
 	                    'home-tab': {
 	                        templateUrl: "tpls/resourceList.html",
 	                        controller: "ResourceListController",
+	                        controllerAs: "vm"
+	                    }
+	                }
+	            }).state('tabs.booksList', {
+	                url: '/booksList/:parentId/:type/:title',
+	                views: {
+	                    'home-tab': {
+	                        templateUrl: "tpls/booksList.html",
+	                        controller: "BooksListController",
 	                        controllerAs: "vm"
 	                    }
 	                }
@@ -28686,25 +28696,28 @@
 	 */
 
 	{
-	    var HomeController = function HomeController($state, $timeout, constant) {
+	    var HomeController = function HomeController($state, $timeout, constant, $scope) {
 	        var collect = {
 	            journalID: constant.config.journalID,
-	            goFar: function goFar() {
-	                $state.go('tabs.groupList');
-	                $timeout(function () {
-	                    $state.go('tabs.resourceList');
+	            active: function active() {
+	                $scope.$on('event:favToResourcesLIst', function (_scope, _data) {
+	                    var parentId = _data.parentId;
+	                    var title = _data.title;
+	                    var type = _data.type;
+
+	                    $timeout(function () {
+	                        $state.go('tabs.resourceList', { parentId: parentId, title: title, type: type });
+	                    });
 	                });
-	            },
-	            goToList: function goToList(_id, title) {
-	                $state.go('tabs.groupList', { groupId: _id, title: title });
 	            }
 	        };
+	        collect.active();
 	        this.collect = collect;
 	    };
 
 	    angular.module("HomeModule", ["httpRequest"]).controller("HomeController", HomeController);
 
-	    HomeController.$inject = ["$state", "$timeout", "global.constant"];
+	    HomeController.$inject = ["$state", "$timeout", "global.constant", "$scope"];
 	}
 
 /***/ },
@@ -28723,6 +28736,14 @@
 	            title: $stateParams.title,
 	            path: constant.config.sitePath,
 	            defaultPic: 'img/default.gif',
+	            isBooksList: false,
+	            active: function active() {
+	                if ($stateParams.type == "books") {
+	                    this.isBooksList = true;
+	                } else {
+	                    this.isBooksList = false;
+	                }
+	            },
 	            loadGroups: function loadGroups() {
 	                var _this = this;
 
@@ -28744,6 +28765,7 @@
 	                });
 	            }
 	        };
+	        collect.active();
 	        collect.loadGroups();
 	        this.collect = collect;
 	    };
@@ -28825,6 +28847,7 @@
 	            openModal: function openModal(id, title) {
 	                var _this2 = this;
 
+	                console.log(title);
 	                this.modalTitle = title;
 	                Common.loading.show();
 	                $scope.modal.show();
@@ -28936,15 +28959,181 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	{
-	    var favController = function favController($rootScope, $scope, sendRequest, fav) {
+	    var BooksListController = function BooksListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+	        var collect = {
+	            resourceList: [],
+	            title: $stateParams.title,
+	            modalTitle: "",
+	            defaultViewer: null,
+	            showZoom: false,
+	            start: 0, //当前页码
+	            limit: 10, //每页显示的条数
+	            totalCount: 0, //总条数
+	            listCss: false,
+	            articleCss: false,
+	            defaultPic: 'img/default.gif',
+	            listLength: 0,
+	            init: function init() {
+	                var _this = this;
+
+	                if ($stateParams.type == 'folder') {
+	                    this.listCss = true;
+	                } else if ($stateParams.type == 'list') {
+	                    this.articleCss = true;
+	                }
+	                this.onHold = function (id) {
+	                    _this.showPopup(id);
+	                };
+	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+	                    scope: $scope,
+	                    animation: 'slide-in-up',
+	                    hardwareBackButtonClose: false
+	                }).then(function (modal) {
+	                    $scope.modal = modal;
+	                });
+	            },
+	            showPopup: function showPopup(id) {
+	                var popup = $ionicPopup.show({
+	                    template: '',
+	                    title: '收藏资源',
+	                    subTitle: '',
+	                    scope: $scope,
+	                    buttons: [{ text: '返回' }, {
+	                        text: '<b>收藏</b>',
+	                        type: 'button-positive',
+	                        onTap: function onTap(e) {
+	                            return id;
+	                        }
+	                    }]
+	                });
+	                popup.then(function (id) {
+	                    if (id != undefined) {
+	                        fav.addFav(id).then(function (res) {
+	                            if (res.data.success) {
+	                                console.log("收藏成功");
+	                            }
+	                        });
+	                    }
+	                });
+	            },
+	            openModal: function openModal(id, title) {
+	                var _this2 = this;
+
+	                this.modalTitle = title;
+	                Common.loading.show();
+	                $scope.modal.show();
+	                $timeout(function () {
+	                    resources.getView(id).then(function (res) {
+	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                        _this2.showZoom = true;
+	                    });
+	                }, 100);
+	            },
+	            hideModal: function hideModal() {
+	                $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
+	                this.showZoom = false;
+	                $scope.modal.hide();
+	            },
+	            more: function more() {},
+	            zoom: function zoom(scale) {
+	                if (scale == 'big') {
+	                    $rootScope.$broadcast('event:scale:big'); //传递一个事件给pdf预览指令
+	                } else {
+	                        $rootScope.$broadcast('event:scale:small'); //传递一个事件给pdf预览指令
+	                    }
+	            },
+	            chunk: function chunk(arr, size) {
+	                var newArr = [];
+	                for (var i = 0; i < arr.length; i += size) {
+	                    newArr.push(arr.slice(i, i + size));
+	                }
+	                return newArr;
+	            },
+	            loadResources: function loadResources() {
+	                var _this3 = this;
+
+	                this.start = 0;
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    var _res$data = res.data;
+	                    var resources = _res$data.resources;
+	                    var totalCount = _res$data.totalCount;
+
+	                    _this3.resourceList = resources;
+	                    _this3.start = _this3.limit + _this3.start;
+	                    _this3.totalCount = totalCount;
+	                });
+	            },
+	            doRefresh: function doRefresh() {
+	                var _this4 = this;
+
+	                this.start = 0;
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
+
+	                    _this4.resourceList = resources;
+	                    _this4.start = _this4.limit + _this4.start;
+	                    _this4.totalCount = totalCount;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.refreshComplete');
+	                });
+	            },
+	            loadMore: function loadMore() {
+	                var _this5 = this;
+
+	                if (this.start >= this.totalCount) {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    return;
+	                }
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    _this5.resourceList = _this5.resourceList.concat(res.data.resources);
+	                    _this5.start = _this5.limit + _this5.start;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                });
+	            }
+	        };
+	        collect.init();
+	        collect.loadResources();
+	        this.collect = collect;
+	    };
+
+	    angular.module("ResourceListModule").controller("BooksListController", BooksListController);
+	    BooksListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	}
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Created by dcampus2011 on 16/2/26.
+	 */
+	{
+	    var favController = function favController($rootScope, $scope, fav, Common, resources, $ionicModal, $timeout, $ionicTabsDelegate, $state) {
+
 	        var collect = {
 	            watchesList: [],
 	            booksList: [],
 	            isArticleTab: true,
 	            isBooksTab: false,
+	            showZoom: false,
+	            active: function active() {
+	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+	                    scope: $scope,
+	                    animation: 'slide-in-up',
+	                    hardwareBackButtonClose: false
+	                }).then(function (modal) {
+	                    $scope.modal = modal;
+	                });
+	            },
 	            loadFavList: function loadFavList() {
 	                var _this = this;
 
+	                /**访问文章**/
 	                fav.getList(2).then(function (res) {
 	                    _this.watchesList = res.data.watches;
 	                });
@@ -28952,6 +29141,7 @@
 	            loadBooksList: function loadBooksList() {
 	                var _this2 = this;
 
+	                /**访问书本**/
 	                fav.getList(1).then(function (res) {
 	                    _this2.booksList = res.data.watches;
 	                });
@@ -28981,8 +29171,42 @@
 	                if (this.booksList.length == 0) {
 	                    this.loadBooksList();
 	                }
+	            },
+	            openModal: function openModal(id, title) {
+	                var _this4 = this;
+
+	                console.log(title);
+	                this.modalTitle = title;
+	                Common.loading.show();
+	                $scope.modal.show();
+	                $timeout(function () {
+	                    resources.getView(id).then(function (res) {
+	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                        _this4.showZoom = true;
+	                    });
+	                }, 100);
+	            },
+	            zoom: function zoom(scale) {
+	                if (scale == 'big') {
+	                    $rootScope.$broadcast('event:scale:big'); //传递一个事件给pdf预览指令
+	                } else {
+	                        $rootScope.$broadcast('event:scale:small'); //传递一个事件给pdf预览指令
+	                    }
+	            },
+	            hideModal: function hideModal() {
+	                $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
+	                this.showZoom = false;
+	                $scope.modal.hide();
+	            },
+	            readBooks: function readBooks(id, title) {
+	                $timeout(function () {
+	                    $ionicTabsDelegate.select(0);
+	                    $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                }, 100);
 	            }
+
 	        };
+	        collect.active();
 	        collect.loadFavList();
 	        this.collect = collect;
 	        // this.func = func;//exports
@@ -28990,11 +29214,11 @@
 
 	    angular.module("favModule", ["httpRequest"]).controller("favController", favController);
 
-	    favController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "request.fav"];
+	    favController.$inject = ["$rootScope", "$scope", "request.fav", "global.Common", "request.resources", "$ionicModal", "$timeout", "$ionicTabsDelegate", "$state"];
 	}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29166,7 +29390,7 @@
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29249,7 +29473,7 @@
 	}
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29262,7 +29486,7 @@
 	}
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29413,9 +29637,9 @@
 	            };
 	        };
 
-	        var VerEx = __webpack_require__(48);
-	        var Swiper = __webpack_require__(49);
-	        var pdf2htmlEX = __webpack_require__(50);
+	        var VerEx = __webpack_require__(49);
+	        var Swiper = __webpack_require__(50);
+	        var pdf2htmlEX = __webpack_require__(51);
 	        angular.module('directivesModule').directive('onFinished', onFinished).directive('viewPdf', viewPdf);
 	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	        onFinished.$inject = ['$timeout', '$q'];
@@ -29423,7 +29647,7 @@
 	}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -29836,7 +30060,7 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34286,7 +34510,7 @@
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */
@@ -35231,7 +35455,7 @@
 	//pdf2htmlEX['Viewer'] = Viewer;
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';

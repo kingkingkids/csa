@@ -16,11 +16,12 @@ a {
 @media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
   .bar {
     background-image: none !important;
+    background: #fff;
     height: 44px !important;
     overflow: hidden; } }
-.bar .title {
+.bar {
   margin: 0;
-  background: url("../img/login_bg_line.png") repeat-x bottom;
+  background: #fff url("../img/login_bg_line.png") repeat-x bottom !important;
   background-size: 500px 3px !important;
   text-align: center !important;
   font-weight: bold; }
@@ -186,7 +187,7 @@ a {
     width: 100%; }
 
 .innerHeader {
-  background: url("../img/login_bg_line.png") repeat-x bottom !important;
+  background: #fff url("../img/login_bg_line.png") repeat-x bottom !important;
   background-size: 500px 3px !important; }
   .innerHeader .bar .title.title-left {
     text-align: center;
@@ -214,6 +215,20 @@ a {
     width: 105px; }
     .jouneryList .list .bookStore .item img {
       width: 100%; }
+
+.booksList .list img {
+  float: left;
+  margin-right: 10px; }
+.booksList .list .title {
+  font-size: 14px;
+  font-weight: bold; }
+.booksList .list .desc {
+  font-size: 12px;
+  color: #6d6e70; }
+.booksList .list .item {
+  bordre-bottom: 1px solid #c8c8c9; }
+  .booksList .list .item .activated {
+    background: #f1f1f1; }
 
 .favWrap .innerHeader .buttons {
   margin: 0 auto; }
@@ -253,8 +268,11 @@ a {
 .personalEdit .bar-header {
   background: #fff url("../img/login_bg_line.png") repeat-x bottom !important;
   background-size: 480px 3px !important; }
-.personalEdit .bar .title {
-  background: none; }
+.personalEdit .bar {
+  background: #fff; }
+
+.pdfViewModal button {
+  background: #fff; }
 
 @media (min-width: 680px) {
   .modal {

@@ -9,10 +9,25 @@
                 pulling-text="下拉刷新"
                 on-refresh="vm.collect.doRefresh()">
         </ion-refresher>
-        <ion-list class="catalogList">
+        <ion-list class="catalogList" ng-if="!vm.collect.isBooksList">
             <ion-item collection-repeat="group in vm.collect.groupList">
                 <div ng-if="group.type == 'group'"
                      ui-sref="tabs.resourceList({type:'folder',parentId:-group.id,title:group.displayName})"
+                     class="list">
+                    <img ng-src="{{vm.collect.path}}{{group.icon}}" ng-if="group.icon.indexOf('groupsImg') == -1"/>
+                    <img ng-src="{{vm.collect.defaultPic}}" ng-if="group.icon.indexOf('groupsImg') > -1"/>
+                    <p class="title">{{group.displayName}}</p>
+                    <p class="desc" ng-bind-html="group.desc"></p>
+                </div>
+                <div ui-sref="tabs.groupList({groupId:group.id,title:group.displayName})"
+                     ng-if="group.type == 'category'">{{group.displayName}}
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-list class="catalogList" ng-if="vm.collect.isBooksList">
+            <ion-item collection-repeat="group in vm.collect.groupList">
+                <div ng-if="group.type == 'group'"
+                     ui-sref="tabs.booksList({type:'folder',parentId:-group.id,title:group.displayName})"
                      class="list">
                     <img ng-src="{{vm.collect.path}}{{group.icon}}" ng-if="group.icon.indexOf('groupsImg') == -1"/>
                     <img ng-src="{{vm.collect.defaultPic}}" ng-if="group.icon.indexOf('groupsImg') > -1"/>
