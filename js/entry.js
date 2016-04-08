@@ -2,9 +2,10 @@
  * Created by ASUS on 2016/1/22.
  */
 require("../lib/ionic/css/ionic.css");
+//require("../css/iconfont.css");
 require("../css/style.css");
-require("../lib/ionic/js/ionic.bundle.js");
 require("../node_modules/swiper/dist/css/swiper.min.css");
+require("../lib/ionic/js/ionic.bundle.js");
 require("./app.js");
 require("./services/global.js");
 require("./services/httpRequest.js");
