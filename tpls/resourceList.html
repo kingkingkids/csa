@@ -1,7 +1,7 @@
 <ion-view view-title="">
     <ion-nav-bar class="innerHeader">
-        <ion-nav-title>
-            {{vm.collect.title}}
+        <ion-nav-title ng-bind-html="vm.collect.title">
+
         </ion-nav-title>
         <ion-nav-back-button>
             返回
@@ -17,14 +17,16 @@
             <div ng-repeat="resTop in vm.collect.resourceList">
                 <div class="bookStore">
                     <div class="bookStoreLayout">
-                        <ion-item on-hold="vm.collect.onHold(res.id)" ng-repeat="res in resTop track by $index">
+                        <ion-item on-hold="vm.collect.onHold(res.id,res.watchId)"
+                                  ng-repeat="res in resTop track by $index">
                             <div ng-if="res.type == 1"
                                  ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName,type:'list'})">
                                 <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
-                                <p>{{res.displayName}}</p>
+                                <p ng-bind-html="res.displayName.split('卷')[0] + '卷'"></p>
+                                <p ng-bind-html="res.displayName.split('卷')[1]"></p>
                             </div>
                             <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">-->
-                                <!--{{res.displayName}}-->
+                            <!--{{res.displayName}}-->
                             <!--</div>-->
                         </ion-item>
                     </div>
@@ -35,15 +37,16 @@
 
         <ion-list ng-if="vm.collect.articleCss">
             <div ng-repeat="res in vm.collect.resourceList">
-                    <ion-item on-hold="vm.collect.onHold(res.id)" >
-                        <!--<div ng-if="res.type == 1"-->
-                        <!--ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">-->
-                        <!--<p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>-->
-                        <!--<p>{{res.displayName}}</p>-->
-                        <!--</div>-->
-                        <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)">{{res.displayName}}
-                        </div>
-                    </ion-item>
+                <ion-item on-hold="vm.collect.onHold(res.id,$event)">
+                    <!--<div ng-if="res.type == 1"-->
+                    <!--ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">-->
+                    <!--<p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>-->
+                    <!--<p>{{res.displayName}}</p>-->
+                    <!--</div>-->
+                    <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId)">
+                        {{res.displayName}}
+                    </div>
+                </ion-item>
             </div>
         </ion-list>
 

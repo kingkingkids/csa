@@ -6,9 +6,10 @@
         .controller("ResourceListController", ResourceListController);
     ResourceListController.$inject = ["$state", "$rootScope", "$scope",
         "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
-        "$sce", "global.constant", "$timeout", "global.Common"];
+        "$sce", "global.constant", "$timeout", "global.Common", "$ionicActionSheet"];
     function ResourceListController($state, $rootScope, $scope, $stateParams,
-                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common,
+                                    $ionicActionSheet) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -22,6 +23,8 @@
             articleCss: false,
             defaultPic: 'img/default.gif',
             listLength: 0,
+            watchId: 0,
+            id: 0,
             init: function () {
                 if ($stateParams.type == 'folder') {
                     this.limit = 12;
@@ -30,8 +33,8 @@
                     this.limit = 10;
                     this.articleCss = true;
                 }
-                this.onHold = (id)=> {
-                    this.showPopup(id);
+                this.onHold = (id, event)=> {
+                    this.showPopup(id, event);
                 };
                 $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
                     scope: $scope,
@@ -41,7 +44,10 @@
                     $scope.modal = modal;
                 });
             },
-            showPopup: function (id) {
+            showPopup: function (id, event) {
+                //angular.element(event.currentTarget).data("rel", id)
+                //
+                //console.log(angular.element(event.currentTarget).data("rel"));
                 let popup = $ionicPopup.show({
                     template: '',
                     title: '收藏资源',
@@ -68,8 +74,9 @@
                     }
                 });
             },
-            openModal: function (id, title) {
-                console.log(title);
+            openModal: function (id, title, watchId) {
+                this.watchId = watchId;
+                this.id = id;
                 this.modalTitle = title;
                 Common.loading.show();
                 $scope.modal.show();
@@ -85,7 +92,42 @@
                 this.showZoom = false;
                 $scope.modal.hide();
             },
-            more: function () {
+            actionSheet: function () {
+                console.log(this.watchId);
+                let watchText = this.watchId == 0 ? '添加收藏' : '取消收藏';
+
+                $ionicActionSheet.show({
+                    buttons: [
+                        {text: watchText},
+                    ],
+                    //destructiveText: 'Delete',
+                    titleText: '',
+                    cancelText: '取消',
+                    cancel: function () {
+                        // add cancel code..
+                    },
+                    buttonClicked: index=> {
+                        switch (index) {
+                            case 0:
+                                if (this.watchId != 0) {
+                                    fav.removeFav(this.watchId).then((res)=> {
+                                        if (res.data.success) {
+                                            Common.Alert('', '成功移除收藏');
+                                            this.watchId = 0;
+                                        }
+                                    });
+                                } else {
+                                    fav.addFav(this.id).then((res)=> {
+                                        if (res.data.success) {
+                                            Common.Alert('', '收藏成功');
+                                        }
+                                    });
+                                }
+                                break;
+                        }
+                        return true;
+                    }
+                });
             },
             zoom: function (scale) {
                 if (scale == 'big') {

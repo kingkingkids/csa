@@ -1,0 +1,44 @@
+<ion-modal-view>
+    <ion-header-bar align-title="left" class="innerHeader searchHeader">
+        <form name="searchInput" novalidate ng-submit="vm.collect.submitSearch(searchInput)" autocomplete="off ">
+            <h1 class="title">
+                <div class="bar bar-header item-input-inset">
+                    <label class="item-input-wrapper">
+                        <i class="icon ion-ios-search placeholder-icon"></i>
+                        <input name="queryWords" type="search" placeholder="请输入关键字" ng-model="vm.collect.qurey"
+                               required>
+                    </label>
+                    <input class="outButton" type="submit"/>
+                    <a href="javascript:void(0)" class="button button-clear" on-tap="vm.collect.closeSearchModal()">
+                        取消
+                    </a>
+                </div>
+            </h1>
+        </form>
+        <div class="tabsWrap">
+            <div class="button-bar">
+                <a class="button" on-tap="vm.collect.loadArticle()"
+                   ng-class="vm.collect.isArticleTab ? 'active' : ''">文章</a>
+                <a class="button" on-tap="vm.collect.loadBooks()"
+                   ng-class="vm.collect.isBooksTab ? 'active' : ''">期刊/书</a>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content class="searchContent" overflow-scroll="true" scroll="true">
+        456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>456<br/>
+        <!--<ion-list ng-if="vm.collect.articleCss">-->
+        <!--<div ng-repeat="res in vm.collect.resourceList">-->
+        <!--<ion-item on-hold="vm.collect.onHold(res.id)">-->
+        <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)">{{res.displayName}}-->
+        <!--</div>-->
+        <!--</ion-item>-->
+        <!--</div>-->
+        <!--</ion-list>-->
+
+        <!--<ion-infinite-scroll-->
+        <!--immediate-check="false"-->
+        <!--on-infinite="vm.collect.loadMore()"-->
+        <!--distance="1%">-->
+        <!--</ion-infinite-scroll>-->
+    </ion-content>
+</ion-modal-view>

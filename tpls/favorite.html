@@ -21,6 +21,11 @@
                 </ion-option-button>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll
+                immediate-check="false"
+                on-infinite="vm.collect.loadMoreArticles()"
+                distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
     <ion-content ng-show="vm.collect.isBooksTab">
         <ion-list can-swipe="true">
@@ -33,6 +38,11 @@
                 </ion-option-button>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll
+                immediate-check="false"
+                on-infinite="vm.collect.loadMoreBooks()"
+                distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>
 

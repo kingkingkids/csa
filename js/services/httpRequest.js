@@ -35,6 +35,9 @@
     function errorManage(scope) {
         return function (status) {
             /**当拦截器拦截到错误代码是480，则会跳到登录页，并设置登录状态为false**/
+            if (status == undefined) {
+                return;
+            }
             if (status.code == 480) {
                 scope.$broadcast("status:logout");//如果错误码是480，则表示所有请求超时
             } else {

@@ -59,27 +59,27 @@
 	__webpack_require__(2);
 	//require("../css/iconfont.css");
 	__webpack_require__(11);
-	__webpack_require__(23);
-	__webpack_require__(25);
+	__webpack_require__(24);
 	__webpack_require__(26);
 	__webpack_require__(27);
 	__webpack_require__(28);
 	__webpack_require__(29);
 	__webpack_require__(30);
-	__webpack_require__(41);
-	__webpack_require__(42); //个人设置
-	__webpack_require__(43); //tab主控制器
-	__webpack_require__(44); //首页控制器
-	__webpack_require__(45); //柜子列表控制器
-	__webpack_require__(46); //资源列表控制器
+	__webpack_require__(31);
+	__webpack_require__(42);
+	__webpack_require__(43); //个人设置
+	__webpack_require__(44); //tab主控制器
+	__webpack_require__(45); //首页控制器
+	__webpack_require__(46); //柜子列表控制器
 	__webpack_require__(47); //资源列表控制器
 	__webpack_require__(48); //资源列表控制器
 	__webpack_require__(49); //资源列表控制器
+	__webpack_require__(50); //资源列表控制器
 	//require("./controllers/viewController.js");
-	__webpack_require__(50);
 	__webpack_require__(51);
 	__webpack_require__(52);
-	__webpack_require__(56);
+	__webpack_require__(53);
+	__webpack_require__(57);
 
 /***/ },
 /* 2 */
@@ -496,7 +496,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n@font-face {\r\n  font-family: \"iconfont\";\r\n  src: url(" + __webpack_require__(14) + ");\r\n  /* IE9*/\r\n  src: url(" + __webpack_require__(14) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(15) + ") format(\"woff\"), url(" + __webpack_require__(16) + ") format(\"truetype\"), url(" + __webpack_require__(17) + "#iconfont) format(\"svg\");\r\n  /* iOS 4.1- */ }\r\n.iconfont {\r\n  font-family: \"iconfont\" !important;\r\n  font-size: 16px;\r\n  font-style: normal;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-text-stroke-width: 0.2px;\r\n  -moz-osx-font-smoothing: grayscale; }\r\n\r\n.icon-21:before {\r\n  content: \"\\E602\"; }\r\n\r\n.icon-22:before {\r\n  content: \"\\E603\"; }\r\n\r\n.icon-12:before {\r\n  content: \"\\E601\"; }\r\n\r\n.icon-11:before {\r\n  content: \"\\E600\"; }\r\n\r\n.icon-31:before {\r\n  content: \"\\E604\"; }\r\n\r\n.icon-32:before {\r\n  content: \"\\E605\"; }\r\n\r\n.icon-41:before {\r\n  content: \"\\E606\"; }\r\n\r\n.icon-42:before {\r\n  content: \"\\E607\"; }\r\n\r\n.tab-item .icon {\r\n  font-size: 28px;\r\n  line-height: 32px; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(18) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(19) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(20) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(21) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(22) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabTitle {\r\n  width: 100%;\r\n  height: 43px;\r\n  text-align: center;\r\n  font-weight: bold;\r\n  position: absolute; }\r\n\r\n.bar .title.title-left {\r\n  width: 100%;\r\n  margin-left: 0;\r\n  left: 0 !important; }\r\n\r\n.title-left {\r\n  text-align: center; }\r\n\r\n@font-face {\r\n  font-family: \"iconfont\";\r\n  src: url(" + __webpack_require__(14) + ");\r\n  /* IE9*/\r\n  src: url(" + __webpack_require__(14) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(15) + ") format(\"woff\"), url(" + __webpack_require__(16) + ") format(\"truetype\"), url(" + __webpack_require__(17) + "#iconfont) format(\"svg\");\r\n  /* iOS 4.1- */ }\r\n.iconfont {\r\n  font-family: \"iconfont\" !important;\r\n  font-size: 16px;\r\n  font-style: normal;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-text-stroke-width: 0.2px;\r\n  -moz-osx-font-smoothing: grayscale; }\r\n\r\n.icon-21:before {\r\n  content: \"\\E602\"; }\r\n\r\n.icon-22:before {\r\n  content: \"\\E603\"; }\r\n\r\n.icon-12:before {\r\n  content: \"\\E601\"; }\r\n\r\n.icon-11:before {\r\n  content: \"\\E600\"; }\r\n\r\n.icon-31:before {\r\n  content: \"\\E604\"; }\r\n\r\n.icon-32:before {\r\n  content: \"\\E605\"; }\r\n\r\n.icon-41:before {\r\n  content: \"\\E606\"; }\r\n\r\n.icon-42:before {\r\n  content: \"\\E607\"; }\r\n\r\n.tab-item .icon {\r\n  font-size: 28px;\r\n  line-height: 32px; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(18) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(19) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(20) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(21) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(22) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center;\r\n    font-size: 12px; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px;\r\n    height: 160px; }\r\n    .jouneryList .list .bookStore .item p {\r\n      text-align: left; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  width: 100%; }\r\n  .favWrap .innerHeader .buttons .left-buttons {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit button {\r\n  background-color: #fff; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff; }\r\n.pdfViewModal .bar .title.title-left {\r\n  text-align: center; }\r\n\r\n.searchWrap {\r\n  height: 31px;\r\n  line-height: 31px;\r\n  width: 95%;\r\n  margin: 10px auto 0 auto;\r\n  font-size: 12px;\r\n  color: #ababae;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  background: #eee;\r\n  display: block; }\r\n  .searchWrap.activated {\r\n    background: #f1f1f1; }\r\n  .searchWrap span {\r\n    background: url(" + __webpack_require__(23) + ") no-repeat;\r\n    background-position: 0 1px !important;\r\n    background-size: 12.5px auto !important;\r\n    padding-left: 18px; }\r\n\r\n.searchHeader {\r\n  height: 90px !important; }\r\n  .searchHeader h1 .bar {\r\n    background: none !important; }\r\n  .searchHeader .tabsWrap {\r\n    position: absolute;\r\n    top: 46px;\r\n    width: 100%; }\r\n  .searchHeader .button-bar {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n    .searchHeader .button-bar .button {\r\n      height: 28px;\r\n      line-height: 28px;\r\n      min-height: 28px;\r\n      border: 1px solid #007aff; }\r\n      .searchHeader .button-bar .button.active {\r\n        background: #1588f0;\r\n        color: #fff; }\r\n    .searchHeader .button-bar .button:last-child {\r\n      border-left: 0; }\r\n\r\n.searchContent.has-header {\r\n  top: 90px; }\r\n\r\n.outButton {\r\n  position: absolute;\r\n  left: -9999px;\r\n  top: -9999px; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -563,12 +563,18 @@
 
 /***/ },
 /* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAACCElEQVRIibXVTYiNURzH8c8dTHkpq5FpiiyIyUtDsZIRio0QmeStyApNskGUrkJyU5OVFEoYLMSKGSmzwML7xkJJZlKTRHmpGcPinFtPt+e5d+7c8avT+Z/nOef5Pv/n+Z/fyRUKHVI0Hm1YhxZMxU/04jlu4h6G0haXamzKte3IY1rJ9cmxNWMrXuAAHlWC1CXicbiEyxHQgx2YEedNwjzsxzshw24crAZyMT70GzZjKa7gA/7iB96iA3NxLK47g93DgezEtghoRWeFlxsUPukW4b+cx6JykAk4Hcd78LICIKkbKKAeZ8tB2jAFj1XOIE15fMEyzM6CrI3xhREA4LtQ0oSST4U0x7hnhBC4H/uWLEhTjHtrgHyMfWMWZCDGY2qAFKt0IOtmX4yn1wCZFfu+tJt1gj3Aqhoga2L/JAtyK8b7BGupVk1YL2zKO1mQu4IXzTQMHypRDueEDX0bn7Igg9gr+FMeG6qAHMdGwY4yX7BYFV04LFRYJ04IrpulRlzD0Tj+jF9Zk5PnySn8wUkcwS7Bmx4Kn6FeqMDV2ISJ+BoBc/BAKJ7+Ukgu5WRcLBhma5lMhnAdh2IGXZiPV2mgtJPxGZZjieBrC9GA38I+KB6/7xNrVkbQgrSM0iBFPY1tOOovB6rLXle1iqDXCVDDaEOSoDdJ0GhDiqAVCdDV/wFJgrrR/g8bCHN+41kAEwAAAABJRU5ErkJggg=="
+
+/***/ },
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(24);
+	var content = __webpack_require__(25);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(10)(content, {});
@@ -588,7 +594,7 @@
 	}
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -602,7 +608,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;}; /*!
@@ -25925,7 +25931,7 @@
 	 */IonicModule.directive('ionView',function(){return {restrict:'EA',priority:1000,controller:'$ionicView',compile:function compile(tElement){tElement.addClass('pane');tElement[0].removeAttribute('title');return function link($scope,$element,$attrs,viewCtrl){viewCtrl.init();};}};});})();
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26076,7 +26082,7 @@
 	}
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26142,7 +26148,8 @@
 	            deleteWatch: "/user/deleteWatch.action",
 	            getMyReceiveResources: "/group/getMyReceiveResources.action",
 	            deleteReceivedResource: "/group/deleteReceivedResource.action",
-	            findPassword: '/webmail/findPassword.action'
+	            findPassword: '/webmail/findPassword.action',
+	            searchResources: '/group/searchResources.action'
 
 	        },
 	        config: {
@@ -26156,7 +26163,7 @@
 	}
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26188,6 +26195,9 @@
 	    var errorManage = function errorManage(scope) {
 	        return function (status) {
 	            /**当拦截器拦截到错误代码是480，则会跳到登录页，并设置登录状态为false**/
+	            if (status == undefined) {
+	                return;
+	            }
 	            if (status.code == 480) {
 	                scope.$broadcast("status:logout"); //如果错误码是480，则表示所有请求超时
 	            } else {
@@ -26202,7 +26212,7 @@
 	}
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26248,7 +26258,7 @@
 	}
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26258,17 +26268,17 @@
 	 */
 	{
 
-	    var group = __webpack_require__(31),
-	        resources = __webpack_require__(32),
-	        fav = __webpack_require__(33),
-	        account = __webpack_require__(34),
-	        message = __webpack_require__(40);
+	    var group = __webpack_require__(32),
+	        resources = __webpack_require__(33),
+	        fav = __webpack_require__(34),
+	        account = __webpack_require__(35),
+	        message = __webpack_require__(41);
 
 	    angular.module("request.doHttpRequest", []).factory("request.group", group).factory("request.resources", resources).factory("request.fav", fav).factory("request.account", account).factory("request.message", message);
 	}
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26284,20 +26294,30 @@
 	module.exports = group;
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	"use strict";
 
-	resources.$inject = ["httpRequest.sendRequest", "global.constant"];
+	resources.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal"];
 
-	function resources(send, constant) {
+	function resources(send, constant, $ionicModal) {
 	    return {
 	        getList: function getList(id, _limit, _start) {
 	            return send(constant.path.getResources, "type=all&limit=" + _limit + "&start=" + _start + "&parentId=" + id);
 	        },
 	        getView: function getView(id) {
 	            return send(constant.path.downloadResource + "?disposition=inline&id=" + id);
+	        },
+	        searchModal: function searchModal(scope) {
+	            return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
+	                scope: scope,
+	                animation: 'slide-in-up',
+	                hardwareBackButtonClose: false
+	            });
+	        },
+	        search: function search(paramObj) {
+	            return send(constant.path.searchResources, paramObj);
 	        }
 	    };
 	}
@@ -26305,7 +26325,7 @@
 	module.exports = resources;
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26315,11 +26335,8 @@
 	function fav(send, constant) {
 	    return {
 	        /** 获取收藏列表**/
-	        getList: function getList(_type) {
-	            if (_type == undefined) {
-	                _type = 1;
-	            }
-	            return send(constant.path.getWatches + '', { "type": "resource", resourceType: _type });
+	        getList: function getList(paramObj) {
+	            return send(constant.path.getWatches, paramObj);
 	        },
 	        /**添加收藏**/
 	        addFav: function addFav(id) {
@@ -26336,12 +26353,12 @@
 	module.exports = fav;
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var Base64 = __webpack_require__(35).Base64;
+	var Base64 = __webpack_require__(36).Base64;
 	account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", 'global.Common'];
 	function account(send, scope, interval, $ionicModal, $q, constant, session, Common) {
 	    return {
@@ -26460,7 +26477,7 @@
 	module.exports = account;
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -26482,7 +26499,7 @@
 	    var buffer;
 	    if (typeof module !== 'undefined' && module.exports) {
 	        try {
-	            buffer = __webpack_require__(36).Buffer;
+	            buffer = __webpack_require__(37).Buffer;
 	        } catch (err) {}
 	    }
 	    // constants
@@ -26660,7 +26677,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -26673,9 +26690,9 @@
 
 	'use strict'
 
-	var base64 = __webpack_require__(37)
-	var ieee754 = __webpack_require__(38)
-	var isArray = __webpack_require__(39)
+	var base64 = __webpack_require__(38)
+	var ieee754 = __webpack_require__(39)
+	var isArray = __webpack_require__(40)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -28212,10 +28229,10 @@
 	  return i
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -28345,7 +28362,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -28435,7 +28452,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -28446,7 +28463,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28472,7 +28489,7 @@
 	module.exports = message;
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28512,7 +28529,7 @@
 	}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28568,7 +28585,7 @@
 	}
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28703,7 +28720,7 @@
 	            this.loginInfo = loginInfo;
 	        };
 
-	        var Base64 = __webpack_require__(35).Base64;
+	        var Base64 = __webpack_require__(36).Base64;
 	        angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
 	        MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant', 'global.Common'];
@@ -28711,7 +28728,7 @@
 	}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28721,9 +28738,13 @@
 	 */
 
 	{
-	    var HomeController = function HomeController($state, $timeout, constant, $scope) {
+	    var HomeController = function HomeController($state, $timeout, constant, $scope, resources, Common) {
 	        var collect = {
 	            journalID: constant.config.journalID,
+	            totalCount: 0,
+	            isArticleTab: true,
+	            isBooksTab: false,
+	            searchList: [],
 	            active: function active() {
 	                $scope.$on('event:favToResourcesLIst', function (_scope, _data) {
 	                    var parentId = _data.parentId;
@@ -28734,6 +28755,56 @@
 	                        $state.go('tabs.resourceList', { parentId: parentId, title: title, type: type });
 	                    });
 	                });
+	            },
+	            openSearchModal: function openSearchModal() {
+	                resources.searchModal($scope).then(function (modal) {
+	                    $scope.modal = modal;
+	                    $scope.modal.show();
+	                });
+	            },
+	            closeSearchModal: function closeSearchModal() {
+	                $scope.modal.hide();
+	            },
+	            submitSearch: function submitSearch(form) {
+	                if (!form.queryWords.$valid) {
+	                    Common.Alert('', '请输入关键字');
+	                }
+	                if (form.$valid) {
+	                    var paramObj = {
+	                        categoryId: 0,
+	                        queryWords: this.qurey,
+	                        groupId: 0,
+	                        limit: 10,
+	                        start: 0,
+	                        type: 'DIRECTORY'
+	                    };
+	                    this.loadSearch(paramObj);
+	                }
+	            },
+	            loadSearch: function loadSearch(paramObj) {
+	                resources.search(paramObj).then(function (res) {
+	                    console.log(res.data);
+	                });
+	            },
+	            loadMore: function loadMore() {
+	                //if (this.start >= this.totalCount) {
+	                //    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                //    return;
+	                //}
+	                //resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
+	                //    this.resourceList = this.resourceList.concat(res.data.resources);
+	                //    this.start = this.limit + this.start;
+	                //}).finally(function () {
+	                //    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                //});
+	            },
+	            loadArticle: function loadArticle() {
+	                this.isArticleTab = true;
+	                this.isBooksTab = false;
+	            },
+	            loadBooks: function loadBooks() {
+	                this.isArticleTab = false;
+	                this.isBooksTab = true;
 	            }
 	        };
 	        collect.active();
@@ -28742,11 +28813,11 @@
 
 	    angular.module("HomeModule", ["httpRequest"]).controller("HomeController", HomeController);
 
-	    HomeController.$inject = ["$state", "$timeout", "global.constant", "$scope"];
+	    HomeController.$inject = ["$state", "$timeout", "global.constant", "$scope", "request.resources", "global.Common"];
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28801,7 +28872,7 @@
 	}
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28810,7 +28881,7 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	{
-	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common, $ionicActionSheet) {
 	        var collect = {
 	            resourceList: [],
 	            title: $stateParams.title,
@@ -28824,6 +28895,8 @@
 	            articleCss: false,
 	            defaultPic: 'img/default.gif',
 	            listLength: 0,
+	            watchId: 0,
+	            id: 0,
 	            init: function init() {
 	                var _this = this;
 
@@ -28834,8 +28907,8 @@
 	                    this.limit = 10;
 	                    this.articleCss = true;
 	                }
-	                this.onHold = function (id) {
-	                    _this.showPopup(id);
+	                this.onHold = function (id, event) {
+	                    _this.showPopup(id, event);
 	                };
 	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
 	                    scope: $scope,
@@ -28845,7 +28918,10 @@
 	                    $scope.modal = modal;
 	                });
 	            },
-	            showPopup: function showPopup(id) {
+	            showPopup: function showPopup(id, event) {
+	                //angular.element(event.currentTarget).data("rel", id)
+	                //
+	                //console.log(angular.element(event.currentTarget).data("rel"));
 	                var popup = $ionicPopup.show({
 	                    template: '',
 	                    title: '收藏资源',
@@ -28869,10 +28945,11 @@
 	                    }
 	                });
 	            },
-	            openModal: function openModal(id, title) {
+	            openModal: function openModal(id, title, watchId) {
 	                var _this2 = this;
 
-	                console.log(title);
+	                this.watchId = watchId;
+	                this.id = id;
 	                this.modalTitle = title;
 	                Common.loading.show();
 	                $scope.modal.show();
@@ -28888,7 +28965,43 @@
 	                this.showZoom = false;
 	                $scope.modal.hide();
 	            },
-	            more: function more() {},
+	            actionSheet: function actionSheet() {
+	                var _this3 = this;
+
+	                console.log(this.watchId);
+	                var watchText = this.watchId == 0 ? '添加收藏' : '取消收藏';
+
+	                $ionicActionSheet.show({
+	                    buttons: [{ text: watchText }],
+	                    //destructiveText: 'Delete',
+	                    titleText: '',
+	                    cancelText: '取消',
+	                    cancel: function cancel() {
+	                        // add cancel code..
+	                    },
+	                    buttonClicked: function buttonClicked(index) {
+	                        switch (index) {
+	                            case 0:
+	                                if (_this3.watchId != 0) {
+	                                    fav.removeFav(_this3.watchId).then(function (res) {
+	                                        if (res.data.success) {
+	                                            Common.Alert('', '成功移除收藏');
+	                                            _this3.watchId = 0;
+	                                        }
+	                                    });
+	                                } else {
+	                                    fav.addFav(_this3.id).then(function (res) {
+	                                        if (res.data.success) {
+	                                            Common.Alert('', '收藏成功');
+	                                        }
+	                                    });
+	                                }
+	                                break;
+	                        }
+	                        return true;
+	                    }
+	                });
+	            },
 	            zoom: function zoom(scale) {
 	                if (scale == 'big') {
 	                    $rootScope.$broadcast('event:scale:big'); //传递一个事件给pdf预览指令
@@ -28904,33 +29017,13 @@
 	                return newArr;
 	            },
 	            loadResources: function loadResources() {
-	                var _this3 = this;
+	                var _this4 = this;
 
 	                this.start = 0;
 	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
 	                    var _res$data = res.data;
 	                    var resources = _res$data.resources;
 	                    var totalCount = _res$data.totalCount;
-
-
-	                    if ($stateParams.type == 'folder') {
-	                        _this3.resourceList = _this3.chunk(resources, 3);
-	                        _this3.listLength = _this3.resourceList.length;
-	                    } else if ($stateParams.type == 'list') {
-	                        _this3.resourceList = resources;
-	                    }
-	                    _this3.start = _this3.limit + _this3.start;
-	                    _this3.totalCount = totalCount;
-	                });
-	            },
-	            doRefresh: function doRefresh() {
-	                var _this4 = this;
-
-	                this.start = 0;
-	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                    var _res$data2 = res.data;
-	                    var resources = _res$data2.resources;
-	                    var totalCount = _res$data2.totalCount;
 
 
 	                    if ($stateParams.type == 'folder') {
@@ -28941,12 +29034,32 @@
 	                    }
 	                    _this4.start = _this4.limit + _this4.start;
 	                    _this4.totalCount = totalCount;
+	                });
+	            },
+	            doRefresh: function doRefresh() {
+	                var _this5 = this;
+
+	                this.start = 0;
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
+
+
+	                    if ($stateParams.type == 'folder') {
+	                        _this5.resourceList = _this5.chunk(resources, 3);
+	                        _this5.listLength = _this5.resourceList.length;
+	                    } else if ($stateParams.type == 'list') {
+	                        _this5.resourceList = resources;
+	                    }
+	                    _this5.start = _this5.limit + _this5.start;
+	                    _this5.totalCount = totalCount;
 	                }).finally(function () {
 	                    $rootScope.$broadcast('scroll.refreshComplete');
 	                });
 	            },
 	            loadMore: function loadMore() {
-	                var _this5 = this;
+	                var _this6 = this;
 
 	                if (this.start >= this.totalCount) {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
@@ -28954,12 +29067,12 @@
 	                }
 	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
 	                    if ($stateParams.type == 'folder') {
-	                        _this5.resourceList = _this5.resourceList.concat(_this5.chunk(res.data.resources, 3));
-	                        _this5.listLength = _this5.resourceList.length;
+	                        _this6.resourceList = _this6.resourceList.concat(_this6.chunk(res.data.resources, 3));
+	                        _this6.listLength = _this6.resourceList.length;
 	                    } else if ($stateParams.type == 'list') {
-	                        _this5.resourceList = _this5.resourceList.concat(res.data.resources);
+	                        _this6.resourceList = _this6.resourceList.concat(res.data.resources);
 	                    }
-	                    _this5.start = _this5.limit + _this5.start;
+	                    _this6.start = _this6.limit + _this6.start;
 	                }).finally(function () {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                });
@@ -28971,11 +29084,11 @@
 	    };
 
 	    angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common", "$ionicActionSheet"];
 	}
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29129,7 +29242,7 @@
 	}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29139,13 +29252,18 @@
 	 */
 	{
 	    var favController = function favController($rootScope, $scope, fav, Common, resources, $ionicModal, $timeout, $ionicTabsDelegate, $state) {
-
 	        var collect = {
 	            watchesList: [],
 	            booksList: [],
 	            isArticleTab: true,
 	            isBooksTab: false,
 	            showZoom: false,
+	            a_limit: 10,
+	            a_start: 0,
+	            a_totalCount: 0,
+	            b_limit: 10,
+	            b_start: 0,
+	            b_totalCount: 0,
 	            active: function active() {
 	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
 	                    scope: $scope,
@@ -29159,28 +29277,97 @@
 	                var _this = this;
 
 	                /**访问文章**/
-	                fav.getList(2).then(function (res) {
-	                    _this.watchesList = res.data.watches;
+	                var paramObj = {
+	                    "type": "resource",
+	                    resourceType: 2,
+	                    limit: this.a_limit,
+	                    start: this.a_start
+	                };
+	                fav.getList(paramObj).then(function (res) {
+	                    var _res$data = res.data;
+	                    var totalCount = _res$data.totalCount;
+	                    var watches = _res$data.watches;
+
+	                    _this.a_totalCount = totalCount;
+	                    _this.watchesList = watches;
+	                    _this.a_start = _this.a_limit + _this.a_start;
+	                });
+	            },
+	            loadMoreArticles: function loadMoreArticles() {
+	                var _this2 = this;
+
+	                console.log(this.a_totalCount);
+	                if (this.a_start >= this.a_totalCount) {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    return;
+	                }
+	                var paramObj = {
+	                    "type": "resource",
+	                    resourceType: 2,
+	                    limit: this.a_limit,
+	                    start: this.a_start
+	                };
+	                fav.getList(paramObj).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var totalCount = _res$data2.totalCount;
+	                    var watches = _res$data2.watches;
+
+	                    _this2.watchesList = _this2.watchesList.concat(watches);
+	                    _this2.a_start = _this2.a_limit + _this2.a_start;
 	                });
 	            },
 	            loadBooksList: function loadBooksList() {
-	                var _this2 = this;
+	                var _this3 = this;
 
+	                var paramObj = {
+	                    "type": "resource",
+	                    resourceType: 1,
+	                    limit: this.b_limit,
+	                    start: this.b_start
+	                };
 	                /**访问书本**/
-	                fav.getList(1).then(function (res) {
-	                    _this2.booksList = res.data.watches;
+	                fav.getList(paramObj).then(function (res) {
+	                    var _res$data3 = res.data;
+	                    var totalCount = _res$data3.totalCount;
+	                    var watches = _res$data3.watches;
+
+	                    _this3.booksList = watches;
+	                    _this3.b_totalCount = totalCount;
+	                    _this3.b_start = _this3.b_limit + _this3.b_start;
+	                });
+	            },
+	            loadMoreBooks: function loadMoreBooks() {
+	                var _this4 = this;
+
+	                if (this.b_start >= this.b_totalCount) {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    return;
+	                }
+	                var paramObj = {
+	                    "type": "resource",
+	                    resourceType: 2,
+	                    limit: this.b_limit,
+	                    start: this.b_start
+	                };
+	                fav.getList(paramObj).then(function (res) {
+	                    var _res$data4 = res.data;
+	                    var totalCount = _res$data4.totalCount;
+	                    var watches = _res$data4.watches;
+
+	                    _this4.booksList = _this4.booksList.concat(watches);
+	                    _this4.b_start = _this4.b_limit + _this4.b_start;
 	                });
 	            },
 	            removeFavList: function removeFavList(id, type) {
-	                var _this3 = this;
+	                var _this5 = this;
 
 	                fav.removeFav(id).then(function (res) {
 	                    if (res.data.type == "success") {
 	                        if (type == 'article') {
-	                            _this3.watchesList = "";
+	                            _this5.watchesList = "";
 	                            collect.loadFavList();
 	                        } else {
-	                            _this3.booksList = "";
+	                            _this5.booksList = "";
 	                            collect.loadBooksList();
 	                        }
 	                    }
@@ -29198,7 +29385,7 @@
 	                }
 	            },
 	            openModal: function openModal(id, title) {
-	                var _this4 = this;
+	                var _this6 = this;
 
 	                console.log(title);
 	                this.modalTitle = title;
@@ -29207,7 +29394,7 @@
 	                $timeout(function () {
 	                    resources.getView(id).then(function (res) {
 	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                        _this4.showZoom = true;
+	                        _this6.showZoom = true;
 	                    });
 	                }, 100);
 	            },
@@ -29222,6 +29409,8 @@
 	                $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
 	                this.showZoom = false;
 	                $scope.modal.hide();
+	                this.watchesList = [];
+	                this.booksList = [];
 	            },
 	            readBooks: function readBooks(id, title) {
 	                $timeout(function () {
@@ -29229,12 +29418,10 @@
 	                    $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
 	                }, 100);
 	            }
-
 	        };
 	        collect.active();
 	        collect.loadFavList();
 	        this.collect = collect;
-	        // this.func = func;//exports
 	    };
 
 	    angular.module("favModule", ["httpRequest"]).controller("favController", favController);
@@ -29243,7 +29430,7 @@
 	}
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29415,7 +29602,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29498,7 +29685,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29511,7 +29698,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29662,9 +29849,9 @@
 	            };
 	        };
 
-	        var VerEx = __webpack_require__(53);
-	        var Swiper = __webpack_require__(54);
-	        var pdf2htmlEX = __webpack_require__(55);
+	        var VerEx = __webpack_require__(54);
+	        var Swiper = __webpack_require__(55);
+	        var pdf2htmlEX = __webpack_require__(56);
 	        angular.module('directivesModule').directive('onFinished', onFinished).directive('viewPdf', viewPdf);
 	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	        onFinished.$inject = ['$timeout', '$q'];
@@ -29672,7 +29859,7 @@
 	}
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -30085,7 +30272,7 @@
 
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34535,7 +34722,7 @@
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */
@@ -35480,7 +35667,7 @@
 	//pdf2htmlEX['Viewer'] = Viewer;
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';

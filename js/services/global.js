@@ -27,6 +27,7 @@
                 , getMyReceiveResources: "/group/getMyReceiveResources.action"
                 , deleteReceivedResource: "/group/deleteReceivedResource.action"
                 , findPassword: '/webmail/findPassword.action'
+                , searchResources: '/group/searchResources.action'
 
             },
             config: {
