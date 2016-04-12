@@ -8,9 +8,11 @@
         .module("favModule", ["httpRequest"])
         .controller("favController", favController);
 
-    favController.$inject = ["$rootScope", "$scope", "request.fav", "global.Common", "request.resources", "$ionicModal", "$timeout", "$ionicTabsDelegate", "$state"];
+    favController.$inject = ["$rootScope", "$scope", "request.fav", "global.Common",
+        "request.resources", "$ionicModal", "$timeout", "$ionicTabsDelegate", "$state"];
 
-    function favController($rootScope, $scope, fav, Common, resources, $ionicModal, $timeout, $ionicTabsDelegate, $state) {
+    function favController($rootScope, $scope, fav, Common, resources, $ionicModal,
+                           $timeout, $ionicTabsDelegate, $state) {
         let collect = {
             watchesList: [],
             booksList: [],
@@ -23,15 +25,6 @@
             b_limit: 10,
             b_start: 0,
             b_totalCount: 0,
-            active: function () {
-                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
-                    scope: $scope,
-                    animation: 'slide-in-up',
-                    hardwareBackButtonClose: false
-                }).then((modal)=> {
-                    $scope.modal = modal;
-                });
-            },
             loadFavList: function () {
                 /**访问文章**/
                 let paramObj = {
@@ -48,7 +41,6 @@
                 });
             },
             loadMoreArticles: function () {
-                console.log(this.a_totalCount)
                 if (this.a_start >= this.a_totalCount) {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                     return;
@@ -122,17 +114,15 @@
                     this.loadBooksList();
                 }
             },
-            openModal: function (id, title) {
-                console.log(title);
-                this.modalTitle = title;
+            openModal: function (id, title,watchId) {
                 Common.loading.show();
-                $scope.modal.show();
-                $timeout(()=> {
-                    resources.getView(id).then(res=> {
-                        $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
-                        this.showZoom = true;
-                    });
-                }, 100);
+                $rootScope.pdfModal.show();
+                $rootScope.$emit("params:watched", {'watchId': watchId, 'id': id});//向上传送参数给mainController
+                resources.getView(id).then(res=> {
+                    $rootScope.pdfViewTitle = title;
+                    $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
+                    this.showZoom = true;
+                });
             },
             zoom: function (scale) {
                 if (scale == 'big') {
@@ -141,21 +131,19 @@
                     $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
                 }
             },
-            hideModal: function () {
-                $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
-                this.showZoom = false;
-                $scope.modal.hide();
-                this.watchesList = [];
-                this.booksList = [];
-            },
             readBooks: function (id, title) {
                 $timeout(function () {
                     $ionicTabsDelegate.select(0);
-                    $rootScope.$broadcast('event:favToResourcesLIst', {parentId: id, title: title, type: 'list'});
+                    $timeout(function () {
+                        $rootScope.$broadcast('event:favToResourcesLIst', {parentId: id, title: title, type: 'list'});
+                    }, 100);
                 }, 100);
             }
         }
-        collect.active();
+        $rootScope.$on('event:pdfModalClose', function () {
+            $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
+            collect.showZoom = false;
+        });
         collect.loadFavList();
         this.collect = collect;
     }

@@ -6,10 +6,9 @@
         .controller("ResourceListController", ResourceListController);
     ResourceListController.$inject = ["$state", "$rootScope", "$scope",
         "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
-        "$sce", "global.constant", "$timeout", "global.Common", "$ionicActionSheet"];
+        "$sce", "global.constant", "$timeout", "global.Common"];
     function ResourceListController($state, $rootScope, $scope, $stateParams,
-                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common,
-                                    $ionicActionSheet) {
+                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -25,6 +24,7 @@
             listLength: 0,
             watchId: 0,
             id: 0,
+            targetItem: null,
             init: function () {
                 if ($stateParams.type == 'folder') {
                     this.limit = 12;
@@ -33,21 +33,19 @@
                     this.limit = 10;
                     this.articleCss = true;
                 }
-                this.onHold = (id, event)=> {
-                    this.showPopup(id, event);
+                this.onHold = (id, watchId, event)=> {
+                    this.showPopup(id, watchId, event);
                 };
-                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
-                    scope: $scope,
-                    animation: 'slide-in-up',
-                    hardwareBackButtonClose: false
-                }).then((modal)=> {
-                    $scope.modal = modal;
-                });
             },
-            showPopup: function (id, event) {
-                //angular.element(event.currentTarget).data("rel", id)
-                //
-                //console.log(angular.element(event.currentTarget).data("rel"));
+            showPopup: function (id, watchId, event) {
+                this.targetItem = angular.element(event.currentTarget);//把列表当前event赋值给一个变量
+                let watchText = '添加收藏';
+                if (this.targetItem.data('watchId') == 0) {
+                    watchText = '添加收藏'
+                } else if (this.targetItem.data('watchId') != undefined
+                    || watchId > 0) {
+                    watchText = '取消收藏'
+                }
                 let popup = $ionicPopup.show({
                     template: '',
                     title: '收藏资源',
@@ -56,77 +54,46 @@
                     buttons: [
                         {text: '返回'},
                         {
-                            text: '<b>收藏</b>',
+                            text: '<b>' + watchText + '</b>',
                             type: 'button-positive',
                             onTap: (e)=> {
-                                return id;
+                                return {'id': id, 'watchId': watchId, 'text': watchText};
                             }
                         }
                     ]
                 });
-                popup.then((id)=> {
-                    if (id != undefined) {
-                        fav.addFav(id).then((res)=> {
-                            if (res.data.success) {
-                                console.log("收藏成功");
-                            }
-                        });
+                popup.then((obj)=> {
+                    if (obj != undefined) {
+                        if (obj.text == '添加收藏') {
+                            fav.addFav(obj.id).then((res)=> {
+                                this.targetItem.data('watchId', res.data.watch[0].watchId);// 用列表临时记录是否已经收藏的状态，不刷新
+                                Common.Alert('', "收藏成功");
+                            });
+                        } else {
+                            fav.removeFav(obj.watchId).then(res=> {
+                                if (res.data.type == "success") {
+                                    Common.Alert('', '成功取消收藏');
+                                    this.targetItem.data('watchId', 0);
+                                    this.watchId = 0;
+                                }
+                            });
+                        }
                     }
                 });
             },
-            openModal: function (id, title, watchId) {
+            openModal: function (id, title, watchId, event) {
+                this.targetItem = angular.element(event.currentTarget);
                 this.watchId = watchId;
                 this.id = id;
-                this.modalTitle = title;
+                $rootScope.pdfViewTitle = title;
                 Common.loading.show();
-                $scope.modal.show();
-                $timeout(()=> {
-                    resources.getView(id).then(res=> {
-                        $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
-                        this.showZoom = true;
-                    });
-                }, 100);
-            },
-            hideModal: function () {
-                $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
-                this.showZoom = false;
-                $scope.modal.hide();
-            },
-            actionSheet: function () {
-                console.log(this.watchId);
-                let watchText = this.watchId == 0 ? '添加收藏' : '取消收藏';
-
-                $ionicActionSheet.show({
-                    buttons: [
-                        {text: watchText},
-                    ],
-                    //destructiveText: 'Delete',
-                    titleText: '',
-                    cancelText: '取消',
-                    cancel: function () {
-                        // add cancel code..
-                    },
-                    buttonClicked: index=> {
-                        switch (index) {
-                            case 0:
-                                if (this.watchId != 0) {
-                                    fav.removeFav(this.watchId).then((res)=> {
-                                        if (res.data.success) {
-                                            Common.Alert('', '成功移除收藏');
-                                            this.watchId = 0;
-                                        }
-                                    });
-                                } else {
-                                    fav.addFav(this.id).then((res)=> {
-                                        if (res.data.success) {
-                                            Common.Alert('', '收藏成功');
-                                        }
-                                    });
-                                }
-                                break;
-                        }
-                        return true;
-                    }
+                $rootScope.pdfModal.show();
+                if (this.targetItem.data('watchId') != 0 && this.targetItem.data('watchId') != undefined)
+                    this.watchId = this.targetItem.data('watchId');
+                $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id});//向上传送参数给mainController
+                resources.getView(id).then(res=> {
+                    $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
+                    this.showZoom = true;
                 });
             },
             zoom: function (scale) {
@@ -193,6 +160,17 @@
                 });
             }
         }
+
+        /**pdf预览modal关闭时触发**/
+        $rootScope.$on('event:pdfModalClose', function () {
+            collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
+            $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令，执行关闭前的操作
+            collect.showZoom = false;
+        });
+        /**接收由mainController传过来的参数**/
+        $rootScope.$on('params:fromMain', function (_scope, _id) {
+            collect.watchId = _id;
+        });
         collect.init();
         collect.loadResources();
         this.collect = collect;

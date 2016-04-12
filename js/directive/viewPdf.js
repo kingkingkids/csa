@@ -20,6 +20,7 @@
             link: function (scope, element, attrs, ctrl) {
                 if (scope.$last) {
                     ctrl.initSwipe();//渲染结束后调用初始化Swiper
+
                 }
             }
         }
@@ -39,6 +40,9 @@
             }
             , pageIdReg: VerEx().find('id="pf').anythingBut('"')//获取页id正则
         }
+        let swiper = null;
+        let defaultViewer = null;
+        let slidesArr;
         return {
             restrict: 'E',
             templateUrl: './js/directive/view.html',
@@ -48,7 +52,9 @@
             link: function (scope, element, attrs, ctrl) {
                 //console.log(onFinishRenderCtrl);
                 scope.$on('event:openModel', openCallback);
+
                 scope.$on('event:closeModel', closeCallback);
+
                 /** 正则规则**/
                 scope.index = 0;//定义一个全局的分页索引，方便外部调用
                 scope.items = [];
@@ -72,38 +78,36 @@
                 function closeCallback() {
                     scope.styleOutLine = "";//清空样式
                     scope.content = "";
-                    scope.defaultViewer = null;
+                    defaultViewer = null;
                     scope.showZoom = false;
                     scope.items = [];
                     scope.body = "";
                     scope.style = "";
                     scope.index = 0;
+
                 }
             },
             controller: function ($scope, $element, $attrs) {
-                $scope.swiper = null;
-                $scope.defaultViewer = null;
-                let slidesArr;
                 /**以下为初始化Swiper及设值**/
                 this.initSwipe = function () {
-                    if (!$scope.swiper) {
-                        $scope.swiper = new Swiper('.swiper-container', {
+                    if (!swiper) {
+                        swiper = new Swiper('.swiper-container', {
                             pagination: '.swiper-pagination',
                             paginationClickable: false,
                             paginationType: 'progress',
                             onInit: e=> {
                                 e.slides[0].innerHTML = getHtml(0);
-                                $scope.defaultViewer = new pdf2htmlEX({});
+                                defaultViewer = new pdf2htmlEX({});
                                 slidesArr = document.querySelectorAll('.swiper-slide');
                             }
                         });
                     } else {
-                        $scope.swiper.slideTo(0);
-                        $scope.swiper.update(true);
-                        $scope.swiper.slides[0].innerHTML = getHtml(0);
+                        swiper.update(true);
+                        swiper.slideTo(0);
+                        swiper.slides[0].innerHTML = getHtml(0);
                         slidesArr = document.querySelectorAll('.swiper-slide');
                     }
-                    $scope.swiper.on('onSlideChangeStart', e=> {
+                    swiper.on('onSlideChangeStart', e=> {
                         $timeout(()=> {
                             let activeIndex = e.activeIndex;
                             $scope.index = activeIndex;
@@ -112,14 +116,13 @@
                                 slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
                                 slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
                             } else if ($scope.pageArrayLength == (activeIndex + 1)) {
-
                                 slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
                                 slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
                             } else {
                                 slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
                                 slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
                             }
-                            $scope.defaultViewer = new pdf2htmlEX({});
+                            defaultViewer = new pdf2htmlEX({});
                         }, 100);
 
                     });
@@ -141,17 +144,17 @@
                 }
 
                 $scope.$on('event:scale:big', function () {
-                    if ($scope.defaultViewer.scale == 2.5)
+                    if (defaultViewer.scale == 2.5)
                         return;
-                    $scope.defaultViewer.rescale(2.5);
-                    $scope.content = $sce.trustAsHtml($scope.swiper.slides[$scope.index].innerHTML);
+                    defaultViewer.rescale(2.5);
+                    $scope.content = $sce.trustAsHtml(swiper.slides[$scope.index].innerHTML);
                     document.querySelector('.swiper-container').style.display = "none";
                 });
                 $scope.$on('event:scale:small', function () {
-                    if ($scope.defaultViewer.scale == 1)
+                    if (defaultViewer.scale == 1)
                         return;
                     $scope.content = "";
-                    $scope.defaultViewer.rescale(1);
+                    defaultViewer.rescale(1);
                     document.querySelector('.swiper-container').style.display = "block";
                 });
             }

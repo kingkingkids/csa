@@ -7,16 +7,17 @@
         .module("MainModule", ["httpRequest"])
         .controller("MainController", MainController);
 
-    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant', 'global.Common'];
+    MainController.$inject = ["$rootScope", "$scope", "$state", "request.account",
+        "global.session", "$ionicHistory", 'global.constant', 'global.Common', '$ionicModal',
+        '$ionicActionSheet', 'request.fav'];
 
-    function MainController(root, scope, state, account, session, $ionicHistory, constant, Common) {
+    function MainController(root, scope, state, account, session,
+                            $ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
         let loginInfo = {
             username: null,
             password: null,
             remberMe: null
         }
-
-
         /**接收到由httpRequest传过来的事件,退出时调用**/
         root.$on("status:logout", ()=> {
             collect.logoutFunc();
@@ -24,8 +25,15 @@
         root.$on("event:logout", ()=> {
             collect.logoutFunc();
         });
+        /** 接收由列表传递过来的关注的参数**/
+        root.$on('params:watched', (_scope, _data)=> {
+            collect.watchId = _data.watchId;
+            collect.resourceId = _data.id;
+        });
         account.loginModal(scope);//判断是否登录,否则显示登录窗口
         let collect = {
+            watchId: 0,
+            resourceId: 0,
             init: function () {
                 if (localStorage.saveUserInfo != undefined) {
                     loginInfo.remberMe = true;
@@ -35,6 +43,54 @@
 
                 }
                 account.keepAlive.start();//进入首页后开始调用保持链接,5分钟加载一次
+                /**创建全局的pdfModal**/
+                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+                    scope: scope,
+                    animation: 'slide-in-up',
+                    hardwareBackButtonClose: false
+                }).then((modal)=> {
+                    root.pdfModal = modal;
+                });
+            },
+            closePdfModal: function () {
+                root.pdfModal.hide();
+                root.$broadcast('event:pdfModalClose');
+            },
+            actionSheet: function () {
+                let watchText = this.watchId == 0 ? '添加收藏' : '取消收藏'; //根据watchId判断是否已添加收藏
+                $ionicActionSheet.show({
+                    buttons: [
+                        {text: watchText},
+                    ],
+                    //destructiveText: 'Delete',
+                    titleText: '',
+                    cancelText: '取消',
+                    cancel: function () {
+                        // add cancel code..
+                    },
+                    buttonClicked: index=> {
+                        switch (index) {
+                            case 0:
+                                if (this.watchId != 0) {
+                                    fav.removeFav(this.watchId).then((res)=> {
+                                        if (res.data.success) {
+                                            this.watchId = 0;
+                                            root.$broadcast('params:fromMain',this.watchId);
+                                            Common.Alert('', '成功取消收藏');
+                                        }
+                                    });
+                                } else {
+                                    fav.addFav(this.resourceId).then((res)=> {
+                                        this.watchId = res.data.watch[0].watchId;
+                                        root.$broadcast('params:fromMain',this.watchId);
+                                        Common.Alert('', '收藏成功');
+                                    });
+                                }
+                                break;
+                        }
+                        return true;
+                    }
+                });
             },
             loginModal: {
                 show: function () {

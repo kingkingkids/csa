@@ -1,9 +1,9 @@
 <ion-modal-view class="pdfViewModal">
     <ion-header-bar align-title="left">
         <div class="buttons">
-            <button class="button" on-tap="vm.collect.hideModal()"><span class="ion-chevron-left"></span>返回</button>
+            <button class="button" on-tap="vm.collect.closePdfModal()"><span class="ion-chevron-left"></span>返回</button>
         </div>
-        <h1 class="title">{{vm.collect.modalTitle}}</h1>
+        <h1 class="title" ng-bind-html="pdfViewTitle.replace('.html','')"></h1>
         <div class="buttons">
             <button class="button" on-tap="vm.collect.actionSheet()">...</button>
         </div>

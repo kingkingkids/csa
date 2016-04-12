@@ -75,11 +75,12 @@
 	__webpack_require__(48); //资源列表控制器
 	__webpack_require__(49); //资源列表控制器
 	__webpack_require__(50); //资源列表控制器
+	__webpack_require__(51); //资源列表控制器
 	//require("./controllers/viewController.js");
-	__webpack_require__(51);
 	__webpack_require__(52);
 	__webpack_require__(53);
-	__webpack_require__(57);
+	__webpack_require__(54);
+	__webpack_require__(58);
 
 /***/ },
 /* 2 */
@@ -496,7 +497,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabTitle {\r\n  width: 100%;\r\n  height: 43px;\r\n  text-align: center;\r\n  font-weight: bold;\r\n  position: absolute; }\r\n\r\n.bar .title.title-left {\r\n  width: 100%;\r\n  margin-left: 0;\r\n  left: 0 !important; }\r\n\r\n.title-left {\r\n  text-align: center; }\r\n\r\n@font-face {\r\n  font-family: \"iconfont\";\r\n  src: url(" + __webpack_require__(14) + ");\r\n  /* IE9*/\r\n  src: url(" + __webpack_require__(14) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(15) + ") format(\"woff\"), url(" + __webpack_require__(16) + ") format(\"truetype\"), url(" + __webpack_require__(17) + "#iconfont) format(\"svg\");\r\n  /* iOS 4.1- */ }\r\n.iconfont {\r\n  font-family: \"iconfont\" !important;\r\n  font-size: 16px;\r\n  font-style: normal;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-text-stroke-width: 0.2px;\r\n  -moz-osx-font-smoothing: grayscale; }\r\n\r\n.icon-21:before {\r\n  content: \"\\E602\"; }\r\n\r\n.icon-22:before {\r\n  content: \"\\E603\"; }\r\n\r\n.icon-12:before {\r\n  content: \"\\E601\"; }\r\n\r\n.icon-11:before {\r\n  content: \"\\E600\"; }\r\n\r\n.icon-31:before {\r\n  content: \"\\E604\"; }\r\n\r\n.icon-32:before {\r\n  content: \"\\E605\"; }\r\n\r\n.icon-41:before {\r\n  content: \"\\E606\"; }\r\n\r\n.icon-42:before {\r\n  content: \"\\E607\"; }\r\n\r\n.tab-item .icon {\r\n  font-size: 28px;\r\n  line-height: 32px; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(18) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(19) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(20) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(21) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(22) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center;\r\n    font-size: 12px; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px;\r\n    height: 160px; }\r\n    .jouneryList .list .bookStore .item p {\r\n      text-align: left; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  width: 100%; }\r\n  .favWrap .innerHeader .buttons .left-buttons {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit button {\r\n  background-color: #fff; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff; }\r\n.pdfViewModal .bar .title.title-left {\r\n  text-align: center; }\r\n\r\n.searchWrap {\r\n  height: 31px;\r\n  line-height: 31px;\r\n  width: 95%;\r\n  margin: 10px auto 0 auto;\r\n  font-size: 12px;\r\n  color: #ababae;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  background: #eee;\r\n  display: block; }\r\n  .searchWrap.activated {\r\n    background: #f1f1f1; }\r\n  .searchWrap span {\r\n    background: url(" + __webpack_require__(23) + ") no-repeat;\r\n    background-position: 0 1px !important;\r\n    background-size: 12.5px auto !important;\r\n    padding-left: 18px; }\r\n\r\n.searchHeader {\r\n  height: 90px !important; }\r\n  .searchHeader h1 .bar {\r\n    background: none !important; }\r\n  .searchHeader .tabsWrap {\r\n    position: absolute;\r\n    top: 46px;\r\n    width: 100%; }\r\n  .searchHeader .button-bar {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n    .searchHeader .button-bar .button {\r\n      height: 28px;\r\n      line-height: 28px;\r\n      min-height: 28px;\r\n      border: 1px solid #007aff; }\r\n      .searchHeader .button-bar .button.active {\r\n        background: #1588f0;\r\n        color: #fff; }\r\n    .searchHeader .button-bar .button:last-child {\r\n      border-left: 0; }\r\n\r\n.searchContent.has-header {\r\n  top: 90px; }\r\n\r\n.outButton {\r\n  position: absolute;\r\n  left: -9999px;\r\n  top: -9999px; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabTitle {\r\n  width: 100%;\r\n  height: 43px;\r\n  text-align: center;\r\n  font-weight: bold;\r\n  position: absolute; }\r\n\r\n.bar .title.title-left {\r\n  width: 100%;\r\n  margin-left: 0;\r\n  left: 0 !important; }\r\n\r\n.title-left {\r\n  text-align: center; }\r\n\r\n@font-face {\r\n  font-family: \"iconfont\";\r\n  src: url(" + __webpack_require__(14) + ");\r\n  /* IE9*/\r\n  src: url(" + __webpack_require__(14) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(15) + ") format(\"woff\"), url(" + __webpack_require__(16) + ") format(\"truetype\"), url(" + __webpack_require__(17) + "#iconfont) format(\"svg\");\r\n  /* iOS 4.1- */ }\r\n.iconfont {\r\n  font-family: \"iconfont\" !important;\r\n  font-size: 16px;\r\n  font-style: normal;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-text-stroke-width: 0.2px;\r\n  -moz-osx-font-smoothing: grayscale; }\r\n\r\n.icon-21:before {\r\n  content: \"\\E602\"; }\r\n\r\n.icon-22:before {\r\n  content: \"\\E603\"; }\r\n\r\n.icon-12:before {\r\n  content: \"\\E601\"; }\r\n\r\n.icon-11:before {\r\n  content: \"\\E600\"; }\r\n\r\n.icon-31:before {\r\n  content: \"\\E604\"; }\r\n\r\n.icon-32:before {\r\n  content: \"\\E605\"; }\r\n\r\n.icon-41:before {\r\n  content: \"\\E606\"; }\r\n\r\n.icon-42:before {\r\n  content: \"\\E607\"; }\r\n\r\n.tab-item .icon {\r\n  font-size: 28px;\r\n  line-height: 32px; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(18) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(19) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n/**swiper**/\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.swiper-pagination-progress {\r\n  opacity: .8 !important;\r\n  width: 100% !important;\r\n  height: 2px !important; }\r\n  .swiper-pagination-progress .swiper-pagination-progressbar {\r\n    background: #34cca7 !important; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(20) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(21) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(22) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center;\r\n    font-size: 12px; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px;\r\n    height: 160px; }\r\n    .jouneryList .list .bookStore .item p {\r\n      text-align: left; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  width: 100%; }\r\n  .favWrap .innerHeader .buttons .left-buttons {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit button {\r\n  background-color: #fff; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff;\r\n  color: #0079ff !important;\r\n  font-size: 17px !important; }\r\n  .pdfViewModal button span {\r\n    margin-right: 5px; }\r\n.pdfViewModal .bar .title.title-left {\r\n  text-align: center; }\r\n.pdfViewModal #page-container {\r\n  padding-top: 10px; }\r\n\r\n.searchWrap {\r\n  height: 31px;\r\n  line-height: 31px;\r\n  width: 95%;\r\n  margin: 10px auto 0 auto;\r\n  font-size: 12px;\r\n  color: #ababae;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  background: #eee;\r\n  display: block; }\r\n  .searchWrap.activated {\r\n    background: #f1f1f1; }\r\n  .searchWrap span {\r\n    background: url(" + __webpack_require__(23) + ") no-repeat;\r\n    background-position: 0 1px !important;\r\n    background-size: 12.5px auto !important;\r\n    padding-left: 18px; }\r\n\r\n.searchHeader {\r\n  height: 90px !important; }\r\n  .searchHeader h1 .bar {\r\n    background: none !important; }\r\n  .searchHeader .tabsWrap {\r\n    position: absolute;\r\n    top: 46px;\r\n    width: 100%; }\r\n  .searchHeader .button-bar {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n    .searchHeader .button-bar .button {\r\n      height: 28px;\r\n      line-height: 28px;\r\n      min-height: 28px;\r\n      border: 1px solid #007aff; }\r\n      .searchHeader .button-bar .button.active {\r\n        background: #1588f0;\r\n        color: #fff; }\r\n    .searchHeader .button-bar .button:last-child {\r\n      border-left: 0; }\r\n\r\n.searchContent.has-header {\r\n  top: 90px; }\r\n\r\n.outButton {\r\n  position: absolute;\r\n  left: -9999px;\r\n  top: -9999px; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -26076,7 +26077,7 @@
 	    // angular.module is a global place for creating, registering and retrieving Angular modules
 	    // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 	    // the 2nd parameter is an array of 'requires'
-	    angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule', 'infoModule', 'directivesModule']).config(appConfig).run(appRun);
+	    angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule', 'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule', 'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule', 'infoModule', 'directivesModule', 'filterModule']).config(appConfig).run(appRun);
 	    appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider"];
 	    appRun.$inject = ["$ionicPlatform", "$rootScope"];
 	}
@@ -28595,15 +28596,14 @@
 	 */
 	{
 	    (function () {
-	        var MainController = function MainController(root, scope, state, account, session, $ionicHistory, constant, Common) {
-	            var _this = this;
+	        var MainController = function MainController(root, scope, state, account, session, $ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
+	            var _this2 = this;
 
 	            var loginInfo = {
 	                username: null,
 	                password: null,
 	                remberMe: null
 	            };
-
 	            /**接收到由httpRequest传过来的事件,退出时调用**/
 	            root.$on("status:logout", function () {
 	                collect.logoutFunc();
@@ -28611,8 +28611,15 @@
 	            root.$on("event:logout", function () {
 	                collect.logoutFunc();
 	            });
+	            /** 接收由列表传递过来的关注的参数**/
+	            root.$on('params:watched', function (_scope, _data) {
+	                collect.watchId = _data.watchId;
+	                collect.resourceId = _data.id;
+	            });
 	            account.loginModal(scope); //判断是否登录,否则显示登录窗口
 	            var collect = {
+	                watchId: 0,
+	                resourceId: 0,
 	                init: function init() {
 	                    if (localStorage.saveUserInfo != undefined) {
 	                        loginInfo.remberMe = true;
@@ -28621,6 +28628,54 @@
 	                        loginInfo.password = Base64.decode(usrInfoArr[1]);
 	                    }
 	                    account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
+	                    /**创建全局的pdfModal**/
+	                    $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
+	                        scope: scope,
+	                        animation: 'slide-in-up',
+	                        hardwareBackButtonClose: false
+	                    }).then(function (modal) {
+	                        root.pdfModal = modal;
+	                    });
+	                },
+	                closePdfModal: function closePdfModal() {
+	                    root.pdfModal.hide();
+	                    root.$broadcast('event:pdfModalClose');
+	                },
+	                actionSheet: function actionSheet() {
+	                    var _this = this;
+
+	                    var watchText = this.watchId == 0 ? '添加收藏' : '取消收藏'; //根据watchId判断是否已添加收藏
+	                    $ionicActionSheet.show({
+	                        buttons: [{ text: watchText }],
+	                        //destructiveText: 'Delete',
+	                        titleText: '',
+	                        cancelText: '取消',
+	                        cancel: function cancel() {
+	                            // add cancel code..
+	                        },
+	                        buttonClicked: function buttonClicked(index) {
+	                            switch (index) {
+	                                case 0:
+	                                    if (_this.watchId != 0) {
+	                                        fav.removeFav(_this.watchId).then(function (res) {
+	                                            if (res.data.success) {
+	                                                _this.watchId = 0;
+	                                                root.$broadcast('params:fromMain', _this.watchId);
+	                                                Common.Alert('', '成功取消收藏');
+	                                            }
+	                                        });
+	                                    } else {
+	                                        fav.addFav(_this.resourceId).then(function (res) {
+	                                            _this.watchId = res.data.watch[0].watchId;
+	                                            root.$broadcast('params:fromMain', _this.watchId);
+	                                            Common.Alert('', '收藏成功');
+	                                        });
+	                                    }
+	                                    break;
+	                            }
+	                            return true;
+	                        }
+	                    });
 	                },
 	                loginModal: {
 	                    show: function show() {
@@ -28632,17 +28687,17 @@
 	                },
 	                login: function login() {
 	                    var paramsObj = {
-	                        "account": _this.loginInfo.username,
-	                        "password": _this.loginInfo.password
+	                        "account": _this2.loginInfo.username,
+	                        "password": _this2.loginInfo.password
 	                    };
 	                    account.doLogin(paramsObj).then(function (res) {
-	                        _this.collect.loginModal.hide();
+	                        _this2.collect.loginModal.hide();
 	                        $ionicHistory.nextViewOptions({
 	                            disableBack: false
 	                        });
 	                        if (loginInfo.remberMe) {
-	                            var usr = Base64.encode(_this.loginInfo.username),
-	                                psw = Base64.encode(_this.loginInfo.password);
+	                            var usr = Base64.encode(_this2.loginInfo.username),
+	                                psw = Base64.encode(_this2.loginInfo.password);
 	                            localStorage.saveUserInfo = [usr, psw];
 	                        }
 	                        loginInfo = {
@@ -28658,14 +28713,14 @@
 	                        "password": constant.config.guestAccount[1]
 	                    };
 	                    account.doLogin(paramsObj).then(function (res) {
-	                        _this.collect.loginModal.hide();
+	                        _this2.collect.loginModal.hide();
 	                        $ionicHistory.nextViewOptions({
 	                            disableBack: false
 	                        });
 	                    });
 	                },
 	                logoutFunc: function logoutFunc() {
-	                    _this.collect.loginModal.show();
+	                    _this2.collect.loginModal.show();
 	                    account.keepAlive.stop(); //停止keepAlive调用
 	                    session.removeSession();
 	                    $ionicHistory.nextViewOptions({
@@ -28674,24 +28729,24 @@
 	                    state.go("tabs.home");
 	                    $ionicHistory.clearHistory();
 
-	                    _this.loginInfo.remberMe = false;
-	                    _this.loginInfo.username = '';
-	                    _this.loginInfo.password = '';
+	                    _this2.loginInfo.remberMe = false;
+	                    _this2.loginInfo.username = '';
+	                    _this2.loginInfo.password = '';
 	                },
 	                forget: function forget() {
-	                    var _this2 = this;
+	                    var _this3 = this;
 
 	                    account.forgetPasswordModal(scope).then(function (modal) {
 	                        scope.forgetPasswordModal = modal;
 	                        scope.forgetPasswordModal.show();
-	                        _this2.modalForgetTitle = '找回密码';
+	                        _this3.modalForgetTitle = '找回密码';
 	                    });
 	                },
 	                hideForgetModal: function hideForgetModal() {
 	                    scope.forgetPasswordModal.hide();
 	                },
 	                sendEmail: function sendEmail() {
-	                    var _this3 = this;
+	                    var _this4 = this;
 
 	                    var reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
 	                    if (this.findPasswordMail == "" || this.findPasswordMail == undefined) {
@@ -28707,7 +28762,7 @@
 	                            Common.Alert('', '您输入的邮箱不存在，请重新输入');
 	                        } else if (res.data.errorCode == "0") {
 	                            Common.Alert('', '发送成功').then(function (res) {
-	                                _this3.findPasswordMail = "";
+	                                _this4.findPasswordMail = "";
 	                                scope.forgetPasswordModal.hide();
 	                            });
 	                        }
@@ -28723,7 +28778,7 @@
 	        var Base64 = __webpack_require__(36).Base64;
 	        angular.module("MainModule", ["httpRequest"]).controller("MainController", MainController);
 
-	        MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant', 'global.Common'];
+	        MainController.$inject = ["$rootScope", "$scope", "$state", "request.account", "global.session", "$ionicHistory", 'global.constant', 'global.Common', '$ionicModal', '$ionicActionSheet', 'request.fav'];
 	    })();
 	}
 
@@ -28881,7 +28936,7 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	{
-	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common, $ionicActionSheet) {
+	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
 	        var collect = {
 	            resourceList: [],
 	            title: $stateParams.title,
@@ -28897,6 +28952,7 @@
 	            listLength: 0,
 	            watchId: 0,
 	            id: 0,
+	            targetItem: null,
 	            init: function init() {
 	                var _this = this;
 
@@ -28907,99 +28963,66 @@
 	                    this.limit = 10;
 	                    this.articleCss = true;
 	                }
-	                this.onHold = function (id, event) {
-	                    _this.showPopup(id, event);
+	                this.onHold = function (id, watchId, event) {
+	                    _this.showPopup(id, watchId, event);
 	                };
-	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
-	                    scope: $scope,
-	                    animation: 'slide-in-up',
-	                    hardwareBackButtonClose: false
-	                }).then(function (modal) {
-	                    $scope.modal = modal;
-	                });
 	            },
-	            showPopup: function showPopup(id, event) {
-	                //angular.element(event.currentTarget).data("rel", id)
-	                //
-	                //console.log(angular.element(event.currentTarget).data("rel"));
+	            showPopup: function showPopup(id, watchId, event) {
+	                var _this2 = this;
+
+	                this.targetItem = angular.element(event.currentTarget); //把列表当前event赋值给一个变量
+	                var watchText = '添加收藏';
+	                if (this.targetItem.data('watchId') == 0) {
+	                    watchText = '添加收藏';
+	                } else if (this.targetItem.data('watchId') != undefined || watchId > 0) {
+	                    watchText = '取消收藏';
+	                }
 	                var popup = $ionicPopup.show({
 	                    template: '',
 	                    title: '收藏资源',
 	                    subTitle: '',
 	                    scope: $scope,
 	                    buttons: [{ text: '返回' }, {
-	                        text: '<b>收藏</b>',
+	                        text: '<b>' + watchText + '</b>',
 	                        type: 'button-positive',
 	                        onTap: function onTap(e) {
-	                            return id;
+	                            return { 'id': id, 'watchId': watchId, 'text': watchText };
 	                        }
 	                    }]
 	                });
-	                popup.then(function (id) {
-	                    if (id != undefined) {
-	                        fav.addFav(id).then(function (res) {
-	                            if (res.data.success) {
-	                                console.log("收藏成功");
-	                            }
-	                        });
+	                popup.then(function (obj) {
+	                    if (obj != undefined) {
+	                        if (obj.text == '添加收藏') {
+	                            fav.addFav(obj.id).then(function (res) {
+	                                _this2.targetItem.data('watchId', res.data.watch[0].watchId); // 用列表临时记录是否已经收藏的状态，不刷新
+	                                Common.Alert('', "收藏成功");
+	                            });
+	                        } else {
+	                            fav.removeFav(obj.watchId).then(function (res) {
+	                                if (res.data.type == "success") {
+	                                    Common.Alert('', '成功取消收藏');
+	                                    _this2.targetItem.data('watchId', 0);
+	                                    _this2.watchId = 0;
+	                                }
+	                            });
+	                        }
 	                    }
 	                });
 	            },
-	            openModal: function openModal(id, title, watchId) {
-	                var _this2 = this;
-
-	                this.watchId = watchId;
-	                this.id = id;
-	                this.modalTitle = title;
-	                Common.loading.show();
-	                $scope.modal.show();
-	                $timeout(function () {
-	                    resources.getView(id).then(function (res) {
-	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                        _this2.showZoom = true;
-	                    });
-	                }, 100);
-	            },
-	            hideModal: function hideModal() {
-	                $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
-	                this.showZoom = false;
-	                $scope.modal.hide();
-	            },
-	            actionSheet: function actionSheet() {
+	            openModal: function openModal(id, title, watchId, event) {
 	                var _this3 = this;
 
-	                console.log(this.watchId);
-	                var watchText = this.watchId == 0 ? '添加收藏' : '取消收藏';
-
-	                $ionicActionSheet.show({
-	                    buttons: [{ text: watchText }],
-	                    //destructiveText: 'Delete',
-	                    titleText: '',
-	                    cancelText: '取消',
-	                    cancel: function cancel() {
-	                        // add cancel code..
-	                    },
-	                    buttonClicked: function buttonClicked(index) {
-	                        switch (index) {
-	                            case 0:
-	                                if (_this3.watchId != 0) {
-	                                    fav.removeFav(_this3.watchId).then(function (res) {
-	                                        if (res.data.success) {
-	                                            Common.Alert('', '成功移除收藏');
-	                                            _this3.watchId = 0;
-	                                        }
-	                                    });
-	                                } else {
-	                                    fav.addFav(_this3.id).then(function (res) {
-	                                        if (res.data.success) {
-	                                            Common.Alert('', '收藏成功');
-	                                        }
-	                                    });
-	                                }
-	                                break;
-	                        }
-	                        return true;
-	                    }
+	                this.targetItem = angular.element(event.currentTarget);
+	                this.watchId = watchId;
+	                this.id = id;
+	                $rootScope.pdfViewTitle = title;
+	                Common.loading.show();
+	                $rootScope.pdfModal.show();
+	                if (this.targetItem.data('watchId') != 0 && this.targetItem.data('watchId') != undefined) this.watchId = this.targetItem.data('watchId');
+	                $rootScope.$emit("params:watched", { 'watchId': this.watchId, 'id': id }); //向上传送参数给mainController
+	                resources.getView(id).then(function (res) {
+	                    $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                    _this3.showZoom = true;
 	                });
 	            },
 	            zoom: function zoom(scale) {
@@ -29078,13 +29101,24 @@
 	                });
 	            }
 	        };
+
+	        /**pdf预览modal关闭时触发**/
+	        $rootScope.$on('event:pdfModalClose', function () {
+	            collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
+	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令，执行关闭前的操作
+	            collect.showZoom = false;
+	        });
+	        /**接收由mainController传过来的参数**/
+	        $rootScope.$on('params:fromMain', function (_scope, _id) {
+	            collect.watchId = _id;
+	        });
 	        collect.init();
 	        collect.loadResources();
 	        this.collect = collect;
 	    };
 
 	    angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common", "$ionicActionSheet"];
+	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	}
 
 /***/ },
@@ -29264,15 +29298,6 @@
 	            b_limit: 10,
 	            b_start: 0,
 	            b_totalCount: 0,
-	            active: function active() {
-	                $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
-	                    scope: $scope,
-	                    animation: 'slide-in-up',
-	                    hardwareBackButtonClose: false
-	                }).then(function (modal) {
-	                    $scope.modal = modal;
-	                });
-	            },
 	            loadFavList: function loadFavList() {
 	                var _this = this;
 
@@ -29296,7 +29321,6 @@
 	            loadMoreArticles: function loadMoreArticles() {
 	                var _this2 = this;
 
-	                console.log(this.a_totalCount);
 	                if (this.a_start >= this.a_totalCount) {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    return;
@@ -29384,19 +29408,17 @@
 	                    this.loadBooksList();
 	                }
 	            },
-	            openModal: function openModal(id, title) {
+	            openModal: function openModal(id, title, watchId) {
 	                var _this6 = this;
 
-	                console.log(title);
-	                this.modalTitle = title;
 	                Common.loading.show();
-	                $scope.modal.show();
-	                $timeout(function () {
-	                    resources.getView(id).then(function (res) {
-	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                        _this6.showZoom = true;
-	                    });
-	                }, 100);
+	                $rootScope.pdfModal.show();
+	                $rootScope.$emit("params:watched", { 'watchId': watchId, 'id': id }); //向上传送参数给mainController
+	                resources.getView(id).then(function (res) {
+	                    $rootScope.pdfViewTitle = title;
+	                    $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                    _this6.showZoom = true;
+	                });
 	            },
 	            zoom: function zoom(scale) {
 	                if (scale == 'big') {
@@ -29405,21 +29427,19 @@
 	                        $rootScope.$broadcast('event:scale:small'); //传递一个事件给pdf预览指令
 	                    }
 	            },
-	            hideModal: function hideModal() {
-	                $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
-	                this.showZoom = false;
-	                $scope.modal.hide();
-	                this.watchesList = [];
-	                this.booksList = [];
-	            },
 	            readBooks: function readBooks(id, title) {
 	                $timeout(function () {
 	                    $ionicTabsDelegate.select(0);
-	                    $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                    $timeout(function () {
+	                        $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                    }, 100);
 	                }, 100);
 	            }
 	        };
-	        collect.active();
+	        $rootScope.$on('event:pdfModalClose', function () {
+	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
+	            collect.showZoom = false;
+	        });
 	        collect.loadFavList();
 	        this.collect = collect;
 	    };
@@ -29605,6 +29625,23 @@
 /* 51 */
 /***/ function(module, exports) {
 
+	'use strict';
+
+	/**
+	 * Created by dcampus on 2016/4/12.
+	 */
+	angular.module("filterModule", []).filter('displayNameFilter', displayNameFilter);
+	function displayNameFilter() {
+	    return function (item) {
+	        item = item.replace(/(?:(?:&nbsp;))|(?:(?:&amp;nbsp;))/gm, ' ');
+	        return item;
+	    };
+	}
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
 	"use strict";
 
 	/**
@@ -29685,7 +29722,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29698,7 +29735,7 @@
 	}
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29734,6 +29771,9 @@
 	                },
 	                pageIdReg: VerEx().find('id="pf').anythingBut('"') //获取页id正则
 	            };
+	            var swiper = null;
+	            var defaultViewer = null;
+	            var slidesArr = void 0;
 	            return {
 	                restrict: 'E',
 	                templateUrl: './js/directive/view.html',
@@ -29743,7 +29783,9 @@
 	                link: function link(scope, element, attrs, ctrl) {
 	                    //console.log(onFinishRenderCtrl);
 	                    scope.$on('event:openModel', openCallback);
+
 	                    scope.$on('event:closeModel', closeCallback);
+
 	                    /** 正则规则**/
 	                    scope.index = 0; //定义一个全局的分页索引，方便外部调用
 	                    scope.items = [];
@@ -29766,7 +29808,7 @@
 	                    function closeCallback() {
 	                        scope.styleOutLine = ""; //清空样式
 	                        scope.content = "";
-	                        scope.defaultViewer = null;
+	                        defaultViewer = null;
 	                        scope.showZoom = false;
 	                        scope.items = [];
 	                        scope.body = "";
@@ -29775,29 +29817,26 @@
 	                    }
 	                },
 	                controller: function controller($scope, $element, $attrs) {
-	                    $scope.swiper = null;
-	                    $scope.defaultViewer = null;
-	                    var slidesArr = void 0;
 	                    /**以下为初始化Swiper及设值**/
 	                    this.initSwipe = function () {
-	                        if (!$scope.swiper) {
-	                            $scope.swiper = new Swiper('.swiper-container', {
+	                        if (!swiper) {
+	                            swiper = new Swiper('.swiper-container', {
 	                                pagination: '.swiper-pagination',
 	                                paginationClickable: false,
 	                                paginationType: 'progress',
 	                                onInit: function onInit(e) {
 	                                    e.slides[0].innerHTML = getHtml(0);
-	                                    $scope.defaultViewer = new pdf2htmlEX({});
+	                                    defaultViewer = new pdf2htmlEX({});
 	                                    slidesArr = document.querySelectorAll('.swiper-slide');
 	                                }
 	                            });
 	                        } else {
-	                            $scope.swiper.slideTo(0);
-	                            $scope.swiper.update(true);
-	                            $scope.swiper.slides[0].innerHTML = getHtml(0);
+	                            swiper.update(true);
+	                            swiper.slideTo(0);
+	                            swiper.slides[0].innerHTML = getHtml(0);
 	                            slidesArr = document.querySelectorAll('.swiper-slide');
 	                        }
-	                        $scope.swiper.on('onSlideChangeStart', function (e) {
+	                        swiper.on('onSlideChangeStart', function (e) {
 	                            $timeout(function () {
 	                                var activeIndex = e.activeIndex;
 	                                $scope.index = activeIndex;
@@ -29806,14 +29845,13 @@
 	                                    slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
 	                                    slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
 	                                } else if ($scope.pageArrayLength == activeIndex + 1) {
-
 	                                    slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
 	                                    slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
 	                                } else {
 	                                    slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
 	                                    slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
 	                                }
-	                                $scope.defaultViewer = new pdf2htmlEX({});
+	                                defaultViewer = new pdf2htmlEX({});
 	                            }, 100);
 	                        });
 	                    };
@@ -29834,24 +29872,24 @@
 	                    }
 
 	                    $scope.$on('event:scale:big', function () {
-	                        if ($scope.defaultViewer.scale == 2.5) return;
-	                        $scope.defaultViewer.rescale(2.5);
-	                        $scope.content = $sce.trustAsHtml($scope.swiper.slides[$scope.index].innerHTML);
+	                        if (defaultViewer.scale == 2.5) return;
+	                        defaultViewer.rescale(2.5);
+	                        $scope.content = $sce.trustAsHtml(swiper.slides[$scope.index].innerHTML);
 	                        document.querySelector('.swiper-container').style.display = "none";
 	                    });
 	                    $scope.$on('event:scale:small', function () {
-	                        if ($scope.defaultViewer.scale == 1) return;
+	                        if (defaultViewer.scale == 1) return;
 	                        $scope.content = "";
-	                        $scope.defaultViewer.rescale(1);
+	                        defaultViewer.rescale(1);
 	                        document.querySelector('.swiper-container').style.display = "block";
 	                    });
 	                }
 	            };
 	        };
 
-	        var VerEx = __webpack_require__(54);
-	        var Swiper = __webpack_require__(55);
-	        var pdf2htmlEX = __webpack_require__(56);
+	        var VerEx = __webpack_require__(55);
+	        var Swiper = __webpack_require__(56);
+	        var pdf2htmlEX = __webpack_require__(57);
 	        angular.module('directivesModule').directive('onFinished', onFinished).directive('viewPdf', viewPdf);
 	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	        onFinished.$inject = ['$timeout', '$q'];
@@ -29859,7 +29897,7 @@
 	}
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -30272,7 +30310,7 @@
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34722,7 +34760,7 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
 	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */
@@ -35667,7 +35705,7 @@
 	//pdf2htmlEX['Viewer'] = Viewer;
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';

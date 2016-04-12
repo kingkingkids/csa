@@ -1,7 +1,7 @@
 <ion-view view-title="">
     <ion-nav-bar class="innerHeader">
-        <ion-nav-title>
-            {{vm.collect.title}}
+        <ion-nav-title ng-bind-html="vm.collect.title">
+
         </ion-nav-title>
         <ion-nav-back-button>
             返回
@@ -32,7 +32,8 @@
         <ion-list ng-if="vm.collect.articleCss">
             <div ng-repeat="res in vm.collect.resourceList">
                 <ion-item on-hold="vm.collect.onHold(res.id)">
-                    <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)">{{res.displayName}}
+                    <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)"
+                         ng-bind-html="res.displayName">
                     </div>
                 </ion-item>
             </div>

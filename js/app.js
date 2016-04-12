@@ -7,7 +7,7 @@
     angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule',
         'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
         'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule',
-        'infoModule', 'directivesModule']).config(appConfig).run(appRun);
+        'infoModule', 'directivesModule', 'filterModule']).config(appConfig).run(appRun);
     appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider"];
     appRun.$inject = ["$ionicPlatform", "$rootScope"];
     function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
