@@ -29013,6 +29013,7 @@
 	                var _this3 = this;
 
 	                this.targetItem = angular.element(event.currentTarget);
+	                console.log(this.targetItem);
 	                this.watchId = watchId;
 	                this.id = id;
 	                $rootScope.pdfViewTitle = title;
@@ -29103,13 +29104,13 @@
 	        };
 
 	        /**pdf预览modal关闭时触发**/
-	        $rootScope.$on('event:pdfModalClose', function () {
+	        $scope.$on('event:pdfModalClose', function () {
 	            collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
 	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令，执行关闭前的操作
 	            collect.showZoom = false;
 	        });
 	        /**接收由mainController传过来的参数**/
-	        $rootScope.$on('params:fromMain', function (_scope, _id) {
+	        $scope.$on('params:fromMain', function (_scope, _id) {
 	            collect.watchId = _id;
 	        });
 	        collect.init();
@@ -29436,7 +29437,8 @@
 	                }, 100);
 	            }
 	        };
-	        $rootScope.$on('event:pdfModalClose', function () {
+	        /**关闭pdfview的时候触发**/
+	        $scope.$on('event:pdfModalClose', function () {
 	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
 	            collect.showZoom = false;
 	        });

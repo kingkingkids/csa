@@ -114,7 +114,7 @@
                     this.loadBooksList();
                 }
             },
-            openModal: function (id, title,watchId) {
+            openModal: function (id, title, watchId) {
                 Common.loading.show();
                 $rootScope.pdfModal.show();
                 $rootScope.$emit("params:watched", {'watchId': watchId, 'id': id});//向上传送参数给mainController
@@ -140,7 +140,8 @@
                 }, 100);
             }
         }
-        $rootScope.$on('event:pdfModalClose', function () {
+        /**关闭pdfview的时候触发**/
+        $scope.$on('event:pdfModalClose', function () {
             $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
             collect.showZoom = false;
         });

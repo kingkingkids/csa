@@ -75,14 +75,14 @@
                                     fav.removeFav(this.watchId).then((res)=> {
                                         if (res.data.success) {
                                             this.watchId = 0;
-                                            root.$broadcast('params:fromMain',this.watchId);
+                                            root.$broadcast('params:fromMain', this.watchId);
                                             Common.Alert('', '成功取消收藏');
                                         }
                                     });
                                 } else {
                                     fav.addFav(this.resourceId).then((res)=> {
                                         this.watchId = res.data.watch[0].watchId;
-                                        root.$broadcast('params:fromMain',this.watchId);
+                                        root.$broadcast('params:fromMain', this.watchId);
                                         Common.Alert('', '收藏成功');
                                     });
                                 }
