@@ -76,6 +76,9 @@
                 }
 
                 function closeCallback() {
+                    for (let i = 0; i < swiper.slides.length; i++) {
+                        swiper.slides[i].innerHTML = "";
+                    }
                     scope.styleOutLine = "";//清空样式
                     scope.content = "";
                     defaultViewer = null;

@@ -82,16 +82,15 @@
                 });
             },
             openModal: function (id, title, watchId, event) {
-                this.targetItem = angular.element(event.currentTarget);
-                console.log(this.targetItem);
-                this.watchId = watchId;
-                this.id = id;
-                $rootScope.pdfViewTitle = title;
-                Common.loading.show();
-                $rootScope.pdfModal.show();
-                if (this.targetItem.data('watchId') != 0 && this.targetItem.data('watchId') != undefined)
+                this.targetItem = angular.element(event.currentTarget);//set 当前element
+                this.id = id;//set资源ID
+                this.watchId = watchId;//set关注ID
+                if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
                     this.watchId = this.targetItem.data('watchId');
                 $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id});//向上传送参数给mainController
+                $rootScope.pdfViewTitle = title;// 这支pdfView的Title
+                $rootScope.pdfModal.show();
+                Common.loading.show();
                 resources.getView(id).then(res=> {
                     $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
                     this.showZoom = true;

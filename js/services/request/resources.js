@@ -7,16 +7,6 @@ function resources(send, constant, $ionicModal) {
         },
         getView: function (id) {
             return send(constant.path.downloadResource + "?disposition=inline&id=" + id)
-        },
-        searchModal: function (scope) {
-            return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
-                scope: scope,
-                animation: 'slide-in-up',
-                hardwareBackButtonClose: false
-            });
-        },
-        search: function (paramObj) {
-            return send(constant.path.searchResources, paramObj);
         }
     }
 }

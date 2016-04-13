@@ -6,7 +6,7 @@ angular
     .filter('displayNameFilter', displayNameFilter);
 function displayNameFilter() {
     return function (item) {
-        item = item.replace(/(?:(?:&nbsp;))|(?:(?:&amp;nbsp;))/gm, ' ');
+        item = item.replace(/(?:(?:(?:&nbsp;))|(?:(?:&amp;nbsp;))|(?:(?:\.html)))/gm, ' ');
         return item;
     }
 }

@@ -13,9 +13,10 @@
     </ion-nav-bar>
     <ion-content ng-show="vm.collect.isArticleTab">
         <ion-list can-swipe="true">
-            <ion-item collection-repeat="watch in vm.collect.watchesList"
-                      on-tap="vm.collect.openModal(watch.resourceId,watch.displayName,watch.watchId)">
-                <p ng-bind-html="watch.displayName.replace('.html','')"></p>
+            <ion-item collection-repeat="watch in vm.collect.watchesList">
+                <div on-tap="vm.collect.openModal(watch.resourceId,watch.displayName,watch.watchId,$event)">
+                    <p ng-bind-html="watch.displayName.replace('.html','')"></p>
+                </div>
                 <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId,'article')">
                     移除收藏
                 </ion-option-button>
@@ -29,10 +30,10 @@
     </ion-content>
     <ion-content ng-show="vm.collect.isBooksTab">
         <ion-list can-swipe="true">
-            <ion-item collection-repeat="watch in vm.collect.booksList"
-                      on-tap="vm.collect.readBooks(watch.resourceId,watch.displayName)">
-                <p class="title" ng-bind-html="watch.displayName | displayNameFilter"></p>
-                <p class="desc" ng-bind-html="watch.desc"></p>
+            <ion-item collection-repeat="watch in vm.collect.booksList">
+                <div on-tap="vm.collect.readBooks(watch.resourceId,watch.displayName)">
+                    <p class="title" ng-bind-html="watch.displayName | displayNameFilter"></p>
+                    <p class="desc" ng-bind-html="watch.desc"></p></div>
                 <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId,'books')">
                     移除收藏
                 </ion-option-button>

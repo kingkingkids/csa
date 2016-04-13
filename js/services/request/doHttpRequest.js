@@ -7,7 +7,8 @@
         , resources = require("./resources.js")
         , fav = require("./fav.js")
         , account = require("./account")
-        , message = require("./message");
+        , message = require("./message")
+        , search = require("./search");
 
     angular
         .module("request.doHttpRequest", [])
@@ -15,8 +16,7 @@
         .factory("request.resources", resources)
         .factory("request.fav", fav)
         .factory("request.account", account)
-        .factory("request.message", message);
-
-
+        .factory("request.message", message)
+        .factory("request.search", search);
 }
 

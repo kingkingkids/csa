@@ -25,6 +25,8 @@
             b_limit: 10,
             b_start: 0,
             b_totalCount: 0,
+            watchId: 0,
+            targetItem: null,
             loadFavList: function () {
                 /**访问文章**/
                 let paramObj = {
@@ -37,6 +39,7 @@
                     let {totalCount,watches} = res.data;
                     this.a_totalCount = totalCount;
                     this.watchesList = watches;
+                    console.log(watches)
                     this.a_start = this.a_limit + this.a_start;
                 });
             },
@@ -55,6 +58,8 @@
                     let {totalCount,watches} = res.data;
                     this.watchesList = this.watchesList.concat(watches);
                     this.a_start = this.a_limit + this.a_start;
+                }).finally(function () {
+                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
             },
             loadBooksList: function () {
@@ -68,6 +73,7 @@
                 fav.getList(paramObj).then((res)=> {
                     let {totalCount,watches} = res.data;
                     this.booksList = watches;
+                    console.log(watches);
                     this.b_totalCount = totalCount;
                     this.b_start = this.b_limit + this.b_start;
 
@@ -88,6 +94,8 @@
                     let {totalCount,watches} = res.data;
                     this.booksList = this.booksList.concat(watches);
                     this.b_start = this.b_limit + this.b_start;
+                }).finally(function () {
+                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
             },
             removeFavList: function (id, type) {
@@ -95,10 +103,12 @@
                     if (res.data.type == "success") {
                         if (type == 'article') {
                             this.watchesList = "";
-                            collect.loadFavList();
-                        } else {
+                            this.a_start = 0;
+                            this.loadFavList();
+                        } else if (type == 'books') {
                             this.booksList = "";
-                            collect.loadBooksList();
+                            this.b_start = 0;
+                            this.loadBooksList();
                         }
                     }
                 });
@@ -114,10 +124,14 @@
                     this.loadBooksList();
                 }
             },
-            openModal: function (id, title, watchId) {
+            openModal: function (id, title, watchId, event) {
+                this.targetItem = angular.element(event.currentTarget);//set 当前element
+                this.watchId = watchId;//set关注ID
+                if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
+                    this.watchId = this.targetItem.data('watchId');
                 Common.loading.show();
                 $rootScope.pdfModal.show();
-                $rootScope.$emit("params:watched", {'watchId': watchId, 'id': id});//向上传送参数给mainController
+                $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id});//向上传送参数给mainController
                 resources.getView(id).then(res=> {
                     $rootScope.pdfViewTitle = title;
                     $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
@@ -143,7 +157,14 @@
         /**关闭pdfview的时候触发**/
         $scope.$on('event:pdfModalClose', function () {
             $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
+            collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
+            console.log(collect.targetItem.data('watchId'));
             collect.showZoom = false;
+        });
+        /**接收由mainController传过来的参数**/
+        $scope.$on('params:fromMain', function (_scope, _id) {
+            console.log(_id);
+            collect.watchId = _id;
         });
         collect.loadFavList();
         this.collect = collect;

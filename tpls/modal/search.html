@@ -5,7 +5,7 @@
                 <div class="bar bar-header item-input-inset">
                     <label class="item-input-wrapper">
                         <i class="icon ion-ios-search placeholder-icon"></i>
-                        <input name="queryWords" type="search" placeholder="请输入关键字" ng-model="vm.collect.qurey"
+                        <input name="queryWords" type="search" placeholder="请输入关键字" ng-model="vm.collect.query"
                                required>
                     </label>
                     <input class="outButton" type="submit"/>
@@ -17,27 +17,33 @@
         </form>
         <div class="tabsWrap">
             <div class="button-bar">
-                <a class="button" on-tap="vm.collect.loadArticle()"
+                <a class="button" on-tap="vm.collect.tabToLoadArticle()"
                    ng-class="vm.collect.isArticleTab ? 'active' : ''">文章</a>
-                <a class="button" on-tap="vm.collect.loadBooks()"
-                   ng-class="vm.collect.isBooksTab ? 'active' : ''">期刊/书</a>
+                <a class="button" on-tap="vm.collect.tabToLoadBooks()"
+                   ng-class="vm.collect.isBooksTab ? 'active' : ''">期刊/图书</a>
             </div>
         </div>
     </ion-header-bar>
-    <ion-content class="searchContent" overflow-scroll="true" scroll="true">
-        <!--<ion-list ng-if="vm.collect.articleCss">-->
-        <!--<div ng-repeat="res in vm.collect.resourceList">-->
-        <!--<ion-item on-hold="vm.collect.onHold(res.id)">-->
-        <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)">{{res.displayName}}-->
-        <!--</div>-->
-        <!--</ion-item>-->
-        <!--</div>-->
-        <!--</ion-list>-->
-
-        <!--<ion-infinite-scroll-->
-        <!--immediate-check="false"-->
-        <!--on-infinite="vm.collect.loadMore()"-->
-        <!--distance="1%">-->
-        <!--</ion-infinite-scroll>-->
+    <ion-content class="searchContent">
+        <div class="noResult" ng-show="vm.collect.hasResult">无搜索结果</div>
+        <ion-list>
+            <div ng-repeat="res in vm.collect.searchList">
+                <ion-item>
+                    <div ng-if="res.type=='file'" on-tap="vm.collect.openModal(res.id,res.displayName,'',$event)">
+                        <p ng-bind-html="res.displayName | displayNameFilter" class="title"></p>
+                        <p ng-bind-html="res.desc" class="desc"></p>
+                    </div>
+                    <div ng-if="res.type=='folder'" on-tap="vm.collect.readBooks(res.id,res.displayName)">
+                        <p ng-bind-html="res.displayName | displayNameFilter" class="title"></p>
+                        <p ng-bind-html="res.desc" class="desc"></p>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+        <ion-infinite-scroll
+                immediate-check="false"
+                on-infinite="vm.collect.loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-modal-view>
