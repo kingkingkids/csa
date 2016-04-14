@@ -26425,8 +26425,8 @@
 	            $ionicModal.fromTemplateUrl("./tpls/modal/login.html", {
 	                scope: scope,
 	                animation: 'slide-in-up',
-	                hardwareBackButtonClose: false,
-	                focusFirstInput: true
+	                hardwareBackButtonClose: false
+	                //,focusFirstInput: true
 	            }).then(function (modal) {
 	                scope.loginModal = modal;
 	                _this2.getStatus().then(function (res) {
@@ -28788,14 +28788,6 @@
 	    var HomeController = function HomeController($state, $timeout, constant, $scope, resources, Common, search, $rootScope, $ionicTabsDelegate) {
 	        var collect = {
 	            journalID: constant.config.journalID,
-	            totalCount: 0,
-	            isArticleTab: true,
-	            isBooksTab: false,
-	            searchList: [],
-	            limit: 10,
-	            start: 0,
-	            hasResult: false,
-	            type: null,
 	            active: function active() {
 	                $scope.$on('event:favToResourcesLIst', function (_scope, _data) {
 	                    var parentId = _data.parentId;
@@ -28808,123 +28800,7 @@
 	                });
 	            },
 	            openSearchModal: function openSearchModal() {
-	                search.searchModal($scope).then(function (modal) {
-	                    $scope.searchModal = modal;
-	                    $scope.searchModal.show();
-	                });
-	            },
-	            closeSearchModal: function closeSearchModal() {
-	                $scope.searchModal.hide();
-	            },
-	            submitSearch: function submitSearch(form) {
-	                if (!form.queryWords.$valid) {
-	                    Common.Alert('', '请输入关键字');
-	                }
-	                if (form.$valid) {
-	                    this.start = 0;
-	                    this.tabToLoadArticle();
-	                }
-	            },
-	            loadSearch: function loadSearch(paramObj, type, more) {
-	                var _this = this;
-
-	                paramObj.type = type;
-	                if (more) {
-	                    search.search(paramObj).then(function (res) {
-	                        var _res$data = res.data;
-	                        var resources = _res$data.resources;
-	                        var totalCount = _res$data.totalCount;
-
-	                        if (totalCount == 0) {
-	                            _this.hasResult = true;
-	                        } else {
-	                            _this.hasResult = false;
-	                            _this.totalCount = totalCount;
-	                            _this.searchList = _this.searchList.concat(resources);
-	                            _this.start = _this.limit + _this.start;
-	                        }
-	                    }).finally(function () {
-	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                    });
-	                } else {
-	                    search.search(paramObj).then(function (res) {
-	                        var _res$data2 = res.data;
-	                        var resources = _res$data2.resources;
-	                        var totalCount = _res$data2.totalCount;
-
-	                        if (totalCount == 0) {
-	                            _this.hasResult = true;
-	                        } else {
-	                            _this.hasResult = false;
-	                            _this.totalCount = totalCount;
-	                            _this.searchList = resources;
-	                            _this.start = _this.limit + _this.start;
-	                        }
-	                    });
-	                }
-	            },
-	            loadMore: function loadMore() {
-	                if (this.start >= this.totalCount) {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                    return;
-	                }
-	                this.fetch(this.type, true);
-	            },
-	            fetch: function fetch(type, more) {
-	                if (this.query == undefined || this.query == "") return;
-	                var paramObj = {
-	                    categoryId: 0,
-	                    queryWords: this.query,
-	                    groupId: 0,
-	                    limit: this.limit,
-	                    start: this.start
-	                };
-	                this.loadSearch(paramObj, type, more); //获取数据
-	            },
-	            tabToLoadArticle: function tabToLoadArticle() {
-	                //点击文章TAB的操作
-	                this.isArticleTab = true;
-	                this.isBooksTab = false;
-	                this.type = 'FILE';
-	                this.start = 0;
-	                this.totalCount = 0;
-	                this.searchList = "";
-	                this.fetch(this.type);
-	            },
-	            tabToLoadBooks: function tabToLoadBooks() {
-	                //点击期刊TAB的操作
-	                this.isArticleTab = false;
-	                this.isBooksTab = true;
-	                this.type = 'DIRECTORY';
-	                this.start = 0;
-	                this.totalCount = 0;
-	                this.searchList = "";
-	                this.fetch(this.type);
-	            },
-	            openModal: function openModal(id, title, watchId, event) {
-	                var _this2 = this;
-
-	                this.closeSearchModal();
-	                //this.watchId = watchId;//set关注ID
-	                //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
-	                //    this.watchId = this.targetItem.data('watchId');
-	                Common.loading.show();
-	                $rootScope.pdfModal.show();
-	                $rootScope.$emit("params:watched", { 'watchId': 0, 'id': id }); //向上传送参数给mainController
-	                resources.getView(id).then(function (res) {
-	                    $rootScope.pdfViewTitle = title;
-	                    $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                    _this2.showZoom = true;
-	                });
-	            },
-	            readBooks: function readBooks(id, title) {
-	                this.closeSearchModal();
-	                $timeout(function () {
-	                    $ionicTabsDelegate.select(0);
-	                    $timeout(function () {
-	                        $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
-	                    }, 100);
-	                }, 100);
+	                search.openSearchModal($scope);
 	            }
 	        };
 	        /**pdf预览modal关闭时触发**/
@@ -28937,6 +28813,8 @@
 	            collect.showZoom = false;
 	        });
 	        collect.active();
+	        $scope.openModal = search.openModal;
+	        this.search = search; //向模板输出search
 	        this.collect = collect;
 	    };
 
@@ -35840,10 +35718,20 @@
 
 	"use strict";
 
-	search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal"];
+	search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate'];
 
-	function search(send, constant, $ionicModal) {
+	function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate) {
 	    return {
+	        totalCount: 0,
+	        isArticleTab: true,
+	        isBooksTab: false,
+	        searchList: [],
+	        limit: 10,
+	        start: 0,
+	        hasResult: false,
+	        type: null,
+	        query: '',
+	        scope: null,
 	        searchModal: function searchModal(scope) {
 	            return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
 	                scope: scope,
@@ -35852,8 +35740,127 @@
 	                focusFirstInput: true
 	            });
 	        },
+	        openSearchModal: function openSearchModal(scope) {
+	            this.scope = scope;
+	            this.searchModal(scope).then(function (modal) {
+	                scope.searchModal = modal;
+	                scope.searchModal.show();
+	            });
+	        },
+	        closeSearchModal: function closeSearchModal() {
+	            this.scope.searchModal.hide();
+	        },
 	        search: function search(paramObj) {
 	            return send(constant.path.searchResources, paramObj);
+	        },
+	        submitSearch: function submitSearch(form) {
+	            if (!form.queryWords.$valid) {
+	                Common.Alert('', '请输入关键字');
+	            }
+	            if (form.$valid) {
+	                this.start = 0;
+	                this.tabToLoadArticle();
+	            }
+	        },
+	        fetch: function fetch(type, more) {
+
+	            if (this.query == undefined || this.query == "") return;
+	            var paramObj = {
+	                categoryId: 0,
+	                queryWords: this.query,
+	                groupId: 0,
+	                limit: this.limit,
+	                start: this.start
+	            };
+	            this.loadSearch(paramObj, type, more); //获取数据
+	        },
+	        loadSearch: function loadSearch(paramObj, type, more) {
+	            var _this = this;
+
+	            paramObj.type = type;
+	            if (more) {
+	                this.search(paramObj).then(function (res) {
+	                    var _res$data = res.data;
+	                    var resources = _res$data.resources;
+	                    var totalCount = _res$data.totalCount;
+
+	                    if (totalCount == 0) {
+	                        _this.hasResult = true;
+	                    } else {
+	                        _this.hasResult = false;
+	                        _this.totalCount = totalCount;
+	                        _this.searchList = _this.searchList.concat(resources);
+	                        _this.start = _this.limit + _this.start;
+	                    }
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                });
+	            } else {
+	                this.search(paramObj).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
+
+	                    if (totalCount == 0) {
+	                        _this.hasResult = true;
+	                    } else {
+	                        _this.hasResult = false;
+	                        _this.totalCount = totalCount;
+	                        _this.searchList = resources;
+	                        _this.start = _this.limit + _this.start;
+	                    }
+	                });
+	            }
+	        },
+	        loadMore: function loadMore() {
+	            if (this.start >= this.totalCount) {
+	                $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                return;
+	            }
+	            this.fetch(this.type, true);
+	        },
+	        tabToLoadArticle: function tabToLoadArticle() {
+	            //点击文章TAB的操作
+	            this.isArticleTab = true;
+	            this.isBooksTab = false;
+	            this.type = 'FILE';
+	            this.start = 0;
+	            this.totalCount = 0;
+	            this.searchList = "";
+	            this.fetch(this.type, false);
+	        },
+	        tabToLoadBooks: function tabToLoadBooks() {
+	            //点击期刊TAB的操作
+	            this.isArticleTab = false;
+	            this.isBooksTab = true;
+	            this.type = 'DIRECTORY';
+	            this.start = 0;
+	            this.totalCount = 0;
+	            this.searchList = "";
+	            this.fetch(this.type);
+	        },
+	        readBooks: function readBooks(id, title) {
+	            this.closeSearchModal();
+	            $timeout(function () {
+	                $ionicTabsDelegate.select(0);
+	                $timeout(function () {
+	                    $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                }, 100);
+	            }, 100);
+	        },
+	        openModal: function openModal(id, title, watchId, event) {
+	            this.closeSearchModal();
+	            //this.watchId = watchId;//set关注ID
+	            //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
+	            //    this.watchId = this.targetItem.data('watchId');
+	            Common.loading.show();
+	            $rootScope.pdfModal.show();
+	            $rootScope.$emit("params:watched", { 'watchId': 0, 'id': id }); //向上传送参数给mainController
+	            resources.getView(id).then(function (res) {
+	                $rootScope.pdfViewTitle = title;
+	                $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                //this.showZoom = true;
+	            });
 	        }
 	    };
 	}

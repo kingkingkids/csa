@@ -62,8 +62,8 @@ function account(send, scope, interval, $ionicModal, $q, constant, session, Comm
             $ionicModal.fromTemplateUrl("./tpls/modal/login.html", {
                 scope: scope,
                 animation: 'slide-in-up',
-                hardwareBackButtonClose: false,
-                focusFirstInput: true
+                hardwareBackButtonClose: false
+                //,focusFirstInput: true
             }).then((modal)=> {
                 scope.loginModal = modal;
                 this.getStatus().then((res)=> {
