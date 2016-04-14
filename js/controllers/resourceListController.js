@@ -6,9 +6,9 @@
         .controller("ResourceListController", ResourceListController);
     ResourceListController.$inject = ["$state", "$rootScope", "$scope",
         "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
-        "$sce", "global.constant", "$timeout", "global.Common"];
+        "$sce", "global.constant", "$timeout", "global.Common", 'request.search'];
     function ResourceListController($state, $rootScope, $scope, $stateParams,
-                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common, search) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -90,11 +90,13 @@
                 $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id});//向上传送参数给mainController
                 $rootScope.pdfViewTitle = title;// 这支pdfView的Title
                 $rootScope.pdfModal.show();
-                Common.loading.show();
-                resources.getView(id).then(res=> {
-                    $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
-                    this.showZoom = true;
-                });
+                $timeout(()=> {
+                    Common.loading.show();
+                    resources.getView(id).then(res=> {
+                        $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
+                        this.showZoom = true;
+                    });
+                }, 300);
             },
             zoom: function (scale) {
                 if (scale == 'big') {
@@ -146,23 +148,31 @@
                 if (this.start >= this.totalCount) {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                     return;
+                } else {
+                    resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
+                        if ($stateParams.type == 'folder') {
+                            this.resourceList = this.resourceList.concat(this.chunk(res.data.resources, 3));
+                            this.listLength = this.resourceList.length;
+                        } else if ($stateParams.type == 'list') {
+                            this.resourceList = this.resourceList.concat(res.data.resources);
+                        }
+                        this.start = this.limit + this.start;
+                    }).finally(function () {
+                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
+                    });
                 }
-                resources.getList($stateParams.parentId, this.limit, this.start).then((res)=> {
-                    if ($stateParams.type == 'folder') {
-                        this.resourceList = this.resourceList.concat(this.chunk(res.data.resources, 3));
-                        this.listLength = this.resourceList.length;
-                    } else if ($stateParams.type == 'list') {
-                        this.resourceList = this.resourceList.concat(res.data.resources);
-                    }
-                    this.start = this.limit + this.start;
-                }).finally(function () {
-                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-                });
+
+            },
+            search: function () {
+                search.openSearchModal($scope, -$stateParams.parentId);
             }
         }
 
         /**pdf预览modal关闭时触发**/
         $scope.$on('event:pdfModalClose', function () {
+            if (search.isOpenSearhModal) {
+                search.openSearchModal($scope);
+            }
             collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
             $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令，执行关闭前的操作
             collect.showZoom = false;
@@ -173,6 +183,7 @@
         });
         collect.init();
         collect.loadResources();
+        this.search = search;//向模板输出search
         this.collect = collect;
     }
 }

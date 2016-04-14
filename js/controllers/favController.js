@@ -39,7 +39,6 @@
                     let {totalCount,watches} = res.data;
                     this.a_totalCount = totalCount;
                     this.watchesList = watches;
-                    console.log(watches)
                     this.a_start = this.a_limit + this.a_start;
                 });
             },
@@ -47,20 +46,21 @@
                 if (this.a_start >= this.a_totalCount) {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                     return;
+                } else {
+                    let paramObj = {
+                        "type": "resource",
+                        resourceType: 2,
+                        limit: this.a_limit,
+                        start: this.a_start
+                    }
+                    fav.getList(paramObj).then((res)=> {
+                        let {totalCount,watches} = res.data;
+                        this.watchesList = this.watchesList.concat(watches);
+                        this.a_start = this.a_limit + this.a_start;
+                    }).finally(function () {
+                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
+                    });
                 }
-                let paramObj = {
-                    "type": "resource",
-                    resourceType: 2,
-                    limit: this.a_limit,
-                    start: this.a_start
-                }
-                fav.getList(paramObj).then((res)=> {
-                    let {totalCount,watches} = res.data;
-                    this.watchesList = this.watchesList.concat(watches);
-                    this.a_start = this.a_limit + this.a_start;
-                }).finally(function () {
-                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-                });
             },
             loadBooksList: function () {
                 let paramObj = {
@@ -73,7 +73,6 @@
                 fav.getList(paramObj).then((res)=> {
                     let {totalCount,watches} = res.data;
                     this.booksList = watches;
-                    console.log(watches);
                     this.b_totalCount = totalCount;
                     this.b_start = this.b_limit + this.b_start;
 
@@ -83,20 +82,21 @@
                 if (this.b_start >= this.b_totalCount) {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                     return;
+                } else {
+                    let paramObj = {
+                        "type": "resource",
+                        resourceType: 2,
+                        limit: this.b_limit,
+                        start: this.b_start
+                    }
+                    fav.getList(paramObj).then((res)=> {
+                        let {totalCount,watches} = res.data;
+                        this.booksList = this.booksList.concat(watches);
+                        this.b_start = this.b_limit + this.b_start;
+                    }).finally(function () {
+                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
+                    });
                 }
-                let paramObj = {
-                    "type": "resource",
-                    resourceType: 2,
-                    limit: this.b_limit,
-                    start: this.b_start
-                }
-                fav.getList(paramObj).then((res)=> {
-                    let {totalCount,watches} = res.data;
-                    this.booksList = this.booksList.concat(watches);
-                    this.b_start = this.b_limit + this.b_start;
-                }).finally(function () {
-                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-                });
             },
             removeFavList: function (id, type) {
                 fav.removeFav(id).then(res=> {
@@ -158,12 +158,10 @@
         $scope.$on('event:pdfModalClose', function () {
             $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
             collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
-            console.log(collect.targetItem.data('watchId'));
             collect.showZoom = false;
         });
         /**接收由mainController传过来的参数**/
         $scope.$on('params:fromMain', function (_scope, _id) {
-            console.log(_id);
             collect.watchId = _id;
         });
         collect.loadFavList();

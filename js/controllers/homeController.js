@@ -26,7 +26,7 @@
         }
         /**pdf预览modal关闭时触发**/
         $scope.$on('event:pdfModalClose', function () {
-            if ($state.is('tabs.home')) {
+            if (search.isOpenSearhModal) {
                 collect.openSearchModal();
             }
             //collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
@@ -34,7 +34,6 @@
             collect.showZoom = false;
         });
         collect.active();
-        $scope.openModal = search.openModal;
         this.search = search;//向模板输出search
         this.collect = collect;
     }

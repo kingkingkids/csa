@@ -1,6 +1,7 @@
-search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate'];
+search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state"];
 
-function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate) {
+function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate, $state) {
+
     return {
         totalCount: 0,
         isArticleTab: true,
@@ -10,8 +11,10 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
         start: 0,
         hasResult: false,
         type: null,
-        query: '',
+        inQuery: '',
         scope: null,
+        groupId: 0,
+        isOpenSearhModal: false,
         searchModal: function (scope) {
             return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
                 scope: scope,
@@ -20,15 +23,22 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                 focusFirstInput: true
             });
         },
-        openSearchModal: function (scope) {
+        openSearchModal: function (scope, groupId) {
             this.scope = scope;
+            this.groupId = groupId;
+            this.isOpenSearhModal = true;
             this.searchModal(scope).then(modal=> {
                 scope.searchModal = modal;
                 scope.searchModal.show();
+                this.tabToLoadArticle();
             });
         },
         closeSearchModal: function () {
+            this.isOpenSearhModal = false;
             this.scope.searchModal.hide();
+            this.searchList = [];
+            this.query = '';
+            this.inQuery = '';
         },
         search: function (paramObj) {
             return send(constant.path.searchResources, paramObj);
@@ -39,17 +49,18 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             }
             if (form.$valid) {
                 this.start = 0;
+                this.inQuery = this.query;
                 this.tabToLoadArticle();
             }
         },
         fetch: function (type, more) {
-
-            if (this.query == undefined || this.query == "")
+            if (this.inQuery == undefined || this.inQuery == "")
                 return;
+            console.log(this.groupId);
             let paramObj = {
                 categoryId: 0,
-                queryWords: this.query,
-                groupId: 0,
+                queryWords: this.inQuery,
+                groupId: this.groupId,
                 limit: this.limit,
                 start: this.start
             }
@@ -60,14 +71,10 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             if (more) {
                 this.search(paramObj).then(res=> {
                     let {resources,totalCount} = res.data;
-                    if (totalCount == 0) {
-                        this.hasResult = true;
-                    } else {
-                        this.hasResult = false;
-                        this.totalCount = totalCount;
-                        this.searchList = this.searchList.concat(resources);
-                        this.start = this.limit + this.start;
-                    }
+                    this.hasResult = false;
+                    this.totalCount = totalCount;
+                    this.searchList = this.searchList.concat(resources);
+                    this.start = this.limit + this.start;
                 }).finally(function () {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
@@ -88,9 +95,11 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
         loadMore: function () {
             if (this.start >= this.totalCount) {
                 $rootScope.$broadcast('scroll.infiniteScrollComplete');
-                return;
+                return false;
+            } else {
+                this.fetch(this.type, true);
             }
-            this.fetch(this.type, true);
+
         },
         tabToLoadArticle: function () {
             //点击文章TAB的操作
@@ -113,16 +122,24 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             this.fetch(this.type);
         },
         readBooks: function (id, title) {
-            this.closeSearchModal();
-            $timeout(function () {
-                $ionicTabsDelegate.select(0);
-                $timeout(function () {
-                    $rootScope.$broadcast('event:favToResourcesLIst', {parentId: id, title: title, type: 'list'});
-                }, 100);
+            this.scope.searchModal.hide();
+            $timeout(()=> {
+                if (this.groupId != 0) {
+                    /**列表中的搜索**/
+                    $timeout(function () {
+                        $state.go('tabs.resourceList', {parentId: id, title: title, type: 'list'});
+                    }, 100);
+                } else {
+                    /**首页的搜索**/
+                    $ionicTabsDelegate.select(0);
+                    $timeout(function () {
+                        $rootScope.$broadcast('event:favToResourcesLIst', {parentId: id, title: title, type: 'list'});
+                    }, 100);
+                }
             }, 100);
         },
         openModal: function (id, title, watchId, event) {
-            this.closeSearchModal();
+            this.scope.searchModal.hide();
             //this.watchId = watchId;//set关注ID
             //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
             //    this.watchId = this.targetItem.data('watchId');
@@ -135,7 +152,7 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                 //this.showZoom = true;
             });
         }
-    };
+    }
 }
 
 module.exports = search;

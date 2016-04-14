@@ -35,7 +35,7 @@
                     </div>
                     <div ng-if="res.type=='folder'" on-tap="vm.search.readBooks(res.id,res.displayName)">
                         <p ng-bind-html="res.displayName | displayNameFilter" class="title"></p>
-                        <p ng-bind-html="res.desc" class="desc"></p>
+                        <p ng-bind-html="res.desc == '' ? '暂无描述' : res.desc" class="desc"></p>
                     </div>
                 </ion-item>
             </div>

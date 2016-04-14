@@ -1,12 +1,17 @@
 <ion-view view-title="">
+    <ion-nav-title ng-bind-html="vm.collect.title | displayNameFilter">
+    </ion-nav-title>
     <ion-nav-bar class="innerHeader">
-        <ion-nav-title ng-bind-html="vm.collect.title | displayNameFilter">
-
-        </ion-nav-title>
         <ion-nav-back-button>
             返回
         </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button" on-tap="vm.collect.search()">
+                Search
+            </button>
+        </ion-nav-buttons>
     </ion-nav-bar>
+
     <ion-content class="resourceBg">
         <ion-refresher
                 pulling-text="下拉刷新"
@@ -35,14 +40,14 @@
         </ion-list>
         <ion-list ng-if="vm.collect.articleCss">
             <div ng-repeat="res in vm.collect.resourceList">
-                <ion-item >
+                <ion-item>
                     <!--<div ng-if="res.type == 1"-->
                     <!--ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">-->
                     <!--<p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>-->
                     <!--<p>{{res.displayName}}</p>-->
                     <!--</div>-->
                     <div on-hold="vm.collect.onHold(res.id,res.watchId,$event)" ng-if="res.type == 2"
-                     on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId,$event)"
+                         on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId,$event)"
                          ng-bind-html="res.displayName.replace('.html','')">
 
                     </div>
@@ -54,6 +59,5 @@
                 on-infinite="vm.collect.loadMore()"
                 distance="1%">
         </ion-infinite-scroll>
-
     </ion-content>
 </ion-view>

@@ -28805,7 +28805,7 @@
 	        };
 	        /**pdf预览modal关闭时触发**/
 	        $scope.$on('event:pdfModalClose', function () {
-	            if ($state.is('tabs.home')) {
+	            if (search.isOpenSearhModal) {
 	                collect.openSearchModal();
 	            }
 	            //collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
@@ -28813,7 +28813,6 @@
 	            collect.showZoom = false;
 	        });
 	        collect.active();
-	        $scope.openModal = search.openModal;
 	        this.search = search; //向模板输出search
 	        this.collect = collect;
 	    };
@@ -28888,7 +28887,7 @@
 	 * Created by dcampus2011 on 16/2/26.
 	 */
 	{
-	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+	    var ResourceListController = function ResourceListController($state, $rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common, _search) {
 	        var collect = {
 	            resourceList: [],
 	            title: $stateParams.title,
@@ -28971,11 +28970,13 @@
 	                $rootScope.$emit("params:watched", { 'watchId': this.watchId, 'id': id }); //向上传送参数给mainController
 	                $rootScope.pdfViewTitle = title; // 这支pdfView的Title
 	                $rootScope.pdfModal.show();
-	                Common.loading.show();
-	                resources.getView(id).then(function (res) {
-	                    $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                    _this3.showZoom = true;
-	                });
+	                $timeout(function () {
+	                    Common.loading.show();
+	                    resources.getView(id).then(function (res) {
+	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                        _this3.showZoom = true;
+	                    });
+	                }, 300);
 	            },
 	            zoom: function zoom(scale) {
 	                if (scale == 'big') {
@@ -29039,23 +29040,30 @@
 	                if (this.start >= this.totalCount) {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    return;
+	                } else {
+	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                        if ($stateParams.type == 'folder') {
+	                            _this6.resourceList = _this6.resourceList.concat(_this6.chunk(res.data.resources, 3));
+	                            _this6.listLength = _this6.resourceList.length;
+	                        } else if ($stateParams.type == 'list') {
+	                            _this6.resourceList = _this6.resourceList.concat(res.data.resources);
+	                        }
+	                        _this6.start = _this6.limit + _this6.start;
+	                    }).finally(function () {
+	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    });
 	                }
-	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                    if ($stateParams.type == 'folder') {
-	                        _this6.resourceList = _this6.resourceList.concat(_this6.chunk(res.data.resources, 3));
-	                        _this6.listLength = _this6.resourceList.length;
-	                    } else if ($stateParams.type == 'list') {
-	                        _this6.resourceList = _this6.resourceList.concat(res.data.resources);
-	                    }
-	                    _this6.start = _this6.limit + _this6.start;
-	                }).finally(function () {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                });
+	            },
+	            search: function search() {
+	                _search.openSearchModal($scope, -$stateParams.parentId);
 	            }
 	        };
 
 	        /**pdf预览modal关闭时触发**/
 	        $scope.$on('event:pdfModalClose', function () {
+	            if (_search.isOpenSearhModal) {
+	                _search.openSearchModal($scope);
+	            }
 	            collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
 	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令，执行关闭前的操作
 	            collect.showZoom = false;
@@ -29066,11 +29074,12 @@
 	        });
 	        collect.init();
 	        collect.loadResources();
+	        this.search = _search; //向模板输出search
 	        this.collect = collect;
 	    };
 
 	    angular.module("ResourceListModule", ["httpRequest"]).controller("ResourceListController", ResourceListController);
-	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
+	    ResourceListController.$inject = ["$state", "$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common", 'request.search'];
 	}
 
 /***/ },
@@ -29269,7 +29278,6 @@
 
 	                    _this.a_totalCount = totalCount;
 	                    _this.watchesList = watches;
-	                    console.log(watches);
 	                    _this.a_start = _this.a_limit + _this.a_start;
 	                });
 	            },
@@ -29279,23 +29287,24 @@
 	                if (this.a_start >= this.a_totalCount) {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    return;
-	                }
-	                var paramObj = {
-	                    "type": "resource",
-	                    resourceType: 2,
-	                    limit: this.a_limit,
-	                    start: this.a_start
-	                };
-	                fav.getList(paramObj).then(function (res) {
-	                    var _res$data2 = res.data;
-	                    var totalCount = _res$data2.totalCount;
-	                    var watches = _res$data2.watches;
+	                } else {
+	                    var paramObj = {
+	                        "type": "resource",
+	                        resourceType: 2,
+	                        limit: this.a_limit,
+	                        start: this.a_start
+	                    };
+	                    fav.getList(paramObj).then(function (res) {
+	                        var _res$data2 = res.data;
+	                        var totalCount = _res$data2.totalCount;
+	                        var watches = _res$data2.watches;
 
-	                    _this2.watchesList = _this2.watchesList.concat(watches);
-	                    _this2.a_start = _this2.a_limit + _this2.a_start;
-	                }).finally(function () {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                });
+	                        _this2.watchesList = _this2.watchesList.concat(watches);
+	                        _this2.a_start = _this2.a_limit + _this2.a_start;
+	                    }).finally(function () {
+	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    });
+	                }
 	            },
 	            loadBooksList: function loadBooksList() {
 	                var _this3 = this;
@@ -29313,7 +29322,6 @@
 	                    var watches = _res$data3.watches;
 
 	                    _this3.booksList = watches;
-	                    console.log(watches);
 	                    _this3.b_totalCount = totalCount;
 	                    _this3.b_start = _this3.b_limit + _this3.b_start;
 	                });
@@ -29324,23 +29332,24 @@
 	                if (this.b_start >= this.b_totalCount) {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    return;
-	                }
-	                var paramObj = {
-	                    "type": "resource",
-	                    resourceType: 2,
-	                    limit: this.b_limit,
-	                    start: this.b_start
-	                };
-	                fav.getList(paramObj).then(function (res) {
-	                    var _res$data4 = res.data;
-	                    var totalCount = _res$data4.totalCount;
-	                    var watches = _res$data4.watches;
+	                } else {
+	                    var paramObj = {
+	                        "type": "resource",
+	                        resourceType: 2,
+	                        limit: this.b_limit,
+	                        start: this.b_start
+	                    };
+	                    fav.getList(paramObj).then(function (res) {
+	                        var _res$data4 = res.data;
+	                        var totalCount = _res$data4.totalCount;
+	                        var watches = _res$data4.watches;
 
-	                    _this4.booksList = _this4.booksList.concat(watches);
-	                    _this4.b_start = _this4.b_limit + _this4.b_start;
-	                }).finally(function () {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                });
+	                        _this4.booksList = _this4.booksList.concat(watches);
+	                        _this4.b_start = _this4.b_limit + _this4.b_start;
+	                    }).finally(function () {
+	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                    });
+	                }
 	            },
 	            removeFavList: function removeFavList(id, type) {
 	                var _this5 = this;
@@ -29405,12 +29414,10 @@
 	        $scope.$on('event:pdfModalClose', function () {
 	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
 	            collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
-	            console.log(collect.targetItem.data('watchId'));
 	            collect.showZoom = false;
 	        });
 	        /**接收由mainController传过来的参数**/
 	        $scope.$on('params:fromMain', function (_scope, _id) {
-	            console.log(_id);
 	            collect.watchId = _id;
 	        });
 	        collect.loadFavList();
@@ -35718,9 +35725,10 @@
 
 	"use strict";
 
-	search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate'];
+	search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state"];
 
-	function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate) {
+	function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate, $state) {
+
 	    return {
 	        totalCount: 0,
 	        isArticleTab: true,
@@ -35730,8 +35738,10 @@
 	        start: 0,
 	        hasResult: false,
 	        type: null,
-	        query: '',
+	        inQuery: '',
 	        scope: null,
+	        groupId: 0,
+	        isOpenSearhModal: false,
 	        searchModal: function searchModal(scope) {
 	            return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
 	                scope: scope,
@@ -35740,15 +35750,24 @@
 	                focusFirstInput: true
 	            });
 	        },
-	        openSearchModal: function openSearchModal(scope) {
+	        openSearchModal: function openSearchModal(scope, groupId) {
+	            var _this = this;
+
 	            this.scope = scope;
+	            this.groupId = groupId;
+	            this.isOpenSearhModal = true;
 	            this.searchModal(scope).then(function (modal) {
 	                scope.searchModal = modal;
 	                scope.searchModal.show();
+	                _this.tabToLoadArticle();
 	            });
 	        },
 	        closeSearchModal: function closeSearchModal() {
+	            this.isOpenSearhModal = false;
 	            this.scope.searchModal.hide();
+	            this.searchList = [];
+	            this.query = '';
+	            this.inQuery = '';
 	        },
 	        search: function search(paramObj) {
 	            return send(constant.path.searchResources, paramObj);
@@ -35759,23 +35778,24 @@
 	            }
 	            if (form.$valid) {
 	                this.start = 0;
+	                this.inQuery = this.query;
 	                this.tabToLoadArticle();
 	            }
 	        },
 	        fetch: function fetch(type, more) {
-
-	            if (this.query == undefined || this.query == "") return;
+	            if (this.inQuery == undefined || this.inQuery == "") return;
+	            console.log(this.groupId);
 	            var paramObj = {
 	                categoryId: 0,
-	                queryWords: this.query,
-	                groupId: 0,
+	                queryWords: this.inQuery,
+	                groupId: this.groupId,
 	                limit: this.limit,
 	                start: this.start
 	            };
 	            this.loadSearch(paramObj, type, more); //获取数据
 	        },
 	        loadSearch: function loadSearch(paramObj, type, more) {
-	            var _this = this;
+	            var _this2 = this;
 
 	            paramObj.type = type;
 	            if (more) {
@@ -35784,14 +35804,10 @@
 	                    var resources = _res$data.resources;
 	                    var totalCount = _res$data.totalCount;
 
-	                    if (totalCount == 0) {
-	                        _this.hasResult = true;
-	                    } else {
-	                        _this.hasResult = false;
-	                        _this.totalCount = totalCount;
-	                        _this.searchList = _this.searchList.concat(resources);
-	                        _this.start = _this.limit + _this.start;
-	                    }
+	                    _this2.hasResult = false;
+	                    _this2.totalCount = totalCount;
+	                    _this2.searchList = _this2.searchList.concat(resources);
+	                    _this2.start = _this2.limit + _this2.start;
 	                }).finally(function () {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                });
@@ -35802,12 +35818,12 @@
 	                    var totalCount = _res$data2.totalCount;
 
 	                    if (totalCount == 0) {
-	                        _this.hasResult = true;
+	                        _this2.hasResult = true;
 	                    } else {
-	                        _this.hasResult = false;
-	                        _this.totalCount = totalCount;
-	                        _this.searchList = resources;
-	                        _this.start = _this.limit + _this.start;
+	                        _this2.hasResult = false;
+	                        _this2.totalCount = totalCount;
+	                        _this2.searchList = resources;
+	                        _this2.start = _this2.limit + _this2.start;
 	                    }
 	                });
 	            }
@@ -35815,9 +35831,10 @@
 	        loadMore: function loadMore() {
 	            if (this.start >= this.totalCount) {
 	                $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                return;
+	                return false;
+	            } else {
+	                this.fetch(this.type, true);
 	            }
-	            this.fetch(this.type, true);
 	        },
 	        tabToLoadArticle: function tabToLoadArticle() {
 	            //点击文章TAB的操作
@@ -35840,16 +35857,26 @@
 	            this.fetch(this.type);
 	        },
 	        readBooks: function readBooks(id, title) {
-	            this.closeSearchModal();
+	            var _this3 = this;
+
+	            this.scope.searchModal.hide();
 	            $timeout(function () {
-	                $ionicTabsDelegate.select(0);
-	                $timeout(function () {
-	                    $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
-	                }, 100);
+	                if (_this3.groupId != 0) {
+	                    /**列表中的搜索**/
+	                    $timeout(function () {
+	                        $state.go('tabs.resourceList', { parentId: id, title: title, type: 'list' });
+	                    }, 100);
+	                } else {
+	                    /**首页的搜索**/
+	                    $ionicTabsDelegate.select(0);
+	                    $timeout(function () {
+	                        $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                    }, 100);
+	                }
 	            }, 100);
 	        },
 	        openModal: function openModal(id, title, watchId, event) {
-	            this.closeSearchModal();
+	            this.scope.searchModal.hide();
 	            //this.watchId = watchId;//set关注ID
 	            //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
 	            //    this.watchId = this.targetItem.data('watchId');
