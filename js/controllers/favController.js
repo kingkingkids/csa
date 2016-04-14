@@ -137,13 +137,13 @@
                     $rootScope.showZoom = true;
                 });
             },
-            zoom: function (scale) {
-                if (scale == 'big') {
-                    $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
-                } else {
-                    $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
-                }
-            },
+            //zoom: function (scale) {
+            //    if (scale == 'big') {
+            //        $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
+            //    } else {
+            //        $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
+            //    }
+            //},
             readBooks: function (id, title) {
                 $timeout(function () {
                     $ionicTabsDelegate.select(0);

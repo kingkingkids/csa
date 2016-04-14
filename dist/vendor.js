@@ -66,21 +66,21 @@
 	__webpack_require__(29);
 	__webpack_require__(30);
 	__webpack_require__(31);
-	__webpack_require__(42);
-	__webpack_require__(43); //个人设置
-	__webpack_require__(44); //tab主控制器
-	__webpack_require__(45); //首页控制器
-	__webpack_require__(46); //柜子列表控制器
-	__webpack_require__(47); //资源列表控制器
+	__webpack_require__(43);
+	__webpack_require__(44); //个人设置
+	__webpack_require__(45); //tab主控制器
+	__webpack_require__(46); //首页控制器
+	__webpack_require__(47); //柜子列表控制器
 	__webpack_require__(48); //资源列表控制器
 	__webpack_require__(49); //资源列表控制器
 	__webpack_require__(50); //资源列表控制器
 	__webpack_require__(51); //资源列表控制器
+	__webpack_require__(52); //资源列表控制器
 	//require("./controllers/viewController.js");
-	__webpack_require__(52);
 	__webpack_require__(53);
 	__webpack_require__(54);
-	__webpack_require__(58);
+	__webpack_require__(55);
+	__webpack_require__(59);
 
 /***/ },
 /* 2 */
@@ -497,7 +497,7 @@
 
 
 	// module
-	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabTitle {\r\n  width: 100%;\r\n  height: 43px;\r\n  text-align: center;\r\n  font-weight: bold;\r\n  position: absolute; }\r\n\r\n.bar .title.title-left {\r\n  width: 100%;\r\n  margin-left: 0;\r\n  left: 0 !important; }\r\n\r\n.title-left {\r\n  text-align: center; }\r\n\r\n@font-face {\r\n  font-family: \"iconfont\";\r\n  src: url(" + __webpack_require__(14) + ");\r\n  /* IE9*/\r\n  src: url(" + __webpack_require__(14) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(15) + ") format(\"woff\"), url(" + __webpack_require__(16) + ") format(\"truetype\"), url(" + __webpack_require__(17) + "#iconfont) format(\"svg\");\r\n  /* iOS 4.1- */ }\r\n.iconfont {\r\n  font-family: \"iconfont\" !important;\r\n  font-size: 16px;\r\n  font-style: normal;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-text-stroke-width: 0.2px;\r\n  -moz-osx-font-smoothing: grayscale; }\r\n\r\n.icon-21:before {\r\n  content: \"\\E602\"; }\r\n\r\n.icon-22:before {\r\n  content: \"\\E603\"; }\r\n\r\n.icon-12:before {\r\n  content: \"\\E601\"; }\r\n\r\n.icon-11:before {\r\n  content: \"\\E600\"; }\r\n\r\n.icon-31:before {\r\n  content: \"\\E604\"; }\r\n\r\n.icon-32:before {\r\n  content: \"\\E605\"; }\r\n\r\n.icon-41:before {\r\n  content: \"\\E606\"; }\r\n\r\n.icon-42:before {\r\n  content: \"\\E607\"; }\r\n\r\n.tab-item .icon {\r\n  font-size: 28px;\r\n  line-height: 32px; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(18) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(19) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n/**swiper**/\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.swiper-pagination-progress {\r\n  opacity: .8 !important;\r\n  width: 100% !important;\r\n  height: 2px !important; }\r\n  .swiper-pagination-progress .swiper-pagination-progressbar {\r\n    background: #34cca7 !important; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(20) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(21) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(22) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center;\r\n    font-size: 12px; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px;\r\n    height: 160px; }\r\n    .jouneryList .list .bookStore .item p {\r\n      text-align: left; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  width: 100%; }\r\n  .favWrap .innerHeader .buttons .left-buttons {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit button {\r\n  background-color: #fff; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff;\r\n  color: #0079ff !important;\r\n  font-size: 17px !important; }\r\n  .pdfViewModal button span {\r\n    margin-right: 5px; }\r\n.pdfViewModal .bar .title.title-left {\r\n  text-align: center; }\r\n.pdfViewModal #page-container {\r\n  padding-top: 10px; }\r\n\r\n.searchWrap {\r\n  height: 31px;\r\n  line-height: 31px;\r\n  width: 95%;\r\n  margin: 10px auto 0 auto;\r\n  font-size: 12px;\r\n  color: #ababae;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  background: #eee;\r\n  display: block; }\r\n  .searchWrap.activated {\r\n    background: #f1f1f1; }\r\n  .searchWrap span {\r\n    background: url(" + __webpack_require__(23) + ") no-repeat;\r\n    background-position: 0 1px !important;\r\n    background-size: 12.5px auto !important;\r\n    padding-left: 18px; }\r\n\r\n.searchHeader {\r\n  height: 90px !important; }\r\n  .searchHeader h1 .bar {\r\n    background: none !important;\r\n    margin-top: 3px; }\r\n  .searchHeader .tabsWrap {\r\n    position: absolute;\r\n    top: 50px;\r\n    width: 100%; }\r\n  .searchHeader .button-bar {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n    .searchHeader .button-bar .button {\r\n      height: 28px;\r\n      line-height: 28px;\r\n      min-height: 28px;\r\n      border: 1px solid #007aff; }\r\n      .searchHeader .button-bar .button.active {\r\n        background: #1588f0;\r\n        color: #fff; }\r\n    .searchHeader .button-bar .button:last-child {\r\n      border-left: 0; }\r\n\r\n.searchContent .noResult {\r\n  width: 100%;\r\n  line-height: 300%;\r\n  font-size: 12px;\r\n  color: #8f8f8f;\r\n  text-align: center; }\r\n.searchContent.has-header {\r\n  top: 90px; }\r\n.searchContent .list .title {\r\n  font-weight: bold;\r\n  color: #000;\r\n  font-size: 16px; }\r\n.searchContent .list .desc {\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.outButton {\r\n  position: absolute;\r\n  left: -9999px;\r\n  top: -9999px; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
+	exports.push([module.id, "input {\r\n  -webkit-appearance: none !important;\r\n  -moz-appearance: none;\r\n  appearance: none; }\r\n\r\nh1, h2, h3, h3, h4, h5, h6 body, p {\r\n  margin: 0 !important;\r\n  padding: 0; }\r\n\r\nh1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {\r\n  margin: 0 !important; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\n@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {\r\n  .bar {\r\n    background-image: none !important;\r\n    background: #fff;\r\n    height: 44px !important;\r\n    overflow: hidden; } }\r\n.bar {\r\n  margin: 0;\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important;\r\n  text-align: center !important;\r\n  font-weight: bold; }\r\n\r\n.tabTitle {\r\n  width: 100%;\r\n  height: 43px;\r\n  text-align: center;\r\n  font-weight: bold;\r\n  position: absolute; }\r\n\r\n.bar .title.title-left {\r\n  width: 100%;\r\n  margin-left: 0;\r\n  left: 0 !important; }\r\n\r\n.title-left {\r\n  text-align: center; }\r\n\r\n@font-face {\r\n  font-family: \"iconfont\";\r\n  src: url(" + __webpack_require__(14) + ");\r\n  /* IE9*/\r\n  src: url(" + __webpack_require__(14) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(15) + ") format(\"woff\"), url(" + __webpack_require__(16) + ") format(\"truetype\"), url(" + __webpack_require__(17) + "#iconfont) format(\"svg\");\r\n  /* iOS 4.1- */ }\r\n.iconfont {\r\n  font-family: \"iconfont\" !important;\r\n  font-size: 16px;\r\n  font-style: normal;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-text-stroke-width: 0.2px;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  position: relative; }\r\n\r\n.icon-21:before {\r\n  content: \"\\E602\"; }\r\n\r\n.icon-22:before {\r\n  content: \"\\E603\"; }\r\n\r\n.icon-12:before {\r\n  content: \"\\E601\"; }\r\n\r\n.icon-11:before {\r\n  content: \"\\E600\"; }\r\n\r\n.icon-31:before {\r\n  content: \"\\E604\"; }\r\n\r\n.icon-32:before {\r\n  content: \"\\E605\"; }\r\n\r\n.icon-41:before {\r\n  content: \"\\E606\"; }\r\n\r\n.icon-42:before {\r\n  content: \"\\E607\"; }\r\n\r\n.tab-item .icon {\r\n  font-size: 28px;\r\n  line-height: 32px; }\r\n\r\n.tabs-positive > .tabs, .tabs.tabs-positive {\r\n  background: #fff;\r\n  color: #808080;\r\n  border-top: 1px solid #d6d6d6 !important; }\r\n\r\n.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {\r\n  color: #3d7eeb; }\r\n\r\n.bar .button.back-button, .bar button.back-button {\r\n  color: #0079ff; }\r\n\r\n.loginWrap {\r\n  background: url(" + __webpack_require__(18) + ") no-repeat;\r\n  background-size: cover; }\r\n  .loginWrap .padding {\r\n    padding-top: 0; }\r\n  .loginWrap .line {\r\n    background: #0d7af5;\r\n    height: 3px; }\r\n  .loginWrap .list {\r\n    padding: 0 20px;\r\n    border: 0;\r\n    margin-bottom: 10px; }\r\n    .loginWrap .list .platform-android .checkbox-platform input:before, .loginWrap .list .platform-android .checkbox-platform .checkbox-icon:before, .loginWrap .list .checkbox-square input:before, .loginWrap .list .checkbox-square .checkbox-icon:before {\r\n      margin-top: 18%; }\r\n    .loginWrap .list .checkbox input:before, .loginWrap .list .checkbox-icon:before {\r\n      background: transparent;\r\n      border: 1px solid #007aff; }\r\n    .loginWrap .list .item-checkbox .checkbox {\r\n      margin-top: -23px;\r\n      left: 5px; }\r\n    .loginWrap .list .item {\r\n      border-width: 0 !important;\r\n      border-bottom: 1px solid #b2b2b2 !important; }\r\n      .loginWrap .list .item .input-label {\r\n        width: 25%; }\r\n    .loginWrap .list .item-input {\r\n      background: none;\r\n      margin-top: 15px;\r\n      padding-left: 5px !important; }\r\n      .loginWrap .list .item-input input {\r\n        font-size: 14px !important;\r\n        height: 25px; }\r\n    .loginWrap .list .remberMe {\r\n      background: transparent !important;\r\n      border-bottom: 0 !important;\r\n      margin-top: 15px;\r\n      padding: 10px;\r\n      padding-left: 50px;\r\n      font-size: 14px; }\r\n  .loginWrap .logoWrap {\r\n    background: url(" + __webpack_require__(19) + ") no-repeat;\r\n    width: 229px;\r\n    margin: 0 auto;\r\n    height: 87.5px;\r\n    background-size: cover;\r\n    margin-top: 20px; }\r\n  .loginWrap .otherButton {\r\n    margin-top: 20px; }\r\n    .loginWrap .otherButton .left {\r\n      float: left;\r\n      padding-left: 10px; }\r\n    .loginWrap .otherButton .right {\r\n      float: right;\r\n      padding-right: 10px; }\r\n    .loginWrap .otherButton a {\r\n      font-size: 14px; }\r\n  .loginWrap .description {\r\n    width: 100%;\r\n    position: absolute;\r\n    bottom: 0;\r\n    text-align: center;\r\n    padding: 5px; }\r\n    .loginWrap .description p {\r\n      line-height: 150%;\r\n      color: #808080;\r\n      font-size: 12px; }\r\n\r\n.catalogList .list img {\r\n  height: 90px;\r\n  float: left;\r\n  margin-right: 10px; }\r\n.catalogList .list .title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  color: #000; }\r\n.catalogList .list .desc {\r\n  padding-top: 8px;\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.zoom {\r\n  position: absolute;\r\n  right: 10px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 30px;\r\n  overflow: hidden;\r\n  background: #333;\r\n  opacity: .5;\r\n  font-size: 12px;\r\n  color: #fff;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  z-index: 99999999; }\r\n  .zoom.big {\r\n    bottom: 50px; }\r\n  .zoom.small {\r\n    bottom: 10px; }\r\n\r\n.clearInput {\r\n  width: 15px;\r\n  height: 15px;\r\n  text-align: center;\r\n  background: #8f8f8f;\r\n  color: #fff;\r\n  font-size: 11px;\r\n  line-height: 15px;\r\n  border-radius: 15px;\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 14px;\r\n  z-index: 10000; }\r\n  .clearInput:after {\r\n    content: \"x\"; }\r\n\r\n#page-container {\r\n  background: none !important; }\r\n\r\n.item-content {\r\n  height: 100%; }\r\n\r\n/**swiper**/\r\n.swiper-container {\r\n  overflow: auto; }\r\n\r\n.swiper-slide .spinner {\r\n  text-align: center;\r\n  padding-top: 10%;\r\n  color: #666; }\r\n\r\n.swiper-pagination-progress {\r\n  opacity: .8 !important;\r\n  width: 100% !important;\r\n  height: 2px !important; }\r\n  .swiper-pagination-progress .swiper-pagination-progressbar {\r\n    background: #34cca7 !important; }\r\n\r\n.homeHeader {\r\n  display: block;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 17px;\r\n  height: 44px;\r\n  overflow: hidden; }\r\n  .homeHeader img {\r\n    width: 31px;\r\n    position: relative;\r\n    top: 7px; }\r\n\r\n.homeWrap .content {\r\n  background: url(" + __webpack_require__(20) + ") no-repeat;\r\n  background-size: cover; }\r\n  .homeWrap .content .col img {\r\n    border: 1px solid #eeeae6;\r\n    border-radius: 10px;\r\n    width: 100%; }\r\n\r\n.innerHeader {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 500px 3px !important; }\r\n  .innerHeader .bar .title.title-left {\r\n    text-align: center;\r\n    font-weight: bold;\r\n    left: 0 !important;\r\n    width: 100%; }\r\n\r\n.resourceBg {\r\n  background: url(" + __webpack_require__(21) + ") no-repeat;\r\n  background-size: cover; }\r\n\r\n.jouneryList .list .bookStore {\r\n  background: url(" + __webpack_require__(22) + ") repeat-x center 94px;\r\n  background-size: 420px 22.5px;\r\n  text-align: justify; }\r\n  .jouneryList .list .bookStore .bookStoreLayout {\r\n    width: 320px;\r\n    margin: 0 auto; }\r\n  .jouneryList .list .bookStore p {\r\n    text-align: center;\r\n    font-size: 12px; }\r\n  .jouneryList .list .bookStore .item {\r\n    display: inline-block;\r\n    border: 0;\r\n    background: none;\r\n    width: 105px;\r\n    height: 160px; }\r\n    .jouneryList .list .bookStore .item p {\r\n      text-align: left; }\r\n    .jouneryList .list .bookStore .item img {\r\n      width: 100%; }\r\n\r\n.booksList .list img {\r\n  float: left;\r\n  margin-right: 10px; }\r\n.booksList .list .title {\r\n  font-size: 14px;\r\n  font-weight: bold; }\r\n.booksList .list .desc {\r\n  font-size: 12px;\r\n  color: #6d6e70; }\r\n.booksList .list .item {\r\n  bordre-bottom: 1px solid #c8c8c9; }\r\n  .booksList .list .item .activated {\r\n    background: #f1f1f1; }\r\n\r\n.favWrap .innerHeader .buttons {\r\n  width: 100%; }\r\n  .favWrap .innerHeader .buttons .left-buttons {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n.favWrap .innerHeader button {\r\n  background: #fff;\r\n  display: inline-block;\r\n  border: 1px solid #007aff;\r\n  width: 156px !important;\r\n  height: 28px !important;\r\n  min-height: 28px;\r\n  line-height: 28px;\r\n  color: #007aff; }\r\n  .favWrap .innerHeader button.active {\r\n    background: #1588f0;\r\n    color: #fff; }\r\n  .favWrap .innerHeader button.article {\r\n    border-right: 0;\r\n    border-top-right-radius: 0;\r\n    border-bottom-right-radius: 0; }\r\n  .favWrap .innerHeader button.books {\r\n    border-top-left-radius: 0;\r\n    border-bottom-left-radius: 0; }\r\n\r\n.personalWrap .list .item {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .icon {\r\n  font-size: 14px;\r\n  color: #353535; }\r\n.personalWrap .list .ion-chevron-right {\r\n  margin-left: 5px; }\r\n  .personalWrap .list .ion-chevron-right:before {\r\n    font-size: 18px !important;\r\n    color: #c7c7cc;\r\n    font-weight: normal; }\r\n\r\n.personalEdit .bar-header {\r\n  background: #fff url(" + __webpack_require__(13) + ") repeat-x bottom !important;\r\n  background-size: 480px 3px !important; }\r\n.personalEdit button {\r\n  background-color: #fff; }\r\n.personalEdit .bar {\r\n  background: #fff; }\r\n\r\n.pdfViewModal button {\r\n  background: #fff;\r\n  color: #0079ff !important;\r\n  font-size: 17px !important; }\r\n  .pdfViewModal button span {\r\n    margin-right: 5px; }\r\n.pdfViewModal .bar .title.title-left {\r\n  text-align: center; }\r\n.pdfViewModal #page-container {\r\n  padding-top: 10px; }\r\n\r\n.searchWrap {\r\n  height: 31px;\r\n  line-height: 31px;\r\n  width: 95%;\r\n  margin: 10px auto 0 auto;\r\n  font-size: 12px;\r\n  color: #ababae;\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  background: #eee;\r\n  display: block; }\r\n  .searchWrap.activated {\r\n    background: #f1f1f1; }\r\n  .searchWrap span {\r\n    background: url(" + __webpack_require__(23) + ") no-repeat;\r\n    background-position: 0 1px !important;\r\n    background-size: 12.5px auto !important;\r\n    padding-left: 18px; }\r\n\r\n.searchHeader {\r\n  height: 90px !important; }\r\n  .searchHeader h1 .bar {\r\n    background: none !important;\r\n    margin-top: 3px; }\r\n  .searchHeader .tabsWrap {\r\n    position: absolute;\r\n    top: 50px;\r\n    width: 100%; }\r\n  .searchHeader .button-bar {\r\n    width: 60%;\r\n    margin: 0 auto; }\r\n    .searchHeader .button-bar .button {\r\n      height: 28px;\r\n      line-height: 28px;\r\n      min-height: 28px;\r\n      border: 1px solid #007aff; }\r\n      .searchHeader .button-bar .button.active {\r\n        background: #1588f0;\r\n        color: #fff; }\r\n    .searchHeader .button-bar .button:last-child {\r\n      border-left: 0; }\r\n\r\n.searchContent .noResult {\r\n  width: 100%;\r\n  line-height: 300%;\r\n  font-size: 12px;\r\n  color: #8f8f8f;\r\n  text-align: center; }\r\n.searchContent.has-header {\r\n  top: 90px; }\r\n.searchContent .list .title {\r\n  font-weight: bold;\r\n  color: #000;\r\n  font-size: 16px; }\r\n.searchContent .list .desc {\r\n  color: #7b7c7d;\r\n  font-size: 14px; }\r\n\r\n.outButton {\r\n  position: absolute;\r\n  left: -9999px;\r\n  top: -9999px; }\r\n\r\n.infoWrap .item-content {\r\n  padding: 5px 16px 5px 16px; }\r\n.infoWrap .infoHeader {\r\n  width: 100%;\r\n  height: 30px; }\r\n  .infoWrap .infoHeader .left {\r\n    float: left;\r\n    color: #535353;\r\n    font-size: 12px;\r\n    line-height: 30px; }\r\n  .infoWrap .infoHeader .right {\r\n    float: right;\r\n    color: #535353;\r\n    font-size: 12px;\r\n    line-height: 30px; }\r\n.infoWrap .title {\r\n  font-weight: bold;\r\n  color: #000;\r\n  font-size: 16px;\r\n  display: block; }\r\n.infoWrap .desc {\r\n  font-size: 14px;\r\n  color: #7b7c7d;\r\n  display: block; }\r\n\r\n.shareNewsIcon {\r\n  display: inline-block;\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 10px;\r\n  background: #f00;\r\n  position: absolute;\r\n  left: 54%;\r\n  top: 1px; }\r\n\r\n@media (min-width: 680px) {\r\n  .modal {\r\n    top: 0px !important;\r\n    bottom: 0 !important;\r\n    left: 0 !important;\r\n    right: 0 !important;\r\n    width: 100% !important; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {\r\n    margin-top: 20px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {\r\n    height: 64px; }\r\n\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,\r\n  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {\r\n    top: 64px; } }\r\n\r\n/*# sourceMappingURL=style.css.map */\r\n", ""]);
 
 	// exports
 
@@ -26274,7 +26274,7 @@
 	        fav = __webpack_require__(34),
 	        account = __webpack_require__(35),
 	        message = __webpack_require__(41),
-	        search = __webpack_require__(59);
+	        search = __webpack_require__(42);
 
 	    angular.module("request.doHttpRequest", []).factory("request.group", group).factory("request.resources", resources).factory("request.fav", fav).factory("request.account", account).factory("request.message", message).factory("request.search", search);
 	}
@@ -26399,7 +26399,14 @@
 	                if (!this.promise) {
 	                    this.promise = interval(function () {
 	                        send(constant.path.keepAlive);
-	                    }, 5 * 1000 * 60);
+	                        send(constant.path.getMyReceiveResources, { start: 0, limit: 1 }).then(function (res) {
+	                            var _res$data2 = res.data;
+	                            var resources = _res$data2.resources;
+	                            var totalCount = _res$data2.totalCount;
+
+	                            scope.$broadcast('event:messages', { resources: resources, totalCount: totalCount });
+	                        });
+	                    }, .1 * 1000 * 60);
 	                }
 	            },
 	            stop: function stop() {
@@ -28473,6 +28480,7 @@
 	                "limit": limit
 	            });
 	        },
+
 	        removeMessage: function removeMessage(id) {
 	            return send(constant.path.deleteReceivedResource, { id: id });
 	        }
@@ -28483,6 +28491,181 @@
 
 /***/ },
 /* 42 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state"];
+
+	function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate, $state) {
+
+	    return {
+	        totalCount: 0,
+	        isArticleTab: true,
+	        isBooksTab: false,
+	        searchList: [],
+	        limit: 10,
+	        start: 0,
+	        hasResult: false,
+	        type: null,
+	        inQuery: '',
+	        scope: null,
+	        groupId: 0,
+	        isOpenSearhModal: false,
+	        searchModal: function searchModal(scope) {
+	            return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
+	                scope: scope,
+	                animation: 'slide-in-up',
+	                hardwareBackButtonClose: false,
+	                focusFirstInput: true
+	            });
+	        },
+	        openSearchModal: function openSearchModal(scope, groupId) {
+	            var _this = this;
+
+	            this.scope = scope;
+	            this.groupId = groupId;
+	            this.isOpenSearhModal = true;
+	            this.searchModal(scope).then(function (modal) {
+	                scope.searchModal = modal;
+	                scope.searchModal.show();
+	                _this.tabToLoadArticle();
+	            });
+	        },
+	        closeSearchModal: function closeSearchModal() {
+	            this.isOpenSearhModal = false;
+	            this.scope.searchModal.hide();
+	            this.searchList = [];
+	            this.query = '';
+	            this.inQuery = '';
+	        },
+	        search: function search(paramObj) {
+	            return send(constant.path.searchResources, paramObj);
+	        },
+	        submitSearch: function submitSearch(form) {
+	            if (!form.queryWords.$valid) {
+	                Common.Alert('', '请输入关键字');
+	            }
+	            if (form.$valid) {
+	                this.start = 0;
+	                this.inQuery = this.query;
+	                this.tabToLoadArticle();
+	            }
+	        },
+	        fetch: function fetch(type, more) {
+	            if (this.inQuery == undefined || this.inQuery == "") return;
+	            console.log(this.groupId);
+	            var paramObj = {
+	                categoryId: 0,
+	                queryWords: this.inQuery,
+	                groupId: this.groupId,
+	                limit: this.limit,
+	                start: this.start
+	            };
+	            this.loadSearch(paramObj, type, more); //获取数据
+	        },
+	        loadSearch: function loadSearch(paramObj, type, more) {
+	            var _this2 = this;
+
+	            paramObj.type = type;
+	            if (more) {
+	                this.search(paramObj).then(function (res) {
+	                    var _res$data = res.data;
+	                    var resources = _res$data.resources;
+	                    var totalCount = _res$data.totalCount;
+
+	                    _this2.hasResult = false;
+	                    _this2.totalCount = totalCount;
+	                    _this2.searchList = _this2.searchList.concat(resources);
+	                    _this2.start = _this2.limit + _this2.start;
+	                }).finally(function () {
+	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                });
+	            } else {
+	                this.search(paramObj).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
+
+	                    if (totalCount == 0) {
+	                        _this2.hasResult = true;
+	                    } else {
+	                        _this2.hasResult = false;
+	                        _this2.totalCount = totalCount;
+	                        _this2.searchList = resources;
+	                        _this2.start = _this2.limit + _this2.start;
+	                    }
+	                });
+	            }
+	        },
+	        loadMore: function loadMore() {
+	            if (this.start >= this.totalCount) {
+	                $rootScope.$broadcast('scroll.infiniteScrollComplete');
+	                return false;
+	            } else {
+	                this.fetch(this.type, true);
+	            }
+	        },
+	        tabToLoadArticle: function tabToLoadArticle() {
+	            //点击文章TAB的操作
+	            this.isArticleTab = true;
+	            this.isBooksTab = false;
+	            this.type = 'FILE';
+	            this.start = 0;
+	            this.totalCount = 0;
+	            this.searchList = "";
+	            this.fetch(this.type, false);
+	        },
+	        tabToLoadBooks: function tabToLoadBooks() {
+	            //点击期刊TAB的操作
+	            this.isArticleTab = false;
+	            this.isBooksTab = true;
+	            this.type = 'DIRECTORY';
+	            this.start = 0;
+	            this.totalCount = 0;
+	            this.searchList = "";
+	            this.fetch(this.type);
+	        },
+	        readBooks: function readBooks(id, title) {
+	            var _this3 = this;
+
+	            this.scope.searchModal.hide();
+	            $timeout(function () {
+	                if (_this3.groupId != 0) {
+	                    /**列表中的搜索**/
+	                    $timeout(function () {
+	                        $state.go('tabs.resourceList', { parentId: id, title: title, type: 'list' });
+	                    }, 100);
+	                } else {
+	                    /**首页的搜索**/
+	                    $ionicTabsDelegate.select(0);
+	                    $timeout(function () {
+	                        $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                    }, 100);
+	                }
+	            }, 100);
+	        },
+	        openModal: function openModal(id, title, watchId, event) {
+	            this.scope.searchModal.hide();
+	            //this.watchId = watchId;//set关注ID
+	            //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
+	            //    this.watchId = this.targetItem.data('watchId');
+	            Common.loading.show();
+	            $rootScope.pdfModal.show();
+	            $rootScope.$emit("params:watched", { 'watchId': 0, 'id': id }); //向上传送参数给mainController
+	            resources.getView(id).then(function (res) {
+	                $rootScope.pdfViewTitle = title;
+	                $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                $rootScope.showZoom = true;
+	            });
+	        }
+	    };
+	}
+
+	module.exports = search;
+
+/***/ },
+/* 43 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28522,7 +28705,7 @@
 	}
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28578,7 +28761,7 @@
 	}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28607,6 +28790,7 @@
 	            root.$on('params:watched', function (_scope, _data) {
 	                collect.watchId = _data.watchId;
 	                collect.resourceId = _data.id;
+	                if (collect.isShowWatch != undefined) collect.isShowWatch = _data.isShowWatch;
 	            });
 	            account.loginModal(scope); //判断是否登录,否则显示登录窗口
 	            root.showZoom = false; //全局的showZoom
@@ -28621,6 +28805,7 @@
 	            var collect = {
 	                watchId: 0,
 	                resourceId: 0,
+	                isShowWatch: true,
 	                init: function init() {
 	                    if (localStorage.saveUserInfo != undefined) {
 	                        loginInfo.remberMe = true;
@@ -28629,6 +28814,7 @@
 	                        loginInfo.password = Base64.decode(usrInfoArr[1]);
 	                    }
 	                    account.keepAlive.start(); //进入首页后开始调用保持链接,5分钟加载一次
+
 	                    /**创建全局的pdfModal**/
 	                    $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
 	                        scope: scope,
@@ -28770,7 +28956,28 @@
 	                    });
 	                }
 	            };
+	            scope.$on('event:messages', function (_scope, _data) {
+	                var resources = _data.resources;
+	                var totalCount = _data.totalCount;
 
+	                var getShareIcon = document.querySelector('.shareNewsIcon');
+	                if (totalCount > 0) {
+	                    if (localStorage.shareTime == undefined) {
+	                        localStorage.shareTime = resources[0].shareDate;
+	                        if (getShareIcon == null) angular.element(document.querySelectorAll('.iconfont')[2]).append('<span class="shareNewsIcon"></span>');
+	                    } else {
+	                        var oldTime = new Date(localStorage.shareTime).getTime();
+	                        var newTime = new Date(resources[0].shareDate).getTime();
+	                        if (oldTime == newTime) {
+	                            //doNothing angular.element(document.querySelector('.shareNewsIcon')).remove()
+	                        }
+	                        if (newTime > oldTime) {
+	                            if (getShareIcon == null) angular.element(document.querySelectorAll('.iconfont')[2]).append('<span class="shareNewsIcon"></span>');
+	                            localStorage.shareTime = newTime;
+	                        }
+	                    }
+	                }
+	            });
 	            collect.init();
 	            this.collect = collect; //外部调用
 	            this.loginInfo = loginInfo;
@@ -28784,7 +28991,7 @@
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28832,7 +29039,7 @@
 	}
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28887,7 +29094,7 @@
 	}
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29091,7 +29298,7 @@
 	}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29245,7 +29452,7 @@
 	}
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29399,13 +29606,13 @@
 	                    $rootScope.showZoom = true;
 	                });
 	            },
-	            zoom: function zoom(scale) {
-	                if (scale == 'big') {
-	                    $rootScope.$broadcast('event:scale:big'); //传递一个事件给pdf预览指令
-	                } else {
-	                        $rootScope.$broadcast('event:scale:small'); //传递一个事件给pdf预览指令
-	                    }
-	            },
+	            //zoom: function (scale) {
+	            //    if (scale == 'big') {
+	            //        $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
+	            //    } else {
+	            //        $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
+	            //    }
+	            //},
 	            readBooks: function readBooks(id, title) {
 	                $timeout(function () {
 	                    $ionicTabsDelegate.select(0);
@@ -29435,7 +29642,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29607,7 +29814,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29624,7 +29831,7 @@
 	}
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29633,7 +29840,7 @@
 	 * Created by dcampus on 2016/3/23.
 	 */
 	{
-	    var infoController = function infoController(message, session, $rootScope) {
+	    var infoController = function infoController(message, session, $rootScope, resources, $scope, Common, $ionicTabsDelegate, $timeout) {
 	        var collect = {
 	            limit: 10,
 	            totalCount: 0,
@@ -29695,19 +29902,47 @@
 	                        _this4.getMessage();
 	                    }
 	                });
+	            },
+	            openModal: function openModal(id, title, watchId, event) {
+	                //this.targetItem = angular.element(event.currentTarget);//set 当前element
+	                //this.watchId = watchId;//set关注ID
+	                //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
+	                //    this.watchId = this.targetItem.data('watchId');
+	                Common.loading.show();
+	                $rootScope.pdfModal.show();
+	                $rootScope.$emit("params:watched", { 'watchId': this.watchId, 'id': id, 'isShowWatch': false }); //向上传送参数给mainController
+	                resources.getView(id).then(function (res) {
+	                    $rootScope.pdfViewTitle = title;
+	                    $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
+	                    $rootScope.showZoom = true;
+	                });
+	            },
+	            readBooks: function readBooks(id, title) {
+	                $timeout(function () {
+	                    $ionicTabsDelegate.select(0);
+	                    $timeout(function () {
+	                        $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
+	                    }, 100);
+	                }, 100);
 	            }
 	        };
+	        /**关闭pdfview的时候触发**/
+	        $scope.$on('event:pdfModalClose', function () {
+	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
+	            //collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
+	            $rootScope.showZoom = false;
+	        });
 	        collect.getMessage();
 	        this.collect = collect;
 	    };
 
 	    angular.module("infoModule", []).controller("infoController", infoController);
 
-	    infoController.$inject = ['request.message', "global.session", "$rootScope"];
+	    infoController.$inject = ['request.message', "global.session", "$rootScope", 'request.resources', '$scope', 'global.Common', '$ionicTabsDelegate', '$timeout'];
 	}
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29720,7 +29955,7 @@
 	}
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29878,9 +30113,9 @@
 	            };
 	        };
 
-	        var VerEx = __webpack_require__(55);
-	        var Swiper = __webpack_require__(56);
-	        var pdf2htmlEX = __webpack_require__(57);
+	        var VerEx = __webpack_require__(56);
+	        var Swiper = __webpack_require__(57);
+	        var pdf2htmlEX = __webpack_require__(58);
 	        angular.module('directivesModule').directive('onFinished', onFinished).directive('viewPdf', viewPdf);
 	        viewPdf.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	        onFinished.$inject = ['$timeout', '$q'];
@@ -29888,7 +30123,7 @@
 	}
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -30301,7 +30536,7 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34751,7 +34986,7 @@
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=javascript : */
@@ -35696,7 +35931,7 @@
 	//pdf2htmlEX['Viewer'] = Viewer;
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35726,181 +35961,6 @@
 	    angular.module('directivesModule').directive('onJournalRender', onJournalRender);
 	    onJournalRender.$inject = ["$state", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$sce", "global.constant", "$timeout", "global.Common"];
 	}
-
-/***/ },
-/* 59 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state"];
-
-	function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate, $state) {
-
-	    return {
-	        totalCount: 0,
-	        isArticleTab: true,
-	        isBooksTab: false,
-	        searchList: [],
-	        limit: 10,
-	        start: 0,
-	        hasResult: false,
-	        type: null,
-	        inQuery: '',
-	        scope: null,
-	        groupId: 0,
-	        isOpenSearhModal: false,
-	        searchModal: function searchModal(scope) {
-	            return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
-	                scope: scope,
-	                animation: 'slide-in-up',
-	                hardwareBackButtonClose: false,
-	                focusFirstInput: true
-	            });
-	        },
-	        openSearchModal: function openSearchModal(scope, groupId) {
-	            var _this = this;
-
-	            this.scope = scope;
-	            this.groupId = groupId;
-	            this.isOpenSearhModal = true;
-	            this.searchModal(scope).then(function (modal) {
-	                scope.searchModal = modal;
-	                scope.searchModal.show();
-	                _this.tabToLoadArticle();
-	            });
-	        },
-	        closeSearchModal: function closeSearchModal() {
-	            this.isOpenSearhModal = false;
-	            this.scope.searchModal.hide();
-	            this.searchList = [];
-	            this.query = '';
-	            this.inQuery = '';
-	        },
-	        search: function search(paramObj) {
-	            return send(constant.path.searchResources, paramObj);
-	        },
-	        submitSearch: function submitSearch(form) {
-	            if (!form.queryWords.$valid) {
-	                Common.Alert('', '请输入关键字');
-	            }
-	            if (form.$valid) {
-	                this.start = 0;
-	                this.inQuery = this.query;
-	                this.tabToLoadArticle();
-	            }
-	        },
-	        fetch: function fetch(type, more) {
-	            if (this.inQuery == undefined || this.inQuery == "") return;
-	            console.log(this.groupId);
-	            var paramObj = {
-	                categoryId: 0,
-	                queryWords: this.inQuery,
-	                groupId: this.groupId,
-	                limit: this.limit,
-	                start: this.start
-	            };
-	            this.loadSearch(paramObj, type, more); //获取数据
-	        },
-	        loadSearch: function loadSearch(paramObj, type, more) {
-	            var _this2 = this;
-
-	            paramObj.type = type;
-	            if (more) {
-	                this.search(paramObj).then(function (res) {
-	                    var _res$data = res.data;
-	                    var resources = _res$data.resources;
-	                    var totalCount = _res$data.totalCount;
-
-	                    _this2.hasResult = false;
-	                    _this2.totalCount = totalCount;
-	                    _this2.searchList = _this2.searchList.concat(resources);
-	                    _this2.start = _this2.limit + _this2.start;
-	                }).finally(function () {
-	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                });
-	            } else {
-	                this.search(paramObj).then(function (res) {
-	                    var _res$data2 = res.data;
-	                    var resources = _res$data2.resources;
-	                    var totalCount = _res$data2.totalCount;
-
-	                    if (totalCount == 0) {
-	                        _this2.hasResult = true;
-	                    } else {
-	                        _this2.hasResult = false;
-	                        _this2.totalCount = totalCount;
-	                        _this2.searchList = resources;
-	                        _this2.start = _this2.limit + _this2.start;
-	                    }
-	                });
-	            }
-	        },
-	        loadMore: function loadMore() {
-	            if (this.start >= this.totalCount) {
-	                $rootScope.$broadcast('scroll.infiniteScrollComplete');
-	                return false;
-	            } else {
-	                this.fetch(this.type, true);
-	            }
-	        },
-	        tabToLoadArticle: function tabToLoadArticle() {
-	            //点击文章TAB的操作
-	            this.isArticleTab = true;
-	            this.isBooksTab = false;
-	            this.type = 'FILE';
-	            this.start = 0;
-	            this.totalCount = 0;
-	            this.searchList = "";
-	            this.fetch(this.type, false);
-	        },
-	        tabToLoadBooks: function tabToLoadBooks() {
-	            //点击期刊TAB的操作
-	            this.isArticleTab = false;
-	            this.isBooksTab = true;
-	            this.type = 'DIRECTORY';
-	            this.start = 0;
-	            this.totalCount = 0;
-	            this.searchList = "";
-	            this.fetch(this.type);
-	        },
-	        readBooks: function readBooks(id, title) {
-	            var _this3 = this;
-
-	            this.scope.searchModal.hide();
-	            $timeout(function () {
-	                if (_this3.groupId != 0) {
-	                    /**列表中的搜索**/
-	                    $timeout(function () {
-	                        $state.go('tabs.resourceList', { parentId: id, title: title, type: 'list' });
-	                    }, 100);
-	                } else {
-	                    /**首页的搜索**/
-	                    $ionicTabsDelegate.select(0);
-	                    $timeout(function () {
-	                        $rootScope.$broadcast('event:favToResourcesLIst', { parentId: id, title: title, type: 'list' });
-	                    }, 100);
-	                }
-	            }, 100);
-	        },
-	        openModal: function openModal(id, title, watchId, event) {
-	            this.scope.searchModal.hide();
-	            //this.watchId = watchId;//set关注ID
-	            //if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
-	            //    this.watchId = this.targetItem.data('watchId');
-	            Common.loading.show();
-	            $rootScope.pdfModal.show();
-	            $rootScope.$emit("params:watched", { 'watchId': 0, 'id': id }); //向上传送参数给mainController
-	            resources.getView(id).then(function (res) {
-	                $rootScope.pdfViewTitle = title;
-	                $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                $rootScope.showZoom = true;
-	            });
-	        }
-	    };
-	}
-
-	module.exports = search;
 
 /***/ }
 /******/ ]);

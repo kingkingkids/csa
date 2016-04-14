@@ -1,4 +1,4 @@
-<ion-view view-title="消息" cache-view="false">
+<ion-view view-title="消息" cache-view="false" class="infoWrap">
     <ion-nav-title>
         <div class="tabTitle">消息</div>
     </ion-nav-title>
@@ -9,8 +9,22 @@
         </ion-refresher>
         <ion-list can-swipe="true">
             <ion-item collection-repeat="item in vm.collect.items">
-                <p>{{item.displayName}}</p>
-                <ion-option-button class="button-assertive" on-tap="vm.collect.removeMessage(item.id)">删除
+                <div class="infoList" ng-if="item.type == 1"
+                     on-tap="vm.collect.readBooks(item.resourceId,item.displayName)">
+                    <div class="infoHeader"><span class="left" ng-bind-html="'发布者：'+item.provider"></span><span
+                            class="right" ng-bind-html="item.shareDate"></span></div>
+                    <div ng-bind-html="item.displayName | displayNameFilter" class="title"></div>
+                    <div ng-bind-html="item.remark ==0 ? '...' : item.remark" class="desc"></div>
+                    <ion-option-button class="button-assertive" on-tap="vm.collect.removeMessage(item.id)">删除
+                </div>
+                <div class="infoList" ng-if="item.type == 2"
+                     on-tap="vm.collect.openModal(item.resourceId,item.displayName,'',$event)">
+                    <div class="infoHeader"><span class="left" ng-bind-html="'发布者：'+item.provider"></span><span
+                            class="right" ng-bind-html="item.shareDate"></span></div>
+                    <div ng-bind-html="item.displayName | displayNameFilter" class="title"></div>
+                    <div ng-bind-html="item.remark ==0 ? '...' : item.remark" class="desc"></div>
+                    <ion-option-button class="button-assertive" on-tap="vm.collect.removeMessage(item.id)">删除
+                </div>
                 </ion-option-button>
             </ion-item>
         </ion-list>

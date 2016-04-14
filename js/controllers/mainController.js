@@ -29,6 +29,8 @@
         root.$on('params:watched', (_scope, _data)=> {
             collect.watchId = _data.watchId;
             collect.resourceId = _data.id;
+            if (collect.isShowWatch != undefined)
+                collect.isShowWatch = _data.isShowWatch;
         });
         account.loginModal(scope);//判断是否登录,否则显示登录窗口
         root.showZoom = false;//全局的showZoom
@@ -43,6 +45,7 @@
         let collect = {
             watchId: 0,
             resourceId: 0,
+            isShowWatch: true,
             init: function () {
                 if (localStorage.saveUserInfo != undefined) {
                     loginInfo.remberMe = true;
@@ -52,6 +55,7 @@
 
                 }
                 account.keepAlive.start();//进入首页后开始调用保持链接,5分钟加载一次
+
                 /**创建全局的pdfModal**/
                 $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
                     scope: scope,
@@ -192,7 +196,31 @@
                 });
             }
         };
+        scope.$on('event:messages', function (_scope, _data) {
+            let {resources,totalCount} = _data;
+            let getShareIcon = document.querySelector('.shareNewsIcon');
+            if (totalCount > 0) {
+                if (localStorage.shareTime == undefined) {
+                    localStorage.shareTime = resources[0].shareDate;
+                    if (getShareIcon == null)
+                        angular.element(document.querySelectorAll('.iconfont')[2])
+                            .append('<span class="shareNewsIcon"></span>');
+                } else {
+                    let oldTime = new Date(localStorage.shareTime).getTime();
+                    let newTime = new Date(resources[0].shareDate).getTime();
+                    if (oldTime == newTime) {
+                        //doNothing angular.element(document.querySelector('.shareNewsIcon')).remove()
+                    }
+                    if (newTime > oldTime) {
+                        if (getShareIcon == null)
+                            angular.element(document.querySelectorAll('.iconfont')[2])
+                                .append('<span class="shareNewsIcon"></span>');
+                        localStorage.shareTime = newTime;
+                    }
+                }
+            }
 
+        });
         collect.init();
         this.collect = collect;//外部调用
         this.loginInfo = loginInfo;

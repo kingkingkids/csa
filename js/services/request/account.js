@@ -38,7 +38,11 @@ function account(send, scope, interval, $ionicModal, $q, constant, session, Comm
                 if (!this.promise) {
                     this.promise = interval(()=> {
                         send(constant.path.keepAlive);
-                    }, 5 * 1000 * 60);
+                        send(constant.path.getMyReceiveResources, {start: 0, limit: 1}).then(res=> {
+                            let {resources,totalCount} = res.data;
+                            scope.$broadcast('event:messages', {resources, totalCount});
+                        });
+                    }, .1 * 1000 * 60);
                 }
             },
             stop: function () {

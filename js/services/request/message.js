@@ -10,6 +10,7 @@ function message(send, constant) {
                 "limit": limit
             });
         },
+
         removeMessage: function (id) {
             return send(constant.path.deleteReceivedResource, {id: id});
         }
