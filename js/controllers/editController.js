@@ -6,9 +6,9 @@
         .module("editModule", [])
         .controller("editController", editController);
 
-    editController.$inject = ['request.account', "$stateParams", "$scope", "$state", "global.Common", "$timeout"];
+    editController.$inject = ["request.account","$stateParams","$scope", "$state", "global.Common"];
 
-    function editController(account, $stateParams, $scope, $state, Common, $timeout) {
+    function editController(account, $stateParams, $scope, $state, Common) {
         let vm = this;
         let userInfo = {
             account: null,
@@ -44,7 +44,7 @@
 
         function activate() {
             account.getAccount().then((res)=> {
-                let {account,company,department,email,im,mobile,name} = res.data;
+                let {account,company,department,im,mobile,name} = res.data;
                 vm.userInfo.account = account;
                 vm.userInfo.userName = name;
                 vm.userInfo.company = company;

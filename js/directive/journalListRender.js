@@ -4,14 +4,11 @@
 {
     angular.module('directivesModule')
         .directive('onJournalRender', onJournalRender)
-    onJournalRender.$inject = ["$state",
-        "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
-        "$sce", "global.constant", "$timeout", "global.Common"];
-    function onJournalRender($timeout, $q) {
+    function onJournalRender() {
         return {
             restrict: 'A',
             scope: true,
-            link: function (scope, element, attrs) {
+            link: function (scope, element) {
                 if (scope.$index == 0) {
                     element.prepend('<div class="bookBg">');
                 }

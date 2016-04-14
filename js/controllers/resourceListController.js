@@ -4,11 +4,9 @@
 {
     angular.module("ResourceListModule", ["httpRequest"])
         .controller("ResourceListController", ResourceListController);
-    ResourceListController.$inject = ["$state", "$rootScope", "$scope",
-        "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
-        "$sce", "global.constant", "$timeout", "global.Common", 'request.search'];
-    function ResourceListController($state, $rootScope, $scope, $stateParams,
-                                    $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common, search) {
+    ResourceListController.$inject = ["$rootScope", "$scope","$stateParams"
+        ,"$ionicPopup", "request.fav", "request.resources", "$timeout", "global.Common", "request.search"];
+    function ResourceListController($rootScope, $scope, $stateParams,$ionicPopup, fav, resources, $timeout, Common, search) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,

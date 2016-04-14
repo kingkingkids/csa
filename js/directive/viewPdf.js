@@ -8,11 +8,8 @@
     angular.module('directivesModule')
         .directive('onFinished', onFinished)
         .directive('viewPdf', viewPdf);
-    viewPdf.$inject = ["$state",
-        "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal",
-        "$sce", "global.constant", "$timeout", "global.Common"];
-    onFinished.$inject = ['$timeout', '$q'];
-    function onFinished($timeout, $q) {
+    viewPdf.$inject = ["$sce","$timeout","global.Common"];
+    function onFinished() {
         return {
             restrict: 'A',
             scope: true,
@@ -20,14 +17,11 @@
             link: function (scope, element, attrs, ctrl) {
                 if (scope.$last) {
                     ctrl.initSwipe();//渲染结束后调用初始化Swiper
-
                 }
             }
         }
     }
-
-    function viewPdf($state, $stateParams,
-                     $ionicPopup, fav, resources, $ionicModal, $sce, constant, $timeout, Common) {
+    function viewPdf( $sce,$timeout, Common) {
         let regExp = {
             styleReg: VerEx().then("<style").anythingBut('').then('</style>')//过滤style的正则
             , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>')//过滤body的正则

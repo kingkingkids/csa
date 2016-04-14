@@ -6,11 +6,11 @@
 // the 2nd parameter is an array of 'requires'
     angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule',
         'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-        'favModule', 'request.doHttpRequest', 'appInterceptor', 'editModule',
+        'favModule', 'request.doHttpRequest',  'editModule',
         'infoModule', 'directivesModule', 'filterModule']).config(appConfig).run(appRun);
-    appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$httpProvider"];
+    appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider"];
     appRun.$inject = ["$ionicPlatform", "$rootScope"];
-    function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+    function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         {
             //$httpProvider.interceptors.push('appInterceptor');
             $ionicConfigProvider.navBar.alignTitle('left');//覆盖默认Android的标题居左的设计
@@ -123,7 +123,6 @@
     }
 
     function appRun($ionicPlatform, $rootScope) {
-
         /**基本配置**/
         $rootScope.config = {
             sitePath: "http://localhost/csaProxy",//地址

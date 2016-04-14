@@ -9,7 +9,7 @@ require("../lib/ionic/js/ionic.bundle.js");
 require("./app.js");
 require("./services/global.js");
 require("./services/httpRequest.js");
-require("./services/appInterceptor.js");
+//require("./services/appInterceptor.js");
 require("./services/request/doHttpRequest.js");
 require("./controllers/loginController.js");
 require("./controllers/personalController.js");//个人设置

@@ -9,10 +9,10 @@
         .controller("favController", favController);
 
     favController.$inject = ["$rootScope", "$scope", "request.fav", "global.Common",
-        "request.resources", "$ionicModal", "$timeout", "$ionicTabsDelegate", "$state"];
+        "request.resources", "$timeout", "$ionicTabsDelegate"];
 
-    function favController($rootScope, $scope, fav, Common, resources, $ionicModal,
-                           $timeout, $ionicTabsDelegate, $state) {
+    function favController($rootScope, $scope, fav, Common, resources,
+                           $timeout, $ionicTabsDelegate) {
         let collect = {
             watchesList: [],
             booksList: [],
@@ -53,7 +53,7 @@
                         start: this.a_start
                     }
                     fav.getList(paramObj).then((res)=> {
-                        let {totalCount,watches} = res.data;
+                        let {watches} = res.data;
                         this.watchesList = this.watchesList.concat(watches);
                         this.a_start = this.a_limit + this.a_start;
                     }).finally(function () {
@@ -89,7 +89,7 @@
                         start: this.b_start
                     }
                     fav.getList(paramObj).then((res)=> {
-                        let {totalCount,watches} = res.data;
+                        let {watches} = res.data;
                         this.booksList = this.booksList.concat(watches);
                         this.b_start = this.b_limit + this.b_start;
                     }).finally(function () {

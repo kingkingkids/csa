@@ -32,8 +32,10 @@
             },
             config: {
                 sitePath: "http://211.66.86.97/csaProxy",//地址
+                //sitePath: "http://58.248.25.234:8080/",
                 currentGroupId: 0,
                 journalID: 379, //期刊ID,
+                booksID: 378,
                 guestAccount: ['guest', 'guest!@#']
             }
         });

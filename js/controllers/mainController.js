@@ -8,38 +8,36 @@
         .controller("MainController", MainController);
 
     MainController.$inject = ["$rootScope", "$scope", "$state", "request.account",
-        "global.session", "$ionicHistory", 'global.constant', 'global.Common', '$ionicModal',
-        '$ionicActionSheet', 'request.fav'];
+        "global.session", "$ionicHistory", "global.constant", "global.Common", "$ionicModal", "$ionicActionSheet", "request.fav"];
 
-    function MainController(root, scope, state, account, session,
-                            $ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
+    function MainController($rootScope, $scope, state, account, session,$ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
         let loginInfo = {
             username: null,
             password: null,
             remberMe: null
         }
         /**接收到由httpRequest传过来的事件,退出时调用**/
-        root.$on("status:logout", ()=> {
+        $rootScope.$on("status:logout", ()=> {
             collect.logoutFunc();
         });
-        root.$on("event:logout", ()=> {
+        $rootScope.$on("event:logout", ()=> {
             collect.logoutFunc();
         });
         /** 接收由列表传递过来的关注的参数**/
-        root.$on('params:watched', (_scope, _data)=> {
+        $rootScope.$on('params:watched', (_scope, _data)=> {
             collect.watchId = _data.watchId;
             collect.resourceId = _data.id;
             if (collect.isShowWatch != undefined)
                 collect.isShowWatch = _data.isShowWatch;
         });
-        account.loginModal(scope);//判断是否登录,否则显示登录窗口
-        root.showZoom = false;//全局的showZoom
+        account.loginModal($scope);//判断是否登录,否则显示登录窗口
+        $rootScope.showZoom = false;//全局的showZoom
         //全局放大缩小方法
-        root.zoom = function (scale) {
+        $rootScope.zoom = function (scale) {
             if (scale == 'big') {
-                root.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
+                $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
             } else {
-                root.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
+                $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
             }
         }
         let collect = {
@@ -58,16 +56,16 @@
 
                 /**创建全局的pdfModal**/
                 $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
-                    scope: scope,
+                    scope: $scope,
                     animation: 'slide-in-up',
                     hardwareBackButtonClose: false
                 }).then((modal)=> {
-                    root.pdfModal = modal;
+                    $rootScope.pdfModal = modal;
                 });
             },
             closePdfModal: function () {
-                root.pdfModal.hide();
-                root.$broadcast('event:pdfModalClose');
+                $rootScope.pdfModal.hide();
+                $rootScope.$broadcast('event:pdfModalClose');
             },
             actionSheet: function () {
                 let watchText = this.watchId == 0 ? '添加收藏' : '取消收藏'; //根据watchId判断是否已添加收藏
@@ -88,14 +86,14 @@
                                     fav.removeFav(this.watchId).then((res)=> {
                                         if (res.data.success) {
                                             this.watchId = 0;
-                                            root.$broadcast('params:fromMain', this.watchId);
+                                            $rootScope.$broadcast('params:fromMain', this.watchId);
                                             Common.Alert('', '成功取消收藏');
                                         }
                                     });
                                 } else {
                                     fav.addFav(this.resourceId).then((res)=> {
                                         this.watchId = res.data.watch[0].watchId;
-                                        root.$broadcast('params:fromMain', this.watchId);
+                                        $rootScope.$broadcast('params:fromMain', this.watchId);
                                         Common.Alert('', '收藏成功');
                                     });
                                 }
@@ -107,10 +105,10 @@
             },
             loginModal: {
                 show: function () {
-                    scope.loginModal.show();
+                    $scope.loginModal.show();
                 },
                 hide: function () {
-                    scope.loginModal.hide();
+                    $scope.loginModal.hide();
                 }
             },
             login: ()=> {
@@ -162,17 +160,16 @@
                 this.loginInfo.remberMe = false;
                 this.loginInfo.username = '';
                 this.loginInfo.password = '';
-
-            }
-            , forget: function () {
-                account.forgetPasswordModal(scope).then(modal=> {
-                    scope.forgetPasswordModal = modal;
-                    scope.forgetPasswordModal.show();
-                    this.modalForgetTitle = '找回密码';
+            },
+            forget: function () {
+                account.forgetPasswordModal($scope).then(modal=> {
+                    $scope.forgetPasswordModal = modal;
+                    $scope.forgetPasswordModal.show();
+                    //this.modalForgetTitle = '找回密码';
                 });
             },
             hideForgetModal: function () {
-                scope.forgetPasswordModal.hide();
+                $scope.forgetPasswordModal.hide();
             },
             sendEmail: function () {
                 let reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
@@ -190,13 +187,13 @@
                     } else if (res.data.errorCode == "0") {
                         Common.Alert('', '发送成功').then(res=> {
                             this.findPasswordMail = "";
-                            scope.forgetPasswordModal.hide();
+                            $scope.forgetPasswordModal.hide();
                         });
                     }
                 });
             }
         };
-        scope.$on('event:messages', function (_scope, _data) {
+        $scope.$on('event:messages', function (_scope, _data) {
             let {resources,totalCount} = _data;
             let getShareIcon = document.querySelector('.shareNewsIcon');
             if (totalCount > 0) {
@@ -208,9 +205,9 @@
                 } else {
                     let oldTime = new Date(localStorage.shareTime).getTime();
                     let newTime = new Date(resources[0].shareDate).getTime();
-                    if (oldTime == newTime) {
-                        //doNothing angular.element(document.querySelector('.shareNewsIcon')).remove()
-                    }
+                    //if (oldTime == newTime) {
+                    //    //doNothing angular.element(document.querySelector('.shareNewsIcon')).remove()
+                    //}
                     if (newTime > oldTime) {
                         if (getShareIcon == null)
                             angular.element(document.querySelectorAll('.iconfont')[2])

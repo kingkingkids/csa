@@ -7,8 +7,7 @@
         .module("infoModule", [])
         .controller("infoController", infoController);
 
-    infoController.$inject = ['request.message', "global.session",
-        "$rootScope", 'request.resources', '$scope', 'global.Common', '$ionicTabsDelegate', '$timeout'];
+    infoController.$inject = ["request.message", "global.session", "$rootScope", "request.resources", "$scope", "global.Common", "$ionicTabsDelegate", "$timeout"];
 
     function infoController(message, session, $rootScope, resources, $scope, Common, $ionicTabsDelegate, $timeout) {
         let collect = {
@@ -41,7 +40,7 @@
                     return;
                 }
                 message.getList(session.getSession().memberId, this.start, this.limit).then(res=> {
-                    let {resources,totalCount} = res.data;
+                    let {resources} = res.data;
                     this.items = this.items.concat(resources);
                     this.start = this.limit + this.start;
                 }).finally(function () {

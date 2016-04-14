@@ -7,9 +7,9 @@
         .module("LoginModule", ["httpRequest"])
         .controller("LoginController", LoginController);
 
-    LoginController.$inject = ["$state", "request.account", "global.session"];
+    LoginController.$inject = ["$state", "request.account"];
 
-    function LoginController($state, account, session) {
+    function LoginController($state, account) {
         let collect = {
             login: function () {
                 let paramsObj = {

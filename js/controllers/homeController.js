@@ -7,11 +7,12 @@
         .module("HomeModule", ["httpRequest"])
         .controller("HomeController", HomeController);
 
-    HomeController.$inject = ["$state", "$timeout", "global.constant", "$scope", "request.resources", "global.Common", 'request.search', "$rootScope", "$ionicTabsDelegate"];
+    HomeController.$inject = ["$state", "$timeout", "global.constant", "$scope", "request.search", "$rootScope"];
 
-    function HomeController($state, $timeout, constant, $scope, resources, Common, search, $rootScope, $ionicTabsDelegate) {
+    function HomeController($state, $timeout, constant, $scope, search, $rootScope) {
         let collect = {
             journalID: constant.config.journalID,
+            booksID: constant.config.booksID,
             active: function () {
                 $scope.$on('event:favToResourcesLIst', (_scope, _data)=> {
                     let {parentId,title,type} = _data;

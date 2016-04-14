@@ -7,15 +7,14 @@
         .module("personalModule", ["httpRequest"])
         .controller("personalController", personalController);
 
-    personalController.$inject = ["$rootScope", "$scope", "httpRequest.sendRequest", "$state", "$ionicPopup", "request.account", "global.session"];
+    personalController.$inject = ["$rootScope", "request.account"];
 
-    function personalController(root, scope, sendRequest, $state, $ionicPopup, account, session) {
-        let accountInfo = {};
-
+    function personalController($rootScope, account) {
         let collect = {
+            accountInfo: {},
             getAccount: ()=> {
                 account.getAccount().then((res)=> {
-                    let {account,company,department,email,im,mobile,name,phone,position} = res.data;
+                    let {account,company,department,email,im,mobile,name} = res.data;
                     this.accountInfo = {
                         account: account,
                         name: name,
@@ -29,7 +28,7 @@
             },
             logout: function () {
                 account.logout().then(res=> {
-                    root.$emit("event:logout");
+                    $rootScope.$emit("event:logout");
                     localStorage.removeItem('saveUserInfo');
                 });
             }

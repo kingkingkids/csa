@@ -7,14 +7,17 @@ var path = require('path');
 
 module.exports = {
     //插件项
-    //plugins: [
-    //    //new TransferWebpackPlugin([
-    //    //    {from: 'dist', to: '../../app/platforms/android/assets/www/dist/'},
-    //    //    {from: 'dist', to: '../../update/dist/'},
-    //    //    {from: 'templates', to: '../../app/platforms/android/assets/www/templates/'}
-    //    //], path.join(__dirname, ''))
-    //    new webpack.optimize.UglifyJsPlugin({minimize: true})
-    //],
+    plugins: [
+        //new TransferWebpackPlugin([
+        //    {from: 'dist', to: '../../app/platforms/android/assets/www/dist/'},
+        //    {from: 'dist', to: '../../update/dist/'},
+        //    {from: 'templates', to: '../../app/platforms/android/assets/www/templates/'}
+        //], path.join(__dirname, ''))
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            mangle: false
+        })
+    ],
     //页面入口文件配置
     entry: {
         vendor: ['./js/entry.js']

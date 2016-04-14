@@ -1,6 +1,6 @@
 let Base64 = require('js-base64').Base64;
-account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", 'global.Common'];
-function account(send, scope, interval, $ionicModal, $q, constant, session, Common) {
+account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", "global.Common"];
+function account(send, $rootScope, interval, $ionicModal, $q, constant, session, Common) {
     return {
         doLogin: function (paramsObj) {
             let defered = $q.defer();
@@ -40,9 +40,9 @@ function account(send, scope, interval, $ionicModal, $q, constant, session, Comm
                         send(constant.path.keepAlive);
                         send(constant.path.getMyReceiveResources, {start: 0, limit: 1}).then(res=> {
                             let {resources,totalCount} = res.data;
-                            scope.$broadcast('event:messages', {resources, totalCount});
+                            $rootScope.$broadcast('event:messages', {resources, totalCount});
                         });
-                    }, .1 * 1000 * 60);
+                    }, 5 * 1000 * 60);
                 }
             },
             stop: function () {
@@ -69,10 +69,10 @@ function account(send, scope, interval, $ionicModal, $q, constant, session, Comm
                 hardwareBackButtonClose: false
                 //,focusFirstInput: true
             }).then((modal)=> {
-                scope.loginModal = modal;
+                $rootScope.loginModal = modal;
                 this.getStatus().then((res)=> {
                     if (res.data.status == "guest") {
-                        scope.loginModal.show();
+                        $rootScope.loginModal.show();
                         session.removeSession();
                     }
                 });
