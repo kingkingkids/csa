@@ -31,6 +31,15 @@
             collect.resourceId = _data.id;
         });
         account.loginModal(scope);//判断是否登录,否则显示登录窗口
+        root.showZoom = false;//全局的showZoom
+        //全局放大缩小方法
+        root.zoom = function (scale) {
+            if (scale == 'big') {
+                root.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
+            } else {
+                root.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
+            }
+        }
         let collect = {
             watchId: 0,
             resourceId: 0,

@@ -109,6 +109,9 @@
                         swiper.slideTo(0);
                         swiper.slides[0].innerHTML = getHtml(0);
                         slidesArr = document.querySelectorAll('.swiper-slide');
+                        $timeout(function () {
+                            defaultViewer = new pdf2htmlEX({});
+                        });
                     }
                     swiper.on('onSlideChangeStart', e=> {
                         $timeout(()=> {

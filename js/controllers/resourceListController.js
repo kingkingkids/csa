@@ -14,7 +14,6 @@
             title: $stateParams.title,
             modalTitle: "",
             defaultViewer: null,
-            showZoom: false,
             start: 0,//当前页码
             limit: 12,//每页显示的条数
             totalCount: 0,//总条数
@@ -94,7 +93,8 @@
                     Common.loading.show();
                     resources.getView(id).then(res=> {
                         $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
-                        this.showZoom = true;
+                        $rootScope.showZoom = true;
+                        console.log($rootScope.showZoom)
                     });
                 }, 300);
             },
@@ -172,10 +172,11 @@
         $scope.$on('event:pdfModalClose', function () {
             if (search.isOpenSearhModal) {
                 search.openSearchModal($scope);
+            } else {
+                collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
             }
-            collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
             $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令，执行关闭前的操作
-            collect.showZoom = false;
+            $rootScope.showZoom = false;
         });
         /**接收由mainController传过来的参数**/
         $scope.$on('params:fromMain', function (_scope, _id) {

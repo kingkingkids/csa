@@ -28609,6 +28609,15 @@
 	                collect.resourceId = _data.id;
 	            });
 	            account.loginModal(scope); //判断是否登录,否则显示登录窗口
+	            root.showZoom = false; //全局的showZoom
+	            //全局放大缩小方法
+	            root.zoom = function (scale) {
+	                if (scale == 'big') {
+	                    root.$broadcast('event:scale:big'); //传递一个事件给pdf预览指令
+	                } else {
+	                        root.$broadcast('event:scale:small'); //传递一个事件给pdf预览指令
+	                    }
+	            };
 	            var collect = {
 	                watchId: 0,
 	                resourceId: 0,
@@ -28893,7 +28902,6 @@
 	            title: $stateParams.title,
 	            modalTitle: "",
 	            defaultViewer: null,
-	            showZoom: false,
 	            start: 0, //当前页码
 	            limit: 12, //每页显示的条数
 	            totalCount: 0, //总条数
@@ -28961,8 +28969,6 @@
 	                });
 	            },
 	            openModal: function openModal(id, title, watchId, event) {
-	                var _this3 = this;
-
 	                this.targetItem = angular.element(event.currentTarget); //set 当前element
 	                this.id = id; //set资源ID
 	                this.watchId = watchId; //set关注ID
@@ -28974,7 +28980,8 @@
 	                    Common.loading.show();
 	                    resources.getView(id).then(function (res) {
 	                        $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                        _this3.showZoom = true;
+	                        $rootScope.showZoom = true;
+	                        console.log($rootScope.showZoom);
 	                    });
 	                }, 300);
 	            },
@@ -28993,13 +29000,33 @@
 	                return newArr;
 	            },
 	            loadResources: function loadResources() {
-	                var _this4 = this;
+	                var _this3 = this;
 
 	                this.start = 0;
 	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
 	                    var _res$data = res.data;
 	                    var resources = _res$data.resources;
 	                    var totalCount = _res$data.totalCount;
+
+
+	                    if ($stateParams.type == 'folder') {
+	                        _this3.resourceList = _this3.chunk(resources, 3);
+	                        _this3.listLength = _this3.resourceList.length;
+	                    } else if ($stateParams.type == 'list') {
+	                        _this3.resourceList = resources;
+	                    }
+	                    _this3.start = _this3.limit + _this3.start;
+	                    _this3.totalCount = totalCount;
+	                });
+	            },
+	            doRefresh: function doRefresh() {
+	                var _this4 = this;
+
+	                this.start = 0;
+	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
+	                    var _res$data2 = res.data;
+	                    var resources = _res$data2.resources;
+	                    var totalCount = _res$data2.totalCount;
 
 
 	                    if ($stateParams.type == 'folder') {
@@ -29010,32 +29037,12 @@
 	                    }
 	                    _this4.start = _this4.limit + _this4.start;
 	                    _this4.totalCount = totalCount;
-	                });
-	            },
-	            doRefresh: function doRefresh() {
-	                var _this5 = this;
-
-	                this.start = 0;
-	                resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
-	                    var _res$data2 = res.data;
-	                    var resources = _res$data2.resources;
-	                    var totalCount = _res$data2.totalCount;
-
-
-	                    if ($stateParams.type == 'folder') {
-	                        _this5.resourceList = _this5.chunk(resources, 3);
-	                        _this5.listLength = _this5.resourceList.length;
-	                    } else if ($stateParams.type == 'list') {
-	                        _this5.resourceList = resources;
-	                    }
-	                    _this5.start = _this5.limit + _this5.start;
-	                    _this5.totalCount = totalCount;
 	                }).finally(function () {
 	                    $rootScope.$broadcast('scroll.refreshComplete');
 	                });
 	            },
 	            loadMore: function loadMore() {
-	                var _this6 = this;
+	                var _this5 = this;
 
 	                if (this.start >= this.totalCount) {
 	                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
@@ -29043,12 +29050,12 @@
 	                } else {
 	                    resources.getList($stateParams.parentId, this.limit, this.start).then(function (res) {
 	                        if ($stateParams.type == 'folder') {
-	                            _this6.resourceList = _this6.resourceList.concat(_this6.chunk(res.data.resources, 3));
-	                            _this6.listLength = _this6.resourceList.length;
+	                            _this5.resourceList = _this5.resourceList.concat(_this5.chunk(res.data.resources, 3));
+	                            _this5.listLength = _this5.resourceList.length;
 	                        } else if ($stateParams.type == 'list') {
-	                            _this6.resourceList = _this6.resourceList.concat(res.data.resources);
+	                            _this5.resourceList = _this5.resourceList.concat(res.data.resources);
 	                        }
-	                        _this6.start = _this6.limit + _this6.start;
+	                        _this5.start = _this5.limit + _this5.start;
 	                    }).finally(function () {
 	                        $rootScope.$broadcast('scroll.infiniteScrollComplete');
 	                    });
@@ -29063,10 +29070,11 @@
 	        $scope.$on('event:pdfModalClose', function () {
 	            if (_search.isOpenSearhModal) {
 	                _search.openSearchModal($scope);
+	            } else {
+	                collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
 	            }
-	            collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
 	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令，执行关闭前的操作
-	            collect.showZoom = false;
+	            $rootScope.showZoom = false;
 	        });
 	        /**接收由mainController传过来的参数**/
 	        $scope.$on('params:fromMain', function (_scope, _id) {
@@ -29252,7 +29260,6 @@
 	            booksList: [],
 	            isArticleTab: true,
 	            isBooksTab: false,
-	            showZoom: false,
 	            a_limit: 10,
 	            a_start: 0,
 	            a_totalCount: 0,
@@ -29380,8 +29387,6 @@
 	                }
 	            },
 	            openModal: function openModal(id, title, watchId, event) {
-	                var _this6 = this;
-
 	                this.targetItem = angular.element(event.currentTarget); //set 当前element
 	                this.watchId = watchId; //set关注ID
 	                if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined) this.watchId = this.targetItem.data('watchId');
@@ -29391,7 +29396,7 @@
 	                resources.getView(id).then(function (res) {
 	                    $rootScope.pdfViewTitle = title;
 	                    $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                    _this6.showZoom = true;
+	                    $rootScope.showZoom = true;
 	                });
 	            },
 	            zoom: function zoom(scale) {
@@ -29414,7 +29419,7 @@
 	        $scope.$on('event:pdfModalClose', function () {
 	            $rootScope.$broadcast('event:closeModel'); //传递一个事件给pdf预览指令
 	            collect.targetItem.data('watchId', collect.watchId); //关闭view后给当前列表设置一个临时的data
-	            collect.showZoom = false;
+	            $rootScope.showZoom = false;
 	        });
 	        /**接收由mainController传过来的参数**/
 	        $scope.$on('params:fromMain', function (_scope, _id) {
@@ -29818,6 +29823,9 @@
 	                            swiper.slideTo(0);
 	                            swiper.slides[0].innerHTML = getHtml(0);
 	                            slidesArr = document.querySelectorAll('.swiper-slide');
+	                            $timeout(function () {
+	                                defaultViewer = new pdf2htmlEX({});
+	                            });
 	                        }
 	                        swiper.on('onSlideChangeStart', function (e) {
 	                            $timeout(function () {
@@ -35886,7 +35894,7 @@
 	            resources.getView(id).then(function (res) {
 	                $rootScope.pdfViewTitle = title;
 	                $rootScope.$broadcast('event:openModel', res.data); //传递一个事件给pdf预览指令
-	                //this.showZoom = true;
+	                $rootScope.showZoom = true;
 	            });
 	        }
 	    };

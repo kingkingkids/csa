@@ -149,7 +149,7 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             resources.getView(id).then(res=> {
                 $rootScope.pdfViewTitle = title;
                 $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
-                //this.showZoom = true;
+                $rootScope.showZoom = true;
             });
         }
     }

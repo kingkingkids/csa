@@ -18,7 +18,6 @@
             booksList: [],
             isArticleTab: true,
             isBooksTab: false,
-            showZoom: false,
             a_limit: 10,
             a_start: 0,
             a_totalCount: 0,
@@ -135,7 +134,7 @@
                 resources.getView(id).then(res=> {
                     $rootScope.pdfViewTitle = title;
                     $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
-                    this.showZoom = true;
+                    $rootScope.showZoom = true;
                 });
             },
             zoom: function (scale) {
@@ -158,7 +157,7 @@
         $scope.$on('event:pdfModalClose', function () {
             $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令
             collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
-            collect.showZoom = false;
+            $rootScope.showZoom = false;
         });
         /**接收由mainController传过来的参数**/
         $scope.$on('params:fromMain', function (_scope, _id) {
