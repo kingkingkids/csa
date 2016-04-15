@@ -4,9 +4,9 @@
 {
     angular.module("ResourceListModule", ["httpRequest"])
         .controller("ResourceListController", ResourceListController);
-    ResourceListController.$inject = ["$rootScope", "$scope","$stateParams"
-        ,"$ionicPopup", "request.fav", "request.resources", "$timeout", "global.Common", "request.search"];
-    function ResourceListController($rootScope, $scope, $stateParams,$ionicPopup, fav, resources, $timeout, Common, search) {
+    ResourceListController.$inject = ["$rootScope", "$scope", "$stateParams"
+        , "$ionicPopup", "request.fav", "request.resources", "$timeout", "global.Common", "request.search"];
+    function ResourceListController($rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $timeout, Common, search) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -17,7 +17,7 @@
             totalCount: 0,//总条数
             listCss: false,
             articleCss: false,
-            defaultPic: 'img/default.gif',
+            defaultPic: 'img/defatult_jounery.png',
             listLength: 0,
             watchId: 0,
             id: 0,
@@ -160,6 +160,12 @@
                     });
                 }
 
+            },
+            goBack: function () {
+                if (this.start >= this.totalCount) {
+                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+                    return;
+                }
             },
             search: function () {
                 search.openSearchModal($scope, -$stateParams.parentId);

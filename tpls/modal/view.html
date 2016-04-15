@@ -3,7 +3,7 @@
         <div class="buttons">
             <button class="button" on-tap="vm.collect.closePdfModal()"><span class="ion-chevron-left"></span>返回</button>
         </div>
-        <h1 class="title" ng-bind-html="pdfViewTitle.replace('.html','')"></h1>
+        <h1 class="title" ng-bind-html="pdfViewTitle | displayNameFilter | barTitleFilter"></h1>
         <div class="buttons" ng-show="vm.collect.isShowWatch">
             <button class="button" on-tap="vm.collect.actionSheet()">...</button>
         </div>

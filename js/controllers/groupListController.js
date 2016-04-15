@@ -14,7 +14,7 @@
             groupList: [],
             title: $stateParams.title,
             path: constant.config.sitePath,
-            defaultPic: 'img/default.gif',
+            defaultPic: 'img/default_category.png',
             isBooksList: false,
             active: function () {
                 if ($stateParams.type == "books") {

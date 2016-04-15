@@ -1,3 +1,6 @@
+* {
+  font-family: 'Heiti SC Medium' !important; }
+
 input {
   -webkit-appearance: none !important;
   -moz-appearance: none;
@@ -12,6 +15,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 a {
   text-decoration: none; }
+
+.button {
+  font-size: 16px; }
 
 @media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
   .bar {
@@ -36,7 +42,8 @@ a {
 .bar .title.title-left {
   width: 100%;
   margin-left: 0;
-  left: 0 !important; }
+  left: 0 !important;
+  font-size: 14px; }
 
 .title-left {
   text-align: center; }
@@ -161,20 +168,23 @@ a {
     .loginWrap .description p {
       line-height: 150%;
       color: #808080;
-      font-size: 12px; }
+      font-size: 14px; }
 
 .catalogList .list img {
   height: 90px;
   float: left;
   margin-right: 10px; }
 .catalogList .list .title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #000; }
 .catalogList .list .desc {
   padding-top: 8px;
   color: #7b7c7d;
   font-size: 14px; }
+
+.booksGroupList .list img {
+  height: 70px !important; }
 
 .zoom {
   position: absolute;
@@ -185,7 +195,7 @@ a {
   overflow: hidden;
   background: #333;
   opacity: .5;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   line-height: 30px;
   text-align: center;
@@ -237,13 +247,14 @@ a {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 17px;
+  font-size: 16px;
   height: 44px;
   overflow: hidden; }
   .homeHeader img {
     width: 31px;
     position: relative;
-    top: 7px; }
+    top: 7px;
+    margin-right: 5px; }
 
 .homeWrap .content {
   background: url("../img/list_bg_dark.png") no-repeat;
@@ -294,7 +305,7 @@ a {
   font-size: 14px;
   font-weight: bold; }
 .booksList .list .desc {
-  font-size: 12px;
+  font-size: 14px;
   color: #6d6e70; }
 .booksList .list .item {
   bordre-bottom: 1px solid #c8c8c9; }
@@ -327,10 +338,10 @@ a {
     border-bottom-left-radius: 0; }
 
 .personalWrap .list .item {
-  font-size: 14px;
+  font-size: 16px;
   color: #353535; }
 .personalWrap .list .icon {
-  font-size: 14px;
+  font-size: 16px;
   color: #353535; }
 .personalWrap .list .ion-chevron-right {
   margin-left: 5px; }
@@ -347,10 +358,13 @@ a {
 .personalEdit .bar {
   background: #fff; }
 
+.bar .button.button-clear, .bar button.button-clear {
+  font-size: 16px !important; }
+
 .pdfViewModal button {
   background: #fff;
   color: #0079ff !important;
-  font-size: 17px !important; }
+  font-size: 16px !important; }
   .pdfViewModal button span {
     margin-right: 5px; }
 .pdfViewModal .bar .title.title-left {
@@ -363,7 +377,7 @@ a {
   line-height: 31px;
   width: 95%;
   margin: 10px auto 0 auto;
-  font-size: 12px;
+  font-size: 14px;
   color: #ababae;
   text-align: center;
   border-radius: 5px;
@@ -403,7 +417,7 @@ a {
 .searchContent .noResult {
   width: 100%;
   line-height: 300%;
-  font-size: 12px;
+  font-size: 14px;
   color: #8f8f8f;
   text-align: center; }
 .searchContent.has-header {
@@ -411,7 +425,7 @@ a {
 .searchContent .list .title {
   font-weight: bold;
   color: #000;
-  font-size: 16px; }
+  font-size: 14px; }
 .searchContent .list .desc {
   color: #7b7c7d;
   font-size: 14px; }
@@ -429,17 +443,17 @@ a {
   .infoWrap .infoHeader .left {
     float: left;
     color: #535353;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 30px; }
   .infoWrap .infoHeader .right {
     float: right;
     color: #535353;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 30px; }
 .infoWrap .title {
   font-weight: bold;
   color: #000;
-  font-size: 16px;
+  font-size: 14px;
   display: block; }
 .infoWrap .desc {
   font-size: 14px;
@@ -455,6 +469,22 @@ a {
   position: absolute;
   left: 54%;
   top: 1px; }
+
+.forgetPasswordWrap h1.title-left {
+  color: #000 !important;
+  text-align: center !important; }
+.forgetPasswordWrap button {
+  background: none !important;
+  border: 0 !important;
+  color: #000 !important; }
+
+.item {
+  font-size: 14px !important; }
+  .item div {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; }
 
 @media (min-width: 680px) {
   .modal {

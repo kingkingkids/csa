@@ -6,7 +6,7 @@
         .module("editModule", [])
         .controller("editController", editController);
 
-    editController.$inject = ["request.account","$stateParams","$scope", "$state", "global.Common"];
+    editController.$inject = ["request.account", "$stateParams", "$scope", "$state", "global.Common"];
 
     function editController(account, $stateParams, $scope, $state, Common) {
         let vm = this;
@@ -145,6 +145,8 @@
                     account.savePassword(_oldValue, _value).then(res=> {
                         if (res.data.result) {
                             $state.go("tabs.personal");
+                        } else {
+                            Common.Alert("", "原密码有误，请重新输入");
                         }
                     });
                 } else {

@@ -4,8 +4,8 @@
 {
     angular.module("ResourceListModule")
         .controller("BooksListController", BooksListController);
-    BooksListController.$inject = ["$rootScope", "$scope", "$stateParams","$ionicPopup", "request.fav","request.resources","$ionicModal","$timeout","global.Common"];
-    function BooksListController($rootScope, $scope, $stateParams,$ionicPopup, fav, resources, $ionicModal, $timeout, Common) {
+    BooksListController.$inject = ["$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$timeout", "global.Common", "request.search"];
+    function BooksListController($rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $timeout, Common, search) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -17,7 +17,7 @@
             totalCount: 0,//总条数
             listCss: false,
             articleCss: false,
-            defaultPic: 'img/default.gif',
+            defaultPic: 'img/default_books.png',
             listLength: 0,
             init: function () {
                 if ($stateParams.type == 'folder') {
@@ -126,10 +126,21 @@
                 }).finally(function () {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
+            },
+            goBack: function () {
+                if (this.start >= this.totalCount) {
+                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
+                    return;
+                }
+            },
+            search: function () {
+                search.openSearchModal($scope, -$stateParams.parentId);
             }
         }
+
         collect.init();
         collect.loadResources();
+        this.search = search;
         this.collect = collect;
     }
 }

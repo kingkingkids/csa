@@ -1,13 +1,13 @@
 <ion-view view-title="">
-    <ion-nav-title ng-bind-html="vm.collect.title | displayNameFilter">
+    <ion-nav-title ng-bind-html="vm.collect.title | displayNameFilter | barTitleFilter">
     </ion-nav-title>
     <ion-nav-bar class="innerHeader">
-        <ion-nav-back-button>
+        <ion-nav-back-button on-tap="vm.collect.goBack()">
             返回
         </ion-nav-back-button>
         <ion-nav-buttons side="right">
             <button class="button" on-tap="vm.collect.search()">
-                Search
+                搜索
             </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -27,8 +27,8 @@
                             <div ng-if="res.type == 1"
                                  ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName,type:'list'})">
                                 <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
-                                <p ng-bind-html="res.displayName.split('卷')[0] + '卷'"></p>
-                                <p ng-bind-html="res.displayName.split('卷')[1]"></p>
+                                <p ng-bind-html="res.displayName.split('卷')[0] + '卷' | displayNameFilter"></p>
+                                <p ng-bind-html="res.displayName.split('卷')[1] | displayNameFilter"></p>
                             </div>
                             <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">-->
                             <!--{{res.displayName}}-->

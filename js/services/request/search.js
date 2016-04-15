@@ -19,8 +19,8 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             return $ionicModal.fromTemplateUrl("./tpls/modal/search.html", {
                 scope: scope,
                 animation: 'slide-in-up',
-                hardwareBackButtonClose: false,
-                focusFirstInput: true
+                hardwareBackButtonClose: false
+                //,focusFirstInput: true
             });
         },
         openSearchModal: function (scope, groupId) {

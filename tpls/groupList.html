@@ -24,7 +24,7 @@
                 </div>
             </ion-item>
         </ion-list>
-        <ion-list class="catalogList" ng-if="vm.collect.isBooksList">
+        <ion-list class="catalogList booksGroupList" ng-if="vm.collect.isBooksList">
             <ion-item collection-repeat="group in vm.collect.groupList">
                 <div ng-if="group.type == 'group'"
                      ui-sref="tabs.booksList({type:'folder',parentId:-group.id,title:group.displayName})"
@@ -32,7 +32,7 @@
                     <img ng-src="{{vm.collect.path}}{{group.icon}}" ng-if="group.icon.indexOf('groupsImg') == -1"/>
                     <img ng-src="{{vm.collect.defaultPic}}" ng-if="group.icon.indexOf('groupsImg') > -1"/>
                     <p class="title" ng-bind-html="group.displayName"></p>
-                    <p class="desc" ng-bind-html="group.desc"></p>
+                    <p class="desc" ng-bind-html="group.desc == '' ? '暂无描述' : ''"></p>
                 </div>
                 <div ui-sref="tabs.groupList({groupId:group.id,title:group.displayName})"
                      ng-if="group.type == 'category'" ng-bind-html="group.displayName">

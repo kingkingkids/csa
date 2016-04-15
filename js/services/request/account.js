@@ -95,7 +95,7 @@ function account(send, $rootScope, interval, $ionicModal, $q, constant, session,
         savePassword: function (oValue, value) {
             let paramObj = {
                 'password': oValue,
-                newPassword: 'value'
+                newPassword: value
             }
             return send(constant.path.modifyPassword, paramObj);
         },
