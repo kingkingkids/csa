@@ -25990,7 +25990,6 @@
 	                $ionicConfigProvider.tabs.position("bottom");
 	                //$ionicConfigProvider.scrolling.jsScrolling(false);
 	            }
-
 	            $stateProvider.state('login', {
 	                url: '/login',
 	                views: {
@@ -26019,6 +26018,10 @@
 	                        controller: "HomeController",
 	                        controllerAs: "vm"
 	                    }
+	                },
+	                onEnter: function onEnter() {
+	                    console.log(213);
+	                    $ionicConfigProvider.views.maxCache(0);
 	                }
 	            }).state('tabs.favorite', {
 	                url: '/favorite',

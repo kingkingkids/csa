@@ -21,7 +21,6 @@
                 //$ionicConfigProvider.scrolling.jsScrolling(false);
 
             }
-
             $stateProvider
                 .state('login', {
                     url: '/login',
@@ -53,6 +52,10 @@
                             controller: "HomeController",
                             controllerAs: "vm"
                         }
+                    },
+                    onEnter: function () {
+                        //当进入到home的时候，清空各模板缓存，用于不正常退出进入登录页时，能够回显数据
+                        $ionicConfigProvider.views.maxCache(0);
                     }
                 })
                 .state('tabs.favorite', {
