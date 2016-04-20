@@ -6,9 +6,10 @@
         .module("editModule", [])
         .controller("editController", editController);
 
-    editController.$inject = ["request.account", "$stateParams", "$scope", "$state", "global.Common"];
+    editController.$inject = ["request.account", "$stateParams", "$scope", "$state", "global.Common", "global.constant"];
 
-    function editController(account, $stateParams, $scope, $state, Common) {
+    function editController(account, $stateParams, $scope, $state, Common, constant) {
+        console.log(constant.majors)
         let vm = this;
         let userInfo = {
             account: null,
@@ -21,6 +22,7 @@
             password: null,
             confirmPassword: null,
             oldPassword: null,
+            majors: constant.majors,
             activate: activate//进controller就执行
         }
         let collect = {
@@ -40,8 +42,6 @@
         $scope.$on("event:" + $stateParams.type, verifyAndSave);
         this.userInfo = userInfo;
         this.collect = collect;
-
-
         function activate() {
             account.getAccount().then((res)=> {
                 let {account,company,department,im,mobile,name} = res.data;
@@ -133,11 +133,12 @@
                     break;
                 case "department":
                     _value = vm.userInfo.department;
-                    isVerify = true
+                    isVerify = true;
                     break;
                 case "im":
                     _value = vm.userInfo.im;
-                    isVerify = true
+                    isVerify = true;
+
                     break;
             }
             if (isVerify) {

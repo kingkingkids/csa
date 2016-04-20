@@ -383,7 +383,7 @@ a {
 .jouneryList {
   .list {
     .bookStore {
-      background: url("../img/list_bg_line.png") repeat-x center 94px;
+      background: url("../img/list_bg_line.png") repeat-x center 88px;
       background-size: 420px 22.5px;
       text-align: justify;
       .bookStoreLayout {
@@ -400,6 +400,7 @@ a {
         background: none;
         width: 105px;
         height: 160px;
+        border-right: 0 !important;
         p {
           text-align: left;
         }
@@ -508,7 +509,18 @@ a {
   font-size: $font14 !important;
 }
 
+.loading-container {
+  .loading {
+    opacity: .5;
+    .spinner {
+      stroke: #fff;
+      fill: #fff;
+    }
+  }
+}
+
 .pdfViewModal {
+  pointer-events: auto !important;
   button {
     background: #fff;
     color: #0079ff !important;
@@ -519,6 +531,7 @@ a {
   }
   .bar .title.title-left {
     text-align: center;
+    font-weight: bold;
   }
   #page-container {
     padding-top: 10px;
@@ -673,13 +686,48 @@ a {
 }
 
 .item {
-  div {
-    width: 100%;
-    display: inline-block;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-  }
   font-size: $font12 !important;
+}
+
+.zoom-pane {
+  width: 100%;
+  height: 100%;
+}
+
+.zoom-pane .scroll {
+  min-height: 100%;
+  /* Vertical align */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.zoom-pane img {
+  width: 100%;
+  vertical-align: middle;
 }
 
 @media (min-width: 680px) {
@@ -699,5 +747,13 @@ a {
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
     top: 64px;
+  }
+}
+
+@media (max-height: 450px) {
+  .loginWrap {
+    .description {
+      display: none;
+    }
   }
 }

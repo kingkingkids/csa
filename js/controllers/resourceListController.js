@@ -22,6 +22,7 @@
             watchId: 0,
             id: 0,
             targetItem: null,
+            getPdfData: null,
             init: function () {
                 if ($stateParams.type == 'folder') {
                     this.limit = 12;
@@ -87,12 +88,15 @@
                 $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id});//向上传送参数给mainController
                 $rootScope.pdfViewTitle = title;// 这支pdfView的Title
                 $rootScope.pdfModal.show();
+                //this.ngProgressBar = ngProgress.createInstance();//加载进度条
+                //this.ngProgressBar.start();//加载进度条
                 $timeout(()=> {
                     Common.loading.show();
-                    resources.getView(id).then(res=> {
+                    this.getPdfData = resources.getView(id).then(res=> {
+                        Common.loading.hide();
                         $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
                         $rootScope.showZoom = true;
-                        console.log($rootScope.showZoom)
+                        //this.ngProgressBar.complete();//加载进度条
                     });
                 }, 300);
             },
@@ -174,12 +178,13 @@
 
         /**pdf预览modal关闭时触发**/
         $scope.$on('event:pdfModalClose', function () {
+            $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令，执行关闭前的操作
             if (search.isOpenSearhModal) {
-                search.openSearchModal($scope);
+                search.openSearchModal($scope);//如果打开了SearchModal，则关闭后会自动重新打开searchModal
             } else {
                 collect.targetItem.data('watchId', collect.watchId);//关闭view后给当前列表设置一个临时的data
             }
-            $rootScope.$broadcast('event:closeModel');//传递一个事件给pdf预览指令，执行关闭前的操作
+            Common.loading.hide();
             $rootScope.showZoom = false;
         });
         /**接收由mainController传过来的参数**/

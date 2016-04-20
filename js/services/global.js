@@ -37,7 +37,42 @@
                 journalID: 379, //期刊ID,
                 booksID: 378,
                 guestAccount: ['guest', 'guest!@#']
-            }
+            },
+            majors: [
+                {name: '牙体牙髓病学'},
+                {name: '口腔颌面外科'},
+                {name: '口腔修复学'},
+                {name: '口腔正畸'},
+                {name: '预防口腔医学'},
+                {name: '口腔病理学'},
+                {name: '牙周病学'},
+                {name: '口腔种植'},
+                {name: '口腔黏膜病'},
+                {name: '儿童口腔医学'},
+                {name: '老年口腔医学'},
+                {name: '口腔颌面放射'},
+                {name: '颞下颌关节病学及牙合学'},
+                {name: '口腔材料'},
+                {name: '口腔修复工艺学'},
+                {name: '口腔医学教育'},
+                {name: '口腔麻醉学'},
+                {name: '口腔医学计算机'},
+                {name: '中西医结合'},
+                {name: '全科口腔医学'},
+                {name: '口腔生物医学'},
+                {name: '民营口腔医疗'},
+                {name: '口腔医疗服务'},
+                {name: '口腔医学设备器材'},
+                {name: '口腔药学'},
+                {name: '口腔颌面修复'},
+                {name: '口腔护理'},
+                {name: '口腔美学'},
+                {name: '中国唇腭裂诊治联盟（Sinocleft）'},
+                {name: '口腔急诊'},
+                {name: '镇静镇痛'},
+                {name: '口腔激光'},
+                {name: '口腔医学科研管理'}
+            ]
         });
     Common.$inject = ["$ionicPopup", "$ionicLoading"];
     function session() {
@@ -67,7 +102,8 @@
             loading: {
                 show: function () {
                     $ionicLoading.show({
-                        template: '加载中....'
+                        noBackdrop: true,
+                        template: '<ion-spinner icon="lines"></ion-spinner>'
                     });
                 },
                 hide: function () {

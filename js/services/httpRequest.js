@@ -10,7 +10,7 @@
     errorManage.$inject = ["$rootScope"];
     function sendRequest($http, errorManage, constant) {
         return function (action, paramData) {
-            var req = {
+            let req = {
                 method: 'POST',
                 url: constant.config.sitePath + action,
                 headers: {
@@ -22,13 +22,13 @@
             } else {
                 req.params = paramData || {};
             }
-            return $http(req)
-                .success(function () {
 
-                })
-                .error(function (data) {
-                    errorManage(data);
-                });
+            let promise = $http(req).success(function () {
+
+            }).error(function (data) {
+                errorManage(data);
+            });
+            return promise;
         }
     }
 

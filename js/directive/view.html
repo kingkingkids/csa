@@ -1,13 +1,14 @@
-<div ng-bind-html="styleOutLine"></div>
-<div ng-bind-html="content"></div>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" ng-repeat="item in items" on-finished>
-            <div class="spinner">加载中...</div>
+
+    <div ng-bind-html="styleOutLine"></div>
+    <div ng-bind-html="content"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="item in items" on-finished>
+                <div class="spinner">加载中...</div>
+            </div>
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <div id="outline" style="display: none"></div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-    <div id="outline" style="display: none"></div>
-</div>
 

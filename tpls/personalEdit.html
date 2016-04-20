@@ -25,9 +25,21 @@
             <label class="item item-input" ng-show="vm.collect.isDepartment">
                 <input type="text" placeholder=" 地址" ng-model="vm.userInfo.department">
             </label>
-            <label class="item item-input" ng-show="vm.collect.isIm">
-                <input type="text" placeholder="专业" ng-model="vm.userInfo.im">
+            <!--<label class="item item-input" ng-show="vm.collect.isIm">-->
+            <!--<input type="text" placeholder="专业" ng-model="vm.userInfo.im">-->
+            <!--</label>-->
+
+            <label class="item item-input item-select" ng-show="vm.collect.isIm">
+                <div class="input-label">
+                    专业
+                </div>
+                <select ng-model="vm.userInfo.im" name="selectRepat">
+                    <option>请选择专业</option>
+                    <option ng-repeat="majors in vm.userInfo.majors" value="{{majors.name}}"
+                            ng-bind-html="majors.name"></option>
+                </select>
             </label>
+
             <label class="item item-input" ng-show="vm.collect.isMobile">
                 <input type="text" placeholder=" 手机" ng-model="vm.userInfo.mobile">
             </label>
