@@ -13,13 +13,13 @@ module.exports = {
         //    {from: 'dist', to: '../../update/dist/'},
         //    {from: 'templates', to: '../../app/platforms/android/assets/www/templates/'}
         //], path.join(__dirname, ''))
-        //new webpack.optimize.UglifyJsPlugin({
-        //    minimize: true,
-        //    mangle: false,
-        //    compress: {
-        //        warnings: false
-        //    }
-        //})
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            mangle: false,
+            compress: {
+                warnings: false
+            }
+        })
     ],
     //页面入口文件配置
     entry: {

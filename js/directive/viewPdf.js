@@ -53,8 +53,16 @@
                 scope.index = 0;//定义一个全局的分页索引，方便外部调用
                 scope.items = [];
                 scope.regExp = regExp;
-                scope.isScrolling = false;
+                scope.clientWidth = document.querySelector('body').clientWidth;
+                scope.maxWidth = 400;
+                scope.minScale = 1;
+                if (scope.clientWidth > scope.maxWidth) {
+                    scope.minScale = 1.25;
+                } else {
+                    scope.minScale = 1;
+                }
                 function openCallback(_scope, _data) {
+
                     /**输出内容**/
                     scope.style = _data.match(regExp.styleReg)[0];//用正则匹配出style
                     scope.body = _data.match(regExp.bodyReg)[0];//匹配body中的内容
@@ -123,7 +131,9 @@
                             onInit: e=> {
                                 e.slides[0].innerHTML = getHtml(0);
                                 defaultViewer = new pdf2htmlEX({});
-                                //$ionicScrollDelegate.$getByHandle('zoom-pdf').zoomTo(0.5, true);
+                                if ($scope.clientWidth > $scope.maxWidth) {
+                                    defaultViewer.rescale($scope.minScale);
+                                }
                                 slidesArr = document.querySelectorAll('.swiper-slide');
                             }
                         });
@@ -132,28 +142,29 @@
                         swiper.slideTo(0);
                         swiper.slides[0].innerHTML = getHtml(0);
                         slidesArr = document.querySelectorAll('.swiper-slide');
-                        $timeout(function () {
-                            defaultViewer = new pdf2htmlEX({});
-                        });
+                        defaultViewer = new pdf2htmlEX({});
+                        if ($scope.clientWidth > $scope.maxWidth) {
+                            defaultViewer.rescale($scope.minScale);
+                        }
                     }
-                    swiper.on('onSlideChangeStart', e=> {
-                        $timeout(()=> {
-                            let activeIndex = e.activeIndex;
-                            $scope.index = activeIndex;
-                            if (activeIndex != 0 && $scope.pageArrayLength != (activeIndex + 1)) {
-                                slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
-                                slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-                            } else if ($scope.pageArrayLength == (activeIndex + 1)) {
-                                slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
-                                slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-                            } else {
-                                slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
-                            }
-                            defaultViewer = new pdf2htmlEX({});
-                        }, 100);
-
+                    swiper.on('onSlideChangeEnd', e=> {
+                        let activeIndex = e.activeIndex;
+                        $scope.index = activeIndex;
+                        if (activeIndex != 0 && $scope.pageArrayLength != (activeIndex + 1)) {
+                            slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+                            slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+                            slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+                        } else if ($scope.pageArrayLength == (activeIndex + 1)) {
+                            slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+                            slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+                        } else {
+                            slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+                            slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+                        }
+                        defaultViewer = new pdf2htmlEX({});
+                        if ($scope.clientWidth >= $scope.maxWidth) {
+                            defaultViewer.rescale($scope.minScale);
+                        }
                     });
                 }
                 function getHtml(index) {
@@ -180,10 +191,10 @@
                     document.querySelector('.swiper-container').style.display = "none";
                 });
                 $scope.$on('event:scale:small', function () {
-                    if (defaultViewer.scale == 1)
+                    if (defaultViewer.scale == $scope.minScale)
                         return;
                     $scope.content = "";
-                    defaultViewer.rescale(1);
+                    defaultViewer.rescale($scope.minScale);
                     document.querySelector('.swiper-container').style.display = "block";
                 });
             }

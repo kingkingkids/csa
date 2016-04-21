@@ -85,7 +85,7 @@
                 this.watchId = watchId;//set关注ID
                 if (this.targetItem.data('watchId') >= 0 && this.targetItem.data('watchId') != undefined)
                     this.watchId = this.targetItem.data('watchId');
-                $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id});//向上传送参数给mainController
+                $rootScope.$emit("params:watched", {'watchId': this.watchId, 'id': id, 'isShowWatch': true});//向上传送参数给mainController
                 $rootScope.pdfViewTitle = title;// 这支pdfView的Title
                 $rootScope.pdfModal.show();
                 //this.ngProgressBar = ngProgress.createInstance();//加载进度条

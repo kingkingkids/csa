@@ -279,7 +279,7 @@ a {
 
 .jouneryList .list .bookStore {
   background: url("../img/list_bg_line.png") repeat-x center 88px;
-  background-size: 420px 22.5px;
+  background-size: 450px 22.5px;
   text-align: justify; }
   .jouneryList .list .bookStore .bookStoreLayout {
     width: 320px;
@@ -546,6 +546,16 @@ a {
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
     top: 64px; } }
+@media screen and (min-width: 400px) {
+  .jouneryList .list .bookStore {
+    background: url("../img/list_bg_line.png") repeat-x center 84px; }
+    .jouneryList .list .bookStore .bookStoreLayout {
+      width: 380px;
+      margin: 0 auto;
+      text-align: center; }
+    .jouneryList .list .bookStore .item {
+      width: 120px;
+      height: 160px; } }
 @media (max-height: 450px) {
   .loginWrap .description {
     display: none; } }
