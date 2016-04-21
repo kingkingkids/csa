@@ -131,6 +131,7 @@
         }
 
         $ionicPlatform.ready(function () {
+            navigator.splashscreen.hide();//cordova 隐藏开机画面
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)
