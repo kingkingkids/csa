@@ -10,7 +10,7 @@
     MainController.$inject = ["$rootScope", "$scope", "$state", "request.account",
         "global.session", "$ionicHistory", "global.constant", "global.Common", "$ionicModal", "$ionicActionSheet", "request.fav"];
 
-    function MainController($rootScope, $scope, state, account, session,$ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
+    function MainController($rootScope, $scope, state, account, session, $ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
         let loginInfo = {
             username: null,
             password: null,
@@ -27,24 +27,45 @@
         $rootScope.$on('params:watched', (_scope, _data)=> {
             collect.watchId = _data.watchId;
             collect.resourceId = _data.id;
+            console.log(_data)
             if (collect.isShowWatch != undefined)
                 collect.isShowWatch = _data.isShowWatch;
         });
         account.loginModal($scope);//判断是否登录,否则显示登录窗口
         $rootScope.showZoom = false;//全局的showZoom
         //全局放大缩小方法
+        let isScale = true;
         $rootScope.zoom = function (scale) {
             if (scale == 'big') {
                 $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
+                isScale = false;
             } else {
                 $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
+                isScale = true;
             }
+        }
+        $rootScope.doubleTap = function () {
+            if (isScale) {
+                $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
+                isScale = false;
+            } else {
+                $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
+                isScale = true;
+            }
+
         }
         let collect = {
             watchId: 0,
             resourceId: 0,
             isShowWatch: true,
             init: function () {
+
+                window.sqlitePlugin.echoTest(function () {
+                    alert("ready!")
+                }, function () {
+                    alert("not ready")
+                });
+
                 if (localStorage.saveUserInfo != undefined) {
                     loginInfo.remberMe = true;
                     let usrInfoArr = localStorage.saveUserInfo.split(',');

@@ -8,7 +8,7 @@
     angular.module('directivesModule')
         .directive('onFinished', onFinished)
         .directive('viewPdf', viewPdf);
-    viewPdf.$inject = ["$sce","$timeout","global.Common"];
+    viewPdf.$inject = ["$sce", "$timeout", "global.Common", "$ionicGesture", "$ionicScrollDelegate"];
     function onFinished() {
         return {
             restrict: 'A',
@@ -21,7 +21,8 @@
             }
         }
     }
-    function viewPdf( $sce,$timeout, Common) {
+
+    function viewPdf($sce, $timeout, Common, $ionicGesture, $ionicScrollDelegate) {
         let regExp = {
             styleReg: VerEx().then("<style").anythingBut('').then('</style>')//过滤style的正则
             , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>')//过滤body的正则
@@ -46,15 +47,22 @@
             link: function (scope, element, attrs, ctrl) {
                 //console.log(onFinishRenderCtrl);
                 scope.$on('event:openModel', openCallback);
-
                 scope.$on('event:closeModel', closeCallback);
 
                 /** 正则规则**/
                 scope.index = 0;//定义一个全局的分页索引，方便外部调用
                 scope.items = [];
                 scope.regExp = regExp;
+                scope.clientWidth = document.querySelector('body').clientWidth;
+                scope.maxWidth = 400;
+                scope.minScale = 1;
+                if (scope.clientWidth > scope.maxWidth) {
+                    scope.minScale = 1.25;
+                } else {
+                    scope.minScale = 1;
+                }
                 function openCallback(_scope, _data) {
-                    Common.loading.hide();
+
                     /**输出内容**/
                     scope.style = _data.match(regExp.styleReg)[0];//用正则匹配出style
                     scope.body = _data.match(regExp.bodyReg)[0];//匹配body中的内容
@@ -67,9 +75,37 @@
                     scope.items = scope.pageArray;
                     _data = null;
                     scope.style = null;
+
+                    //let $view_pdf = angular.element(document.querySelector('view-pdf'));//获取需要添加两指操作区域
+                    ////let releaseGenture = false;//设置释放开关
+                    ///**监听两指操作**/
+                    //$ionicGesture.on('pinchout', function (e) {
+                    //    alert(JSON.stringify(e.gesture.srcEvent.scale));
+                    //    //releaseGenture = true;
+                    //}, $view_pdf);
+                    //console.log($view_pdf)
+                    ///**释放手之后的监听事件**/
+                    //releaseGenture = $ionicGesture.on('release', function (e) {
+                    //    if (releaseGenture) {
+                    //        let scrollDelegate = $ionicScrollDelegate.$getByHandle('zoom-pdf');
+                    //        let view = scrollDelegate.getScrollView();
+                    //        let scale = view.__zoomLevel;//获取放大等级
+                    //        $timeout(function () {
+                    //            //swiper.lockSwipes();
+                    //            //angular.element(document.querySelector(".zoom-pane").children[0]).attr("style", "translate3d(0px,0px,0px) scale(1)");
+                    //            //
+                    //            //document.querySelector(".zoom-pane").children[0].style.zoom = scale * 100 + "%";
+                    //        }, 500);
+                    //        releaseGenture = false;
+                    //    }
+                    //}, $view_pdf);
+
                 }
 
                 function closeCallback() {
+                    defaultViewer = null;
+                    if (swiper.slides == null)
+                        return;
                     for (let i = 0; i < swiper.slides.length; i++) {
                         swiper.slides[i].innerHTML = "";
                     }
@@ -95,6 +131,9 @@
                             onInit: e=> {
                                 e.slides[0].innerHTML = getHtml(0);
                                 defaultViewer = new pdf2htmlEX({});
+                                if ($scope.clientWidth > $scope.maxWidth) {
+                                    defaultViewer.rescale($scope.minScale);
+                                }
                                 slidesArr = document.querySelectorAll('.swiper-slide');
                             }
                         });
@@ -103,28 +142,29 @@
                         swiper.slideTo(0);
                         swiper.slides[0].innerHTML = getHtml(0);
                         slidesArr = document.querySelectorAll('.swiper-slide');
-                        $timeout(function () {
-                            defaultViewer = new pdf2htmlEX({});
-                        });
+                        defaultViewer = new pdf2htmlEX({});
+                        if ($scope.clientWidth > $scope.maxWidth) {
+                            defaultViewer.rescale($scope.minScale);
+                        }
                     }
-                    swiper.on('onSlideChangeStart', e=> {
-                        $timeout(()=> {
-                            let activeIndex = e.activeIndex;
-                            $scope.index = activeIndex;
-                            if (activeIndex != 0 && $scope.pageArrayLength != (activeIndex + 1)) {
-                                slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
-                                slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-                            } else if ($scope.pageArrayLength == (activeIndex + 1)) {
-                                slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
-                                slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
-                            } else {
-                                slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
-                                slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
-                            }
-                            defaultViewer = new pdf2htmlEX({});
-                        }, 100);
-
+                    swiper.on('onSlideChangeEnd', e=> {
+                        let activeIndex = e.activeIndex;
+                        $scope.index = activeIndex;
+                        if (activeIndex != 0 && $scope.pageArrayLength != (activeIndex + 1)) {
+                            slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+                            slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+                            slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+                        } else if ($scope.pageArrayLength == (activeIndex + 1)) {
+                            slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+                            slidesArr[activeIndex - 1].innerHTML = '<div class="spinner">加载中...</div>';
+                        } else {
+                            slidesArr[activeIndex + 1].innerHTML = '<div class="spinner">加载中...</div>';
+                            slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
+                        }
+                        defaultViewer = new pdf2htmlEX({});
+                        if ($scope.clientWidth >= $scope.maxWidth) {
+                            defaultViewer.rescale($scope.minScale);
+                        }
                     });
                 }
                 function getHtml(index) {
@@ -151,10 +191,10 @@
                     document.querySelector('.swiper-container').style.display = "none";
                 });
                 $scope.$on('event:scale:small', function () {
-                    if (defaultViewer.scale == 1)
+                    if (defaultViewer.scale == $scope.minScale)
                         return;
                     $scope.content = "";
-                    defaultViewer.rescale(1);
+                    defaultViewer.rescale($scope.minScale);
                     document.querySelector('.swiper-container').style.display = "block";
                 });
             }

@@ -56,7 +56,6 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
         fetch: function (type, more) {
             if (this.inQuery == undefined || this.inQuery == "")
                 return;
-            console.log(this.groupId);
             let paramObj = {
                 categoryId: 0,
                 queryWords: this.inQuery,
@@ -97,18 +96,18 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                 $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 return false;
             } else {
-                this.fetch(this.type, true);
+                this.fetch(this.type, false);
             }
 
         },
         tabToLoadArticle: function () {
+            this.searchList = ""
             //点击文章TAB的操作
             this.isArticleTab = true;
             this.isBooksTab = false;
             this.type = 'FILE';
             this.start = 0;
             this.totalCount = 0;
-            this.searchList = ""
             this.fetch(this.type, false);
         },
         tabToLoadBooks: function () {

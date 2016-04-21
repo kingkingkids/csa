@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
     angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule',
         'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-        'favModule', 'request.doHttpRequest',  'editModule',
+        'favModule', 'request.doHttpRequest', 'editModule',
         'infoModule', 'directivesModule', 'filterModule']).config(appConfig).run(appRun);
     appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider"];
     appRun.$inject = ["$ionicPlatform", "$rootScope"];
@@ -18,6 +18,8 @@
                 //$ionicConfigProvider.scrolling.jsScrolling(true);
                 $ionicConfigProvider.views.transition('none');
                 $ionicConfigProvider.tabs.position("bottom");
+                //$ionicConfigProvider.scrolling.jsScrolling(false);
+
             }
             $stateProvider
                 .state('login', {
@@ -50,6 +52,10 @@
                             controller: "HomeController",
                             controllerAs: "vm"
                         }
+                    },
+                    onEnter: function () {
+                        //当进入到home的时候，清空各模板缓存，用于不正常退出进入登录页时，能够回显数据
+                        $ionicConfigProvider.views.maxCache(0);
                     }
                 })
                 .state('tabs.favorite', {
@@ -123,15 +129,16 @@
     }
 
     function appRun($ionicPlatform, $rootScope) {
-        /**基本配置**/
-        $rootScope.config = {
-            sitePath: "http://localhost/csaProxy",//地址
-            currentGroupId: 0,
-            journalID: 374 //期刊ID
-        }
-
+        ///**基本配置**/
+        //$rootScope.config = {
+        //    sitePath: "http://localhost/csaProxy",//地址
+        //    currentGroupId: 0,
+        //    journalID: 374 //期刊ID
+        //}
         $ionicPlatform.ready(function () {
-            navigator.splashscreen.hide();//cordova 隐藏开机画面
+            /**cordova plugin**/
+            if (navigator.splashscreen != undefined)
+                navigator.splashscreen.hide();
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)

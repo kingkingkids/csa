@@ -6,7 +6,7 @@ function resources(send, constant) {
             return send(constant.path.getResources, "type=all&limit=" + _limit + "&start=" + _start + "&parentId=" + id);
         },
         getView: function (id) {
-            return send(constant.path.downloadResource + "?disposition=inline&id=" + id)
+            return send(constant.path.downloadResource + "?disposition=inline&id=" + id);
         }
     }
 }

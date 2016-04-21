@@ -7,7 +7,7 @@
             返回
         </ion-nav-back-button>
         <ion-nav-buttons side="right">
-            <button class="button" on-tap="vm.collect.search()">
+            <button class="button" on-tap="vm.collect.search()" ng-if="vm.collect.listCss">
                 搜索
             </button>
         </ion-nav-buttons>

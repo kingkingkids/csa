@@ -278,8 +278,8 @@ a {
   background-size: cover; }
 
 .jouneryList .list .bookStore {
-  background: url("../img/list_bg_line.png") repeat-x center 94px;
-  background-size: 420px 22.5px;
+  background: url("../img/list_bg_line.png") repeat-x center 88px;
+  background-size: 450px 22.5px;
   text-align: justify; }
   .jouneryList .list .bookStore .bookStoreLayout {
     width: 320px;
@@ -292,7 +292,8 @@ a {
     border: 0;
     background: none;
     width: 105px;
-    height: 160px; }
+    height: 160px;
+    border-right: 0 !important; }
     .jouneryList .list .bookStore .item p {
       text-align: left; }
     .jouneryList .list .bookStore .item img {
@@ -361,16 +362,25 @@ a {
 .bar .button.button-clear, .bar button.button-clear {
   font-size: 16px !important; }
 
-.pdfViewModal button {
-  background: #fff;
-  color: #0079ff !important;
-  font-size: 16px !important; }
-  .pdfViewModal button span {
-    margin-right: 5px; }
-.pdfViewModal .bar .title.title-left {
-  text-align: center; }
-.pdfViewModal #page-container {
-  padding-top: 10px; }
+.loading-container .loading {
+  opacity: .5; }
+  .loading-container .loading .spinner {
+    stroke: #fff;
+    fill: #fff; }
+
+.pdfViewModal {
+  pointer-events: auto !important; }
+  .pdfViewModal button {
+    background: #fff;
+    color: #0079ff !important;
+    font-size: 16px !important; }
+    .pdfViewModal button span {
+      margin-right: 5px; }
+  .pdfViewModal .bar .title.title-left {
+    text-align: center;
+    font-weight: bold; }
+  .pdfViewModal #page-container {
+    padding-top: 10px; }
 
 .searchWrap {
   height: 31px;
@@ -480,11 +490,44 @@ a {
 
 .item {
   font-size: 14px !important; }
-  .item div {
-    width: 100%;
-    display: inline-block;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important; }
+
+.zoom-pane {
+  width: 100%;
+  height: 100%; }
+
+.zoom-pane .scroll {
+  min-height: 100%;
+  /* Vertical align */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.zoom-pane img {
+  width: 100%;
+  vertical-align: middle; }
 
 @media (min-width: 680px) {
   .modal {
@@ -503,5 +546,18 @@ a {
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
     top: 64px; } }
+@media screen and (min-width: 400px) {
+  .jouneryList .list .bookStore {
+    background: url("../img/list_bg_line.png") repeat-x center 84px; }
+    .jouneryList .list .bookStore .bookStoreLayout {
+      width: 380px;
+      margin: 0 auto;
+      text-align: center; }
+    .jouneryList .list .bookStore .item {
+      width: 120px;
+      height: 160px; } }
+@media (max-height: 450px) {
+  .loginWrap .description {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */
