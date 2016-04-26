@@ -15,7 +15,7 @@
         <ion-list can-swipe="true">
             <ion-item collection-repeat="watch in vm.collect.watchesList">
                 <div on-tap="vm.collect.openModal(watch.resourceId,watch.displayName,watch.watchId,$event)">
-                    <p ng-bind-html="watch.displayName.replace('.html','')"></p>
+                    <p ng-bind-html="watch.displayName | displayNameFilter"></p>
                 </div>
                 <ion-option-button class="button-assertive" on-tap="vm.collect.removeFavList(watch.watchId,'article')">
                     移除收藏

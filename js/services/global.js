@@ -28,11 +28,14 @@
                 , deleteReceivedResource: "/group/deleteReceivedResource.action"
                 , findPassword: '/webmail/findPassword.action'
                 , searchResources: '/group/searchResources.action'
+                , getResourceInfo: '/group/getResourceInfo.action'
 
             },
             config: {
-                //sitePath: "http://211.66.86.97/csaProxy",//地址
-                sitePath: "http://58.248.25.234:8080/",
+                //sitePath: "http://211.66.86.97/csaProxy",//公司台式机ip
+                //sitePath: "http://58.248.25.234:8080",//运行测试机ip
+                //sitePath: "http://192.168.31.178:8080/csaproxy",//家里本机ip
+                sitePath: "http://116.57.99.58:8080/csaproxy",//公司本机ip
                 currentGroupId: 0,
                 journalID: 379, //期刊ID,
                 booksID: 378,

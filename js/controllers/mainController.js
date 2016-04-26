@@ -8,9 +8,11 @@
         .controller("MainController", MainController);
 
     MainController.$inject = ["$rootScope", "$scope", "$state", "request.account",
-        "global.session", "$ionicHistory", "global.constant", "global.Common", "$ionicModal", "$ionicActionSheet", "request.fav"];
+        "global.session", "$ionicHistory", "global.constant", "global.Common", "$ionicModal", "$ionicActionSheet",
+        "request.fav", "request.sqlite"];
 
-    function MainController($rootScope, $scope, state, account, session, $ionicHistory, constant, Common, $ionicModal, $ionicActionSheet, fav) {
+    function MainController($rootScope, $scope, state, account, session, $ionicHistory, constant, Common, $ionicModal,
+                            $ionicActionSheet, fav, sqlite) {
         let loginInfo = {
             username: null,
             password: null,
@@ -34,47 +36,35 @@
         account.loginModal($scope);//判断是否登录,否则显示登录窗口
         $rootScope.showZoom = false;//全局的showZoom
         //全局放大缩小方法
-        let isScale = true;
         $rootScope.zoom = function (scale) {
             if (scale == 'big') {
                 $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
-                isScale = false;
             } else {
                 $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
-                isScale = true;
             }
         }
-        $rootScope.doubleTap = function () {
-            if (isScale) {
-                $rootScope.$broadcast('event:scale:big');//传递一个事件给pdf预览指令
-                isScale = false;
-            } else {
-                $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
-                isScale = true;
-            }
-
+        //let isScale = true;
+        $rootScope.doubleTap = function (e) {
+            $rootScope.$broadcast('event:scale:small');//传递一个事件给pdf预览指令
         }
         let collect = {
             watchId: 0,
             resourceId: 0,
             isShowWatch: true,
+            sqliteReady: false,
             init: function () {
-
-                window.sqlitePlugin.echoTest(function () {
-                    alert("ready!")
-                }, function () {
-                    alert("not ready")
-                });
-
+                //测试数据库是否已经Ready
+                //sqlite.echoTest().then(res=> {
+                //    if (res)
+                //        this.sqliteReady = true;
+                //});
                 if (localStorage.saveUserInfo != undefined) {
                     loginInfo.remberMe = true;
                     let usrInfoArr = localStorage.saveUserInfo.split(',');
                     loginInfo.username = Base64.decode(usrInfoArr[0]);
                     loginInfo.password = Base64.decode(usrInfoArr[1]);
-
                 }
                 account.keepAlive.start();//进入首页后开始调用保持链接,5分钟加载一次
-
                 /**创建全局的pdfModal**/
                 $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
                     scope: $scope,
@@ -93,6 +83,7 @@
                 $ionicActionSheet.show({
                     buttons: [
                         {text: watchText},
+                        {text: '分享'}
                     ],
                     //destructiveText: 'Delete',
                     titleText: '',
@@ -118,6 +109,9 @@
                                         Common.Alert('', '收藏成功');
                                     });
                                 }
+                                break;
+                            case 1:
+                                console.log(123);
                                 break;
                         }
                         return true;

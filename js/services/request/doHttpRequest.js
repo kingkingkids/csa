@@ -8,7 +8,8 @@
         , fav = require("./fav.js")
         , account = require("./account")
         , message = require("./message")
-        , search = require("./search");
+        , search = require("./search")
+        , sqlite = require("./sqlite");
 
     angular
         .module("request.doHttpRequest", [])
@@ -17,6 +18,7 @@
         .factory("request.fav", fav)
         .factory("request.account", account)
         .factory("request.message", message)
-        .factory("request.search", search);
+        .factory("request.search", search)
+        .factory("request.sqlite", sqlite);
 }
 

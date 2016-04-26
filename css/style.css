@@ -368,6 +368,16 @@ a {
     stroke: #fff;
     fill: #fff; }
 
+#pdfZoomView {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  height: 100%;
+  z-index: 9999;
+  display: none; }
+
 .pdfViewModal {
   pointer-events: auto !important; }
   .pdfViewModal button {

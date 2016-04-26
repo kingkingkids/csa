@@ -5,9 +5,11 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
     angular.module('dcMagazine', ['ionic', 'global', 'LoginModule', 'personalModule',
-        'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
-        'favModule', 'request.doHttpRequest', 'editModule',
-        'infoModule', 'directivesModule', 'filterModule']).config(appConfig).run(appRun);
+            'MainModule', 'HomeModule', 'GroupListModule', 'ResourceListModule',
+            'favModule', 'request.doHttpRequest', 'editModule',
+            'infoModule', 'directivesModule', 'filterModule'])
+        .config(appConfig)
+        .run(appRun);
     appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider"];
     appRun.$inject = ["$ionicPlatform", "$rootScope"];
     function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -154,4 +156,5 @@
             }
         });
     }
+
 }

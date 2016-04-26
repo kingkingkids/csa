@@ -4,9 +4,12 @@
 require("../lib/ionic/css/ionic.css");
 //require("../node_modules/ngprogress/ngProgress.css");
 //require("../css/iconfont.css");
-require("../css/style.css");
-require("../node_modules/swiper/dist/css/swiper.min.css");
+
+
 require("../lib/ionic/js/ionic.bundle.js");
+require("../node_modules/swiper/dist/css/swiper.min.css");
+require("../css/animate.css");
+require("../css/style.css");
 require("./app.js");
 require("./services/global.js");
 require("./services/httpRequest.js");
@@ -27,6 +30,7 @@ require("./controllers/infoController.js");
 require("./directive/directives.js");
 require("./directive/viewPdf.js");
 require("./directive/journalListRender.js");
+require("./controllers/pdfViewController.js")
 //require("../node_modules/ngprogress/build/ngProgress.js");
 
 

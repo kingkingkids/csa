@@ -24,3 +24,4 @@ function barTitleFilter() {
         return item;
     }
 }
+

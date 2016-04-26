@@ -1,6 +1,8 @@
-search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources', '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state"];
+search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources',
+    '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state", "$ionicScrollDelegate"];
 
-function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout, $ionicTabsDelegate, $state) {
+function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout,
+                $ionicTabsDelegate, $state, $ionicScrollDelegate) {
 
     return {
         totalCount: 0,
@@ -54,6 +56,7 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             }
         },
         fetch: function (type, more) {
+            console.log(more)
             if (this.inQuery == undefined || this.inQuery == "")
                 return;
             let paramObj = {
@@ -88,6 +91,8 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                         this.searchList = resources;
                         this.start = this.limit + this.start;
                     }
+                }).finally(function () {
+                    $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
             }
         },
@@ -96,11 +101,12 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                 $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 return false;
             } else {
-                this.fetch(this.type, false);
+                this.fetch(this.type, true);
             }
 
         },
         tabToLoadArticle: function () {
+            $ionicScrollDelegate.scrollTop(false);
             this.searchList = ""
             //点击文章TAB的操作
             this.isArticleTab = true;
@@ -108,9 +114,10 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             this.type = 'FILE';
             this.start = 0;
             this.totalCount = 0;
-            this.fetch(this.type, false);
+            this.fetch(this.type);
         },
         tabToLoadBooks: function () {
+            $ionicScrollDelegate.scrollTop(false);
             //点击期刊TAB的操作
             this.isArticleTab = false;
             this.isBooksTab = true;
@@ -144,7 +151,7 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             //    this.watchId = this.targetItem.data('watchId');
             Common.loading.show();
             $rootScope.pdfModal.show();
-            $rootScope.$emit("params:watched", {'watchId': 0, 'id': id});//向上传送参数给mainController
+            $rootScope.$emit("params:watched", {'watchId': watchId, 'id': id, 'isShowWatch': true});//向上传送参数给mainController
             resources.getView(id).then(res=> {
                 $rootScope.pdfViewTitle = title;
                 $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令

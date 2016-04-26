@@ -7,6 +7,9 @@ function resources(send, constant) {
         },
         getView: function (id) {
             return send(constant.path.downloadResource + "?disposition=inline&id=" + id);
+        },
+        getResourceInfo: function (id) {
+            return send(constant.path.getResourceInfo, {resourceId: id});
         }
     }
 }

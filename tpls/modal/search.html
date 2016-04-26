@@ -29,8 +29,10 @@
         <ion-list>
             <div ng-repeat="res in vm.search.searchList">
                 <ion-item>
-                    <div ng-if="res.type=='file'" on-tap="vm.search.openModal(res.id,res.displayName,'',$event)">
-                        <p ng-bind-html="res.displayName | displayNameFilter" class="title"></p>
+                    <div ng-if="res.type=='file'"
+                         on-tap="vm.search.openModal(res.id,res.displayName,res.watchId,$event)">
+                        <p ng-bind-html="res.displayName | displayNameFilter"
+                           class="title"></p>
                         <p ng-bind-html="res.desc" class="desc"></p>
                     </div>
                     <div ng-if="res.type=='folder'" on-tap="vm.search.readBooks(res.id,res.displayName)">

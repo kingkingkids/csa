@@ -127,6 +127,8 @@
                     }
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
+                }).finally(function () {
+                    $rootScope.$broadcast('scroll.refreshComplete');
                 });
             },
             doRefresh: function () {

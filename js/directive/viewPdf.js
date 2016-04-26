@@ -5,10 +5,12 @@
     let VerEx = require("verbal-expressions");
     let Swiper = require("swiper");
     let pdf2htmlEX = require("../../lib/pdf2htmlEX/pdf2htmlEX.js");
+    let detectZoom = require("../../lib/detectZoom.js");
+    ;
     angular.module('directivesModule')
         .directive('onFinished', onFinished)
         .directive('viewPdf', viewPdf);
-    viewPdf.$inject = ["$sce", "$timeout", "global.Common", "$ionicGesture", "$ionicScrollDelegate"];
+    viewPdf.$inject = ["$sce", "$timeout", "global.Common", "$ionicGesture", "$ionicScrollDelegate", "$rootScope"];
     function onFinished() {
         return {
             restrict: 'A',
@@ -22,7 +24,7 @@
         }
     }
 
-    function viewPdf($sce, $timeout, Common, $ionicGesture, $ionicScrollDelegate) {
+    function viewPdf($sce, $timeout, Common, $ionicGesture, $ionicScrollDelegate, $rootScope) {
         let regExp = {
             styleReg: VerEx().then("<style").anythingBut('').then('</style>')//过滤style的正则
             , bodyReg: VerEx().find("<body").anythingBut('').endOfLine().anythingBut('').then('body>')//过滤body的正则
@@ -48,7 +50,7 @@
                 //console.log(onFinishRenderCtrl);
                 scope.$on('event:openModel', openCallback);
                 scope.$on('event:closeModel', closeCallback);
-
+                scope.isLoadHtml = false;
                 /** 正则规则**/
                 scope.index = 0;//定义一个全局的分页索引，方便外部调用
                 scope.items = [];
@@ -62,7 +64,6 @@
                     scope.minScale = 1;
                 }
                 function openCallback(_scope, _data) {
-
                     /**输出内容**/
                     scope.style = _data.match(regExp.styleReg)[0];//用正则匹配出style
                     scope.body = _data.match(regExp.bodyReg)[0];//匹配body中的内容
@@ -75,34 +76,66 @@
                     scope.items = scope.pageArray;
                     _data = null;
                     scope.style = null;
+                    let $view_pdf = angular.element(document.querySelector('view-pdf'));//获取需要添加两指操作区域
+                    let $pdfZoomView = angular.element(document.querySelector('#pdfZoomView'));
+                    /**监听两指操作**/
+                    let isGesture = false;
+                    $ionicGesture.on('pinchout', function (e) {
+                        isGesture = false;
+                        if (!scope.isLoadHtml)
+                            return;
+                        let _swiperPagination = document.querySelector('.swiper-pagination');
+                        if (_swiperPagination.style.display != "none") {
+                            _swiperPagination.style.display = "none";
+                            $rootScope.$broadcast('event:scale:big');
+                        }
+                    }, $view_pdf);
 
-                    //let $view_pdf = angular.element(document.querySelector('view-pdf'));//获取需要添加两指操作区域
-                    ////let releaseGenture = false;//设置释放开关
-                    ///**监听两指操作**/
-                    //$ionicGesture.on('pinchout', function (e) {
-                    //    alert(JSON.stringify(e.gesture.srcEvent.scale));
-                    //    //releaseGenture = true;
-                    //}, $view_pdf);
-                    //console.log($view_pdf)
-                    ///**释放手之后的监听事件**/
-                    //releaseGenture = $ionicGesture.on('release', function (e) {
-                    //    if (releaseGenture) {
-                    //        let scrollDelegate = $ionicScrollDelegate.$getByHandle('zoom-pdf');
-                    //        let view = scrollDelegate.getScrollView();
-                    //        let scale = view.__zoomLevel;//获取放大等级
-                    //        $timeout(function () {
-                    //            //swiper.lockSwipes();
-                    //            //angular.element(document.querySelector(".zoom-pane").children[0]).attr("style", "translate3d(0px,0px,0px) scale(1)");
-                    //            //
-                    //            //document.querySelector(".zoom-pane").children[0].style.zoom = scale * 100 + "%";
-                    //        }, 500);
-                    //        releaseGenture = false;
+                    //function getDistance(touch1, touch2) {
+                    //    var x = touch2.pageX - touch1.pageX,
+                    //        y = touch2.pageY - touch1.pageY;
+                    //    return Math.sqrt((x * x) + (y * y));
+                    //}
+                    //
+                    //function getScale(start, end) {
+                    //    // need two fingers...
+                    //    if (start.length >= 2 && end.length >= 2) {
+                    //        return getDistance(end[0], end[1]) /
+                    //            getDistance(start[0], start[1]);
                     //    }
-                    //}, $view_pdf);
+                    //    return 1;
+                    //}
 
+                    $ionicGesture.on('pinchout', function (e) {
+                        console.log(1)
+                        console.log(detectZoom.zoom())
+                        isGesture = false;
+                    }, $pdfZoomView);
+                    $ionicGesture.on('pinchin', function (e) {
+                        console.log(2)
+                        console.log(detectZoom.zoom())
+                        let zoom = detectZoom.zoom();
+                        if (zoom <= 1.01 || zoom == 1) {
+                            isGesture = true;
+                        }
+                    }, $pdfZoomView);
+                    $ionicGesture.on('release', function (e) {
+                        $timeout(function () {
+                            if (!isGesture)
+                                return;
+                            let zoom = detectZoom.zoom();
+
+                            if (zoom < 1.01) {
+                                $timeout(function () {
+                                    $rootScope.$broadcast('event:scale:small');
+                                }, 50)
+                            }
+                        }, 1);
+                    }, $pdfZoomView);
                 }
 
                 function closeCallback() {
+                    scope.isLoadHtml = false
                     defaultViewer = null;
                     if (swiper.slides == null)
                         return;
@@ -131,6 +164,7 @@
                             onInit: e=> {
                                 e.slides[0].innerHTML = getHtml(0);
                                 defaultViewer = new pdf2htmlEX({});
+                                $scope.isLoadHtml = true;
                                 if ($scope.clientWidth > $scope.maxWidth) {
                                     defaultViewer.rescale($scope.minScale);
                                 }
@@ -143,11 +177,13 @@
                         swiper.slides[0].innerHTML = getHtml(0);
                         slidesArr = document.querySelectorAll('.swiper-slide');
                         defaultViewer = new pdf2htmlEX({});
+                        $scope.isLoadHtml = true;
                         if ($scope.clientWidth > $scope.maxWidth) {
                             defaultViewer.rescale($scope.minScale);
                         }
                     }
                     swiper.on('onSlideChangeEnd', e=> {
+                        $scope.isLoadHtml = false;
                         let activeIndex = e.activeIndex;
                         $scope.index = activeIndex;
                         if (activeIndex != 0 && $scope.pageArrayLength != (activeIndex + 1)) {
@@ -162,6 +198,7 @@
                             slidesArr[activeIndex].innerHTML = getHtml(activeIndex);
                         }
                         defaultViewer = new pdf2htmlEX({});
+                        $scope.isLoadHtml = true;
                         if ($scope.clientWidth >= $scope.maxWidth) {
                             defaultViewer.rescale($scope.minScale);
                         }
@@ -180,22 +217,45 @@
                     }
                     Common.loading.hide();
                     matchBody = null;
+
+
                     return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>' + (pageContent = '');
                 }
 
                 $scope.$on('event:scale:big', function () {
-                    if (defaultViewer.scale == 2.5)
-                        return;
-                    defaultViewer.rescale(2.5);
-                    $scope.content = $sce.trustAsHtml(swiper.slides[$scope.index].innerHTML);
-                    document.querySelector('.swiper-container').style.display = "none";
+                    document.querySelector('#wrap').style.display = "none";
+                    //angular.element(document.querySelector('#wrap')).addClass('animated fadeOutUp');
+
+                    document.querySelector("#pdfZoomView").style.display = "block";//显示全屏
+                    angular.element(document.querySelectorAll('.modal-backdrop')).addClass('hide');
+                    angular.element(document.querySelector('body')).removeClass("modal-open");
+                    document.querySelector("meta[name='viewport']").content = "initial-scale=1," +
+                        "maximum-scale=3,user-scalable=yes,width=device-width";
+                    $timeout(function () {
+                        document.querySelector("#pdfZoomView").innerHTML = $sce.trustAsHtml(swiper.slides[$scope.index].innerHTML);
+                        document.querySelector('#wrap').style.visibility = "hidden";
+                        $timeout(function () {
+                            if (window.plugins != undefined)
+                                window.plugins.toast.showLongBottom("已进入全屏模式，双击返回");
+                        }, 500);
+                    }, 5);
                 });
                 $scope.$on('event:scale:small', function () {
-                    if (defaultViewer.scale == $scope.minScale)
-                        return;
-                    $scope.content = "";
-                    defaultViewer.rescale($scope.minScale);
-                    document.querySelector('.swiper-container').style.display = "block";
+                    //if (defaultViewer.scale == $scope.minScale)
+                    //    return;
+                    document.querySelector("meta[name='viewport']").content = "initial-scale=1," +
+                        "maximum-scale=1,user-scalable=no,width=device-width";
+
+                    angular.element(document.querySelectorAll('.modal-backdrop.active ')).removeClass('hide');
+                    $timeout(function () {
+                        document.querySelector("#pdfZoomView").innerHTML = "";
+                        document.querySelector("#pdfZoomView").style.display = "none";
+                        document.querySelector('.swiper-pagination').style.display = "block";
+                        document.querySelector('#wrap').style.display = "block";
+                        document.querySelector('#wrap').style.visibility = "visible";
+                        angular.element(document.querySelector('body')).addClass("modal-open");
+                    }, 100);
+                    //defaultViewer.rescale($scope.minScale);
                 });
             }
         }
