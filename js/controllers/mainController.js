@@ -54,10 +54,12 @@
             sqliteReady: false,
             init: function () {
                 //测试数据库是否已经Ready
-                //sqlite.echoTest().then(res=> {
-                //    if (res)
-                //        this.sqliteReady = true;
-                //});
+                sqlite.echoTest().then(res=> {
+                    if (res)
+                        sqlite.saveUserInfo('123');
+                });
+
+
                 if (localStorage.saveUserInfo != undefined) {
                     loginInfo.remberMe = true;
                     let usrInfoArr = localStorage.saveUserInfo.split(',');
