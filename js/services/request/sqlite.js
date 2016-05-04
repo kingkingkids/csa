@@ -31,15 +31,15 @@ function sqlite($q) {
                     tx.executeSql("SELECT count(id) as cnt FROM usersTable;", [], function (tx, res) {//检查是否存在记录，否则插入一条新的记录
                         if (res.rows.item(0).cnt == 0) {
                             tx.executeSql("INSERT  INTO usersTable (datas) VALUES (?);", [str], function (tx, res) {
-                                tx.executeSql("SELECT  datas as dd  FROM  usersTable;", [], function (tx, res) {
-                                    console.log("hello:" + res.rows.item(0).dd);
+                                tx.executeSql("SELECT  datas as data  FROM  usersTable;", [], function (tx, res) {
+                                    //console.log("hello:" + res.rows.item(0).data);
                                 });
                             });
                         } else {
                             //如果已经有记录，则更新首行
                             tx.executeSql("UPDATE  usersTable SET  datas = ? WHERE id =1", [str], function (tx, res) {
-                                tx.executeSql("SELECT  datas as dd  FROM  usersTable;", [], function (tx, res) {
-                                    console.log("hello:" + res.rows.item(0).dd);
+                                tx.executeSql("SELECT  datas as data  FROM  usersTable;", [], function (tx, res) {
+                                    console.log("hello1:" + res.rows.item(0).data);
                                 });
                             });
                         }
@@ -50,6 +50,21 @@ function sqlite($q) {
                     db.close();
                 });
             });
+        },
+        getUserInfo: function () {
+            let defered = $q.defer();
+            this.openDatabase().then(db=> {
+                db.transaction(tx=> {
+                    tx.executeSql("SELECT  datas as data  FROM  usersTable;", [], function (tx, res) {
+                        defered.resolve(JSON.parse(res.rows.item(0).data));
+                    });
+                }, function () {
+                    db.close();
+                }, function () {
+                    db.close();
+                });
+            });
+            return defered.promise;
         }
     };
 }

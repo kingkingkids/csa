@@ -64,6 +64,9 @@
                     scope.minScale = 1;
                 }
                 function openCallback(_scope, _data) {
+
+                    if (window.screen != undefined)
+                        window.screen.unlockOrientation();
                     /**输出内容**/
                     scope.style = _data.match(regExp.styleReg)[0];//用正则匹配出style
                     scope.body = _data.match(regExp.bodyReg)[0];//匹配body中的内容
@@ -135,6 +138,9 @@
                 }
 
                 function closeCallback() {
+
+                    if (window.screen != undefined)
+                        window.screen.lockOrientation('portrait');
                     scope.isLoadHtml = false
                     defaultViewer = null;
                     if (swiper.slides == null)
@@ -217,23 +223,18 @@
                     }
                     Common.loading.hide();
                     matchBody = null;
-
-
                     return '<div id="page-container">' + $sce.trustAsHtml(pageContent) + '</div>' + (pageContent = '');
                 }
 
                 $scope.$on('event:scale:big', function () {
-                    document.querySelector('#wrap').style.display = "none";
-                    //angular.element(document.querySelector('#wrap')).addClass('animated fadeOutUp');
-
+                    document.querySelector('ion-tabs').style.display = "none";
                     document.querySelector("#pdfZoomView").style.display = "block";//显示全屏
                     angular.element(document.querySelectorAll('.modal-backdrop')).addClass('hide');
                     angular.element(document.querySelector('body')).removeClass("modal-open");
-                    document.querySelector("meta[name='viewport']").content = "initial-scale=1," +
-                        "maximum-scale=3,user-scalable=yes,width=device-width";
+                    let viewport = document.querySelector("meta[name='viewport']");
+                    viewport.setAttribute("content", "initial-scale=1,maximum-scale=3,user-scalable=yes,width=device-width");
                     $timeout(function () {
                         document.querySelector("#pdfZoomView").innerHTML = $sce.trustAsHtml(swiper.slides[$scope.index].innerHTML);
-                        document.querySelector('#wrap').style.visibility = "hidden";
                         $timeout(function () {
                             if (window.plugins != undefined)
                                 window.plugins.toast.showLongBottom("已进入全屏模式，双击返回");
@@ -241,21 +242,16 @@
                     }, 5);
                 });
                 $scope.$on('event:scale:small', function () {
-                    //if (defaultViewer.scale == $scope.minScale)
-                    //    return;
-                    document.querySelector("meta[name='viewport']").content = "initial-scale=1," +
-                        "maximum-scale=1,user-scalable=no,width=device-width";
-
+                    let viewport = document.querySelector("meta[name='viewport']");
+                    viewport.setAttribute("content", "initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width");
                     angular.element(document.querySelectorAll('.modal-backdrop.active ')).removeClass('hide');
                     $timeout(function () {
                         document.querySelector("#pdfZoomView").innerHTML = "";
                         document.querySelector("#pdfZoomView").style.display = "none";
                         document.querySelector('.swiper-pagination').style.display = "block";
-                        document.querySelector('#wrap').style.display = "block";
-                        document.querySelector('#wrap').style.visibility = "visible";
+                        document.querySelector('ion-tabs').style.display = "block";
                         angular.element(document.querySelector('body')).addClass("modal-open");
                     }, 100);
-                    //defaultViewer.rescale($scope.minScale);
                 });
             }
         }

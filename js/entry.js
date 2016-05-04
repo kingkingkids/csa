@@ -10,6 +10,7 @@ require("../lib/ionic/js/ionic.bundle.js");
 require("../node_modules/swiper/dist/css/swiper.min.css");
 require("../css/animate.css");
 require("../css/style.css");
+
 require("./app.js");
 require("./services/global.js");
 require("./services/httpRequest.js");

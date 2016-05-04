@@ -6,6 +6,11 @@ $font16: 16px;
   font-family: 'Heiti SC Medium' !important;
 }
 
+html {
+  -ms-touch-action: auto !important;
+  touch-action: auto !important
+}
+
 input {
   -webkit-appearance: none !important;
   -moz-appearance: none;
@@ -381,33 +386,42 @@ a {
 }
 
 .jouneryList {
+  ion-item {
+    width: 100%;
+    padding: 0;
+    display: inline-block;
+    border: 0;
+    background: none;
+    border-right: 0 !important;
+    p {
+      text-align: left;
+    }
+    img {
+      width: 100%;
+    }
+  }
   .list {
     .bookStore {
-      background: url("../img/list_bg_line.png") repeat-x center 88px;
+      background: url("../img/list_bg_line.png") repeat-x center 98px;
       background-size: 450px 22.5px;
       text-align: justify;
+      width: 100%;
       .bookStoreLayout {
         width: 320px;
         margin: 0 auto;
+        text-align: center;
+        .ion-item {
+          display: inline-block;
+          padding: 10px;
+          width: 105px;
+          height: 160px;
+        }
       }
       p {
         text-align: center;
         font-size: $font11;
       }
-      .item {
-        display: inline-block;
-        border: 0;
-        background: none;
-        width: 105px;
-        height: 160px;
-        border-right: 0 !important;
-        p {
-          text-align: left;
-        }
-        img {
-          width: 100%;
-        }
-      }
+
     }
   }
 }
@@ -765,7 +779,7 @@ a {
   .jouneryList {
     .list {
       .bookStore {
-        background: url("../img/list_bg_line.png") repeat-x center 84px;
+        background: url("../img/list_bg_line.png") repeat-x center 75px;
         .bookStoreLayout {
           width: 380px;
           margin: 0 auto;
@@ -787,4 +801,12 @@ a {
       display: none;
     }
   }
+}
+
+.ion-star:before {
+  color: #0079ff;
+}
+
+.ion-share:before {
+  color: #0079ff;
 }

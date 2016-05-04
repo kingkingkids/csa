@@ -12,45 +12,46 @@
         </ion-nav-buttons>
     </ion-nav-bar>
 
-    <ion-content class="resourceBg">
+    <ion-content class="resourceBg" scroll="true" overflow-scroll="true">
+
         <ion-refresher
                 pulling-text="下拉刷新"
                 on-refresh="vm.collect.doRefresh()">
         </ion-refresher>
-
         <ion-list ng-if="vm.collect.listCss" class="jouneryList">
-            <div ng-repeat="resTop in vm.collect.resourceList">
+            <ion-item collection-repeat="resTop in vm.collect.resourceList">
                 <div class="bookStore">
                     <div class="bookStoreLayout">
-                        <ion-item on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
-                                  ng-repeat="res in resTop track by $index">
+                        <div class="ion-item" on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
+                             ng-repeat="res in resTop track by $index">
                             <div ng-if="res.type == 1"
                                  ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName,type:'list'})">
                                 <p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>
                                 <p ng-bind-html="res.displayName.split('卷')[0] + '卷' | displayNameFilter"></p>
                                 <p ng-bind-html="res.displayName.split('卷')[1] | displayNameFilter"></p>
                             </div>
-                            <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">-->
-                            <!--{{res.displayName}}-->
-                            <!--</div>-->
-                        </ion-item>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ion-item>
         </ion-list>
+
+
         <ion-list ng-if="vm.collect.articleCss">
-            <div ng-repeat="res in vm.collect.resourceList">
-                <ion-item on-hold="vm.collect.onHold(res.id,res.watchId,$event)" ng-if="res.type == 2"
-                          on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId,$event)"
-                          ng-bind-html="res.displayName | displayNameFilter">
+            <ion-item ng-repeat="res in vm.collect.resourceList">
+                <div on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
+                     ng-if="res.type == 2 && res.name.indexOf('html') > -1"
+                     on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId,$event)"
+                     ng-bind-html="res.displayName | displayNameFilter">
                     <!--<div ng-if="res.type == 1"-->
                     <!--ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName})">-->
                     <!--<p><img ng-src="{{vm.collect.defaultPic}}" width="65"/></p>-->
                     <!--<p>{{res.displayName}}</p>-->
                     <!--</div>-->
-                </ion-item>
-            </div>
+                </div>
+            </ion-item>
         </ion-list>
+
         <ion-infinite-scroll
                 immediate-check="false"
                 on-infinite="vm.collect.loadMore()"

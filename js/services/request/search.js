@@ -1,9 +1,8 @@
 search.$inject = ["httpRequest.sendRequest", "global.constant", "$ionicModal", 'request.resources',
-    '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state", "$ionicScrollDelegate"];
+    '$rootScope', 'global.Common', '$timeout', '$ionicTabsDelegate', "$state", "$ionicScrollDelegate", "$filter", "$q"];
 
-function search(send, constant, $ionicModal, resources, $rootScope, Common, $timeout,
-                $ionicTabsDelegate, $state, $ionicScrollDelegate) {
-
+function search(send, constant, $ionicModal, resourcesReq, $rootScope, Common, $timeout,
+                $ionicTabsDelegate, $state, $ionicScrollDelegate, $filter, $q) {
     return {
         totalCount: 0,
         isArticleTab: true,
@@ -75,7 +74,25 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                     let {resources,totalCount} = res.data;
                     this.hasResult = false;
                     this.totalCount = totalCount;
-                    this.searchList = this.searchList.concat(resources);
+                    //this.searchList = this.searchList.concat(resources);
+                    let index = 0;
+
+                    function formatData(index) {
+                        let defered = $q.defer();
+                        if (index != resources.length && resources[index].parentId > 0)
+                            resourcesReq.getResourceInfo(resources[index].parentId).then(res=> {
+                                resources[index].folderName = res.data.displayName;
+                                index++;
+                                formatData(index);
+                                defered.resolve(resources);
+                            });
+                        return defered.promise;
+                    }
+
+                    formatData(index, resources).then(res=> {
+                        this.searchList = this.searchList.concat(res);
+
+                    });
                     this.start = this.limit + this.start;
                 }).finally(function () {
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
@@ -90,8 +107,27 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
                         this.totalCount = totalCount;
                         this.searchList = resources;
                         this.start = this.limit + this.start;
+                        let index = 0;
+
+                        function formatData(index) {
+                            let defered = $q.defer();
+                            if (index != resources.length && resources[index].parentId > 0) {
+                                resourcesReq.getResourceInfo(resources[index].parentId).then(res=> {
+                                    resources[index].folderName = res.data.displayName;
+                                    index++;
+                                    formatData(index);
+                                    defered.resolve(resources);
+                                });
+                            }
+                            return defered.promise;
+                        }
+
+                        formatData(index, resources).then(res=> {
+                            this.searchList = res;
+                        });
                     }
                 }).finally(function () {
+
                     $rootScope.$broadcast('scroll.infiniteScrollComplete');
                 });
             }
@@ -124,7 +160,7 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             this.type = 'DIRECTORY';
             this.start = 0;
             this.totalCount = 0;
-            this.searchList = ""
+            this.searchList = "";
             this.fetch(this.type);
         },
         readBooks: function (id, title) {
@@ -152,7 +188,7 @@ function search(send, constant, $ionicModal, resources, $rootScope, Common, $tim
             Common.loading.show();
             $rootScope.pdfModal.show();
             $rootScope.$emit("params:watched", {'watchId': watchId, 'id': id, 'isShowWatch': true});//向上传送参数给mainController
-            resources.getView(id).then(res=> {
+            resourcesReq.getView(id).then(res=> {
                 $rootScope.pdfViewTitle = title;
                 $rootScope.$broadcast('event:openModel', res.data);//传递一个事件给pdf预览指令
                 $rootScope.showZoom = true;

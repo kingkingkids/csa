@@ -19,13 +19,23 @@
         </ion-refresher>
 
         <ion-list ng-if="vm.collect.listCss" class="booksList">
-            <ion-item on-hold="vm.collect.onHold(res.id)" ng-repeat="res in vm.collect.resourceList"
-                      ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName,type:'list'})">
-                <div ng-if="res.type == 1">
+            <ion-item ng-repeat="res in vm.collect.resourceList">
+                <div on-hold="vm.collect.onHold(res.id)" ng-if="res.type == 1"
+                     ui-sref="tabs.resourceList({parentId:res.id,title:res.displayName,type:'list'})">
                     <img ng-src="{{vm.collect.defaultPic}}" width="65"/>
                     <p class="title" ng-bind-html="res.displayName"></p>
                     <p class="desc" ng-bind-html="'作者：' + (res.author=='' ? '佚名' : res.author)"></p>
                     <p class="desc" ng-bind-html="res.desc=='' ? '暂无描述' : res.desc"></p>
+                </div>
+                <div on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
+                     ng-if="res.type == 2 && res.name.indexOf('html') > -1"
+                     on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId,$event)"
+                     ng-bind-html="res.displayName | displayNameFilter">
+                </div>
+                <div on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
+                     ng-if="res.type == 2 && res.name.indexOf('mp4') > -1"
+                     on-tap="vm.collect.openMediaModal(res.id,res.displayName)"
+                     ng-bind-html="res.displayName | displayNameFilter">
                 </div>
                 <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.title)">-->
                 <!--{{res.displayName}}-->
@@ -34,14 +44,30 @@
         </ion-list>
 
 
+        <!--<ion-list ng-if="vm.collect.articleCss">-->
+        <!--<div ng-repeat="res in vm.collect.resourceList">-->
+        <!--<ion-item on-hold="vm.collect.onHold(res.id)">-->
+        <!--<div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)"-->
+        <!--ng-bind-html="res.displayName">-->
+        <!--</div>-->
+        <!--</ion-item>-->
+        <!--</div>-->
+        <!--</ion-list>-->
+
+
         <ion-list ng-if="vm.collect.articleCss">
-            <div ng-repeat="res in vm.collect.resourceList">
-                <ion-item on-hold="vm.collect.onHold(res.id)">
-                    <div ng-if="res.type == 2" on-tap="vm.collect.openModal(res.id,res.displayName)"
-                         ng-bind-html="res.displayName">
-                    </div>
-                </ion-item>
-            </div>
+            <ion-item collection-repeat="res in vm.collect.resourceList">
+                <div on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
+                     ng-if="res.type == 2 && res.name.indexOf('html') > -1"
+                     on-tap="vm.collect.openModal(res.id,res.displayName,res.watchId,$event)"
+                     ng-bind-html="res.displayName | displayNameFilter">
+                </div>
+                <div on-hold="vm.collect.onHold(res.id,res.watchId,$event)"
+                     ng-if="res.type == 2 && res.name.indexOf('mp4') > -1"
+                     on-tap=""
+                     ng-bind-html="res.displayName | displayNameFilter">
+                </div>
+            </ion-item>
         </ion-list>
 
         <ion-infinite-scroll

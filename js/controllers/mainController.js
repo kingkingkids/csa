@@ -13,6 +13,7 @@
 
     function MainController($rootScope, $scope, state, account, session, $ionicHistory, constant, Common, $ionicModal,
                             $ionicActionSheet, fav, sqlite) {
+        let vm = this;
         let loginInfo = {
             username: null,
             password: null,
@@ -51,21 +52,31 @@
             watchId: 0,
             resourceId: 0,
             isShowWatch: true,
-            sqliteReady: false,
             init: function () {
-                //测试数据库是否已经Ready
-                sqlite.echoTest().then(res=> {
-                    if (res)
-                        sqlite.saveUserInfo('123');
-                });
-
-
-                if (localStorage.saveUserInfo != undefined) {
-                    loginInfo.remberMe = true;
-                    let usrInfoArr = localStorage.saveUserInfo.split(',');
-                    loginInfo.username = Base64.decode(usrInfoArr[0]);
-                    loginInfo.password = Base64.decode(usrInfoArr[1]);
+                //本地数据库中有记录帐号密码，则自动登录
+                if ($rootScope.detectSQLite) {
+                    try {
+                        sqlite.getUserInfo().then(res=> {
+                            if (res != "") {
+                                let paramsObj = {
+                                    "account": Base64.decode(res.user),
+                                    "password": Base64.decode(res.psw)
+                                };
+                                vm.loginInfo.remberMe = true;
+                                vm.loginInfo.username = Base64.decode(res.user);
+                                vm.loginInfo.password = Base64.decode(res.psw);
+                                this.loginFunc(paramsObj);
+                            }
+                        });
+                    } catch (e) {
+                    }
                 }
+                //if (localStorage.saveUserInfo != undefined) {
+                //    loginInfo.remberMe = true;
+                //    let usrInfoArr = localStorage.saveUserInfo.split(',');
+                //    loginInfo.username = Base64.decode(usrInfoArr[0]);
+                //    loginInfo.password = Base64.decode(usrInfoArr[1]);
+                //}
                 account.keepAlive.start();//进入首页后开始调用保持链接,5分钟加载一次
                 /**创建全局的pdfModal**/
                 $ionicModal.fromTemplateUrl("./tpls/modal/view.html", {
@@ -75,6 +86,17 @@
                 }).then((modal)=> {
                     $rootScope.pdfModal = modal;
                 });
+                $ionicModal.fromTemplateUrl("./tpls/modal/media.html", {
+                    scope: $scope,
+                    animation: 'slide-in-up',
+                    hardwareBackButtonClose: false
+                }).then((modal)=> {
+                    $rootScope.mediaModal = modal;
+                });
+            },
+            closeMediaModal: function () {
+                $rootScope.mediaModal.hide();
+                $rootScope.$broadcast("event:mediaModalClose");
             },
             closePdfModal: function () {
                 $rootScope.pdfModal.hide();
@@ -84,8 +106,8 @@
                 let watchText = this.watchId == 0 ? '添加收藏' : '取消收藏'; //根据watchId判断是否已添加收藏
                 $ionicActionSheet.show({
                     buttons: [
-                        {text: watchText},
-                        {text: '分享'}
+                        {text: '<i class="icon ion-star balanced"></i>' + watchText},
+                        {text: '<i class="icon ion-share balanced"></i> 分享'}
                     ],
                     //destructiveText: 'Delete',
                     titleText: '',
@@ -133,23 +155,34 @@
                     "account": this.loginInfo.username,
                     "password": this.loginInfo.password
                 };
+                this.collect.loginFunc(paramsObj);
+
+            },
+            loginFunc: function (paramsObj) {
+                //console.log(paramsObj);
                 account.doLogin(paramsObj).then(res=> {
-                    this.collect.loginModal.hide();
+
+                    this.loginModal.hide();
+
                     $ionicHistory.nextViewOptions({
                         disableBack: false
                     });
+                    //登录成功后记住密码
                     if (loginInfo.remberMe) {
-                        let usr = Base64.encode(this.loginInfo.username)
-                            , psw = Base64.encode(this.loginInfo.password);
-                        localStorage.saveUserInfo = [usr, psw];
+                        let usr = Base64.encode(loginInfo.username)
+                            , psw = Base64.encode(loginInfo.password);
+                        //localStorage.saveUserInfo = [usr, psw];
+                        if ($rootScope.detectSQLite)
+                            sqlite.saveUserInfo(JSON.stringify({"user": usr, "psw": psw}));//写人本地数据库
                     }
-                    loginInfo = {
+                    vm.loginInfo = {
                         username: null,
                         password: null,
                         remberMe: null
                     }
+                    //if (navigator.splashscreen != undefined)
+                    //    navigator.splashscreen.hide();//Cordova隐藏开机画面
                 });
-
             },
             guestLogin: ()=> {
                 let paramsObj = {
@@ -173,7 +206,8 @@
                 });
                 state.go("tabs.home")
                 $ionicHistory.clearHistory();
-
+                if ($rootScope.detectSQLite)
+                    sqlite.saveUserInfo("");//写人本地数据库，用户信息为空
                 this.loginInfo.remberMe = false;
                 this.loginInfo.username = '';
                 this.loginInfo.password = '';
@@ -235,6 +269,8 @@
             }
 
         });
+
+
         collect.init();
         this.collect = collect;//外部调用
         this.loginInfo = loginInfo;

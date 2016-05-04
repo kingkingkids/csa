@@ -11,7 +11,7 @@
         .config(appConfig)
         .run(appRun);
     appConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider"];
-    appRun.$inject = ["$ionicPlatform", "$rootScope"];
+    appRun.$inject = ["$ionicPlatform", "$rootScope", "request.sqlite"];
     function appConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         {
             //$httpProvider.interceptors.push('appInterceptor');
@@ -130,17 +130,22 @@
         }
     }
 
-    function appRun($ionicPlatform, $rootScope) {
+    function appRun($ionicPlatform, $rootScope, sqlite) {
         ///**基本配置**/
         //$rootScope.config = {
         //    sitePath: "http://localhost/csaProxy",//地址
         //    currentGroupId: 0,
         //    journalID: 374 //期刊ID
         //}
+        //检测数据库
+        sqlite.echoTest().then(res=> {
+            if (res)
+                $rootScope.detectSQLite = true;
+        });
+        if (window.screen != undefined)
+            window.screen.lockOrientation('portrait');
+
         $ionicPlatform.ready(function () {
-            /**cordova plugin**/
-            if (navigator.splashscreen != undefined)
-                navigator.splashscreen.hide();
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)

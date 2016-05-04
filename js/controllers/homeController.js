@@ -13,6 +13,8 @@
         let collect = {
             journalID: constant.config.journalID,
             booksID: constant.config.booksID,
+            newsID: constant.config.newsID,
+            trainID: constant.config.trainID,
             active: function () {
                 $scope.$on('event:favToResourcesLIst', (_scope, _data)=> {
                     let {parentId,title,type} = _data;

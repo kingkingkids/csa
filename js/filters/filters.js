@@ -4,12 +4,13 @@
 angular
     .module("filterModule", [])
     .filter('displayNameFilter', displayNameFilter)
-    .filter('barTitleFilter', barTitleFilter);
+    .filter('barTitleFilter', barTitleFilter)
+    .filter('searchArticleFilter', searchArticleFilter);
 function displayNameFilter() {
     return function (item) {
         if (item == undefined)
             return;
-        item = item.replace(/(?:(?:(?:&nbsp;))|(?:(?:&amp;nbsp;))|(?:(?:\.html)))/gm, ' ');
+        item = item.replace(/(?:(?:(?:(?:\.mp4))|(?:(?:\.html))|(?:(?:&nbsp;))|(?:(?:&amp;nbsp;))))/gm, ' ');
         return item;
     }
 }
@@ -25,3 +26,9 @@ function barTitleFilter() {
     }
 }
 
+function searchArticleFilter() {
+    return function (item,id) {
+        //resources.getResourceInfo()
+        return item;
+    }
+}

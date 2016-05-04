@@ -1,6 +1,10 @@
 * {
   font-family: 'Heiti SC Medium' !important; }
 
+html {
+  -ms-touch-action: auto !important;
+  touch-action: auto !important; }
+
 input {
   -webkit-appearance: none !important;
   -moz-appearance: none;
@@ -277,27 +281,34 @@ a {
   background: url("../img/list_bg_light.png") no-repeat;
   background-size: cover; }
 
+.jouneryList ion-item {
+  width: 100%;
+  padding: 0;
+  display: inline-block;
+  border: 0;
+  background: none;
+  border-right: 0 !important; }
+  .jouneryList ion-item p {
+    text-align: left; }
+  .jouneryList ion-item img {
+    width: 100%; }
 .jouneryList .list .bookStore {
-  background: url("../img/list_bg_line.png") repeat-x center 88px;
+  background: url("../img/list_bg_line.png") repeat-x center 98px;
   background-size: 450px 22.5px;
-  text-align: justify; }
+  text-align: justify;
+  width: 100%; }
   .jouneryList .list .bookStore .bookStoreLayout {
     width: 320px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: center; }
+    .jouneryList .list .bookStore .bookStoreLayout .ion-item {
+      display: inline-block;
+      padding: 10px;
+      width: 105px;
+      height: 160px; }
   .jouneryList .list .bookStore p {
     text-align: center;
     font-size: 12px; }
-  .jouneryList .list .bookStore .item {
-    display: inline-block;
-    border: 0;
-    background: none;
-    width: 105px;
-    height: 160px;
-    border-right: 0 !important; }
-    .jouneryList .list .bookStore .item p {
-      text-align: left; }
-    .jouneryList .list .bookStore .item img {
-      width: 100%; }
 
 .booksList .list img {
   float: left;
@@ -558,7 +569,7 @@ a {
     top: 64px; } }
 @media screen and (min-width: 400px) {
   .jouneryList .list .bookStore {
-    background: url("../img/list_bg_line.png") repeat-x center 84px; }
+    background: url("../img/list_bg_line.png") repeat-x center 75px; }
     .jouneryList .list .bookStore .bookStoreLayout {
       width: 380px;
       margin: 0 auto;
@@ -569,5 +580,10 @@ a {
 @media (max-height: 450px) {
   .loginWrap .description {
     display: none; } }
+.ion-star:before {
+  color: #0079ff; }
+
+.ion-share:before {
+  color: #0079ff; }
 
 /*# sourceMappingURL=style.css.map */

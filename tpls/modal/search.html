@@ -31,9 +31,15 @@
                 <ion-item>
                     <div ng-if="res.type=='file'"
                          on-tap="vm.search.openModal(res.id,res.displayName,res.watchId,$event)">
-                        <p ng-bind-html="res.displayName | displayNameFilter"
+                        <p ng-bind-html="res.displayName | displayNameFilter | searchArticleFilter"
                            class="title"></p>
-                        <p ng-bind-html="res.desc" class="desc"></p>
+                        <p class="desc">分类：{{res.categoryName == 'null' ? '未知' : res.categoryName | displayNameFilter}}
+                            | 来源：{{res.groupName == 'null' ? '未知' : res.groupName |
+                            displayNameFilter}}</p>
+                        <p ng-show="res.folderName != undefined" class="desc">{{'名称:' + res.folderName |
+                            displayNameFilter}}</p>
+                        <p ng-bind-html="res.desc == '' ? '暂无描述' : res.desc" class="desc"></p>
+
                     </div>
                     <div ng-if="res.type=='folder'" on-tap="vm.search.readBooks(res.id,res.displayName)">
                         <p ng-bind-html="res.displayName | displayNameFilter" class="title"></p>

@@ -1,6 +1,7 @@
 let Base64 = require('js-base64').Base64;
-account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", "global.Common"];
-function account(send, $rootScope, interval, $ionicModal, $q, constant, session, Common) {
+account.$inject = ["httpRequest.sendRequest", "$rootScope", "$interval", "$ionicModal", "$q", "global.constant", "global.session", "global.Common", "request.sqlite"];
+function account(send, $rootScope, interval, $ionicModal, $q, constant, session, Common, sqlite) {
+    let userInfo = {};
     return {
         doLogin: function (paramsObj) {
             let defered = $q.defer();
@@ -16,7 +17,7 @@ function account(send, $rootScope, interval, $ionicModal, $q, constant, session,
                     this.getStatus().then(res=> {
                         let {account,isAdmin,memberId,name,personGroupId,status} = res.data;
                         session.setSession({account, isAdmin, memberId, name, personGroupId, status});//设置应用session
-                    })
+                    });
                     defered.resolve(res);
                 });
             });
@@ -53,26 +54,28 @@ function account(send, $rootScope, interval, $ionicModal, $q, constant, session,
             }
         },
         loginModal: function (scope) {
-            if (localStorage.saveUserInfo != undefined && localStorage.session == undefined) {
-                let usrInfoArr = localStorage.saveUserInfo.split(',')
-                    , paramsObj = {
-                    "account": Base64.decode(usrInfoArr[0]),
-                    "password": Base64.decode(usrInfoArr[1])
-                };
-                this.doLogin(paramsObj);
-                return;
-            }
+            //if (localStorage.saveUserInfo != undefined && localStorage.session == undefined) {
+            //    let usrInfoArr = localStorage.saveUserInfo.split(',')
+            //        , paramsObj = {
+            //        "account": Base64.decode(usrInfoArr[0]),
+            //        "password": Base64.decode(usrInfoArr[1])
+            //    };
+            //    this.doLogin(paramsObj);
+            //    return;
+            //}
 
             $ionicModal.fromTemplateUrl("./tpls/modal/login.html", {
                 scope: scope,
-                animation: 'slide-in-up',
-                hardwareBackButtonClose: false
+                animation: 'slide-in-down',
+                hardwareBackButtonClose: true
                 //,focusFirstInput: true
             }).then((modal)=> {
                 $rootScope.loginModal = modal;
                 this.getStatus().then((res)=> {
                     if (res.data.status == "guest") {
                         $rootScope.loginModal.show();
+                        //if (navigator.splashscreen != undefined)
+                        //    navigator.splashscreen.hide();//Cordova隐藏开机画面
                         session.removeSession();
                     }
                 });

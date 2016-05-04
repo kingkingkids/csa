@@ -4,8 +4,10 @@
 {
     angular.module("ResourceListModule")
         .controller("BooksListController", BooksListController);
-    BooksListController.$inject = ["$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav", "request.resources", "$ionicModal", "$timeout", "global.Common", "request.search"];
-    function BooksListController($rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal, $timeout, Common, search) {
+    BooksListController.$inject = ["$rootScope", "$scope", "$stateParams", "$ionicPopup", "request.fav",
+        "request.resources", "$ionicModal", "$timeout", "global.Common", "request.search", "global.constant", "$sce"];
+    function BooksListController($rootScope, $scope, $stateParams, $ionicPopup, fav, resources, $ionicModal,
+                                 $timeout, Common, search, constant, $sce) {
         let collect = {
             resourceList: [],
             title: $stateParams.title,
@@ -102,6 +104,8 @@
                     this.resourceList = resources;
                     this.start = this.limit + this.start;
                     this.totalCount = totalCount;
+                }).finally(function () {
+                    $rootScope.$broadcast('scroll.refreshComplete');
                 });
             },
             doRefresh: function () {
@@ -135,9 +139,23 @@
             },
             search: function () {
                 search.openSearchModal($scope, -$stateParams.parentId);
+            },
+            openMediaModal: function (id, title) {
+                if (window.screen != undefined)
+                    window.screen.unlockOrientation();
+                $rootScope.modalTitle = title;
+                $rootScope.mediaModal.show();
+                $rootScope.mediaSrc = $sce.trustAsResourceUrl(constant.config.sitePath + constant.path.downloadResource + "?disposition=inline&id=" + id);
+                var video = document.querySelector('video');
+                video.addEventListener('click', function () {
+                    video.play();
+                }, false);
             }
         }
-
+        $rootScope.$on('event:mediaModalClose', function () {
+            if (window.screen != undefined)
+                window.screen.lockOrientation('portrait');
+        });
         collect.init();
         collect.loadResources();
         this.search = search;
